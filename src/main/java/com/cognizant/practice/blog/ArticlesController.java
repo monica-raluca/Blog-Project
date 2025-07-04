@@ -63,7 +63,7 @@ public class ArticlesController {
     // postman, curl, bruno
 
     // is valid method
-    public boolean validRequest(String string) {
+    public boolean isValidRequest(String string) {
         return !StringUtils.isEmpty(string);
     }
 
@@ -77,7 +77,7 @@ public class ArticlesController {
     // return created article
     @PostMapping(value="/articles")
     public Article createArticle(@RequestBody ArticleRequest articleRequest) {
-        if (!validRequest(articleRequest.title()) || !validRequest(articleRequest.content())) {
+        if (!isValidRequest(articleRequest.title()) || !isValidRequest(articleRequest.content())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
@@ -96,7 +96,7 @@ public class ArticlesController {
     // return updated article
     @PutMapping(value = "/articles/{id}")
     public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest) {
-        if (!validRequest(articleRequest.title()) || !validRequest(articleRequest.content())) {
+        if (!isValidRequest(articleRequest.title()) || !isValidRequest(articleRequest.content())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
