@@ -1,5 +1,6 @@
 package com.cognizant.practice.blog;
 
+import io.micrometer.common.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -62,9 +63,8 @@ public class ArticlesController {
     // postman, curl, bruno
 
     // is valid method
-    // TODO: string utils
     public boolean validRequest(String string) {
-        return string != null && !string.isEmpty();
+        return !StringUtils.isEmpty(string);
     }
 
     // CREATE POST /articles with json
