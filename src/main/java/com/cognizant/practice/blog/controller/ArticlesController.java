@@ -1,0 +1,85 @@
+package com.cognizant.practice.blog.controller;
+
+import com.cognizant.practice.blog.model.Article;
+import com.cognizant.practice.blog.model.ArticleRequest;
+import com.cognizant.practice.blog.service.ArticlesService;
+import io.micrometer.common.util.StringUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@RestController
+public class ArticlesController {
+
+    private final ArticlesService articlesService;
+
+    public ArticlesController(ArticlesService articlesService) {
+        this.articlesService = articlesService;
+    }
+
+    // GET /articles -> list of articles in memory = List<Articles> => json array
+    @GetMapping(value="/articles")
+    public List<Article> printArticles() {
+        return articlesService.getAllArticles();
+    }
+    // GET /articles/<id> -> just the id'th article = Article => single json
+        // id not found => error 404 http
+        // id not found => throw exception not found
+    @GetMapping(value="/articles/{id}")
+    public Article printArticleById(@PathVariable UUID id) {
+        return articlesService.getArticleById(id);
+    }
+    // DELETE /articles/<id> -> delete article from list = void
+        // id not found => error
+    @DeleteMapping(value="/articles/{id}")
+    public void deleteArticle(@PathVariable UUID id) {
+        articlesService.deleteArticle(id);
+    }
+    // Article record -> POJO plain old java object
+        // fields: id, title, content, createdDate -> LocalDateTime, updatedData -> LocalDateTime
+    // DTO -> data transfer object
+    // list of articles List<Article>
+    // OR Map<id, Article>
+
+    // postman, curl, bruno
+
+    // is valid method
+    public boolean isValidRequest(String string) {
+        return !StringUtils.isEmpty(string);
+    }
+
+    // CREATE POST /articles with json
+    // payload / request body -> title, content
+    // new Article -> title, content from object + id
+    // id + 1
+    // UUID -> unique, uses timestamp
+    // change localdatetime -> .now()
+    // postMapping createArticle(@requestbody articlerequest art)...
+    // return created article
+    @PostMapping(value="/articles")
+    public Article createArticle(@RequestBody ArticleRequest articleRequest) {
+        return articlesService.createArticle(articleRequest);
+    }
+    // validation
+    // if title empty -> error 400 bad request
+
+    // UPDATE PUT /articles/<id>
+    // title, content ->ArticleRequest
+    // update fields from request
+    // updatedDate -> current date
+    // return updated article
+    @PutMapping(value = "/articles/{id}")
+    public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest) {
+        return articlesService.updateArticle(id, articleRequest);
+    }
+
+    // PATCH partial update
+
+
+}
