@@ -1,17 +1,12 @@
-package com.cognizant.practice.blog.controller;
+package com.cognizant.practice.blog.article.controller;
 
-import com.cognizant.practice.blog.model.Article;
-import com.cognizant.practice.blog.model.ArticleRequest;
-import com.cognizant.practice.blog.service.ArticlesService;
+import com.cognizant.practice.blog.article.dto.Article;
+import com.cognizant.practice.blog.article.dto.ArticleRequest;
+import com.cognizant.practice.blog.article.service.ArticlesService;
 import io.micrometer.common.util.StringUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController

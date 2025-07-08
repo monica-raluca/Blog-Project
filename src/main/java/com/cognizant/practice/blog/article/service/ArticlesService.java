@@ -1,8 +1,9 @@
-package com.cognizant.practice.blog.service;
+package com.cognizant.practice.blog.article.service;
 
-import com.cognizant.practice.blog.model.Article;
-import com.cognizant.practice.blog.model.ArticleRequest;
-import com.cognizant.practice.blog.repository.ArticleRepository;
+import com.cognizant.practice.blog.article.dto.Article;
+import com.cognizant.practice.blog.article.entity.ArticleEntity;
+import com.cognizant.practice.blog.article.dto.ArticleRequest;
+import com.cognizant.practice.blog.article.repository.ArticleRepository;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class ArticlesService {
@@ -25,21 +27,35 @@ public class ArticlesService {
     }
 
     public List<Article> getAllArticles() {
-        return articleRepository.findAll();
+        List<ArticleEntity> entities = articleRepository.findAll();
+
+        return entities.stream().map(articleEntity -> new Article(
+                articleEntity.getId(),
+                articleEntity.getTitle(),
+                articleEntity.getContent(),
+                articleEntity.getCreatedDate(),
+                articleEntity.getUpdatedDate()
+        )).collect(Collectors.toList());
     }
 
     public Article getArticleById(UUID id) {
-        Optional<Article> article = articleRepository.findById(id);
+        Optional<ArticleEntity> article = articleRepository.findById(id);
 
         if (article.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
         }
 
-        return article.get();
+        return article.map(articleEntity -> new Article(
+                articleEntity.getId(),
+                articleEntity.getTitle(),
+                articleEntity.getContent(),
+                articleEntity.getCreatedDate(),
+                articleEntity.getUpdatedDate()
+        )).get();
     }
 
     public void deleteArticle(UUID id) {
-        Optional<Article> article = articleRepository.findById(id);
+        Optional<ArticleEntity> article = articleRepository.findById(id);
 
         if (article.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
@@ -57,31 +73,34 @@ public class ArticlesService {
     }
 
     public Article createArticle(ArticleRequest articleRequest) {
-        if (isValidRequest(articleRequest)) {
+        if (!isValidRequest(articleRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
-        Article newArticle = new Article(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now());
-        return articleRepository.save(newArticle);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null);
+        articleRepository.save(newArticle);
+
+        return new Article(newArticle.getId(), newArticle.getTitle(), newArticle.getContent(), newArticle.getCreatedDate(), newArticle.getUpdatedDate());
     }
 
     public Article updateArticle(UUID id, ArticleRequest articleRequest) {
-        if (isValidRequest(articleRequest)) {
+        if (!isValidRequest(articleRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
-        Optional<Article> article = articleRepository.findById(id);
+        Optional<ArticleEntity> article = articleRepository.findById(id);
         if(article.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
         }
 
-        Article newArticle = article.get();
+        ArticleEntity newArticle = article.get();
 
         newArticle.setContent(articleRequest.content());
         newArticle.setTitle(articleRequest.title());
         newArticle.setUpdatedDate(LocalDateTime.now());
 
-        return articleRepository.save(newArticle);
+        articleRepository.save(newArticle);
+        return new Article(newArticle.getId(), newArticle.getTitle(), newArticle.getContent(), newArticle.getCreatedDate(), newArticle.getUpdatedDate());
     }
 
 }
