@@ -29,10 +29,6 @@ public class CommentsService {
     public List<Comment> getCommentsByArticleId(UUID id) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
 
-        if (article.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-        }
-
         return article.get().getComments().stream().map(commentEntity -> new Comment(
                 commentEntity.getId(),
                 commentEntity.getContent(),
@@ -45,24 +41,7 @@ public class CommentsService {
     }
 
     public Comment createComment(UUID id, CommentRequest commentRequest) {
-        if (!isValidRequest(commentRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
         Optional<ArticleEntity> article = articleRepository.findById(id);
-
-        if (article.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-        }
-//
-//        CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), article.map(articleEntity -> new ArticleEntity(
-//                articleEntity.getId(),
-//                articleEntity.getTitle(),
-//                articleEntity.getContent(),
-//                articleEntity.getCreatedDate(),
-//                articleEntity.getUpdatedDate(),
-//                articleEntity.getComments()
-//        )).get());
 
         CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), article.get());
         commentsRepository.save(newComment);

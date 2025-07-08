@@ -4,9 +4,12 @@ import com.cognizant.practice.blog.article.dto.Article;
 import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.service.ArticlesService;
 import io.micrometer.common.util.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -28,12 +31,15 @@ public class ArticlesController {
         // id not found => throw exception not found
     @GetMapping(value="/articles/{id}")
     public Article printArticleById(@PathVariable UUID id) {
-        return articlesService.getArticleById(id);
+        Optional<Article> article = articlesService.getArticleById(id);
+        return article.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found"));
     }
     // DELETE /articles/<id> -> delete article from list = void
         // id not found => error
     @DeleteMapping(value="/articles/{id}")
     public void deleteArticle(@PathVariable UUID id) {
+        Article article = printArticleById(id);
+
         articlesService.deleteArticle(id);
     }
     // Article record -> POJO plain old java object
@@ -45,8 +51,12 @@ public class ArticlesController {
     // postman, curl, bruno
 
     // is valid method
-    public boolean isValidRequest(String string) {
-        return !StringUtils.isEmpty(string);
+    public boolean isValidParam(String param) {
+        return !StringUtils.isEmpty(param);
+    }
+
+    public boolean isValidRequest(ArticleRequest request) {
+        return isValidParam(request.title()) && isValidParam(request.content());
     }
 
     // CREATE POST /articles with json
@@ -59,6 +69,10 @@ public class ArticlesController {
     // return created article
     @PostMapping(value="/articles")
     public Article createArticle(@RequestBody ArticleRequest articleRequest) {
+        if (!isValidRequest(articleRequest)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
+        }
+
         return articlesService.createArticle(articleRequest);
     }
     // validation
@@ -71,6 +85,14 @@ public class ArticlesController {
     // return updated article
     @PutMapping(value = "/articles/{id}")
     public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest) {
+        if (!isValidRequest(articleRequest)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
+        }
+
+        Optional<Article> article = articlesService.getArticleById(id);
+        if (article.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+
         return articlesService.updateArticle(id, articleRequest);
     }
 

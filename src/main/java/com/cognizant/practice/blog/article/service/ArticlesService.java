@@ -38,12 +38,8 @@ public class ArticlesService {
         )).collect(Collectors.toList());
     }
 
-    public Article getArticleById(UUID id) {
+    public Optional<Article> getArticleById(UUID id) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
-
-        if (article.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-        }
 
         return article.map(articleEntity -> new Article(
                 articleEntity.getId(),
@@ -51,15 +47,15 @@ public class ArticlesService {
                 articleEntity.getContent(),
                 articleEntity.getCreatedDate(),
                 articleEntity.getUpdatedDate()
-        )).get();
+        ));
     }
 
     public void deleteArticle(UUID id) {
-        Optional<ArticleEntity> article = articleRepository.findById(id);
-
-        if (article.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-        }
+//        Optional<ArticleEntity> article = articleRepository.findById(id);
+//
+//        if (article.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+//        }
 
         articleRepository.deleteById(id);
     }
@@ -73,10 +69,6 @@ public class ArticlesService {
     }
 
     public Article createArticle(ArticleRequest articleRequest) {
-        if (!isValidRequest(articleRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
         ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null);
         articleRepository.save(newArticle);
 
@@ -84,14 +76,10 @@ public class ArticlesService {
     }
 
     public Article updateArticle(UUID id, ArticleRequest articleRequest) {
-        if (!isValidRequest(articleRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
         Optional<ArticleEntity> article = articleRepository.findById(id);
-        if(article.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-        }
+//        if(article.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+//        }
 
         ArticleEntity newArticle = article.get();
 
