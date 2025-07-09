@@ -51,21 +51,7 @@ public class ArticlesService {
     }
 
     public void deleteArticle(UUID id) {
-//        Optional<ArticleEntity> article = articleRepository.findById(id);
-//
-//        if (article.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-//        }
-
         articleRepository.deleteById(id);
-    }
-
-    public boolean isValidParam(String param) {
-        return !StringUtils.isEmpty(param);
-    }
-
-    public boolean isValidRequest(ArticleRequest request) {
-        return isValidParam(request.title()) && isValidParam(request.content());
     }
 
     public Article createArticle(ArticleRequest articleRequest) {
@@ -77,9 +63,6 @@ public class ArticlesService {
 
     public Article updateArticle(UUID id, ArticleRequest articleRequest) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
-//        if(article.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-//        }
 
         ArticleEntity newArticle = article.get();
 

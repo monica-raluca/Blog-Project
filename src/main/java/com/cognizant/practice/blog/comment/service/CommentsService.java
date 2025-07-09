@@ -36,10 +36,6 @@ public class CommentsService {
         )).collect(Collectors.toList());
     }
 
-    public boolean isValidRequest(CommentRequest request) {
-        return request.content() != null && !request.content().isEmpty();
-    }
-
     public Comment createComment(UUID id, CommentRequest commentRequest) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
 
