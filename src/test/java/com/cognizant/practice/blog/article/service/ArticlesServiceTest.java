@@ -5,6 +5,7 @@ import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.article.repository.ArticleRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -19,15 +20,6 @@ import static org.mockito.Mockito.*;
 class ArticlesServiceTest {
     ArticleRepository mockArticleRepository = mock(ArticleRepository.class);
     ArticlesService articlesService = new ArticlesService(mockArticleRepository);
-
-    @Test
-    void shouldDeleteArticle() {
-        UUID uuid = UUID.randomUUID();
-
-        articlesService.deleteArticle(uuid);
-
-        verify(mockArticleRepository).deleteById(uuid);
-    }
 
     @Test
     void shouldGetAllArticles() {
@@ -50,13 +42,50 @@ class ArticlesServiceTest {
 
         when(mockArticleRepository.findById(uuid)).thenReturn(Optional.of(article));
 
-        Optional<Article> result = articlesService.getArticleById(uuid);
+        Article result = articlesService.getArticleById(uuid);
 
-        assertEquals(uuid, result.get().getId());
+        assertEquals(uuid, result.getId());
     }
 
     @Test
-    void shouldCreateArticle() {
+    void shouldThrowExceptionWhenArticleNotFound() {
+        UUID uuid = UUID.randomUUID();
+        when(mockArticleRepository.findById(uuid)).thenReturn(Optional.empty());
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesService.getArticleById(uuid));
+
+        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
+    }
+
+    @Test
+    void shouldDeleteArticle() {
+        UUID uuid = UUID.randomUUID();
+        ArticleEntity article = new ArticleEntity();
+        article.setId(uuid);
+
+        when(mockArticleRepository.findById(uuid)).thenReturn(Optional.of(article));
+
+        articlesService.deleteArticle(uuid);
+
+        verify(mockArticleRepository).findById(uuid);
+        verify(mockArticleRepository).deleteById(uuid);
+    }
+
+    @Test
+    void shouldThrowExceptionDeleteWhenArticleNotFound() {
+        UUID uuid = UUID.randomUUID();
+        ArticleEntity article = new ArticleEntity();
+        article.setId(uuid);
+
+        when(mockArticleRepository.findById(uuid)).thenReturn(Optional.empty());
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesService.deleteArticle(uuid));
+
+        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
+    }
+
+    @Test
+    void shouldCreateArticleWhenValidRequest() {
         ArticleRequest articleRequest = new ArticleRequest("title", "content");
         ArticleEntity articleEntity = new ArticleEntity();
         articleEntity.setTitle(articleRequest.title());
@@ -72,7 +101,16 @@ class ArticlesServiceTest {
     }
 
     @Test
-    void shouldUpdateArticle() {
+    void shouldThrowExceptionCreateInvalidRequest() {
+        ArticleRequest articleRequest = new ArticleRequest(null, "");
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesService.createArticle(articleRequest));
+
+        assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
+    }
+
+    @Test
+    void shouldUpdateArticleWhenValidRequest() {
         ArticleRequest articleRequest = new ArticleRequest("title", "content");
         ArticleEntity articleEntity = new ArticleEntity();
         UUID uuid = UUID.randomUUID();
@@ -90,5 +128,26 @@ class ArticlesServiceTest {
         assertEquals(articleRequest.content(), result.getContent());
         verify(mockArticleRepository).findById(uuid);
         verify(mockArticleRepository).save(any(ArticleEntity.class));
+    }
+
+    @Test
+    void shouldThrowExceptionUpdateInvalidRequest() {
+        ArticleRequest articleRequest = new ArticleRequest(null, "");
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesService.updateArticle(UUID.randomUUID(), articleRequest));
+
+        assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
+    }
+
+    @Test
+    void shouldThrowExceptionUpdateArticleNotFound() {
+        ArticleRequest articleRequest = new ArticleRequest("title", "content");
+        UUID id = UUID.randomUUID();
+
+        when(mockArticleRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesService.updateArticle(id, articleRequest));
+
+        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
     }
 }

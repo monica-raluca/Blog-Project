@@ -1,11 +1,11 @@
 package com.cognizant.practice.blog.user.convertor;
 
-import com.cognizant.practice.blog.user.dto.UserDto;
+import com.cognizant.practice.blog.user.dto.User;
 import com.cognizant.practice.blog.user.entity.UserEntity;
 
 public class UserConvertor {
-    public static UserDto toDto(UserEntity userEntity) {
-        return UserDto.builder()
+    public static User toDto(UserEntity userEntity) {
+        return User.builder()
                 .lastName(userEntity.getLastName())
                 .firstName(userEntity.getFirstName())
                 .email(userEntity.getEmail())

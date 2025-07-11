@@ -31,15 +31,12 @@ public class ArticlesController {
         // id not found => throw exception not found
     @GetMapping(value="/articles/{id}")
     public Article printArticleById(@PathVariable UUID id) {
-        Optional<Article> article = articlesService.getArticleById(id);
-        return article.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found"));
+        return articlesService.getArticleById(id);
     }
     // DELETE /articles/<id> -> delete article from list = void
         // id not found => error
     @DeleteMapping(value="/articles/{id}")
     public void deleteArticle(@PathVariable UUID id) {
-        Article article = printArticleById(id);
-
         articlesService.deleteArticle(id);
     }
     // Article record -> POJO plain old java object
@@ -69,10 +66,6 @@ public class ArticlesController {
     // return created article
     @PostMapping(value="/articles")
     public Article createArticle(@RequestBody ArticleRequest articleRequest) {
-        if (!isValidRequest(articleRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
         return articlesService.createArticle(articleRequest);
     }
     // validation
@@ -85,14 +78,6 @@ public class ArticlesController {
     // return updated article
     @PutMapping(value = "/articles/{id}")
     public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest) {
-        if (!isValidRequest(articleRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
-        Optional<Article> article = articlesService.getArticleById(id);
-        if (article.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-
         return articlesService.updateArticle(id, articleRequest);
     }
 

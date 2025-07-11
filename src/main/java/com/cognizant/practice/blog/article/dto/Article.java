@@ -8,6 +8,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Article {
     private UUID id;
 

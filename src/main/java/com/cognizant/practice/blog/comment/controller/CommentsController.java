@@ -17,36 +17,18 @@ import java.util.UUID;
 @RestController
 public class CommentsController {
     private final CommentsService commentsService;
-    private final ArticlesService articlesService;
 
-    public CommentsController(CommentsService commentsService, ArticlesService articlesService) {
+    public CommentsController(CommentsService commentsService) {
         this.commentsService = commentsService;
-        this.articlesService = articlesService;
     }
 
     @GetMapping(value="/articles/{id}/comments")
     public List<Comment> getCommentsByArticleID(@PathVariable UUID id) {
-        Optional<Article> article = articlesService.getArticleById(id);
-        if (article.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-
         return commentsService.getCommentsByArticleId(id);
-    }
-
-    public boolean isValidRequest(CommentRequest request) {
-        return request.content() != null && !request.content().isEmpty();
     }
 
     @PostMapping(value="/articles/{id}/comments")
     public Comment createComment(@PathVariable UUID id, @RequestBody CommentRequest commentRequest) {
-        if (!isValidRequest(commentRequest)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-        }
-
-        Optional<Article> article = articlesService.getArticleById(id);
-        if (article.isEmpty())
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
-
         return commentsService.createComment(id, commentRequest);
     }
 }

@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 class ArticlesControllerTest {
     @Test
-    void shouldReturnAllArticles() {
+    void shouldGetAllArticles() {
         ArticlesService mockArticleService = mock(ArticlesService.class);
         ArticlesController articlesController = new ArticlesController(mockArticleService);
 
@@ -35,13 +35,14 @@ class ArticlesControllerTest {
     }
 
     @Test
-    void shouldReturnArticleById() {
+    void shouldGetArticleById() {
         ArticlesService mockArticleService = mock(ArticlesService.class);
         ArticlesController articlesController = new ArticlesController(mockArticleService);
         UUID uuid = UUID.randomUUID();
         Article article = new Article();
         article.setId(uuid);
-        when(mockArticleService.getArticleById(uuid)).thenReturn(Optional.of(article));
+
+        when(mockArticleService.getArticleById(uuid)).thenReturn(article);
 
         Article newArticle = articlesController.printArticleById(uuid);
 
@@ -49,48 +50,18 @@ class ArticlesControllerTest {
     }
 
     @Test
-    void shouldThrowExceptionArticleNotFound() {
-        ArticlesService mockArticleService = mock(ArticlesService.class);
-        ArticlesController articlesController = new ArticlesController(mockArticleService);
-        UUID uuid = UUID.randomUUID();
-        when(mockArticleService.getArticleById(uuid)).thenReturn(Optional.empty());
-
-        assertThrows(ResponseStatusException.class, () -> articlesController.printArticleById(uuid));
-    }
-
-    @Test
     void shouldDeleteArticle() {
         ArticlesService mockArticlesService = mock(ArticlesService.class);
         ArticlesController articlesController = new ArticlesController(mockArticlesService);
-
         UUID id = UUID.randomUUID();
-        Article article = new Article();
-        article.setId(id);
-
-        when(mockArticlesService.getArticleById(id)).thenReturn(Optional.of(article));
 
         articlesController.deleteArticle(id);
 
-        verify(mockArticlesService).getArticleById(id);
         verify(mockArticlesService).deleteArticle(id);
     }
 
     @Test
-    void shouldThrowExceptionDeleteArticleNotFound() {
-        ArticlesService mockArticlesService = mock(ArticlesService.class);
-        ArticlesController articlesController = new ArticlesController(mockArticlesService);
-
-        UUID id = UUID.randomUUID();
-
-        when(mockArticlesService.getArticleById(id)).thenReturn(Optional.empty());
-
-        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesController.deleteArticle(id));
-
-        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
-    }
-
-    @Test
-    void shouldCreateArticleValidRequest() {
+    void shouldCreateArticle() {
         ArticlesService mockArticleService = mock(ArticlesService.class);
         ArticlesController articlesController = new ArticlesController(mockArticleService);
 
@@ -107,19 +78,9 @@ class ArticlesControllerTest {
         assertEquals(article, result);
     }
 
-    @Test
-    void shouldThrowExceptionCreateInvalidRequest() {
-        ArticlesService mockArticleService = mock(ArticlesService.class);
-        ArticlesController articlesController = new ArticlesController(mockArticleService);
-        ArticleRequest articleRequest = new ArticleRequest(null, "");
-
-        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesController.createArticle(articleRequest));
-
-        assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
-    }
 
     @Test
-    void shouldUpdateArticleValidRequest() {
+    void shouldUpdateArticle() {
         ArticlesService mockArticleService = mock(ArticlesService.class);
         ArticlesController articlesController = new ArticlesController(mockArticleService);
         ArticleRequest articleRequest = new ArticleRequest("title", "content");
@@ -130,7 +91,6 @@ class ArticlesControllerTest {
         article.setTitle(articleRequest.title());
         article.setContent(articleRequest.content());
 
-        when(mockArticleService.getArticleById(id)).thenReturn(Optional.of(article));
         when(mockArticleService.updateArticle(id, articleRequest)).thenReturn(article);
 
         Article result = articlesController.updateArticle(id, articleRequest);
@@ -138,28 +98,4 @@ class ArticlesControllerTest {
         assertEquals(article, result);
     }
 
-    @Test
-    void shouldThrowExceptionUpdateInvalidRequest() {
-        ArticlesService mockArticleService = mock(ArticlesService.class);
-        ArticlesController articlesController = new ArticlesController(mockArticleService);
-        ArticleRequest articleRequest = new ArticleRequest(null, "");
-
-        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesController.updateArticle(UUID.randomUUID(), articleRequest));
-
-        assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
-    }
-
-    @Test
-    void shouldThrowExceptionUpdateArticleNotFound() {
-        ArticlesService mockArticleService = mock(ArticlesService.class);
-        ArticlesController articlesController = new ArticlesController(mockArticleService);
-        ArticleRequest articleRequest = new ArticleRequest("title", "content");
-        UUID id = UUID.randomUUID();
-
-        when(mockArticleService.getArticleById(id)).thenReturn(Optional.empty());
-
-        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> articlesController.updateArticle(id, articleRequest));
-
-        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
-    }
 }
