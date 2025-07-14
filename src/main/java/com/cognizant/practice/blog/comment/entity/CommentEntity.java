@@ -2,6 +2,7 @@ package com.cognizant.practice.blog.comment.entity;
 
 import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,5 +28,5 @@ public class CommentEntity {
     private ArticleEntity articleEntity;
 
     @ManyToOne
-    private User author;
+    private UserEntity author;
 }

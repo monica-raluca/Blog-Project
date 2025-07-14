@@ -36,8 +36,10 @@ public class UserEntity implements UserDetails {
 
     private Role role;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArticleEntity> articles;
 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentEntity> comments;
 
     @Override

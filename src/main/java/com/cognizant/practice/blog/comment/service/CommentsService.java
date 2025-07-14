@@ -7,10 +7,15 @@ import com.cognizant.practice.blog.comment.dto.CommentRequest;
 import com.cognizant.practice.blog.comment.entity.CommentEntity;
 import com.cognizant.practice.blog.article.repository.ArticleRepository;
 import com.cognizant.practice.blog.comment.repository.CommentsRepository;
+import com.cognizant.practice.blog.user.convertor.UserConvertor;
+import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.entity.UserEntity;
+import com.cognizant.practice.blog.user.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -21,10 +26,23 @@ import java.util.stream.Collectors;
 public class CommentsService {
     public CommentsRepository commentsRepository;
     public ArticleRepository articleRepository;
+    public UserRepository userRepository;
 
-    public CommentsService(CommentsRepository commentsRepository, ArticleRepository articleRepository) {
+    public CommentsService(CommentsRepository commentsRepository, ArticleRepository articleRepository, UserRepository userRepository) {
         this.commentsRepository = commentsRepository;
         this.articleRepository = articleRepository;
+        this.userRepository = userRepository;
+    }
+
+    public UserEntity getPrincipalUser(Principal author) {
+        String username = author.getName();
+
+        Optional<UserEntity> user = userRepository.findByUsername(username);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        return user.get();
     }
 
     public boolean isValidRequest(CommentRequest request) {
@@ -39,7 +57,7 @@ public class CommentsService {
         return article.get().getComments().stream().map(CommentConvertor::toDto).collect(Collectors.toList());
     }
 
-    public Comment createComment(UUID id, CommentRequest commentRequest) {
+    public Comment createComment(UUID id, CommentRequest commentRequest, Principal user) {
         if (!isValidRequest(commentRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
@@ -48,7 +66,8 @@ public class CommentsService {
         if (article.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
 
-        CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), article.get());
+        UserEntity author = getPrincipalUser(user);
+        CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), article.get(), author);
 
         return CommentConvertor.toDto(commentsRepository.save(newComment));
     }

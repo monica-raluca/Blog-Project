@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -28,7 +29,7 @@ public class CommentsController {
     }
 
     @PostMapping(value="/articles/{id}/comments")
-    public Comment createComment(@PathVariable UUID id, @RequestBody CommentRequest commentRequest) {
-        return commentsService.createComment(id, commentRequest);
+    public Comment createComment(@PathVariable UUID id, @RequestBody CommentRequest commentRequest, Principal user) {
+        return commentsService.createComment(id, commentRequest, user);
     }
 }

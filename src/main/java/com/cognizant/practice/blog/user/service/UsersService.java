@@ -82,19 +82,6 @@ public class UsersService {
     }
 
     public String loginUser(UserLoginRequest userLoginRequest) {
-//        if (!isValidParam(userLoginRequest.username()) || !isValidParam(userLoginRequest.password())) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
-//        }
-//
-//        Optional<UserEntity> userEntity = userRepository.findByUsername(userLoginRequest.username());
-//        if (userEntity.isEmpty()) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Username not found");
-//        }
-//
-//        if(!Objects.equals(userEntity.get().getPassword(), passwordEncoder.encode(userLoginRequest.password()))) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong password");
-//        }
-
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginRequest.username(), userLoginRequest.password()));
 
         return jwtService.generateToken(userRepository.findByUsername(userLoginRequest.username()).orElseThrow());
@@ -116,7 +103,6 @@ public class UsersService {
         }
 
         user.get().setRole(role);
-
-        return UserConvertor.toDto(user.get());
+        return UserConvertor.toDto(userRepository.save(user.get()));
     }
 }

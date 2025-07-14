@@ -1,5 +1,6 @@
 package com.cognizant.practice.blog.article.dto;
 
+import com.cognizant.practice.blog.user.dto.User;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,4 +17,6 @@ public class Article {
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+
+    private User author;
 }

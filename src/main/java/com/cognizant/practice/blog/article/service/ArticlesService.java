@@ -5,9 +5,15 @@ import com.cognizant.practice.blog.article.dto.Article;
 import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.repository.ArticleRepository;
+import com.cognizant.practice.blog.user.convertor.UserConvertor;
 import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.entity.UserEntity;
+import com.cognizant.practice.blog.user.repository.UserRepository;
 import io.micrometer.common.util.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,11 +29,13 @@ import java.util.stream.Collectors;
 @Service
 public class ArticlesService {
     public ArticleRepository articleRepository;
+    public UserRepository userRepository;
 
     public List<Article> articlesList = new ArrayList<>();
 
-    public ArticlesService(ArticleRepository articlesRepository) {
+    public ArticlesService(ArticleRepository articlesRepository, UserRepository userRepository) {
         this.articleRepository = articlesRepository;
+        this.userRepository = userRepository;
     }
 
     public boolean isValidParam(String param) {
@@ -38,13 +46,63 @@ public class ArticlesService {
         return isValidParam(request.title()) && isValidParam(request.content());
     }
 
-    public User getPrincipalUser() {
+    public UserEntity getUserFromUsername(String username) {
+        Optional<UserEntity> user = userRepository.findByUsername(username);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
 
+        return user.get();
+    }
+
+    public UserEntity getPrincipalUser(Principal author) {
+        String username = author.getName();
+
+        return getUserFromUsername(username);
+    }
+
+    private Sort parseSortParam(String sortParam) {
+        String[] parts = sortParam.split(",");
+        List<Sort.Order> orders = new ArrayList<>();
+
+        for (String part : parts) {
+            String[] fieldAndDirection = part.trim().split("\\s+");
+            if (fieldAndDirection.length == 1) {
+                orders.add(new Sort.Order(Sort.Direction.ASC, fieldAndDirection[0]));
+            } else {
+                Sort.Direction direction = Sort.Direction.fromString(fieldAndDirection[1]);
+                orders.add(new Sort.Order(direction, fieldAndDirection[0]));
+            }
+        }
+
+        return Sort.by(orders);
     }
 
     public List<Article> getAllArticles() {
-//        List<ArticleEntity> entities = articleRepository.findAll(Pageable.ofSize(1).withPage(2)).findAll();
         List<ArticleEntity> entities = articleRepository.findAll();
+
+        return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+    }
+
+    public List<Article> getArticlesParams(int size, int from, String title, String author, String sort) {
+        Page<ArticleEntity> entities;
+        Sort sortCriteria = parseSortParam(sort);
+        Pageable page = PageRequest.of(from, size, sortCriteria);
+
+        if (title != null && author != null) {
+            entities = articleRepository.findAllByTitleAndAuthor(title, getUserFromUsername(author), page);
+            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+        }
+        if (title != null) {
+            entities = articleRepository.findAllByTitle(title, page);
+            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+        }
+        if (author != null) {
+            entities = articleRepository.findAllByAuthor(getUserFromUsername(author), page);
+            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+        }
+
+        entities = articleRepository.findAll(page);
 
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
     }
@@ -73,7 +131,9 @@ public class ArticlesService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null, null);
+        UserEntity author = getPrincipalUser(principal);
+
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }

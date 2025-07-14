@@ -33,13 +33,18 @@ public class UsersController {
     }
 
     @PostMapping(value="/users/register")
-    public String createUser(@RequestBody UserRequest userRequest) {
-        return usersService.createUser(userRequest);
+    public JwtToken createUser(@RequestBody UserRequest userRequest) {
+        String token = usersService.createUser(userRequest);
+
+        return new JwtToken(token);
     }
 
     @PostMapping(value="/users/login")
-    public String loginUser(@RequestBody UserLoginRequest userLoginRequest) {
-        return usersService.loginUser(userLoginRequest);
+    public JwtToken loginUser(@RequestBody UserLoginRequest userLoginRequest) {
+        String token = usersService.loginUser(userLoginRequest);
+
+        return new JwtToken(token);
+//        return usersService.loginUser(userLoginRequest);
     }
 
     @DeleteMapping(value="/users/{id}")

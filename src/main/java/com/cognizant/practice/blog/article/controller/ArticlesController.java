@@ -4,11 +4,14 @@ import com.cognizant.practice.blog.article.dto.Article;
 import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.service.ArticlesService;
 import io.micrometer.common.util.StringUtils;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -24,8 +27,11 @@ public class ArticlesController {
 
     // GET /articles -> list of articles in memory = List<Articles> => json array
     @GetMapping(value="/articles")
-    public List<Article> printArticles() {
-        return articlesService.getAllArticles();
+    public List<Article> printArticles(@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") int from,
+                                       @RequestParam(required = false) String title, @RequestParam(required = false) String author,
+                                       @RequestParam(defaultValue = "createdDate desc") String sort) {
+
+        return articlesService.getArticlesParams(size, from, title, author, sort);
     }
     // GET /articles/<id> -> just the id'th article = Article => single json
         // id not found => error 404 http
@@ -33,11 +39,6 @@ public class ArticlesController {
     @GetMapping(value="/articles/{id}")
     public Article printArticleById(@PathVariable UUID id) {
         return articlesService.getArticleById(id);
-    }
-
-    @GetMapping
-    public List<Article> getArticles() {
-
     }
 
     // DELETE /articles/<id> -> delete article from list = void

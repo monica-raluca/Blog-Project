@@ -2,6 +2,7 @@ package com.cognizant.practice.blog.article.entity;
 
 import com.cognizant.practice.blog.comment.entity.CommentEntity;
 import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +30,6 @@ public class ArticleEntity {
     @OneToMany(mappedBy = "articleEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentEntity> comments;
 
-    private User author;
+    @ManyToOne
+    private UserEntity author;
 }
