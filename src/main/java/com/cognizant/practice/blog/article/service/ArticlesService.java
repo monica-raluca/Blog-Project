@@ -5,11 +5,14 @@ import com.cognizant.practice.blog.article.dto.Article;
 import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.repository.ArticleRepository;
+import com.cognizant.practice.blog.user.dto.User;
 import io.micrometer.common.util.StringUtils;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +38,12 @@ public class ArticlesService {
         return isValidParam(request.title()) && isValidParam(request.content());
     }
 
+    public User getPrincipalUser() {
+
+    }
+
     public List<Article> getAllArticles() {
+//        List<ArticleEntity> entities = articleRepository.findAll(Pageable.ofSize(1).withPage(2)).findAll();
         List<ArticleEntity> entities = articleRepository.findAll();
 
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
@@ -60,12 +68,12 @@ public class ArticlesService {
         articleRepository.deleteById(id);
     }
 
-    public Article createArticle(ArticleRequest articleRequest) {
+    public Article createArticle(ArticleRequest articleRequest, Principal principal) {
         if (!isValidRequest(articleRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null, null);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }

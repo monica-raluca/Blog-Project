@@ -1,7 +1,11 @@
 package com.cognizant.practice.blog.security;
 
+import com.cognizant.practice.blog.user.dto.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,16 +31,26 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.DELETE, "/articles/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/articles/**").hasRole("AUTHOR")
+                        .requestMatchers(HttpMethod.POST, "/articles/**").hasRole("AUTHOR")
+                        .requestMatchers(HttpMethod.POST, "/articles/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.PUT, "/users/**/role").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
                         .requestMatchers("/users/**").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
+//                        .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider).addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        return RoleHierarchyImpl.withDefaultRolePrefix()
+                .role("ADMIN").implies("AUTHOR")
+                .role("AUTHOR").implies("USER")
+                .build();
+    }
 }

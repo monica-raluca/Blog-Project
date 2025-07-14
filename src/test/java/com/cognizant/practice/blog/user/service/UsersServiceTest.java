@@ -7,6 +7,7 @@ import com.cognizant.practice.blog.user.entity.UserEntity;
 import com.cognizant.practice.blog.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,7 +22,9 @@ class UsersServiceTest {
     UserRepository mockUserRepository = mock(UserRepository.class);
     PasswordEncoder mockPasswordEncoder = mock(PasswordEncoder.class);
     JwtService mockJwtService = mock(JwtService.class);
-    UsersService usersService = new UsersService(mockUserRepository, mockPasswordEncoder, mockJwtService);
+    AuthenticationManager mockAuthenticationManager = mock(AuthenticationManager.class);
+
+    UsersService usersService = new UsersService(mockUserRepository, mockPasswordEncoder, mockJwtService, mockAuthenticationManager);
 
     @Test
     void shouldGetAllUsers() {
@@ -149,5 +152,30 @@ class UsersServiceTest {
 
         assertEquals(HttpStatus.BAD_REQUEST, thrown.getStatusCode());
         assertEquals("Email already exists", thrown.getReason());
+    }
+
+    @Test
+    void shouldDeleteUser() {
+        UUID id = UUID.randomUUID();
+        UserEntity user = new UserEntity();
+        user.setId(id);
+
+        when(mockUserRepository.findById(id)).thenReturn(Optional.of(user));
+
+        usersService.deleteUser(id);
+
+        verify(mockUserRepository).findById(id);
+        verify(mockUserRepository).deleteById(id);
+    }
+
+    @Test
+    void shouldThrowExceptionDeleteWhenUserNotFound() {
+        UUID id = UUID.randomUUID();
+
+        when(mockUserRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseStatusException thrown = assertThrows(ResponseStatusException.class, () -> usersService.deleteUser(id));
+
+        assertEquals(HttpStatus.NOT_FOUND, thrown.getStatusCode());
     }
 }

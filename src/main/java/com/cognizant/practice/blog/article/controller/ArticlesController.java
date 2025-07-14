@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,6 +34,12 @@ public class ArticlesController {
     public Article printArticleById(@PathVariable UUID id) {
         return articlesService.getArticleById(id);
     }
+
+    @GetMapping
+    public List<Article> getArticles() {
+
+    }
+
     // DELETE /articles/<id> -> delete article from list = void
         // id not found => error
     @DeleteMapping(value="/articles/{id}")
@@ -65,8 +72,8 @@ public class ArticlesController {
     // postMapping createArticle(@requestbody articlerequest art)...
     // return created article
     @PostMapping(value="/articles")
-    public Article createArticle(@RequestBody ArticleRequest articleRequest) {
-        return articlesService.createArticle(articleRequest);
+    public Article createArticle(@RequestBody ArticleRequest articleRequest, Principal principal) {
+        return articlesService.createArticle(articleRequest, principal);
     }
     // validation
     // if title empty -> error 400 bad request

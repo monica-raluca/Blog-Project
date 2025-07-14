@@ -1,5 +1,7 @@
 package com.cognizant.practice.blog.user.entity;
 
+import com.cognizant.practice.blog.article.entity.ArticleEntity;
+import com.cognizant.practice.blog.comment.entity.CommentEntity;
 import com.cognizant.practice.blog.user.dto.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,28 +36,12 @@ public class UserEntity implements UserDetails {
 
     private Role role;
 
+    private List<ArticleEntity> articles;
+
+    private List<CommentEntity> comments;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

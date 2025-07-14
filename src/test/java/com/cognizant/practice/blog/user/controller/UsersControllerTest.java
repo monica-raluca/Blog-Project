@@ -51,4 +51,13 @@ class UsersControllerTest {
         assertEquals("wow", result);
     }
 
+    @Test
+    void shouldDeleteUser() {
+        UUID id = UUID.randomUUID();
+
+        usersController.deleteUser(id);
+
+        verify(mockUsersService).deleteUser(id);
+    }
+
 }

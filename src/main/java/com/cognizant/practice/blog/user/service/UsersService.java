@@ -4,11 +4,14 @@ import com.cognizant.practice.blog.security.JwtService;
 import com.cognizant.practice.blog.user.convertor.UserConvertor;
 import com.cognizant.practice.blog.user.dto.Role;
 import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.dto.UserLoginRequest;
 import com.cognizant.practice.blog.user.dto.UserRequest;
 import com.cognizant.practice.blog.user.entity.UserEntity;
 import com.cognizant.practice.blog.user.repository.UserRepository;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,11 +27,13 @@ public class UsersService {
     public UserRepository userRepository;
     public PasswordEncoder passwordEncoder;
     public JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
-    public UsersService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+    public UsersService(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
+        this.authenticationManager = authenticationManager;
     }
 
     public boolean isValidParam(String param) {
@@ -71,9 +76,47 @@ public class UsersService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
-        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), LocalDateTime.now(), Role.USER);
+        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), LocalDateTime.now(), Role.ROLE_USER, null, null);
 
-//        return UserConvertor.toDto(userRepository.save(newUser));
         return jwtService.generateToken(userRepository.save(newUser));
+    }
+
+    public String loginUser(UserLoginRequest userLoginRequest) {
+//        if (!isValidParam(userLoginRequest.username()) || !isValidParam(userLoginRequest.password())) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
+//        }
+//
+//        Optional<UserEntity> userEntity = userRepository.findByUsername(userLoginRequest.username());
+//        if (userEntity.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Username not found");
+//        }
+//
+//        if(!Objects.equals(userEntity.get().getPassword(), passwordEncoder.encode(userLoginRequest.password()))) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong password");
+//        }
+
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginRequest.username(), userLoginRequest.password()));
+
+        return jwtService.generateToken(userRepository.findByUsername(userLoginRequest.username()).orElseThrow());
+    }
+
+    public void deleteUser(UUID id) {
+        Optional<UserEntity> user = userRepository.findById(id);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        userRepository.deleteById(id);
+    }
+
+    public User updateUserRole(UUID id, Role role) {
+        Optional<UserEntity> user = userRepository.findById(id);
+        if(user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        user.get().setRole(role);
+
+        return UserConvertor.toDto(user.get());
     }
 }
