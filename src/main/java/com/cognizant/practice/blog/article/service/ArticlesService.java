@@ -2,6 +2,8 @@ package com.cognizant.practice.blog.article.service;
 
 import com.cognizant.practice.blog.article.convertor.ArticleConvertor;
 import com.cognizant.practice.blog.article.dto.Article;
+import com.cognizant.practice.blog.article.dto.ArticleSpecification;
+import com.cognizant.practice.blog.article.dto.SpecificationBuilder;
 import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.article.dto.ArticleRequest;
 import com.cognizant.practice.blog.article.repository.ArticleRepository;
@@ -10,10 +12,12 @@ import com.cognizant.practice.blog.user.dto.User;
 import com.cognizant.practice.blog.user.entity.UserEntity;
 import com.cognizant.practice.blog.user.repository.UserRepository;
 import io.micrometer.common.util.StringUtils;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -84,27 +88,37 @@ public class ArticlesService {
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
     }
 
-    public List<Article> getArticlesParams(int size, int from, String title, String author, String sort) {
+    public List<Article> getArticlesParams(int size, int from, String title, String author, LocalDateTime createdDate, String sort) {
         Page<ArticleEntity> entities;
         Sort sortCriteria = parseSortParam(sort);
         Pageable page = PageRequest.of(from, size, sortCriteria);
 
-        if (title != null && author != null) {
-            entities = articleRepository.findAllByTitleAndAuthor(title, getUserFromUsername(author), page);
-            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-        }
-        if (title != null) {
-            entities = articleRepository.findAllByTitle(title, page);
-            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-        }
-        if (author != null) {
-            entities = articleRepository.findAllByAuthor(getUserFromUsername(author), page);
-            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-        }
+        Specification<ArticleEntity> specification = new SpecificationBuilder<ArticleEntity>()
+                .and(ArticleSpecification.hasTitle(title))
+                .and(ArticleSpecification.hasAuthor(author))
+                .and(ArticleSpecification.createdAfter(createdDate))
+                .build();
 
-        entities = articleRepository.findAll(page);
+        entities = articleRepository.findAll(specification, page);
 
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+
+//        if (title != null && author != null) {
+//            entities = articleRepository.findAllByTitleAndAuthor(title, getUserFromUsername(author), page);
+//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+//        }
+//        if (title != null) {
+//            entities = articleRepository.findAllByTitle(title, page);
+//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+//        }
+//        if (author != null) {
+//            entities = articleRepository.findAllByAuthor(getUserFromUsername(author), page);
+//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
+//        }
+//
+//        entities = articleRepository.findAll(page);
+//
+//        return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
     }
 
     public Article getArticleById(UUID id) {

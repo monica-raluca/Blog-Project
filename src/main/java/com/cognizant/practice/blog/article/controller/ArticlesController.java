@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,9 +30,10 @@ public class ArticlesController {
     @GetMapping(value="/articles")
     public List<Article> printArticles(@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") int from,
                                        @RequestParam(required = false) String title, @RequestParam(required = false) String author,
+                                       @RequestParam(required = false) LocalDateTime createdDate,
                                        @RequestParam(defaultValue = "createdDate desc") String sort) {
 
-        return articlesService.getArticlesParams(size, from, title, author, sort);
+        return articlesService.getArticlesParams(size, from, title, author, createdDate, sort);
     }
     // GET /articles/<id> -> just the id'th article = Article => single json
         // id not found => error 404 http
