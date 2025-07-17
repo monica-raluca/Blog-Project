@@ -18425,7 +18425,7 @@ function BlogApp() {
     const [articlesTitle, setarticlesTitle] = (0, _react.useState)([]);
     const [articleId, setArticleId] = (0, _react.useState)('');
     const [article, setArticle] = (0, _react.useState)(null);
-    const [title, setTitle] = (0, _react.useState)(null);
+    const [title, setTitle] = (0, _react.useState)('');
     const [token, setToken] = (0, _react.useState)('');
     const [username, setUsername] = (0, _react.useState)('');
     const [password, setPassword] = (0, _react.useState)('');
@@ -18653,7 +18653,7 @@ function BlogApp() {
         ]
     }, void 0, true);
 }
-_s(BlogApp, "mLQ2ouLg+ip+//ahFq1IH2aj+lg=");
+_s(BlogApp, "9RR/AxZtXPAepzfGlUstuHl7mvw=");
 _c = BlogApp;
 var _c;
 $RefreshReg$(_c, "BlogApp");

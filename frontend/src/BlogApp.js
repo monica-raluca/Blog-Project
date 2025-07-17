@@ -5,7 +5,7 @@ export function BlogApp() {
     const [articlesTitle, setarticlesTitle] = useState([]);
     const [articleId, setArticleId] = useState('');
     const [article, setArticle] = useState(null);
-    const [title, setTitle] = useState(null);
+    const [title, setTitle] = useState('');
     const [token, setToken] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
