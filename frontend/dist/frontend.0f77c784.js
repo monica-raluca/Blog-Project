@@ -18417,18 +18417,243 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BlogApp", ()=>BlogApp);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _s = $RefreshSig$();
 function BlogApp() {
-    return(// <div>
-    //   Hello, world!
-    // </div>
-    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-        children: "This is a shiny button!"
-    }, void 0, false, {
-        fileName: "src/BlogApp.js",
-        lineNumber: 6,
-        columnNumber: 5
-    }, this));
+    _s();
+    const [articles, setArticles] = (0, _react.useState)([]);
+    const [articlesTitle, setarticlesTitle] = (0, _react.useState)([]);
+    const [articleId, setArticleId] = (0, _react.useState)('');
+    const [article, setArticle] = (0, _react.useState)(null);
+    const [title, setTitle] = (0, _react.useState)(null);
+    const [token, setToken] = (0, _react.useState)('');
+    const [username, setUsername] = (0, _react.useState)('');
+    const [password, setPassword] = (0, _react.useState)('');
+    const fetchAllArticles = async ()=>{
+        const response = await fetch("/api/articles");
+        const articles = await response.json();
+        setArticles(articles);
+    };
+    const fetchArticleById = async ()=>{
+        console.log(articleId);
+        const response = await fetch("/api/articles/" + articleId);
+        const article = await response.json();
+        setArticle(article);
+    };
+    const fetchArticlesByTitle = async ()=>{
+        console.log(articleId);
+        const response = await fetch(`/api/articles?title=${title}`);
+        const articlesTitle = await response.json();
+        setarticlesTitle(articlesTitle);
+    };
+    const login = async ()=>{
+        const response = await fetch("/api/users/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+        console.log("ADSADA");
+        const data = await response.json();
+        setToken(data.token);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: fetchAllArticles,
+                children: " This is a shiny button!"
+            }, void 0, false, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 55,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                children: articles.map((article, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: [
+                            article.title,
+                            ", ",
+                            article.content
+                        ]
+                    }, index, true, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 57,
+                        columnNumber: 51
+                    }, this))
+            }, void 0, false, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 56,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "Find Article by ID"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 60,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Enter article ID",
+                        value: articleId,
+                        onChange: (e)=>setArticleId(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 62,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: fetchArticleById,
+                        children: "Fetch Article"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 69,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "id:",
+                            articleId
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 70,
+                        columnNumber: 17
+                    }, this),
+                    article && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: article.title
+                            }, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 73,
+                                columnNumber: 21
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: article.content
+                            }, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 74,
+                                columnNumber: 21
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 72,
+                        columnNumber: 21
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 59,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "Find Articles by Title"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 79,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Enter article title",
+                        value: title,
+                        onChange: (e)=>setTitle(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 80,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: fetchArticlesByTitle,
+                        children: "Fetch Article"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 87,
+                        columnNumber: 17
+                    }, this),
+                    articlesTitle.map((article, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: [
+                                article.title,
+                                ", ",
+                                article.content
+                            ]
+                        }, index, true, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 88,
+                            columnNumber: 56
+                        }, this))
+                ]
+            }, void 0, true, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 78,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "Login"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 91,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Enter username here",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 92,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        type: "text",
+                        placeholder: "Enter password here",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 98,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: login,
+                        children: "Login"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 104,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            "token: ",
+                            token
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 105,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 90,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true);
 }
+_s(BlogApp, "mLQ2ouLg+ip+//ahFq1IH2aj+lg=");
 _c = BlogApp;
 var _c;
 $RefreshReg$(_c, "BlogApp");
@@ -18438,6 +18663,6 @@ $RefreshReg$(_c, "BlogApp");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react":"jMk1U"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.0f77c784.js.map
