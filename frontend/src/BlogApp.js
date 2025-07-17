@@ -9,6 +9,7 @@ export function BlogApp() {
     const [token, setToken] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);
 
     const fetchAllArticles = async () => {
         const response = await fetch("/api/articles");
@@ -31,6 +32,19 @@ export function BlogApp() {
         const articlesTitle = await response.json()
 
         setarticlesTitle(articlesTitle);
+    };
+
+    const fetchUsers = async () => {
+        const response = await fetch(`/api/users`, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+    });
+        const users = await response.json();
+
+        setUsers(users);
     };
 
     const login = async () => {
@@ -85,8 +99,17 @@ export function BlogApp() {
                 />
 
                 <button onClick={fetchArticlesByTitle}>Fetch Article</button>
-                {articlesTitle.map((article, index) => <li key = {index}>{article.title}, {article.content}</li>)}     
+                <ul>
+                    {articles.map((article, index) => <li key = {index}>{article.title}, {article.content}</li>)}                
+                </ul>    
             </div>
+
+            <div>
+                <h1>Get Users</h1>
+                <button onClick={fetchUsers}>Fetch Users</button>
+                {users.map((user, index) => <li key = {index}>{user.username}</li>)}
+            </div>
+
             <div>
                 <h1>Login</h1>
                 <input
@@ -96,7 +119,7 @@ export function BlogApp() {
                     onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
-                    type="text"
+                    type="password"
                     placeholder="Enter password here"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

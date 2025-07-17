@@ -18429,6 +18429,7 @@ function BlogApp() {
     const [token, setToken] = (0, _react.useState)('');
     const [username, setUsername] = (0, _react.useState)('');
     const [password, setPassword] = (0, _react.useState)('');
+    const [users, setUsers] = (0, _react.useState)([]);
     const fetchAllArticles = async ()=>{
         const response = await fetch("/api/articles");
         const articles = await response.json();
@@ -18445,6 +18446,17 @@ function BlogApp() {
         const response = await fetch(`/api/articles?title=${title}`);
         const articlesTitle = await response.json();
         setarticlesTitle(articlesTitle);
+    };
+    const fetchUsers = async ()=>{
+        const response = await fetch(`/api/users`, {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        const users = await response.json();
+        setUsers(users);
     };
     const login = async ()=>{
         const response = await fetch("/api/users/login", {
@@ -18468,7 +18480,7 @@ function BlogApp() {
                 children: " This is a shiny button!"
             }, void 0, false, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 55,
+                lineNumber: 69,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -18480,12 +18492,12 @@ function BlogApp() {
                         ]
                     }, index, true, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 57,
+                        lineNumber: 71,
                         columnNumber: 51
                     }, this))
             }, void 0, false, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 56,
+                lineNumber: 70,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18494,7 +18506,7 @@ function BlogApp() {
                         children: "Find Article by ID"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 60,
+                        lineNumber: 74,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -18504,7 +18516,7 @@ function BlogApp() {
                         onChange: (e)=>setArticleId(e.target.value)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 62,
+                        lineNumber: 76,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18512,7 +18524,7 @@ function BlogApp() {
                         children: "Fetch Article"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 69,
+                        lineNumber: 83,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18522,7 +18534,7 @@ function BlogApp() {
                         ]
                     }, void 0, true, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 70,
+                        lineNumber: 84,
                         columnNumber: 17
                     }, this),
                     article && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18531,26 +18543,26 @@ function BlogApp() {
                                 children: article.title
                             }, void 0, false, {
                                 fileName: "src/BlogApp.js",
-                                lineNumber: 73,
+                                lineNumber: 87,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                 children: article.content
                             }, void 0, false, {
                                 fileName: "src/BlogApp.js",
-                                lineNumber: 74,
+                                lineNumber: 88,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 72,
+                        lineNumber: 86,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 59,
+                lineNumber: 73,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18559,7 +18571,7 @@ function BlogApp() {
                         children: "Find Articles by Title"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 79,
+                        lineNumber: 93,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -18569,7 +18581,7 @@ function BlogApp() {
                         onChange: (e)=>setTitle(e.target.value)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 80,
+                        lineNumber: 94,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18577,24 +18589,60 @@ function BlogApp() {
                         children: "Fetch Article"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 87,
+                        lineNumber: 101,
                         columnNumber: 17
                     }, this),
-                    articlesTitle.map((article, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: [
-                                article.title,
-                                ", ",
-                                article.content
-                            ]
-                        }, index, true, {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        children: articles.map((article, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: [
+                                    article.title,
+                                    ", ",
+                                    article.content
+                                ]
+                            }, index, true, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 103,
+                                columnNumber: 55
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 102,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/BlogApp.js",
+                lineNumber: 92,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                        children: "Get Users"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 108,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: fetchUsers,
+                        children: "Fetch Users"
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 109,
+                        columnNumber: 17
+                    }, this),
+                    users.map((user, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: user.username
+                        }, index, false, {
                             fileName: "src/BlogApp.js",
-                            lineNumber: 88,
-                            columnNumber: 56
+                            lineNumber: 110,
+                            columnNumber: 45
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 78,
+                lineNumber: 107,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18603,7 +18651,7 @@ function BlogApp() {
                         children: "Login"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 91,
+                        lineNumber: 114,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -18613,17 +18661,17 @@ function BlogApp() {
                         onChange: (e)=>setUsername(e.target.value)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 92,
+                        lineNumber: 115,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
+                        type: "password",
                         placeholder: "Enter password here",
                         value: password,
                         onChange: (e)=>setPassword(e.target.value)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 98,
+                        lineNumber: 121,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -18631,7 +18679,7 @@ function BlogApp() {
                         children: "Login"
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 104,
+                        lineNumber: 127,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -18641,19 +18689,19 @@ function BlogApp() {
                         ]
                     }, void 0, true, {
                         fileName: "src/BlogApp.js",
-                        lineNumber: 105,
+                        lineNumber: 128,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 90,
+                lineNumber: 113,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true);
 }
-_s(BlogApp, "9RR/AxZtXPAepzfGlUstuHl7mvw=");
+_s(BlogApp, "6UZ9VpzcOd9WDPK58mRyqYZ0Vjk=");
 _c = BlogApp;
 var _c;
 $RefreshReg$(_c, "BlogApp");
