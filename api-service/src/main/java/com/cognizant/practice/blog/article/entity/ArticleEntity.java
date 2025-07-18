@@ -29,7 +29,7 @@ public class ArticleEntity {
     private String content;
     @Column(columnDefinition = "TEXT")
     private String summary;
-    
+
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 

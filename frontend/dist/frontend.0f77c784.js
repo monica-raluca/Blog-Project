@@ -18416,24 +18416,28 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BlogApp", ()=>BlogApp);
-parcelHelpers.export(exports, "Articles", ()=>Articles);
-parcelHelpers.export(exports, "ArticleItem", ()=>ArticleItem);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
-var _layout = require("./Layout");
-var _s = $RefreshSig$(), _s1 = $RefreshSig$();
+var _layout = require("./layouts/Layout");
+// import Articles from './pages/Articles';
+var _articles = require("./pages/Articles");
+var _articlesDefault = parcelHelpers.interopDefault(_articles);
+var _articleItem = require("./pages/ArticleItem");
+var _articleItemDefault = parcelHelpers.interopDefault(_articleItem);
+var _login = require("./pages/Login");
+var _loginDefault = parcelHelpers.interopDefault(_login);
+var _register = require("./pages/Register");
+var _registerDefault = parcelHelpers.interopDefault(_register);
+var _authorItem = require("./pages/AuthorItem");
+var _authorItemDefault = parcelHelpers.interopDefault(_authorItem);
 function BlogApp() {
-    // TODO: Redirect from '/' to '/Articles'.
-    // TODO: Add Layout component, containing sections common to multiple pages (such as header).
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.BrowserRouter), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Routes), {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                 path: "/",
                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _layout.Layout), {}, void 0, false, {
                     fileName: "src/BlogApp.js",
-                    lineNumber: 13,
+                    lineNumber: 14,
                     columnNumber: 30
                 }, void 0),
                 children: [
@@ -18444,20 +18448,8 @@ function BlogApp() {
                             replace: true
                         }, void 0, false, {
                             fileName: "src/BlogApp.js",
-                            lineNumber: 14,
-                            columnNumber: 28
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 14,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "articles",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Articles, {}, void 0, false, {
-                            fileName: "src/BlogApp.js",
                             lineNumber: 15,
-                            columnNumber: 38
+                            columnNumber: 28
                         }, void 0)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
@@ -18465,118 +18457,92 @@ function BlogApp() {
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "articles/:id",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ArticleItem, {}, void 0, false, {
+                        path: "articles",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articlesDefault.default), {}, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 16,
-                            columnNumber: 42
+                            columnNumber: 38
                         }, void 0)
                     }, void 0, false, {
                         fileName: "src/BlogApp.js",
                         lineNumber: 16,
                         columnNumber: 6
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                        path: "articles/:id",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleItemDefault.default), {}, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 17,
+                            columnNumber: 42
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 17,
+                        columnNumber: 6
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                        path: "login",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 18,
+                            columnNumber: 35
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 18,
+                        columnNumber: 6
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                        path: "register",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registerDefault.default), {}, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 19,
+                            columnNumber: 38
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 19,
+                        columnNumber: 6
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                        path: "users/:id",
+                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authorItemDefault.default), {}, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 20,
+                            columnNumber: 39
+                        }, void 0)
+                    }, void 0, false, {
+                        fileName: "src/BlogApp.js",
+                        lineNumber: 20,
+                        columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 13,
+                lineNumber: 14,
                 columnNumber: 5
             }, this)
         }, void 0, false, {
             fileName: "src/BlogApp.js",
-            lineNumber: 12,
+            lineNumber: 13,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/BlogApp.js",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 3
     }, this);
 }
 _c = BlogApp;
-function Articles() {
-    _s();
-    const [articles, setArticles] = (0, _react.useState)([]);
-    (0, _react.useEffect)(()=>{
-        fetch("/api/articles").then((response)=>response.json()).then((data)=>{
-            console.log(data);
-            setArticles(data);
-        });
-    }, []);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "articles",
-        children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "article",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                        className: "title",
-                        to: `/articles/${article.id}`,
-                        children: article.title
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 40,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "summary",
-                        children: article.summary
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 41,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("pre", {
-                        children: JSON.stringify(article, null, 2)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 43,
-                        columnNumber: 6
-                    }, this)
-                ]
-            }, article.id, true, {
-                fileName: "src/BlogApp.js",
-                lineNumber: 39,
-                columnNumber: 5
-            }, this))
-    }, void 0, false, {
-        fileName: "src/BlogApp.js",
-        lineNumber: 37,
-        columnNumber: 3
-    }, this);
-}
-_s(Articles, "XsOpLvUbTkfx79dw07TVNsBviNQ=");
-_c1 = Articles;
-function ArticleItem() {
-    _s1();
-    let params = (0, _reactRouter.useParams)();
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            "Post ",
-            params.id
-        ]
-    }, void 0, true, {
-        fileName: "src/BlogApp.js",
-        lineNumber: 56,
-        columnNumber: 3
-    }, this);
-}
-_s1(ArticleItem, "+jVsTcECDRo3yq2d7EQxlN9Ixog=", false, function() {
-    return [
-        (0, _reactRouter.useParams)
-    ];
-});
-_c2 = ArticleItem;
-var _c, _c1, _c2;
+var _c;
 $RefreshReg$(_c, "BlogApp");
-$RefreshReg$(_c1, "Articles");
-$RefreshReg$(_c2, "ArticleItem");
 
   $parcel$ReactRefreshHelpers$f4e9.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react":"jMk1U","react-router":"2jawN","./Layout":"j0hzx"}],"2jawN":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","./layouts/Layout":"1V3BS","./pages/Articles":"gh5Ho","./pages/ArticleItem":"j5RH2","./pages/Login":"6O7Ur","./pages/Register":"k8Hue","./pages/AuthorItem":"hre2g"}],"2jawN":[function(require,module,exports,__globalThis) {
 /**
  * react-router v7.7.0
  *
@@ -26880,12 +26846,12 @@ function htmlEscape(str) {
     return str.replace(ESCAPE_REGEX2, (match)=>ESCAPE_LOOKUP2[match]);
 }
 
-},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"j0hzx":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$44d3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$44d3.init();
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"1V3BS":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$14ae = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$14ae.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$44d3.prelude(module);
+$parcel$ReactRefreshHelpers$14ae.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -26893,7 +26859,17 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Layout", ()=>Layout);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouter = require("react-router");
+var _s = $RefreshSig$();
 function Layout() {
+    _s();
+    const navigate = (0, _reactRouter.useNavigate)();
+    const token = JSON.parse(localStorage.getItem('token'));
+    const currentUser = localStorage.getItem('currentUser');
+    const logout = ()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+        navigate('/login');
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
@@ -26901,62 +26877,837 @@ function Layout() {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
                         children: "\uD83D\uDCF0 My Blog"
                     }, void 0, false, {
-                        fileName: "src/Layout.js",
-                        lineNumber: 7,
-                        columnNumber: 17
+                        fileName: "src/layouts/Layout.js",
+                        lineNumber: 17,
+                        columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                            to: "/posts",
-                            children: "Home"
-                        }, void 0, false, {
-                            fileName: "src/Layout.js",
-                            lineNumber: 9,
-                            columnNumber: 21
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "src/Layout.js",
-                        lineNumber: 8,
-                        columnNumber: 17
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                to: "/articles",
+                                children: "Articles"
+                            }, void 0, false, {
+                                fileName: "src/layouts/Layout.js",
+                                lineNumber: 19,
+                                columnNumber: 6
+                            }, this),
+                            " |",
+                            " ",
+                            token ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: [
+                                            "Welcome, ",
+                                            currentUser,
+                                            "!"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 22,
+                                        columnNumber: 8
+                                    }, this),
+                                    " ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        onClick: logout,
+                                        children: "Logout"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 23,
+                                        columnNumber: 8
+                                    }, this)
+                                ]
+                            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/login",
+                                        children: "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 27,
+                                        columnNumber: 8
+                                    }, this),
+                                    " |",
+                                    " ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/register",
+                                        children: "Register"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 28,
+                                        columnNumber: 8
+                                    }, this)
+                                ]
+                            }, void 0, true)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/layouts/Layout.js",
+                        lineNumber: 18,
+                        columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "src/Layout.js",
-                lineNumber: 6,
-                columnNumber: 13
+                fileName: "src/layouts/Layout.js",
+                lineNumber: 16,
+                columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                fileName: "src/Layout.js",
-                lineNumber: 12,
-                columnNumber: 13
+                fileName: "src/layouts/Layout.js",
+                lineNumber: 33,
+                columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
-                    fileName: "src/Layout.js",
-                    lineNumber: 14,
-                    columnNumber: 17
+                    fileName: "src/layouts/Layout.js",
+                    lineNumber: 35,
+                    columnNumber: 5
                 }, this)
             }, void 0, false, {
-                fileName: "src/Layout.js",
-                lineNumber: 13,
-                columnNumber: 13
+                fileName: "src/layouts/Layout.js",
+                lineNumber: 34,
+                columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
-        fileName: "src/Layout.js",
-        lineNumber: 5,
-        columnNumber: 9
+        fileName: "src/layouts/Layout.js",
+        lineNumber: 15,
+        columnNumber: 3
     }, this);
 }
+_s(Layout, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
+    return [
+        (0, _reactRouter.useNavigate)
+    ];
+});
 _c = Layout;
 var _c;
 $RefreshReg$(_c, "Layout");
 
-  $parcel$ReactRefreshHelpers$44d3.postlude(module);
+  $parcel$ReactRefreshHelpers$14ae.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"gh5Ho":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$c465 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$c465.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$c465.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>Articles);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactRouter = require("react-router");
+var _articlesApi = require("../api/ArticlesApi");
+var _s = $RefreshSig$();
+function Articles() {
+    _s();
+    const [articles, setArticles] = (0, _react.useState)([]);
+    (0, _react.useEffect)(()=>{
+        (0, _articlesApi.fetchAllArticles)().then(setArticles).catch((err)=>console.error("Error loading articles:", err));
+    }, []);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "articles",
+        children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "article",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                        className: "title",
+                        to: `/articles/${article.id}`,
+                        children: article.title
+                    }, void 0, false, {
+                        fileName: "src/pages/Articles.js",
+                        lineNumber: 18,
+                        columnNumber: 6
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "summary",
+                        children: article.summary
+                    }, void 0, false, {
+                        fileName: "src/pages/Articles.js",
+                        lineNumber: 21,
+                        columnNumber: 6
+                    }, this)
+                ]
+            }, article.id, true, {
+                fileName: "src/pages/Articles.js",
+                lineNumber: 17,
+                columnNumber: 5
+            }, this))
+    }, void 0, false, {
+        fileName: "src/pages/Articles.js",
+        lineNumber: 15,
+        columnNumber: 3
+    }, this);
+}
+_s(Articles, "XsOpLvUbTkfx79dw07TVNsBviNQ=");
+_c = Articles;
+var _c;
+$RefreshReg$(_c, "Articles");
+
+  $parcel$ReactRefreshHelpers$c465.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/ArticlesApi":"akou4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"akou4":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "fetchAllArticles", ()=>fetchAllArticles);
+parcelHelpers.export(exports, "fetchArticleById", ()=>fetchArticleById);
+parcelHelpers.export(exports, "fetchArticlesByTitle", ()=>fetchArticlesByTitle);
+parcelHelpers.export(exports, "fetchArticlesByAuthor", ()=>fetchArticlesByAuthor);
+async function fetchAllArticles() {
+    const res = await fetch("/api/articles");
+    if (!res.ok) throw new Error("Failed to fetch articles");
+    return res.json();
+}
+async function fetchArticleById(id) {
+    const res = await fetch(`/api/articles/${id}`);
+    if (!res.ok) throw new Error("Article not found");
+    return res.json();
+}
+async function fetchArticlesByTitle(title) {
+    const res = await fetch(`/api/articles?title=${title}`);
+    if (!res.ok) throw new Error("No articles with the given title.");
+    return res.json();
+}
+async function fetchArticlesByAuthor(author) {
+    const res = await fetch(`/api/articles?author=${author}`);
+    if (!res.ok) throw new Error("No articles written by the given author.");
+    return res.json();
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"j5RH2":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$f147 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$f147.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f147.prelude(module);
+
+try {
+// src/pages/ArticleItem.jsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>ArticleItem);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactRouter = require("react-router");
+var _articlesApi = require("../api/ArticlesApi");
+var _s = $RefreshSig$();
+function ArticleItem() {
+    _s();
+    const { id } = (0, _reactRouter.useParams)();
+    const [article, setArticle] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        (0, _articlesApi.fetchArticleById)(id).then(setArticle).catch((err)=>console.error("Article not found", err));
+    }, [
+        id
+    ]);
+    if (!article) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+        children: "Loading..."
+    }, void 0, false, {
+        fileName: "src/pages/ArticleItem.js",
+        lineNumber: 17,
+        columnNumber: 23
+    }, this);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: article.title
+            }, void 0, false, {
+                fileName: "src/pages/ArticleItem.js",
+                lineNumber: 21,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: article.content
+            }, void 0, false, {
+                fileName: "src/pages/ArticleItem.js",
+                lineNumber: 22,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Author:",
+                    " ",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                        to: `/users/${article.author.id}`,
+                        children: article.author.username
+                    }, void 0, false, {
+                        fileName: "src/pages/ArticleItem.js",
+                        lineNumber: 24,
+                        columnNumber: 17
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/ArticleItem.js",
+                lineNumber: 23,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/ArticleItem.js",
+        lineNumber: 20,
+        columnNumber: 3
+    }, this);
+}
+_s(ArticleItem, "W6lvuY3O/N5clTNnfwV1p4siwzA=", false, function() {
+    return [
+        (0, _reactRouter.useParams)
+    ];
+});
+_c = ArticleItem;
+var _c;
+$RefreshReg$(_c, "ArticleItem");
+
+  $parcel$ReactRefreshHelpers$f147.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4"}],"6O7Ur":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a788 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$a788.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a788.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>Login);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactRouter = require("react-router");
+var _authApi = require("../api/AuthApi");
+var _loginCss = require("../format/Login.css");
+var _s = $RefreshSig$();
+function Login() {
+    _s();
+    const [username, setUsername] = (0, _react.useState)('');
+    const [password, setPassword] = (0, _react.useState)('');
+    const [error, setError] = (0, _react.useState)(null);
+    const navigate = (0, _reactRouter.useNavigate)();
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        try {
+            const userToken = await (0, _authApi.loginUser)({
+                username,
+                password
+            });
+            localStorage.setItem('token', JSON.stringify(userToken.token));
+            localStorage.setItem('currentUser', username);
+            setError(null);
+            navigate('/articles');
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Login"
+            }, void 0, false, {
+                fileName: "src/pages/Login.js",
+                lineNumber: 31,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                onSubmit: handleSubmit,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Username:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Login.js",
+                                lineNumber: 34,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                value: username,
+                                onChange: (e)=>setUsername(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Login.js",
+                                lineNumber: 35,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Login.js",
+                        lineNumber: 33,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Password:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Login.js",
+                                lineNumber: 43,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "password",
+                                value: password,
+                                onChange: (e)=>setPassword(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Login.js",
+                                lineNumber: 44,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Login.js",
+                        lineNumber: 42,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        type: "submit",
+                        children: "Login"
+                    }, void 0, false, {
+                        fileName: "src/pages/Login.js",
+                        lineNumber: 51,
+                        columnNumber: 5
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/Login.js",
+                lineNumber: 32,
+                columnNumber: 4
+            }, this),
+            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                style: {
+                    color: 'red'
+                },
+                children: error
+            }, void 0, false, {
+                fileName: "src/pages/Login.js",
+                lineNumber: 53,
+                columnNumber: 14
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/Login.js",
+        lineNumber: 30,
+        columnNumber: 3
+    }, this);
+}
+_s(Login, "Ensabnh8awqwln75dYV2FIvVkb0=", false, function() {
+    return [
+        (0, _reactRouter.useNavigate)
+    ];
+});
+_c = Login;
+var _c;
+$RefreshReg$(_c, "Login");
+
+  $parcel$ReactRefreshHelpers$a788.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../format/Login.css":"dajed"}],"gPkaz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "registerUser", ()=>registerUser);
+parcelHelpers.export(exports, "loginUser", ()=>loginUser);
+async function registerUser({ lastName, firstName, username, password, email }) {
+    const res = await fetch('/api/users/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            lastName,
+            firstName,
+            username,
+            password,
+            email
+        })
+    });
+    if (!res.ok) {
+        const errorData = await res.json().catch(()=>({}));
+        throw new Error(errorData.message || 'Register failed');
+    }
+    return res.json();
+}
+async function loginUser({ username, password }) {
+    const res = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username,
+            password
+        })
+    });
+    if (!res.ok) {
+        const errorData = await res.json().catch(()=>({}));
+        throw new Error(errorData.message || 'Login failed');
+    }
+    return res.json();
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dajed":[function() {},{}],"k8Hue":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a9c9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$a9c9.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a9c9.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>Register);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _authApi = require("../api/AuthApi");
+var _reactRouter = require("react-router");
+var _s = $RefreshSig$();
+function Register() {
+    _s();
+    const [lastName, setLastName] = (0, _react.useState)('');
+    const [firstName, setFirstName] = (0, _react.useState)('');
+    const [username, setUsername] = (0, _react.useState)('');
+    const [password, setPassword] = (0, _react.useState)('');
+    const [email, setEmail] = (0, _react.useState)('');
+    const [error, setError] = (0, _react.useState)(null);
+    const navigate = (0, _reactRouter.useNavigate)();
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        try {
+            const userToken = await (0, _authApi.registerUser)({
+                lastName,
+                firstName,
+                username,
+                password,
+                email
+            });
+            localStorage.setItem('token', JSON.stringify(userToken.token));
+            localStorage.setItem('currentUser', username);
+            console.log(localStorage.getItem('currentUser'));
+            console.log(JSON.parse(localStorage.getItem('token')));
+            setError(null);
+            navigate('/articles');
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Register"
+            }, void 0, false, {
+                fileName: "src/pages/Register.js",
+                lineNumber: 34,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                onSubmit: handleSubmit,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "First name:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 37,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                value: firstName,
+                                onChange: (e)=>setFirstName(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 38,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 36,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Last name:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 46,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                value: lastName,
+                                onChange: (e)=>setLastName(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 47,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 45,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Username:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 55,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                value: username,
+                                onChange: (e)=>setUsername(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 56,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 54,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Password:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 64,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "password",
+                                value: password,
+                                onChange: (e)=>setPassword(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 65,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 63,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Email:"
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 73,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "text",
+                                value: email,
+                                onChange: (e)=>setEmail(e.target.value),
+                                required: true
+                            }, void 0, false, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 74,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 72,
+                        columnNumber: 17
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        type: "submit",
+                        children: "Register"
+                    }, void 0, false, {
+                        fileName: "src/pages/Register.js",
+                        lineNumber: 81,
+                        columnNumber: 5
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/Register.js",
+                lineNumber: 35,
+                columnNumber: 13
+            }, this),
+            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                style: {
+                    color: 'red'
+                },
+                children: error
+            }, void 0, false, {
+                fileName: "src/pages/Register.js",
+                lineNumber: 83,
+                columnNumber: 14
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/Register.js",
+        lineNumber: 33,
+        columnNumber: 9
+    }, this);
+}
+_s(Register, "dsPl2x1ex/nXEW6vwHh6MZQPYPw=", false, function() {
+    return [
+        (0, _reactRouter.useNavigate)
+    ];
+});
+_c = Register;
+var _c;
+$RefreshReg$(_c, "Register");
+
+  $parcel$ReactRefreshHelpers$a9c9.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"hre2g":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5321 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5321.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5321.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>Author);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactRouter = require("react-router");
+var _s = $RefreshSig$();
+function Author() {
+    _s();
+    const { id } = (0, _reactRouter.useParams)();
+    const [author, setAuthor] = (0, _react.useState)(null);
+    const [articles, setArticles] = (0, _react.useState)([]);
+    const [showArticles, setShowArticles] = (0, _react.useState)(false);
+    (0, _react.useEffect)(()=>{
+        fetch(`/api/users/${id}`).then((res)=>res.json()).then(setAuthor).catch((err)=>console.error("Failed to load author", err));
+    }, [
+        id
+    ]);
+    const loadArticles = ()=>{
+        if (showArticles) {
+            setShowArticles(false);
+            return;
+        }
+        fetch(`/api/articles?author=${author.username}`).then((res)=>res.json()).then((data)=>{
+            setArticles(data);
+            setShowArticles(true);
+        }).catch((err)=>console.error("Failed to load articles", err));
+    };
+    if (!author) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+        children: "Loading author..."
+    }, void 0, false, {
+        fileName: "src/pages/AuthorItem.js",
+        lineNumber: 32,
+        columnNumber: 22
+    }, this);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: [
+                    "Author: ",
+                    author.username
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 36,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Email: ",
+                    author.email
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 37,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: [
+                    "Joined: ",
+                    new Date(author.createdDate).toLocaleDateString()
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 38,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: loadArticles,
+                children: showArticles ? "Hide Articles" : "Show Articles"
+            }, void 0, false, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 40,
+                columnNumber: 4
+            }, this),
+            showArticles && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                            href: `/articles/${article.id}`,
+                            children: article.title
+                        }, void 0, false, {
+                            fileName: "src/pages/AuthorItem.js",
+                            lineNumber: 48,
+                            columnNumber: 8
+                        }, this)
+                    }, article.id, false, {
+                        fileName: "src/pages/AuthorItem.js",
+                        lineNumber: 47,
+                        columnNumber: 7
+                    }, this))
+            }, void 0, false, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 45,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/AuthorItem.js",
+        lineNumber: 35,
+        columnNumber: 3
+    }, this);
+}
+_s(Author, "dMC0ZFW+gAAX6+gCjmTMcAwQzz8=", false, function() {
+    return [
+        (0, _reactRouter.useParams)
+    ];
+});
+_c = Author;
+var _c;
+$RefreshReg$(_c, "Author");
+
+  $parcel$ReactRefreshHelpers$5321.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.0f77c784.js.map
