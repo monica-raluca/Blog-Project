@@ -15,6 +15,7 @@ public class Article {
 
     private String title;
     private String content;
+    private String summary;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 

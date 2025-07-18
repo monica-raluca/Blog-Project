@@ -4,6 +4,7 @@ import com.cognizant.practice.blog.comment.entity.CommentEntity;
 import com.cognizant.practice.blog.user.dto.User;
 import com.cognizant.practice.blog.user.entity.UserEntity;
 import jakarta.persistence.*;
+import jdk.jfr.ContentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,12 @@ public class ArticleEntity {
     private UUID id;
 
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String content;
+    @Column(columnDefinition = "TEXT")
+    private String summary;
+    
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 

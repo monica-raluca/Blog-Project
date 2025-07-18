@@ -50,6 +50,22 @@ public class ArticlesService {
         return isValidParam(request.title()) && isValidParam(request.content());
     }
 
+    public String summarize(String article) {
+        int maxLength = 500;
+        if (article.length() <= maxLength) {
+            return article;
+        }
+
+        String truncated = article.substring(0, maxLength);
+
+        int lastSpaceIndex = truncated.lastIndexOf(' ');
+        if (lastSpaceIndex == -1) {
+            return truncated;
+        }
+
+        return truncated.substring(0, lastSpaceIndex);
+    }
+
     public UserEntity getUserFromUsername(String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isEmpty()) {
@@ -147,7 +163,7 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), LocalDateTime.now(), LocalDateTime.now(), null, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
@@ -167,6 +183,7 @@ public class ArticlesService {
 
         newArticle.setContent(articleRequest.content());
         newArticle.setTitle(articleRequest.title());
+        newArticle.setSummary(summarize(articleRequest.content()));
         newArticle.setUpdatedDate(LocalDateTime.now());
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));

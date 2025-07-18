@@ -10,6 +10,7 @@ public class ArticleConvertor {
                 .id(articleEntity.getId())
                 .title(articleEntity.getTitle())
                 .content(articleEntity.getContent())
+                .summary(articleEntity.getSummary())
                 .createdDate(articleEntity.getCreatedDate())
                 .updatedDate(articleEntity.getUpdatedDate())
                 .author(UserConvertor.toDto(articleEntity.getAuthor()))
