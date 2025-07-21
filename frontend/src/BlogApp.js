@@ -6,6 +6,8 @@ import ArticleItem from './pages/ArticleItem';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthorItem from "./pages/AuthorItem";
+import ArticleForm from "./pages/ArticleForm";
+import UserManagement from "./pages/UserManagement";
 
 export function BlogApp() {
 	return (
@@ -15,9 +17,12 @@ export function BlogApp() {
 					<Route index element={<Navigate to="/articles" replace />} />
 					<Route path="articles" element={<Articles />} />
 					<Route path="articles/:id" element={<ArticleItem />} />
+					<Route path="/articles/create" element={<ArticleForm />} />
+					<Route path="/articles/:id/edit" element={<ArticleForm isEdit={true} />} />
 					<Route path="login" element={<Login />} />
 					<Route path="register" element={<Register />} />
 					<Route path="users/:id" element={<AuthorItem />} />
+					<Route path="admin/users" element={<UserManagement />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

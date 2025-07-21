@@ -1,8 +1,8 @@
 // src/pages/ArticleItem.jsx
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
-import { fetchArticleById } from '../api/ArticlesApi';
+import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
 import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
 
 import '../format/Comments.css';
@@ -13,6 +13,7 @@ export default function ArticleItem() {
     const [comments, setComments] = useState([]);
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const currentUser = localStorage.getItem('currentUser');
     const token = JSON.parse(localStorage.getItem('token'));
@@ -26,6 +27,18 @@ export default function ArticleItem() {
             .then(setComments)
             .catch(err => console.error("Comments not found", err));
 	}, [id]);
+
+    const handleDelete = async (id) => {
+        if (!window.confirm('Are you sure?')) return;
+
+        try {
+            await deleteArticle(id);
+            navigate('/articles');
+            
+        } catch (err) {
+            console.error('Failed to delete:', err);
+        }
+    };
 
     const handleCommentSubmit = async (e) => {
 		e.preventDefault();
@@ -44,7 +57,8 @@ export default function ArticleItem() {
 	if (!article) return <p>Loading...</p>;
 
 	return (
-        <div className="article-page">
+        <>
+         <div className="article-page">
 			<h2>{article.title}</h2>
 			<p>{article.content}</p>
 			<p><em><NavLink to={`/users/${article.author.id}`}>Author: {article.author?.username || 'Unknown'}</NavLink></em></p>
@@ -76,5 +90,11 @@ export default function ArticleItem() {
 				<p><em>Login to comment.</em></p>
 			)}
 		</div>
+        
+        <button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+        <button onClick={() => handleDelete(article.id)}>Delete</button>
+
+        </>
+       
 	);
 }

@@ -17,6 +17,7 @@ export function Layout() {
 				<h1>📰 My Blog</h1>
 				<nav>
 					<Link to="/articles">Articles</Link> |{" "}
+                    <Link to="/articles/create">Create Article</Link>|{" "}
 					{token ? (
 						<>
 							<span>Welcome, {currentUser}!</span>{" "}

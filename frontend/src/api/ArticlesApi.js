@@ -1,3 +1,8 @@
+const authHeader = () => ({
+    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+    'Content-Type': 'application/json'
+});
+
 export async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }) {
     const params = new URLSearchParams();
 
@@ -31,7 +36,38 @@ export async function fetchArticlesByTitle(title) {
 }
 
 export async function fetchArticlesByAuthor(author) {
+	// console.log(author);
 	const res = await fetch(`/api/articles?author=${author.username}`);
 	if (!res.ok) throw new Error("No articles written by the given author.");
 	return res.json();
+}
+
+export async function createArticle(article) {
+	const res = await fetch('/api/articles', {
+		method: 'POST',
+		headers: authHeader(),
+		body: JSON.stringify(article),
+	});
+	if (!res.ok) throw new Error('Create failed');
+	return res.json();
+}
+
+export async function updateArticle(id, article) {
+	const res = await fetch(`/api/articles/${id}`, {
+		method: 'PUT',
+		headers: authHeader(),
+		body: JSON.stringify(article)
+	});
+	if (!res.ok) throw new Error('Update failed');
+	return res.json();
+}
+
+export async function deleteArticle(id) {
+	const res = await fetch(`/api/articles/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+		}
+	});
+	if (!res.ok) throw new Error('Delete failed');
 }

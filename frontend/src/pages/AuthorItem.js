@@ -21,9 +21,7 @@ export default function Author() {
 			return;
 		}
 
-		// fetch(`/api/articles?author=${author.username}`)
-			// .then(res => res.json())
-        fetchArticlesByAuthor()
+        fetchArticlesByAuthor(author)
 			.then(data => {
 				setArticles(data);
 				setShowArticles(true);
