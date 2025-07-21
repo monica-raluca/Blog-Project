@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { fetchUserById } from '../api/UsersApi';
+import { fetchArticlesByAuthor } from '../api/ArticlesApi';
 
 export default function Author() {
 	const { id } = useParams();
@@ -8,8 +10,7 @@ export default function Author() {
 	const [showArticles, setShowArticles] = useState(false);
 
 	useEffect(() => {
-		fetch(`/api/users/${id}`)
-			.then(res => res.json())
+        fetchUserById(id)
 			.then(setAuthor)
 			.catch(err => console.error("Failed to load author", err));
 	}, [id]);
@@ -20,8 +21,9 @@ export default function Author() {
 			return;
 		}
 
-		fetch(`/api/articles?author=${author.username}`)
-			.then(res => res.json())
+		// fetch(`/api/articles?author=${author.username}`)
+			// .then(res => res.json())
+        fetchArticlesByAuthor()
 			.then(data => {
 				setArticles(data);
 				setShowArticles(true);
@@ -37,7 +39,7 @@ export default function Author() {
 			<p>Email: {author.email}</p>
 			<p>Joined: {new Date(author.createdDate).toLocaleDateString()}</p>
 
-			<button onClick={loadArticles}>
+			<button onClick={loadArticles} className='btn'>
 				{showArticles ? "Hide Articles" : "Show Articles"}
 			</button>
 

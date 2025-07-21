@@ -1,2 +1,133 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins&display=swap";
+.article-page {
+  padding: 20px;
+}
 
+.comments-list {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.comments-list li {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.comment-form {
+  flex-direction: column;
+  margin-top: 20px;
+  display: flex;
+}
+
+.comment-form textarea {
+  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.comment-form button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #162938;
+  border: none;
+  border-radius: 6px;
+  width: fit-content;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  background: url("background.cc312e9e.png") center / cover no-repeat fixed;
+}
+
+.login-wrapper {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+}
+
+.login-box {
+  backdrop-filter: blur(20px);
+  color: #162938;
+  background: #ffffff1a;
+  border-radius: 20px;
+  width: 400px;
+  padding: 40px;
+  box-shadow: 0 0 30px #00000080;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.input-group {
+  margin: 30px 0;
+  position: relative;
+}
+
+.input-group label {
+  color: #162938;
+  pointer-events: none;
+  font-size: 1em;
+  transition: all .3s;
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+}
+
+.input-group input {
+  color: #162938;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #162938;
+  outline: none;
+  width: 100%;
+  padding: 10px 10px 10px 5px;
+  font-size: 1em;
+}
+
+.input-group input:focus ~ label, .input-group input:valid ~ label {
+  color: #270023;
+  font-size: .9em;
+  top: -10px;
+}
+
+.btn {
+  color: #fff;
+  cursor: pointer;
+  background: #162938;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  height: 45px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+.btn:hover {
+  background: #270023;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+}
 /*# sourceMappingURL=frontend.9f367d21.css.map */

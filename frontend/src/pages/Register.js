@@ -30,57 +30,59 @@ export default function Register() {
         };
 
     return (
-        <div>
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-					<label>First name:</label>
-					<input
-						type="text"
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-						required
-					/>
-				</div>
-                <div>
-					<label>Last name:</label>
-					<input
-						type="text"
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-						required
-					/>
-				</div>
-				<div>
-					<label>Username:</label>
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
-                <div>
-					<label>Email:</label>
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</div>
-				<button type="submit">Register</button>
-			</form>
-			{error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="login-wrapper">
+            <div className="login-box">
+                <h2>Register</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">                   
+                        <input
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            required
+                        />
+                        <label>First name</label>
+                    </div>
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            required
+                        />
+                        <label>Last name</label>
+                    </div>
+                    <div className="input-group">                    
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                        <label>Username</label>
+                    </div>
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <label>Password</label>
+                    </div>
+                    <div className="input-group">                     
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <label>Email</label>
+                    </div>
+                    <button type="submit" className="btn">Register</button>
+                </form>
+                {error && <p className="error-message">{error}</p>}
+            </div>
         </div>
     );
 }

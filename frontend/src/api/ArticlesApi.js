@@ -1,7 +1,21 @@
-export async function fetchAllArticles() {
-	const res = await fetch("/api/articles");
-	if (!res.ok) throw new Error("Failed to fetch articles");
-	return res.json();
+export async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }) {
+    const params = new URLSearchParams();
+
+    params.set('size', size);
+    params.set('from', from);
+
+    Object.entries(filters).forEach(([key, value]) => {
+        if (value) params.append(key, value);
+    });
+
+    if (sortCriteria.length > 0) {
+        const sortParam = sortCriteria.map(sc => `${sc.field} ${sc.direction}`).join(',');
+        params.set('sort', sortParam);
+    }
+
+    const res = await fetch(`/api/articles?${params.toString()}`);
+    if (!res.ok) throw new Error('Failed to fetch articles');
+    return res.json();
 }
 
 export async function fetchArticleById(id) {
@@ -17,7 +31,7 @@ export async function fetchArticlesByTitle(title) {
 }
 
 export async function fetchArticlesByAuthor(author) {
-	const res = await fetch(`/api/articles?author=${author}`);
+	const res = await fetch(`/api/articles?author=${author.username}`);
 	if (!res.ok) throw new Error("No articles written by the given author.");
 	return res.json();
 }

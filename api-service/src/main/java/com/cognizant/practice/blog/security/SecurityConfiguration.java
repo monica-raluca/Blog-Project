@@ -31,8 +31,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "articles/*/comments").hasRole("USER")
-                        .requestMatchers(HttpMethod.POST, "articles/*/comments").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/articles/*/comments").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/articles/*/comments").hasRole("USER")
                         .requestMatchers(HttpMethod.DELETE, "/articles/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/articles/**").hasRole("AUTHOR")
                         .requestMatchers(HttpMethod.POST, "/articles/**").hasRole("AUTHOR")

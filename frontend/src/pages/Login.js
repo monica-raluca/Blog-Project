@@ -16,10 +16,9 @@ export default function Login() {
 			const userToken = await loginUser({ username, password });
 
 			localStorage.setItem('token', JSON.stringify(userToken.token));
-            localStorage.setItem('currentUser', username);
-            
-			setError(null);
+			localStorage.setItem('currentUser', username);
 
+			setError(null);
 			navigate('/articles');
 		} catch (err) {
 			setError(err.message);
@@ -27,30 +26,32 @@ export default function Login() {
 	};
 
 	return (
-		<div>
-			<h2>Login</h2>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label>Username:</label>
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</div>
-				<div>
-					<label>Password:</label>
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<button type="submit">Login</button>
-			</form>
-			{error && <p style={{ color: 'red' }}>{error}</p>}
+		<div className="login-wrapper">
+			<div className="login-box">
+				<h2>Login</h2>
+				<form onSubmit={handleSubmit}>
+					<div className="input-group">
+						<input
+							type="text"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							required
+						/>
+						<label>Username</label>
+					</div>
+					<div className="input-group">
+						<input
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+						<label>Password</label>
+					</div>
+					<button type="submit" className="btn">Login</button>
+				</form>
+				{error && <p className="error-message">{error}</p>}
+			</div>
 		</div>
 	);
 }
