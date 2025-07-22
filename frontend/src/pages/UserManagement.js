@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchUsers, updateUserRole, deleteUser } from '../api/UsersApi';
+import '../format/UserManagement.css';
 
 export default function UserManagement() {
     const [users, setUsers] = useState([]);
@@ -41,7 +42,7 @@ export default function UserManagement() {
     };
 
     return (
-        <div>
+        <div className="user-management-container">
             <h2>All Users</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <table border="1">

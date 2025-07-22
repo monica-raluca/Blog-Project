@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { loginUser } from '../api/AuthApi';
+import { Link } from 'react-router';
 
 import '../format/Login.css';
 
@@ -49,6 +50,7 @@ export default function Login() {
 						<label>Password</label>
 					</div>
 					<button type="submit" className="btn">Login</button>
+					<div><em>Don't have an account? <Link to="/register">Register</Link></em></div>
 				</form>
 				{error && <p className="error-message">{error}</p>}
 			</div>

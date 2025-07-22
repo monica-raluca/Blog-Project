@@ -4,8 +4,10 @@ import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
 import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
 import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
+import { Link } from 'react-router';
 
 import '../format/Comments.css';
+import '../format/ArticleItem.css';
 
 export default function ArticleItem() {
 	const { id } = useParams();
@@ -62,7 +64,7 @@ export default function ArticleItem() {
 			<h2>{article.title}</h2>
 			<p>{article.content}</p>
 			<p><em><NavLink to={`/users/${article.author.id}`}>Author: {article.author?.username || 'Unknown'}</NavLink></em></p>
-
+		
 			<hr />
 
 			<h3>Comments</h3>
@@ -87,13 +89,14 @@ export default function ArticleItem() {
 					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>
 			) : (
-				<p><em>Login to comment.</em></p>
+				<p><em><Link to="/login">Login</Link> to comment.</em></p>
 			)}
-		</div>
-        
-        <button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
-        <button onClick={() => handleDelete(article.id)}>Delete</button>
 
+            <div className="article-actions">
+                <button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+                <button onClick={() => handleDelete(article.id)}>Delete</button>
+            </div>
+		</div>
         </>
        
 	);

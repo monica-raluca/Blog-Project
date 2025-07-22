@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { fetchAllArticles } from '../api/ArticlesApi';
 
+import '../format/Articles.css';
+
 export default function Articles() {
 	const [articles, setArticles] = useState([]);
     const [filters, setFilters] = useState({
@@ -34,14 +36,24 @@ export default function Articles() {
 	return (
         <>
         
-        <div className='articles'>
+        <div className='articles-container'>
 			{articles.map(article => (
-				<div className='article' key={article.id}>
-					<NavLink className='title' to={`/articles/${article.id}`}>
-						{article.title}
-					</NavLink>
-					<div className='summary'>
-						{article.summary}
+				<div className='article-item' key={article.id}>
+					<div className='article-ribbon'></div>
+					<div className='article-content'>
+						<div className='article-title'>
+							{article.title}
+						</div>
+						<div className='article-meta'>
+							<span>Created by {article.createdBy} at {article.createdDate}</span>
+							<span>Edited by {article.editedBy} at {article.editedDate}</span>
+						</div>
+						<div className='article-body'>
+							{article.summary}
+						</div>
+						<NavLink className='read-more-btn' to={`/articles/${article.id}`}>
+							Read More
+						</NavLink>
 					</div>
 				</div>
 			))}

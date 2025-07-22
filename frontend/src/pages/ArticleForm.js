@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../api/ArticlesApi';
+import '../format/ArticleForm.css';
 
 export default function ArticleForm({ isEdit = false }) {
 	const { id } = useParams();
@@ -34,11 +35,13 @@ export default function ArticleForm({ isEdit = false }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h2>{isEdit ? 'Edit Article' : 'Create Article'}</h2>
-			<input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-			<textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required />
-			<button type="submit">{isEdit ? 'Update' : 'Create'}</button>
-		</form>
+		<div className="article-form-container">
+			<form onSubmit={handleSubmit}>
+				<h2>{isEdit ? 'Edit Article' : 'Create Article'}</h2>
+				<input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+				<textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required />
+				<button type="submit">{isEdit ? 'Update' : 'Create'}</button>
+			</form>
+		</div>
 	);
 }

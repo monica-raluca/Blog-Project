@@ -26901,6 +26901,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Layout", ()=>Layout);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouter = require("react-router");
+var _layoutCss = require("../format/Layout.css");
 var _s = $RefreshSig$();
 function Layout() {
     _s();
@@ -26913,115 +26914,168 @@ function Layout() {
         navigate('/login');
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "layout-root",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("aside", {
+                className: "layout-sidebar",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        children: "\uD83D\uDCF0 My Blog"
-                    }, void 0, false, {
-                        fileName: "src/layouts/Layout.js",
-                        lineNumber: 17,
-                        columnNumber: 5
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "layout-sidebar-header",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                to: "/articles",
-                                children: "Articles"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "layout-sidebar-photo",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                    src: "/favicon.ico",
+                                    alt: "Blog Logo",
+                                    style: {
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        borderRadius: '12px'
+                                    }
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 21,
+                                    columnNumber: 7
+                                }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
                                 lineNumber: 19,
                                 columnNumber: 6
                             }, this),
-                            " |",
-                            " ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                to: "/articles/create",
-                                children: "Create Article"
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "layout-title",
+                                children: "My Blog"
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 20,
-                                columnNumber: 21
-                            }, this),
-                            "|",
-                            " ",
-                            token ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        children: [
-                                            "Welcome, ",
-                                            currentUser,
-                                            "!"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 23,
-                                        columnNumber: 8
-                                    }, this),
-                                    " ",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                        onClick: logout,
-                                        children: "Logout"
-                                    }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 24,
-                                        columnNumber: 8
-                                    }, this)
-                                ]
-                            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                        to: "/login",
-                                        children: "Login"
-                                    }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 28,
-                                        columnNumber: 8
-                                    }, this),
-                                    " |",
-                                    " ",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                        to: "/register",
-                                        children: "Register"
-                                    }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 29,
-                                        columnNumber: 8
-                                    }, this)
-                                ]
-                            }, void 0, true)
+                                lineNumber: 23,
+                                columnNumber: 6
+                            }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/Layout.js",
                         lineNumber: 18,
                         columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                        className: "layout-nav",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                to: "/articles",
+                                className: "layout-nav-link",
+                                children: "Home"
+                            }, void 0, false, {
+                                fileName: "src/layouts/Layout.js",
+                                lineNumber: 26,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                to: "/articles/create",
+                                className: "layout-nav-link",
+                                children: "Create Article"
+                            }, void 0, false, {
+                                fileName: "src/layouts/Layout.js",
+                                lineNumber: 27,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                to: "/admin/users",
+                                className: "layout-nav-link",
+                                children: "User Management"
+                            }, void 0, false, {
+                                fileName: "src/layouts/Layout.js",
+                                lineNumber: 28,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/layouts/Layout.js",
+                        lineNumber: 25,
+                        columnNumber: 5
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "layout-sidebar-footer",
+                        children: token ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    style: {
+                                        fontSize: '0.98em',
+                                        color: '#6a6a6a'
+                                    },
+                                    children: [
+                                        "Welcome, ",
+                                        currentUser,
+                                        "!"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 33,
+                                    columnNumber: 8
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    onClick: logout,
+                                    className: "layout-auth-link",
+                                    style: {
+                                        background: 'none',
+                                        border: 'none',
+                                        cursor: 'pointer'
+                                    },
+                                    children: "Logout"
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 34,
+                                    columnNumber: 8
+                                }, this)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                    to: "/login",
+                                    className: "layout-auth-link",
+                                    children: "Login"
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 38,
+                                    columnNumber: 8
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                    to: "/register",
+                                    className: "layout-auth-link",
+                                    children: "Register"
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 39,
+                                    columnNumber: 8
+                                }, this)
+                            ]
+                        }, void 0, true)
+                    }, void 0, false, {
+                        fileName: "src/layouts/Layout.js",
+                        lineNumber: 30,
+                        columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 16,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                fileName: "src/layouts/Layout.js",
-                lineNumber: 34,
+                lineNumber: 17,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                className: "layout-main",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 36,
+                    lineNumber: 45,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 35,
+                lineNumber: 44,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/layouts/Layout.js",
-        lineNumber: 15,
+        lineNumber: 16,
         columnNumber: 3
     }, this);
 }
@@ -27039,7 +27093,7 @@ $RefreshReg$(_c, "Layout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"gh5Ho":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Layout.css":"hLf3k"}],"hLf3k":[function() {},{}],"gh5Ho":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c465 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c465.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -27054,6 +27108,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
+var _articlesCss = require("../format/Articles.css");
 var _s = $RefreshSig$();
 function Articles() {
     _s();
@@ -27091,23 +27146,80 @@ function Articles() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "articles",
+                className: "articles-container",
                 children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "article",
+                        className: "article-item",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                className: "title",
-                                to: `/articles/${article.id}`,
-                                children: article.title
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "article-ribbon"
                             }, void 0, false, {
                                 fileName: "src/pages/Articles.js",
-                                lineNumber: 40,
+                                lineNumber: 42,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "summary",
-                                children: article.summary
-                            }, void 0, false, {
+                                className: "article-content",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-title",
+                                        children: article.title
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 44,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-meta",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: [
+                                                    "Created by ",
+                                                    article.createdBy,
+                                                    " at ",
+                                                    article.createdDate
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/Articles.js",
+                                                lineNumber: 48,
+                                                columnNumber: 8
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: [
+                                                    "Edited by ",
+                                                    article.editedBy,
+                                                    " at ",
+                                                    article.editedDate
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/Articles.js",
+                                                lineNumber: 49,
+                                                columnNumber: 8
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 47,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-body",
+                                        children: article.summary
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 51,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                        className: "read-more-btn",
+                                        to: `/articles/${article.id}`,
+                                        children: "Read More"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 54,
+                                        columnNumber: 7
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/pages/Articles.js",
                                 lineNumber: 43,
                                 columnNumber: 6
@@ -27115,12 +27227,12 @@ function Articles() {
                         ]
                     }, article.id, true, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 39,
+                        lineNumber: 41,
                         columnNumber: 5
                     }, this))
             }, void 0, false, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 37,
+                lineNumber: 39,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27135,7 +27247,7 @@ function Articles() {
                                 }))
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 52,
+                        lineNumber: 64,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27147,7 +27259,7 @@ function Articles() {
                                 }))
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 57,
+                        lineNumber: 69,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27155,13 +27267,13 @@ function Articles() {
                         children: "Apply filters"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 72,
+                        lineNumber: 84,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 51,
+                lineNumber: 63,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -27180,7 +27292,7 @@ function Articles() {
                         children: "Created Date"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 82,
+                        lineNumber: 94,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -27188,7 +27300,7 @@ function Articles() {
                         children: "Title"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 83,
+                        lineNumber: 95,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -27196,13 +27308,13 @@ function Articles() {
                         children: "Author"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 84,
+                        lineNumber: 96,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 76,
+                lineNumber: 88,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27215,7 +27327,7 @@ function Articles() {
                 children: "Toggle Sort Direction"
             }, void 0, false, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 87,
+                lineNumber: 99,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27227,7 +27339,7 @@ function Articles() {
                         children: "Previous"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 99,
+                        lineNumber: 111,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27237,7 +27349,7 @@ function Articles() {
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 100,
+                        lineNumber: 112,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27245,13 +27357,13 @@ function Articles() {
                         children: "Next"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 101,
+                        lineNumber: 113,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 98,
+                lineNumber: 110,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27263,7 +27375,7 @@ function Articles() {
                         onChange: (e)=>setSizeInput(e.target.value)
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 105,
+                        lineNumber: 117,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27271,13 +27383,13 @@ function Articles() {
                         children: "Change page size"
                     }, void 0, false, {
                         fileName: "src/pages/Articles.js",
-                        lineNumber: 110,
+                        lineNumber: 122,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/Articles.js",
-                lineNumber: 104,
+                lineNumber: 116,
                 columnNumber: 10
             }, this)
         ]
@@ -27293,7 +27405,7 @@ $RefreshReg$(_c, "Articles");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/ArticlesApi":"akou4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"akou4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/ArticlesApi":"akou4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Articles.css":"cJsRS"}],"akou4":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllArticles", ()=>fetchAllArticles);
@@ -27366,7 +27478,7 @@ async function deleteArticle(id) {
     if (!res.ok) throw new Error('Delete failed');
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"j5RH2":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cJsRS":[function() {},{}],"j5RH2":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$f147 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$f147.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -27384,6 +27496,7 @@ var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
 var _commentApi = require("../api/CommentApi");
 var _commentsCss = require("../format/Comments.css");
+var _articleItemCss = require("../format/ArticleItem.css");
 var _s = $RefreshSig$();
 function ArticleItem() {
     _s();
@@ -27427,165 +27540,182 @@ function ArticleItem() {
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/pages/ArticleItem.js",
-        lineNumber: 57,
+        lineNumber: 59,
         columnNumber: 23
     }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "article-page",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                        children: article.title
-                    }, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 62,
-                        columnNumber: 4
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: article.content
-                    }, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 63,
-                        columnNumber: 4
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                to: `/users/${article.author.id}`,
-                                children: [
-                                    "Author: ",
-                                    article.author?.username || 'Unknown'
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 64,
-                                columnNumber: 11
-                            }, this)
-                        }, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "article-page",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: article.title
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 64,
+                    columnNumber: 4
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: article.content
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 65,
+                    columnNumber: 4
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                            to: `/users/${article.author.id}`,
+                            children: [
+                                "Author: ",
+                                article.author?.username || 'Unknown'
+                            ]
+                        }, void 0, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 64,
-                            columnNumber: 7
+                            lineNumber: 66,
+                            columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 64,
-                        columnNumber: 4
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
                         lineNumber: 66,
-                        columnNumber: 4
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "Comments"
-                    }, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 68,
-                        columnNumber: 4
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                        className: "comments-list",
-                        children: comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                        children: [
-                                            comment.author?.username || 'Anonymous',
-                                            ":"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/pages/ArticleItem.js",
-                                        lineNumber: 72,
-                                        columnNumber: 7
-                                    }, this),
-                                    " ",
-                                    comment.content
-                                ]
-                            }, comment.id, true, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 71,
-                                columnNumber: 6
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 69,
-                        columnNumber: 4
-                    }, this),
-                    currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                        onSubmit: handleCommentSubmit,
-                        className: "comment-form",
+                        columnNumber: 7
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 66,
+                    columnNumber: 4
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 68,
+                    columnNumber: 4
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                    children: "Comments"
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 70,
+                    columnNumber: 4
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                    className: "comments-list",
+                    children: comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                    children: [
+                                        comment.author?.username || 'Anonymous',
+                                        ":"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/ArticleItem.js",
+                                    lineNumber: 74,
+                                    columnNumber: 7
+                                }, this),
+                                " ",
+                                comment.content
+                            ]
+                        }, comment.id, true, {
+                            fileName: "src/pages/ArticleItem.js",
+                            lineNumber: 73,
+                            columnNumber: 6
+                        }, this))
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 71,
+                    columnNumber: 4
+                }, this),
+                currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                    onSubmit: handleCommentSubmit,
+                    className: "comment-form",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                            value: content,
+                            onChange: (e)=>setContent(e.target.value),
+                            required: true,
+                            rows: 3,
+                            placeholder: "Write your comment..."
+                        }, void 0, false, {
+                            fileName: "src/pages/ArticleItem.js",
+                            lineNumber: 81,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            type: "submit",
+                            children: "Post Comment"
+                        }, void 0, false, {
+                            fileName: "src/pages/ArticleItem.js",
+                            lineNumber: 88,
+                            columnNumber: 6
+                        }, this),
+                        error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            style: {
+                                color: 'red'
+                            },
+                            children: error
+                        }, void 0, false, {
+                            fileName: "src/pages/ArticleItem.js",
+                            lineNumber: 89,
+                            columnNumber: 16
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 80,
+                    columnNumber: 5
+                }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
-                                value: content,
-                                onChange: (e)=>setContent(e.target.value),
-                                required: true,
-                                rows: 3,
-                                placeholder: "Write your comment..."
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                to: "/login",
+                                children: "Login"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 79,
-                                columnNumber: 6
+                                lineNumber: 92,
+                                columnNumber: 12
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                type: "submit",
-                                children: "Post Comment"
-                            }, void 0, false, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 86,
-                                columnNumber: 6
-                            }, this),
-                            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                style: {
-                                    color: 'red'
-                                },
-                                children: error
-                            }, void 0, false, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 87,
-                                columnNumber: 16
-                            }, this)
+                            " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 78,
-                        columnNumber: 5
-                    }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
-                            children: "Login to comment."
+                        lineNumber: 92,
+                        columnNumber: 8
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 92,
+                    columnNumber: 5
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "article-actions",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: ()=>navigate(`/articles/${article.id}/edit`),
+                            children: "Edit"
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 90,
-                            columnNumber: 8
+                            lineNumber: 96,
+                            columnNumber: 17
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            onClick: ()=>handleDelete(article.id),
+                            children: "Delete"
+                        }, void 0, false, {
+                            fileName: "src/pages/ArticleItem.js",
+                            lineNumber: 97,
+                            columnNumber: 17
                         }, this)
-                    }, void 0, false, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 90,
-                        columnNumber: 5
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/ArticleItem.js",
-                lineNumber: 61,
-                columnNumber: 10
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>navigate(`/articles/${article.id}/edit`),
-                children: "Edit"
-            }, void 0, false, {
-                fileName: "src/pages/ArticleItem.js",
-                lineNumber: 94,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>handleDelete(article.id),
-                children: "Delete"
-            }, void 0, false, {
-                fileName: "src/pages/ArticleItem.js",
-                lineNumber: 95,
-                columnNumber: 9
-            }, this)
-        ]
-    }, void 0, true);
+                    ]
+                }, void 0, true, {
+                    fileName: "src/pages/ArticleItem.js",
+                    lineNumber: 95,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/pages/ArticleItem.js",
+            lineNumber: 63,
+            columnNumber: 10
+        }, this)
+    }, void 0, false);
 }
 _s(ArticleItem, "0UPALpszYJYxOpmJEBD1GaGUy7g=", false, function() {
     return [
@@ -27602,7 +27732,7 @@ $RefreshReg$(_c, "ArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r"}],"4g3i6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT"}],"4g3i6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
@@ -27627,7 +27757,7 @@ async function fetchCommentsByArticleId(id) {
     return res.json();
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f3Q9r":[function() {},{}],"6O7Ur":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f3Q9r":[function() {},{}],"7faOT":[function() {},{}],"6O7Ur":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a788 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$a788.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -27674,7 +27804,7 @@ function Login() {
                     children: "Login"
                 }, void 0, false, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27690,20 +27820,20 @@ function Login() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 34,
+                                    lineNumber: 35,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 40,
+                                    lineNumber: 41,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 33,
+                            lineNumber: 34,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27716,20 +27846,20 @@ function Login() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 43,
+                                    lineNumber: 44,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 49,
+                                    lineNumber: 50,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 42,
+                            lineNumber: 43,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27738,13 +27868,36 @@ function Login() {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 51,
+                            lineNumber: 52,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                                children: [
+                                    "Don't have an account? ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/register",
+                                        children: "Register"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Login.js",
+                                        lineNumber: 53,
+                                        columnNumber: 38
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/Login.js",
+                                lineNumber: 53,
+                                columnNumber: 11
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/pages/Login.js",
+                            lineNumber: 53,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 32,
+                    lineNumber: 33,
                     columnNumber: 5
                 }, this),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27752,18 +27905,18 @@ function Login() {
                     children: error
                 }, void 0, false, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 53,
+                    lineNumber: 55,
                     columnNumber: 15
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/Login.js",
-            lineNumber: 30,
+            lineNumber: 31,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/Login.js",
-        lineNumber: 29,
+        lineNumber: 30,
         columnNumber: 3
     }, this);
 }
@@ -27878,7 +28031,7 @@ function Register() {
                     children: "Register"
                 }, void 0, false, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 35,
+                    lineNumber: 36,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27894,20 +28047,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 38,
+                                    lineNumber: 39,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "First name"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 44,
+                                    lineNumber: 45,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 37,
+                            lineNumber: 38,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27920,20 +28073,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 47,
+                                    lineNumber: 48,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Last name"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 53,
+                                    lineNumber: 54,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 46,
+                            lineNumber: 47,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27946,20 +28099,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 56,
+                                    lineNumber: 57,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 62,
+                                    lineNumber: 63,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 55,
+                            lineNumber: 56,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27972,20 +28125,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 65,
+                                    lineNumber: 66,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 71,
+                                    lineNumber: 72,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 64,
+                            lineNumber: 65,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27998,20 +28151,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 74,
+                                    lineNumber: 75,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 80,
+                                    lineNumber: 81,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 73,
+                            lineNumber: 74,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28020,13 +28173,36 @@ function Register() {
                             children: "Register"
                         }, void 0, false, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 82,
+                            lineNumber: 83,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
+                                children: [
+                                    "Already have an account? ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/login",
+                                        children: "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Register.js",
+                                        lineNumber: 84,
+                                        columnNumber: 55
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/Register.js",
+                                lineNumber: 84,
+                                columnNumber: 26
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/pages/Register.js",
+                            lineNumber: 84,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 36,
+                    lineNumber: 37,
                     columnNumber: 17
                 }, this),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28034,18 +28210,18 @@ function Register() {
                     children: error
                 }, void 0, false, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 84,
+                    lineNumber: 86,
                     columnNumber: 27
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/Register.js",
-            lineNumber: 34,
+            lineNumber: 35,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/pages/Register.js",
-        lineNumber: 33,
+        lineNumber: 34,
         columnNumber: 9
     }, this);
 }
@@ -28079,6 +28255,7 @@ var _react = require("react");
 var _reactRouter = require("react-router");
 var _usersApi = require("../api/UsersApi");
 var _articlesApi = require("../api/ArticlesApi");
+var _authorItemCss = require("../format/AuthorItem.css");
 var _s = $RefreshSig$();
 function Author() {
     _s();
@@ -28105,39 +28282,61 @@ function Author() {
         children: "Loading author..."
     }, void 0, false, {
         fileName: "src/pages/AuthorItem.js",
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 22
     }, this);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "author-profile",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: [
-                    "Author: ",
-                    author.username
-                ]
-            }, void 0, true, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "author-profile-picture",
+                children: author.profilePicture ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: author.profilePicture,
+                    alt: "Profile",
+                    style: {
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        borderRadius: '50%'
+                    }
+                }, void 0, false, {
+                    fileName: "src/pages/AuthorItem.js",
+                    lineNumber: 40,
+                    columnNumber: 6
+                }, this) : author.username ? author.username[0].toUpperCase() : '?' // Initial as fallback
+            }, void 0, false, {
                 fileName: "src/pages/AuthorItem.js",
-                lineNumber: 36,
+                lineNumber: 37,
                 columnNumber: 4
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "author-profile-username",
+                children: author.username
+            }, void 0, false, {
+                fileName: "src/pages/AuthorItem.js",
+                lineNumber: 45,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "author-profile-email",
                 children: [
                     "Email: ",
                     author.email
                 ]
             }, void 0, true, {
                 fileName: "src/pages/AuthorItem.js",
-                lineNumber: 37,
+                lineNumber: 46,
                 columnNumber: 4
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "author-profile-joined",
                 children: [
                     "Joined: ",
                     new Date(author.createdDate).toLocaleDateString()
                 ]
             }, void 0, true, {
                 fileName: "src/pages/AuthorItem.js",
-                lineNumber: 38,
+                lineNumber: 47,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28146,33 +28345,34 @@ function Author() {
                 children: showArticles ? "Hide Articles" : "Show Articles"
             }, void 0, false, {
                 fileName: "src/pages/AuthorItem.js",
-                lineNumber: 40,
+                lineNumber: 49,
                 columnNumber: 4
             }, this),
             showArticles && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                className: "author-profile-articles-list",
                 children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                             href: `/articles/${article.id}`,
                             children: article.title
                         }, void 0, false, {
                             fileName: "src/pages/AuthorItem.js",
-                            lineNumber: 48,
+                            lineNumber: 57,
                             columnNumber: 8
                         }, this)
                     }, article.id, false, {
                         fileName: "src/pages/AuthorItem.js",
-                        lineNumber: 47,
+                        lineNumber: 56,
                         columnNumber: 7
                     }, this))
             }, void 0, false, {
                 fileName: "src/pages/AuthorItem.js",
-                lineNumber: 45,
+                lineNumber: 54,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/pages/AuthorItem.js",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 3
     }, this);
 }
@@ -28190,7 +28390,7 @@ $RefreshReg$(_c, "Author");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/UsersApi":"6GqQB","../api/ArticlesApi":"akou4"}],"6GqQB":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/UsersApi":"6GqQB","../api/ArticlesApi":"akou4","../format/AuthorItem.css":"2y5TA"}],"6GqQB":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchUserById", ()=>fetchUserById);
@@ -28231,7 +28431,7 @@ async function deleteUser(id) {
     if (!res.ok) throw new Error('Failed to delete user');
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kunFd":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2y5TA":[function() {},{}],"kunFd":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$d401 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$d401.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -28246,6 +28446,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
+var _articleFormCss = require("../format/ArticleForm.css");
 var _s = $RefreshSig$();
 function ArticleForm({ isEdit = false }) {
     _s();
@@ -28276,48 +28477,55 @@ function ArticleForm({ isEdit = false }) {
             console.error('Failed to save article:', err);
         }
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-        onSubmit: handleSubmit,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: isEdit ? 'Edit Article' : 'Create Article'
-            }, void 0, false, {
-                fileName: "src/pages/ArticleForm.js",
-                lineNumber: 38,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                placeholder: "Title",
-                value: title,
-                onChange: (e)=>setTitle(e.target.value),
-                required: true
-            }, void 0, false, {
-                fileName: "src/pages/ArticleForm.js",
-                lineNumber: 39,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
-                placeholder: "Content",
-                value: content,
-                onChange: (e)=>setContent(e.target.value),
-                required: true
-            }, void 0, false, {
-                fileName: "src/pages/ArticleForm.js",
-                lineNumber: 40,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                type: "submit",
-                children: isEdit ? 'Update' : 'Create'
-            }, void 0, false, {
-                fileName: "src/pages/ArticleForm.js",
-                lineNumber: 41,
-                columnNumber: 4
-            }, this)
-        ]
-    }, void 0, true, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "article-form-container",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+            onSubmit: handleSubmit,
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: isEdit ? 'Edit Article' : 'Create Article'
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleForm.js",
+                    lineNumber: 40,
+                    columnNumber: 5
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    placeholder: "Title",
+                    value: title,
+                    onChange: (e)=>setTitle(e.target.value),
+                    required: true
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleForm.js",
+                    lineNumber: 41,
+                    columnNumber: 5
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                    placeholder: "Content",
+                    value: content,
+                    onChange: (e)=>setContent(e.target.value),
+                    required: true
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleForm.js",
+                    lineNumber: 42,
+                    columnNumber: 5
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    type: "submit",
+                    children: isEdit ? 'Update' : 'Create'
+                }, void 0, false, {
+                    fileName: "src/pages/ArticleForm.js",
+                    lineNumber: 43,
+                    columnNumber: 5
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/pages/ArticleForm.js",
+            lineNumber: 39,
+            columnNumber: 4
+        }, this)
+    }, void 0, false, {
         fileName: "src/pages/ArticleForm.js",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 3
     }, this);
 }
@@ -28336,7 +28544,7 @@ $RefreshReg$(_c, "ArticleForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../api/ArticlesApi":"akou4"}],"iUgJE":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../api/ArticlesApi":"akou4","../format/ArticleForm.css":"fChie"}],"fChie":[function() {},{}],"iUgJE":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$99ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$99ad.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -28350,6 +28558,7 @@ parcelHelpers.export(exports, "default", ()=>UserManagement);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _usersApi = require("../api/UsersApi");
+var _userManagementCss = require("../format/UserManagement.css");
 var _s = $RefreshSig$();
 function UserManagement() {
     _s();
@@ -28388,12 +28597,13 @@ function UserManagement() {
         }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "user-management-container",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "All Users"
             }, void 0, false, {
                 fileName: "src/pages/UserManagement.js",
-                lineNumber: 45,
+                lineNumber: 46,
                 columnNumber: 13
             }, this),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28403,7 +28613,7 @@ function UserManagement() {
                 children: error
             }, void 0, false, {
                 fileName: "src/pages/UserManagement.js",
-                lineNumber: 46,
+                lineNumber: 47,
                 columnNumber: 23
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
@@ -28416,46 +28626,46 @@ function UserManagement() {
                                     children: "ID"
                                 }, void 0, false, {
                                     fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 50,
+                                    lineNumber: 51,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 51,
+                                    lineNumber: 52,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 52,
+                                    lineNumber: 53,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Role"
                                 }, void 0, false, {
                                     fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 53,
+                                    lineNumber: 54,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Actions"
                                 }, void 0, false, {
                                     fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 54,
+                                    lineNumber: 55,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/UserManagement.js",
-                            lineNumber: 49,
+                            lineNumber: 50,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "src/pages/UserManagement.js",
-                        lineNumber: 48,
+                        lineNumber: 49,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
@@ -28465,21 +28675,21 @@ function UserManagement() {
                                         children: user.id
                                     }, void 0, false, {
                                         fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 60,
+                                        lineNumber: 61,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: user.username
                                     }, void 0, false, {
                                         fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 61,
+                                        lineNumber: 62,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: user.email
                                     }, void 0, false, {
                                         fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 62,
+                                        lineNumber: 63,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -28492,7 +28702,7 @@ function UserManagement() {
                                                     children: "USER"
                                                 }, void 0, false, {
                                                     fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 68,
+                                                    lineNumber: 69,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -28500,7 +28710,7 @@ function UserManagement() {
                                                     children: "AUTHOR"
                                                 }, void 0, false, {
                                                     fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 69,
+                                                    lineNumber: 70,
                                                     columnNumber: 37
                                                 }, this),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -28508,18 +28718,18 @@ function UserManagement() {
                                                     children: "ADMIN"
                                                 }, void 0, false, {
                                                     fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 70,
+                                                    lineNumber: 71,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/UserManagement.js",
-                                            lineNumber: 64,
+                                            lineNumber: 65,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 63,
+                                        lineNumber: 64,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -28528,35 +28738,35 @@ function UserManagement() {
                                             children: "Delete"
                                         }, void 0, false, {
                                             fileName: "src/pages/UserManagement.js",
-                                            lineNumber: 74,
+                                            lineNumber: 75,
                                             columnNumber: 33
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 73,
+                                        lineNumber: 74,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, user.id, true, {
                                 fileName: "src/pages/UserManagement.js",
-                                lineNumber: 59,
+                                lineNumber: 60,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "src/pages/UserManagement.js",
-                        lineNumber: 57,
+                        lineNumber: 58,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/pages/UserManagement.js",
-                lineNumber: 47,
+                lineNumber: 48,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/pages/UserManagement.js",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 9
     }, this);
 }
@@ -28570,6 +28780,6 @@ $RefreshReg$(_c, "UserManagement");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/UsersApi":"6GqQB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/UsersApi":"6GqQB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../format/UserManagement.css":"ft4SO"}],"ft4SO":[function() {},{}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
 //# sourceMappingURL=frontend.0f77c784.js.map

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../api/AuthApi";
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 export default function Register() {
     const [lastName, setLastName] = useState('');
@@ -80,6 +81,7 @@ export default function Register() {
                         <label>Email</label>
                     </div>
                     <button type="submit" className="btn">Register</button>
+                    <div><em>Already have an account? <Link to="/login">Login</Link></em></div>
                 </form>
                 {error && <p className="error-message">{error}</p>}
             </div>

@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(120deg, #fbeffb 0%, #e3f0ff 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Dreamy sakura petal overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 182, 193, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 192, 203, 0.13) 0%, transparent 70%),
+    radial-gradient(ellipse at 60% 80%, rgba(255, 182, 193, 0.10) 0%, transparent 70%),
+    url('https://pngimg.com/d/sakura_PNG127.png'); /* fallback for sakura petals */
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-size: 600px 400px, 500px 300px, 700px 500px, 120px;
+  background-position: left top, right top, right bottom, center;
+  opacity: 0.7;
+}
+
+.layout-root {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+.layout-sidebar {
+  width: 240px;
+  background: rgba(255,255,255,0.92);
+  border-right: 1.5px solid #ececec;
+  box-shadow: 2px 0 12px rgba(22,41,56,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px 18px 24px 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+}
+
+.layout-sidebar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.layout-sidebar-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ececec;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7em;
+  color: #b0b0b0;
+  overflow: hidden;
+}
+
+.layout-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #162938;
+  letter-spacing: 0.01em;
+}
+
+.layout-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: auto;
+  width: 100%;
+}
+
+.layout-nav-link {
+  color: #162938;
+  text-decoration: none;
+  font-size: 1.08em;
+  font-weight: 500;
+  padding: 8px 0 8px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.layout-nav-link:hover, .layout-nav-link.active {
+  background: #ececec;
+  color: #270023;
+}
+
+.layout-sidebar-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 32px;
+  gap: 10px;
+}
+
+.layout-auth-link {
+  color: #162938;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  margin-left: 8px;
+  transition: color 0.2s;
+}
+
+.layout-auth-link:hover {
+  color: #270023;
+}
+
+.layout-main {
+  flex: 1;
+  margin-left: 240px;
+  padding: 0 0 0 0;
+  min-height: 100vh;
+  background: transparent;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .layout-sidebar {
+    width: 100vw;
+    height: auto;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 8px;
+    border-right: none;
+    border-bottom: 1.5px solid #ececec;
+    box-shadow: 0 2px 12px rgba(22,41,56,0.04);
+  }
+  .layout-sidebar-header {
+    margin-bottom: 0;
+    margin-right: 18px;
+  }
+  .layout-nav {
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 0;
+    width: auto;
+  }
+  .layout-main {
+    margin-left: 0;
+    margin-top: 80px;
+    padding: 0;
+  }
+  .layout-sidebar-footer {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
+}
