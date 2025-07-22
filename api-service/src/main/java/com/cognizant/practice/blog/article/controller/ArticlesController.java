@@ -87,8 +87,8 @@ public class ArticlesController {
     // updatedDate -> current date
     // return updated article
     @PutMapping(value = "/articles/{id}")
-    public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest) {
-        return articlesService.updateArticle(id, articleRequest);
+    public Article updateArticle(@PathVariable UUID id, @RequestBody ArticleRequest articleRequest, Principal principal) {
+        return articlesService.updateArticle(id, articleRequest, principal);
     }
 
     // PATCH partial update

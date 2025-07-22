@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
 import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
 import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
+import { fetchCurrentUser } from '../api/UsersApi';
 import { Link } from 'react-router';
 
 import '../format/Comments.css';
@@ -58,12 +59,37 @@ export default function ArticleItem() {
 
 	if (!article) return <p>Loading...</p>;
 
+	function formatDateTimeToMin(dateStr) {
+		const d = new Date(dateStr);
+		return d.getFullYear() + '-' + (d.getMonth()+1).toString().padStart(2,'0') + '-' + d.getDate().toString().padStart(2,'0') + ' ' + d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+	}
+
+	const createdBy = article.author?.username || 'Unknown';
+	const createdAt = article.createdDate;
+	const editedBy = article.editor.username || createdBy;
+	const editedAt = article.updatedDate || createdAt;
+
+	const showEdited = (
+		createdBy !== editedBy ||
+		formatDateTimeToMin(createdAt) !== formatDateTimeToMin(editedAt)
+	);
+
 	return (
         <>
          <div className="article-page">
 			<h2>{article.title}</h2>
 			<p>{article.content}</p>
-			<p><em><NavLink to={`/users/${article.author.id}`}>Author: {article.author?.username || 'Unknown'}</NavLink></em></p>
+			<p>
+				<em>
+					<NavLink to={`/users/${article.author.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
+				</em>
+				{showEdited && (
+					<>
+						<br />
+						<em> <NavLink to={`/users/${article.editor.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
+					</>
+				)}
+			</p>
 		
 			<hr />
 
@@ -92,10 +118,11 @@ export default function ArticleItem() {
 				<p><em><Link to="/login">Login</Link> to comment.</em></p>
 			)}
 
-            <div className="article-actions">
-                <button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
-                <button onClick={() => handleDelete(article.id)}>Delete</button>
-            </div>
+			<div className="article-actions">
+				<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+				<button onClick={() => handleDelete(article.id)}>Delete</button>
+			</div>
+            
 		</div>
         </>
        

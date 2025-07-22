@@ -14,6 +14,7 @@ public class ArticleConvertor {
                 .createdDate(articleEntity.getCreatedDate())
                 .updatedDate(articleEntity.getUpdatedDate())
                 .author(UserConvertor.toDto(articleEntity.getAuthor()))
+                .editor(UserConvertor.toDto(articleEntity.getEditor()))
                 .build();
     }
 }

@@ -9,6 +9,12 @@ export async function fetchUserById(id) {
 	return res.json();
 }
 
+export async function fetchCurrentUser(username) {
+	const res = await fetch(`/api/users/${username}`);
+	if (!res.ok) throw new Error("No users with the given username.");
+	return res.json();
+}
+
 export async function fetchUsers() {
     const res = await fetch(`/api/users`, {
         headers: authHeader(),

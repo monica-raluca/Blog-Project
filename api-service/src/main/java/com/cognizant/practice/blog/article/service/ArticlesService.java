@@ -163,15 +163,17 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, author, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
 
-    public Article updateArticle(UUID id, ArticleRequest articleRequest) {
+    public Article updateArticle(UUID id, ArticleRequest articleRequest, Principal principal) {
         if (!isValidRequest(articleRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
+
+        UserEntity editor = getPrincipalUser(principal);
 
         Optional<ArticleEntity> article = articleRepository.findById(id);
 
@@ -185,6 +187,7 @@ public class ArticlesService {
         newArticle.setTitle(articleRequest.title());
         newArticle.setSummary(summarize(articleRequest.content()));
         newArticle.setUpdatedDate(LocalDateTime.now());
+        newArticle.setEditor(editor);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }

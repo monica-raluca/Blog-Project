@@ -20,4 +20,5 @@ public class Article {
     private LocalDateTime updatedDate;
 
     private User author;
+    private User editor;
 }

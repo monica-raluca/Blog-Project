@@ -38,4 +38,7 @@ public class ArticleEntity {
 
     @ManyToOne
     private UserEntity author;
+
+    @ManyToOne
+    private UserEntity editor;
 }
