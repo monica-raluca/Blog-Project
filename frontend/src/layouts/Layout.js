@@ -15,8 +15,6 @@ export function Layout() {
 	console.log(token, currentUser);
 
 	const logOut = () => {
-		// localStorage.removeItem('token');
-        // localStorage.removeItem('currentUser');
 		logout();
 		navigate('/login');
 	};

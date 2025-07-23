@@ -2,6 +2,7 @@ import { useState } from "react";
 import { registerUser } from "../api/AuthApi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
+import { useAuth } from "../api/AuthContext";
 
 export default function Register() {
     const [lastName, setLastName] = useState('');
@@ -12,16 +13,20 @@ export default function Register() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
+    const {login} = useAuth();
+
     const handleSubmit = async (e) => {
             e.preventDefault();
             try {
                 const userToken = await registerUser({ lastName, firstName, username, password, email });
-    
-                localStorage.setItem('token', JSON.stringify(userToken.token));
-                localStorage.setItem('currentUser', username);
+                console.log(username, lastName, firstName, password, userToken, email);
+                login(JSON.stringify(userToken.token), username);
                 
-                console.log(localStorage.getItem('currentUser'));
-                console.log(JSON.parse(localStorage.getItem('token')));
+                // localStorage.setItem('token', JSON.stringify(userToken.token));
+                // localStorage.setItem('currentUser', username);
+                
+                // console.log(localStorage.getItem('currentUser'));
+                // console.log(JSON.parse(localStorage.getItem('token')));
                 setError(null);
     
                 navigate('/articles');

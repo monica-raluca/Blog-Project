@@ -29391,8 +29391,6 @@ function Layout() {
     const { token, currentUser, logout } = (0, _authContext.useAuth)();
     console.log(token, currentUser);
     const logOut = ()=>{
-        // localStorage.removeItem('token');
-        // localStorage.removeItem('currentUser');
         logout();
         navigate('/login');
     };
@@ -29424,12 +29422,12 @@ function Layout() {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 35,
+                                    lineNumber: 33,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 33,
+                                lineNumber: 31,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -29437,13 +29435,13 @@ function Layout() {
                                 children: "My Blog"
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 37,
+                                lineNumber: 35,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 32,
+                        lineNumber: 30,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
@@ -29455,7 +29453,7 @@ function Layout() {
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 40,
+                                lineNumber: 38,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29469,12 +29467,12 @@ function Layout() {
                                     children: "Create Article"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 42,
+                                    lineNumber: 40,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 41,
+                                lineNumber: 39,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29487,18 +29485,18 @@ function Layout() {
                                     children: "User Management"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 45,
+                                    lineNumber: 43,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 44,
+                                lineNumber: 42,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 39,
+                        lineNumber: 37,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29517,7 +29515,7 @@ function Layout() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 51,
+                                    lineNumber: 49,
                                     columnNumber: 8
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29531,7 +29529,7 @@ function Layout() {
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 52,
+                                    lineNumber: 50,
                                     columnNumber: 8
                                 }, this)
                             ]
@@ -29543,7 +29541,7 @@ function Layout() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 56,
+                                    lineNumber: 54,
                                     columnNumber: 8
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
@@ -29552,38 +29550,38 @@ function Layout() {
                                     children: "Register"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 57,
+                                    lineNumber: 55,
                                     columnNumber: 8
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 48,
+                        lineNumber: 46,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 31,
+                lineNumber: 29,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                 className: "layout-main",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 63,
+                    lineNumber: 61,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 62,
+                lineNumber: 60,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/layouts/Layout.js",
-        lineNumber: 30,
+        lineNumber: 28,
         columnNumber: 3
     }, this);
 }
@@ -39763,6 +39761,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _authApi = require("../api/AuthApi");
 var _reactRouter = require("react-router");
+var _authContext = require("../api/AuthContext");
 var _s = $RefreshSig$();
 function Register() {
     _s();
@@ -39773,6 +39772,7 @@ function Register() {
     const [email, setEmail] = (0, _react.useState)('');
     const [error, setError] = (0, _react.useState)(null);
     const navigate = (0, _reactRouter.useNavigate)();
+    const { login } = (0, _authContext.useAuth)();
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try {
@@ -39783,10 +39783,12 @@ function Register() {
                 password,
                 email
             });
-            localStorage.setItem('token', JSON.stringify(userToken.token));
-            localStorage.setItem('currentUser', username);
-            console.log(localStorage.getItem('currentUser'));
-            console.log(JSON.parse(localStorage.getItem('token')));
+            console.log(username, lastName, firstName, password, userToken, email);
+            login(JSON.stringify(userToken.token), username);
+            // localStorage.setItem('token', JSON.stringify(userToken.token));
+            // localStorage.setItem('currentUser', username);
+            // console.log(localStorage.getItem('currentUser'));
+            // console.log(JSON.parse(localStorage.getItem('token')));
             setError(null);
             navigate('/articles');
         } catch (err) {
@@ -39802,7 +39804,7 @@ function Register() {
                     children: "Register"
                 }, void 0, false, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 36,
+                    lineNumber: 41,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39818,20 +39820,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 39,
+                                    lineNumber: 44,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "First name"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 45,
+                                    lineNumber: 50,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 38,
+                            lineNumber: 43,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39844,20 +39846,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 48,
+                                    lineNumber: 53,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Last name"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 54,
+                                    lineNumber: 59,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 47,
+                            lineNumber: 52,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39870,20 +39872,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 57,
+                                    lineNumber: 62,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 63,
+                                    lineNumber: 68,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 56,
+                            lineNumber: 61,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39896,20 +39898,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 66,
+                                    lineNumber: 71,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 72,
+                                    lineNumber: 77,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 65,
+                            lineNumber: 70,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39922,20 +39924,20 @@ function Register() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 75,
+                                    lineNumber: 80,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "src/pages/Register.js",
-                                    lineNumber: 81,
+                                    lineNumber: 86,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 74,
+                            lineNumber: 79,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39944,7 +39946,7 @@ function Register() {
                             children: "Register"
                         }, void 0, false, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 83,
+                            lineNumber: 88,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39956,24 +39958,24 @@ function Register() {
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/pages/Register.js",
-                                        lineNumber: 84,
+                                        lineNumber: 89,
                                         columnNumber: 55
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/pages/Register.js",
-                                lineNumber: 84,
+                                lineNumber: 89,
                                 columnNumber: 26
                             }, this)
                         }, void 0, false, {
                             fileName: "src/pages/Register.js",
-                            lineNumber: 84,
+                            lineNumber: 89,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 37,
+                    lineNumber: 42,
                     columnNumber: 17
                 }, this),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39981,24 +39983,25 @@ function Register() {
                     children: error
                 }, void 0, false, {
                     fileName: "src/pages/Register.js",
-                    lineNumber: 86,
+                    lineNumber: 91,
                     columnNumber: 27
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/Register.js",
-            lineNumber: 35,
+            lineNumber: 40,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "src/pages/Register.js",
-        lineNumber: 34,
+        lineNumber: 39,
         columnNumber: 9
     }, this);
 }
-_s(Register, "dsPl2x1ex/nXEW6vwHh6MZQPYPw=", false, function() {
+_s(Register, "bQUtd7aOwq57avXvIWCw/5gftz4=", false, function() {
     return [
-        (0, _reactRouter.useNavigate)
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
     ];
 });
 _c = Register;
@@ -40010,7 +40013,7 @@ $RefreshReg$(_c, "Register");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"hre2g":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/AuthContext":"5rZLm"}],"hre2g":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$5321 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$5321.init();
 var prevRefreshReg = globalThis.$RefreshReg$;

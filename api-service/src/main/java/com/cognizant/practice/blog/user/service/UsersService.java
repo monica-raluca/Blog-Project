@@ -82,12 +82,12 @@ public class UsersService {
 
         UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), LocalDateTime.now(), Role.ROLE_USER, null, null);
 
-        // return jwtService.generateToken(userRepository.save(newUser));
+//         return jwtService.generateToken(userRepository.save(newUser));
         Map<String, Object> extraClaims = new HashMap<>();
         Collection<? extends GrantedAuthority> authorities = newUser.getAuthorities();
         extraClaims.put("authorities", authorities);
 
-        return jwtService.generateToken(extraClaims, newUser);
+        return jwtService.generateToken(extraClaims, userRepository.save(newUser));
     }
 
     public String loginUser(UserLoginRequest userLoginRequest) {
