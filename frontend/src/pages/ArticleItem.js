@@ -6,6 +6,7 @@ import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
 import { Link } from 'react-router';
 import RequireRoles from '../api/RequireRoles';
 import { useAuth } from '../api/AuthContext';
+import { hasRole, hasUser } from '../api/AuthApi';
 
 import '../format/Comments.css';
 import '../format/ArticleItem.css';
@@ -117,11 +118,14 @@ export default function ArticleItem() {
 				<p><em><Link to="/login">Login</Link> to comment.</em></p>
 			)}
 
-			<RequireRoles roles={["ADMIN"]}>
-				<div className="article-actions">
-					<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
-					<button onClick={() => handleDelete(article.id)}>Delete</button>
-				</div>
+			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
+			{(article.author.username === currentUser || hasRole("ADMIN")) &&
+			<div className="article-actions">
+				<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+				<button onClick={() => handleDelete(article.id)}>Delete</button>
+			</div>
+			}
+			
 			</RequireRoles>
 			
             

@@ -52,8 +52,8 @@ export default function Articles() {
 						</div>
 						<div className='article-meta'>
 							<span>Created by <NavLink to={`/users/${article.author.id}`}>{article.author.username}</NavLink> at {formatDateTimeToMin(article.createdDate)}</span>
-                            {article.author.username !== article.editor.username ||
-                            formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate) &&
+                            {(article.author.username !== article.editor.username ||
+                            formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) &&
                             <span>Edited by <NavLink to={`/users/${article.editor.id}`}>{article.editor.username}</NavLink> at {formatDateTimeToMin(article.updatedDate)}</span>}
 						</div>
 						<div className='article-body'>

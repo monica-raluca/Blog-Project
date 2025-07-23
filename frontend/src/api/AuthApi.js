@@ -59,3 +59,10 @@ export function hasRole(role) {
 	if (!user || !user.username || !user.authorities) return false;
 	return user.authorities.includes("ROLE_" + role);
 }
+
+export function hasUser(username) {
+	const user = getCurrentUser();
+	if (!user || !user.username || !user.authorities) return false;
+	console.log("TEST permission" + user + username);
+	return user.username === username;
+}

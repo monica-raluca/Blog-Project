@@ -29610,6 +29610,7 @@ parcelHelpers.export(exports, "registerUser", ()=>registerUser);
 parcelHelpers.export(exports, "loginUser", ()=>loginUser);
 parcelHelpers.export(exports, "getCurrentUser", ()=>getCurrentUser);
 parcelHelpers.export(exports, "hasRole", ()=>hasRole);
+parcelHelpers.export(exports, "hasUser", ()=>hasUser);
 var _jwtDecode = require("jwt-decode");
 async function registerUser({ lastName, firstName, username, password, email }) {
     const res = await fetch('/api/users/register', {
@@ -29665,6 +29666,12 @@ function hasRole(role) {
     const user = getCurrentUser();
     if (!user || !user.username || !user.authorities) return false;
     return user.authorities.includes("ROLE_" + role);
+}
+function hasUser(username) {
+    const user = getCurrentUser();
+    if (!user || !user.username || !user.authorities) return false;
+    console.log("TEST permission" + user + username);
+    return user.username === username;
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","jwt-decode":"4WbSe"}],"4WbSe":[function(require,module,exports,__globalThis) {
@@ -29729,7 +29736,10 @@ var _authApi = require("./AuthApi");
 var _reactRouter = require("react-router");
 const token = JSON.parse(localStorage.getItem('token'));
 const RequireRoles = ({ roles = [], children })=>{
+    console.log(roles);
+    // console.log(hasRole(role));
     const hasAccess = roles.some((role)=>(0, _authApi.hasRole)(role));
+    console.log(hasAccess);
     return hasAccess ? children : null;
 };
 _c = RequireRoles;
@@ -29906,7 +29916,7 @@ function Articles() {
                                                 lineNumber: 54,
                                                 columnNumber: 8
                                             }, this),
-                                            article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: [
                                                     "Edited by ",
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -39246,6 +39256,7 @@ var _commentApi = require("../api/CommentApi");
 var _requireRoles = require("../api/RequireRoles");
 var _requireRolesDefault = parcelHelpers.interopDefault(_requireRoles);
 var _authContext = require("../api/AuthContext");
+var _authApi = require("../api/AuthApi");
 var _commentsCss = require("../format/Comments.css");
 var _articleItemCss = require("../format/ArticleItem.css");
 var _s = $RefreshSig$();
@@ -39291,7 +39302,7 @@ function ArticleItem() {
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/pages/ArticleItem.js",
-        lineNumber: 59,
+        lineNumber: 60,
         columnNumber: 23
     }, this);
     function formatDateTimeToMin(dateStr) {
@@ -39311,14 +39322,14 @@ function ArticleItem() {
                     children: article.title
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 79,
+                    lineNumber: 80,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: article.content
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 80,
+                    lineNumber: 81,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39333,7 +39344,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 83,
+                                    lineNumber: 84,
                                     columnNumber: 6
                                 }, this),
                                 " at ",
@@ -39341,14 +39352,14 @@ function ArticleItem() {
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 82,
+                            lineNumber: 83,
                             columnNumber: 5
                         }, this),
                         showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 87,
+                                    lineNumber: 88,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39362,7 +39373,7 @@ function ArticleItem() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/ArticleItem.js",
-                                            lineNumber: 88,
+                                            lineNumber: 89,
                                             columnNumber: 12
                                         }, this),
                                         " at ",
@@ -39371,7 +39382,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 88,
+                                    lineNumber: 89,
                                     columnNumber: 7
                                 }, this)
                             ]
@@ -39379,19 +39390,19 @@ function ArticleItem() {
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 81,
+                    lineNumber: 82,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 93,
+                    lineNumber: 94,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: "Comments"
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 95,
+                    lineNumber: 96,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -39405,7 +39416,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 99,
+                                    lineNumber: 100,
                                     columnNumber: 7
                                 }, this),
                                 " ",
@@ -39413,12 +39424,12 @@ function ArticleItem() {
                             ]
                         }, comment.id, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 98,
+                            lineNumber: 99,
                             columnNumber: 6
                         }, this))
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 96,
+                    lineNumber: 97,
                     columnNumber: 4
                 }, this),
                 currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39433,7 +39444,7 @@ function ArticleItem() {
                             placeholder: "Write your comment..."
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 106,
+                            lineNumber: 107,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39441,7 +39452,7 @@ function ArticleItem() {
                             children: "Post Comment"
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 113,
+                            lineNumber: 114,
                             columnNumber: 6
                         }, this),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39451,13 +39462,13 @@ function ArticleItem() {
                             children: error
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 114,
+                            lineNumber: 115,
                             columnNumber: 16
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 105,
+                    lineNumber: 106,
                     columnNumber: 5
                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39467,26 +39478,27 @@ function ArticleItem() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 117,
+                                lineNumber: 118,
                                 columnNumber: 12
                             }, this),
                             " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 117,
+                        lineNumber: 118,
                         columnNumber: 8
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 117,
+                    lineNumber: 118,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
                     roles: [
+                        "AUTHOR",
                         "ADMIN"
                     ],
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: (article.author.username === currentUser || (0, _authApi.hasRole)("ADMIN")) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "article-actions",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39494,32 +39506,32 @@ function ArticleItem() {
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 122,
-                                columnNumber: 6
+                                lineNumber: 124,
+                                columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 onClick: ()=>handleDelete(article.id),
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 123,
-                                columnNumber: 6
+                                lineNumber: 125,
+                                columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 121,
-                        columnNumber: 5
+                        lineNumber: 123,
+                        columnNumber: 4
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 120,
+                    lineNumber: 121,
                     columnNumber: 4
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleItem.js",
-            lineNumber: 78,
+            lineNumber: 79,
             columnNumber: 10
         }, this)
     }, void 0, false);
@@ -39540,7 +39552,7 @@ $RefreshReg$(_c, "ArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm"}],"4g3i6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm","../api/AuthApi":"gPkaz"}],"4g3i6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
