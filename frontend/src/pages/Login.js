@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { loginUser } from '../api/AuthApi';
 import { Link } from 'react-router';
+import { useAuth } from '../api/AuthContext';
 
 import '../format/Login.css';
 
@@ -11,13 +12,16 @@ export default function Login() {
 	const [error, setError] = useState(null);
 	const navigate = useNavigate();
 
+	const {login} = useAuth();
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			const userToken = await loginUser({ username, password });
 
-			localStorage.setItem('token', JSON.stringify(userToken.token));
-			localStorage.setItem('currentUser', username);
+			// localStorage.setItem('token', JSON.stringify(userToken.token));
+			// localStorage.setItem('currentUser', username);
+			login(JSON.stringify(userToken.token), username);
 
 			setError(null);
 			navigate('/articles');

@@ -677,13 +677,20 @@ try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _blogApp = require("./BlogApp");
+var _authContext = require("./api/AuthContext");
 // Clear the existing HTML content
 document.body.innerHTML = '<div id="app"></div>';
 // Render your React component instead
 const root = (0, _client.createRoot)(document.getElementById('app'));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _blogApp.BlogApp), {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authContext.AuthProvider), {
+    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _blogApp.BlogApp), {}, void 0, false, {
+        fileName: "src/app.js",
+        lineNumber: 11,
+        columnNumber: 5
+    }, undefined)
+}, void 0, false, {
     fileName: "src/app.js",
-    lineNumber: 9,
+    lineNumber: 10,
     columnNumber: 13
 }, undefined)); // // console.log('Hello world!');
  // import { createRoot } from 'react-dom/client';
@@ -698,7 +705,7 @@ root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _blogApp.BlogApp), {}, 
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./BlogApp":"2e3uZ"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./BlogApp":"2e3uZ","./api/AuthContext":"5rZLm"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -18434,144 +18441,151 @@ var _articleForm = require("./pages/ArticleForm");
 var _articleFormDefault = parcelHelpers.interopDefault(_articleForm);
 var _userManagement = require("./pages/UserManagement");
 var _userManagementDefault = parcelHelpers.interopDefault(_userManagement);
+var _authContext = require("./api/AuthContext");
 function BlogApp() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.BrowserRouter), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Routes), {
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                path: "/",
-                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _layout.Layout), {}, void 0, false, {
-                    fileName: "src/BlogApp.js",
-                    lineNumber: 16,
-                    columnNumber: 30
-                }, void 0),
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        index: true,
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Navigate), {
-                            to: "/articles",
-                            replace: true
-                        }, void 0, false, {
-                            fileName: "src/BlogApp.js",
-                            lineNumber: 17,
-                            columnNumber: 28
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 17,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "articles",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articlesDefault.default), {}, void 0, false, {
-                            fileName: "src/BlogApp.js",
-                            lineNumber: 18,
-                            columnNumber: 38
-                        }, void 0)
-                    }, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authContext.AuthProvider), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.BrowserRouter), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Routes), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                    path: "/",
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _layout.Layout), {}, void 0, false, {
                         fileName: "src/BlogApp.js",
                         lineNumber: 18,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "articles/:id",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleItemDefault.default), {}, void 0, false, {
+                        columnNumber: 31
+                    }, void 0),
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            index: true,
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Navigate), {
+                                to: "/articles",
+                                replace: true
+                            }, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 19,
+                                columnNumber: 29
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 19,
-                            columnNumber: 42
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 19,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "/articles/create",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {}, void 0, false, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "articles",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articlesDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 20,
+                                columnNumber: 39
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 20,
-                            columnNumber: 46
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 20,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "/articles/:id/edit",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {
-                            isEdit: true
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "articles/:id",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleItemDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 21,
+                                columnNumber: 43
+                            }, void 0)
                         }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 21,
-                            columnNumber: 48
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 21,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "login",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "/articles/create",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 22,
+                                columnNumber: 47
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 22,
-                            columnNumber: 35
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 22,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "register",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registerDefault.default), {}, void 0, false, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "/articles/:id/edit",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {
+                                isEdit: true
+                            }, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 23,
+                                columnNumber: 49
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 23,
-                            columnNumber: 38
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 23,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "users/:id",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authorItemDefault.default), {}, void 0, false, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "login",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 24,
+                                columnNumber: 36
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 24,
-                            columnNumber: 39
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 24,
-                        columnNumber: 6
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
-                        path: "admin/users",
-                        element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userManagementDefault.default), {}, void 0, false, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "register",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registerDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 25,
+                                columnNumber: 39
+                            }, void 0)
+                        }, void 0, false, {
                             fileName: "src/BlogApp.js",
                             lineNumber: 25,
-                            columnNumber: 41
-                        }, void 0)
-                    }, void 0, false, {
-                        fileName: "src/BlogApp.js",
-                        lineNumber: 25,
-                        columnNumber: 6
-                    }, this)
-                ]
-            }, void 0, true, {
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "users/:id",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authorItemDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 26,
+                                columnNumber: 40
+                            }, void 0)
+                        }, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 26,
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
+                            path: "admin/users",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userManagementDefault.default), {}, void 0, false, {
+                                fileName: "src/BlogApp.js",
+                                lineNumber: 27,
+                                columnNumber: 42
+                            }, void 0)
+                        }, void 0, false, {
+                            fileName: "src/BlogApp.js",
+                            lineNumber: 27,
+                            columnNumber: 7
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/BlogApp.js",
+                    lineNumber: 18,
+                    columnNumber: 6
+                }, this)
+            }, void 0, false, {
                 fileName: "src/BlogApp.js",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 5
             }, this)
         }, void 0, false, {
             fileName: "src/BlogApp.js",
-            lineNumber: 15,
+            lineNumber: 16,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/BlogApp.js",
-        lineNumber: 14,
+        lineNumber: 15,
         columnNumber: 3
     }, this);
 }
@@ -18584,7 +18598,7 @@ $RefreshReg$(_c, "BlogApp");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","./layouts/Layout":"1V3BS","./pages/Articles":"gh5Ho","./pages/ArticleItem":"j5RH2","./pages/Login":"6O7Ur","./pages/Register":"k8Hue","./pages/AuthorItem":"hre2g","./pages/ArticleForm":"kunFd","./pages/UserManagement":"iUgJE"}],"2jawN":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","./layouts/Layout":"1V3BS","./pages/Articles":"gh5Ho","./pages/ArticleItem":"j5RH2","./pages/Login":"6O7Ur","./pages/Register":"k8Hue","./pages/AuthorItem":"hre2g","./pages/ArticleForm":"kunFd","./pages/UserManagement":"iUgJE","./api/AuthContext":"5rZLm"}],"2jawN":[function(require,module,exports,__globalThis) {
 /**
  * react-router v7.7.0
  *
@@ -29372,11 +29386,14 @@ var _s = $RefreshSig$();
 function Layout() {
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
-    const token = JSON.parse(localStorage.getItem('token'));
-    const currentUser = localStorage.getItem('currentUser');
-    const logout = ()=>{
-        localStorage.removeItem('token');
-        localStorage.removeItem('currentUser');
+    // const token = JSON.parse(localStorage.getItem('token'));
+    // const currentUser = localStorage.getItem('currentUser');
+    const { token, currentUser, logout } = (0, _authContext.useAuth)();
+    console.log(token, currentUser);
+    const logOut = ()=>{
+        // localStorage.removeItem('token');
+        // localStorage.removeItem('currentUser');
+        logout();
         navigate('/login');
     };
     (0, _react.useEffect)(()=>{
@@ -29407,12 +29424,12 @@ function Layout() {
                                     }
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 32,
+                                    lineNumber: 35,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 30,
+                                lineNumber: 33,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -29420,13 +29437,13 @@ function Layout() {
                                 children: "My Blog"
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 34,
+                                lineNumber: 37,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 29,
+                        lineNumber: 32,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
@@ -29438,7 +29455,7 @@ function Layout() {
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 37,
+                                lineNumber: 40,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29452,12 +29469,12 @@ function Layout() {
                                     children: "Create Article"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 39,
+                                    lineNumber: 42,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 38,
+                                lineNumber: 41,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29470,18 +29487,18 @@ function Layout() {
                                     children: "User Management"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 42,
+                                    lineNumber: 45,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/layouts/Layout.js",
-                                lineNumber: 41,
+                                lineNumber: 44,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 36,
+                        lineNumber: 39,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29500,11 +29517,11 @@ function Layout() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 48,
+                                    lineNumber: 51,
                                     columnNumber: 8
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    onClick: logout,
+                                    onClick: logOut,
                                     className: "layout-auth-link",
                                     style: {
                                         background: 'none',
@@ -29514,7 +29531,7 @@ function Layout() {
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 49,
+                                    lineNumber: 52,
                                     columnNumber: 8
                                 }, this)
                             ]
@@ -29526,7 +29543,7 @@ function Layout() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 53,
+                                    lineNumber: 56,
                                     columnNumber: 8
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
@@ -29535,44 +29552,45 @@ function Layout() {
                                     children: "Register"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 54,
+                                    lineNumber: 57,
                                     columnNumber: 8
                                 }, this)
                             ]
                         }, void 0, true)
                     }, void 0, false, {
                         fileName: "src/layouts/Layout.js",
-                        lineNumber: 45,
+                        lineNumber: 48,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 28,
+                lineNumber: 31,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                 className: "layout-main",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 60,
+                    lineNumber: 63,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "src/layouts/Layout.js",
-                lineNumber: 59,
+                lineNumber: 62,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/layouts/Layout.js",
-        lineNumber: 27,
+        lineNumber: 30,
         columnNumber: 3
     }, this);
 }
-_s(Layout, "0pNeyzXk/ByIxyERsdaIrG6js9s=", false, function() {
+_s(Layout, "k/xZhXQ7fPoYKyZsBK89U2ntYsY=", false, function() {
     return [
-        (0, _reactRouter.useNavigate)
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
     ];
 });
 _c = Layout;
@@ -29722,28 +29740,72 @@ var _c;
 $RefreshReg$(_c, "RequireRoles");
 
 },{"./AuthApi":"gPkaz","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5rZLm":[function(require,module,exports,__globalThis) {
-// // AuthContext.js
-// import { createContext, useState, useEffect } from 'react';
-// export const AuthContext = createContext();
-// export function AuthProvider({ children }) {
-//   const [token, setToken] = useState(localStorage.getItem('token'));
-//   const [currentUser, setCurrentUser] = useState(localStorage.getItem('currentUser'));
-//   useEffect(() => {
-//     function handleStorage() {
-//       setToken(localStorage.getItem('token'));
-//       setCurrentUser(localStorage.getItem('currentUser'));
-//     }
-//     window.addEventListener('storage', handleStorage);
-//     return () => window.removeEventListener('storage', handleStorage);
-//   }, []);
-//   return (
-//     <AuthContext.Provider value={{ token, currentUser, setToken, setCurrentUser }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// }
+var $parcel$ReactRefreshHelpers$2df6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$2df6.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2df6.prelude(module);
 
-},{}],"gh5Ho":[function(require,module,exports,__globalThis) {
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AuthProvider", ()=>AuthProvider);
+parcelHelpers.export(exports, "useAuth", ()=>useAuth);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactRouter = require("react-router");
+var _s = $RefreshSig$(), _s1 = $RefreshSig$();
+const AuthContext = /*#__PURE__*/ (0, _react.createContext)(null);
+const AuthProvider = ({ children })=>{
+    _s();
+    const [token, setToken] = (0, _react.useState)(()=>localStorage.getItem('token'));
+    const [currentUser, setCurrentUser] = (0, _react.useState)(()=>localStorage.getItem('currentUser'));
+    const login = (userToken, username)=>{
+        localStorage.setItem('token', userToken);
+        localStorage.setItem('currentUser', username);
+        setToken(userToken);
+        setCurrentUser(username);
+    };
+    const logout = ()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+        setToken(null);
+        setCurrentUser(null);
+    };
+    // const hasRole = (role) => {
+    // 	return user?.authorities?.includes(role) || false;
+    // };
+    const value = {
+        token,
+        currentUser,
+        login,
+        logout
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AuthContext.Provider, {
+        value: value,
+        children: children
+    }, void 0, false, {
+        fileName: "src/api/AuthContext.js",
+        lineNumber: 35,
+        columnNumber: 9
+    }, undefined);
+};
+_s(AuthProvider, "ny77jCbwOemy0itXlaUr+ALqpMM=");
+_c = AuthProvider;
+const useAuth = ()=>{
+    _s1();
+    return (0, _react.useContext)(AuthContext);
+};
+_s1(useAuth, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
+var _c;
+$RefreshReg$(_c, "AuthProvider");
+
+  $parcel$ReactRefreshHelpers$2df6.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN"}],"gh5Ho":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c465 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c465.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -39185,6 +39247,7 @@ var _articlesApi = require("../api/ArticlesApi");
 var _commentApi = require("../api/CommentApi");
 var _requireRoles = require("../api/RequireRoles");
 var _requireRolesDefault = parcelHelpers.interopDefault(_requireRoles);
+var _authContext = require("../api/AuthContext");
 var _commentsCss = require("../format/Comments.css");
 var _articleItemCss = require("../format/ArticleItem.css");
 var _s = $RefreshSig$();
@@ -39196,8 +39259,7 @@ function ArticleItem() {
     const [content, setContent] = (0, _react.useState)('');
     const [error, setError] = (0, _react.useState)(null);
     const navigate = (0, _reactRouter.useNavigate)();
-    const currentUser = localStorage.getItem('currentUser');
-    const token = JSON.parse(localStorage.getItem('token'));
+    const { token, currentUser } = (0, _authContext.useAuth)();
     (0, _react.useEffect)(()=>{
         (0, _articlesApi.fetchArticleById)(id).then(setArticle).catch((err)=>console.error("Article not found", err));
         (0, _commentApi.fetchCommentsByArticleId)(id).then(setComments).catch((err)=>console.error("Comments not found", err));
@@ -39464,10 +39526,11 @@ function ArticleItem() {
         }, this)
     }, void 0, false);
 }
-_s(ArticleItem, "0UPALpszYJYxOpmJEBD1GaGUy7g=", false, function() {
+_s(ArticleItem, "fH/xfJ1LzFyEa7dle/B+u+txapY=", false, function() {
     return [
         (0, _reactRouter.useParams),
-        (0, _reactRouter.useNavigate)
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
     ];
 });
 _c = ArticleItem;
@@ -39479,7 +39542,7 @@ $RefreshReg$(_c, "ArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","../api/RequireRoles":"kFXeM"}],"4g3i6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm"}],"4g3i6":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
@@ -39519,6 +39582,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactRouter = require("react-router");
 var _authApi = require("../api/AuthApi");
+var _authContext = require("../api/AuthContext");
 var _loginCss = require("../format/Login.css");
 var _s = $RefreshSig$();
 function Login() {
@@ -39527,6 +39591,7 @@ function Login() {
     const [password, setPassword] = (0, _react.useState)('');
     const [error, setError] = (0, _react.useState)(null);
     const navigate = (0, _reactRouter.useNavigate)();
+    const { login } = (0, _authContext.useAuth)();
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try {
@@ -39534,8 +39599,9 @@ function Login() {
                 username,
                 password
             });
-            localStorage.setItem('token', JSON.stringify(userToken.token));
-            localStorage.setItem('currentUser', username);
+            // localStorage.setItem('token', JSON.stringify(userToken.token));
+            // localStorage.setItem('currentUser', username);
+            login(JSON.stringify(userToken.token), username);
             setError(null);
             navigate('/articles');
         } catch (err) {
@@ -39551,7 +39617,7 @@ function Login() {
                     children: "Login"
                 }, void 0, false, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 32,
+                    lineNumber: 36,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39567,20 +39633,20 @@ function Login() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 35,
+                                    lineNumber: 39,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 41,
+                                    lineNumber: 45,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 34,
+                            lineNumber: 38,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39593,20 +39659,20 @@ function Login() {
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 44,
+                                    lineNumber: 48,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/pages/Login.js",
-                                    lineNumber: 50,
+                                    lineNumber: 54,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 43,
+                            lineNumber: 47,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39615,7 +39681,7 @@ function Login() {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 52,
+                            lineNumber: 56,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39627,24 +39693,24 @@ function Login() {
                                         children: "Register"
                                     }, void 0, false, {
                                         fileName: "src/pages/Login.js",
-                                        lineNumber: 53,
+                                        lineNumber: 57,
                                         columnNumber: 38
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/pages/Login.js",
-                                lineNumber: 53,
+                                lineNumber: 57,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "src/pages/Login.js",
-                            lineNumber: 53,
+                            lineNumber: 57,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 33,
+                    lineNumber: 37,
                     columnNumber: 5
                 }, this),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39652,24 +39718,25 @@ function Login() {
                     children: error
                 }, void 0, false, {
                     fileName: "src/pages/Login.js",
-                    lineNumber: 55,
+                    lineNumber: 59,
                     columnNumber: 15
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/Login.js",
-            lineNumber: 31,
+            lineNumber: 35,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/Login.js",
-        lineNumber: 30,
+        lineNumber: 34,
         columnNumber: 3
     }, this);
 }
-_s(Login, "Ensabnh8awqwln75dYV2FIvVkb0=", false, function() {
+_s(Login, "Zd8zGOhIjYVM53uMwrsWaLwYUFs=", false, function() {
     return [
-        (0, _reactRouter.useNavigate)
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
     ];
 });
 _c = Login;
@@ -39681,7 +39748,7 @@ $RefreshReg$(_c, "Login");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../format/Login.css":"dajed"}],"dajed":[function() {},{}],"k8Hue":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/AuthApi":"gPkaz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../format/Login.css":"dajed","../api/AuthContext":"5rZLm"}],"dajed":[function() {},{}],"k8Hue":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a9c9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$a9c9.init();
 var prevRefreshReg = globalThis.$RefreshReg$;

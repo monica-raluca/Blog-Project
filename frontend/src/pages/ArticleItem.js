@@ -5,6 +5,7 @@ import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
 import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
 import { Link } from 'react-router';
 import RequireRoles from '../api/RequireRoles';
+import { useAuth } from '../api/AuthContext';
 
 import '../format/Comments.css';
 import '../format/ArticleItem.css';
@@ -17,8 +18,7 @@ export default function ArticleItem() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const currentUser = localStorage.getItem('currentUser');
-    const token = JSON.parse(localStorage.getItem('token'));
+	const {token, currentUser} = useAuth();
 
 	useEffect(() => {
 		fetchArticleById(id)

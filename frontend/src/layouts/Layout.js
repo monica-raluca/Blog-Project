@@ -3,18 +3,21 @@ import '../format/Layout.css';
 import RequireRoles from '../api/RequireRoles';
 import { hasRole } from '../api/AuthApi';
 import { token, currentUser } from '../api/AuthApi';
-import { useEffect, useContext } from 'react';
-import { AuthContext } from '../api/AuthContext';
+import { useEffect, useContext, use } from 'react';
+import { useAuth } from '../api/AuthContext';
+
 
 export function Layout() {
 	const navigate = useNavigate();
-	const token = JSON.parse(localStorage.getItem('token'));
-	const currentUser = localStorage.getItem('currentUser');
+	// const token = JSON.parse(localStorage.getItem('token'));
+	// const currentUser = localStorage.getItem('currentUser');
+	const {token, currentUser, logout} = useAuth();
+	console.log(token, currentUser);
 
-
-	const logout = () => {
-		localStorage.removeItem('token');
-        localStorage.removeItem('currentUser');
+	const logOut = () => {
+		// localStorage.removeItem('token');
+        // localStorage.removeItem('currentUser');
+		logout();
 		navigate('/login');
 	};
 
@@ -46,7 +49,7 @@ export function Layout() {
 					{token ? (
 						<>
 							<span style={{fontSize: '0.98em', color: '#6a6a6a'}}>Welcome, {currentUser}!</span>
-							<button onClick={logout} className="layout-auth-link" style={{background: 'none', border: 'none', cursor: 'pointer'}}>Logout</button>
+							<button onClick={logOut} className="layout-auth-link" style={{background: 'none', border: 'none', cursor: 'pointer'}}>Logout</button>
 						</>
 					) : (
 						<>

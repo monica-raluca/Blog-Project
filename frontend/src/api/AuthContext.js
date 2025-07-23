@@ -1,24 +1,38 @@
-// // AuthContext.js
-// import { createContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { Navigate, useNavigate } from 'react-router';
 
-// export const AuthContext = createContext();
+const AuthContext = createContext(null);
 
-// export function AuthProvider({ children }) {
-//   const [token, setToken] = useState(localStorage.getItem('token'));
-//   const [currentUser, setCurrentUser] = useState(localStorage.getItem('currentUser'));
+export const AuthProvider = ({ children }) => {
+	const [token, setToken] = useState(() => localStorage.getItem('token'));
+	const [currentUser, setCurrentUser] = useState(() => localStorage.getItem('currentUser'));
 
-//   useEffect(() => {
-//     function handleStorage() {
-//       setToken(localStorage.getItem('token'));
-//       setCurrentUser(localStorage.getItem('currentUser'));
-//     }
-//     window.addEventListener('storage', handleStorage);
-//     return () => window.removeEventListener('storage', handleStorage);
-//   }, []);
+	const login = (userToken, username) => {
+		localStorage.setItem('token', userToken);
+        localStorage.setItem('currentUser', username);
+		setToken(userToken);
+        setCurrentUser(username);
+	};
 
-//   return (
-//     <AuthContext.Provider value={{ token, currentUser, setToken, setCurrentUser }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// }
+	const logout = () => {
+		localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+		setToken(null);
+		setCurrentUser(null);
+	};
+
+	// const hasRole = (role) => {
+	// 	return user?.authorities?.includes(role) || false;
+	// };
+
+    const value = {
+        token,
+        currentUser,
+        login,
+        logout
+    };
+
+	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => useContext(AuthContext);
