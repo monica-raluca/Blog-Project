@@ -1,3 +1,10 @@
+import { jwtDecode } from 'jwt-decode';
+// import { useEffect } from 'react';
+
+// const token = JSON.parse(localStorage.getItem('token'));
+// const currentUser = getCurrentUser() ? getCurrentUser().username : null;
+
+
 export async function registerUser({ lastName, firstName, username, password, email }) {
 	const res = await fetch('/api/users/register', {
 		method: 'POST',
@@ -30,4 +37,25 @@ export async function loginUser({ username, password }) {
 	}
 
 	return res.json();
+}
+
+export function getCurrentUser() {
+	const token = localStorage.getItem('token');
+	if (!token) return null;
+
+	try {
+		return {
+			username: jwtDecode(token).sub,
+			authorities: jwtDecode(token).authorities.flatMap(authority => authority.authority),
+		}
+	} catch (error) {
+		console.error('Error decoding token:', error);
+		return null;
+	}
+}
+
+export function hasRole(role) {
+	const user = getCurrentUser();
+	if (!user || !user.username || !user.authorities) return false;
+	return user.authorities.includes("ROLE_" + role);
 }

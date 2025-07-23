@@ -1,16 +1,27 @@
 import { Outlet, Link, useNavigate } from 'react-router';
 import '../format/Layout.css';
+import RequireRoles from '../api/RequireRoles';
+import { hasRole } from '../api/AuthApi';
+import { token, currentUser } from '../api/AuthApi';
+import { useEffect, useContext } from 'react';
+import { AuthContext } from '../api/AuthContext';
 
 export function Layout() {
 	const navigate = useNavigate();
 	const token = JSON.parse(localStorage.getItem('token'));
-    const currentUser = localStorage.getItem('currentUser');
+	const currentUser = localStorage.getItem('currentUser');
+
 
 	const logout = () => {
 		localStorage.removeItem('token');
         localStorage.removeItem('currentUser');
 		navigate('/login');
 	};
+
+	useEffect(() => {
+		console.log(token);
+		console.log(currentUser);
+	}, [token]);
 
 	return (
 		<div className="layout-root">
@@ -24,8 +35,12 @@ export function Layout() {
 				</div>
 				<nav className="layout-nav">
 					<Link to="/articles" className="layout-nav-link">Home</Link>
-					<Link to="/articles/create" className="layout-nav-link">Create Article</Link>
-					<Link to="/admin/users" className="layout-nav-link">User Management</Link>
+					<RequireRoles roles={["AUTHOR", "ADMIN"]}>
+						<Link to="/articles/create" className="layout-nav-link">Create Article</Link>
+					</RequireRoles>
+					<RequireRoles roles={["ADMIN"]}>
+						<Link to="/admin/users" className="layout-nav-link">User Management</Link>
+					</RequireRoles>
 				</nav>
 				<div className="layout-sidebar-footer">
 					{token ? (

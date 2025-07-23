@@ -9,8 +9,6 @@ export default function ArticleForm({ isEdit = false }) {
 	const [content, setContent] = useState('');
 	const navigate = useNavigate();
 
-	const currentUser = localStorage.getItem('currentUser');
-
 	useEffect(() => {
 		if (isEdit) {
 			fetchArticleById(id).then(article => {

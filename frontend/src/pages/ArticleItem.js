@@ -1,11 +1,10 @@
-// src/pages/ArticleItem.jsx
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
 import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
 import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
-import { fetchCurrentUser } from '../api/UsersApi';
 import { Link } from 'react-router';
+import RequireRoles from '../api/RequireRoles';
 
 import '../format/Comments.css';
 import '../format/ArticleItem.css';
@@ -29,7 +28,7 @@ export default function ArticleItem() {
         fetchCommentsByArticleId(id)
             .then(setComments)
             .catch(err => console.error("Comments not found", err));
-	}, [id]);
+	}, [id, token]);
 
     const handleDelete = async (id) => {
         if (!window.confirm('Are you sure?')) return;
@@ -118,10 +117,13 @@ export default function ArticleItem() {
 				<p><em><Link to="/login">Login</Link> to comment.</em></p>
 			)}
 
-			<div className="article-actions">
-				<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
-				<button onClick={() => handleDelete(article.id)}>Delete</button>
-			</div>
+			<RequireRoles roles={["ADMIN"]}>
+				<div className="article-actions">
+					<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+					<button onClick={() => handleDelete(article.id)}>Delete</button>
+				</div>
+			</RequireRoles>
+			
             
 		</div>
         </>

@@ -20,7 +20,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.stream.Collectors;
+import java.util.Collection;
+import org.springframework.security.core.GrantedAuthority;
 
 @Service
 public class UsersService {
@@ -78,13 +82,23 @@ public class UsersService {
 
         UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), LocalDateTime.now(), Role.ROLE_USER, null, null);
 
-        return jwtService.generateToken(userRepository.save(newUser));
+        // return jwtService.generateToken(userRepository.save(newUser));
+        Map<String, Object> extraClaims = new HashMap<>();
+        Collection<? extends GrantedAuthority> authorities = newUser.getAuthorities();
+        extraClaims.put("authorities", authorities);
+
+        return jwtService.generateToken(extraClaims, newUser);
     }
 
     public String loginUser(UserLoginRequest userLoginRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginRequest.username(), userLoginRequest.password()));
+        UserEntity user = userRepository.findByUsername(userLoginRequest.username()).orElseThrow();
+        // return jwtService.generateToken(userRepository.findByUsername(userLoginRequest.username()).orElseThrow());
+        Map<String, Object> extraClaims = new HashMap<>();
+        Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
+        extraClaims.put("authorities", authorities);
 
-        return jwtService.generateToken(userRepository.findByUsername(userLoginRequest.username()).orElseThrow());
+        return jwtService.generateToken(extraClaims, user);
     }
 
     public void deleteUser(UUID id) {

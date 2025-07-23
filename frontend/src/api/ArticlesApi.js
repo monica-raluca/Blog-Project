@@ -36,7 +36,6 @@ export async function fetchArticlesByTitle(title) {
 }
 
 export async function fetchArticlesByAuthor(author) {
-	// console.log(author);
 	const res = await fetch(`/api/articles?author=${author.username}`);
 	if (!res.ok) throw new Error("No articles written by the given author.");
 	return res.json();
