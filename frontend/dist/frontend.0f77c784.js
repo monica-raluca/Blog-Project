@@ -29373,6 +29373,7 @@ $parcel$ReactRefreshHelpers$14ae.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ArticleControlsContext", ()=>ArticleControlsContext);
 parcelHelpers.export(exports, "Layout", ()=>Layout);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouter = require("react-router");
@@ -29383,12 +29384,31 @@ var _authApi = require("../api/AuthApi");
 var _react = require("react");
 var _authContext = require("../api/AuthContext");
 var _s = $RefreshSig$();
+const ArticleControlsContext = /*#__PURE__*/ (0, _react.createContext)();
 function Layout() {
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     // const token = JSON.parse(localStorage.getItem('token'));
     // const currentUser = localStorage.getItem('currentUser');
     const { token, currentUser, logout } = (0, _authContext.useAuth)();
+    // Article controls state
+    const [filtersInput, setFiltersInput] = (0, _react.useState)({
+        title: '',
+        author: ''
+    });
+    const [filters, setFilters] = (0, _react.useState)({
+        title: '',
+        author: ''
+    });
+    const [sortCriteria, setSortCriteria] = (0, _react.useState)([
+        {
+            field: 'createdDate',
+            direction: 'desc'
+        }
+    ]);
+    const [pageSize, setPageSize] = (0, _react.useState)(10);
+    const [pageIndex, setPageIndex] = (0, _react.useState)(0);
+    const [sizeInput, setSizeInput] = (0, _react.useState)(10);
     console.log(token, currentUser);
     const logOut = ()=>{
         logout();
@@ -29400,192 +29420,447 @@ function Layout() {
     }, [
         token
     ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "layout-root",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("aside", {
-                className: "layout-sidebar",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "layout-sidebar-header",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "layout-sidebar-photo",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                    src: "/favicon.ico",
-                                    alt: "Blog Logo",
-                                    style: {
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        borderRadius: '12px'
-                                    }
-                                }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 33,
-                                    columnNumber: 7
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 31,
-                                columnNumber: 6
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                className: "layout-title",
-                                children: "My Blog"
-                            }, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 35,
-                                columnNumber: 6
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/layouts/Layout.js",
-                        lineNumber: 30,
-                        columnNumber: 5
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-                        className: "layout-nav",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                to: "/articles",
-                                className: "layout-nav-link",
-                                children: "Home"
-                            }, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 38,
-                                columnNumber: 6
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
-                                roles: [
-                                    "AUTHOR",
-                                    "ADMIN"
-                                ],
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                    to: "/articles/create",
-                                    className: "layout-nav-link",
-                                    children: "Create Article"
-                                }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 40,
-                                    columnNumber: 7
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 39,
-                                columnNumber: 6
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
-                                roles: [
-                                    "ADMIN"
-                                ],
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                    to: "/admin/users",
-                                    className: "layout-nav-link",
-                                    children: "User Management"
-                                }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 43,
-                                    columnNumber: 7
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 42,
-                                columnNumber: 6
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/layouts/Layout.js",
-                        lineNumber: 37,
-                        columnNumber: 5
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "layout-sidebar-footer",
-                        children: token ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ArticleControlsContext.Provider, {
+        value: {
+            filtersInput,
+            setFiltersInput,
+            filters,
+            setFilters,
+            sortCriteria,
+            setSortCriteria,
+            pageSize,
+            setPageSize,
+            pageIndex,
+            setPageIndex,
+            sizeInput,
+            setSizeInput
+        },
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "layout-root",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("aside", {
+                    className: "layout-sidebar",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "layout-sidebar-header",
                             children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    style: {
-                                        fontSize: '0.98em',
-                                        color: '#6a6a6a'
-                                    },
-                                    children: [
-                                        "Welcome, ",
-                                        currentUser,
-                                        "!"
-                                    ]
-                                }, void 0, true, {
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "layout-sidebar-photo",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                                        src: "/favicon.ico",
+                                        alt: "Blog Logo",
+                                        style: {
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            borderRadius: '12px'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 48,
+                                        columnNumber: 8
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 49,
-                                    columnNumber: 8
+                                    lineNumber: 46,
+                                    columnNumber: 7
                                 }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    onClick: logOut,
-                                    className: "layout-auth-link",
-                                    style: {
-                                        background: 'none',
-                                        border: 'none',
-                                        cursor: 'pointer'
-                                    },
-                                    children: "Logout"
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    className: "layout-title",
+                                    children: "My Blog"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
                                     lineNumber: 50,
-                                    columnNumber: 8
+                                    columnNumber: 7
                                 }, this)
                             ]
-                        }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                        }, void 0, true, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 45,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+                            className: "layout-nav",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                    to: "/login",
-                                    className: "layout-auth-link",
-                                    children: "Login"
+                                    to: "/articles",
+                                    className: "layout-nav-link",
+                                    children: "Home"
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 53,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
+                                    roles: [
+                                        "AUTHOR",
+                                        "ADMIN"
+                                    ],
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/articles/create",
+                                        className: "layout-nav-link",
+                                        children: "Create Article"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 55,
+                                        columnNumber: 8
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
                                     lineNumber: 54,
-                                    columnNumber: 8
+                                    columnNumber: 7
                                 }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
-                                    to: "/register",
-                                    className: "layout-auth-link",
-                                    children: "Register"
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
+                                    roles: [
+                                        "ADMIN"
+                                    ],
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/admin/users",
+                                        className: "layout-nav-link",
+                                        children: "User Management"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 58,
+                                        columnNumber: 8
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 55,
-                                    columnNumber: 8
+                                    lineNumber: 57,
+                                    columnNumber: 7
                                 }, this)
                             ]
-                        }, void 0, true)
-                    }, void 0, false, {
-                        fileName: "src/layouts/Layout.js",
-                        lineNumber: 46,
-                        columnNumber: 5
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/layouts/Layout.js",
-                lineNumber: 29,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
-                className: "layout-main",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
+                        }, void 0, true, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 52,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            style: {
+                                marginTop: 32,
+                                padding: '0 8px',
+                                width: '100%'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    style: {
+                                        fontWeight: 600,
+                                        fontSize: '1.08em',
+                                        marginBottom: 8,
+                                        color: '#162938'
+                                    },
+                                    children: "Article Controls"
+                                }, void 0, false, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 63,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "filter-panel",
+                                    style: {
+                                        background: 'none',
+                                        boxShadow: 'none',
+                                        padding: 0
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            placeholder: "Title",
+                                            value: filtersInput.title,
+                                            onChange: (e)=>setFiltersInput((f)=>({
+                                                        ...f,
+                                                        title: e.target.value
+                                                    })),
+                                            style: {
+                                                marginBottom: 6,
+                                                width: '100%'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 65,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            placeholder: "Author",
+                                            value: filtersInput.author,
+                                            onChange: (e)=>setFiltersInput((f)=>({
+                                                        ...f,
+                                                        author: e.target.value
+                                                    })),
+                                            style: {
+                                                marginBottom: 6,
+                                                width: '100%'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 71,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            style: {
+                                                marginBottom: 10,
+                                                width: '100%'
+                                            },
+                                            onClick: ()=>setFilters(filtersInput),
+                                            children: "Apply filters"
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 77,
+                                            columnNumber: 8
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 64,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    style: {
+                                        marginBottom: 10
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                                            style: {
+                                                width: '100%',
+                                                marginBottom: 6
+                                            },
+                                            onChange: (e)=>setSortCriteria([
+                                                    {
+                                                        field: e.target.value,
+                                                        direction: 'asc'
+                                                    }
+                                                ]),
+                                            value: sortCriteria[0]?.field || 'createdDate',
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    value: "createdDate",
+                                                    children: "Created Date"
+                                                }, void 0, false, {
+                                                    fileName: "src/layouts/Layout.js",
+                                                    lineNumber: 85,
+                                                    columnNumber: 9
+                                                }, this),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    value: "title",
+                                                    children: "Title"
+                                                }, void 0, false, {
+                                                    fileName: "src/layouts/Layout.js",
+                                                    lineNumber: 86,
+                                                    columnNumber: 9
+                                                }, this),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    value: "author",
+                                                    children: "Author"
+                                                }, void 0, false, {
+                                                    fileName: "src/layouts/Layout.js",
+                                                    lineNumber: 87,
+                                                    columnNumber: 9
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 80,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            style: {
+                                                width: '100%'
+                                            },
+                                            onClick: ()=>setSortCriteria((sc)=>sc.map((c)=>({
+                                                            ...c,
+                                                            direction: c.direction === 'asc' ? 'desc' : 'asc'
+                                                        }))),
+                                            children: "Toggle Sort Direction"
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 89,
+                                            columnNumber: 8
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 79,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    style: {
+                                        marginBottom: 10
+                                    },
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            style: {
+                                                width: '100%',
+                                                marginBottom: 6
+                                            },
+                                            disabled: pageIndex === 0,
+                                            onClick: ()=>setPageIndex(pageIndex - 1),
+                                            children: "Previous Page"
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 92,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            style: {
+                                                display: 'block',
+                                                textAlign: 'center',
+                                                marginBottom: 6
+                                            },
+                                            children: [
+                                                "Page ",
+                                                pageIndex + 1
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 93,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            style: {
+                                                width: '100%'
+                                            },
+                                            onClick: ()=>setPageIndex(pageIndex + 1),
+                                            children: "Next Page"
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 94,
+                                            columnNumber: 8
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 91,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "text",
+                                            placeholder: "Articles per page",
+                                            value: sizeInput,
+                                            onChange: (e)=>setSizeInput(e.target.value),
+                                            style: {
+                                                marginBottom: 6,
+                                                width: '100%'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 97,
+                                            columnNumber: 8
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            style: {
+                                                width: '100%'
+                                            },
+                                            onClick: ()=>setPageSize(Number(sizeInput)),
+                                            children: "Change page size"
+                                        }, void 0, false, {
+                                            fileName: "src/layouts/Layout.js",
+                                            lineNumber: 104,
+                                            columnNumber: 8
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/layouts/Layout.js",
+                                    lineNumber: 96,
+                                    columnNumber: 7
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 62,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "layout-sidebar-footer",
+                            children: token ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        style: {
+                                            fontSize: '0.98em',
+                                            color: '#6a6a6a'
+                                        },
+                                        children: [
+                                            "Welcome, ",
+                                            currentUser,
+                                            "!"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 111,
+                                        columnNumber: 9
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        onClick: logOut,
+                                        className: "layout-auth-link",
+                                        style: {
+                                            background: 'none',
+                                            border: 'none',
+                                            cursor: 'pointer'
+                                        },
+                                        children: "Logout"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 112,
+                                        columnNumber: 9
+                                    }, this)
+                                ]
+                            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/login",
+                                        className: "layout-auth-link",
+                                        children: "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 116,
+                                        columnNumber: 9
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
+                                        to: "/register",
+                                        className: "layout-auth-link",
+                                        children: "Register"
+                                    }, void 0, false, {
+                                        fileName: "src/layouts/Layout.js",
+                                        lineNumber: 117,
+                                        columnNumber: 9
+                                    }, this)
+                                ]
+                            }, void 0, true)
+                        }, void 0, false, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 108,
+                            columnNumber: 6
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 61,
+                    lineNumber: 44,
+                    columnNumber: 5
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+                    className: "layout-main",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
+                        fileName: "src/layouts/Layout.js",
+                        lineNumber: 123,
+                        columnNumber: 6
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/layouts/Layout.js",
+                    lineNumber: 122,
                     columnNumber: 5
                 }, this)
-            }, void 0, false, {
-                fileName: "src/layouts/Layout.js",
-                lineNumber: 60,
-                columnNumber: 4
-            }, this)
-        ]
-    }, void 0, true, {
+            ]
+        }, void 0, true, {
+            fileName: "src/layouts/Layout.js",
+            lineNumber: 43,
+            columnNumber: 4
+        }, this)
+    }, void 0, false, {
         fileName: "src/layouts/Layout.js",
-        lineNumber: 28,
+        lineNumber: 39,
         columnNumber: 3
     }, this);
 }
-_s(Layout, "k/xZhXQ7fPoYKyZsBK89U2ntYsY=", false, function() {
+_s(Layout, "1fb7qXCE+ZE9xIO/C/b3KcIXvPk=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
         (0, _authContext.useAuth)
@@ -29830,28 +30105,13 @@ var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
 // import { ChronoUnit } from '@js-joda/root/packages/core/src/temporal/ChronoUnit.js';
 var _core = require("@js-joda/core");
+var _layout = require("../layouts/Layout");
 var _articlesCss = require("../format/Articles.css");
 var _s = $RefreshSig$();
 function Articles() {
     _s();
+    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = (0, _react.useContext)((0, _layout.ArticleControlsContext));
     const [articles, setArticles] = (0, _react.useState)([]);
-    const [filters, setFilters] = (0, _react.useState)({
-        title: '',
-        author: ''
-    });
-    const [filtersInput, setFiltersInput] = (0, _react.useState)({
-        title: '',
-        author: ''
-    });
-    const [sortCriteria, setSortCriteria] = (0, _react.useState)([
-        {
-            field: 'createdDate',
-            direction: 'desc'
-        }
-    ]);
-    const [pageSize, setPageSize] = (0, _react.useState)(10);
-    const [pageIndex, setPageIndex] = (0, _react.useState)(0);
-    const [sizeInput, setSizeInput] = (0, _react.useState)(10);
     (0, _react.useEffect)(()=>{
         (0, _articlesApi.fetchAllArticles)({
             filters,
@@ -29870,272 +30130,113 @@ function Articles() {
         return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "articles-container",
-                children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "article-item",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "article-ribbon"
-                            }, void 0, false, {
-                                fileName: "src/pages/Articles.js",
-                                lineNumber: 48,
-                                columnNumber: 6
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "article-content",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "article-title",
-                                        children: article.title
-                                    }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 50,
-                                        columnNumber: 7
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "article-meta",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                children: [
-                                                    "Created by ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${article.author.id}`,
-                                                        children: article.author.username
-                                                    }, void 0, false, {
-                                                        fileName: "src/pages/Articles.js",
-                                                        lineNumber: 54,
-                                                        columnNumber: 25
-                                                    }, this),
-                                                    " at ",
-                                                    formatDateTimeToMin(article.createdDate)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/pages/Articles.js",
-                                                lineNumber: 54,
-                                                columnNumber: 8
-                                            }, this),
-                                            (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                children: [
-                                                    "Edited by ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${article.editor.id}`,
-                                                        children: article.editor.username
-                                                    }, void 0, false, {
-                                                        fileName: "src/pages/Articles.js",
-                                                        lineNumber: 57,
-                                                        columnNumber: 45
-                                                    }, this),
-                                                    " at ",
-                                                    formatDateTimeToMin(article.updatedDate)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/pages/Articles.js",
-                                                lineNumber: 57,
-                                                columnNumber: 29
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 53,
-                                        columnNumber: 7
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "article-body",
-                                        children: article.summary
-                                    }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 59,
-                                        columnNumber: 7
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                        className: "read-more-btn",
-                                        to: `/articles/${article.id}`,
-                                        children: "Read More"
-                                    }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 62,
-                                        columnNumber: 7
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/pages/Articles.js",
-                                lineNumber: 49,
-                                columnNumber: 6
-                            }, this)
-                        ]
-                    }, article.id, true, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 47,
-                        columnNumber: 5
-                    }, this))
-            }, void 0, false, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 45,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "filter-panel",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        placeholder: "Title",
-                        value: filtersInput.title,
-                        onChange: (e)=>setFiltersInput((f)=>({
-                                    ...f,
-                                    title: e.target.value
-                                }))
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 72,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        placeholder: "Author",
-                        value: filtersInput.author,
-                        onChange: (e)=>setFiltersInput((f)=>({
-                                    ...f,
-                                    author: e.target.value
-                                }))
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 77,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>setFilters(filtersInput),
-                        children: "Apply filters"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 92,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 71,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                onChange: (e)=>{
-                    const field = e.target.value;
-                    setSortCriteria([
-                        {
-                            field,
-                            direction: 'asc'
-                        }
-                    ]);
-                },
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: "createdDate",
-                        children: "Created Date"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 102,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: "title",
-                        children: "Title"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 103,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: "author",
-                        children: "Author"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 104,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 96,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>{
-                    setSortCriteria((sc)=>sc.map((c)=>({
-                                ...c,
-                                direction: c.direction === 'asc' ? 'desc' : 'asc'
-                            })));
-                },
-                children: "Toggle Sort Direction"
-            }, void 0, false, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 107,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "pagination",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        disabled: pageIndex === 0,
-                        onClick: ()=>setPageIndex(pageIndex - 1),
-                        children: "Previous"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 119,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: [
-                            "Page ",
-                            pageIndex + 1
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 120,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>setPageIndex(pageIndex + 1),
-                        children: "Next"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 121,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 118,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "pagination",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        placeholder: "Enter number of articles per page",
-                        onChange: (e)=>setSizeInput(e.target.value)
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 125,
-                        columnNumber: 13
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        onClick: ()=>setPageSize(sizeInput),
-                        children: "Change page size"
-                    }, void 0, false, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 130,
-                        columnNumber: 13
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 124,
-                columnNumber: 10
-            }, this)
-        ]
-    }, void 0, true);
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "articles-container",
+            children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "article-item",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "article-ribbon"
+                        }, void 0, false, {
+                            fileName: "src/pages/Articles.js",
+                            lineNumber: 38,
+                            columnNumber: 6
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "article-content",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "article-title",
+                                    children: article.title
+                                }, void 0, false, {
+                                    fileName: "src/pages/Articles.js",
+                                    lineNumber: 40,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "article-meta",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            children: [
+                                                "Created by ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                    to: `/users/${article.author.id}`,
+                                                    children: article.author.username
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/Articles.js",
+                                                    lineNumber: 44,
+                                                    columnNumber: 25
+                                                }, this),
+                                                " at ",
+                                                formatDateTimeToMin(article.createdDate)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/pages/Articles.js",
+                                            lineNumber: 44,
+                                            columnNumber: 8
+                                        }, this),
+                                        (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            children: [
+                                                "Edited by ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                    to: `/users/${article.editor.id}`,
+                                                    children: article.editor.username
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/Articles.js",
+                                                    lineNumber: 47,
+                                                    columnNumber: 45
+                                                }, this),
+                                                " at ",
+                                                formatDateTimeToMin(article.updatedDate)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/pages/Articles.js",
+                                            lineNumber: 47,
+                                            columnNumber: 29
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/pages/Articles.js",
+                                    lineNumber: 43,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "article-body",
+                                    children: article.summary
+                                }, void 0, false, {
+                                    fileName: "src/pages/Articles.js",
+                                    lineNumber: 49,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                    className: "read-more-btn",
+                                    to: `/articles/${article.id}`,
+                                    children: "Read More"
+                                }, void 0, false, {
+                                    fileName: "src/pages/Articles.js",
+                                    lineNumber: 52,
+                                    columnNumber: 7
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/pages/Articles.js",
+                            lineNumber: 39,
+                            columnNumber: 6
+                        }, this)
+                    ]
+                }, article.id, true, {
+                    fileName: "src/pages/Articles.js",
+                    lineNumber: 37,
+                    columnNumber: 5
+                }, this))
+        }, void 0, false, {
+            fileName: "src/pages/Articles.js",
+            lineNumber: 35,
+            columnNumber: 9
+        }, this)
+    }, void 0, false);
 }
-_s(Articles, "AnAVxXi/BAaXdEcTtzaihbwamQo=");
+_s(Articles, "7N7JdFb/9zXwzs3SF904EvneWt8=");
 _c = Articles;
 var _c;
 $RefreshReg$(_c, "Articles");
@@ -30145,7 +30246,7 @@ $RefreshReg$(_c, "Articles");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/ArticlesApi":"akou4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Articles.css":"cJsRS","@js-joda/core":"42wHF"}],"akou4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/ArticlesApi":"akou4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Articles.css":"cJsRS","@js-joda/core":"42wHF","../layouts/Layout":"1V3BS"}],"akou4":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllArticles", ()=>fetchAllArticles);
