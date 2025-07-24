@@ -29766,7 +29766,8 @@ var _s = $RefreshSig$(), _s1 = $RefreshSig$();
 const AuthContext = /*#__PURE__*/ (0, _react.createContext)(null);
 const AuthProvider = ({ children })=>{
     _s();
-    const [token, setToken] = (0, _react.useState)(()=>localStorage.getItem('token'));
+    // const [token, setToken] = useState(() => localStorage.getItem('token'));
+    const [token, setToken] = (0, _react.useState)(()=>JSON.parse(localStorage.getItem('token')));
     const [currentUser, setCurrentUser] = (0, _react.useState)(()=>localStorage.getItem('currentUser'));
     const login = (userToken, username)=>{
         localStorage.setItem('token', userToken);
@@ -29794,11 +29795,11 @@ const AuthProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/api/AuthContext.js",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 9
     }, undefined);
 };
-_s(AuthProvider, "ny77jCbwOemy0itXlaUr+ALqpMM=");
+_s(AuthProvider, "LOlFj/XakL5leX5iI4EL90M2KaU=");
 _c = AuthProvider;
 const useAuth = ()=>{
     _s1();
@@ -30155,10 +30156,6 @@ parcelHelpers.export(exports, "fetchArticlesByAuthor", ()=>fetchArticlesByAuthor
 parcelHelpers.export(exports, "createArticle", ()=>createArticle);
 parcelHelpers.export(exports, "updateArticle", ()=>updateArticle);
 parcelHelpers.export(exports, "deleteArticle", ()=>deleteArticle);
-const authHeader = ()=>({
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-        'Content-Type': 'application/json'
-    });
 async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }) {
     const params = new URLSearchParams();
     params.set('size', size);
@@ -30189,29 +30186,35 @@ async function fetchArticlesByAuthor(author) {
     if (!res.ok) throw new Error("No articles written by the given author.");
     return res.json();
 }
-async function createArticle(article) {
+async function createArticle(article, token) {
     const res = await fetch('/api/articles', {
         method: 'POST',
-        headers: authHeader(),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(article)
     });
     if (!res.ok) throw new Error('Create failed');
     return res.json();
 }
-async function updateArticle(id, article) {
+async function updateArticle(id, article, token) {
     const res = await fetch(`/api/articles/${id}`, {
         method: 'PUT',
-        headers: authHeader(),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(article)
     });
     if (!res.ok) throw new Error('Update failed');
     return res.json();
 }
-async function deleteArticle(id) {
+async function deleteArticle(id, token) {
     const res = await fetch(`/api/articles/${id}`, {
         method: 'DELETE',
         headers: {
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+            'Authorization': `Bearer ${token}`
         }
     });
     if (!res.ok) throw new Error('Delete failed');
@@ -39279,7 +39282,7 @@ function ArticleItem() {
     const handleDelete = async (id)=>{
         if (!window.confirm('Are you sure?')) return;
         try {
-            await (0, _articlesApi.deleteArticle)(id);
+            await (0, _articlesApi.deleteArticle)(id, token);
             navigate('/articles');
         } catch (err) {
             console.error('Failed to delete:', err);
@@ -39287,6 +39290,7 @@ function ArticleItem() {
     };
     const handleCommentSubmit = async (e)=>{
         e.preventDefault();
+        // console.log(token, content, id);
         (0, _commentApi.createComment)(id, token, content).then((newComment)=>{
             setComments([
                 ...comments,
@@ -39294,7 +39298,8 @@ function ArticleItem() {
             ]);
             setContent('');
         }).catch((err)=>{
-            console.err("Failed to upload comment", err);
+            // console.err("Failed to upload comment", err);
+            console.log(err);
             setError("Failed to upload comment");
         });
     };
@@ -39302,7 +39307,7 @@ function ArticleItem() {
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/pages/ArticleItem.js",
-        lineNumber: 60,
+        lineNumber: 62,
         columnNumber: 23
     }, this);
     function formatDateTimeToMin(dateStr) {
@@ -39322,14 +39327,14 @@ function ArticleItem() {
                     children: article.title
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 80,
+                    lineNumber: 82,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: article.content
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 81,
+                    lineNumber: 83,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39344,7 +39349,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 84,
+                                    lineNumber: 86,
                                     columnNumber: 6
                                 }, this),
                                 " at ",
@@ -39352,14 +39357,14 @@ function ArticleItem() {
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 83,
+                            lineNumber: 85,
                             columnNumber: 5
                         }, this),
                         showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 88,
+                                    lineNumber: 90,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39373,7 +39378,7 @@ function ArticleItem() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/ArticleItem.js",
-                                            lineNumber: 89,
+                                            lineNumber: 91,
                                             columnNumber: 12
                                         }, this),
                                         " at ",
@@ -39382,7 +39387,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 89,
+                                    lineNumber: 91,
                                     columnNumber: 7
                                 }, this)
                             ]
@@ -39390,19 +39395,19 @@ function ArticleItem() {
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 82,
+                    lineNumber: 84,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 94,
+                    lineNumber: 96,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: "Comments"
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 96,
+                    lineNumber: 98,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -39416,7 +39421,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 100,
+                                    lineNumber: 102,
                                     columnNumber: 7
                                 }, this),
                                 " ",
@@ -39424,12 +39429,12 @@ function ArticleItem() {
                             ]
                         }, comment.id, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 99,
+                            lineNumber: 101,
                             columnNumber: 6
                         }, this))
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 97,
+                    lineNumber: 99,
                     columnNumber: 4
                 }, this),
                 currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39444,7 +39449,7 @@ function ArticleItem() {
                             placeholder: "Write your comment..."
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 107,
+                            lineNumber: 109,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39452,7 +39457,7 @@ function ArticleItem() {
                             children: "Post Comment"
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 114,
+                            lineNumber: 116,
                             columnNumber: 6
                         }, this),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39462,13 +39467,13 @@ function ArticleItem() {
                             children: error
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 115,
+                            lineNumber: 117,
                             columnNumber: 16
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 106,
+                    lineNumber: 108,
                     columnNumber: 5
                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39478,19 +39483,19 @@ function ArticleItem() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 118,
+                                lineNumber: 120,
                                 columnNumber: 12
                             }, this),
                             " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 118,
+                        lineNumber: 120,
                         columnNumber: 8
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 118,
+                    lineNumber: 120,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -39506,7 +39511,7 @@ function ArticleItem() {
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 124,
+                                lineNumber: 126,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39514,24 +39519,24 @@ function ArticleItem() {
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 125,
+                                lineNumber: 127,
                                 columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 123,
+                        lineNumber: 125,
                         columnNumber: 4
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 121,
+                    lineNumber: 123,
                     columnNumber: 4
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleItem.js",
-            lineNumber: 79,
+            lineNumber: 81,
             columnNumber: 10
         }, this)
     }, void 0, false);
@@ -39568,7 +39573,9 @@ async function createComment(id, token, content) {
             content
         })
     });
+    // console.log(token, res, content);
     if (!res.ok) throw new Error('Failed to post comment');
+    // console.log(res.json())
     return res.json();
 }
 async function fetchCommentsByArticleId(id) {
@@ -40239,6 +40246,7 @@ var _react = require("react");
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
 var _articleFormCss = require("../format/ArticleForm.css");
+var _authContext = require("../api/AuthContext");
 var _s = $RefreshSig$();
 function ArticleForm({ isEdit = false }) {
     _s();
@@ -40246,6 +40254,7 @@ function ArticleForm({ isEdit = false }) {
     const [title, setTitle] = (0, _react.useState)('');
     const [content, setContent] = (0, _react.useState)('');
     const navigate = (0, _reactRouter.useNavigate)();
+    const { token } = (0, _authContext.useAuth)();
     (0, _react.useEffect)(()=>{
         if (isEdit) (0, _articlesApi.fetchArticleById)(id).then((article)=>{
             setTitle(article.title);
@@ -40253,7 +40262,8 @@ function ArticleForm({ isEdit = false }) {
         });
     }, [
         id,
-        isEdit
+        isEdit,
+        token
     ]);
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -40262,8 +40272,8 @@ function ArticleForm({ isEdit = false }) {
             content
         };
         try {
-            if (isEdit) await (0, _articlesApi.updateArticle)(id, article);
-            else await (0, _articlesApi.createArticle)(article);
+            if (isEdit) await (0, _articlesApi.updateArticle)(id, article, token);
+            else await (0, _articlesApi.createArticle)(article, token);
             navigate('/articles');
         } catch (err) {
             console.error('Failed to save article:', err);
@@ -40278,7 +40288,7 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Edit Article' : 'Create Article'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 40,
+                    lineNumber: 43,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40288,7 +40298,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 41,
+                    lineNumber: 44,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -40298,7 +40308,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 42,
+                    lineNumber: 45,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -40306,25 +40316,26 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Update' : 'Create'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 43,
+                    lineNumber: 46,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleForm.js",
-            lineNumber: 39,
+            lineNumber: 42,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/ArticleForm.js",
-        lineNumber: 38,
+        lineNumber: 41,
         columnNumber: 3
     }, this);
 }
-_s(ArticleForm, "l9sf1VuDTpWd/B1mull30/b73zg=", false, function() {
+_s(ArticleForm, "kPoj+25T3O0o3PsmUwpuHvObM0s=", false, function() {
     return [
         (0, _reactRouter.useParams),
-        (0, _reactRouter.useNavigate)
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
     ];
 });
 _c = ArticleForm;
@@ -40336,7 +40347,7 @@ $RefreshReg$(_c, "ArticleForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../api/ArticlesApi":"akou4","../format/ArticleForm.css":"fChie"}],"fChie":[function() {},{}],"iUgJE":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../api/ArticlesApi":"akou4","../format/ArticleForm.css":"fChie","../api/AuthContext":"5rZLm"}],"fChie":[function() {},{}],"iUgJE":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$99ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$99ad.init();
 var prevRefreshReg = globalThis.$RefreshReg$;

@@ -35,7 +35,7 @@ export default function ArticleItem() {
         if (!window.confirm('Are you sure?')) return;
 
         try {
-            await deleteArticle(id);
+            await deleteArticle(id, token);
             navigate('/articles');
             
         } catch (err) {
@@ -46,13 +46,15 @@ export default function ArticleItem() {
     const handleCommentSubmit = async (e) => {
 		e.preventDefault();
 
+		// console.log(token, content, id);
         createComment(id, token, content)
         .then(newComment => {
             setComments([...comments, newComment]);
             setContent('');
         })
         .catch(err => {
-            console.err("Failed to upload comment", err);
+            // console.err("Failed to upload comment", err);
+			console.log(err);
             setError("Failed to upload comment");
         });
 	};

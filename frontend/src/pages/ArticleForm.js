@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../api/ArticlesApi';
 import '../format/ArticleForm.css';
+import { useAuth } from '../api/AuthContext';
 
 export default function ArticleForm({ isEdit = false }) {
 	const { id } = useParams();
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const navigate = useNavigate();
+
+	const {token} = useAuth();
 
 	useEffect(() => {
 		if (isEdit) {
@@ -16,7 +19,7 @@ export default function ArticleForm({ isEdit = false }) {
 				setContent(article.content);
 			});
 		}
-	}, [id, isEdit]);
+	}, [id, isEdit, token]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -24,9 +27,9 @@ export default function ArticleForm({ isEdit = false }) {
 
 		try {
 			if (isEdit) {
-				await updateArticle(id, article);
+				await updateArticle(id, article, token);
 			} else {
-				await createArticle(article);
+				await createArticle(article, token);
 			}
 			navigate('/articles');
 		} catch (err) {

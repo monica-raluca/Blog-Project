@@ -7,9 +7,10 @@ export async function createComment(id, token, content) {
         },
         body: JSON.stringify({ content })
     });
-    
+    // console.log(token, res, content);
     if (!res.ok) throw new Error('Failed to post comment');
 
+        // console.log(res.json())
 	return res.json();
 }
 
