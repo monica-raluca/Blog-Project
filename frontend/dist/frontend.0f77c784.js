@@ -39440,89 +39440,151 @@ function ArticleItem() {
                             lineNumber: 130,
                             columnNumber: 5
                         }, this),
-                        comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        comments.map((comment)=>{
+                            const commentCreatedBy = comment.author?.username || 'Unknown';
+                            const commentCreatedAt = comment.dateCreated;
+                            const commentEditedBy = comment.editor?.username || commentCreatedBy;
+                            const commentEditedAt = comment.dateEdited || commentCreatedAt;
+                            const showCommentEdited = commentCreatedBy !== commentEditedBy || formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt);
+                            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "comment",
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                                children: comment.author.username
-                                            }, void 0, false, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 133,
-                                                columnNumber: 10
-                                            }, this),
-                                            ":"
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/pages/ArticleItem.js",
-                                        lineNumber: 133,
-                                        columnNumber: 7
-                                    }, this),
-                                    editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
-                                                value: editedContent,
-                                                onChange: (e)=>setEditedContent(e.target.value)
-                                            }, void 0, false, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 137,
-                                                columnNumber: 9
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                onClick: ()=>handleEditSubmit(article.id, comment.id),
-                                                children: "Save"
-                                            }, void 0, false, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 141,
-                                                columnNumber: 9
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                onClick: ()=>setEditingCommentId(null),
-                                                children: "Cancel"
-                                            }, void 0, false, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 142,
-                                                columnNumber: 9
-                                            }, this)
-                                        ]
-                                    }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                children: comment.content
-                                            }, void 0, false, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 146,
-                                                columnNumber: 9
-                                            }, this),
-                                            comment.author.username === currentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                                 children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                        onClick: ()=>startEditing(comment),
-                                                        children: "Edit"
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                                        children: commentCreatedBy
                                                     }, void 0, false, {
                                                         fileName: "src/pages/ArticleItem.js",
-                                                        lineNumber: 149,
-                                                        columnNumber: 10
+                                                        lineNumber: 143,
+                                                        columnNumber: 11
                                                     }, this),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                        onClick: ()=>handleCommentDelete(article.id, comment.id),
-                                                        children: "Delete"
+                                                    ":"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 143,
+                                                columnNumber: 8
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                style: {
+                                                    fontSize: '0.95em',
+                                                    color: '#6a6a6a',
+                                                    marginBottom: 4
+                                                },
+                                                children: [
+                                                    "at ",
+                                                    formatDateTimeToMin(commentCreatedAt)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 144,
+                                                columnNumber: 8
+                                            }, this),
+                                            editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                                                    className: "edit-comment-textarea",
+                                                    value: editedContent,
+                                                    onChange: (e)=>setEditedContent(e.target.value)
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ArticleItem.js",
+                                                    lineNumber: 149,
+                                                    columnNumber: 9
+                                                }, this)
+                                            }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                                children: [
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                        children: comment.content
                                                     }, void 0, false, {
                                                         fileName: "src/pages/ArticleItem.js",
-                                                        lineNumber: 150,
-                                                        columnNumber: 10
+                                                        lineNumber: 157,
+                                                        columnNumber: 9
+                                                    }, this),
+                                                    showCommentEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        style: {
+                                                            fontSize: '0.93em',
+                                                            color: '#8a8a8a',
+                                                            marginTop: 2
+                                                        },
+                                                        children: [
+                                                            "Edited by ",
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                                                children: commentEditedBy
+                                                            }, void 0, false, {
+                                                                fileName: "src/pages/ArticleItem.js",
+                                                                lineNumber: 160,
+                                                                columnNumber: 20
+                                                            }, this),
+                                                            " at ",
+                                                            formatDateTimeToMin(commentEditedAt)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "src/pages/ArticleItem.js",
+                                                        lineNumber: 159,
+                                                        columnNumber: 9
                                                     }, this)
                                                 ]
                                             }, void 0, true)
                                         ]
-                                    }, void 0, true)
+                                    }, void 0, true, {
+                                        fileName: "src/pages/ArticleItem.js",
+                                        lineNumber: 142,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "comment-actions",
+                                        children: editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    onClick: ()=>handleEditSubmit(article.id, comment.id),
+                                                    children: "Save"
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ArticleItem.js",
+                                                    lineNumber: 169,
+                                                    columnNumber: 9
+                                                }, this),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    onClick: ()=>setEditingCommentId(null),
+                                                    children: "Cancel"
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ArticleItem.js",
+                                                    lineNumber: 170,
+                                                    columnNumber: 9
+                                                }, this)
+                                            ]
+                                        }, void 0, true) : ((0, _authApi.hasRole)("ADMIN") || comment.author.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    onClick: ()=>startEditing(comment),
+                                                    children: "Edit"
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ArticleItem.js",
+                                                    lineNumber: 175,
+                                                    columnNumber: 9
+                                                }, this),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                    onClick: ()=>handleCommentDelete(article.id, comment.id),
+                                                    children: "Delete"
+                                                }, void 0, false, {
+                                                    fileName: "src/pages/ArticleItem.js",
+                                                    lineNumber: 176,
+                                                    columnNumber: 9
+                                                }, this)
+                                            ]
+                                        }, void 0, true)
+                                    }, void 0, false, {
+                                        fileName: "src/pages/ArticleItem.js",
+                                        lineNumber: 166,
+                                        columnNumber: 7
+                                    }, this)
                                 ]
                             }, comment.id, true, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 132,
-                                columnNumber: 6
-                            }, this))
+                                lineNumber: 141,
+                                columnNumber: 7
+                            }, this);
+                        })
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
@@ -39541,7 +39603,7 @@ function ArticleItem() {
                             placeholder: "Write your comment..."
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 170,
+                            lineNumber: 197,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39549,7 +39611,7 @@ function ArticleItem() {
                             children: "Post Comment"
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 177,
+                            lineNumber: 204,
                             columnNumber: 6
                         }, this),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39559,13 +39621,13 @@ function ArticleItem() {
                             children: error
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 178,
+                            lineNumber: 205,
                             columnNumber: 16
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 169,
+                    lineNumber: 196,
                     columnNumber: 5
                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39575,19 +39637,19 @@ function ArticleItem() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 181,
+                                lineNumber: 208,
                                 columnNumber: 12
                             }, this),
                             " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 181,
+                        lineNumber: 208,
                         columnNumber: 8
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 181,
+                    lineNumber: 208,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -39603,7 +39665,7 @@ function ArticleItem() {
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 187,
+                                lineNumber: 214,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39611,18 +39673,18 @@ function ArticleItem() {
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 188,
+                                lineNumber: 215,
                                 columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 186,
+                        lineNumber: 213,
                         columnNumber: 4
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 184,
+                    lineNumber: 211,
                     columnNumber: 4
                 }, this)
             ]

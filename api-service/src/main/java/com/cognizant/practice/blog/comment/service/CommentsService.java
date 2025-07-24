@@ -34,15 +34,30 @@ public class CommentsService {
         this.userRepository = userRepository;
     }
 
-    public UserEntity getPrincipalUser(Principal author) {
-        String username = author.getName();
+    // public UserEntity getPrincipalUser(Principal author) {
+    //     String username = author.getName();
 
+    //     Optional<UserEntity> user = userRepository.findByUsername(username);
+    //     if (user.isEmpty()) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+    //     }
+
+    //     return user.get();
+    // }
+
+    public UserEntity getUserFromUsername(String username) {
         Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
 
         return user.get();
+    }
+
+    public UserEntity getPrincipalUser(Principal author) {
+        String username = author.getName();
+
+        return getUserFromUsername(username);
     }
 
     public boolean isValidRequest(CommentRequest request) {
@@ -76,7 +91,8 @@ public class CommentsService {
         if (!isValidRequest(commentRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
-
+        UserEntity editor = getPrincipalUser(user);
+        
         Optional<ArticleEntity> article = articleRepository.findById(articleId);
         if (article.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
@@ -85,7 +101,7 @@ public class CommentsService {
         if (comment.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Comment not found");
 
-        UserEntity editor = getPrincipalUser(user);
+        
         CommentEntity targetComment = comment.get();
 
         targetComment.setContent(commentRequest.content());

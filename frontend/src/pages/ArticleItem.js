@@ -128,32 +128,59 @@ export default function ArticleItem() {
 			
 			<div className="comments">
 				<h3>Comments</h3>
-				{comments.map(comment => (
-					<div key={comment.id} className="comment">
-						<p><strong>{comment.author.username}</strong>:</p>
-
-						{editingCommentId === comment.id ? (
+				{comments.map(comment => {
+					const commentCreatedBy = comment.author?.username || 'Unknown';
+					const commentCreatedAt = comment.dateCreated;
+					const commentEditedBy = comment.editor?.username || commentCreatedBy;
+					const commentEditedAt = comment.dateEdited || commentCreatedAt;
+					const showCommentEdited = (
+						commentCreatedBy !== commentEditedBy ||
+						formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt)
+					);
+					return (
+						<div key={comment.id} className="comment">
+						<div>
+							<p><strong>{commentCreatedBy}</strong>:</p>
+							<div style={{ fontSize: '0.95em', color: '#6a6a6a', marginBottom: 4 }}>
+							at {formatDateTimeToMin(commentCreatedAt)}
+							</div>
+							{editingCommentId === comment.id ? (
 							<>
 								<textarea
-									value={editedContent}
-									onChange={(e) => setEditedContent(e.target.value)}
+								className="edit-comment-textarea"
+								value={editedContent}
+								onChange={(e) => setEditedContent(e.target.value)}
 								/>
+							</>
+							) : (
+							<>
+								<p>{comment.content}</p>
+								{showCommentEdited && (
+								<div style={{ fontSize: '0.93em', color: '#8a8a8a', marginTop: 2 }}>
+									Edited by <strong>{commentEditedBy}</strong> at {formatDateTimeToMin(commentEditedAt)}
+								</div>
+								)}
+							</>
+							)}
+						</div>
+						<div className="comment-actions">
+							{editingCommentId === comment.id ? (
+							<>
 								<button onClick={() => handleEditSubmit(article.id, comment.id)}>Save</button>
 								<button onClick={() => setEditingCommentId(null)}>Cancel</button>
 							</>
-						) : (
-							<>
-								<p>{comment.content}</p>
-								{comment.author.username === currentUser && (
-									<>
-									<button onClick={() => startEditing(comment)}>Edit</button>
-									<button onClick={() => handleCommentDelete(article.id, comment.id)}>Delete</button>
-									</>
-								)}
-							</>
-						)}
-					</div>
-				))}
+							) : (
+							(hasRole("ADMIN") || comment.author.username === currentUser) && (
+								<>
+								<button onClick={() => startEditing(comment)}>Edit</button>
+								<button onClick={() => handleCommentDelete(article.id, comment.id)}>Delete</button>
+								</>
+							)
+							)}
+						</div>
+						</div>
+					);
+					})}
 			</div>
 
 			{/* <h3>Comments</h3>
