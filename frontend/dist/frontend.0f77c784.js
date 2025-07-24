@@ -29766,7 +29766,6 @@ var _s = $RefreshSig$(), _s1 = $RefreshSig$();
 const AuthContext = /*#__PURE__*/ (0, _react.createContext)(null);
 const AuthProvider = ({ children })=>{
     _s();
-    // const [token, setToken] = useState(() => localStorage.getItem('token'));
     const [token, setToken] = (0, _react.useState)(()=>JSON.parse(localStorage.getItem('token')));
     const [currentUser, setCurrentUser] = (0, _react.useState)(()=>localStorage.getItem('currentUser'));
     const login = (userToken, username)=>{
@@ -29795,7 +29794,7 @@ const AuthProvider = ({ children })=>{
         children: children
     }, void 0, false, {
         fileName: "src/api/AuthContext.js",
-        lineNumber: 36,
+        lineNumber: 35,
         columnNumber: 9
     }, undefined);
 };
@@ -39269,6 +39268,8 @@ function ArticleItem() {
     const [article, setArticle] = (0, _react.useState)(null);
     const [comments, setComments] = (0, _react.useState)([]);
     const [content, setContent] = (0, _react.useState)('');
+    const [editingCommentId, setEditingCommentId] = (0, _react.useState)(null);
+    const [editedContent, setEditedContent] = (0, _react.useState)('');
     const [error, setError] = (0, _react.useState)(null);
     const navigate = (0, _reactRouter.useNavigate)();
     const { token, currentUser } = (0, _authContext.useAuth)();
@@ -39303,11 +39304,37 @@ function ArticleItem() {
             setError("Failed to upload comment");
         });
     };
+    const startEditing = (comment)=>{
+        setEditingCommentId(comment.id);
+        setEditedContent(comment.content);
+    };
+    const handleEditSubmit = async (articleId, commentId)=>{
+        try {
+            console.log(articleId, commentId, editedContent, token);
+            await (0, _commentApi.editComment)(articleId, commentId, editedContent, token);
+            setComments(comments.map((c)=>c.id === commentId ? {
+                    ...c,
+                    content: editedContent
+                } : c));
+            setEditingCommentId(null);
+        } catch (err) {
+            console.error("Failed to edit comment:", err);
+        }
+    };
+    const handleCommentDelete = async (articleId, commentId)=>{
+        try {
+            console.log(articleId, commentId, token);
+            await (0, _commentApi.deleteComment)(articleId, commentId, token);
+            setComments(comments.filter((c)=>c.id !== commentId));
+        } catch (err) {
+            console.error("Failed to delete comment:", err);
+        }
+    };
     if (!article) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/pages/ArticleItem.js",
-        lineNumber: 62,
+        lineNumber: 93,
         columnNumber: 23
     }, this);
     function formatDateTimeToMin(dateStr) {
@@ -39327,14 +39354,14 @@ function ArticleItem() {
                     children: article.title
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 82,
+                    lineNumber: 113,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: article.content
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 83,
+                    lineNumber: 114,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39349,7 +39376,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 86,
+                                    lineNumber: 117,
                                     columnNumber: 6
                                 }, this),
                                 " at ",
@@ -39357,14 +39384,14 @@ function ArticleItem() {
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 85,
+                            lineNumber: 116,
                             columnNumber: 5
                         }, this),
                         showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 90,
+                                    lineNumber: 121,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39378,7 +39405,7 @@ function ArticleItem() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/pages/ArticleItem.js",
-                                            lineNumber: 91,
+                                            lineNumber: 122,
                                             columnNumber: 12
                                         }, this),
                                         " at ",
@@ -39387,7 +39414,7 @@ function ArticleItem() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 91,
+                                    lineNumber: 122,
                                     columnNumber: 7
                                 }, this)
                             ]
@@ -39395,46 +39422,111 @@ function ArticleItem() {
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 84,
+                    lineNumber: 115,
                     columnNumber: 4
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 96,
+                    lineNumber: 127,
                     columnNumber: 4
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                    children: "Comments"
-                }, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 98,
-                    columnNumber: 4
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                    className: "comments-list",
-                    children: comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: [
-                                        comment.author?.username || 'Anonymous',
-                                        ":"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 102,
-                                    columnNumber: 7
-                                }, this),
-                                " ",
-                                comment.content
-                            ]
-                        }, comment.id, true, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "comments",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                            children: "Comments"
+                        }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 101,
-                            columnNumber: 6
-                        }, this))
-                }, void 0, false, {
+                            lineNumber: 130,
+                            columnNumber: 5
+                        }, this),
+                        comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "comment",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                                children: comment.author.username
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 133,
+                                                columnNumber: 10
+                                            }, this),
+                                            ":"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/pages/ArticleItem.js",
+                                        lineNumber: 133,
+                                        columnNumber: 7
+                                    }, this),
+                                    editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                                                value: editedContent,
+                                                onChange: (e)=>setEditedContent(e.target.value)
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 137,
+                                                columnNumber: 9
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                onClick: ()=>handleEditSubmit(article.id, comment.id),
+                                                children: "Save"
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 141,
+                                                columnNumber: 9
+                                            }, this),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                onClick: ()=>setEditingCommentId(null),
+                                                children: "Cancel"
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 142,
+                                                columnNumber: 9
+                                            }, this)
+                                        ]
+                                    }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                children: comment.content
+                                            }, void 0, false, {
+                                                fileName: "src/pages/ArticleItem.js",
+                                                lineNumber: 146,
+                                                columnNumber: 9
+                                            }, this),
+                                            comment.author.username === currentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                                children: [
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                        onClick: ()=>startEditing(comment),
+                                                        children: "Edit"
+                                                    }, void 0, false, {
+                                                        fileName: "src/pages/ArticleItem.js",
+                                                        lineNumber: 149,
+                                                        columnNumber: 10
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                        onClick: ()=>handleCommentDelete(article.id, comment.id),
+                                                        children: "Delete"
+                                                    }, void 0, false, {
+                                                        fileName: "src/pages/ArticleItem.js",
+                                                        lineNumber: 150,
+                                                        columnNumber: 10
+                                                    }, this)
+                                                ]
+                                            }, void 0, true)
+                                        ]
+                                    }, void 0, true)
+                                ]
+                            }, comment.id, true, {
+                                fileName: "src/pages/ArticleItem.js",
+                                lineNumber: 132,
+                                columnNumber: 6
+                            }, this))
+                    ]
+                }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 99,
+                    lineNumber: 129,
                     columnNumber: 4
                 }, this),
                 currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39449,7 +39541,7 @@ function ArticleItem() {
                             placeholder: "Write your comment..."
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 109,
+                            lineNumber: 170,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39457,7 +39549,7 @@ function ArticleItem() {
                             children: "Post Comment"
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 116,
+                            lineNumber: 177,
                             columnNumber: 6
                         }, this),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39467,13 +39559,13 @@ function ArticleItem() {
                             children: error
                         }, void 0, false, {
                             fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 117,
+                            lineNumber: 178,
                             columnNumber: 16
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 108,
+                    lineNumber: 169,
                     columnNumber: 5
                 }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -39483,19 +39575,19 @@ function ArticleItem() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 120,
+                                lineNumber: 181,
                                 columnNumber: 12
                             }, this),
                             " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 120,
+                        lineNumber: 181,
                         columnNumber: 8
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 120,
+                    lineNumber: 181,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -39511,7 +39603,7 @@ function ArticleItem() {
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 126,
+                                lineNumber: 187,
                                 columnNumber: 5
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -39519,29 +39611,29 @@ function ArticleItem() {
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 127,
+                                lineNumber: 188,
                                 columnNumber: 5
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 125,
+                        lineNumber: 186,
                         columnNumber: 4
                     }, this)
                 }, void 0, false, {
                     fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 123,
+                    lineNumber: 184,
                     columnNumber: 4
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleItem.js",
-            lineNumber: 81,
+            lineNumber: 112,
             columnNumber: 10
         }, this)
     }, void 0, false);
 }
-_s(ArticleItem, "fH/xfJ1LzFyEa7dle/B+u+txapY=", false, function() {
+_s(ArticleItem, "qo/15UEmC/b8mOfbIhKo2siYnBU=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
@@ -39565,6 +39657,7 @@ parcelHelpers.export(exports, "fetchCommentsByArticleId", ()=>fetchCommentsByArt
 parcelHelpers.export(exports, "editComment", ()=>editComment);
 parcelHelpers.export(exports, "deleteComment", ()=>deleteComment);
 async function createComment(id, token, content) {
+    console.log(id, token, content);
     const res = await fetch(`/api/articles/${id}/comments`, {
         method: 'POST',
         headers: {
@@ -39585,7 +39678,7 @@ async function fetchCommentsByArticleId(id) {
     if (!res.ok) throw new Error("The given article has no comments");
     return res.json();
 }
-async function editComment(articleId, commentId, token, content) {
+async function editComment(articleId, commentId, content, token) {
     const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
         method: 'PUT',
         headers: {
@@ -39606,6 +39699,8 @@ async function deleteComment(articleId, commentId, token) {
             'Authorization': `Bearer ${token}`
         }
     });
+    console.log(res);
+    // console.log(res.json());
     if (!res.ok) throw new Error('Failed to delete comment');
 }
 

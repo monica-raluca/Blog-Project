@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
 import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
-import { createComment, fetchCommentsByArticleId } from '../api/CommentApi';
+import { createComment, fetchCommentsByArticleId, editComment, deleteComment } from '../api/CommentApi';
 import { Link } from 'react-router';
 import RequireRoles from '../api/RequireRoles';
 import { useAuth } from '../api/AuthContext';
@@ -16,6 +16,9 @@ export default function ArticleItem() {
 	const [article, setArticle] = useState(null);
     const [comments, setComments] = useState([]);
     const [content, setContent] = useState('');
+	const [editingCommentId, setEditingCommentId] = useState(null);
+	const [editedContent, setEditedContent] = useState('');
+
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -59,6 +62,34 @@ export default function ArticleItem() {
         });
 	};
 
+	const startEditing = (comment) => {
+		setEditingCommentId(comment.id);
+		setEditedContent(comment.content);
+	};
+
+	const handleEditSubmit = async (articleId, commentId) => {
+		try {
+			console.log(articleId, commentId, editedContent, token);
+			await editComment(articleId, commentId, editedContent, token);
+			setComments(comments.map(c =>
+				c.id === commentId ? { ...c, content: editedContent } : c
+			));
+			setEditingCommentId(null);
+		} catch (err) {
+			console.error("Failed to edit comment:", err);
+		}
+	};
+
+	const handleCommentDelete = async (articleId, commentId) => {
+		try {
+			console.log(articleId, commentId, token);
+			await deleteComment(articleId, commentId, token);
+			setComments(comments.filter(c => c.id !== commentId));
+		} catch (err) {
+			console.error("Failed to delete comment:", err);
+		}
+	};
+
 	if (!article) return <p>Loading...</p>;
 
 	function formatDateTimeToMin(dateStr) {
@@ -94,15 +125,45 @@ export default function ArticleItem() {
 			</p>
 		
 			<hr />
+			
+			<div className="comments">
+				<h3>Comments</h3>
+				{comments.map(comment => (
+					<div key={comment.id} className="comment">
+						<p><strong>{comment.author.username}</strong>:</p>
 
-			<h3>Comments</h3>
+						{editingCommentId === comment.id ? (
+							<>
+								<textarea
+									value={editedContent}
+									onChange={(e) => setEditedContent(e.target.value)}
+								/>
+								<button onClick={() => handleEditSubmit(article.id, comment.id)}>Save</button>
+								<button onClick={() => setEditingCommentId(null)}>Cancel</button>
+							</>
+						) : (
+							<>
+								<p>{comment.content}</p>
+								{comment.author.username === currentUser && (
+									<>
+									<button onClick={() => startEditing(comment)}>Edit</button>
+									<button onClick={() => handleCommentDelete(article.id, comment.id)}>Delete</button>
+									</>
+								)}
+							</>
+						)}
+					</div>
+				))}
+			</div>
+
+			{/* <h3>Comments</h3>
 			<ul className="comments-list">
 				{comments.map(comment => (
 					<li key={comment.id}>
 						<strong>{comment.author?.username || 'Anonymous'}:</strong> {comment.content}
 					</li>
 				))}
-			</ul>
+			</ul> */}
 
 			{currentUser ? (
 				<form onSubmit={handleCommentSubmit} className="comment-form">

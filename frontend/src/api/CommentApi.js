@@ -1,4 +1,5 @@
 export async function createComment(id, token, content) {
+    console.log(id, token, content);
 	const res = await fetch(`/api/articles/${id}/comments`, {
         method: 'POST',
         headers: {
@@ -20,7 +21,7 @@ export async function fetchCommentsByArticleId(id) {
 	return res.json();
 }
 
-export async function editComment(articleId, commentId, token, content) {
+export async function editComment(articleId, commentId, content, token) {
     const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
         method: 'PUT',
         headers: {
@@ -42,6 +43,7 @@ export async function deleteComment(articleId, commentId, token) {
             'Authorization': `Bearer ${token}`
         }
     });
-
+    console.log(res);
+    // console.log(res.json());
     if (!res.ok) throw new Error('Failed to delete comment');
 }
