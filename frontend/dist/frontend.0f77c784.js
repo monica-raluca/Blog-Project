@@ -39562,6 +39562,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
 parcelHelpers.export(exports, "fetchCommentsByArticleId", ()=>fetchCommentsByArticleId);
+parcelHelpers.export(exports, "editComment", ()=>editComment);
+parcelHelpers.export(exports, "deleteComment", ()=>deleteComment);
 async function createComment(id, token, content) {
     const res = await fetch(`/api/articles/${id}/comments`, {
         method: 'POST',
@@ -39582,6 +39584,29 @@ async function fetchCommentsByArticleId(id) {
     const res = await fetch(`/api/articles/${id}/comments`);
     if (!res.ok) throw new Error("The given article has no comments");
     return res.json();
+}
+async function editComment(articleId, commentId, token, content) {
+    const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            content
+        })
+    });
+    if (!res.ok) throw new Error('Failed to edit comment');
+    return res.json();
+}
+async function deleteComment(articleId, commentId, token) {
+    const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    if (!res.ok) throw new Error('Failed to delete comment');
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f3Q9r":[function() {},{}],"7faOT":[function() {},{}],"6O7Ur":[function(require,module,exports,__globalThis) {
@@ -40255,6 +40280,7 @@ function ArticleForm({ isEdit = false }) {
     const [content, setContent] = (0, _react.useState)('');
     const navigate = (0, _reactRouter.useNavigate)();
     const { token } = (0, _authContext.useAuth)();
+    console.log(token);
     (0, _react.useEffect)(()=>{
         if (isEdit) (0, _articlesApi.fetchArticleById)(id).then((article)=>{
             setTitle(article.title);
@@ -40288,7 +40314,7 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Edit Article' : 'Create Article'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 43,
+                    lineNumber: 44,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40298,7 +40324,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 44,
+                    lineNumber: 45,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -40308,7 +40334,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -40316,18 +40342,18 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Update' : 'Create'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 46,
+                    lineNumber: 47,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleForm.js",
-            lineNumber: 42,
+            lineNumber: 43,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/ArticleForm.js",
-        lineNumber: 41,
+        lineNumber: 42,
         columnNumber: 3
     }, this);
 }

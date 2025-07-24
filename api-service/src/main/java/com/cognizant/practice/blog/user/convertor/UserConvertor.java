@@ -15,4 +15,16 @@ public class UserConvertor {
                 .role(userEntity.getRole())
                 .build();
     }
+
+    public static UserEntity toEntity(User user) {
+        return UserEntity.builder()
+                .id(user.getId())
+                .lastName(user.getLastName())
+                .firstName(user.getFirstName())
+                .email(user.getEmail())
+                .createdDate(user.getCreatedDate())
+                .username(user.getUsername())
+                .role(user.getRole())
+                .build();
+    }
 }

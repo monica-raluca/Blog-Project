@@ -5,6 +5,7 @@ import com.cognizant.practice.blog.user.dto.User;
 import com.cognizant.practice.blog.user.entity.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,10 +25,13 @@ public class CommentEntity {
 
     private String content;
     private LocalDateTime dateCreated;
-
+    private LocalDateTime dateEdited;
     @ManyToOne
     private ArticleEntity articleEntity;
 
     @ManyToOne
     private UserEntity author;
+
+    @ManyToOne
+    private UserEntity editor;
 }

@@ -67,8 +67,43 @@ public class CommentsService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
 
         UserEntity author = getPrincipalUser(user);
-        CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), article.get(), author);
+        CommentEntity newComment = new CommentEntity(null, commentRequest.content(), LocalDateTime.now(), LocalDateTime.now(), article.get(), author, author);
 
         return CommentConvertor.toDto(commentsRepository.save(newComment));
+    }
+
+    public Comment editComment(UUID articleId, UUID commentId, CommentRequest commentRequest, Principal user) {
+        if (!isValidRequest(commentRequest)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
+        }
+
+        Optional<ArticleEntity> article = articleRepository.findById(articleId);
+        if (article.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+
+        Optional<CommentEntity> comment = commentsRepository.findById(commentId);
+        if (comment.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Comment not found");
+
+        UserEntity editor = getPrincipalUser(user);
+        CommentEntity targetComment = comment.get();
+
+        targetComment.setContent(commentRequest.content());
+        targetComment.setDateEdited(LocalDateTime.now());
+        targetComment.setEditor(editor);
+
+        return CommentConvertor.toDto(commentsRepository.save(targetComment));
+    }
+
+    public void deleteComment(UUID articleId, UUID commentId, Principal user) {
+        Optional<ArticleEntity> article = articleRepository.findById(articleId);
+        if (article.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+
+        Optional<CommentEntity> comment = commentsRepository.findById(commentId);
+        if (comment.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Comment not found");
+
+        commentsRepository.delete(comment.get());
     }
 }

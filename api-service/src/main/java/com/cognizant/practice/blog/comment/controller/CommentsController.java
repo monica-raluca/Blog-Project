@@ -32,4 +32,14 @@ public class CommentsController {
     public Comment createComment(@PathVariable UUID id, @RequestBody CommentRequest commentRequest, Principal user) {
         return commentsService.createComment(id, commentRequest, user);
     }
+
+    @PutMapping(value="/articles/{articleId}/comments/{commentId}")
+    public Comment editComment(@PathVariable UUID articleId, @PathVariable UUID commentId, @RequestBody CommentRequest commentRequest, Principal user) {
+        return commentsService.editComment(articleId, commentId, commentRequest, user);
+    }
+
+    @DeleteMapping(value="/articles/{articleId}/comments/{commentId}")
+    public void deleteComment(@PathVariable UUID articleId, @PathVariable UUID commentId, Principal user) {
+        commentsService.deleteComment(articleId, commentId, user);
+    }
 }

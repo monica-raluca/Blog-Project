@@ -18,6 +18,8 @@ public class Comment {
 
     private String content;
     private LocalDateTime dateCreated;
+    private LocalDateTime dateEdited;
 
     private User author;
+    private User editor;
 }

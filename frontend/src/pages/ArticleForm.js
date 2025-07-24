@@ -11,6 +11,7 @@ export default function ArticleForm({ isEdit = false }) {
 	const navigate = useNavigate();
 
 	const {token} = useAuth();
+	console.log(token);
 
 	useEffect(() => {
 		if (isEdit) {

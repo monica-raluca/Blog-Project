@@ -19,3 +19,29 @@ export async function fetchCommentsByArticleId(id) {
 	if (!res.ok) throw new Error("The given article has no comments");
 	return res.json();
 }
+
+export async function editComment(articleId, commentId, token, content) {
+    const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({content})
+    });
+
+    if (!res.ok) throw new Error('Failed to edit comment');
+
+    return res.json();
+}
+
+export async function deleteComment(articleId, commentId, token) {
+    const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!res.ok) throw new Error('Failed to delete comment');
+}
