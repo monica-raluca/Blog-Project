@@ -30046,7 +30046,7 @@ const AuthProvider = ({ children })=>{
     const login = (userToken, username)=>{
         localStorage.setItem('token', userToken);
         localStorage.setItem('currentUser', username);
-        setToken(userToken);
+        setToken(JSON.parse(localStorage.getItem('token')));
         setCurrentUser(username);
     };
     const logout = ()=>{
@@ -40537,8 +40537,9 @@ function ArticleForm({ isEdit = false }) {
     const [title, setTitle] = (0, _react.useState)('');
     const [content, setContent] = (0, _react.useState)('');
     const navigate = (0, _reactRouter.useNavigate)();
-    const { token } = (0, _authContext.useAuth)();
+    const { token, currentUser } = (0, _authContext.useAuth)();
     console.log(token);
+    console.log(currentUser);
     (0, _react.useEffect)(()=>{
         if (isEdit) (0, _articlesApi.fetchArticleById)(id).then((article)=>{
             setTitle(article.title);
@@ -40572,7 +40573,7 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Edit Article' : 'Create Article'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 44,
+                    lineNumber: 45,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40582,7 +40583,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -40592,7 +40593,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 46,
+                    lineNumber: 47,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -40600,22 +40601,22 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Update' : 'Create'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 47,
+                    lineNumber: 48,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleForm.js",
-            lineNumber: 43,
+            lineNumber: 44,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/ArticleForm.js",
-        lineNumber: 42,
+        lineNumber: 43,
         columnNumber: 3
     }, this);
 }
-_s(ArticleForm, "kPoj+25T3O0o3PsmUwpuHvObM0s=", false, function() {
+_s(ArticleForm, "hb/hI7vAz7V9HmNV5dRcvRDEDSg=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
