@@ -1,4 +1,4 @@
-import { Outlet, Link, useNavigate } from 'react-router';
+import { Outlet, Link, useNavigate, useLocation } from 'react-router';
 import '../format/Layout.css';
 import RequireRoles from '../api/RequireRoles';
 import { hasRole } from '../api/AuthApi';
@@ -6,12 +6,14 @@ import { token, currentUser } from '../api/AuthApi';
 import { useEffect, useContext, use } from 'react';
 import { useAuth } from '../api/AuthContext';
 import { createContext, useState } from 'react';
+import TopBar from '../pages/TopBar';
 
 // ArticleControlsContext provides state and handlers for filtering, sorting, and pagination
 export const ArticleControlsContext = createContext();
 
 export function Layout() {
 	const navigate = useNavigate();
+	const location = useLocation();
 	// const token = JSON.parse(localStorage.getItem('token'));
 	// const currentUser = localStorage.getItem('currentUser');
 	const {token, currentUser, logout} = useAuth();
@@ -59,51 +61,6 @@ export function Layout() {
 						</RequireRoles>
 					</nav>
 					{/* Article Controls Section */}
-					<div style={{marginTop: 32, padding: '0 8px', width: '100%'}}>
-						<div style={{fontWeight: 600, fontSize: '1.08em', marginBottom: 8, color: '#162938'}}>Article Controls</div>
-						<div className="filter-panel" style={{background: 'none', boxShadow: 'none', padding: 0}}>
-							<input
-								placeholder="Title"
-								value={filtersInput.title}
-								onChange={e => setFiltersInput(f => ({ ...f, title: e.target.value }))}
-								style={{marginBottom: 6, width: '100%'}}
-							/>
-							<input
-								placeholder="Author"
-								value={filtersInput.author}
-								onChange={e => setFiltersInput(f => ({ ...f, author: e.target.value }))}
-								style={{marginBottom: 6, width: '100%'}}
-							/>
-							<button style={{marginBottom: 10, width: '100%'}} onClick={() => setFilters(filtersInput)}>Apply filters</button>
-						</div>
-						<div style={{marginBottom: 10}}>
-							<select
-								style={{width: '100%', marginBottom: 6}}
-								onChange={e => setSortCriteria([{ field: e.target.value, direction: 'asc' }])}
-								value={sortCriteria[0]?.field || 'createdDate'}
-							>
-								<option value="createdDate">Created Date</option>
-								<option value="title">Title</option>
-								<option value="author">Author</option>
-							</select>
-							<button style={{width: '100%'}} onClick={() => setSortCriteria(sc => sc.map(c => ({ ...c, direction: c.direction === 'asc' ? 'desc' : 'asc' })))}>Toggle Sort Direction</button>
-						</div>
-						<div style={{marginBottom: 10}}>
-							<button style={{width: '100%', marginBottom: 6}} disabled={pageIndex === 0} onClick={() => setPageIndex(pageIndex - 1)}>Previous Page</button>
-							<span style={{display: 'block', textAlign: 'center', marginBottom: 6}}>Page {pageIndex + 1}</span>
-							<button style={{width: '100%'}} onClick={() => setPageIndex(pageIndex + 1)}>Next Page</button>
-						</div>
-						<div>
-							<input
-								type="text"
-								placeholder="Articles per page"
-								value={sizeInput}
-								onChange={e => setSizeInput(e.target.value)}
-								style={{marginBottom: 6, width: '100%'}}
-							/>
-							<button style={{width: '100%'}} onClick={() => setPageSize(Number(sizeInput))}>Change page size</button>
-						</div>
-					</div>
 					{/* End Article Controls Section */}
 					<div className="layout-sidebar-footer">
 						{token ? (
@@ -120,6 +77,9 @@ export function Layout() {
 					</div>
 				</aside>
 				<main className="layout-main">
+					{location.pathname === '/articles' && (
+						<div className="sticky-topbar"><TopBar /></div>
+					)}
 					<Outlet />
 				</main>
 			</div>

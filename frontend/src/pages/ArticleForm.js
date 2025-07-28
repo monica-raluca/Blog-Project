@@ -35,7 +35,13 @@ export default function ArticleForm({ isEdit = false }) {
 			}
 			navigate('/articles');
 		} catch (err) {
-			console.error('Failed to save article:', err);
+			if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+                navigate('/notfound');
+            } else {
+                navigate('/error');
+            }
 		}
 	};
 

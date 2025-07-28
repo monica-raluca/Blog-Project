@@ -123,6 +123,14 @@ body::before {
   color: #270023;
 }
 
+.sticky-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: transparent;
+  box-shadow: 0 2px 12px rgba(22,41,56,0.07);
+}
+
 .layout-main {
   flex: 1;
   margin-left: 240px;
@@ -130,6 +138,15 @@ body::before {
   min-height: 100vh;
   background: transparent;
   z-index: 2;
+  overflow-y: auto;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.articles-container {
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 @media (max-width: 700px) {
@@ -158,6 +175,7 @@ body::before {
     margin-left: 0;
     margin-top: 80px;
     padding: 0;
+    max-height: 100vh;
   }
   .layout-sidebar-footer {
     margin-top: 0;

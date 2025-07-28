@@ -6,9 +6,10 @@ body {
 }
 
 .article-page {
-  width: 100vw;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 64px 0 48px 0;
+  padding: 64px 32px 48px 32px;
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -175,28 +176,22 @@ body {
   box-sizing: border-box;
 }
 
-@media (max-width: 900px) {
+.article-page h2, .article-page h3, .article-page p, .comments-list, .comment-form, .article-page .article-actions {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 1100px) {
   .article-page {
-    padding: 32px 0 24px 0;
-    border-radius: 10px;
-  }
-  .article-page h2, .article-page h3, .article-page p, .comments-list, .comment-form, .article-page .article-actions {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .article-page h2 {
-    font-size: 1.5em;
+    max-width: 98vw;
+    padding: 32px 8px 24px 8px;
   }
 }
 
 @media (max-width: 600px) {
   .article-page {
-    padding: 10px 0 10px 0;
+    padding: 10px 2vw 10px 2vw;
     border-radius: 4px;
-  }
-  .article-page h2, .article-page h3, .article-page p, .comments-list, .comment-form, .article-page .article-actions {
-    padding-left: 4px;
-    padding-right: 4px;
   }
   .article-page h2 {
     font-size: 1.1em;

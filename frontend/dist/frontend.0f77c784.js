@@ -29425,11 +29425,14 @@ var _requireRolesDefault = parcelHelpers.interopDefault(_requireRoles);
 var _authApi = require("../api/AuthApi");
 var _react = require("react");
 var _authContext = require("../api/AuthContext");
+var _topBar = require("../pages/TopBar");
+var _topBarDefault = parcelHelpers.interopDefault(_topBar);
 var _s = $RefreshSig$();
 const ArticleControlsContext = /*#__PURE__*/ (0, _react.createContext)();
 function Layout() {
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
+    const location = (0, _reactRouter.useLocation)();
     // const token = JSON.parse(localStorage.getItem('token'));
     // const currentUser = localStorage.getItem('currentUser');
     const { token, currentUser, logout } = (0, _authContext.useAuth)();
@@ -29499,12 +29502,12 @@ function Layout() {
                                         }
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 48,
+                                        lineNumber: 50,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 46,
+                                    lineNumber: 48,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -29512,13 +29515,13 @@ function Layout() {
                                     children: "My Blog"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 50,
+                                    lineNumber: 52,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/layouts/Layout.js",
-                            lineNumber: 45,
+                            lineNumber: 47,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
@@ -29530,7 +29533,7 @@ function Layout() {
                                     children: "Home"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 53,
+                                    lineNumber: 55,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29544,12 +29547,12 @@ function Layout() {
                                         children: "Create Article"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 55,
+                                        lineNumber: 57,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 54,
+                                    lineNumber: 56,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -29562,253 +29565,18 @@ function Layout() {
                                         children: "User Management"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 58,
+                                        lineNumber: 60,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.js",
-                                    lineNumber: 57,
+                                    lineNumber: 59,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/layouts/Layout.js",
-                            lineNumber: 52,
-                            columnNumber: 6
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            style: {
-                                marginTop: 32,
-                                padding: '0 8px',
-                                width: '100%'
-                            },
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    style: {
-                                        fontWeight: 600,
-                                        fontSize: '1.08em',
-                                        marginBottom: 8,
-                                        color: '#162938'
-                                    },
-                                    children: "Article Controls"
-                                }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 63,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "filter-panel",
-                                    style: {
-                                        background: 'none',
-                                        boxShadow: 'none',
-                                        padding: 0
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            placeholder: "Title",
-                                            value: filtersInput.title,
-                                            onChange: (e)=>setFiltersInput((f)=>({
-                                                        ...f,
-                                                        title: e.target.value
-                                                    })),
-                                            style: {
-                                                marginBottom: 6,
-                                                width: '100%'
-                                            }
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 65,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            placeholder: "Author",
-                                            value: filtersInput.author,
-                                            onChange: (e)=>setFiltersInput((f)=>({
-                                                        ...f,
-                                                        author: e.target.value
-                                                    })),
-                                            style: {
-                                                marginBottom: 6,
-                                                width: '100%'
-                                            }
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 71,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            style: {
-                                                marginBottom: 10,
-                                                width: '100%'
-                                            },
-                                            onClick: ()=>setFilters(filtersInput),
-                                            children: "Apply filters"
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 77,
-                                            columnNumber: 8
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 64,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    style: {
-                                        marginBottom: 10
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                            style: {
-                                                width: '100%',
-                                                marginBottom: 6
-                                            },
-                                            onChange: (e)=>setSortCriteria([
-                                                    {
-                                                        field: e.target.value,
-                                                        direction: 'asc'
-                                                    }
-                                                ]),
-                                            value: sortCriteria[0]?.field || 'createdDate',
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                    value: "createdDate",
-                                                    children: "Created Date"
-                                                }, void 0, false, {
-                                                    fileName: "src/layouts/Layout.js",
-                                                    lineNumber: 85,
-                                                    columnNumber: 9
-                                                }, this),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                    value: "title",
-                                                    children: "Title"
-                                                }, void 0, false, {
-                                                    fileName: "src/layouts/Layout.js",
-                                                    lineNumber: 86,
-                                                    columnNumber: 9
-                                                }, this),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                    value: "author",
-                                                    children: "Author"
-                                                }, void 0, false, {
-                                                    fileName: "src/layouts/Layout.js",
-                                                    lineNumber: 87,
-                                                    columnNumber: 9
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 80,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            style: {
-                                                width: '100%'
-                                            },
-                                            onClick: ()=>setSortCriteria((sc)=>sc.map((c)=>({
-                                                            ...c,
-                                                            direction: c.direction === 'asc' ? 'desc' : 'asc'
-                                                        }))),
-                                            children: "Toggle Sort Direction"
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 89,
-                                            columnNumber: 8
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 79,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    style: {
-                                        marginBottom: 10
-                                    },
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            style: {
-                                                width: '100%',
-                                                marginBottom: 6
-                                            },
-                                            disabled: pageIndex === 0,
-                                            onClick: ()=>setPageIndex(pageIndex - 1),
-                                            children: "Previous Page"
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 92,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            style: {
-                                                display: 'block',
-                                                textAlign: 'center',
-                                                marginBottom: 6
-                                            },
-                                            children: [
-                                                "Page ",
-                                                pageIndex + 1
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 93,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            style: {
-                                                width: '100%'
-                                            },
-                                            onClick: ()=>setPageIndex(pageIndex + 1),
-                                            children: "Next Page"
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 94,
-                                            columnNumber: 8
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 91,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "text",
-                                            placeholder: "Articles per page",
-                                            value: sizeInput,
-                                            onChange: (e)=>setSizeInput(e.target.value),
-                                            style: {
-                                                marginBottom: 6,
-                                                width: '100%'
-                                            }
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 97,
-                                            columnNumber: 8
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                            style: {
-                                                width: '100%'
-                                            },
-                                            onClick: ()=>setPageSize(Number(sizeInput)),
-                                            children: "Change page size"
-                                        }, void 0, false, {
-                                            fileName: "src/layouts/Layout.js",
-                                            lineNumber: 104,
-                                            columnNumber: 8
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 96,
-                                    columnNumber: 7
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 62,
+                            lineNumber: 54,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -29827,7 +29595,7 @@ function Layout() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 111,
+                                        lineNumber: 68,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29841,7 +29609,7 @@ function Layout() {
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 112,
+                                        lineNumber: 69,
                                         columnNumber: 9
                                     }, this)
                                 ]
@@ -29853,7 +29621,7 @@ function Layout() {
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 116,
+                                        lineNumber: 73,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
@@ -29862,49 +29630,64 @@ function Layout() {
                                         children: "Register"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.js",
-                                        lineNumber: 117,
+                                        lineNumber: 74,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "src/layouts/Layout.js",
-                            lineNumber: 108,
+                            lineNumber: 65,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 44,
+                    lineNumber: 46,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
                     className: "layout-main",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
-                        fileName: "src/layouts/Layout.js",
-                        lineNumber: 123,
-                        columnNumber: 6
-                    }, this)
-                }, void 0, false, {
+                    children: [
+                        location.pathname === '/articles' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "sticky-topbar",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _topBarDefault.default), {}, void 0, false, {
+                                fileName: "src/layouts/Layout.js",
+                                lineNumber: 81,
+                                columnNumber: 38
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 81,
+                            columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
+                            fileName: "src/layouts/Layout.js",
+                            lineNumber: 83,
+                            columnNumber: 6
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "src/layouts/Layout.js",
-                    lineNumber: 122,
+                    lineNumber: 79,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/layouts/Layout.js",
-            lineNumber: 43,
+            lineNumber: 45,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/layouts/Layout.js",
-        lineNumber: 39,
+        lineNumber: 41,
         columnNumber: 3
     }, this);
 }
-_s(Layout, "1fb7qXCE+ZE9xIO/C/b3KcIXvPk=", false, function() {
+_s(Layout, "0sn5dBCURMJtNUqFVatdvfLChbQ=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
+        (0, _reactRouter.useLocation),
         (0, _authContext.useAuth)
     ];
 });
@@ -29917,7 +29700,7 @@ $RefreshReg$(_c, "Layout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Layout.css":"hLf3k","../api/AuthApi":"gPkaz","react":"jMk1U","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm"}],"hLf3k":[function() {},{}],"gPkaz":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-router":"2jawN","../format/Layout.css":"hLf3k","../api/AuthApi":"gPkaz","react":"jMk1U","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm","../pages/TopBar":"dd0hc"}],"hLf3k":[function() {},{}],"gPkaz":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 // import { useEffect } from 'react';
@@ -30129,7 +29912,335 @@ $RefreshReg$(_c, "AuthProvider");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"gh5Ho":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dd0hc":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$0beb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$0beb.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0beb.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>TopBar);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _layout = require("../layouts/Layout");
+var _topBarCss = require("../format/TopBar.css");
+var _s = $RefreshSig$();
+const SORT_FIELDS = [
+    {
+        label: 'Date',
+        value: 'createdDate'
+    },
+    {
+        label: 'Title',
+        value: 'title'
+    },
+    {
+        label: 'Author',
+        value: 'author'
+    }
+];
+const PAGE_SIZES = [
+    5,
+    10,
+    20,
+    50
+];
+function TopBar() {
+    _s();
+    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = (0, _react.useContext)((0, _layout.ArticleControlsContext));
+    const [localSort, setLocalSort] = (0, _react.useState)(sortCriteria);
+    const [expanded, setExpanded] = (0, _react.useState)(false);
+    // Handle sort field toggle
+    const handleSortToggle = (field)=>{
+        const exists = localSort.find((sc)=>sc.field === field);
+        let updated;
+        if (exists) updated = localSort.filter((sc)=>sc.field !== field);
+        else updated = [
+            ...localSort,
+            {
+                field,
+                direction: 'asc'
+            }
+        ];
+        setLocalSort(updated);
+        setSortCriteria(updated);
+    };
+    // Handle sort direction toggle
+    const handleSortDirection = (field)=>{
+        const updated = localSort.map((sc)=>sc.field === field ? {
+                ...sc,
+                direction: sc.direction === 'asc' ? 'desc' : 'asc'
+            } : sc);
+        setLocalSort(updated);
+        setSortCriteria(updated);
+    };
+    // Filter pills
+    const handleFilterChange = (e)=>{
+        setFiltersInput({
+            ...filtersInput,
+            [e.target.name]: e.target.value
+        });
+    };
+    const applyFilters = ()=>setFilters(filtersInput);
+    const clearFilters = ()=>{
+        setFiltersInput({
+            title: '',
+            author: ''
+        });
+        setFilters({
+            title: '',
+            author: ''
+        });
+    };
+    // Pagination
+    const currentPage = pageIndex + 1;
+    const totalPages = 50;
+    const goToPrev = ()=>setPageIndex(Math.max(0, pageIndex - 1));
+    const goToNext = ()=>setPageIndex(pageIndex + 1);
+    const handlePageInput = (e)=>{
+        let val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val > 0) setPageIndex(val - 1);
+    };
+    const handlePageSizeChange = (e)=>{
+        setPageSize(Number(e.target.value));
+        setPageIndex(0);
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: `topbar-root dynamic-island${expanded ? ' expanded' : ''}`,
+        onMouseEnter: ()=>setExpanded(true),
+        onMouseLeave: ()=>setExpanded(false),
+        onFocus: ()=>setExpanded(true),
+        onBlur: ()=>setExpanded(false),
+        tabIndex: 0,
+        children: [
+            !expanded && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "island-collapsed",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "island-dot"
+                    }, void 0, false, {
+                        fileName: "src/pages/TopBar.js",
+                        lineNumber: 79,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        className: "island-label",
+                        children: "Show controls"
+                    }, void 0, false, {
+                        fileName: "src/pages/TopBar.js",
+                        lineNumber: 80,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/pages/TopBar.js",
+                lineNumber: 78,
+                columnNumber: 9
+            }, this),
+            expanded && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "topbar-section",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "topbar-label",
+                                children: "Sort by:"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 86,
+                                columnNumber: 13
+                            }, this),
+                            SORT_FIELDS.map((sf)=>{
+                                const active = localSort.find((sc)=>sc.field === sf.value);
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    className: `topbar-sort-pill${active ? ' active' : ''}`,
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "checkbox",
+                                            checked: !!active,
+                                            onChange: ()=>handleSortToggle(sf.value)
+                                        }, void 0, false, {
+                                            fileName: "src/pages/TopBar.js",
+                                            lineNumber: 91,
+                                            columnNumber: 19
+                                        }, this),
+                                        sf.label,
+                                        active && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                            className: "topbar-sort-dir",
+                                            type: "button",
+                                            onClick: ()=>handleSortDirection(sf.value),
+                                            title: "Toggle direction",
+                                            children: active.direction === 'asc' ? "\u2191 Asc" : "\u2193 Desc"
+                                        }, void 0, false, {
+                                            fileName: "src/pages/TopBar.js",
+                                            lineNumber: 98,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, sf.value, true, {
+                                    fileName: "src/pages/TopBar.js",
+                                    lineNumber: 90,
+                                    columnNumber: 17
+                                }, this);
+                            })
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/TopBar.js",
+                        lineNumber: 85,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "topbar-section",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "topbar-label",
+                                children: "Filter:"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 112,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                className: "topbar-filter-pill",
+                                type: "text",
+                                name: "title",
+                                placeholder: "Title",
+                                value: filtersInput.title,
+                                onChange: handleFilterChange
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 113,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                className: "topbar-filter-pill",
+                                type: "text",
+                                name: "author",
+                                placeholder: "Author",
+                                value: filtersInput.author,
+                                onChange: handleFilterChange
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 121,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "topbar-btn",
+                                onClick: applyFilters,
+                                children: "Apply"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 129,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "topbar-btn clear",
+                                onClick: clearFilters,
+                                children: "Clear"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 130,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/TopBar.js",
+                        lineNumber: 111,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "topbar-section topbar-pagination",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "topbar-btn",
+                                onClick: goToPrev,
+                                disabled: pageIndex === 0,
+                                children: "<"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 133,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "topbar-page-label",
+                                children: [
+                                    "Page ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                        type: "number",
+                                        min: "1",
+                                        value: currentPage,
+                                        onChange: handlePageInput,
+                                        className: "topbar-page-input"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/TopBar.js",
+                                        lineNumber: 135,
+                                        columnNumber: 20
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 134,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                className: "topbar-btn",
+                                onClick: goToNext,
+                                children: ">"
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 143,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                                className: "topbar-page-size",
+                                value: pageSize,
+                                onChange: handlePageSizeChange,
+                                children: PAGE_SIZES.map((size)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                        value: size,
+                                        children: [
+                                            size,
+                                            " / page"
+                                        ]
+                                    }, size, true, {
+                                        fileName: "src/pages/TopBar.js",
+                                        lineNumber: 146,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "src/pages/TopBar.js",
+                                lineNumber: 144,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/pages/TopBar.js",
+                        lineNumber: 132,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true)
+        ]
+    }, void 0, true, {
+        fileName: "src/pages/TopBar.js",
+        lineNumber: 69,
+        columnNumber: 5
+    }, this);
+}
+_s(TopBar, "TVM0YieYdnwCMIh/SOO9aS40EPs=");
+_c = TopBar;
+var _c;
+$RefreshReg$(_c, "TopBar");
+
+  $parcel$ReactRefreshHelpers$0beb.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../layouts/Layout":"1V3BS","../format/TopBar.css":"kCG25","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kCG25":[function() {},{}],"gh5Ho":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c465 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c465.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -30154,6 +30265,8 @@ function Articles() {
     const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = (0, _react.useContext)((0, _layout.ArticleControlsContext));
     const [articles, setArticles] = (0, _react.useState)([]);
     const navigate = (0, _reactRouter.useNavigate)();
+    const [showBottomBar, setShowBottomBar] = (0, _react.useState)(false);
+    const lastArticleRef = (0, _react.useRef)(null);
     (0, _react.useEffect)(()=>{
         (0, _articlesApi.fetchAllArticles)({
             filters,
@@ -30172,118 +30285,198 @@ function Articles() {
         pageIndex,
         navigate
     ]);
+    (0, _react.useEffect)(()=>{
+        const observer = new window.IntersectionObserver((entries)=>{
+            if (entries[0].isIntersecting) setShowBottomBar(true);
+            else setShowBottomBar(false);
+        }, {
+            threshold: 0.1
+        });
+        if (lastArticleRef.current) observer.observe(lastArticleRef.current);
+        return ()=>observer.disconnect();
+    }, [
+        articles
+    ]);
     function formatDateTimeToMin(dateStr) {
         const d = new Date(dateStr);
         return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
     }
+    // Pagination controls for bottom bar
+    const currentPage = pageIndex + 1;
+    const totalPages = 50; // TODO: Replace with real total pages if available
+    const goToPrev = ()=>setPageIndex(Math.max(0, pageIndex - 1));
+    const goToNext = ()=>setPageIndex(pageIndex + 1); // Should check max page if available
+    const handlePageInput = (e)=>{
+        let val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val > 0) setPageIndex(val - 1);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "articles-container",
-            children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "article-item",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "articles-container",
+                children: articles.map((article, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "article-item",
+                        ref: idx === articles.length - 1 ? lastArticleRef : null,
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "article-ribbon"
+                            }, void 0, false, {
+                                fileName: "src/pages/Articles.js",
+                                lineNumber: 75,
+                                columnNumber: 6
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "article-content",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-title",
+                                        children: article.title
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 77,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-meta",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: [
+                                                    "Created by ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                        to: `/users/${article.author.id}`,
+                                                        children: article.author.username
+                                                    }, void 0, false, {
+                                                        fileName: "src/pages/Articles.js",
+                                                        lineNumber: 81,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    " at ",
+                                                    formatDateTimeToMin(article.createdDate)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/Articles.js",
+                                                lineNumber: 81,
+                                                columnNumber: 8
+                                            }, this),
+                                            (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                children: [
+                                                    "Edited by ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                        to: `/users/${article.editor.id}`,
+                                                        children: article.editor.username
+                                                    }, void 0, false, {
+                                                        fileName: "src/pages/Articles.js",
+                                                        lineNumber: 84,
+                                                        columnNumber: 45
+                                                    }, this),
+                                                    " at ",
+                                                    formatDateTimeToMin(article.updatedDate)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/pages/Articles.js",
+                                                lineNumber: 84,
+                                                columnNumber: 29
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 80,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "article-body",
+                                        children: article.summary
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 86,
+                                        columnNumber: 7
+                                    }, this),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                        className: "read-more-btn",
+                                        to: `/articles/${article.id}`,
+                                        children: "Read More"
+                                    }, void 0, false, {
+                                        fileName: "src/pages/Articles.js",
+                                        lineNumber: 89,
+                                        columnNumber: 7
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/pages/Articles.js",
+                                lineNumber: 76,
+                                columnNumber: 6
+                            }, this)
+                        ]
+                    }, article.id, true, {
+                        fileName: "src/pages/Articles.js",
+                        lineNumber: 70,
+                        columnNumber: 5
+                    }, this))
+            }, void 0, false, {
+                fileName: "src/pages/Articles.js",
+                lineNumber: 68,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: `bottom-pagination-bar-wrapper${showBottomBar ? ' visible' : ''}`,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "bottom-pagination-bar",
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "article-ribbon"
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "topbar-btn",
+                            onClick: goToPrev,
+                            disabled: pageIndex === 0,
+                            children: "<"
                         }, void 0, false, {
                             fileName: "src/pages/Articles.js",
-                            lineNumber: 47,
-                            columnNumber: 6
+                            lineNumber: 98,
+                            columnNumber: 13
                         }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "article-content",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "topbar-page-label",
                             children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "article-title",
-                                    children: article.title
+                                "Page ",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    type: "number",
+                                    min: "1",
+                                    value: currentPage,
+                                    onChange: handlePageInput,
+                                    className: "topbar-page-input"
                                 }, void 0, false, {
                                     fileName: "src/pages/Articles.js",
-                                    lineNumber: 49,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "article-meta",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            children: [
-                                                "Created by ",
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                    to: `/users/${article.author.id}`,
-                                                    children: article.author.username
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/Articles.js",
-                                                    lineNumber: 53,
-                                                    columnNumber: 25
-                                                }, this),
-                                                " at ",
-                                                formatDateTimeToMin(article.createdDate)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/pages/Articles.js",
-                                            lineNumber: 53,
-                                            columnNumber: 8
-                                        }, this),
-                                        (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            children: [
-                                                "Edited by ",
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                    to: `/users/${article.editor.id}`,
-                                                    children: article.editor.username
-                                                }, void 0, false, {
-                                                    fileName: "src/pages/Articles.js",
-                                                    lineNumber: 56,
-                                                    columnNumber: 45
-                                                }, this),
-                                                " at ",
-                                                formatDateTimeToMin(article.updatedDate)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/pages/Articles.js",
-                                            lineNumber: 56,
-                                            columnNumber: 29
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/pages/Articles.js",
-                                    lineNumber: 52,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "article-body",
-                                    children: article.summary
-                                }, void 0, false, {
-                                    fileName: "src/pages/Articles.js",
-                                    lineNumber: 58,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                    className: "read-more-btn",
-                                    to: `/articles/${article.id}`,
-                                    children: "Read More"
-                                }, void 0, false, {
-                                    fileName: "src/pages/Articles.js",
-                                    lineNumber: 61,
-                                    columnNumber: 7
+                                    lineNumber: 100,
+                                    columnNumber: 20
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/pages/Articles.js",
-                            lineNumber: 48,
-                            columnNumber: 6
+                            lineNumber: 99,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "topbar-btn",
+                            onClick: goToNext,
+                            children: ">"
+                        }, void 0, false, {
+                            fileName: "src/pages/Articles.js",
+                            lineNumber: 109,
+                            columnNumber: 13
                         }, this)
                     ]
-                }, article.id, true, {
+                }, void 0, true, {
                     fileName: "src/pages/Articles.js",
-                    lineNumber: 46,
-                    columnNumber: 5
-                }, this))
-        }, void 0, false, {
-            fileName: "src/pages/Articles.js",
-            lineNumber: 44,
-            columnNumber: 9
-        }, this)
-    }, void 0, false);
+                    lineNumber: 97,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "src/pages/Articles.js",
+                lineNumber: 96,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true);
 }
-_s(Articles, "wCCCtQwVtke0ESb46Wq1s1IiUI4=", false, function() {
+_s(Articles, "+TG4GLr4DHw2WIXe+gz+yBQqYv8=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
@@ -40720,7 +40913,9 @@ function ArticleForm({ isEdit = false }) {
             else await (0, _articlesApi.createArticle)(article, token);
             navigate('/articles');
         } catch (err) {
-            console.error('Failed to save article:', err);
+            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
+            else navigate('/error');
         }
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -40732,7 +40927,7 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Edit Article' : 'Create Article'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 45,
+                    lineNumber: 51,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -40742,7 +40937,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 46,
+                    lineNumber: 52,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -40752,7 +40947,7 @@ function ArticleForm({ isEdit = false }) {
                     required: true
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 47,
+                    lineNumber: 53,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -40760,18 +40955,18 @@ function ArticleForm({ isEdit = false }) {
                     children: isEdit ? 'Update' : 'Create'
                 }, void 0, false, {
                     fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 48,
+                    lineNumber: 54,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/pages/ArticleForm.js",
-            lineNumber: 44,
+            lineNumber: 50,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "src/pages/ArticleForm.js",
-        lineNumber: 43,
+        lineNumber: 49,
         columnNumber: 3
     }, this);
 }
