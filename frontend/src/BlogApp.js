@@ -9,6 +9,9 @@ import AuthorItem from "./pages/AuthorItem";
 import ArticleForm from "./pages/ArticleForm";
 import UserManagement from "./pages/UserManagement";
 import { AuthProvider } from "./api/AuthContext";
+import NotFound from './pages/NotFound';
+import Forbidden from './pages/Forbidden';
+import ErrorPage from './pages/ErrorPage';
 
 export function BlogApp() {
 	return (
@@ -25,6 +28,9 @@ export function BlogApp() {
 						<Route path="register" element={<Register />} />
 						<Route path="users/:id" element={<AuthorItem />} />
 						<Route path="admin/users" element={<UserManagement />} />
+						<Route path="forbidden" element={<Forbidden />} />
+						<Route path="error" element={<ErrorPage />} />
+						<Route path="*" element={<NotFound />} />
 					</Route>
 				</Routes>
 			</BrowserRouter>

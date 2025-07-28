@@ -3,34 +3,54 @@ const authHeader = () => ({
     'Content-Type': 'application/json'
 });
 
+function parseSpringError(res, errorData) {
+    // Spring Boot 3+ ProblemDetail: 'detail', legacy: 'message', fallback: status text
+    return errorData?.detail || errorData?.message || res.statusText || 'Unknown error';
+}
+
 export async function fetchUserById(id) {
-	const res = await fetch(`/api/users/${id}`);
-	if (!res.ok) throw new Error("No users with the given id.");
-	return res.json();
+    const res = await fetch(`/api/users/${id}`);
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
 }
 
 export async function fetchCurrentUser(username) {
-	const res = await fetch(`/api/users/${username}`);
-	if (!res.ok) throw new Error("No users with the given username.");
-	return res.json();
+    const res = await fetch(`/api/users/${username}`);
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
 }
 
 export async function fetchUsers() {
     const res = await fetch(`/api/users`, {
         headers: authHeader(),
     });
-    if (!res.ok) throw new Error('Failed to fetch users');
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
     return res.json();
 }
 
 export async function updateUserRole(id, newRole) {
-    console.log(JSON.stringify(newRole));
     const res = await fetch(`/api/users/${id}/role`, {
         method: 'PUT',
         headers: authHeader(),
         body: JSON.stringify(newRole)
     });
-    if (!res.ok) throw new Error('Failed to update role');
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
     return res.json();
 }
 
@@ -39,5 +59,9 @@ export async function deleteUser(id) {
         method: 'DELETE',
         headers: authHeader()
     });
-    if (!res.ok) throw new Error('Failed to delete user');
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
 }

@@ -1,6 +1,9 @@
+function parseSpringError(res, errorData) {
+    return errorData?.detail || errorData?.message || res.statusText || 'Unknown error';
+}
+
 export async function createComment(id, token, content) {
-    console.log(id, token, content);
-	const res = await fetch(`/api/articles/${id}/comments`, {
+    const res = await fetch(`/api/articles/${id}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -8,17 +11,22 @@ export async function createComment(id, token, content) {
         },
         body: JSON.stringify({ content })
     });
-    // console.log(token, res, content);
-    if (!res.ok) throw new Error('Failed to post comment');
-
-        // console.log(res.json())
-	return res.json();
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
 }
 
 export async function fetchCommentsByArticleId(id) {
-	const res = await fetch(`/api/articles/${id}/comments`);
-	if (!res.ok) throw new Error("The given article has no comments");
-	return res.json();
+    const res = await fetch(`/api/articles/${id}/comments`);
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
 }
 
 export async function editComment(articleId, commentId, content, token) {
@@ -30,9 +38,11 @@ export async function editComment(articleId, commentId, content, token) {
         },
         body: JSON.stringify({content})
     });
-
-    if (!res.ok) throw new Error('Failed to edit comment');
-
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
     return res.json();
 }
 
@@ -43,7 +53,9 @@ export async function deleteComment(articleId, commentId, token) {
             'Authorization': `Bearer ${token}`
         }
     });
-    console.log(res);
-    // console.log(res.json());
-    if (!res.ok) throw new Error('Failed to delete comment');
+    if (!res.ok) {
+        let errorData = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
 }

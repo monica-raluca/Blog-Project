@@ -1092,4 +1092,43 @@ body {
     font-size: .95em;
   }
 }
+
+.error-wrapper {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  display: flex;
+}
+
+.error-card {
+  backdrop-filter: blur(20px);
+  color: #162938;
+  text-align: center;
+  background: #ffffff1a;
+  border-radius: 20px;
+  width: 400px;
+  margin: 2rem auto;
+  padding: 40px;
+  box-shadow: 0 0 30px #00000080;
+}
+
+.error-code {
+  color: #e53e3e;
+  margin-bottom: .5rem;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.error-title {
+  color: #2d3748;
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.error-message {
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
 /*# sourceMappingURL=frontend.9f367d21.css.map */

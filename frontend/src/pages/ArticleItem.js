@@ -27,11 +27,25 @@ export default function ArticleItem() {
 	useEffect(() => {
 		fetchArticleById(id)
 			.then(setArticle)
-			.catch(err => console.error("Article not found", err));
+			.catch(err => {
+				if (err.message && err.message.toLowerCase().includes('not found')) {
+					navigate('/notfound');
+				} else if (err.message && err.message.toLowerCase().includes('forbidden')) {
+					navigate('/forbidden');
+				} else {
+					navigate('/error');
+				}
+			});
 
         fetchCommentsByArticleId(id)
             .then(setComments)
-            .catch(err => console.error("Comments not found", err));
+            .catch(err => {
+                if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                    navigate('/forbidden');
+                } else {
+                    navigate('/error');
+                }
+            });
 	}, [id, token]);
 
     const handleDelete = async (id) => {
@@ -42,7 +56,11 @@ export default function ArticleItem() {
             navigate('/articles');
             
         } catch (err) {
-            console.error('Failed to delete:', err);
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                navigate('/error');
+            }
         }
     };
 
@@ -56,9 +74,11 @@ export default function ArticleItem() {
             setContent('');
         })
         .catch(err => {
-            // console.err("Failed to upload comment", err);
-			console.log(err);
-            setError("Failed to upload comment");
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                navigate('/error');
+            }
         });
 	};
 
@@ -76,7 +96,11 @@ export default function ArticleItem() {
 			));
 			setEditingCommentId(null);
 		} catch (err) {
-			console.error("Failed to edit comment:", err);
+			if (err.message && err.message.toLowerCase().includes('forbidden')) {
+				navigate('/forbidden');
+			} else {
+				navigate('/error');
+			}
 		}
 	};
 
@@ -86,7 +110,11 @@ export default function ArticleItem() {
 			await deleteComment(articleId, commentId, token);
 			setComments(comments.filter(c => c.id !== commentId));
 		} catch (err) {
-			console.error("Failed to delete comment:", err);
+			if (err.message && err.message.toLowerCase().includes('forbidden')) {
+				navigate('/forbidden');
+			} else {
+				navigate('/error');
+			}
 		}
 	};
 

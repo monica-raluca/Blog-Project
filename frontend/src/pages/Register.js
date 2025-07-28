@@ -16,24 +16,24 @@ export default function Register() {
     const {login} = useAuth();
 
     const handleSubmit = async (e) => {
-            e.preventDefault();
-            try {
-                const userToken = await registerUser({ lastName, firstName, username, password, email });
-                console.log(username, lastName, firstName, password, userToken, email);
-                login(JSON.stringify(userToken.token), username);
-                
-                // localStorage.setItem('token', JSON.stringify(userToken.token));
-                // localStorage.setItem('currentUser', username);
-                
-                // console.log(localStorage.getItem('currentUser'));
-                // console.log(JSON.parse(localStorage.getItem('token')));
-                setError(null);
-    
-                navigate('/articles');
-            } catch (err) {
+        e.preventDefault();
+        try {
+            const userToken = await registerUser({ lastName, firstName, username, password, email });
+            login(JSON.stringify(userToken.token), username);
+            setError(null);
+            navigate('/articles');
+        } catch (err) {
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+                navigate('/notfound');
+            } else if (err.message && err.message.toLowerCase().includes('register')) {
                 setError(err.message);
+            } else {
+                navigate('/error');
             }
-        };
+        }
+    };
 
     return (
         <div className="login-wrapper">

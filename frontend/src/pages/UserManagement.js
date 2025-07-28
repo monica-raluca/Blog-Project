@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { fetchUsers, updateUserRole, deleteUser } from '../api/UsersApi';
 import '../format/UserManagement.css';
+import { useNavigate } from 'react-router';
 
 export default function UserManagement() {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadUsers();
@@ -15,8 +17,12 @@ export default function UserManagement() {
             const data = await fetchUsers();
             setUsers(data);
         } catch (err) {
-            setError('Failed to load users.');
-            console.error(err);
+            console.log("Error message: ", err.message);
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                navigate('/error');
+            }
         }
     };
 
@@ -27,7 +33,11 @@ export default function UserManagement() {
                 user.id === id ? { ...user, role: newRole } : user
             ));
         } catch (err) {
-            console.error('Role update failed:', err);
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                navigate('/error');
+            }
         }
     };
 
@@ -37,7 +47,11 @@ export default function UserManagement() {
             await deleteUser(id);
             setUsers(users.filter(user => user.id !== id));
         } catch (err) {
-            console.error('Delete failed:', err);
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                navigate('/error');
+            }
         }
     };
 

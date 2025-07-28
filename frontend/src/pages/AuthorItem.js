@@ -39,7 +39,7 @@ export default function Author() {
 				{author.profilePicture ? (
 					<img src={author.profilePicture} alt="Profile" style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%'}} />
 				) : (
-					author.username ? author.username[0].toUpperCase() : '?' // Initial as fallback
+					author.username ? author.username[0].toUpperCase() : '?'
 				)}
 			</div>
 			<div className="author-profile-username">{author.username}</div>

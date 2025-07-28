@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { fetchAllArticles } from '../api/ArticlesApi';
 // import { ChronoUnit } from '@js-joda/root/packages/core/src/temporal/ChronoUnit.js';
 import { ChronoUnit } from '@js-joda/core';
@@ -13,6 +13,7 @@ export default function Articles() {
 		sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput
 	} = useContext(ArticleControlsContext);
 	const [articles, setArticles] = useState([]);
+	const navigate = useNavigate();
 
     useEffect(() => {
         fetchAllArticles({
@@ -21,8 +22,16 @@ export default function Articles() {
             size: pageSize,
             from: pageIndex
         }).then(setArticles)
-        .catch(err => console.error("Error loading articles:", err));
-    }, [filters, sortCriteria, pageSize, pageIndex]);
+        .catch(err => {
+            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+                navigate('/notfound');
+            } else {
+                navigate('/error');
+            }
+        });
+    }, [filters, sortCriteria, pageSize, pageIndex, navigate]);
 
     function formatDateTimeToMin(dateStr) {
 		const d = new Date(dateStr);
