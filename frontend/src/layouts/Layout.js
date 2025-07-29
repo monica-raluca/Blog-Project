@@ -8,7 +8,6 @@ import { useAuth } from '../api/AuthContext';
 import { createContext, useState } from 'react';
 import TopBar from '../pages/TopBar';
 
-// ArticleControlsContext provides state and handlers for filtering, sorting, and pagination
 export const ArticleControlsContext = createContext();
 
 export function Layout() {
