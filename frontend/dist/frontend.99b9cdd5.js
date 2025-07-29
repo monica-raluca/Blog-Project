@@ -160,7 +160,7 @@
       });
     }
   }
-})({"7wZbQ":[function(require,module,exports,__globalThis) {
+})({"aKmT1":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -168,7 +168,7 @@ var HMR_SERVER_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "9440bf780f77c784";
+module.bundle.HMR_BUNDLE_ID = "5dc6182799b9cdd5";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_SERVER_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -666,46 +666,46 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"2R06K":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$0bfa = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$0bfa.init();
+},{}],"9T1gr":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$fe42 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$fe42.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$0bfa.prelude(module);
+$parcel$ReactRefreshHelpers$fe42.prelude(module);
 
 try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _blogApp = require("./BlogApp");
 var _authContext = require("./api/AuthContext");
 // Clear the existing HTML content
 document.body.innerHTML = '<div id="app"></div>';
 // Render your React component instead
-const root = (0, _client.createRoot)(document.getElementById('app'));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authContext.AuthProvider), {
-    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _blogApp.BlogApp), {}, void 0, false, {
-        fileName: "src/app.js",
-        lineNumber: 11,
+const appElement = document.getElementById('app');
+if (appElement) {
+    const root = (0, _client.createRoot)(appElement);
+    root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authContext.AuthProvider), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _blogApp.BlogApp), {}, void 0, false, {
+            fileName: "src/app.tsx",
+            lineNumber: 15,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/app.tsx",
+        lineNumber: 14,
         columnNumber: 5
-    }, undefined)
-}, void 0, false, {
-    fileName: "src/app.js",
-    lineNumber: 10,
-    columnNumber: 13
-}, undefined)); // // console.log('Hello world!');
- // import { createRoot } from 'react-dom/client';
- // // Clear the existing HTML content
- // document.body.innerHTML = '<div id="app"></div>';
- // // Render your React component instead
- // const root = createRoot(document.getElementById('app'));
- // root.render(<h1>Hello, world</h1>);
+    }, undefined));
+}
 
-  $parcel$ReactRefreshHelpers$0bfa.postlude(module);
+  $parcel$ReactRefreshHelpers$fe42.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-dom/client":"hrvwu","./BlogApp":"2e3uZ","./api/AuthContext":"5rZLm","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-dom/client":"hrvwu","./BlogApp":"fEIba","./api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dVPUn":[function(require,module,exports,__globalThis) {
 'use strict';
 module.exports = require("ee51401569654d91");
 
@@ -16104,21 +16104,22 @@ module.exports = require("b0f0e6b9e8349dac");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{"6f0162e9ab224cd4":"jMk1U"}],"2e3uZ":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$f4e9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$f4e9.init();
+},{"6f0162e9ab224cd4":"jMk1U"}],"fEIba":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$acd7 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$acd7.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f4e9.prelude(module);
+$parcel$ReactRefreshHelpers$acd7.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BlogApp", ()=>BlogApp);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _layout = require("./layouts/Layout");
-// import Articles from './pages/Articles';
 var _articles = require("./pages/Articles");
 var _articlesDefault = parcelHelpers.interopDefault(_articles);
 var _articleItem = require("./pages/ArticleItem");
@@ -16147,7 +16148,7 @@ function BlogApp() {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                     path: "/",
                     element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _layout.Layout), {}, void 0, false, {
-                        fileName: "src/BlogApp.js",
+                        fileName: "src/BlogApp.tsx",
                         lineNumber: 21,
                         columnNumber: 31
                     }, void 0),
@@ -16158,48 +16159,48 @@ function BlogApp() {
                                 to: "/articles",
                                 replace: true
                             }, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 22,
                                 columnNumber: 29
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 22,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "articles",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articlesDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 23,
                                 columnNumber: 39
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 23,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "articles/:id",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleItemDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 24,
                                 columnNumber: 43
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 24,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "/articles/create",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 25,
                                 columnNumber: 47
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 25,
                             columnNumber: 7
                         }, this),
@@ -16208,117 +16209,117 @@ function BlogApp() {
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _articleFormDefault.default), {
                                 isEdit: true
                             }, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 26,
                                 columnNumber: 49
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 26,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "login",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 27,
                                 columnNumber: 36
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 27,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "register",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registerDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 28,
                                 columnNumber: 39
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 28,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "users/:id",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _authorItemDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 29,
                                 columnNumber: 40
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 29,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "admin/users",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userManagementDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 30,
                                 columnNumber: 42
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 30,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "forbidden",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _forbiddenDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 31,
                                 columnNumber: 40
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 31,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "error",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _errorPageDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 32,
                                 columnNumber: 36
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 32,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Route), {
                             path: "*",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _notFoundDefault.default), {}, void 0, false, {
-                                fileName: "src/BlogApp.js",
+                                fileName: "src/BlogApp.tsx",
                                 lineNumber: 33,
                                 columnNumber: 32
                             }, void 0)
                         }, void 0, false, {
-                            fileName: "src/BlogApp.js",
+                            fileName: "src/BlogApp.tsx",
                             lineNumber: 33,
                             columnNumber: 7
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "src/BlogApp.js",
+                    fileName: "src/BlogApp.tsx",
                     lineNumber: 21,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
-                fileName: "src/BlogApp.js",
+                fileName: "src/BlogApp.tsx",
                 lineNumber: 20,
                 columnNumber: 5
             }, this)
         }, void 0, false, {
-            fileName: "src/BlogApp.js",
+            fileName: "src/BlogApp.tsx",
             lineNumber: 19,
             columnNumber: 4
         }, this)
     }, void 0, false, {
-        fileName: "src/BlogApp.js",
+        fileName: "src/BlogApp.tsx",
         lineNumber: 18,
         columnNumber: 3
     }, this);
@@ -16327,12 +16328,12 @@ _c = BlogApp;
 var _c;
 $RefreshReg$(_c, "BlogApp");
 
-  $parcel$ReactRefreshHelpers$f4e9.postlude(module);
+  $parcel$ReactRefreshHelpers$acd7.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-router":"2jawN","./layouts/Layout":"1V3BS","./pages/Articles":"gh5Ho","./pages/ArticleItem":"j5RH2","./pages/Login":"6O7Ur","./pages/Register":"k8Hue","./pages/AuthorItem":"hre2g","./pages/ArticleForm":"kunFd","./pages/UserManagement":"iUgJE","./api/AuthContext":"5rZLm","./pages/NotFound":"eopva","./pages/Forbidden":"8Nkyr","./pages/ErrorPage":"fJmHU","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2jawN":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","./layouts/Layout":"aGg7E","./pages/Articles":"9PVgp","./pages/ArticleItem":"5o12G","./pages/Login":"coNDf","./pages/Register":"20zLP","./pages/AuthorItem":"7y8Id","./pages/ArticleForm":"duMUr","./pages/UserManagement":"1kq2g","./api/AuthContext":"5P6PV","./pages/NotFound":"iJUCs","./pages/Forbidden":"bmDMv","./pages/ErrorPage":"caOBB","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2jawN":[function(require,module,exports,__globalThis) {
 /**
  * react-router v7.7.0
  *
@@ -16476,2111 +16477,7 @@ var _chunkT3VM44WYMjs = require("./chunk-T3VM44WY.mjs");
 var _chunkEF7DTUVFMjs = require("./chunk-EF7DTUVF.mjs");
 "use client";
 
-},{"./chunk-T3VM44WY.mjs":"g5aGb","./chunk-EF7DTUVF.mjs":"5cq5P","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"g5aGb":[function(require,module,exports,__globalThis) {
-/**
- * react-router v7.7.0
- *
- * Copyright (c) Remix Software Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.md file in the root directory of this source tree.
- *
- * @license MIT
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ServerRouter", ()=>ServerRouter);
-parcelHelpers.export(exports, "createRoutesStub", ()=>createRoutesStub);
-parcelHelpers.export(exports, "createCookie", ()=>createCookie);
-parcelHelpers.export(exports, "isCookie", ()=>isCookie);
-parcelHelpers.export(exports, "ServerMode", ()=>ServerMode);
-parcelHelpers.export(exports, "setDevServerHooks", ()=>setDevServerHooks);
-parcelHelpers.export(exports, "createRequestHandler", ()=>createRequestHandler);
-parcelHelpers.export(exports, "createSession", ()=>createSession);
-parcelHelpers.export(exports, "isSession", ()=>isSession);
-parcelHelpers.export(exports, "createSessionStorage", ()=>createSessionStorage);
-parcelHelpers.export(exports, "createCookieSessionStorage", ()=>createCookieSessionStorage);
-parcelHelpers.export(exports, "createMemorySessionStorage", ()=>createMemorySessionStorage);
-parcelHelpers.export(exports, "href", ()=>href);
-parcelHelpers.export(exports, "getHydrationData", ()=>getHydrationData);
-parcelHelpers.export(exports, "RSCDefaultRootErrorBoundary", ()=>RSCDefaultRootErrorBoundary);
-parcelHelpers.export(exports, "createCallServer", ()=>createCallServer);
-parcelHelpers.export(exports, "RSCHydratedRouter", ()=>RSCHydratedRouter);
-parcelHelpers.export(exports, "routeRSCServerRequest", ()=>routeRSCServerRequest);
-parcelHelpers.export(exports, "RSCStaticRouter", ()=>RSCStaticRouter);
-parcelHelpers.export(exports, "getRSCStream", ()=>getRSCStream);
-parcelHelpers.export(exports, "deserializeErrors", ()=>deserializeErrors);
-var _chunkEF7DTUVFMjs = require("./chunk-EF7DTUVF.mjs");
-// lib/dom/ssr/server.tsx
-var _react = require("react");
-// lib/server-runtime/cookies.ts
-var _cookie = require("cookie");
-// lib/server-runtime/headers.ts
-var _setCookieParser = require("set-cookie-parser");
-var _reactDom = require("react-dom");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var global = arguments[3];
-function ServerRouter({ context, url, nonce }) {
-    if (typeof url === "string") url = new URL(url);
-    let { manifest, routeModules, criticalCss, serverHandoffString } = context;
-    let routes = (0, _chunkEF7DTUVFMjs.createServerRoutes)(manifest.routes, routeModules, context.future, context.isSpaMode);
-    context.staticHandlerContext.loaderData = {
-        ...context.staticHandlerContext.loaderData
-    };
-    for (let match of context.staticHandlerContext.matches){
-        let routeId = match.route.id;
-        let route = routeModules[routeId];
-        let manifestRoute = context.manifest.routes[routeId];
-        if (route && manifestRoute && (0, _chunkEF7DTUVFMjs.shouldHydrateRouteLoader)(routeId, route.clientLoader, manifestRoute.hasLoader, context.isSpaMode) && (route.HydrateFallback || !manifestRoute.hasLoader)) delete context.staticHandlerContext.loaderData[routeId];
-    }
-    let router = (0, _chunkEF7DTUVFMjs.createStaticRouter)(routes, context.staticHandlerContext);
-    return /* @__PURE__ */ _react.createElement(_react.Fragment, null, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.FrameworkContext).Provider, {
-        value: {
-            manifest,
-            routeModules,
-            criticalCss,
-            serverHandoffString,
-            future: context.future,
-            ssr: context.ssr,
-            isSpaMode: context.isSpaMode,
-            routeDiscovery: context.routeDiscovery,
-            serializeError: context.serializeError,
-            renderMeta: context.renderMeta
-        }
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.RemixErrorBoundary), {
-        location: router.state.location
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.StaticRouterProvider), {
-        router,
-        context: context.staticHandlerContext,
-        hydrate: false
-    }))), context.serverHandoffStream ? /* @__PURE__ */ _react.createElement(_react.Suspense, null, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.StreamTransfer), {
-        context,
-        identifier: 0,
-        reader: context.serverHandoffStream.getReader(),
-        textDecoder: new TextDecoder(),
-        nonce
-    })) : null);
-}
-function createRoutesStub(routes, _context) {
-    return function RoutesTestStub({ initialEntries, initialIndex, hydrationData, future }) {
-        let routerRef = _react.useRef();
-        let frameworkContextRef = _react.useRef();
-        if (routerRef.current == null) {
-            frameworkContextRef.current = {
-                future: {
-                    unstable_subResourceIntegrity: future?.unstable_subResourceIntegrity === true,
-                    unstable_middleware: future?.unstable_middleware === true
-                },
-                manifest: {
-                    routes: {},
-                    entry: {
-                        imports: [],
-                        module: ""
-                    },
-                    url: "",
-                    version: ""
-                },
-                routeModules: {},
-                ssr: false,
-                isSpaMode: false,
-                routeDiscovery: {
-                    mode: "lazy",
-                    manifestPath: "/__manifest"
-                }
-            };
-            let patched = processRoutes(// @ts-expect-error `StubRouteObject` is stricter about `loader`/`action`
-            // types compared to `AgnosticRouteObject`
-            (0, _chunkEF7DTUVFMjs.convertRoutesToDataRoutes)(routes, (r)=>r), _context !== void 0 ? _context : future?.unstable_middleware ? new (0, _chunkEF7DTUVFMjs.unstable_RouterContextProvider)() : {}, frameworkContextRef.current.manifest, frameworkContextRef.current.routeModules);
-            routerRef.current = (0, _chunkEF7DTUVFMjs.createMemoryRouter)(patched, {
-                initialEntries,
-                initialIndex,
-                hydrationData
-            });
-        }
-        return /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.FrameworkContext).Provider, {
-            value: frameworkContextRef.current
-        }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.RouterProvider), {
-            router: routerRef.current
-        }));
-    };
-}
-function processRoutes(routes, context, manifest, routeModules, parentId) {
-    return routes.map((route)=>{
-        if (!route.id) throw new Error("Expected a route.id in react-router processRoutes() function");
-        let newRoute = {
-            id: route.id,
-            path: route.path,
-            index: route.index,
-            Component: route.Component ? (0, _chunkEF7DTUVFMjs.withComponentProps)(route.Component) : void 0,
-            HydrateFallback: route.HydrateFallback ? (0, _chunkEF7DTUVFMjs.withHydrateFallbackProps)(route.HydrateFallback) : void 0,
-            ErrorBoundary: route.ErrorBoundary ? (0, _chunkEF7DTUVFMjs.withErrorBoundaryProps)(route.ErrorBoundary) : void 0,
-            action: route.action ? (args)=>route.action({
-                    ...args,
-                    context
-                }) : void 0,
-            loader: route.loader ? (args)=>route.loader({
-                    ...args,
-                    context
-                }) : void 0,
-            handle: route.handle,
-            shouldRevalidate: route.shouldRevalidate
-        };
-        let entryRoute = {
-            id: route.id,
-            path: route.path,
-            index: route.index,
-            parentId,
-            hasAction: route.action != null,
-            hasLoader: route.loader != null,
-            // When testing routes, you should be stubbing loader/action/middleware,
-            // not trying to re-implement the full loader/clientLoader/SSR/hydration
-            // flow. That is better tested via E2E tests.
-            hasClientAction: false,
-            hasClientLoader: false,
-            hasClientMiddleware: false,
-            hasErrorBoundary: route.ErrorBoundary != null,
-            // any need for these?
-            module: "build/stub-path-to-module.js",
-            clientActionModule: void 0,
-            clientLoaderModule: void 0,
-            clientMiddlewareModule: void 0,
-            hydrateFallbackModule: void 0
-        };
-        manifest.routes[newRoute.id] = entryRoute;
-        routeModules[route.id] = {
-            default: newRoute.Component || (0, _chunkEF7DTUVFMjs.Outlet),
-            ErrorBoundary: newRoute.ErrorBoundary || void 0,
-            handle: route.handle,
-            links: route.links,
-            meta: route.meta,
-            shouldRevalidate: route.shouldRevalidate
-        };
-        if (route.children) newRoute.children = processRoutes(route.children, context, manifest, routeModules, newRoute.id);
-        return newRoute;
-    });
-}
-// lib/server-runtime/crypto.ts
-var encoder = /* @__PURE__ */ new TextEncoder();
-var sign = async (value, secret)=>{
-    let data2 = encoder.encode(value);
-    let key = await createKey(secret, [
-        "sign"
-    ]);
-    let signature = await crypto.subtle.sign("HMAC", key, data2);
-    let hash = btoa(String.fromCharCode(...new Uint8Array(signature))).replace(/=+$/, "");
-    return value + "." + hash;
-};
-var unsign = async (cookie, secret)=>{
-    let index = cookie.lastIndexOf(".");
-    let value = cookie.slice(0, index);
-    let hash = cookie.slice(index + 1);
-    let data2 = encoder.encode(value);
-    let key = await createKey(secret, [
-        "verify"
-    ]);
-    try {
-        let signature = byteStringToUint8Array(atob(hash));
-        let valid = await crypto.subtle.verify("HMAC", key, signature, data2);
-        return valid ? value : false;
-    } catch (error) {
-        return false;
-    }
-};
-var createKey = async (secret, usages)=>crypto.subtle.importKey("raw", encoder.encode(secret), {
-        name: "HMAC",
-        hash: "SHA-256"
-    }, false, usages);
-function byteStringToUint8Array(byteString) {
-    let array = new Uint8Array(byteString.length);
-    for(let i = 0; i < byteString.length; i++)array[i] = byteString.charCodeAt(i);
-    return array;
-}
-// lib/server-runtime/cookies.ts
-var createCookie = (name, cookieOptions = {})=>{
-    let { secrets = [], ...options } = {
-        path: "/",
-        sameSite: "lax",
-        ...cookieOptions
-    };
-    warnOnceAboutExpiresCookie(name, options.expires);
-    return {
-        get name () {
-            return name;
-        },
-        get isSigned () {
-            return secrets.length > 0;
-        },
-        get expires () {
-            return typeof options.maxAge !== "undefined" ? new Date(Date.now() + options.maxAge * 1e3) : options.expires;
-        },
-        async parse (cookieHeader, parseOptions) {
-            if (!cookieHeader) return null;
-            let cookies = (0, _cookie.parse)(cookieHeader, {
-                ...options,
-                ...parseOptions
-            });
-            if (name in cookies) {
-                let value = cookies[name];
-                if (typeof value === "string" && value !== "") {
-                    let decoded = await decodeCookieValue(value, secrets);
-                    return decoded;
-                } else return "";
-            } else return null;
-        },
-        async serialize (value, serializeOptions) {
-            return (0, _cookie.serialize)(name, value === "" ? "" : await encodeCookieValue(value, secrets), {
-                ...options,
-                ...serializeOptions
-            });
-        }
-    };
-};
-var isCookie = (object)=>{
-    return object != null && typeof object.name === "string" && typeof object.isSigned === "boolean" && typeof object.parse === "function" && typeof object.serialize === "function";
-};
-async function encodeCookieValue(value, secrets) {
-    let encoded = encodeData(value);
-    if (secrets.length > 0) encoded = await sign(encoded, secrets[0]);
-    return encoded;
-}
-async function decodeCookieValue(value, secrets) {
-    if (secrets.length > 0) {
-        for (let secret of secrets){
-            let unsignedValue = await unsign(value, secret);
-            if (unsignedValue !== false) return decodeData(unsignedValue);
-        }
-        return null;
-    }
-    return decodeData(value);
-}
-function encodeData(value) {
-    return btoa(myUnescape(encodeURIComponent(JSON.stringify(value))));
-}
-function decodeData(value) {
-    try {
-        return JSON.parse(decodeURIComponent(myEscape(atob(value))));
-    } catch (error) {
-        return {};
-    }
-}
-function myEscape(value) {
-    let str = value.toString();
-    let result = "";
-    let index = 0;
-    let chr, code;
-    while(index < str.length){
-        chr = str.charAt(index++);
-        if (/[\w*+\-./@]/.exec(chr)) result += chr;
-        else {
-            code = chr.charCodeAt(0);
-            if (code < 256) result += "%" + hex(code, 2);
-            else result += "%u" + hex(code, 4).toUpperCase();
-        }
-    }
-    return result;
-}
-function hex(code, length) {
-    let result = code.toString(16);
-    while(result.length < length)result = "0" + result;
-    return result;
-}
-function myUnescape(value) {
-    let str = value.toString();
-    let result = "";
-    let index = 0;
-    let chr, part;
-    while(index < str.length){
-        chr = str.charAt(index++);
-        if (chr === "%") {
-            if (str.charAt(index) === "u") {
-                part = str.slice(index + 1, index + 5);
-                if (/^[\da-f]{4}$/i.exec(part)) {
-                    result += String.fromCharCode(parseInt(part, 16));
-                    index += 5;
-                    continue;
-                }
-            } else {
-                part = str.slice(index, index + 2);
-                if (/^[\da-f]{2}$/i.exec(part)) {
-                    result += String.fromCharCode(parseInt(part, 16));
-                    index += 2;
-                    continue;
-                }
-            }
-        }
-        result += chr;
-    }
-    return result;
-}
-function warnOnceAboutExpiresCookie(name, expires) {
-    (0, _chunkEF7DTUVFMjs.warnOnce)(!expires, `The "${name}" cookie has an "expires" property set. This will cause the expires value to not be updated when the session is committed. Instead, you should set the expires value when serializing the cookie. You can use \`commitSession(session, { expires })\` if using a session storage object, or \`cookie.serialize("value", { expires })\` if you're using the cookie directly.`);
-}
-// lib/server-runtime/entry.ts
-function createEntryRouteModules(manifest) {
-    return Object.keys(manifest).reduce((memo, routeId)=>{
-        let route = manifest[routeId];
-        if (route) memo[routeId] = route.module;
-        return memo;
-    }, {});
-}
-// lib/server-runtime/mode.ts
-var ServerMode = /* @__PURE__ */ ((ServerMode2)=>{
-    ServerMode2["Development"] = "development";
-    ServerMode2["Production"] = "production";
-    ServerMode2["Test"] = "test";
-    return ServerMode2;
-})(ServerMode || {});
-function isServerMode(value) {
-    return value === "development" /* Development */  || value === "production" /* Production */  || value === "test" /* Test */ ;
-}
-// lib/server-runtime/errors.ts
-function sanitizeError(error, serverMode) {
-    if (error instanceof Error && serverMode !== "development" /* Development */ ) {
-        let sanitized = new Error("Unexpected Server Error");
-        sanitized.stack = void 0;
-        return sanitized;
-    }
-    return error;
-}
-function sanitizeErrors(errors, serverMode) {
-    return Object.entries(errors).reduce((acc, [routeId, error])=>{
-        return Object.assign(acc, {
-            [routeId]: sanitizeError(error, serverMode)
-        });
-    }, {});
-}
-function serializeError(error, serverMode) {
-    let sanitized = sanitizeError(error, serverMode);
-    return {
-        message: sanitized.message,
-        stack: sanitized.stack
-    };
-}
-function serializeErrors(errors, serverMode) {
-    if (!errors) return null;
-    let entries = Object.entries(errors);
-    let serialized = {};
-    for (let [key, val] of entries){
-        if ((0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(val)) serialized[key] = {
-            ...val,
-            __type: "RouteErrorResponse"
-        };
-        else if (val instanceof Error) {
-            let sanitized = sanitizeError(val, serverMode);
-            serialized[key] = {
-                message: sanitized.message,
-                stack: sanitized.stack,
-                __type: "Error",
-                // If this is a subclass (i.e., ReferenceError), send up the type so we
-                // can re-create the same type during hydration.  This will only apply
-                // in dev mode since all production errors are sanitized to normal
-                // Error instances
-                ...sanitized.name !== "Error" ? {
-                    __subType: sanitized.name
-                } : {}
-            };
-        } else serialized[key] = val;
-    }
-    return serialized;
-}
-// lib/server-runtime/routeMatching.ts
-function matchServerRoutes(routes, pathname, basename) {
-    let matches = (0, _chunkEF7DTUVFMjs.matchRoutes)(routes, pathname, basename);
-    if (!matches) return null;
-    return matches.map((match)=>({
-            params: match.params,
-            pathname: match.pathname,
-            route: match.route
-        }));
-}
-// lib/server-runtime/data.ts
-async function callRouteHandler(handler, args) {
-    let result = await handler({
-        request: stripRoutesParam(stripIndexParam2(args.request)),
-        params: args.params,
-        context: args.context
-    });
-    if ((0, _chunkEF7DTUVFMjs.isDataWithResponseInit)(result) && result.init && result.init.status && (0, _chunkEF7DTUVFMjs.isRedirectStatusCode)(result.init.status)) throw new Response(null, result.init);
-    return result;
-}
-function stripIndexParam2(request) {
-    let url = new URL(request.url);
-    let indexValues = url.searchParams.getAll("index");
-    url.searchParams.delete("index");
-    let indexValuesToKeep = [];
-    for (let indexValue of indexValues)if (indexValue) indexValuesToKeep.push(indexValue);
-    for (let toKeep of indexValuesToKeep)url.searchParams.append("index", toKeep);
-    let init = {
-        method: request.method,
-        body: request.body,
-        headers: request.headers,
-        signal: request.signal
-    };
-    if (init.body) init.duplex = "half";
-    return new Request(url.href, init);
-}
-function stripRoutesParam(request) {
-    let url = new URL(request.url);
-    url.searchParams.delete("_routes");
-    let init = {
-        method: request.method,
-        body: request.body,
-        headers: request.headers,
-        signal: request.signal
-    };
-    if (init.body) init.duplex = "half";
-    return new Request(url.href, init);
-}
-// lib/server-runtime/invariant.ts
-function invariant2(value, message) {
-    if (value === false || value === null || typeof value === "undefined") {
-        console.error("The following error is a bug in React Router; please open an issue! https://github.com/remix-run/react-router/issues/new/choose");
-        throw new Error(message);
-    }
-}
-// lib/server-runtime/dev.ts
-var globalDevServerHooksKey = "__reactRouterDevServerHooks";
-function setDevServerHooks(devServerHooks) {
-    globalThis[globalDevServerHooksKey] = devServerHooks;
-}
-function getDevServerHooks() {
-    return globalThis[globalDevServerHooksKey];
-}
-function getBuildTimeHeader(request, headerName) {
-    var e;
-    return null;
-}
-// lib/server-runtime/routes.ts
-function groupRoutesByParentId(manifest) {
-    let routes = {};
-    Object.values(manifest).forEach((route)=>{
-        if (route) {
-            let parentId = route.parentId || "";
-            if (!routes[parentId]) routes[parentId] = [];
-            routes[parentId].push(route);
-        }
-    });
-    return routes;
-}
-function createRoutes(manifest, parentId = "", routesByParentId = groupRoutesByParentId(manifest)) {
-    return (routesByParentId[parentId] || []).map((route)=>({
-            ...route,
-            children: createRoutes(manifest, route.id, routesByParentId)
-        }));
-}
-function createStaticHandlerDataRoutes(manifest, future, parentId = "", routesByParentId = groupRoutesByParentId(manifest)) {
-    return (routesByParentId[parentId] || []).map((route)=>{
-        let commonRoute = {
-            // Always include root due to default boundaries
-            hasErrorBoundary: route.id === "root" || route.module.ErrorBoundary != null,
-            id: route.id,
-            path: route.path,
-            unstable_middleware: route.module.unstable_middleware,
-            // Need to use RR's version in the param typed here to permit the optional
-            // context even though we know it'll always be provided in remix
-            loader: route.module.loader ? async (args)=>{
-                let preRenderedData = getBuildTimeHeader(args.request, "X-React-Router-Prerender-Data");
-                if (preRenderedData != null) {
-                    let encoded = preRenderedData ? decodeURI(preRenderedData) : preRenderedData;
-                    invariant2(encoded, "Missing prerendered data for route");
-                    let uint8array = new TextEncoder().encode(encoded);
-                    let stream = new ReadableStream({
-                        start (controller) {
-                            controller.enqueue(uint8array);
-                            controller.close();
-                        }
-                    });
-                    let decoded = await (0, _chunkEF7DTUVFMjs.decodeViaTurboStream)(stream, global);
-                    let data2 = decoded.value;
-                    if (data2 && (0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol) in data2) {
-                        let result = data2[0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol];
-                        let init = {
-                            status: result.status
-                        };
-                        if (result.reload) throw (0, _chunkEF7DTUVFMjs.redirectDocument)(result.redirect, init);
-                        else if (result.replace) throw (0, _chunkEF7DTUVFMjs.replace)(result.redirect, init);
-                        else throw (0, _chunkEF7DTUVFMjs.redirect)(result.redirect, init);
-                    } else {
-                        invariant2(data2 && route.id in data2, "Unable to decode prerendered data");
-                        let result = data2[route.id];
-                        invariant2("data" in result, "Unable to process prerendered data");
-                        return result.data;
-                    }
-                }
-                let val = await callRouteHandler(route.module.loader, args);
-                return val;
-            } : void 0,
-            action: route.module.action ? (args)=>callRouteHandler(route.module.action, args) : void 0,
-            handle: route.module.handle
-        };
-        return route.index ? {
-            index: true,
-            ...commonRoute
-        } : {
-            caseSensitive: route.caseSensitive,
-            children: createStaticHandlerDataRoutes(manifest, future, route.id, routesByParentId),
-            ...commonRoute
-        };
-    });
-}
-// lib/server-runtime/markup.ts
-var ESCAPE_LOOKUP = {
-    "&": "\\u0026",
-    ">": "\\u003e",
-    "<": "\\u003c",
-    "\u2028": "\\u2028",
-    "\u2029": "\\u2029"
-};
-var ESCAPE_REGEX = /[&><\u2028\u2029]/g;
-function escapeHtml(html) {
-    return html.replace(ESCAPE_REGEX, (match)=>ESCAPE_LOOKUP[match]);
-}
-// lib/server-runtime/serverHandoff.ts
-function createServerHandoffString(serverHandoff) {
-    return escapeHtml(JSON.stringify(serverHandoff));
-}
-function getDocumentHeaders(context, build) {
-    return getDocumentHeadersImpl(context, (m)=>{
-        let route = build.routes[m.route.id];
-        invariant2(route, `Route with id "${m.route.id}" not found in build`);
-        return route.module.headers;
-    });
-}
-function getDocumentHeadersImpl(context, getRouteHeadersFn) {
-    let boundaryIdx = context.errors ? context.matches.findIndex((m)=>context.errors[m.route.id]) : -1;
-    let matches = boundaryIdx >= 0 ? context.matches.slice(0, boundaryIdx + 1) : context.matches;
-    let errorHeaders;
-    if (boundaryIdx >= 0) {
-        let { actionHeaders, actionData, loaderHeaders, loaderData } = context;
-        context.matches.slice(boundaryIdx).some((match)=>{
-            let id = match.route.id;
-            if (actionHeaders[id] && (!actionData || !actionData.hasOwnProperty(id))) errorHeaders = actionHeaders[id];
-            else if (loaderHeaders[id] && !loaderData.hasOwnProperty(id)) errorHeaders = loaderHeaders[id];
-            return errorHeaders != null;
-        });
-    }
-    return matches.reduce((parentHeaders, match, idx)=>{
-        let { id } = match.route;
-        let loaderHeaders = context.loaderHeaders[id] || new Headers();
-        let actionHeaders = context.actionHeaders[id] || new Headers();
-        let includeErrorHeaders = errorHeaders != null && idx === matches.length - 1;
-        let includeErrorCookies = includeErrorHeaders && errorHeaders !== loaderHeaders && errorHeaders !== actionHeaders;
-        let headersFn = getRouteHeadersFn(match);
-        if (headersFn == null) {
-            let headers2 = new Headers(parentHeaders);
-            if (includeErrorCookies) prependCookies(errorHeaders, headers2);
-            prependCookies(actionHeaders, headers2);
-            prependCookies(loaderHeaders, headers2);
-            return headers2;
-        }
-        let headers = new Headers(typeof headersFn === "function" ? headersFn({
-            loaderHeaders,
-            parentHeaders,
-            actionHeaders,
-            errorHeaders: includeErrorHeaders ? errorHeaders : void 0
-        }) : headersFn);
-        if (includeErrorCookies) prependCookies(errorHeaders, headers);
-        prependCookies(actionHeaders, headers);
-        prependCookies(loaderHeaders, headers);
-        prependCookies(parentHeaders, headers);
-        return headers;
-    }, new Headers());
-}
-function prependCookies(parentHeaders, childHeaders) {
-    let parentSetCookieString = parentHeaders.get("Set-Cookie");
-    if (parentSetCookieString) {
-        let cookies = (0, _setCookieParser.splitCookiesString)(parentSetCookieString);
-        let childCookies = new Set(childHeaders.getSetCookie());
-        cookies.forEach((cookie)=>{
-            if (!childCookies.has(cookie)) childHeaders.append("Set-Cookie", cookie);
-        });
-    }
-}
-// lib/server-runtime/single-fetch.ts
-var SERVER_NO_BODY_STATUS_CODES = /* @__PURE__ */ new Set([
-    ...(0, _chunkEF7DTUVFMjs.NO_BODY_STATUS_CODES),
-    304
-]);
-async function singleFetchAction(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) {
-    try {
-        let respond2 = function(context) {
-            let headers = getDocumentHeaders(context, build);
-            if ((0, _chunkEF7DTUVFMjs.isRedirectStatusCode)(context.statusCode) && headers.has("Location")) return generateSingleFetchResponse(request, build, serverMode, {
-                result: getSingleFetchRedirect(context.statusCode, headers, build.basename),
-                headers,
-                status: (0, _chunkEF7DTUVFMjs.SINGLE_FETCH_REDIRECT_STATUS)
-            });
-            if (context.errors) {
-                Object.values(context.errors).forEach((err)=>{
-                    if (!(0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
-                });
-                context.errors = sanitizeErrors(context.errors, serverMode);
-            }
-            let singleFetchResult;
-            if (context.errors) singleFetchResult = {
-                error: Object.values(context.errors)[0]
-            };
-            else singleFetchResult = {
-                data: Object.values(context.actionData || {})[0]
-            };
-            return generateSingleFetchResponse(request, build, serverMode, {
-                result: singleFetchResult,
-                headers,
-                status: context.statusCode
-            });
-        };
-        var respond = respond2;
-        let handlerRequest = new Request(handlerUrl, {
-            method: request.method,
-            body: request.body,
-            headers: request.headers,
-            signal: request.signal,
-            ...request.body ? {
-                duplex: "half"
-            } : void 0
-        });
-        let result = await staticHandler.query(handlerRequest, {
-            requestContext: loadContext,
-            skipLoaderErrorBubbling: true,
-            skipRevalidation: true,
-            unstable_respond: respond2
-        });
-        if (!(0, _chunkEF7DTUVFMjs.isResponse)(result)) result = respond2(result);
-        if ((0, _chunkEF7DTUVFMjs.isRedirectResponse)(result)) return generateSingleFetchResponse(request, build, serverMode, {
-            result: getSingleFetchRedirect(result.status, result.headers, build.basename),
-            headers: result.headers,
-            status: (0, _chunkEF7DTUVFMjs.SINGLE_FETCH_REDIRECT_STATUS)
-        });
-        return result;
-    } catch (error) {
-        handleError(error);
-        return generateSingleFetchResponse(request, build, serverMode, {
-            result: {
-                error
-            },
-            headers: new Headers(),
-            status: 500
-        });
-    }
-}
-async function singleFetchLoaders(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) {
-    try {
-        let respond2 = function(context) {
-            let headers = getDocumentHeaders(context, build);
-            if ((0, _chunkEF7DTUVFMjs.isRedirectStatusCode)(context.statusCode) && headers.has("Location")) return generateSingleFetchResponse(request, build, serverMode, {
-                result: {
-                    [(0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol)]: getSingleFetchRedirect(context.statusCode, headers, build.basename)
-                },
-                headers,
-                status: (0, _chunkEF7DTUVFMjs.SINGLE_FETCH_REDIRECT_STATUS)
-            });
-            if (context.errors) {
-                Object.values(context.errors).forEach((err)=>{
-                    if (!(0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
-                });
-                context.errors = sanitizeErrors(context.errors, serverMode);
-            }
-            let results = {};
-            let loadedMatches = new Set(context.matches.filter((m)=>loadRouteIds ? loadRouteIds.has(m.route.id) : m.route.loader != null).map((m)=>m.route.id));
-            if (context.errors) for (let [id, error] of Object.entries(context.errors))results[id] = {
-                error
-            };
-            for (let [id, data2] of Object.entries(context.loaderData))if (!(id in results) && loadedMatches.has(id)) results[id] = {
-                data: data2
-            };
-            return generateSingleFetchResponse(request, build, serverMode, {
-                result: results,
-                headers,
-                status: context.statusCode
-            });
-        };
-        var respond = respond2;
-        let handlerRequest = new Request(handlerUrl, {
-            headers: request.headers,
-            signal: request.signal
-        });
-        let routesParam = new URL(request.url).searchParams.get("_routes");
-        let loadRouteIds = routesParam ? new Set(routesParam.split(",")) : null;
-        let result = await staticHandler.query(handlerRequest, {
-            requestContext: loadContext,
-            filterMatchesToLoad: (m)=>!loadRouteIds || loadRouteIds.has(m.route.id),
-            skipLoaderErrorBubbling: true,
-            unstable_respond: respond2
-        });
-        if (!(0, _chunkEF7DTUVFMjs.isResponse)(result)) result = respond2(result);
-        if ((0, _chunkEF7DTUVFMjs.isRedirectResponse)(result)) return generateSingleFetchResponse(request, build, serverMode, {
-            result: {
-                [(0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol)]: getSingleFetchRedirect(result.status, result.headers, build.basename)
-            },
-            headers: result.headers,
-            status: (0, _chunkEF7DTUVFMjs.SINGLE_FETCH_REDIRECT_STATUS)
-        });
-        return result;
-    } catch (error) {
-        handleError(error);
-        return generateSingleFetchResponse(request, build, serverMode, {
-            result: {
-                root: {
-                    error
-                }
-            },
-            headers: new Headers(),
-            status: 500
-        });
-    }
-}
-function generateSingleFetchResponse(request, build, serverMode, { result, headers, status }) {
-    let resultHeaders = new Headers(headers);
-    resultHeaders.set("X-Remix-Response", "yes");
-    if (SERVER_NO_BODY_STATUS_CODES.has(status)) return new Response(null, {
-        status,
-        headers: resultHeaders
-    });
-    resultHeaders.set("Content-Type", "text/x-script");
-    resultHeaders.delete("Content-Length");
-    return new Response(encodeViaTurboStream(result, request.signal, build.entry.module.streamTimeout, serverMode), {
-        status: status || 200,
-        headers: resultHeaders
-    });
-}
-function getSingleFetchRedirect(status, headers, basename) {
-    let redirect2 = headers.get("Location");
-    if (basename) redirect2 = (0, _chunkEF7DTUVFMjs.stripBasename)(redirect2, basename) || redirect2;
-    return {
-        redirect: redirect2,
-        status,
-        revalidate: // Technically X-Remix-Revalidate isn't needed here - that was an implementation
-        // detail of ?_data requests as our way to tell the front end to revalidate when
-        // we didn't have a response body to include that information in.
-        // With single fetch, we tell the front end via this revalidate boolean field.
-        // However, we're respecting it for now because it may be something folks have
-        // used in their own responses
-        // TODO(v3): Consider removing or making this official public API
-        headers.has("X-Remix-Revalidate") || headers.has("Set-Cookie"),
-        reload: headers.has("X-Remix-Reload-Document"),
-        replace: headers.has("X-Remix-Replace")
-    };
-}
-function encodeViaTurboStream(data2, requestSignal, streamTimeout, serverMode) {
-    let controller = new AbortController();
-    let timeoutId = setTimeout(()=>controller.abort(new Error("Server Timeout")), typeof streamTimeout === "number" ? streamTimeout : 4950);
-    requestSignal.addEventListener("abort", ()=>clearTimeout(timeoutId));
-    return (0, _chunkEF7DTUVFMjs.encode)(data2, {
-        signal: controller.signal,
-        plugins: [
-            (value)=>{
-                if (value instanceof Error) {
-                    let { name, message, stack } = serverMode === "production" /* Production */  ? sanitizeError(value, serverMode) : value;
-                    return [
-                        "SanitizedError",
-                        name,
-                        message,
-                        stack
-                    ];
-                }
-                if (value instanceof (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)) {
-                    let { data: data3, status, statusText } = value;
-                    return [
-                        "ErrorResponse",
-                        data3,
-                        status,
-                        statusText
-                    ];
-                }
-                if (value && typeof value === "object" && (0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol) in value) return [
-                    "SingleFetchRedirect",
-                    value[0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol]
-                ];
-            }
-        ],
-        postPlugins: [
-            (value)=>{
-                if (!value) return;
-                if (typeof value !== "object") return;
-                return [
-                    "SingleFetchClassInstance",
-                    Object.fromEntries(Object.entries(value))
-                ];
-            },
-            ()=>[
-                    "SingleFetchFallback"
-                ]
-        ]
-    });
-}
-// lib/server-runtime/server.ts
-function derive(build, mode) {
-    let routes = createRoutes(build.routes);
-    let dataRoutes = createStaticHandlerDataRoutes(build.routes, build.future);
-    let serverMode = isServerMode(mode) ? mode : "production" /* Production */ ;
-    let staticHandler = (0, _chunkEF7DTUVFMjs.createStaticHandler)(dataRoutes, {
-        basename: build.basename
-    });
-    let errorHandler = build.entry.module.handleError || ((error, { request })=>{
-        if (serverMode !== "test" /* Test */  && !request.signal.aborted) console.error(// @ts-expect-error This is "private" from users but intended for internal use
-        (0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(error) && error.error ? error.error : error);
-    });
-    return {
-        routes,
-        dataRoutes,
-        serverMode,
-        staticHandler,
-        errorHandler
-    };
-}
-var createRequestHandler = (build, mode)=>{
-    let _build;
-    let routes;
-    let serverMode;
-    let staticHandler;
-    let errorHandler;
-    return async function requestHandler(request, initialContext) {
-        _build = typeof build === "function" ? await build() : build;
-        if (typeof build === "function") {
-            let derived = derive(_build, mode);
-            routes = derived.routes;
-            serverMode = derived.serverMode;
-            staticHandler = derived.staticHandler;
-            errorHandler = derived.errorHandler;
-        } else if (!routes || !serverMode || !staticHandler || !errorHandler) {
-            let derived = derive(_build, mode);
-            routes = derived.routes;
-            serverMode = derived.serverMode;
-            staticHandler = derived.staticHandler;
-            errorHandler = derived.errorHandler;
-        }
-        let params = {};
-        let loadContext;
-        let handleError = (error)=>{
-            if (mode === "development" /* Development */ ) getDevServerHooks()?.processRequestError?.(error);
-            errorHandler(error, {
-                context: loadContext,
-                params,
-                request
-            });
-        };
-        if (_build.future.unstable_middleware) {
-            if (initialContext == null) loadContext = new (0, _chunkEF7DTUVFMjs.unstable_RouterContextProvider)();
-            else try {
-                loadContext = new (0, _chunkEF7DTUVFMjs.unstable_RouterContextProvider)(initialContext);
-            } catch (e) {
-                let error = new Error(`Unable to create initial \`unstable_RouterContextProvider\` instance. Please confirm you are returning an instance of \`Map<unstable_routerContext, unknown>\` from your \`getLoadContext\` function.
-
-Error: ${e instanceof Error ? e.toString() : e}`);
-                handleError(error);
-                return returnLastResortErrorResponse(error, serverMode);
-            }
-        } else loadContext = initialContext || {};
-        let url = new URL(request.url);
-        let normalizedBasename = _build.basename || "/";
-        let normalizedPath = url.pathname;
-        if ((0, _chunkEF7DTUVFMjs.stripBasename)(normalizedPath, normalizedBasename) === "/_root.data") normalizedPath = normalizedBasename;
-        else if (normalizedPath.endsWith(".data")) normalizedPath = normalizedPath.replace(/\.data$/, "");
-        if ((0, _chunkEF7DTUVFMjs.stripBasename)(normalizedPath, normalizedBasename) !== "/" && normalizedPath.endsWith("/")) normalizedPath = normalizedPath.slice(0, -1);
-        let isSpaMode = getBuildTimeHeader(request, "X-React-Router-SPA-Mode") === "yes";
-        if (!_build.ssr) {
-            let decodedPath = decodeURI(normalizedPath);
-            if (_build.prerender.length === 0) isSpaMode = true;
-            else if (!_build.prerender.includes(decodedPath) && !_build.prerender.includes(decodedPath + "/")) {
-                if (url.pathname.endsWith(".data")) {
-                    errorHandler(new (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)(404, "Not Found", `Refusing to SSR the path \`${decodedPath}\` because \`ssr:false\` is set and the path is not included in the \`prerender\` config, so in production the path will be a 404.`), {
-                        context: loadContext,
-                        params,
-                        request
-                    });
-                    return new Response("Not Found", {
-                        status: 404,
-                        statusText: "Not Found"
-                    });
-                } else isSpaMode = true;
-            }
-        }
-        let manifestUrl = (0, _chunkEF7DTUVFMjs.getManifestPath)(_build.routeDiscovery.manifestPath, normalizedBasename);
-        if (url.pathname === manifestUrl) try {
-            let res = await handleManifestRequest(_build, routes, url);
-            return res;
-        } catch (e) {
-            handleError(e);
-            return new Response("Unknown Server Error", {
-                status: 500
-            });
-        }
-        let matches = matchServerRoutes(routes, normalizedPath, _build.basename);
-        if (matches && matches.length > 0) Object.assign(params, matches[0].params);
-        let response;
-        if (url.pathname.endsWith(".data")) {
-            let handlerUrl = new URL(request.url);
-            handlerUrl.pathname = normalizedPath;
-            let singleFetchMatches = matchServerRoutes(routes, handlerUrl.pathname, _build.basename);
-            response = await handleSingleFetchRequest(serverMode, _build, staticHandler, request, handlerUrl, loadContext, handleError);
-            if (_build.entry.module.handleDataRequest) {
-                response = await _build.entry.module.handleDataRequest(response, {
-                    context: loadContext,
-                    params: singleFetchMatches ? singleFetchMatches[0].params : {},
-                    request
-                });
-                if ((0, _chunkEF7DTUVFMjs.isRedirectResponse)(response)) {
-                    let result = getSingleFetchRedirect(response.status, response.headers, _build.basename);
-                    if (request.method === "GET") result = {
-                        [(0, _chunkEF7DTUVFMjs.SingleFetchRedirectSymbol)]: result
-                    };
-                    let headers = new Headers(response.headers);
-                    headers.set("Content-Type", "text/x-script");
-                    return new Response(encodeViaTurboStream(result, request.signal, _build.entry.module.streamTimeout, serverMode), {
-                        status: (0, _chunkEF7DTUVFMjs.SINGLE_FETCH_REDIRECT_STATUS),
-                        headers
-                    });
-                }
-            }
-        } else if (!isSpaMode && matches && matches[matches.length - 1].route.module.default == null && matches[matches.length - 1].route.module.ErrorBoundary == null) response = await handleResourceRequest(serverMode, _build, staticHandler, matches.slice(-1)[0].route.id, request, loadContext, handleError);
-        else {
-            let { pathname } = url;
-            let criticalCss = void 0;
-            if (_build.unstable_getCriticalCss) criticalCss = await _build.unstable_getCriticalCss({
-                pathname
-            });
-            else if (mode === "development" /* Development */  && getDevServerHooks()?.getCriticalCss) criticalCss = await getDevServerHooks()?.getCriticalCss?.(pathname);
-            response = await handleDocumentRequest(serverMode, _build, staticHandler, request, loadContext, handleError, isSpaMode, criticalCss);
-        }
-        if (request.method === "HEAD") return new Response(null, {
-            headers: response.headers,
-            status: response.status,
-            statusText: response.statusText
-        });
-        return response;
-    };
-};
-async function handleManifestRequest(build, routes, url) {
-    if (build.assets.version !== url.searchParams.get("version")) return new Response(null, {
-        status: 204,
-        headers: {
-            "X-Remix-Reload-Document": "true"
-        }
-    });
-    let patches = {};
-    if (url.searchParams.has("p")) {
-        let paths = /* @__PURE__ */ new Set();
-        url.searchParams.getAll("p").forEach((path)=>{
-            if (!path.startsWith("/")) path = `/${path}`;
-            let segments = path.split("/").slice(1);
-            segments.forEach((_, i)=>{
-                let partialPath = segments.slice(0, i + 1).join("/");
-                paths.add(`/${partialPath}`);
-            });
-        });
-        for (let path of paths){
-            let matches = matchServerRoutes(routes, path, build.basename);
-            if (matches) for (let match of matches){
-                let routeId = match.route.id;
-                let route = build.assets.routes[routeId];
-                if (route) patches[routeId] = route;
-            }
-        }
-        return Response.json(patches, {
-            headers: {
-                "Cache-Control": "public, max-age=31536000, immutable"
-            }
-        });
-    }
-    return new Response("Invalid Request", {
-        status: 400
-    });
-}
-async function handleSingleFetchRequest(serverMode, build, staticHandler, request, handlerUrl, loadContext, handleError) {
-    let response = request.method !== "GET" ? await singleFetchAction(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError) : await singleFetchLoaders(build, serverMode, staticHandler, request, handlerUrl, loadContext, handleError);
-    return response;
-}
-async function handleDocumentRequest(serverMode, build, staticHandler, request, loadContext, handleError, isSpaMode, criticalCss) {
-    try {
-        let response = await staticHandler.query(request, {
-            requestContext: loadContext,
-            unstable_respond: build.future.unstable_middleware ? (ctx)=>renderHtml(ctx, isSpaMode) : void 0
-        });
-        return (0, _chunkEF7DTUVFMjs.isResponse)(response) ? response : renderHtml(response, isSpaMode);
-    } catch (error) {
-        handleError(error);
-        return new Response(null, {
-            status: 500
-        });
-    }
-    async function renderHtml(context, isSpaMode2) {
-        if ((0, _chunkEF7DTUVFMjs.isResponse)(context)) return context;
-        let headers = getDocumentHeaders(context, build);
-        if (SERVER_NO_BODY_STATUS_CODES.has(context.statusCode)) return new Response(null, {
-            status: context.statusCode,
-            headers
-        });
-        if (context.errors) {
-            Object.values(context.errors).forEach((err)=>{
-                if (!(0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(err) || err.error) handleError(err);
-            });
-            context.errors = sanitizeErrors(context.errors, serverMode);
-        }
-        let state = {
-            loaderData: context.loaderData,
-            actionData: context.actionData,
-            errors: serializeErrors(context.errors, serverMode)
-        };
-        let baseServerHandoff = {
-            basename: build.basename,
-            future: build.future,
-            routeDiscovery: build.routeDiscovery,
-            ssr: build.ssr,
-            isSpaMode: isSpaMode2
-        };
-        let entryContext = {
-            manifest: build.assets,
-            routeModules: createEntryRouteModules(build.routes),
-            staticHandlerContext: context,
-            criticalCss,
-            serverHandoffString: createServerHandoffString({
-                ...baseServerHandoff,
-                criticalCss
-            }),
-            serverHandoffStream: encodeViaTurboStream(state, request.signal, build.entry.module.streamTimeout, serverMode),
-            renderMeta: {},
-            future: build.future,
-            ssr: build.ssr,
-            routeDiscovery: build.routeDiscovery,
-            isSpaMode: isSpaMode2,
-            serializeError: (err)=>serializeError(err, serverMode)
-        };
-        let handleDocumentRequestFunction = build.entry.module.default;
-        try {
-            return await handleDocumentRequestFunction(request, context.statusCode, headers, entryContext, loadContext);
-        } catch (error) {
-            handleError(error);
-            let errorForSecondRender = error;
-            if ((0, _chunkEF7DTUVFMjs.isResponse)(error)) try {
-                let data2 = await unwrapResponse(error);
-                errorForSecondRender = new (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)(error.status, error.statusText, data2);
-            } catch (e) {}
-            context = (0, _chunkEF7DTUVFMjs.getStaticContextFromError)(staticHandler.dataRoutes, context, errorForSecondRender);
-            if (context.errors) context.errors = sanitizeErrors(context.errors, serverMode);
-            let state2 = {
-                loaderData: context.loaderData,
-                actionData: context.actionData,
-                errors: serializeErrors(context.errors, serverMode)
-            };
-            entryContext = {
-                ...entryContext,
-                staticHandlerContext: context,
-                serverHandoffString: createServerHandoffString(baseServerHandoff),
-                serverHandoffStream: encodeViaTurboStream(state2, request.signal, build.entry.module.streamTimeout, serverMode),
-                renderMeta: {}
-            };
-            try {
-                return await handleDocumentRequestFunction(request, context.statusCode, headers, entryContext, loadContext);
-            } catch (error2) {
-                handleError(error2);
-                return returnLastResortErrorResponse(error2, serverMode);
-            }
-        }
-    }
-}
-async function handleResourceRequest(serverMode, build, staticHandler, routeId, request, loadContext, handleError) {
-    try {
-        let response = await staticHandler.queryRoute(request, {
-            routeId,
-            requestContext: loadContext,
-            unstable_respond: build.future.unstable_middleware ? (ctx)=>ctx : void 0
-        });
-        if ((0, _chunkEF7DTUVFMjs.isResponse)(response)) return response;
-        if (typeof response === "string") return new Response(response);
-        return Response.json(response);
-    } catch (error) {
-        if ((0, _chunkEF7DTUVFMjs.isResponse)(error)) {
-            error.headers.set("X-Remix-Catch", "yes");
-            return error;
-        }
-        if ((0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(error)) {
-            if (error) handleError(error);
-            return errorResponseToJson(error, serverMode);
-        }
-        if (error instanceof Error && error.message === "Expected a response from queryRoute") {
-            let newError = new Error("Expected a Response to be returned from resource route handler");
-            handleError(newError);
-            return returnLastResortErrorResponse(newError, serverMode);
-        }
-        handleError(error);
-        return returnLastResortErrorResponse(error, serverMode);
-    }
-}
-function errorResponseToJson(errorResponse, serverMode) {
-    return Response.json(serializeError(// @ts-expect-error This is "private" from users but intended for internal use
-    errorResponse.error || new Error("Unexpected Server Error"), serverMode), {
-        status: errorResponse.status,
-        statusText: errorResponse.statusText,
-        headers: {
-            "X-Remix-Error": "yes"
-        }
-    });
-}
-function returnLastResortErrorResponse(error, serverMode) {
-    let message = "Unexpected Server Error";
-    if (serverMode !== "production" /* Production */ ) message += `
-
-${String(error)}`;
-    return new Response(message, {
-        status: 500,
-        headers: {
-            "Content-Type": "text/plain"
-        }
-    });
-}
-function unwrapResponse(response) {
-    let contentType = response.headers.get("Content-Type");
-    return contentType && /\bapplication\/json\b/.test(contentType) ? response.body == null ? null : response.json() : response.text();
-}
-// lib/server-runtime/sessions.ts
-function flash(name) {
-    return `__flash_${name}__`;
-}
-var createSession = (initialData = {}, id = "")=>{
-    let map = new Map(Object.entries(initialData));
-    return {
-        get id () {
-            return id;
-        },
-        get data () {
-            return Object.fromEntries(map);
-        },
-        has (name) {
-            return map.has(name) || map.has(flash(name));
-        },
-        get (name) {
-            if (map.has(name)) return map.get(name);
-            let flashName = flash(name);
-            if (map.has(flashName)) {
-                let value = map.get(flashName);
-                map.delete(flashName);
-                return value;
-            }
-            return void 0;
-        },
-        set (name, value) {
-            map.set(name, value);
-        },
-        flash (name, value) {
-            map.set(flash(name), value);
-        },
-        unset (name) {
-            map.delete(name);
-        }
-    };
-};
-var isSession = (object)=>{
-    return object != null && typeof object.id === "string" && typeof object.data !== "undefined" && typeof object.has === "function" && typeof object.get === "function" && typeof object.set === "function" && typeof object.flash === "function" && typeof object.unset === "function";
-};
-function createSessionStorage({ cookie: cookieArg, createData, readData, updateData, deleteData }) {
-    let cookie = isCookie(cookieArg) ? cookieArg : createCookie(cookieArg?.name || "__session", cookieArg);
-    warnOnceAboutSigningSessionCookie(cookie);
-    return {
-        async getSession (cookieHeader, options) {
-            let id = cookieHeader && await cookie.parse(cookieHeader, options);
-            let data2 = id && await readData(id);
-            return createSession(data2 || {}, id || "");
-        },
-        async commitSession (session, options) {
-            let { id, data: data2 } = session;
-            let expires = options?.maxAge != null ? new Date(Date.now() + options.maxAge * 1e3) : options?.expires != null ? options.expires : cookie.expires;
-            if (id) await updateData(id, data2, expires);
-            else id = await createData(data2, expires);
-            return cookie.serialize(id, options);
-        },
-        async destroySession (session, options) {
-            await deleteData(session.id);
-            return cookie.serialize("", {
-                ...options,
-                maxAge: void 0,
-                expires: /* @__PURE__ */ new Date(0)
-            });
-        }
-    };
-}
-function warnOnceAboutSigningSessionCookie(cookie) {
-    (0, _chunkEF7DTUVFMjs.warnOnce)(cookie.isSigned, `The "${cookie.name}" cookie is not signed, but session cookies should be signed to prevent tampering on the client before they are sent back to the server. See https://reactrouter.com/explanation/sessions-and-cookies#signing-cookies for more information.`);
-}
-// lib/server-runtime/sessions/cookieStorage.ts
-function createCookieSessionStorage({ cookie: cookieArg } = {}) {
-    let cookie = isCookie(cookieArg) ? cookieArg : createCookie(cookieArg?.name || "__session", cookieArg);
-    warnOnceAboutSigningSessionCookie(cookie);
-    return {
-        async getSession (cookieHeader, options) {
-            return createSession(cookieHeader && await cookie.parse(cookieHeader, options) || {});
-        },
-        async commitSession (session, options) {
-            let serializedCookie = await cookie.serialize(session.data, options);
-            if (serializedCookie.length > 4096) throw new Error("Cookie length will exceed browser maximum. Length: " + serializedCookie.length);
-            return serializedCookie;
-        },
-        async destroySession (_session, options) {
-            return cookie.serialize("", {
-                ...options,
-                maxAge: void 0,
-                expires: /* @__PURE__ */ new Date(0)
-            });
-        }
-    };
-}
-// lib/server-runtime/sessions/memoryStorage.ts
-function createMemorySessionStorage({ cookie } = {}) {
-    let map = /* @__PURE__ */ new Map();
-    return createSessionStorage({
-        cookie,
-        async createData (data2, expires) {
-            let id = Math.random().toString(36).substring(2, 10);
-            map.set(id, {
-                data: data2,
-                expires
-            });
-            return id;
-        },
-        async readData (id) {
-            if (map.has(id)) {
-                let { data: data2, expires } = map.get(id);
-                if (!expires || expires > /* @__PURE__ */ new Date()) return data2;
-                if (expires) map.delete(id);
-            }
-            return null;
-        },
-        async updateData (id, data2, expires) {
-            map.set(id, {
-                data: data2,
-                expires
-            });
-        },
-        async deleteData (id) {
-            map.delete(id);
-        }
-    });
-}
-// lib/href.ts
-function href(path, ...args) {
-    let params = args[0];
-    return path.split("/").map((segment)=>{
-        if (segment === "*") return params ? params["*"] : void 0;
-        const match = segment.match(/^:([\w-]+)(\?)?/);
-        if (!match) return segment;
-        const param = match[1];
-        const value = params ? params[param] : void 0;
-        const isRequired = match[2] === void 0;
-        if (isRequired && value === void 0) throw Error(`Path '${path}' requires param '${param}' but it was not provided`);
-        return value;
-    }).filter((segment)=>segment !== void 0).join("/");
-}
-// lib/dom/ssr/hydration.tsx
-function getHydrationData(state, routes, getRouteInfo, location2, basename, isSpaMode) {
-    let hydrationData = {
-        ...state,
-        loaderData: {
-            ...state.loaderData
-        }
-    };
-    let initialMatches = (0, _chunkEF7DTUVFMjs.matchRoutes)(routes, location2, basename);
-    if (initialMatches) for (let match of initialMatches){
-        let routeId = match.route.id;
-        let routeInfo = getRouteInfo(routeId);
-        if ((0, _chunkEF7DTUVFMjs.shouldHydrateRouteLoader)(routeId, routeInfo.clientLoader, routeInfo.hasLoader, isSpaMode) && (routeInfo.hasHydrateFallback || !routeInfo.hasLoader)) delete hydrationData.loaderData[routeId];
-        else if (!routeInfo.hasLoader) hydrationData.loaderData[routeId] = null;
-    }
-    return hydrationData;
-}
-var RSCRouterGlobalErrorBoundary = class extends (0, _reactDefault.default).Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            error: null,
-            location: props.location
-        };
-    }
-    static getDerivedStateFromError(error) {
-        return {
-            error
-        };
-    }
-    static getDerivedStateFromProps(props, state) {
-        if (state.location !== props.location) return {
-            error: null,
-            location: props.location
-        };
-        return {
-            error: state.error,
-            location: state.location
-        };
-    }
-    render() {
-        if (this.state.error) return /* @__PURE__ */ (0, _reactDefault.default).createElement(RSCDefaultRootErrorBoundaryImpl, {
-            error: this.state.error,
-            renderAppShell: true
-        });
-        else return this.props.children;
-    }
-};
-function ErrorWrapper({ renderAppShell, title, children }) {
-    if (!renderAppShell) return children;
-    return /* @__PURE__ */ (0, _reactDefault.default).createElement("html", {
-        lang: "en"
-    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("head", null, /* @__PURE__ */ (0, _reactDefault.default).createElement("meta", {
-        charSet: "utf-8"
-    }), /* @__PURE__ */ (0, _reactDefault.default).createElement("meta", {
-        name: "viewport",
-        content: "width=device-width,initial-scale=1,viewport-fit=cover"
-    }), /* @__PURE__ */ (0, _reactDefault.default).createElement("title", null, title)), /* @__PURE__ */ (0, _reactDefault.default).createElement("body", null, /* @__PURE__ */ (0, _reactDefault.default).createElement("main", {
-        style: {
-            fontFamily: "system-ui, sans-serif",
-            padding: "2rem"
-        }
-    }, children)));
-}
-function RSCDefaultRootErrorBoundaryImpl({ error, renderAppShell }) {
-    console.error(error);
-    let heyDeveloper = /* @__PURE__ */ (0, _reactDefault.default).createElement("script", {
-        dangerouslySetInnerHTML: {
-            __html: `
-        console.log(
-          "\u{1F4BF} Hey developer \u{1F44B}. You can provide a way better UX than this when your app throws errors. Check out https://reactrouter.com/how-to/error-boundary for more information."
-        );
-      `
-        }
-    });
-    if ((0, _chunkEF7DTUVFMjs.isRouteErrorResponse)(error)) return /* @__PURE__ */ (0, _reactDefault.default).createElement(ErrorWrapper, {
-        renderAppShell,
-        title: "Unhandled Thrown Response!"
-    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("h1", {
-        style: {
-            fontSize: "24px"
-        }
-    }, error.status, " ", error.statusText), (0, _chunkEF7DTUVFMjs.ENABLE_DEV_WARNINGS) ? heyDeveloper : null);
-    let errorInstance;
-    if (error instanceof Error) errorInstance = error;
-    else {
-        let errorString = error == null ? "Unknown Error" : typeof error === "object" && "toString" in error ? error.toString() : JSON.stringify(error);
-        errorInstance = new Error(errorString);
-    }
-    return /* @__PURE__ */ (0, _reactDefault.default).createElement(ErrorWrapper, {
-        renderAppShell,
-        title: "Application Error!"
-    }, /* @__PURE__ */ (0, _reactDefault.default).createElement("h1", {
-        style: {
-            fontSize: "24px"
-        }
-    }, "Application Error"), /* @__PURE__ */ (0, _reactDefault.default).createElement("pre", {
-        style: {
-            padding: "2rem",
-            background: "hsla(10, 50%, 50%, 0.1)",
-            color: "red",
-            overflow: "auto"
-        }
-    }, errorInstance.stack), heyDeveloper);
-}
-function RSCDefaultRootErrorBoundary({ hasRootLayout }) {
-    let error = (0, _chunkEF7DTUVFMjs.useRouteError)();
-    if (hasRootLayout === void 0) throw new Error("Missing 'hasRootLayout' prop");
-    return /* @__PURE__ */ (0, _reactDefault.default).createElement(RSCDefaultRootErrorBoundaryImpl, {
-        renderAppShell: !hasRootLayout,
-        error
-    });
-}
-// lib/rsc/browser.tsx
-function createCallServer({ createFromReadableStream, createTemporaryReferenceSet, encodeReply, fetch: fetchImplementation = fetch }) {
-    const globalVar = window;
-    let landedActionId = 0;
-    return async (id, args)=>{
-        let actionId = globalVar.__routerActionID = (globalVar.__routerActionID ?? (globalVar.__routerActionID = 0)) + 1;
-        const temporaryReferences = createTemporaryReferenceSet();
-        const response = await fetchImplementation(new Request(location.href, {
-            body: await encodeReply(args, {
-                temporaryReferences
-            }),
-            method: "POST",
-            headers: {
-                Accept: "text/x-component",
-                "rsc-action-id": id
-            }
-        }));
-        if (!response.body) throw new Error("No response body");
-        const payload = await createFromReadableStream(response.body, {
-            temporaryReferences
-        });
-        if (payload.type === "redirect") {
-            if (payload.reload) {
-                window.location.href = payload.location;
-                return;
-            }
-            globalVar.__router.navigate(payload.location, {
-                replace: payload.replace
-            });
-            return payload.actionResult;
-        }
-        if (payload.type !== "action") throw new Error("Unexpected payload type");
-        if (payload.rerender) _react.startTransition(// @ts-expect-error - We have old react types that don't know this can be async
-        async ()=>{
-            const rerender = await payload.rerender;
-            if (!rerender) return;
-            if (landedActionId < actionId && globalVar.__routerActionID <= actionId) {
-                landedActionId = actionId;
-                if (rerender.type === "redirect") {
-                    if (rerender.reload) {
-                        window.location.href = rerender.location;
-                        return;
-                    }
-                    globalVar.__router.navigate(rerender.location, {
-                        replace: rerender.replace
-                    });
-                    return;
-                }
-                let lastMatch;
-                for (const match of rerender.matches){
-                    globalVar.__router.patchRoutes(lastMatch?.id ?? null, [
-                        createRouteFromServerManifest(match)
-                    ], true);
-                    lastMatch = match;
-                }
-                window.__router._internalSetStateDoNotUseOrYouWillBreakYourApp({});
-                _react.startTransition(()=>{
-                    window.__router._internalSetStateDoNotUseOrYouWillBreakYourApp({
-                        loaderData: Object.assign({}, globalVar.__router.state.loaderData, rerender.loaderData),
-                        errors: rerender.errors ? Object.assign({}, globalVar.__router.state.errors, rerender.errors) : null
-                    });
-                });
-            }
-        });
-        return payload.actionResult;
-    };
-}
-function createRouterFromPayload({ fetchImplementation, createFromReadableStream, unstable_getContext, payload }) {
-    const globalVar = window;
-    if (globalVar.__router) return globalVar.__router;
-    if (payload.type !== "render") throw new Error("Invalid payload type");
-    let patches = /* @__PURE__ */ new Map();
-    payload.patches?.forEach((patch)=>{
-        (0, _chunkEF7DTUVFMjs.invariant)(patch.parentId, "Invalid patch parentId");
-        if (!patches.has(patch.parentId)) patches.set(patch.parentId, []);
-        patches.get(patch.parentId)?.push(patch);
-    });
-    let routes = payload.matches.reduceRight((previous, match)=>{
-        const route = createRouteFromServerManifest(match, payload);
-        if (previous.length > 0) {
-            route.children = previous;
-            let childrenToPatch = patches.get(match.id);
-            if (childrenToPatch) route.children.push(...childrenToPatch.map((r)=>createRouteFromServerManifest(r)));
-        }
-        return [
-            route
-        ];
-    }, []);
-    globalVar.__router = (0, _chunkEF7DTUVFMjs.createRouter)({
-        routes,
-        unstable_getContext,
-        basename: payload.basename,
-        history: (0, _chunkEF7DTUVFMjs.createBrowserHistory)(),
-        hydrationData: getHydrationData({
-            loaderData: payload.loaderData,
-            actionData: payload.actionData,
-            errors: payload.errors
-        }, routes, (routeId)=>{
-            let match = payload.matches.find((m)=>m.id === routeId);
-            (0, _chunkEF7DTUVFMjs.invariant)(match, "Route not found in payload");
-            return {
-                clientLoader: match.clientLoader,
-                hasLoader: match.hasLoader,
-                hasHydrateFallback: match.hydrateFallbackElement != null
-            };
-        }, payload.location, void 0, false),
-        async patchRoutesOnNavigation ({ path, signal }) {
-            if (discoveredPaths.has(path)) return;
-            await fetchAndApplyManifestPatches([
-                path
-            ], createFromReadableStream, fetchImplementation, signal);
-        },
-        // FIXME: Pass `build.ssr` into this function
-        dataStrategy: getRSCSingleFetchDataStrategy(()=>globalVar.__router, true, payload.basename, createFromReadableStream, fetchImplementation)
-    });
-    if (globalVar.__router.state.initialized) {
-        globalVar.__routerInitialized = true;
-        globalVar.__router.initialize();
-    } else globalVar.__routerInitialized = false;
-    let lastLoaderData = void 0;
-    globalVar.__router.subscribe(({ loaderData, actionData })=>{
-        if (lastLoaderData !== loaderData) globalVar.__routerActionID = (globalVar.__routerActionID ?? (globalVar.__routerActionID = 0)) + 1;
-    });
-    return globalVar.__router;
-}
-var renderedRoutesContext = (0, _chunkEF7DTUVFMjs.unstable_createContext)();
-function getRSCSingleFetchDataStrategy(getRouter, ssr, basename, createFromReadableStream, fetchImplementation) {
-    let dataStrategy = (0, _chunkEF7DTUVFMjs.getSingleFetchDataStrategyImpl)(getRouter, (match)=>{
-        let M = match;
-        return {
-            hasLoader: M.route.hasLoader,
-            hasClientLoader: M.route.hasClientLoader,
-            hasComponent: M.route.hasComponent,
-            hasAction: M.route.hasAction,
-            hasClientAction: M.route.hasClientAction,
-            hasShouldRevalidate: M.route.hasShouldRevalidate
-        };
-    }, // pass map into fetchAndDecode so it can add payloads
-    getFetchAndDecodeViaRSC(createFromReadableStream, fetchImplementation), ssr, basename, // If the route has a component but we don't have an element, we need to hit
-    // the server loader flow regardless of whether the client loader calls
-    // `serverLoader` or not, otherwise we'll have nothing to render.
-    (match)=>{
-        let M = match;
-        return M.route.hasComponent && !M.route.element;
-    });
-    return async (args)=>args.unstable_runClientMiddleware(async ()=>{
-            let context = args.context;
-            context.set(renderedRoutesContext, []);
-            let results = await dataStrategy(args);
-            const renderedRoutesById = /* @__PURE__ */ new Map();
-            for (const route of context.get(renderedRoutesContext)){
-                if (!renderedRoutesById.has(route.id)) renderedRoutesById.set(route.id, []);
-                renderedRoutesById.get(route.id).push(route);
-            }
-            for (const match of args.matches){
-                const renderedRoutes = renderedRoutesById.get(match.route.id);
-                if (renderedRoutes) for (const rendered of renderedRoutes)window.__router.patchRoutes(rendered.parentId ?? null, [
-                    createRouteFromServerManifest(rendered)
-                ], true);
-            }
-            return results;
-        });
-}
-function getFetchAndDecodeViaRSC(createFromReadableStream, fetchImplementation) {
-    return async (args, basename, targetRoutes)=>{
-        let { request, context } = args;
-        let url = (0, _chunkEF7DTUVFMjs.singleFetchUrl)(request.url, basename, "rsc");
-        if (request.method === "GET") {
-            url = (0, _chunkEF7DTUVFMjs.stripIndexParam)(url);
-            if (targetRoutes) url.searchParams.set("_routes", targetRoutes.join(","));
-        }
-        let res = await fetchImplementation(new Request(url, await (0, _chunkEF7DTUVFMjs.createRequestInit)(request)));
-        if (res.status === 404 && !res.headers.has("X-Remix-Response")) throw new (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)(404, "Not Found", true);
-        (0, _chunkEF7DTUVFMjs.invariant)(res.body, "No response body to decode");
-        try {
-            const payload = await createFromReadableStream(res.body, {
-                temporaryReferences: void 0
-            });
-            if (payload.type === "redirect") return {
-                status: res.status,
-                data: {
-                    redirect: {
-                        redirect: payload.location,
-                        reload: payload.reload,
-                        replace: payload.replace,
-                        revalidate: false,
-                        status: payload.status
-                    }
-                }
-            };
-            if (payload.type !== "render") throw new Error("Unexpected payload type");
-            context.get(renderedRoutesContext).push(...payload.matches);
-            let results = {
-                routes: {}
-            };
-            const dataKey = (0, _chunkEF7DTUVFMjs.isMutationMethod)(request.method) ? "actionData" : "loaderData";
-            for (let [routeId, data2] of Object.entries(payload[dataKey] || {}))results.routes[routeId] = {
-                data: data2
-            };
-            if (payload.errors) for (let [routeId, error] of Object.entries(payload.errors))results.routes[routeId] = {
-                error
-            };
-            return {
-                status: res.status,
-                data: results
-            };
-        } catch (e) {
-            throw new Error("Unable to decode RSC response");
-        }
-    };
-}
-function RSCHydratedRouter({ createFromReadableStream, fetch: fetchImplementation = fetch, payload, routeDiscovery = "eager", unstable_getContext }) {
-    if (payload.type !== "render") throw new Error("Invalid payload type");
-    let router = _react.useMemo(()=>createRouterFromPayload({
-            payload,
-            fetchImplementation,
-            unstable_getContext,
-            createFromReadableStream
-        }), [
-        createFromReadableStream,
-        payload,
-        fetchImplementation,
-        unstable_getContext
-    ]);
-    _react.useLayoutEffect(()=>{
-        const globalVar = window;
-        if (!globalVar.__routerInitialized) {
-            globalVar.__routerInitialized = true;
-            globalVar.__router.initialize();
-        }
-    }, []);
-    let [location2, setLocation] = _react.useState(router.state.location);
-    _react.useLayoutEffect(()=>router.subscribe((newState)=>{
-            if (newState.location !== location2) setLocation(newState.location);
-        }), [
-        router,
-        location2
-    ]);
-    _react.useEffect(()=>{
-        if (routeDiscovery === "lazy" || // @ts-expect-error - TS doesn't know about this yet
-        window.navigator?.connection?.saveData === true) return;
-        function registerElement(el) {
-            let path = el.tagName === "FORM" ? el.getAttribute("action") : el.getAttribute("href");
-            if (!path) return;
-            let pathname = el.tagName === "A" ? el.pathname : new URL(path, window.location.origin).pathname;
-            if (!discoveredPaths.has(pathname)) nextPaths.add(pathname);
-        }
-        async function fetchPatches() {
-            document.querySelectorAll("a[data-discover], form[data-discover]").forEach(registerElement);
-            let paths = Array.from(nextPaths.keys()).filter((path)=>{
-                if (discoveredPaths.has(path)) {
-                    nextPaths.delete(path);
-                    return false;
-                }
-                return true;
-            });
-            if (paths.length === 0) return;
-            try {
-                await fetchAndApplyManifestPatches(paths, createFromReadableStream, fetchImplementation);
-            } catch (e) {
-                console.error("Failed to fetch manifest patches", e);
-            }
-        }
-        let debouncedFetchPatches = debounce(fetchPatches, 100);
-        fetchPatches();
-        let observer = new MutationObserver(()=>debouncedFetchPatches());
-        observer.observe(document.documentElement, {
-            subtree: true,
-            childList: true,
-            attributes: true,
-            attributeFilter: [
-                "data-discover",
-                "href",
-                "action"
-            ]
-        });
-    }, [
-        routeDiscovery,
-        createFromReadableStream,
-        fetchImplementation
-    ]);
-    const frameworkContext = {
-        future: {
-            // These flags have no runtime impact so can always be false.  If we add
-            // flags that drive runtime behavior they'll need to be proxied through.
-            unstable_middleware: false,
-            unstable_subResourceIntegrity: false
-        },
-        isSpaMode: true,
-        ssr: true,
-        criticalCss: "",
-        manifest: {
-            routes: {},
-            version: "1",
-            url: "",
-            entry: {
-                module: "",
-                imports: []
-            }
-        },
-        routeDiscovery: {
-            mode: "lazy",
-            manifestPath: "/__manifest"
-        },
-        routeModules: {}
-    };
-    return /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.RSCRouterContext).Provider, {
-        value: true
-    }, /* @__PURE__ */ _react.createElement(RSCRouterGlobalErrorBoundary, {
-        location: location2
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.FrameworkContext).Provider, {
-        value: frameworkContext
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.RouterProvider), {
-        router,
-        flushSync: _reactDom.flushSync
-    }))));
-}
-function createRouteFromServerManifest(match, payload) {
-    let hasInitialData = payload && match.id in payload.loaderData;
-    let initialData = payload?.loaderData[match.id];
-    let hasInitialError = payload?.errors && match.id in payload.errors;
-    let initialError = payload?.errors?.[match.id];
-    let isHydrationRequest = match.clientLoader?.hydrate === true || !match.hasLoader || // If the route has a component but we don't have an element, we need to hit
-    // the server loader flow regardless of whether the client loader calls
-    // `serverLoader` or not, otherwise we'll have nothing to render.
-    match.hasComponent && !match.element;
-    let dataRoute = {
-        id: match.id,
-        element: match.element,
-        errorElement: match.errorElement,
-        handle: match.handle,
-        hasErrorBoundary: match.hasErrorBoundary,
-        hydrateFallbackElement: match.hydrateFallbackElement,
-        index: match.index,
-        loader: match.clientLoader ? async (args, singleFetch)=>{
-            try {
-                let result = await match.clientLoader({
-                    ...args,
-                    serverLoader: ()=>{
-                        preventInvalidServerHandlerCall("loader", match.id, match.hasLoader);
-                        if (isHydrationRequest) {
-                            if (hasInitialData) return initialData;
-                            if (hasInitialError) throw initialError;
-                        }
-                        return callSingleFetch(singleFetch);
-                    }
-                });
-                return result;
-            } finally{
-                isHydrationRequest = false;
-            }
-        } : // We always make the call in this RSC world since even if we don't
-        // have a `loader` we may need to get the `element` implementation
-        (_, singleFetch)=>callSingleFetch(singleFetch),
-        action: match.clientAction ? (args, singleFetch)=>match.clientAction({
-                ...args,
-                serverAction: async ()=>{
-                    preventInvalidServerHandlerCall("action", match.id, match.hasLoader);
-                    return await callSingleFetch(singleFetch);
-                }
-            }) : match.hasAction ? (_, singleFetch)=>callSingleFetch(singleFetch) : ()=>{
-            throw (0, _chunkEF7DTUVFMjs.noActionDefinedError)("action", match.id);
-        },
-        path: match.path,
-        shouldRevalidate: match.shouldRevalidate,
-        // We always have a "loader" in this RSC world since even if we don't
-        // have a `loader` we may need to get the `element` implementation
-        hasLoader: true,
-        hasClientLoader: match.clientLoader != null,
-        hasAction: match.hasAction,
-        hasClientAction: match.clientAction != null,
-        hasShouldRevalidate: match.shouldRevalidate != null
-    };
-    if (typeof dataRoute.loader === "function") dataRoute.loader.hydrate = (0, _chunkEF7DTUVFMjs.shouldHydrateRouteLoader)(match.id, match.clientLoader, match.hasLoader, false);
-    return dataRoute;
-}
-function callSingleFetch(singleFetch) {
-    (0, _chunkEF7DTUVFMjs.invariant)(typeof singleFetch === "function", "Invalid singleFetch parameter");
-    return singleFetch();
-}
-function preventInvalidServerHandlerCall(type, routeId, hasHandler) {
-    if (!hasHandler) {
-        let fn = type === "action" ? "serverAction()" : "serverLoader()";
-        let msg = `You are trying to call ${fn} on a route that does not have a server ${type} (routeId: "${routeId}")`;
-        console.error(msg);
-        throw new (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)(400, "Bad Request", new Error(msg), true);
-    }
-}
-var nextPaths = /* @__PURE__ */ new Set();
-var discoveredPathsMaxSize = 1e3;
-var discoveredPaths = /* @__PURE__ */ new Set();
-var URL_LIMIT = 7680;
-function getManifestUrl(paths) {
-    if (paths.length === 0) return null;
-    if (paths.length === 1) return new URL(`${paths[0]}.manifest`, window.location.origin);
-    const globalVar = window;
-    let basename = (globalVar.__router.basename ?? "").replace(/^\/|\/$/g, "");
-    let url = new URL(`${basename}/.manifest`, window.location.origin);
-    paths.sort().forEach((path)=>url.searchParams.append("p", path));
-    return url;
-}
-async function fetchAndApplyManifestPatches(paths, createFromReadableStream, fetchImplementation, signal) {
-    let url = getManifestUrl(paths);
-    if (url == null) return;
-    if (url.toString().length > URL_LIMIT) {
-        nextPaths.clear();
-        return;
-    }
-    let response = await fetchImplementation(new Request(url, {
-        signal
-    }));
-    if (!response.body || response.status < 200 || response.status >= 300) throw new Error("Unable to fetch new route matches from the server");
-    let payload = await createFromReadableStream(response.body, {
-        temporaryReferences: void 0
-    });
-    if (payload.type !== "manifest") throw new Error("Failed to patch routes");
-    paths.forEach((p)=>addToFifoQueue(p, discoveredPaths));
-    payload.patches.forEach((p)=>{
-        window.__router.patchRoutes(p.parentId ?? null, [
-            createRouteFromServerManifest(p)
-        ]);
-    });
-}
-function addToFifoQueue(path, queue) {
-    if (queue.size >= discoveredPathsMaxSize) {
-        let first = queue.values().next().value;
-        queue.delete(first);
-    }
-    queue.add(path);
-}
-function debounce(callback, wait) {
-    let timeoutId;
-    return (...args)=>{
-        window.clearTimeout(timeoutId);
-        timeoutId = window.setTimeout(()=>callback(...args), wait);
-    };
-}
-// lib/rsc/html-stream/server.ts
-var encoder2 = new TextEncoder();
-var trailer = "</body></html>";
-function injectRSCPayload(rscStream) {
-    let decoder = new TextDecoder();
-    let resolveFlightDataPromise;
-    let flightDataPromise = new Promise((resolve)=>resolveFlightDataPromise = resolve);
-    let startedRSC = false;
-    let buffered = [];
-    let timeout = null;
-    function flushBufferedChunks(controller) {
-        for (let chunk of buffered){
-            let buf = decoder.decode(chunk, {
-                stream: true
-            });
-            if (buf.endsWith(trailer)) buf = buf.slice(0, -trailer.length);
-            controller.enqueue(encoder2.encode(buf));
-        }
-        buffered.length = 0;
-        timeout = null;
-    }
-    return new TransformStream({
-        transform (chunk, controller) {
-            buffered.push(chunk);
-            if (timeout) return;
-            timeout = setTimeout(async ()=>{
-                flushBufferedChunks(controller);
-                if (!startedRSC) {
-                    startedRSC = true;
-                    writeRSCStream(rscStream, controller).catch((err)=>controller.error(err)).then(resolveFlightDataPromise);
-                }
-            }, 0);
-        },
-        async flush (controller) {
-            await flightDataPromise;
-            if (timeout) {
-                clearTimeout(timeout);
-                flushBufferedChunks(controller);
-            }
-            controller.enqueue(encoder2.encode("</body></html>"));
-        }
-    });
-}
-async function writeRSCStream(rscStream, controller) {
-    let decoder = new TextDecoder("utf-8", {
-        fatal: true
-    });
-    const reader = rscStream.getReader();
-    try {
-        let read;
-        while((read = await reader.read()) && !read.done){
-            const chunk = read.value;
-            try {
-                writeChunk(JSON.stringify(decoder.decode(chunk, {
-                    stream: true
-                })), controller);
-            } catch (err) {
-                let base64 = JSON.stringify(btoa(String.fromCodePoint(...chunk)));
-                writeChunk(`Uint8Array.from(atob(${base64}), m => m.codePointAt(0))`, controller);
-            }
-        }
-    } finally{
-        reader.releaseLock();
-    }
-    let remaining = decoder.decode();
-    if (remaining.length) writeChunk(JSON.stringify(remaining), controller);
-}
-function writeChunk(chunk, controller) {
-    controller.enqueue(encoder2.encode(`<script>${escapeScript(`(self.__FLIGHT_DATA||=[]).push(${chunk})`)}</script>`));
-}
-function escapeScript(script) {
-    return script.replace(/<!--/g, "<\\!--").replace(/<\/(script)/gi, "</\\$1");
-}
-// lib/rsc/server.ssr.tsx
-async function routeRSCServerRequest({ request, fetchServer, createFromReadableStream, renderHTML, hydrate = true }) {
-    const url = new URL(request.url);
-    const isDataRequest = isReactServerRequest(url);
-    const respondWithRSCPayload = isDataRequest || isManifestRequest(url) || request.headers.has("rsc-action-id");
-    const serverResponse = await fetchServer(request);
-    if (respondWithRSCPayload || serverResponse.headers.get("React-Router-Resource") === "true") return serverResponse;
-    if (!serverResponse.body) throw new Error("Missing body in server response");
-    let serverResponseB = null;
-    if (hydrate) serverResponseB = serverResponse.clone();
-    const body = serverResponse.body;
-    let payloadPromise;
-    const getPayload = async ()=>{
-        if (payloadPromise) return payloadPromise;
-        payloadPromise = createFromReadableStream(body);
-        return payloadPromise;
-    };
-    try {
-        const html = await renderHTML(getPayload);
-        const headers = new Headers(serverResponse.headers);
-        headers.set("Content-Type", "text/html");
-        if (!hydrate) return new Response(html, {
-            status: serverResponse.status,
-            headers
-        });
-        if (!serverResponseB?.body) throw new Error("Failed to clone server response");
-        const body2 = html.pipeThrough(injectRSCPayload(serverResponseB.body));
-        return new Response(body2, {
-            status: serverResponse.status,
-            headers
-        });
-    } catch (reason) {
-        if (reason instanceof Response) return reason;
-        throw reason;
-    }
-}
-function RSCStaticRouter({ getPayload }) {
-    const payload = _react.use(getPayload());
-    if (payload.type === "redirect") throw new Response(null, {
-        status: payload.status,
-        headers: {
-            Location: payload.location
-        }
-    });
-    if (payload.type !== "render") return null;
-    let patchedLoaderData = {
-        ...payload.loaderData
-    };
-    for (const match of payload.matches)if ((0, _chunkEF7DTUVFMjs.shouldHydrateRouteLoader)(match.id, match.clientLoader, match.hasLoader, false) && (match.hydrateFallbackElement || !match.hasLoader)) delete patchedLoaderData[match.id];
-    const context = {
-        actionData: payload.actionData,
-        actionHeaders: {},
-        basename: payload.basename,
-        errors: payload.errors,
-        loaderData: patchedLoaderData,
-        loaderHeaders: {},
-        location: payload.location,
-        statusCode: 200,
-        matches: payload.matches.map((match)=>({
-                params: match.params,
-                pathname: match.pathname,
-                pathnameBase: match.pathnameBase,
-                route: {
-                    id: match.id,
-                    action: match.hasAction || !!match.clientAction,
-                    handle: match.handle,
-                    hasErrorBoundary: match.hasErrorBoundary,
-                    loader: match.hasLoader || !!match.clientLoader,
-                    index: match.index,
-                    path: match.path,
-                    shouldRevalidate: match.shouldRevalidate
-                }
-            }))
-    };
-    const router = (0, _chunkEF7DTUVFMjs.createStaticRouter)(payload.matches.reduceRight((previous, match)=>{
-        const route = {
-            id: match.id,
-            action: match.hasAction || !!match.clientAction,
-            element: match.element,
-            errorElement: match.errorElement,
-            handle: match.handle,
-            hasErrorBoundary: !!match.errorElement,
-            hydrateFallbackElement: match.hydrateFallbackElement,
-            index: match.index,
-            loader: match.hasLoader || !!match.clientLoader,
-            path: match.path,
-            shouldRevalidate: match.shouldRevalidate
-        };
-        if (previous.length > 0) route.children = previous;
-        return [
-            route
-        ];
-    }, []), context);
-    const frameworkContext = {
-        future: {
-            // These flags have no runtime impact so can always be false.  If we add
-            // flags that drive runtime behavior they'll need to be proxied through.
-            unstable_middleware: false,
-            unstable_subResourceIntegrity: false
-        },
-        isSpaMode: false,
-        ssr: true,
-        criticalCss: "",
-        manifest: {
-            routes: {},
-            version: "1",
-            url: "",
-            entry: {
-                module: "",
-                imports: []
-            }
-        },
-        routeDiscovery: {
-            mode: "lazy",
-            manifestPath: "/__manifest"
-        },
-        routeModules: {}
-    };
-    return /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.RSCRouterContext).Provider, {
-        value: true
-    }, /* @__PURE__ */ _react.createElement(RSCRouterGlobalErrorBoundary, {
-        location: payload.location
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.FrameworkContext).Provider, {
-        value: frameworkContext
-    }, /* @__PURE__ */ _react.createElement((0, _chunkEF7DTUVFMjs.StaticRouterProvider), {
-        context,
-        router,
-        hydrate: false,
-        nonce: payload.nonce
-    }))));
-}
-function isReactServerRequest(url) {
-    return url.pathname.endsWith(".rsc");
-}
-function isManifestRequest(url) {
-    return url.pathname.endsWith(".manifest");
-}
-// lib/rsc/html-stream/browser.ts
-function getRSCStream() {
-    let encoder3 = new TextEncoder();
-    let streamController = null;
-    let rscStream = new ReadableStream({
-        start (controller) {
-            if (typeof window === "undefined") return;
-            let handleChunk = (chunk)=>{
-                if (typeof chunk === "string") controller.enqueue(encoder3.encode(chunk));
-                else controller.enqueue(chunk);
-            };
-            window.__FLIGHT_DATA || (window.__FLIGHT_DATA = []);
-            window.__FLIGHT_DATA.forEach(handleChunk);
-            window.__FLIGHT_DATA.push = (chunk)=>{
-                handleChunk(chunk);
-                return 0;
-            };
-            streamController = controller;
-        }
-    });
-    if (typeof document !== "undefined" && document.readyState === "loading") document.addEventListener("DOMContentLoaded", ()=>{
-        streamController?.close();
-    });
-    else streamController?.close();
-    return rscStream;
-}
-// lib/dom/ssr/errors.ts
-function deserializeErrors(errors) {
-    if (!errors) return null;
-    let entries = Object.entries(errors);
-    let serialized = {};
-    for (let [key, val] of entries){
-        if (val && val.__type === "RouteErrorResponse") serialized[key] = new (0, _chunkEF7DTUVFMjs.ErrorResponseImpl)(val.status, val.statusText, val.data, val.internal === true);
-        else if (val && val.__type === "Error") {
-            if (val.__subType) {
-                let ErrorConstructor = window[val.__subType];
-                if (typeof ErrorConstructor === "function") try {
-                    let error = new ErrorConstructor(val.message);
-                    error.stack = val.stack;
-                    serialized[key] = error;
-                } catch (e) {}
-            }
-            if (serialized[key] == null) {
-                let error = new Error(val.message);
-                error.stack = val.stack;
-                serialized[key] = error;
-            }
-        } else serialized[key] = val;
-    }
-    return serialized;
-}
-
-},{"./chunk-EF7DTUVF.mjs":"5cq5P","react":"jMk1U","cookie":"8Pe3w","set-cookie-parser":"8AeuC","react-dom":"i4X7T","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5cq5P":[function(require,module,exports,__globalThis) {
+},{"./chunk-T3VM44WY.mjs":false,"./chunk-EF7DTUVF.mjs":"5cq5P","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5cq5P":[function(require,module,exports,__globalThis) {
 /**
  * react-router v7.7.0
  *
@@ -26770,369 +24667,12 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"8Pe3w":[function(require,module,exports,__globalThis) {
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.parse = parse;
-exports.serialize = serialize;
-/**
- * RegExp to match cookie-name in RFC 6265 sec 4.1.1
- * This refers out to the obsoleted definition of token in RFC 2616 sec 2.2
- * which has been replaced by the token definition in RFC 7230 appendix B.
- *
- * cookie-name       = token
- * token             = 1*tchar
- * tchar             = "!" / "#" / "$" / "%" / "&" / "'" /
- *                     "*" / "+" / "-" / "." / "^" / "_" /
- *                     "`" / "|" / "~" / DIGIT / ALPHA
- *
- * Note: Allowing more characters - https://github.com/jshttp/cookie/issues/191
- * Allow same range as cookie value, except `=`, which delimits end of name.
- */ const cookieNameRegExp = /^[\u0021-\u003A\u003C\u003E-\u007E]+$/;
-/**
- * RegExp to match cookie-value in RFC 6265 sec 4.1.1
- *
- * cookie-value      = *cookie-octet / ( DQUOTE *cookie-octet DQUOTE )
- * cookie-octet      = %x21 / %x23-2B / %x2D-3A / %x3C-5B / %x5D-7E
- *                     ; US-ASCII characters excluding CTLs,
- *                     ; whitespace DQUOTE, comma, semicolon,
- *                     ; and backslash
- *
- * Allowing more characters: https://github.com/jshttp/cookie/issues/191
- * Comma, backslash, and DQUOTE are not part of the parsing algorithm.
- */ const cookieValueRegExp = /^[\u0021-\u003A\u003C-\u007E]*$/;
-/**
- * RegExp to match domain-value in RFC 6265 sec 4.1.1
- *
- * domain-value      = <subdomain>
- *                     ; defined in [RFC1034], Section 3.5, as
- *                     ; enhanced by [RFC1123], Section 2.1
- * <subdomain>       = <label> | <subdomain> "." <label>
- * <label>           = <let-dig> [ [ <ldh-str> ] <let-dig> ]
- *                     Labels must be 63 characters or less.
- *                     'let-dig' not 'letter' in the first char, per RFC1123
- * <ldh-str>         = <let-dig-hyp> | <let-dig-hyp> <ldh-str>
- * <let-dig-hyp>     = <let-dig> | "-"
- * <let-dig>         = <letter> | <digit>
- * <letter>          = any one of the 52 alphabetic characters A through Z in
- *                     upper case and a through z in lower case
- * <digit>           = any one of the ten digits 0 through 9
- *
- * Keep support for leading dot: https://github.com/jshttp/cookie/issues/173
- *
- * > (Note that a leading %x2E ("."), if present, is ignored even though that
- * character is not permitted, but a trailing %x2E ("."), if present, will
- * cause the user agent to ignore the attribute.)
- */ const domainValueRegExp = /^([.]?[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)([.][a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$/i;
-/**
- * RegExp to match path-value in RFC 6265 sec 4.1.1
- *
- * path-value        = <any CHAR except CTLs or ";">
- * CHAR              = %x01-7F
- *                     ; defined in RFC 5234 appendix B.1
- */ const pathValueRegExp = /^[\u0020-\u003A\u003D-\u007E]*$/;
-const __toString = Object.prototype.toString;
-const NullObject = /* @__PURE__ */ (()=>{
-    const C = function() {};
-    C.prototype = Object.create(null);
-    return C;
-})();
-/**
- * Parse a cookie header.
- *
- * Parse the given cookie header string into an object
- * The object has the various cookies as keys(names) => values
- */ function parse(str, options) {
-    const obj = new NullObject();
-    const len = str.length;
-    // RFC 6265 sec 4.1.1, RFC 2616 2.2 defines a cookie name consists of one char minimum, plus '='.
-    if (len < 2) return obj;
-    const dec = options?.decode || decode;
-    let index = 0;
-    do {
-        const eqIdx = str.indexOf("=", index);
-        if (eqIdx === -1) break; // No more cookie pairs.
-        const colonIdx = str.indexOf(";", index);
-        const endIdx = colonIdx === -1 ? len : colonIdx;
-        if (eqIdx > endIdx) {
-            // backtrack on prior semicolon
-            index = str.lastIndexOf(";", eqIdx - 1) + 1;
-            continue;
-        }
-        const keyStartIdx = startIndex(str, index, eqIdx);
-        const keyEndIdx = endIndex(str, eqIdx, keyStartIdx);
-        const key = str.slice(keyStartIdx, keyEndIdx);
-        // only assign once
-        if (obj[key] === undefined) {
-            let valStartIdx = startIndex(str, eqIdx + 1, endIdx);
-            let valEndIdx = endIndex(str, endIdx, valStartIdx);
-            const value = dec(str.slice(valStartIdx, valEndIdx));
-            obj[key] = value;
-        }
-        index = endIdx + 1;
-    }while (index < len);
-    return obj;
-}
-function startIndex(str, index, max) {
-    do {
-        const code = str.charCodeAt(index);
-        if (code !== 0x20 /*   */  && code !== 0x09 /* \t */ ) return index;
-    }while (++index < max);
-    return max;
-}
-function endIndex(str, index, min) {
-    while(index > min){
-        const code = str.charCodeAt(--index);
-        if (code !== 0x20 /*   */  && code !== 0x09 /* \t */ ) return index + 1;
-    }
-    return min;
-}
-/**
- * Serialize data into a cookie header.
- *
- * Serialize a name value pair into a cookie string suitable for
- * http headers. An optional options object specifies cookie parameters.
- *
- * serialize('foo', 'bar', { httpOnly: true })
- *   => "foo=bar; httpOnly"
- */ function serialize(name, val, options) {
-    const enc = options?.encode || encodeURIComponent;
-    if (!cookieNameRegExp.test(name)) throw new TypeError(`argument name is invalid: ${name}`);
-    const value = enc(val);
-    if (!cookieValueRegExp.test(value)) throw new TypeError(`argument val is invalid: ${val}`);
-    let str = name + "=" + value;
-    if (!options) return str;
-    if (options.maxAge !== undefined) {
-        if (!Number.isInteger(options.maxAge)) throw new TypeError(`option maxAge is invalid: ${options.maxAge}`);
-        str += "; Max-Age=" + options.maxAge;
-    }
-    if (options.domain) {
-        if (!domainValueRegExp.test(options.domain)) throw new TypeError(`option domain is invalid: ${options.domain}`);
-        str += "; Domain=" + options.domain;
-    }
-    if (options.path) {
-        if (!pathValueRegExp.test(options.path)) throw new TypeError(`option path is invalid: ${options.path}`);
-        str += "; Path=" + options.path;
-    }
-    if (options.expires) {
-        if (!isDate(options.expires) || !Number.isFinite(options.expires.valueOf())) throw new TypeError(`option expires is invalid: ${options.expires}`);
-        str += "; Expires=" + options.expires.toUTCString();
-    }
-    if (options.httpOnly) str += "; HttpOnly";
-    if (options.secure) str += "; Secure";
-    if (options.partitioned) str += "; Partitioned";
-    if (options.priority) {
-        const priority = typeof options.priority === "string" ? options.priority.toLowerCase() : undefined;
-        switch(priority){
-            case "low":
-                str += "; Priority=Low";
-                break;
-            case "medium":
-                str += "; Priority=Medium";
-                break;
-            case "high":
-                str += "; Priority=High";
-                break;
-            default:
-                throw new TypeError(`option priority is invalid: ${options.priority}`);
-        }
-    }
-    if (options.sameSite) {
-        const sameSite = typeof options.sameSite === "string" ? options.sameSite.toLowerCase() : options.sameSite;
-        switch(sameSite){
-            case true:
-            case "strict":
-                str += "; SameSite=Strict";
-                break;
-            case "lax":
-                str += "; SameSite=Lax";
-                break;
-            case "none":
-                str += "; SameSite=None";
-                break;
-            default:
-                throw new TypeError(`option sameSite is invalid: ${options.sameSite}`);
-        }
-    }
-    return str;
-}
-/**
- * URL-decode string value. Optimized to skip native call when no %.
- */ function decode(str) {
-    if (str.indexOf("%") === -1) return str;
-    try {
-        return decodeURIComponent(str);
-    } catch (e) {
-        return str;
-    }
-}
-/**
- * Determine if value is a Date.
- */ function isDate(val) {
-    return __toString.call(val) === "[object Date]";
-}
-
-},{}],"8AeuC":[function(require,module,exports,__globalThis) {
-"use strict";
-var defaultParseOptions = {
-    decodeValues: true,
-    map: false,
-    silent: false
-};
-function isNonEmptyString(str) {
-    return typeof str === "string" && !!str.trim();
-}
-function parseString(setCookieValue, options) {
-    var parts = setCookieValue.split(";").filter(isNonEmptyString);
-    var nameValuePairStr = parts.shift();
-    var parsed = parseNameValuePair(nameValuePairStr);
-    var name = parsed.name;
-    var value = parsed.value;
-    options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
-    try {
-        value = options.decodeValues ? decodeURIComponent(value) : value; // decode cookie value
-    } catch (e) {
-        console.error("set-cookie-parser encountered an error while decoding a cookie with value '" + value + "'. Set options.decodeValues to false to disable this feature.", e);
-    }
-    var cookie = {
-        name: name,
-        value: value
-    };
-    parts.forEach(function(part) {
-        var sides = part.split("=");
-        var key = sides.shift().trimLeft().toLowerCase();
-        var value = sides.join("=");
-        if (key === "expires") cookie.expires = new Date(value);
-        else if (key === "max-age") cookie.maxAge = parseInt(value, 10);
-        else if (key === "secure") cookie.secure = true;
-        else if (key === "httponly") cookie.httpOnly = true;
-        else if (key === "samesite") cookie.sameSite = value;
-        else if (key === "partitioned") cookie.partitioned = true;
-        else cookie[key] = value;
-    });
-    return cookie;
-}
-function parseNameValuePair(nameValuePairStr) {
-    // Parses name-value-pair according to rfc6265bis draft
-    var name = "";
-    var value = "";
-    var nameValueArr = nameValuePairStr.split("=");
-    if (nameValueArr.length > 1) {
-        name = nameValueArr.shift();
-        value = nameValueArr.join("="); // everything after the first =, joined by a "=" if there was more than one part
-    } else value = nameValuePairStr;
-    return {
-        name: name,
-        value: value
-    };
-}
-function parse(input, options) {
-    options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
-    if (!input) {
-        if (!options.map) return [];
-        else return {};
-    }
-    if (input.headers) {
-        if (typeof input.headers.getSetCookie === "function") // for fetch responses - they combine headers of the same type in the headers array,
-        // but getSetCookie returns an uncombined array
-        input = input.headers.getSetCookie();
-        else if (input.headers["set-cookie"]) // fast-path for node.js (which automatically normalizes header names to lower-case
-        input = input.headers["set-cookie"];
-        else {
-            // slow-path for other environments - see #25
-            var sch = input.headers[Object.keys(input.headers).find(function(key) {
-                return key.toLowerCase() === "set-cookie";
-            })];
-            // warn if called on a request-like object with a cookie header rather than a set-cookie header - see #34, 36
-            if (!sch && input.headers.cookie && !options.silent) console.warn("Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning.");
-            input = sch;
-        }
-    }
-    if (!Array.isArray(input)) input = [
-        input
-    ];
-    if (!options.map) return input.filter(isNonEmptyString).map(function(str) {
-        return parseString(str, options);
-    });
-    else {
-        var cookies = {};
-        return input.filter(isNonEmptyString).reduce(function(cookies, str) {
-            var cookie = parseString(str, options);
-            cookies[cookie.name] = cookie;
-            return cookies;
-        }, cookies);
-    }
-}
-/*
-  Set-Cookie header field-values are sometimes comma joined in one string. This splits them without choking on commas
-  that are within a single set-cookie field-value, such as in the Expires portion.
-
-  This is uncommon, but explicitly allowed - see https://tools.ietf.org/html/rfc2616#section-4.2
-  Node.js does this for every header *except* set-cookie - see https://github.com/nodejs/node/blob/d5e363b77ebaf1caf67cd7528224b651c86815c1/lib/_http_incoming.js#L128
-  React Native's fetch does this for *every* header, including set-cookie.
-
-  Based on: https://github.com/google/j2objc/commit/16820fdbc8f76ca0c33472810ce0cb03d20efe25
-  Credits to: https://github.com/tomball for original and https://github.com/chrusart for JavaScript implementation
-*/ function splitCookiesString(cookiesString) {
-    if (Array.isArray(cookiesString)) return cookiesString;
-    if (typeof cookiesString !== "string") return [];
-    var cookiesStrings = [];
-    var pos = 0;
-    var start;
-    var ch;
-    var lastComma;
-    var nextStart;
-    var cookiesSeparatorFound;
-    function skipWhitespace() {
-        while(pos < cookiesString.length && /\s/.test(cookiesString.charAt(pos)))pos += 1;
-        return pos < cookiesString.length;
-    }
-    function notSpecialChar() {
-        ch = cookiesString.charAt(pos);
-        return ch !== "=" && ch !== ";" && ch !== ",";
-    }
-    while(pos < cookiesString.length){
-        start = pos;
-        cookiesSeparatorFound = false;
-        while(skipWhitespace()){
-            ch = cookiesString.charAt(pos);
-            if (ch === ",") {
-                // ',' is a cookie separator if we have later first '=', not ';' or ','
-                lastComma = pos;
-                pos += 1;
-                skipWhitespace();
-                nextStart = pos;
-                while(pos < cookiesString.length && notSpecialChar())pos += 1;
-                // currently special character
-                if (pos < cookiesString.length && cookiesString.charAt(pos) === "=") {
-                    // we found cookies separator
-                    cookiesSeparatorFound = true;
-                    // pos is inside the next cookie, so back up and return it.
-                    pos = nextStart;
-                    cookiesStrings.push(cookiesString.substring(start, lastComma));
-                    start = pos;
-                } else // in param ',' or param separator ';',
-                // we continue from that comma
-                pos = lastComma + 1;
-            } else pos += 1;
-        }
-        if (!cookiesSeparatorFound || pos >= cookiesString.length) cookiesStrings.push(cookiesString.substring(start, cookiesString.length));
-    }
-    return cookiesStrings;
-}
-module.exports = parse;
-module.exports.parse = parse;
-module.exports.parseString = parseString;
-module.exports.splitCookiesString = splitCookiesString;
-
-},{}],"1V3BS":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$14ae = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$14ae.init();
+},{}],"aGg7E":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$2cc3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$2cc3.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$14ae.prelude(module);
+$parcel$ReactRefreshHelpers$2cc3.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27140,23 +24680,21 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ArticleControlsContext", ()=>ArticleControlsContext);
 parcelHelpers.export(exports, "Layout", ()=>Layout);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _layoutCss = require("../format/Layout.css");
 var _requireRoles = require("../api/RequireRoles");
 var _requireRolesDefault = parcelHelpers.interopDefault(_requireRoles);
-var _authApi = require("../api/AuthApi");
-var _react = require("react");
 var _authContext = require("../api/AuthContext");
 var _topBar = require("../pages/TopBar");
 var _topBarDefault = parcelHelpers.interopDefault(_topBar);
 var _s = $RefreshSig$();
-const ArticleControlsContext = /*#__PURE__*/ (0, _react.createContext)();
+const ArticleControlsContext = /*#__PURE__*/ (0, _react.createContext)(null);
 function Layout() {
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     const location = (0, _reactRouter.useLocation)();
-    // const token = JSON.parse(localStorage.getItem('token'));
-    // const currentUser = localStorage.getItem('currentUser');
     const { token, currentUser, logout } = (0, _authContext.useAuth)();
     // Article controls state
     const [filtersInput, setFiltersInput] = (0, _react.useState)({
@@ -27170,7 +24708,7 @@ function Layout() {
     const [sortCriteria, setSortCriteria] = (0, _react.useState)([
         {
             field: 'createdDate',
-            direction: 'desc'
+            direction: 'DESC'
         }
     ]);
     const [pageSize, setPageSize] = (0, _react.useState)(10);
@@ -27187,21 +24725,22 @@ function Layout() {
     }, [
         token
     ]);
+    const contextValue = {
+        filtersInput,
+        setFiltersInput,
+        filters,
+        setFilters,
+        sortCriteria,
+        setSortCriteria,
+        pageSize,
+        setPageSize,
+        pageIndex,
+        setPageIndex,
+        sizeInput,
+        setSizeInput
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ArticleControlsContext.Provider, {
-        value: {
-            filtersInput,
-            setFiltersInput,
-            filters,
-            setFilters,
-            sortCriteria,
-            setSortCriteria,
-            pageSize,
-            setPageSize,
-            pageIndex,
-            setPageIndex,
-            sizeInput,
-            setSizeInput
-        },
+        value: contextValue,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "layout-root",
             children: [
@@ -27223,27 +24762,27 @@ function Layout() {
                                             borderRadius: '12px'
                                         }
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 49,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 74,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 47,
+                                    fileName: "src/layouts/Layout.tsx",
+                                    lineNumber: 72,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     className: "layout-title",
                                     children: "My Blog"
                                 }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 51,
+                                    fileName: "src/layouts/Layout.tsx",
+                                    lineNumber: 85,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 46,
+                            fileName: "src/layouts/Layout.tsx",
+                            lineNumber: 71,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
@@ -27254,8 +24793,8 @@ function Layout() {
                                     className: "layout-nav-link",
                                     children: "Home"
                                 }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 54,
+                                    fileName: "src/layouts/Layout.tsx",
+                                    lineNumber: 88,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -27268,13 +24807,13 @@ function Layout() {
                                         className: "layout-nav-link",
                                         children: "Create Article"
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 56,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 90,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 55,
+                                    fileName: "src/layouts/Layout.tsx",
+                                    lineNumber: 89,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -27286,19 +24825,19 @@ function Layout() {
                                         className: "layout-nav-link",
                                         children: "User Management"
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 59,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 93,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
-                                    fileName: "src/layouts/Layout.js",
-                                    lineNumber: 58,
+                                    fileName: "src/layouts/Layout.tsx",
+                                    lineNumber: 92,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 53,
+                            fileName: "src/layouts/Layout.tsx",
+                            lineNumber: 87,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27316,8 +24855,8 @@ function Layout() {
                                             "!"
                                         ]
                                     }, void 0, true, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 67,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 101,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27330,8 +24869,8 @@ function Layout() {
                                         },
                                         children: "Logout"
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 68,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 104,
                                         columnNumber: 9
                                     }, this)
                                 ]
@@ -27342,8 +24881,8 @@ function Layout() {
                                         className: "layout-auth-link",
                                         children: "Login"
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 72,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 118,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
@@ -27351,21 +24890,21 @@ function Layout() {
                                         className: "layout-auth-link",
                                         children: "Register"
                                     }, void 0, false, {
-                                        fileName: "src/layouts/Layout.js",
-                                        lineNumber: 73,
+                                        fileName: "src/layouts/Layout.tsx",
+                                        lineNumber: 119,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true)
                         }, void 0, false, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 64,
+                            fileName: "src/layouts/Layout.tsx",
+                            lineNumber: 98,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "src/layouts/Layout.js",
-                    lineNumber: 45,
+                    fileName: "src/layouts/Layout.tsx",
+                    lineNumber: 70,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
@@ -27374,39 +24913,39 @@ function Layout() {
                         location.pathname === '/articles' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "sticky-topbar",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _topBarDefault.default), {}, void 0, false, {
-                                fileName: "src/layouts/Layout.js",
-                                lineNumber: 80,
+                                fileName: "src/layouts/Layout.tsx",
+                                lineNumber: 126,
                                 columnNumber: 38
                             }, this)
                         }, void 0, false, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 80,
+                            fileName: "src/layouts/Layout.tsx",
+                            lineNumber: 126,
                             columnNumber: 7
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Outlet), {}, void 0, false, {
-                            fileName: "src/layouts/Layout.js",
-                            lineNumber: 82,
+                            fileName: "src/layouts/Layout.tsx",
+                            lineNumber: 128,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "src/layouts/Layout.js",
-                    lineNumber: 78,
+                    fileName: "src/layouts/Layout.tsx",
+                    lineNumber: 124,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "src/layouts/Layout.js",
-            lineNumber: 44,
+            fileName: "src/layouts/Layout.tsx",
+            lineNumber: 69,
             columnNumber: 4
         }, this)
     }, void 0, false, {
-        fileName: "src/layouts/Layout.js",
-        lineNumber: 40,
+        fileName: "src/layouts/Layout.tsx",
+        lineNumber: 68,
         columnNumber: 3
     }, this);
 }
-_s(Layout, "0sn5dBCURMJtNUqFVatdvfLChbQ=", false, function() {
+_s(Layout, "7Ba3P9XDAIHay7ZU8udvwNPtzrg=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
         (0, _reactRouter.useLocation),
@@ -27417,55 +24956,62 @@ _c = Layout;
 var _c;
 $RefreshReg$(_c, "Layout");
 
-  $parcel$ReactRefreshHelpers$14ae.postlude(module);
+  $parcel$ReactRefreshHelpers$2cc3.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react-router":"2jawN","../format/Layout.css":"hLf3k","../api/RequireRoles":"kFXeM","../api/AuthApi":"gPkaz","react":"jMk1U","../api/AuthContext":"5rZLm","../pages/TopBar":"dd0hc","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hLf3k":[function() {},{}],"kFXeM":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Layout.css":"hLf3k","../api/RequireRoles":"kluL2","../api/AuthContext":"5P6PV","../pages/TopBar":"5oVdW","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hLf3k":[function() {},{}],"kluL2":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$13a3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$13a3.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$13a3.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "token", ()=>token);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _authApi = require("./AuthApi");
-var _reactRouter = require("react-router");
-const token = JSON.parse(localStorage.getItem('token'));
+const token = JSON.parse(localStorage.getItem('token') || 'null');
 const RequireRoles = ({ roles = [], children })=>{
     console.log(roles);
     // console.log(hasRole(role));
     const hasAccess = roles.some((role)=>(0, _authApi.hasRole)(role));
     console.log(hasAccess);
-    return hasAccess ? children : null;
+    return hasAccess ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: children
+    }, void 0, false) : null;
 };
 _c = RequireRoles;
 exports.default = RequireRoles;
 var _c;
 $RefreshReg$(_c, "RequireRoles");
 
-},{"./AuthApi":"gPkaz","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"gPkaz":[function(require,module,exports,__globalThis) {
+  $parcel$ReactRefreshHelpers$13a3.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"fHdgf":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// import { useEffect } from 'react';
-// const token = JSON.parse(localStorage.getItem('token'));
-// const currentUser = getCurrentUser() ? getCurrentUser().username : null;
 parcelHelpers.export(exports, "registerUser", ()=>registerUser);
 parcelHelpers.export(exports, "loginUser", ()=>loginUser);
 parcelHelpers.export(exports, "getCurrentUser", ()=>getCurrentUser);
 parcelHelpers.export(exports, "hasRole", ()=>hasRole);
 parcelHelpers.export(exports, "hasUser", ()=>hasUser);
 var _jwtDecode = require("jwt-decode");
-async function registerUser({ lastName, firstName, username, password, email }) {
+async function registerUser(userData) {
     const res = await fetch('/api/users/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            lastName,
-            firstName,
-            username,
-            password,
-            email
-        })
+        body: JSON.stringify(userData)
     });
     if (!res.ok) {
         const errorData = await res.json().catch(()=>({}));
@@ -27473,16 +25019,13 @@ async function registerUser({ lastName, firstName, username, password, email }) 
     }
     return res.json();
 }
-async function loginUser({ username, password }) {
+async function loginUser(credentials) {
     const res = await fetch('/api/users/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-            username,
-            password
-        })
+        body: JSON.stringify(credentials)
     });
     if (!res.ok) {
         const errorData = await res.json().catch(()=>({}));
@@ -27494,9 +25037,10 @@ function getCurrentUser() {
     const token = localStorage.getItem('token');
     if (!token) return null;
     try {
+        const decoded = (0, _jwtDecode.jwtDecode)(token);
         return {
-            username: (0, _jwtDecode.jwtDecode)(token).sub,
-            authorities: (0, _jwtDecode.jwtDecode)(token).authorities.flatMap((authority)=>authority.authority)
+            username: decoded.sub,
+            authorities: decoded.authorities.flatMap((authority)=>authority.authority)
         };
     } catch (error) {
         console.error('Error decoding token:', error);
@@ -27569,72 +25113,7 @@ function jwtDecode(token, options) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5rZLm":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$2df6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$2df6.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$2df6.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "AuthProvider", ()=>AuthProvider);
-parcelHelpers.export(exports, "useAuth", ()=>useAuth);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _s = $RefreshSig$(), _s1 = $RefreshSig$();
-const AuthContext = /*#__PURE__*/ (0, _react.createContext)(null);
-const AuthProvider = ({ children })=>{
-    _s();
-    const [token, setToken] = (0, _react.useState)(()=>JSON.parse(localStorage.getItem('token')));
-    const [currentUser, setCurrentUser] = (0, _react.useState)(()=>localStorage.getItem('currentUser'));
-    const login = (userToken, username)=>{
-        localStorage.setItem('token', userToken);
-        localStorage.setItem('currentUser', username);
-        setToken(JSON.parse(localStorage.getItem('token')));
-        setCurrentUser(username);
-    };
-    const logout = ()=>{
-        localStorage.removeItem('token');
-        localStorage.removeItem('currentUser');
-        setToken(null);
-        setCurrentUser(null);
-    };
-    // const hasRole = (role) => {
-    // 	return user?.authorities?.includes(role) || false;
-    // };
-    const value = {
-        token,
-        currentUser,
-        login,
-        logout
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AuthContext.Provider, {
-        value: value,
-        children: children
-    }, void 0, false, {
-        fileName: "src/api/AuthContext.js",
-        lineNumber: 34,
-        columnNumber: 9
-    }, undefined);
-};
-_s(AuthProvider, "LOlFj/XakL5leX5iI4EL90M2KaU=");
-_c = AuthProvider;
-const useAuth = ()=>{
-    _s1();
-    return (0, _react.useContext)(AuthContext);
-};
-_s1(useAuth, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
-var _c;
-$RefreshReg$(_c, "AuthProvider");
-
-  $parcel$ReactRefreshHelpers$2df6.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7h6Pi":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"7h6Pi":[function(require,module,exports,__globalThis) {
 "use strict";
 var Refresh = require("7422ead32dcc1e6b");
 function debounce(func, delay) {
@@ -29912,17 +27391,87 @@ function $da9882e673ac146b$var$ErrorOverlay() {
     return null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dd0hc":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$0beb = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$0beb.init();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5P6PV":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$9b82 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$9b82.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$0beb.prelude(module);
+$parcel$ReactRefreshHelpers$9b82.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>TopBar);
+parcelHelpers.export(exports, "AuthProvider", ()=>AuthProvider);
+parcelHelpers.export(exports, "useAuth", ()=>useAuth);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$(), _s1 = $RefreshSig$();
+const AuthContext = /*#__PURE__*/ (0, _react.createContext)(null);
+const AuthProvider = ({ children })=>{
+    _s();
+    const [token, setToken] = (0, _react.useState)(()=>{
+        const savedToken = localStorage.getItem('token');
+        return savedToken ? JSON.parse(savedToken) : null;
+    });
+    const [currentUser, setCurrentUser] = (0, _react.useState)(()=>localStorage.getItem('currentUser'));
+    const login = (userToken, username)=>{
+        localStorage.setItem('token', userToken);
+        localStorage.setItem('currentUser', username);
+        setToken(JSON.parse(localStorage.getItem('token') || 'null'));
+        setCurrentUser(username);
+    };
+    const logout = ()=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+        setToken(null);
+        setCurrentUser(null);
+    };
+    // const hasRole = (role: string): boolean => {
+    // 	return user?.authorities?.includes(role) || false;
+    // };
+    const value = {
+        token,
+        currentUser,
+        login,
+        logout
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(AuthContext.Provider, {
+        value: value,
+        children: children
+    }, void 0, false, {
+        fileName: "src/api/AuthContext.tsx",
+        lineNumber: 50,
+        columnNumber: 9
+    }, undefined);
+};
+_s(AuthProvider, "bj1/zQ3nnpZnzcvlm9dw9pLhIO0=");
+_c = AuthProvider;
+const useAuth = ()=>{
+    _s1();
+    const context = (0, _react.useContext)(AuthContext);
+    if (!context) throw new Error('useAuth must be used within an AuthProvider');
+    return context;
+};
+_s1(useAuth, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
+var _c;
+$RefreshReg$(_c, "AuthProvider");
+
+  $parcel$ReactRefreshHelpers$9b82.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"5oVdW":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$abfe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$abfe.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$abfe.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -29949,9 +27498,11 @@ const PAGE_SIZES = [
     20,
     50
 ];
-function TopBar() {
+const TopBar = ()=>{
     _s();
-    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = (0, _react.useContext)((0, _layout.ArticleControlsContext));
+    const context = (0, _react.useContext)((0, _layout.ArticleControlsContext));
+    if (!context) throw new Error('TopBar must be used within ArticleControlsContext');
+    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = context;
     const [localSort, setLocalSort] = (0, _react.useState)(sortCriteria);
     const [expanded, setExpanded] = (0, _react.useState)(false);
     // Handle sort field toggle
@@ -29963,7 +27514,7 @@ function TopBar() {
             ...localSort,
             {
                 field,
-                direction: 'asc'
+                direction: 'ASC'
             }
         ];
         setLocalSort(updated);
@@ -29973,7 +27524,7 @@ function TopBar() {
     const handleSortDirection = (field)=>{
         const updated = localSort.map((sc)=>sc.field === field ? {
                 ...sc,
-                direction: sc.direction === 'asc' ? 'desc' : 'asc'
+                direction: sc.direction === 'ASC' ? 'DESC' : 'ASC'
             } : sc);
         setLocalSort(updated);
         setSortCriteria(updated);
@@ -30023,24 +27574,24 @@ function TopBar() {
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         className: "island-dot"
                     }, void 0, false, {
-                        fileName: "src/pages/TopBar.js",
-                        lineNumber: 79,
+                        fileName: "src/pages/TopBar.tsx",
+                        lineNumber: 95,
                         columnNumber: 11
-                    }, this),
+                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         className: "island-label",
                         children: "Show controls"
                     }, void 0, false, {
-                        fileName: "src/pages/TopBar.js",
-                        lineNumber: 80,
+                        fileName: "src/pages/TopBar.tsx",
+                        lineNumber: 96,
                         columnNumber: 11
-                    }, this)
+                    }, undefined)
                 ]
             }, void 0, true, {
-                fileName: "src/pages/TopBar.js",
-                lineNumber: 78,
+                fileName: "src/pages/TopBar.tsx",
+                lineNumber: 94,
                 columnNumber: 9
-            }, this),
+            }, undefined),
             expanded && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30050,10 +27601,10 @@ function TopBar() {
                                 className: "topbar-label",
                                 children: "Sort by:"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 86,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 102,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             SORT_FIELDS.map((sf)=>{
                                 const active = localSort.find((sc)=>sc.field === sf.value);
                                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -30064,35 +27615,35 @@ function TopBar() {
                                             checked: !!active,
                                             onChange: ()=>handleSortToggle(sf.value)
                                         }, void 0, false, {
-                                            fileName: "src/pages/TopBar.js",
-                                            lineNumber: 91,
+                                            fileName: "src/pages/TopBar.tsx",
+                                            lineNumber: 107,
                                             columnNumber: 19
-                                        }, this),
+                                        }, undefined),
                                         sf.label,
                                         active && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                             className: "topbar-sort-dir",
                                             type: "button",
                                             onClick: ()=>handleSortDirection(sf.value),
                                             title: "Toggle direction",
-                                            children: active.direction === 'asc' ? "\u2191 Asc" : "\u2193 Desc"
+                                            children: active.direction === 'ASC' ? "\u2191 Asc" : "\u2193 Desc"
                                         }, void 0, false, {
-                                            fileName: "src/pages/TopBar.js",
-                                            lineNumber: 98,
+                                            fileName: "src/pages/TopBar.tsx",
+                                            lineNumber: 114,
                                             columnNumber: 21
-                                        }, this)
+                                        }, undefined)
                                     ]
                                 }, sf.value, true, {
-                                    fileName: "src/pages/TopBar.js",
-                                    lineNumber: 90,
+                                    fileName: "src/pages/TopBar.tsx",
+                                    lineNumber: 106,
                                     columnNumber: 17
-                                }, this);
+                                }, undefined);
                             })
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/TopBar.js",
-                        lineNumber: 85,
+                        fileName: "src/pages/TopBar.tsx",
+                        lineNumber: 101,
                         columnNumber: 11
-                    }, this),
+                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "topbar-section",
                         children: [
@@ -30100,58 +27651,58 @@ function TopBar() {
                                 className: "topbar-label",
                                 children: "Filter:"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 112,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 128,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 className: "topbar-filter-pill",
                                 type: "text",
                                 name: "title",
                                 placeholder: "Title",
-                                value: filtersInput.title,
+                                value: filtersInput.title || '',
                                 onChange: handleFilterChange
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 113,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 129,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                 className: "topbar-filter-pill",
                                 type: "text",
                                 name: "author",
                                 placeholder: "Author",
-                                value: filtersInput.author,
+                                value: filtersInput.author || '',
                                 onChange: handleFilterChange
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 121,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 137,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 className: "topbar-btn",
                                 onClick: applyFilters,
                                 children: "Apply"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 129,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 145,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 className: "topbar-btn clear",
                                 onClick: clearFilters,
                                 children: "Clear"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 130,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 146,
                                 columnNumber: 13
-                            }, this)
+                            }, undefined)
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/TopBar.js",
-                        lineNumber: 111,
+                        fileName: "src/pages/TopBar.tsx",
+                        lineNumber: 127,
                         columnNumber: 11
-                    }, this),
+                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "topbar-section topbar-pagination",
                         children: [
@@ -30161,10 +27712,10 @@ function TopBar() {
                                 disabled: pageIndex === 0,
                                 children: "<"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 133,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 149,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 className: "topbar-page-label",
                                 children: [
@@ -30176,25 +27727,25 @@ function TopBar() {
                                         onChange: handlePageInput,
                                         className: "topbar-page-input"
                                     }, void 0, false, {
-                                        fileName: "src/pages/TopBar.js",
-                                        lineNumber: 135,
+                                        fileName: "src/pages/TopBar.tsx",
+                                        lineNumber: 151,
                                         columnNumber: 20
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, void 0, true, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 134,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 150,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 className: "topbar-btn",
                                 onClick: goToNext,
                                 children: ">"
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 143,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 159,
                                 columnNumber: 13
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
                                 className: "topbar-page-size",
                                 value: pageSize,
@@ -30206,63 +27757,64 @@ function TopBar() {
                                             " / page"
                                         ]
                                     }, size, true, {
-                                        fileName: "src/pages/TopBar.js",
-                                        lineNumber: 146,
+                                        fileName: "src/pages/TopBar.tsx",
+                                        lineNumber: 162,
                                         columnNumber: 17
-                                    }, this))
+                                    }, undefined))
                             }, void 0, false, {
-                                fileName: "src/pages/TopBar.js",
-                                lineNumber: 144,
+                                fileName: "src/pages/TopBar.tsx",
+                                lineNumber: 160,
                                 columnNumber: 13
-                            }, this)
+                            }, undefined)
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/TopBar.js",
-                        lineNumber: 132,
+                        fileName: "src/pages/TopBar.tsx",
+                        lineNumber: 148,
                         columnNumber: 11
-                    }, this)
+                    }, undefined)
                 ]
             }, void 0, true)
         ]
     }, void 0, true, {
-        fileName: "src/pages/TopBar.js",
-        lineNumber: 69,
+        fileName: "src/pages/TopBar.tsx",
+        lineNumber: 85,
         columnNumber: 5
-    }, this);
-}
-_s(TopBar, "TVM0YieYdnwCMIh/SOO9aS40EPs=");
+    }, undefined);
+};
+_s(TopBar, "foWFNzrkU5AJXmf6AAY9SE6XEwo=");
 _c = TopBar;
+exports.default = TopBar;
 var _c;
 $RefreshReg$(_c, "TopBar");
 
-  $parcel$ReactRefreshHelpers$0beb.postlude(module);
+  $parcel$ReactRefreshHelpers$abfe.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../layouts/Layout":"1V3BS","../format/TopBar.css":"kCG25","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kCG25":[function() {},{}],"gh5Ho":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$c465 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$c465.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../layouts/Layout":"aGg7E","../format/TopBar.css":"kCG25","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kCG25":[function() {},{}],"9PVgp":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$f695 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$f695.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$c465.prelude(module);
+$parcel$ReactRefreshHelpers$f695.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>Articles);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
-// import { ChronoUnit } from '@js-joda/root/packages/core/src/temporal/ChronoUnit.js';
-var _core = require("@js-joda/core");
 var _layout = require("../layouts/Layout");
 var _articlesCss = require("../format/Articles.css");
 var _s = $RefreshSig$();
-function Articles() {
+const Articles = ()=>{
     _s();
-    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = (0, _react.useContext)((0, _layout.ArticleControlsContext));
+    const context = (0, _react.useContext)((0, _layout.ArticleControlsContext));
+    if (!context) throw new Error('Articles must be used within ArticleControlsContext');
+    const { filtersInput, setFiltersInput, filters, setFilters, sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput } = context;
     const [articles, setArticles] = (0, _react.useState)([]);
     const navigate = (0, _reactRouter.useNavigate)();
     const [showBottomBar, setShowBottomBar] = (0, _react.useState)(false);
@@ -30273,9 +27825,14 @@ function Articles() {
             sortCriteria,
             size: pageSize,
             from: pageIndex
-        }).then(setArticles).catch((err)=>{
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
+        }).then((response)=>{
+            // Handle both direct array and object with articles property
+            if (Array.isArray(response)) setArticles(response);
+            else setArticles(response.articles || []);
+        }).catch((err)=>{
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
             else navigate('/error');
         });
     }, [
@@ -30286,7 +27843,7 @@ function Articles() {
         navigate
     ]);
     (0, _react.useEffect)(()=>{
-        const observer = new window.IntersectionObserver((entries)=>{
+        const observer = new IntersectionObserver((entries)=>{
             if (entries[0].isIntersecting) setShowBottomBar(true);
             else setShowBottomBar(false);
         }, {
@@ -30321,10 +27878,10 @@ function Articles() {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "article-ribbon"
                             }, void 0, false, {
-                                fileName: "src/pages/Articles.js",
-                                lineNumber: 75,
+                                fileName: "src/pages/Articles.tsx",
+                                lineNumber: 90,
                                 columnNumber: 6
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "article-content",
                                 children: [
@@ -30332,91 +27889,95 @@ function Articles() {
                                         className: "article-title",
                                         children: article.title
                                     }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 77,
+                                        fileName: "src/pages/Articles.tsx",
+                                        lineNumber: 92,
                                         columnNumber: 7
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "article-meta",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: [
-                                                    "Created by ",
+                                                    "Created by",
+                                                    ' ',
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${article.author.id}`,
-                                                        children: article.author.username
+                                                        to: `/users/${article.author?.id}`,
+                                                        children: article.author?.username
                                                     }, void 0, false, {
-                                                        fileName: "src/pages/Articles.js",
-                                                        lineNumber: 81,
-                                                        columnNumber: 25
-                                                    }, this),
-                                                    " at ",
-                                                    formatDateTimeToMin(article.createdDate)
+                                                        fileName: "src/pages/Articles.tsx",
+                                                        lineNumber: 98,
+                                                        columnNumber: 9
+                                                    }, undefined),
+                                                    ' ',
+                                                    "at ",
+                                                    formatDateTimeToMin(article.createdDate || article.createdAt || '')
                                                 ]
                                             }, void 0, true, {
-                                                fileName: "src/pages/Articles.js",
-                                                lineNumber: 81,
+                                                fileName: "src/pages/Articles.tsx",
+                                                lineNumber: 96,
                                                 columnNumber: 8
-                                            }, this),
-                                            (article.author.username !== article.editor.username || formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            }, undefined),
+                                            (article.author?.username !== article.editor?.username || formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: [
-                                                    "Edited by ",
+                                                    "Edited by",
+                                                    ' ',
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${article.editor.id}`,
-                                                        children: article.editor.username
+                                                        to: `/users/${article.editor?.id}`,
+                                                        children: article.editor?.username
                                                     }, void 0, false, {
-                                                        fileName: "src/pages/Articles.js",
-                                                        lineNumber: 84,
-                                                        columnNumber: 45
-                                                    }, this),
-                                                    " at ",
-                                                    formatDateTimeToMin(article.updatedDate)
+                                                        fileName: "src/pages/Articles.tsx",
+                                                        lineNumber: 107,
+                                                        columnNumber: 9
+                                                    }, undefined),
+                                                    ' ',
+                                                    "at ",
+                                                    formatDateTimeToMin(article.updatedDate || article.updatedAt || '')
                                                 ]
                                             }, void 0, true, {
-                                                fileName: "src/pages/Articles.js",
-                                                lineNumber: 84,
+                                                fileName: "src/pages/Articles.tsx",
+                                                lineNumber: 105,
                                                 columnNumber: 29
-                                            }, this)
+                                            }, undefined)
                                         ]
                                     }, void 0, true, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 80,
+                                        fileName: "src/pages/Articles.tsx",
+                                        lineNumber: 95,
                                         columnNumber: 7
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "article-body",
                                         children: article.summary
                                     }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 86,
+                                        fileName: "src/pages/Articles.tsx",
+                                        lineNumber: 113,
                                         columnNumber: 7
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                         className: "read-more-btn",
                                         to: `/articles/${article.id}`,
                                         children: "Read More"
                                     }, void 0, false, {
-                                        fileName: "src/pages/Articles.js",
-                                        lineNumber: 89,
+                                        fileName: "src/pages/Articles.tsx",
+                                        lineNumber: 116,
                                         columnNumber: 7
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, void 0, true, {
-                                fileName: "src/pages/Articles.js",
-                                lineNumber: 76,
+                                fileName: "src/pages/Articles.tsx",
+                                lineNumber: 91,
                                 columnNumber: 6
-                            }, this)
+                            }, undefined)
                         ]
                     }, article.id, true, {
-                        fileName: "src/pages/Articles.js",
-                        lineNumber: 70,
+                        fileName: "src/pages/Articles.tsx",
+                        lineNumber: 85,
                         columnNumber: 5
-                    }, this))
+                    }, undefined))
             }, void 0, false, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 68,
+                fileName: "src/pages/Articles.tsx",
+                lineNumber: 83,
                 columnNumber: 9
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: `bottom-pagination-bar-wrapper${showBottomBar ? ' visible' : ''}`,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30428,10 +27989,10 @@ function Articles() {
                             disabled: pageIndex === 0,
                             children: "<"
                         }, void 0, false, {
-                            fileName: "src/pages/Articles.js",
-                            lineNumber: 98,
+                            fileName: "src/pages/Articles.tsx",
+                            lineNumber: 125,
                             columnNumber: 13
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             className: "topbar-page-label",
                             children: [
@@ -30443,54 +28004,55 @@ function Articles() {
                                     onChange: handlePageInput,
                                     className: "topbar-page-input"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Articles.js",
-                                    lineNumber: 100,
+                                    fileName: "src/pages/Articles.tsx",
+                                    lineNumber: 127,
                                     columnNumber: 20
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Articles.js",
-                            lineNumber: 99,
+                            fileName: "src/pages/Articles.tsx",
+                            lineNumber: 126,
                             columnNumber: 13
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             className: "topbar-btn",
                             onClick: goToNext,
                             children: ">"
                         }, void 0, false, {
-                            fileName: "src/pages/Articles.js",
-                            lineNumber: 109,
+                            fileName: "src/pages/Articles.tsx",
+                            lineNumber: 136,
                             columnNumber: 13
-                        }, this)
+                        }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/Articles.js",
-                    lineNumber: 97,
+                    fileName: "src/pages/Articles.tsx",
+                    lineNumber: 124,
                     columnNumber: 11
-                }, this)
+                }, undefined)
             }, void 0, false, {
-                fileName: "src/pages/Articles.js",
-                lineNumber: 96,
+                fileName: "src/pages/Articles.tsx",
+                lineNumber: 123,
                 columnNumber: 9
-            }, this)
+            }, undefined)
         ]
     }, void 0, true);
-}
-_s(Articles, "+TG4GLr4DHw2WIXe+gz+yBQqYv8=", false, function() {
+};
+_s(Articles, "tUADq1gmEVOzbYslvUmy/3inkrM=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
 });
 _c = Articles;
+exports.default = Articles;
 var _c;
 $RefreshReg$(_c, "Articles");
 
-  $parcel$ReactRefreshHelpers$c465.postlude(module);
+  $parcel$ReactRefreshHelpers$f695.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"akou4","@js-joda/core":"42wHF","../layouts/Layout":"1V3BS","../format/Articles.css":"cJsRS","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"akou4":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"1Jd5p","../layouts/Layout":"aGg7E","../format/Articles.css":"cJsRS","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"1Jd5p":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllArticles", ()=>fetchAllArticles);
@@ -30505,8 +28067,8 @@ function parseSpringError(res, errorData) {
 }
 async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }) {
     const params = new URLSearchParams();
-    params.set('size', size);
-    params.set('from', from);
+    params.set('size', size.toString());
+    params.set('from', from.toString());
     Object.entries(filters).forEach(([key, value])=>{
         if (value) params.append(key, value);
     });
@@ -30609,9039 +28171,19 @@ async function deleteArticle(id, token) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"42wHF":[function(require,module,exports,__globalThis) {
-//! @version @js-joda/core - 5.6.5
-//! @copyright (c) 2015-present, Philipp Thürwächter, Pattrick Hüper & js-joda contributors
-//! @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
-//! @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ArithmeticException", ()=>ArithmeticException);
-parcelHelpers.export(exports, "ChronoField", ()=>ChronoField);
-parcelHelpers.export(exports, "ChronoLocalDate", ()=>ChronoLocalDate);
-parcelHelpers.export(exports, "ChronoLocalDateTime", ()=>ChronoLocalDateTime);
-parcelHelpers.export(exports, "ChronoUnit", ()=>ChronoUnit);
-parcelHelpers.export(exports, "ChronoZonedDateTime", ()=>ChronoZonedDateTime);
-parcelHelpers.export(exports, "Clock", ()=>Clock);
-parcelHelpers.export(exports, "DateTimeException", ()=>DateTimeException);
-parcelHelpers.export(exports, "DateTimeFormatter", ()=>DateTimeFormatter);
-parcelHelpers.export(exports, "DateTimeFormatterBuilder", ()=>DateTimeFormatterBuilder);
-parcelHelpers.export(exports, "DateTimeParseException", ()=>DateTimeParseException);
-parcelHelpers.export(exports, "DayOfWeek", ()=>DayOfWeek);
-parcelHelpers.export(exports, "DecimalStyle", ()=>DecimalStyle);
-parcelHelpers.export(exports, "Duration", ()=>Duration);
-parcelHelpers.export(exports, "IllegalArgumentException", ()=>IllegalArgumentException);
-parcelHelpers.export(exports, "IllegalStateException", ()=>IllegalStateException);
-parcelHelpers.export(exports, "Instant", ()=>Instant);
-parcelHelpers.export(exports, "IsoChronology", ()=>IsoChronology);
-parcelHelpers.export(exports, "IsoFields", ()=>IsoFields);
-parcelHelpers.export(exports, "LocalDate", ()=>LocalDate);
-parcelHelpers.export(exports, "LocalDateTime", ()=>LocalDateTime);
-parcelHelpers.export(exports, "LocalTime", ()=>LocalTime);
-parcelHelpers.export(exports, "Month", ()=>Month);
-parcelHelpers.export(exports, "MonthDay", ()=>MonthDay);
-parcelHelpers.export(exports, "NullPointerException", ()=>NullPointerException);
-parcelHelpers.export(exports, "OffsetDateTime", ()=>OffsetDateTime);
-parcelHelpers.export(exports, "OffsetTime", ()=>OffsetTime);
-parcelHelpers.export(exports, "ParsePosition", ()=>ParsePosition);
-parcelHelpers.export(exports, "Period", ()=>Period);
-parcelHelpers.export(exports, "ResolverStyle", ()=>ResolverStyle);
-parcelHelpers.export(exports, "SignStyle", ()=>SignStyle);
-parcelHelpers.export(exports, "Temporal", ()=>Temporal);
-parcelHelpers.export(exports, "TemporalAccessor", ()=>TemporalAccessor);
-parcelHelpers.export(exports, "TemporalAdjuster", ()=>TemporalAdjuster);
-parcelHelpers.export(exports, "TemporalAdjusters", ()=>TemporalAdjusters);
-parcelHelpers.export(exports, "TemporalAmount", ()=>TemporalAmount);
-parcelHelpers.export(exports, "TemporalField", ()=>TemporalField);
-parcelHelpers.export(exports, "TemporalQueries", ()=>TemporalQueries);
-parcelHelpers.export(exports, "TemporalQuery", ()=>TemporalQuery);
-parcelHelpers.export(exports, "TemporalUnit", ()=>TemporalUnit);
-parcelHelpers.export(exports, "TextStyle", ()=>TextStyle);
-parcelHelpers.export(exports, "UnsupportedTemporalTypeException", ()=>UnsupportedTemporalTypeException);
-parcelHelpers.export(exports, "ValueRange", ()=>ValueRange);
-parcelHelpers.export(exports, "Year", ()=>Year);
-parcelHelpers.export(exports, "YearConstants", ()=>YearConstants);
-parcelHelpers.export(exports, "YearMonth", ()=>YearMonth);
-parcelHelpers.export(exports, "ZoneId", ()=>ZoneId);
-parcelHelpers.export(exports, "ZoneOffset", ()=>ZoneOffset);
-parcelHelpers.export(exports, "ZoneOffsetTransition", ()=>ZoneOffsetTransition);
-parcelHelpers.export(exports, "ZoneRegion", ()=>ZoneRegion);
-parcelHelpers.export(exports, "ZoneRules", ()=>ZoneRules);
-parcelHelpers.export(exports, "ZoneRulesProvider", ()=>ZoneRulesProvider);
-parcelHelpers.export(exports, "ZonedDateTime", ()=>ZonedDateTime);
-parcelHelpers.export(exports, "_", ()=>_);
-parcelHelpers.export(exports, "convert", ()=>convert);
-parcelHelpers.export(exports, "nativeJs", ()=>nativeJs);
-parcelHelpers.export(exports, "use", ()=>use);
-function createErrorType(name, init, superErrorClass) {
-    if (superErrorClass === void 0) superErrorClass = Error;
-    function JsJodaException(message) {
-        if (!Error.captureStackTrace) this.stack = new Error().stack;
-        else Error.captureStackTrace(this, this.constructor);
-        this.message = message;
-        init && init.apply(this, arguments);
-        this.toString = function() {
-            return this.name + ": " + this.message;
-        };
-    }
-    JsJodaException.prototype = Object.create(superErrorClass.prototype);
-    JsJodaException.prototype.name = name;
-    JsJodaException.prototype.constructor = JsJodaException;
-    return JsJodaException;
-}
-var DateTimeException = createErrorType('DateTimeException', messageWithCause);
-var DateTimeParseException = createErrorType('DateTimeParseException', messageForDateTimeParseException);
-var UnsupportedTemporalTypeException = createErrorType('UnsupportedTemporalTypeException', null, DateTimeException);
-var ArithmeticException = createErrorType('ArithmeticException');
-var IllegalArgumentException = createErrorType('IllegalArgumentException');
-var IllegalStateException = createErrorType('IllegalStateException');
-var NullPointerException = createErrorType('NullPointerException');
-function messageWithCause(message, cause) {
-    if (cause === void 0) cause = null;
-    var msg = message || this.name;
-    if (cause !== null && cause instanceof Error) msg += "\n-------\nCaused by: " + cause.stack + "\n-------\n";
-    this.message = msg;
-}
-function messageForDateTimeParseException(message, text, index, cause) {
-    if (text === void 0) text = '';
-    if (index === void 0) index = 0;
-    if (cause === void 0) cause = null;
-    var msg = message || this.name;
-    msg += ": " + text + ", at index: " + index;
-    if (cause !== null && cause instanceof Error) msg += "\n-------\nCaused by: " + cause.stack + "\n-------\n";
-    this.message = msg;
-    this.parsedString = function() {
-        return text;
-    };
-    this.errorIndex = function() {
-        return index;
-    };
-}
-function _inheritsLoose(subClass, superClass) {
-    subClass.prototype = Object.create(superClass.prototype);
-    subClass.prototype.constructor = subClass;
-    _setPrototypeOf(subClass, superClass);
-}
-function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-    };
-    return _setPrototypeOf(o, p);
-}
-function _assertThisInitialized(self) {
-    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return self;
-}
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ function assert(assertion, msg, error) {
-    if (!assertion) {
-        if (error) throw new error(msg);
-        else throw new Error(msg);
-    }
-}
-function requireNonNull(value, parameterName) {
-    if (value == null) throw new NullPointerException(parameterName + " must not be null");
-    return value;
-}
-function requireInstance(value, _class, parameterName) {
-    if (!(value instanceof _class)) throw new IllegalArgumentException(parameterName + " must be an instance of " + (_class.name ? _class.name : _class) + (value && value.constructor && value.constructor.name ? ", but is " + value.constructor.name : ''));
-    return value;
-}
-function abstractMethodFail(methodName) {
-    throw new TypeError("abstract method \"" + methodName + "\" is not implemented");
-}
-var assert$1 = /*#__PURE__*/ Object.freeze({
-    __proto__: null,
-    abstractMethodFail: abstractMethodFail,
-    assert: assert,
-    requireInstance: requireInstance,
-    requireNonNull: requireNonNull
-});
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var MAX_SAFE_INTEGER = 9007199254740991;
-var MIN_SAFE_INTEGER = -9007199254740991;
-var MathUtil = function() {
-    function MathUtil() {}
-    MathUtil.intDiv = function intDiv(x, y) {
-        var r = x / y;
-        r = MathUtil.roundDown(r);
-        return MathUtil.safeZero(r);
-    };
-    MathUtil.intMod = function intMod(x, y) {
-        var r = x - MathUtil.intDiv(x, y) * y;
-        r = MathUtil.roundDown(r);
-        return MathUtil.safeZero(r);
-    };
-    MathUtil.roundDown = function roundDown(r) {
-        if (r < 0) return Math.ceil(r);
-        else return Math.floor(r);
-    };
-    MathUtil.floorDiv = function floorDiv(x, y) {
-        var r = Math.floor(x / y);
-        return MathUtil.safeZero(r);
-    };
-    MathUtil.floorMod = function floorMod(x, y) {
-        var r = x - MathUtil.floorDiv(x, y) * y;
-        return MathUtil.safeZero(r);
-    };
-    MathUtil.safeAdd = function safeAdd(x, y) {
-        MathUtil.verifyInt(x);
-        MathUtil.verifyInt(y);
-        if (x === 0) return MathUtil.safeZero(y);
-        if (y === 0) return MathUtil.safeZero(x);
-        var r = MathUtil.safeToInt(x + y);
-        if (r === x || r === y) throw new ArithmeticException('Invalid addition beyond MAX_SAFE_INTEGER!');
-        return r;
-    };
-    MathUtil.safeSubtract = function safeSubtract(x, y) {
-        MathUtil.verifyInt(x);
-        MathUtil.verifyInt(y);
-        if (x === 0 && y === 0) return 0;
-        else if (x === 0) return MathUtil.safeZero(-1 * y);
-        else if (y === 0) return MathUtil.safeZero(x);
-        return MathUtil.safeToInt(x - y);
-    };
-    MathUtil.safeMultiply = function safeMultiply(x, y) {
-        MathUtil.verifyInt(x);
-        MathUtil.verifyInt(y);
-        if (x === 1) return MathUtil.safeZero(y);
-        if (y === 1) return MathUtil.safeZero(x);
-        if (x === 0 || y === 0) return 0;
-        var r = MathUtil.safeToInt(x * y);
-        if (r / y !== x || x === MIN_SAFE_INTEGER && y === -1 || y === MIN_SAFE_INTEGER && x === -1) throw new ArithmeticException("Multiplication overflows: " + x + " * " + y);
-        return r;
-    };
-    MathUtil.parseInt = function(_parseInt) {
-        function parseInt1(_x) {
-            return _parseInt.apply(this, arguments);
-        }
-        parseInt1.toString = function() {
-            return _parseInt.toString();
-        };
-        return parseInt1;
-    }(function(value) {
-        var r = parseInt(value);
-        return MathUtil.safeToInt(r);
-    });
-    MathUtil.safeToInt = function safeToInt(value) {
-        MathUtil.verifyInt(value);
-        return MathUtil.safeZero(value);
-    };
-    MathUtil.verifyInt = function verifyInt(value) {
-        if (value == null) throw new ArithmeticException("Invalid value: '" + value + "', using null or undefined as argument");
-        if (isNaN(value)) throw new ArithmeticException('Invalid int value, using NaN as argument');
-        if (Number.isInteger) {
-            if (!Number.isInteger(Number(value))) throw new ArithmeticException("Invalid value: '" + value + "' is a float");
-        } else if (value % 1 !== 0) throw new ArithmeticException("Invalid value: '" + value + "' is a float");
-        if (value > MAX_SAFE_INTEGER || value < MIN_SAFE_INTEGER) throw new ArithmeticException("Calculation overflows an int: " + value);
-    };
-    MathUtil.safeZero = function safeZero(value) {
-        return value === 0 ? 0 : +value;
-    };
-    MathUtil.compareNumbers = function compareNumbers(a, b) {
-        if (a < b) return -1;
-        if (a > b) return 1;
-        return 0;
-    };
-    MathUtil.smi = function smi(int) {
-        return int >>> 1 & 0x40000000 | int & 0xBFFFFFFF;
-    };
-    MathUtil.hash = function hash(number) {
-        if (number !== number || number === Infinity) return 0;
-        var result = number;
-        while(number > 0xFFFFFFFF){
-            number /= 0xFFFFFFFF;
-            result ^= number;
-        }
-        return MathUtil.smi(result);
-    };
-    MathUtil.hashCode = function hashCode() {
-        var result = 17;
-        for(var _len = arguments.length, numbers = new Array(_len), _key = 0; _key < _len; _key++)numbers[_key] = arguments[_key];
-        for(var _i = 0, _numbers = numbers; _i < _numbers.length; _i++){
-            var n = _numbers[_i];
-            result = (result << 5) - result + MathUtil.hash(n);
-        }
-        return MathUtil.hash(result);
-    };
-    return MathUtil;
-}();
-MathUtil.MAX_SAFE_INTEGER = MAX_SAFE_INTEGER;
-MathUtil.MIN_SAFE_INTEGER = MIN_SAFE_INTEGER;
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var Enum = function() {
-    function Enum(name) {
-        this._name = name;
-    }
-    var _proto = Enum.prototype;
-    _proto.equals = function equals(other) {
-        return this === other;
-    };
-    _proto.toString = function toString() {
-        return this._name;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return Enum;
-}();
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalAmount = function() {
-    function TemporalAmount() {}
-    var _proto = TemporalAmount.prototype;
-    _proto.get = function get(unit) {
-        abstractMethodFail('get');
-    };
-    _proto.units = function units() {
-        abstractMethodFail('units');
-    };
-    _proto.addTo = function addTo(temporal) {
-        abstractMethodFail('addTo');
-    };
-    _proto.subtractFrom = function subtractFrom(temporal) {
-        abstractMethodFail('subtractFrom');
-    };
-    return TemporalAmount;
-}();
-if (typeof Symbol !== 'undefined' && Symbol.toPrimitive) TemporalAmount.prototype[Symbol.toPrimitive] = function(hint) {
-    if (hint !== 'number') return this.toString();
-    throw new TypeError("A conversion from TemporalAmount to a number is not allowed. To compare use the methods .equals(), .compareTo(), .isBefore() or one that is more suitable to your use case.");
-};
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalUnit = function() {
-    function TemporalUnit() {}
-    var _proto = TemporalUnit.prototype;
-    _proto.duration = function duration() {
-        abstractMethodFail('duration');
-    };
-    _proto.isDurationEstimated = function isDurationEstimated() {
-        abstractMethodFail('isDurationEstimated');
-    };
-    _proto.isDateBased = function isDateBased() {
-        abstractMethodFail('isDateBased');
-    };
-    _proto.isTimeBased = function isTimeBased() {
-        abstractMethodFail('isTimeBased');
-    };
-    _proto.isSupportedBy = function isSupportedBy(temporal) {
-        abstractMethodFail('isSupportedBy');
-    };
-    _proto.addTo = function addTo(dateTime, periodToAdd) {
-        abstractMethodFail('addTo');
-    };
-    _proto.between = function between(temporal1, temporal2) {
-        abstractMethodFail('between');
-    };
-    return TemporalUnit;
-}();
-var Duration = function(_TemporalAmount) {
-    _inheritsLoose(Duration, _TemporalAmount);
-    function Duration(seconds, nanos) {
-        var _this;
-        _this = _TemporalAmount.call(this) || this;
-        _this._seconds = MathUtil.safeToInt(seconds);
-        _this._nanos = MathUtil.safeToInt(nanos);
-        return _this;
-    }
-    Duration.ofDays = function ofDays(days) {
-        return Duration._create(MathUtil.safeMultiply(days, LocalTime.SECONDS_PER_DAY), 0);
-    };
-    Duration.ofHours = function ofHours(hours) {
-        return Duration._create(MathUtil.safeMultiply(hours, LocalTime.SECONDS_PER_HOUR), 0);
-    };
-    Duration.ofMinutes = function ofMinutes(minutes) {
-        return Duration._create(MathUtil.safeMultiply(minutes, LocalTime.SECONDS_PER_MINUTE), 0);
-    };
-    Duration.ofSeconds = function ofSeconds(seconds, nanoAdjustment) {
-        if (nanoAdjustment === void 0) nanoAdjustment = 0;
-        var secs = MathUtil.safeAdd(seconds, MathUtil.floorDiv(nanoAdjustment, LocalTime.NANOS_PER_SECOND));
-        var nos = MathUtil.floorMod(nanoAdjustment, LocalTime.NANOS_PER_SECOND);
-        return Duration._create(secs, nos);
-    };
-    Duration.ofMillis = function ofMillis(millis) {
-        var secs = MathUtil.intDiv(millis, 1000);
-        var mos = MathUtil.intMod(millis, 1000);
-        if (mos < 0) {
-            mos += 1000;
-            secs--;
-        }
-        return Duration._create(secs, mos * 1000000);
-    };
-    Duration.ofNanos = function ofNanos(nanos) {
-        var secs = MathUtil.intDiv(nanos, LocalTime.NANOS_PER_SECOND);
-        var nos = MathUtil.intMod(nanos, LocalTime.NANOS_PER_SECOND);
-        if (nos < 0) {
-            nos += LocalTime.NANOS_PER_SECOND;
-            secs--;
-        }
-        return this._create(secs, nos);
-    };
-    Duration.of = function of(amount, unit) {
-        return Duration.ZERO.plus(amount, unit);
-    };
-    Duration.from = function from(amount) {
-        requireNonNull(amount, 'amount');
-        requireInstance(amount, TemporalAmount);
-        var duration = Duration.ZERO;
-        amount.units().forEach(function(unit) {
-            duration = duration.plus(amount.get(unit), unit);
-        });
-        return duration;
-    };
-    Duration.between = function between(startInclusive, endExclusive) {
-        requireNonNull(startInclusive, 'startInclusive');
-        requireNonNull(endExclusive, 'endExclusive');
-        var secs = startInclusive.until(endExclusive, ChronoUnit.SECONDS);
-        var nanos = 0;
-        if (startInclusive.isSupported(ChronoField.NANO_OF_SECOND) && endExclusive.isSupported(ChronoField.NANO_OF_SECOND)) try {
-            var startNos = startInclusive.getLong(ChronoField.NANO_OF_SECOND);
-            nanos = endExclusive.getLong(ChronoField.NANO_OF_SECOND) - startNos;
-            if (secs > 0 && nanos < 0) nanos += LocalTime.NANOS_PER_SECOND;
-            else if (secs < 0 && nanos > 0) nanos -= LocalTime.NANOS_PER_SECOND;
-            else if (secs === 0 && nanos !== 0) {
-                var adjustedEnd = endExclusive.with(ChronoField.NANO_OF_SECOND, startNos);
-                secs = startInclusive.until(adjustedEnd, ChronoUnit.SECONDS);
-            }
-        } catch (e) {}
-        return this.ofSeconds(secs, nanos);
-    };
-    Duration.parse = function parse(text) {
-        requireNonNull(text, 'text');
-        var PATTERN = new RegExp('([-+]?)P(?:([-+]?[0-9]+)D)?(T(?:([-+]?[0-9]+)H)?(?:([-+]?[0-9]+)M)?(?:([-+]?[0-9]+)(?:[.,]([0-9]{0,9}))?S)?)?', 'i');
-        var matches = PATTERN.exec(text);
-        if (matches !== null) {
-            if ('T' === matches[3] === false) {
-                var negate = '-' === matches[1];
-                var dayMatch = matches[2];
-                var hourMatch = matches[4];
-                var minuteMatch = matches[5];
-                var secondMatch = matches[6];
-                var fractionMatch = matches[7];
-                if (dayMatch != null || hourMatch != null || minuteMatch != null || secondMatch != null) {
-                    var daysAsSecs = Duration._parseNumber(text, dayMatch, LocalTime.SECONDS_PER_DAY, 'days');
-                    var hoursAsSecs = Duration._parseNumber(text, hourMatch, LocalTime.SECONDS_PER_HOUR, 'hours');
-                    var minsAsSecs = Duration._parseNumber(text, minuteMatch, LocalTime.SECONDS_PER_MINUTE, 'minutes');
-                    var seconds = Duration._parseNumber(text, secondMatch, 1, 'seconds');
-                    var negativeSecs = secondMatch != null && secondMatch.charAt(0) === '-';
-                    var nanos = Duration._parseFraction(text, fractionMatch, negativeSecs ? -1 : 1);
-                    try {
-                        return Duration._create(negate, daysAsSecs, hoursAsSecs, minsAsSecs, seconds, nanos);
-                    } catch (ex) {
-                        throw new DateTimeParseException('Text cannot be parsed to a Duration: overflow', text, 0, ex);
-                    }
-                }
-            }
-        }
-        throw new DateTimeParseException('Text cannot be parsed to a Duration', text, 0);
-    };
-    Duration._parseNumber = function _parseNumber(text, parsed, multiplier, errorText) {
-        if (parsed == null) return 0;
-        try {
-            if (parsed[0] === '+') parsed = parsed.substring(1);
-            return MathUtil.safeMultiply(parseFloat(parsed), multiplier);
-        } catch (ex) {
-            throw new DateTimeParseException("Text cannot be parsed to a Duration: " + errorText, text, 0, ex);
-        }
-    };
-    Duration._parseFraction = function _parseFraction(text, parsed, negate) {
-        if (parsed == null || parsed.length === 0) return 0;
-        parsed = (parsed + "000000000").substring(0, 9);
-        return parseFloat(parsed) * negate;
-    };
-    Duration._create = function _create() {
-        if (arguments.length <= 2) return Duration._createSecondsNanos(arguments[0], arguments[1]);
-        else return Duration._createNegateDaysHoursMinutesSecondsNanos(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
-    };
-    Duration._createNegateDaysHoursMinutesSecondsNanos = function _createNegateDaysHoursMinutesSecondsNanos(negate, daysAsSecs, hoursAsSecs, minsAsSecs, secs, nanos) {
-        var seconds = MathUtil.safeAdd(daysAsSecs, MathUtil.safeAdd(hoursAsSecs, MathUtil.safeAdd(minsAsSecs, secs)));
-        if (negate) return Duration.ofSeconds(seconds, nanos).negated();
-        return Duration.ofSeconds(seconds, nanos);
-    };
-    Duration._createSecondsNanos = function _createSecondsNanos(seconds, nanoAdjustment) {
-        if (seconds === void 0) seconds = 0;
-        if (nanoAdjustment === void 0) nanoAdjustment = 0;
-        if (seconds === 0 && nanoAdjustment === 0) return Duration.ZERO;
-        return new Duration(seconds, nanoAdjustment);
-    };
-    var _proto = Duration.prototype;
-    _proto.get = function get(unit) {
-        if (unit === ChronoUnit.SECONDS) return this._seconds;
-        else if (unit === ChronoUnit.NANOS) return this._nanos;
-        else throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-    };
-    _proto.units = function units() {
-        return [
-            ChronoUnit.SECONDS,
-            ChronoUnit.NANOS
-        ];
-    };
-    _proto.isZero = function isZero() {
-        return this._seconds === 0 && this._nanos === 0;
-    };
-    _proto.isNegative = function isNegative() {
-        return this._seconds < 0;
-    };
-    _proto.seconds = function seconds() {
-        return this._seconds;
-    };
-    _proto.nano = function nano() {
-        return this._nanos;
-    };
-    _proto.withSeconds = function withSeconds(seconds) {
-        return Duration._create(seconds, this._nanos);
-    };
-    _proto.withNanos = function withNanos(nanoOfSecond) {
-        ChronoField.NANO_OF_SECOND.checkValidIntValue(nanoOfSecond);
-        return Duration._create(this._seconds, nanoOfSecond);
-    };
-    _proto.plusDuration = function plusDuration(duration) {
-        requireNonNull(duration, 'duration');
-        return this.plus(duration.seconds(), duration.nano());
-    };
-    _proto.plus = function plus(durationOrNumber, unitOrNumber) {
-        if (arguments.length === 1) return this.plusDuration(durationOrNumber);
-        else if (arguments.length === 2 && unitOrNumber instanceof TemporalUnit) return this.plusAmountUnit(durationOrNumber, unitOrNumber);
-        else return this.plusSecondsNanos(durationOrNumber, unitOrNumber);
-    };
-    _proto.plusAmountUnit = function plusAmountUnit(amountToAdd, unit) {
-        requireNonNull(amountToAdd, 'amountToAdd');
-        requireNonNull(unit, 'unit');
-        if (unit === ChronoUnit.DAYS) return this.plusSecondsNanos(MathUtil.safeMultiply(amountToAdd, LocalTime.SECONDS_PER_DAY), 0);
-        if (unit.isDurationEstimated()) throw new UnsupportedTemporalTypeException('Unit must not have an estimated duration');
-        if (amountToAdd === 0) return this;
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return this.plusNanos(amountToAdd);
-                case ChronoUnit.MICROS:
-                    return this.plusSecondsNanos(MathUtil.intDiv(amountToAdd, 1000000000) * 1000, MathUtil.intMod(amountToAdd, 1000000000) * 1000);
-                case ChronoUnit.MILLIS:
-                    return this.plusMillis(amountToAdd);
-                case ChronoUnit.SECONDS:
-                    return this.plusSeconds(amountToAdd);
-            }
-            return this.plusSecondsNanos(MathUtil.safeMultiply(unit.duration().seconds(), amountToAdd), 0);
-        }
-        var duration = unit.duration().multipliedBy(amountToAdd);
-        return this.plusSecondsNanos(duration.seconds(), duration.nano());
-    };
-    _proto.plusDays = function plusDays(daysToAdd) {
-        return this.plusSecondsNanos(MathUtil.safeMultiply(daysToAdd, LocalTime.SECONDS_PER_DAY), 0);
-    };
-    _proto.plusHours = function plusHours(hoursToAdd) {
-        return this.plusSecondsNanos(MathUtil.safeMultiply(hoursToAdd, LocalTime.SECONDS_PER_HOUR), 0);
-    };
-    _proto.plusMinutes = function plusMinutes(minutesToAdd) {
-        return this.plusSecondsNanos(MathUtil.safeMultiply(minutesToAdd, LocalTime.SECONDS_PER_MINUTE), 0);
-    };
-    _proto.plusSeconds = function plusSeconds(secondsToAdd) {
-        return this.plusSecondsNanos(secondsToAdd, 0);
-    };
-    _proto.plusMillis = function plusMillis(millisToAdd) {
-        return this.plusSecondsNanos(MathUtil.intDiv(millisToAdd, 1000), MathUtil.intMod(millisToAdd, 1000) * 1000000);
-    };
-    _proto.plusNanos = function plusNanos(nanosToAdd) {
-        return this.plusSecondsNanos(0, nanosToAdd);
-    };
-    _proto.plusSecondsNanos = function plusSecondsNanos(secondsToAdd, nanosToAdd) {
-        requireNonNull(secondsToAdd, 'secondsToAdd');
-        requireNonNull(nanosToAdd, 'nanosToAdd');
-        if (secondsToAdd === 0 && nanosToAdd === 0) return this;
-        var epochSec = MathUtil.safeAdd(this._seconds, secondsToAdd);
-        epochSec = MathUtil.safeAdd(epochSec, MathUtil.intDiv(nanosToAdd, LocalTime.NANOS_PER_SECOND));
-        nanosToAdd = MathUtil.intMod(nanosToAdd, LocalTime.NANOS_PER_SECOND);
-        var nanoAdjustment = MathUtil.safeAdd(this._nanos, nanosToAdd);
-        return Duration.ofSeconds(epochSec, nanoAdjustment);
-    };
-    _proto.minus = function minus(durationOrNumber, unit) {
-        if (arguments.length === 1) return this.minusDuration(durationOrNumber);
-        else return this.minusAmountUnit(durationOrNumber, unit);
-    };
-    _proto.minusDuration = function minusDuration(duration) {
-        requireNonNull(duration, 'duration');
-        var secsToSubtract = duration.seconds();
-        var nanosToSubtract = duration.nano();
-        if (secsToSubtract === MIN_SAFE_INTEGER) return this.plus(MAX_SAFE_INTEGER, -nanosToSubtract);
-        return this.plus(-secsToSubtract, -nanosToSubtract);
-    };
-    _proto.minusAmountUnit = function minusAmountUnit(amountToSubtract, unit) {
-        requireNonNull(amountToSubtract, 'amountToSubtract');
-        requireNonNull(unit, 'unit');
-        return amountToSubtract === MIN_SAFE_INTEGER ? this.plusAmountUnit(MAX_SAFE_INTEGER, unit) : this.plusAmountUnit(-amountToSubtract, unit);
-    };
-    _proto.minusDays = function minusDays(daysToSubtract) {
-        return daysToSubtract === MIN_SAFE_INTEGER ? this.plusDays(MAX_SAFE_INTEGER) : this.plusDays(-daysToSubtract);
-    };
-    _proto.minusHours = function minusHours(hoursToSubtract) {
-        return hoursToSubtract === MIN_SAFE_INTEGER ? this.plusHours(MAX_SAFE_INTEGER) : this.plusHours(-hoursToSubtract);
-    };
-    _proto.minusMinutes = function minusMinutes(minutesToSubtract) {
-        return minutesToSubtract === MIN_SAFE_INTEGER ? this.plusMinutes(MAX_SAFE_INTEGER) : this.plusMinutes(-minutesToSubtract);
-    };
-    _proto.minusSeconds = function minusSeconds(secondsToSubtract) {
-        return secondsToSubtract === MIN_SAFE_INTEGER ? this.plusSeconds(MAX_SAFE_INTEGER) : this.plusSeconds(-secondsToSubtract);
-    };
-    _proto.minusMillis = function minusMillis(millisToSubtract) {
-        return millisToSubtract === MIN_SAFE_INTEGER ? this.plusMillis(MAX_SAFE_INTEGER) : this.plusMillis(-millisToSubtract);
-    };
-    _proto.minusNanos = function minusNanos(nanosToSubtract) {
-        return nanosToSubtract === MIN_SAFE_INTEGER ? this.plusNanos(MAX_SAFE_INTEGER) : this.plusNanos(-nanosToSubtract);
-    };
-    _proto.multipliedBy = function multipliedBy(multiplicand) {
-        if (multiplicand === 0) return Duration.ZERO;
-        if (multiplicand === 1) return this;
-        var secs = MathUtil.safeMultiply(this._seconds, multiplicand);
-        var nos = MathUtil.safeMultiply(this._nanos, multiplicand);
-        secs = secs + MathUtil.intDiv(nos, LocalTime.NANOS_PER_SECOND);
-        nos = MathUtil.intMod(nos, LocalTime.NANOS_PER_SECOND);
-        return Duration.ofSeconds(secs, nos);
-    };
-    _proto.dividedBy = function dividedBy(divisor) {
-        if (divisor === 0) throw new ArithmeticException('Cannot divide by zero');
-        if (divisor === 1) return this;
-        var secs = MathUtil.intDiv(this._seconds, divisor);
-        var secsMod = MathUtil.roundDown((this._seconds / divisor - secs) * LocalTime.NANOS_PER_SECOND);
-        var nos = MathUtil.intDiv(this._nanos, divisor);
-        nos = secsMod + nos;
-        return Duration.ofSeconds(secs, nos);
-    };
-    _proto.negated = function negated() {
-        return this.multipliedBy(-1);
-    };
-    _proto.abs = function abs() {
-        return this.isNegative() ? this.negated() : this;
-    };
-    _proto.addTo = function addTo(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (this._seconds !== 0) temporal = temporal.plus(this._seconds, ChronoUnit.SECONDS);
-        if (this._nanos !== 0) temporal = temporal.plus(this._nanos, ChronoUnit.NANOS);
-        return temporal;
-    };
-    _proto.subtractFrom = function subtractFrom(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (this._seconds !== 0) temporal = temporal.minus(this._seconds, ChronoUnit.SECONDS);
-        if (this._nanos !== 0) temporal = temporal.minus(this._nanos, ChronoUnit.NANOS);
-        return temporal;
-    };
-    _proto.toDays = function toDays() {
-        return MathUtil.intDiv(this._seconds, LocalTime.SECONDS_PER_DAY);
-    };
-    _proto.toHours = function toHours() {
-        return MathUtil.intDiv(this._seconds, LocalTime.SECONDS_PER_HOUR);
-    };
-    _proto.toMinutes = function toMinutes() {
-        return MathUtil.intDiv(this._seconds, LocalTime.SECONDS_PER_MINUTE);
-    };
-    _proto.toMillis = function toMillis() {
-        var millis = Math.round(MathUtil.safeMultiply(this._seconds, 1000));
-        millis = MathUtil.safeAdd(millis, MathUtil.intDiv(this._nanos, 1000000));
-        return millis;
-    };
-    _proto.toNanos = function toNanos() {
-        var totalNanos = MathUtil.safeMultiply(this._seconds, LocalTime.NANOS_PER_SECOND);
-        totalNanos = MathUtil.safeAdd(totalNanos, this._nanos);
-        return totalNanos;
-    };
-    _proto.compareTo = function compareTo(otherDuration) {
-        requireNonNull(otherDuration, 'otherDuration');
-        requireInstance(otherDuration, Duration, 'otherDuration');
-        var cmp = MathUtil.compareNumbers(this._seconds, otherDuration.seconds());
-        if (cmp !== 0) return cmp;
-        return this._nanos - otherDuration.nano();
-    };
-    _proto.equals = function equals(otherDuration) {
-        if (this === otherDuration) return true;
-        if (otherDuration instanceof Duration) return this.seconds() === otherDuration.seconds() && this.nano() === otherDuration.nano();
-        return false;
-    };
-    _proto.toString = function toString() {
-        if (this === Duration.ZERO) return 'PT0S';
-        var hours = MathUtil.intDiv(this._seconds, LocalTime.SECONDS_PER_HOUR);
-        var minutes = MathUtil.intDiv(MathUtil.intMod(this._seconds, LocalTime.SECONDS_PER_HOUR), LocalTime.SECONDS_PER_MINUTE);
-        var secs = MathUtil.intMod(this._seconds, LocalTime.SECONDS_PER_MINUTE);
-        var rval = 'PT';
-        if (hours !== 0) rval += hours + "H";
-        if (minutes !== 0) rval += minutes + "M";
-        if (secs === 0 && this._nanos === 0 && rval.length > 2) return rval;
-        if (secs < 0 && this._nanos > 0) {
-            if (secs === -1) rval += '-0';
-            else rval += secs + 1;
-        } else rval += secs;
-        if (this._nanos > 0) {
-            rval += '.';
-            var nanoString;
-            if (secs < 0) nanoString = "" + (2 * LocalTime.NANOS_PER_SECOND - this._nanos);
-            else nanoString = "" + (LocalTime.NANOS_PER_SECOND + this._nanos);
-            nanoString = nanoString.slice(1, nanoString.length);
-            rval += nanoString;
-            while(rval.charAt(rval.length - 1) === '0')rval = rval.slice(0, rval.length - 1);
-        }
-        rval += 'S';
-        return rval;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return Duration;
-}(TemporalAmount);
-function _init$n() {
-    Duration.ZERO = new Duration(0, 0);
-}
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE.md in the root directory of this source tree)
- */ var YearConstants = function YearConstants() {};
-function _init$m() {
-    YearConstants.MIN_VALUE = -999999;
-    YearConstants.MAX_VALUE = 999999;
-}
-var ChronoUnit = function(_TemporalUnit) {
-    _inheritsLoose(ChronoUnit, _TemporalUnit);
-    function ChronoUnit(name, estimatedDuration) {
-        var _this;
-        _this = _TemporalUnit.call(this) || this;
-        _this._name = name;
-        _this._duration = estimatedDuration;
-        return _this;
-    }
-    var _proto = ChronoUnit.prototype;
-    _proto.duration = function duration() {
-        return this._duration;
-    };
-    _proto.isDurationEstimated = function isDurationEstimated() {
-        return this.isDateBased() || this === ChronoUnit.FOREVER;
-    };
-    _proto.isDateBased = function isDateBased() {
-        return this.compareTo(ChronoUnit.DAYS) >= 0 && this !== ChronoUnit.FOREVER;
-    };
-    _proto.isTimeBased = function isTimeBased() {
-        return this.compareTo(ChronoUnit.DAYS) < 0;
-    };
-    _proto.isSupportedBy = function isSupportedBy(temporal) {
-        if (this === ChronoUnit.FOREVER) return false;
-        try {
-            temporal.plus(1, this);
-            return true;
-        } catch (e) {
-            try {
-                temporal.plus(-1, this);
-                return true;
-            } catch (e2) {
-                return false;
-            }
-        }
-    };
-    _proto.addTo = function addTo(temporal, amount) {
-        return temporal.plus(amount, this);
-    };
-    _proto.between = function between(temporal1, temporal2) {
-        return temporal1.until(temporal2, this);
-    };
-    _proto.toString = function toString() {
-        return this._name;
-    };
-    _proto.compareTo = function compareTo(other) {
-        return this.duration().compareTo(other.duration());
-    };
-    return ChronoUnit;
-}(TemporalUnit);
-function _init$l() {
-    ChronoUnit.NANOS = new ChronoUnit('Nanos', Duration.ofNanos(1));
-    ChronoUnit.MICROS = new ChronoUnit('Micros', Duration.ofNanos(1000));
-    ChronoUnit.MILLIS = new ChronoUnit('Millis', Duration.ofNanos(1000000));
-    ChronoUnit.SECONDS = new ChronoUnit('Seconds', Duration.ofSeconds(1));
-    ChronoUnit.MINUTES = new ChronoUnit('Minutes', Duration.ofSeconds(60));
-    ChronoUnit.HOURS = new ChronoUnit('Hours', Duration.ofSeconds(3600));
-    ChronoUnit.HALF_DAYS = new ChronoUnit('HalfDays', Duration.ofSeconds(43200));
-    ChronoUnit.DAYS = new ChronoUnit('Days', Duration.ofSeconds(86400));
-    ChronoUnit.WEEKS = new ChronoUnit('Weeks', Duration.ofSeconds(604800));
-    ChronoUnit.MONTHS = new ChronoUnit('Months', Duration.ofSeconds(2629746));
-    ChronoUnit.YEARS = new ChronoUnit('Years', Duration.ofSeconds(31556952));
-    ChronoUnit.DECADES = new ChronoUnit('Decades', Duration.ofSeconds(315569520));
-    ChronoUnit.CENTURIES = new ChronoUnit('Centuries', Duration.ofSeconds(3155695200));
-    ChronoUnit.MILLENNIA = new ChronoUnit('Millennia', Duration.ofSeconds(31556952000));
-    ChronoUnit.ERAS = new ChronoUnit('Eras', Duration.ofSeconds(31556952 * (YearConstants.MAX_VALUE + 1)));
-    ChronoUnit.FOREVER = new ChronoUnit('Forever', Duration.ofSeconds(MathUtil.MAX_SAFE_INTEGER, 999999999));
-}
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalField = function() {
-    function TemporalField() {}
-    var _proto = TemporalField.prototype;
-    _proto.isDateBased = function isDateBased() {
-        abstractMethodFail('isDateBased');
-    };
-    _proto.isTimeBased = function isTimeBased() {
-        abstractMethodFail('isTimeBased');
-    };
-    _proto.baseUnit = function baseUnit() {
-        abstractMethodFail('baseUnit');
-    };
-    _proto.rangeUnit = function rangeUnit() {
-        abstractMethodFail('rangeUnit');
-    };
-    _proto.range = function range() {
-        abstractMethodFail('range');
-    };
-    _proto.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        abstractMethodFail('rangeRefinedBy');
-    };
-    _proto.getFrom = function getFrom(temporal) {
-        abstractMethodFail('getFrom');
-    };
-    _proto.adjustInto = function adjustInto(temporal, newValue) {
-        abstractMethodFail('adjustInto');
-    };
-    _proto.isSupportedBy = function isSupportedBy(temporal) {
-        abstractMethodFail('isSupportedBy');
-    };
-    _proto.displayName = function displayName() {
-        abstractMethodFail('displayName');
-    };
-    _proto.equals = function equals(other) {
-        abstractMethodFail('equals');
-    };
-    _proto.name = function name() {
-        abstractMethodFail('name');
-    };
-    return TemporalField;
-}();
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ValueRange = function() {
-    function ValueRange(minSmallest, minLargest, maxSmallest, maxLargest) {
-        assert(!(minSmallest > minLargest), "Smallest minimum value '" + minSmallest + "' must be less than largest minimum value '" + minLargest + "'", IllegalArgumentException);
-        assert(!(maxSmallest > maxLargest), "Smallest maximum value '" + maxSmallest + "' must be less than largest maximum value '" + maxLargest + "'", IllegalArgumentException);
-        assert(!(minLargest > maxLargest), "Minimum value '" + minLargest + "' must be less than maximum value '" + maxLargest + "'", IllegalArgumentException);
-        this._minSmallest = minSmallest;
-        this._minLargest = minLargest;
-        this._maxLargest = maxLargest;
-        this._maxSmallest = maxSmallest;
-    }
-    var _proto = ValueRange.prototype;
-    _proto.isFixed = function isFixed() {
-        return this._minSmallest === this._minLargest && this._maxSmallest === this._maxLargest;
-    };
-    _proto.minimum = function minimum() {
-        return this._minSmallest;
-    };
-    _proto.largestMinimum = function largestMinimum() {
-        return this._minLargest;
-    };
-    _proto.maximum = function maximum() {
-        return this._maxLargest;
-    };
-    _proto.smallestMaximum = function smallestMaximum() {
-        return this._maxSmallest;
-    };
-    _proto.isValidValue = function isValidValue(value) {
-        return this.minimum() <= value && value <= this.maximum();
-    };
-    _proto.checkValidValue = function checkValidValue(value, field) {
-        var msg;
-        if (!this.isValidValue(value)) {
-            if (field != null) msg = "Invalid value for " + field + " (valid values " + this.toString() + "): " + value;
-            else msg = "Invalid value (valid values " + this.toString() + "): " + value;
-            return assert(false, msg, DateTimeException);
-        }
-        return value;
-    };
-    _proto.checkValidIntValue = function checkValidIntValue(value, field) {
-        if (this.isValidIntValue(value) === false) throw new DateTimeException("Invalid int value for " + field + ": " + value);
-        return value;
-    };
-    _proto.isValidIntValue = function isValidIntValue(value) {
-        return this.isIntValue() && this.isValidValue(value);
-    };
-    _proto.isIntValue = function isIntValue() {
-        return this.minimum() >= MathUtil.MIN_SAFE_INTEGER && this.maximum() <= MathUtil.MAX_SAFE_INTEGER;
-    };
-    _proto.equals = function equals(other) {
-        if (other === this) return true;
-        if (other instanceof ValueRange) return this._minSmallest === other._minSmallest && this._minLargest === other._minLargest && this._maxSmallest === other._maxSmallest && this._maxLargest === other._maxLargest;
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return MathUtil.hashCode(this._minSmallest, this._minLargest, this._maxSmallest, this._maxLargest);
-    };
-    _proto.toString = function toString() {
-        var str = this.minimum() + (this.minimum() !== this.largestMinimum() ? "/" + this.largestMinimum() : '');
-        str += ' - ';
-        str += this.smallestMaximum() + (this.smallestMaximum() !== this.maximum() ? "/" + this.maximum() : '');
-        return str;
-    };
-    ValueRange.of = function of() {
-        if (arguments.length === 2) return new ValueRange(arguments[0], arguments[0], arguments[1], arguments[1]);
-        else if (arguments.length === 3) return new ValueRange(arguments[0], arguments[0], arguments[1], arguments[2]);
-        else if (arguments.length === 4) return new ValueRange(arguments[0], arguments[1], arguments[2], arguments[3]);
-        else return assert(false, "Invalid number of arguments " + arguments.length, IllegalArgumentException);
-    };
-    return ValueRange;
-}();
-var ChronoField = function(_TemporalField) {
-    _inheritsLoose(ChronoField, _TemporalField);
-    ChronoField.byName = function byName(fieldName) {
-        for(var prop in ChronoField)if (ChronoField[prop]) {
-            if (ChronoField[prop] instanceof ChronoField && ChronoField[prop].name() === fieldName) return ChronoField[prop];
-        }
-    };
-    function ChronoField(name, baseUnit, rangeUnit, range) {
-        var _this;
-        _this = _TemporalField.call(this) || this;
-        _this._name = name;
-        _this._baseUnit = baseUnit;
-        _this._rangeUnit = rangeUnit;
-        _this._range = range;
-        return _this;
-    }
-    var _proto = ChronoField.prototype;
-    _proto.name = function name() {
-        return this._name;
-    };
-    _proto.baseUnit = function baseUnit() {
-        return this._baseUnit;
-    };
-    _proto.rangeUnit = function rangeUnit() {
-        return this._rangeUnit;
-    };
-    _proto.range = function range() {
-        return this._range;
-    };
-    _proto.displayName = function displayName() {
-        return this.toString();
-    };
-    _proto.checkValidValue = function checkValidValue(value) {
-        return this.range().checkValidValue(value, this);
-    };
-    _proto.checkValidIntValue = function checkValidIntValue(value) {
-        return this.range().checkValidIntValue(value, this);
-    };
-    _proto.isDateBased = function isDateBased() {
-        var dateBased = this === ChronoField.DAY_OF_WEEK || this === ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH || this === ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR || this === ChronoField.DAY_OF_MONTH || this === ChronoField.DAY_OF_YEAR || this === ChronoField.EPOCH_DAY || this === ChronoField.ALIGNED_WEEK_OF_MONTH || this === ChronoField.ALIGNED_WEEK_OF_YEAR || this === ChronoField.MONTH_OF_YEAR || this === ChronoField.PROLEPTIC_MONTH || this === ChronoField.YEAR_OF_ERA || this === ChronoField.YEAR || this === ChronoField.ERA;
-        return dateBased;
-    };
-    _proto.isTimeBased = function isTimeBased() {
-        var timeBased = this === ChronoField.NANO_OF_SECOND || this === ChronoField.NANO_OF_DAY || this === ChronoField.MICRO_OF_SECOND || this === ChronoField.MICRO_OF_DAY || this === ChronoField.MILLI_OF_SECOND || this === ChronoField.MILLI_OF_DAY || this === ChronoField.SECOND_OF_MINUTE || this === ChronoField.SECOND_OF_DAY || this === ChronoField.MINUTE_OF_HOUR || this === ChronoField.MINUTE_OF_DAY || this === ChronoField.HOUR_OF_AMPM || this === ChronoField.CLOCK_HOUR_OF_AMPM || this === ChronoField.HOUR_OF_DAY || this === ChronoField.CLOCK_HOUR_OF_DAY || this === ChronoField.AMPM_OF_DAY;
-        return timeBased;
-    };
-    _proto.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        return temporal.range(this);
-    };
-    _proto.getFrom = function getFrom(temporal) {
-        return temporal.getLong(this);
-    };
-    _proto.toString = function toString() {
-        return this.name();
-    };
-    _proto.equals = function equals(other) {
-        return this === other;
-    };
-    _proto.adjustInto = function adjustInto(temporal, newValue) {
-        return temporal.with(this, newValue);
-    };
-    _proto.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(this);
-    };
-    return ChronoField;
-}(TemporalField);
-function _init$k() {
-    ChronoField.NANO_OF_SECOND = new ChronoField('NanoOfSecond', ChronoUnit.NANOS, ChronoUnit.SECONDS, ValueRange.of(0, 999999999));
-    ChronoField.NANO_OF_DAY = new ChronoField('NanoOfDay', ChronoUnit.NANOS, ChronoUnit.DAYS, ValueRange.of(0, 86399999999999));
-    ChronoField.MICRO_OF_SECOND = new ChronoField('MicroOfSecond', ChronoUnit.MICROS, ChronoUnit.SECONDS, ValueRange.of(0, 999999));
-    ChronoField.MICRO_OF_DAY = new ChronoField('MicroOfDay', ChronoUnit.MICROS, ChronoUnit.DAYS, ValueRange.of(0, 86399999999));
-    ChronoField.MILLI_OF_SECOND = new ChronoField('MilliOfSecond', ChronoUnit.MILLIS, ChronoUnit.SECONDS, ValueRange.of(0, 999));
-    ChronoField.MILLI_OF_DAY = new ChronoField('MilliOfDay', ChronoUnit.MILLIS, ChronoUnit.DAYS, ValueRange.of(0, 86399999));
-    ChronoField.SECOND_OF_MINUTE = new ChronoField('SecondOfMinute', ChronoUnit.SECONDS, ChronoUnit.MINUTES, ValueRange.of(0, 59));
-    ChronoField.SECOND_OF_DAY = new ChronoField('SecondOfDay', ChronoUnit.SECONDS, ChronoUnit.DAYS, ValueRange.of(0, 86399));
-    ChronoField.MINUTE_OF_HOUR = new ChronoField('MinuteOfHour', ChronoUnit.MINUTES, ChronoUnit.HOURS, ValueRange.of(0, 59));
-    ChronoField.MINUTE_OF_DAY = new ChronoField('MinuteOfDay', ChronoUnit.MINUTES, ChronoUnit.DAYS, ValueRange.of(0, 1439));
-    ChronoField.HOUR_OF_AMPM = new ChronoField('HourOfAmPm', ChronoUnit.HOURS, ChronoUnit.HALF_DAYS, ValueRange.of(0, 11));
-    ChronoField.CLOCK_HOUR_OF_AMPM = new ChronoField('ClockHourOfAmPm', ChronoUnit.HOURS, ChronoUnit.HALF_DAYS, ValueRange.of(1, 12));
-    ChronoField.HOUR_OF_DAY = new ChronoField('HourOfDay', ChronoUnit.HOURS, ChronoUnit.DAYS, ValueRange.of(0, 23));
-    ChronoField.CLOCK_HOUR_OF_DAY = new ChronoField('ClockHourOfDay', ChronoUnit.HOURS, ChronoUnit.DAYS, ValueRange.of(1, 24));
-    ChronoField.AMPM_OF_DAY = new ChronoField('AmPmOfDay', ChronoUnit.HALF_DAYS, ChronoUnit.DAYS, ValueRange.of(0, 1));
-    ChronoField.DAY_OF_WEEK = new ChronoField('DayOfWeek', ChronoUnit.DAYS, ChronoUnit.WEEKS, ValueRange.of(1, 7));
-    ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH = new ChronoField('AlignedDayOfWeekInMonth', ChronoUnit.DAYS, ChronoUnit.WEEKS, ValueRange.of(1, 7));
-    ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR = new ChronoField('AlignedDayOfWeekInYear', ChronoUnit.DAYS, ChronoUnit.WEEKS, ValueRange.of(1, 7));
-    ChronoField.DAY_OF_MONTH = new ChronoField('DayOfMonth', ChronoUnit.DAYS, ChronoUnit.MONTHS, ValueRange.of(1, 28, 31), 'day');
-    ChronoField.DAY_OF_YEAR = new ChronoField('DayOfYear', ChronoUnit.DAYS, ChronoUnit.YEARS, ValueRange.of(1, 365, 366));
-    ChronoField.EPOCH_DAY = new ChronoField('EpochDay', ChronoUnit.DAYS, ChronoUnit.FOREVER, ValueRange.of(-365961662, 364522971));
-    ChronoField.ALIGNED_WEEK_OF_MONTH = new ChronoField('AlignedWeekOfMonth', ChronoUnit.WEEKS, ChronoUnit.MONTHS, ValueRange.of(1, 4, 5));
-    ChronoField.ALIGNED_WEEK_OF_YEAR = new ChronoField('AlignedWeekOfYear', ChronoUnit.WEEKS, ChronoUnit.YEARS, ValueRange.of(1, 53));
-    ChronoField.MONTH_OF_YEAR = new ChronoField('MonthOfYear', ChronoUnit.MONTHS, ChronoUnit.YEARS, ValueRange.of(1, 12), 'month');
-    ChronoField.PROLEPTIC_MONTH = new ChronoField('ProlepticMonth', ChronoUnit.MONTHS, ChronoUnit.FOREVER, ValueRange.of(YearConstants.MIN_VALUE * 12, YearConstants.MAX_VALUE * 12 + 11));
-    ChronoField.YEAR_OF_ERA = new ChronoField('YearOfEra', ChronoUnit.YEARS, ChronoUnit.FOREVER, ValueRange.of(1, YearConstants.MAX_VALUE, YearConstants.MAX_VALUE + 1));
-    ChronoField.YEAR = new ChronoField('Year', ChronoUnit.YEARS, ChronoUnit.FOREVER, ValueRange.of(YearConstants.MIN_VALUE, YearConstants.MAX_VALUE), 'year');
-    ChronoField.ERA = new ChronoField('Era', ChronoUnit.ERAS, ChronoUnit.FOREVER, ValueRange.of(0, 1));
-    ChronoField.INSTANT_SECONDS = new ChronoField('InstantSeconds', ChronoUnit.SECONDS, ChronoUnit.FOREVER, ValueRange.of(MIN_SAFE_INTEGER, MAX_SAFE_INTEGER));
-    ChronoField.OFFSET_SECONDS = new ChronoField('OffsetSeconds', ChronoUnit.SECONDS, ChronoUnit.FOREVER, ValueRange.of(-64800, 64800));
-}
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalQueries = function() {
-    function TemporalQueries() {}
-    TemporalQueries.zoneId = function zoneId() {
-        return TemporalQueries.ZONE_ID;
-    };
-    TemporalQueries.chronology = function chronology() {
-        return TemporalQueries.CHRONO;
-    };
-    TemporalQueries.precision = function precision() {
-        return TemporalQueries.PRECISION;
-    };
-    TemporalQueries.zone = function zone() {
-        return TemporalQueries.ZONE;
-    };
-    TemporalQueries.offset = function offset() {
-        return TemporalQueries.OFFSET;
-    };
-    TemporalQueries.localDate = function localDate() {
-        return TemporalQueries.LOCAL_DATE;
-    };
-    TemporalQueries.localTime = function localTime() {
-        return TemporalQueries.LOCAL_TIME;
-    };
-    return TemporalQueries;
-}();
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalAccessor = function() {
-    function TemporalAccessor() {}
-    var _proto = TemporalAccessor.prototype;
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.zoneId() || _query === TemporalQueries.chronology() || _query === TemporalQueries.precision()) return null;
-        return _query.queryFrom(this);
-    };
-    _proto.get = function get(field) {
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        abstractMethodFail('getLong');
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) {
-            if (this.isSupported(field)) return field.range();
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.rangeRefinedBy(this);
-    };
-    _proto.isSupported = function isSupported(field) {
-        abstractMethodFail('isSupported');
-    };
-    return TemporalAccessor;
-}();
-var TemporalQuery = function(_Enum) {
-    _inheritsLoose(TemporalQuery, _Enum);
-    function TemporalQuery() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    var _proto = TemporalQuery.prototype;
-    _proto.queryFrom = function queryFrom(temporal) {
-        abstractMethodFail('queryFrom');
-    };
-    return TemporalQuery;
-}(Enum);
-function createTemporalQuery(name, queryFromFunction) {
-    var ExtendedTemporalQuery = function(_TemporalQuery) {
-        _inheritsLoose(ExtendedTemporalQuery, _TemporalQuery);
-        function ExtendedTemporalQuery() {
-            return _TemporalQuery.apply(this, arguments) || this;
-        }
-        return ExtendedTemporalQuery;
-    }(TemporalQuery);
-    ExtendedTemporalQuery.prototype.queryFrom = queryFromFunction;
-    return new ExtendedTemporalQuery(name);
-}
-var DayOfWeek = function(_TemporalAccessor) {
-    _inheritsLoose(DayOfWeek, _TemporalAccessor);
-    function DayOfWeek(ordinal, name) {
-        var _this;
-        _this = _TemporalAccessor.call(this) || this;
-        _this._ordinal = ordinal;
-        _this._name = name;
-        return _this;
-    }
-    var _proto = DayOfWeek.prototype;
-    _proto.ordinal = function ordinal() {
-        return this._ordinal;
-    };
-    _proto.name = function name() {
-        return this._name;
-    };
-    DayOfWeek.values = function values() {
-        return ENUMS.slice();
-    };
-    DayOfWeek.valueOf = function valueOf(name) {
-        var ordinal = 0;
-        for(ordinal; ordinal < ENUMS.length; ordinal++){
-            if (ENUMS[ordinal].name() === name) break;
-        }
-        return DayOfWeek.of(ordinal + 1);
-    };
-    DayOfWeek.of = function of(dayOfWeek) {
-        if (dayOfWeek < 1 || dayOfWeek > 7) throw new DateTimeException("Invalid value for DayOfWeek: " + dayOfWeek);
-        return ENUMS[dayOfWeek - 1];
-    };
-    DayOfWeek.from = function from(temporal) {
-        assert(temporal != null, 'temporal', NullPointerException);
-        if (temporal instanceof DayOfWeek) return temporal;
-        try {
-            return DayOfWeek.of(temporal.get(ChronoField.DAY_OF_WEEK));
-        } catch (ex) {
-            if (ex instanceof DateTimeException) throw new DateTimeException("Unable to obtain DayOfWeek from TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''), ex);
-            else throw ex;
-        }
-    };
-    _proto.value = function value() {
-        return this._ordinal + 1;
-    };
-    _proto.displayName = function displayName(style, locale) {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented yet!');
-    };
-    _proto.isSupported = function isSupported(field) {
-        if (field instanceof ChronoField) return field === ChronoField.DAY_OF_WEEK;
-        return field != null && field.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field === ChronoField.DAY_OF_WEEK) return field.range();
-        else if (field instanceof ChronoField) throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        return field.rangeRefinedBy(this);
-    };
-    _proto.get = function get(field) {
-        if (field === ChronoField.DAY_OF_WEEK) return this.value();
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field === ChronoField.DAY_OF_WEEK) return this.value();
-        else if (field instanceof ChronoField) throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        return field.getFrom(this);
-    };
-    _proto.plus = function plus(days) {
-        var amount = MathUtil.floorMod(days, 7);
-        return ENUMS[MathUtil.floorMod(this._ordinal + (amount + 7), 7)];
-    };
-    _proto.minus = function minus(days) {
-        return this.plus(-1 * MathUtil.floorMod(days, 7));
-    };
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.precision()) return ChronoUnit.DAYS;
-        else if (_query === TemporalQueries.localDate() || _query === TemporalQueries.localTime() || _query === TemporalQueries.chronology() || _query === TemporalQueries.zone() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.offset()) return null;
-        assert(_query != null, 'query', NullPointerException);
-        return _query.queryFrom(this);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        requireNonNull(temporal, 'temporal');
-        return temporal.with(ChronoField.DAY_OF_WEEK, this.value());
-    };
-    _proto.equals = function equals(other) {
-        return this === other;
-    };
-    _proto.toString = function toString() {
-        return this._name;
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, DayOfWeek, 'other');
-        return this._ordinal - other._ordinal;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return DayOfWeek;
-}(TemporalAccessor);
-var ENUMS;
-function _init$j() {
-    DayOfWeek.MONDAY = new DayOfWeek(0, 'MONDAY');
-    DayOfWeek.TUESDAY = new DayOfWeek(1, 'TUESDAY');
-    DayOfWeek.WEDNESDAY = new DayOfWeek(2, 'WEDNESDAY');
-    DayOfWeek.THURSDAY = new DayOfWeek(3, 'THURSDAY');
-    DayOfWeek.FRIDAY = new DayOfWeek(4, 'FRIDAY');
-    DayOfWeek.SATURDAY = new DayOfWeek(5, 'SATURDAY');
-    DayOfWeek.SUNDAY = new DayOfWeek(6, 'SUNDAY');
-    DayOfWeek.FROM = createTemporalQuery('DayOfWeek.FROM', function(temporal) {
-        return DayOfWeek.from(temporal);
-    });
-    ENUMS = [
-        DayOfWeek.MONDAY,
-        DayOfWeek.TUESDAY,
-        DayOfWeek.WEDNESDAY,
-        DayOfWeek.THURSDAY,
-        DayOfWeek.FRIDAY,
-        DayOfWeek.SATURDAY,
-        DayOfWeek.SUNDAY
-    ];
-}
-var Month = function(_TemporalAccessor) {
-    _inheritsLoose(Month, _TemporalAccessor);
-    function Month(value, name) {
-        var _this;
-        _this = _TemporalAccessor.call(this) || this;
-        _this._value = MathUtil.safeToInt(value);
-        _this._name = name;
-        return _this;
-    }
-    var _proto = Month.prototype;
-    _proto.value = function value() {
-        return this._value;
-    };
-    _proto.ordinal = function ordinal() {
-        return this._value - 1;
-    };
-    _proto.name = function name() {
-        return this._name;
-    };
-    _proto.displayName = function displayName(style, locale) {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented yet!');
-    };
-    _proto.isSupported = function isSupported(field) {
-        if (null === field) return false;
-        if (field instanceof ChronoField) return field === ChronoField.MONTH_OF_YEAR;
-        return field != null && field.isSupportedBy(this);
-    };
-    _proto.get = function get(field) {
-        if (field === ChronoField.MONTH_OF_YEAR) return this.value();
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field === ChronoField.MONTH_OF_YEAR) return this.value();
-        else if (field instanceof ChronoField) throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        return field.getFrom(this);
-    };
-    _proto.plus = function plus(months) {
-        var amount = MathUtil.intMod(months, 12) + 12;
-        var newMonthVal = MathUtil.intMod(this.value() + amount, 12);
-        newMonthVal = newMonthVal === 0 ? 12 : newMonthVal;
-        return Month.of(newMonthVal);
-    };
-    _proto.minus = function minus(months) {
-        return this.plus(-1 * MathUtil.intMod(months, 12));
-    };
-    _proto.length = function length(leapYear) {
-        switch(this){
-            case Month.FEBRUARY:
-                return leapYear ? 29 : 28;
-            case Month.APRIL:
-            case Month.JUNE:
-            case Month.SEPTEMBER:
-            case Month.NOVEMBER:
-                return 30;
-            default:
-                return 31;
-        }
-    };
-    _proto.minLength = function minLength() {
-        switch(this){
-            case Month.FEBRUARY:
-                return 28;
-            case Month.APRIL:
-            case Month.JUNE:
-            case Month.SEPTEMBER:
-            case Month.NOVEMBER:
-                return 30;
-            default:
-                return 31;
-        }
-    };
-    _proto.maxLength = function maxLength() {
-        switch(this){
-            case Month.FEBRUARY:
-                return 29;
-            case Month.APRIL:
-            case Month.JUNE:
-            case Month.SEPTEMBER:
-            case Month.NOVEMBER:
-                return 30;
-            default:
-                return 31;
-        }
-    };
-    _proto.firstDayOfYear = function firstDayOfYear(leapYear) {
-        var leap = leapYear ? 1 : 0;
-        switch(this){
-            case Month.JANUARY:
-                return 1;
-            case Month.FEBRUARY:
-                return 32;
-            case Month.MARCH:
-                return 60 + leap;
-            case Month.APRIL:
-                return 91 + leap;
-            case Month.MAY:
-                return 121 + leap;
-            case Month.JUNE:
-                return 152 + leap;
-            case Month.JULY:
-                return 182 + leap;
-            case Month.AUGUST:
-                return 213 + leap;
-            case Month.SEPTEMBER:
-                return 244 + leap;
-            case Month.OCTOBER:
-                return 274 + leap;
-            case Month.NOVEMBER:
-                return 305 + leap;
-            case Month.DECEMBER:
-            default:
-                return 335 + leap;
-        }
-    };
-    _proto.firstMonthOfQuarter = function firstMonthOfQuarter() {
-        switch(this){
-            case Month.JANUARY:
-            case Month.FEBRUARY:
-            case Month.MARCH:
-                return Month.JANUARY;
-            case Month.APRIL:
-            case Month.MAY:
-            case Month.JUNE:
-                return Month.APRIL;
-            case Month.JULY:
-            case Month.AUGUST:
-            case Month.SEPTEMBER:
-                return Month.JULY;
-            case Month.OCTOBER:
-            case Month.NOVEMBER:
-            case Month.DECEMBER:
-            default:
-                return Month.OCTOBER;
-        }
-    };
-    _proto.query = function query(_query) {
-        assert(_query != null, 'query() parameter must not be null', DateTimeException);
-        if (_query === TemporalQueries.chronology()) return IsoChronology.INSTANCE;
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.MONTHS;
-        return _TemporalAccessor.prototype.query.call(this, _query);
-    };
-    _proto.toString = function toString() {
-        switch(this){
-            case Month.JANUARY:
-                return 'JANUARY';
-            case Month.FEBRUARY:
-                return 'FEBRUARY';
-            case Month.MARCH:
-                return 'MARCH';
-            case Month.APRIL:
-                return 'APRIL';
-            case Month.MAY:
-                return 'MAY';
-            case Month.JUNE:
-                return 'JUNE';
-            case Month.JULY:
-                return 'JULY';
-            case Month.AUGUST:
-                return 'AUGUST';
-            case Month.SEPTEMBER:
-                return 'SEPTEMBER';
-            case Month.OCTOBER:
-                return 'OCTOBER';
-            case Month.NOVEMBER:
-                return 'NOVEMBER';
-            case Month.DECEMBER:
-                return 'DECEMBER';
-            default:
-                return "unknown Month, value: " + this.value();
-        }
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.MONTH_OF_YEAR, this.value());
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, Month, 'other');
-        return this._value - other._value;
-    };
-    _proto.equals = function equals(other) {
-        return this === other;
-    };
-    Month.valueOf = function valueOf(name) {
-        var ordinal = 0;
-        for(ordinal; ordinal < MONTHS.length; ordinal++){
-            if (MONTHS[ordinal].name() === name) break;
-        }
-        return Month.of(ordinal + 1);
-    };
-    Month.values = function values() {
-        return MONTHS.slice();
-    };
-    Month.of = function of(month) {
-        if (month < 1 || month > 12) assert(false, "Invalid value for MonthOfYear: " + month, DateTimeException);
-        return MONTHS[month - 1];
-    };
-    Month.from = function from(temporal) {
-        if (temporal instanceof Month) return temporal;
-        try {
-            return Month.of(temporal.get(ChronoField.MONTH_OF_YEAR));
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain Month from TemporalAccessor: " + temporal + " of type " + (temporal && temporal.constructor != null ? temporal.constructor.name : ''), ex);
-        }
-    };
-    return Month;
-}(TemporalAccessor);
-var MONTHS;
-function _init$i() {
-    Month.JANUARY = new Month(1, 'JANUARY');
-    Month.FEBRUARY = new Month(2, 'FEBRUARY');
-    Month.MARCH = new Month(3, 'MARCH');
-    Month.APRIL = new Month(4, 'APRIL');
-    Month.MAY = new Month(5, 'MAY');
-    Month.JUNE = new Month(6, 'JUNE');
-    Month.JULY = new Month(7, 'JULY');
-    Month.AUGUST = new Month(8, 'AUGUST');
-    Month.SEPTEMBER = new Month(9, 'SEPTEMBER');
-    Month.OCTOBER = new Month(10, 'OCTOBER');
-    Month.NOVEMBER = new Month(11, 'NOVEMBER');
-    Month.DECEMBER = new Month(12, 'DECEMBER');
-    MONTHS = [
-        Month.JANUARY,
-        Month.FEBRUARY,
-        Month.MARCH,
-        Month.APRIL,
-        Month.MAY,
-        Month.JUNE,
-        Month.JULY,
-        Month.AUGUST,
-        Month.SEPTEMBER,
-        Month.OCTOBER,
-        Month.NOVEMBER,
-        Month.DECEMBER
-    ];
-}
-var PATTERN = /([-+]?)P(?:([-+]?[0-9]+)Y)?(?:([-+]?[0-9]+)M)?(?:([-+]?[0-9]+)W)?(?:([-+]?[0-9]+)D)?/;
-var Period = function(_TemporalAmount) {
-    _inheritsLoose(Period, _TemporalAmount);
-    function Period(years, months, days) {
-        var _this;
-        _this = _TemporalAmount.call(this) || this;
-        var _years = MathUtil.safeToInt(years);
-        var _months = MathUtil.safeToInt(months);
-        var _days = MathUtil.safeToInt(days);
-        if (_years === 0 && _months === 0 && _days === 0) {
-            if (!Period.ZERO) {
-                _this._years = _years;
-                _this._months = _months;
-                _this._days = _days;
-                Period.ZERO = _assertThisInitialized(_this);
-            }
-            return Period.ZERO || _assertThisInitialized(_this);
-        }
-        _this._years = _years;
-        _this._months = _months;
-        _this._days = _days;
-        return _this;
-    }
-    Period.ofYears = function ofYears(years) {
-        return Period.create(years, 0, 0);
-    };
-    Period.ofMonths = function ofMonths(months) {
-        return Period.create(0, months, 0);
-    };
-    Period.ofWeeks = function ofWeeks(weeks) {
-        return Period.create(0, 0, MathUtil.safeMultiply(weeks, 7));
-    };
-    Period.ofDays = function ofDays(days) {
-        return Period.create(0, 0, days);
-    };
-    Period.of = function of(years, months, days) {
-        return Period.create(years, months, days);
-    };
-    Period.from = function from(amount) {
-        if (amount instanceof Period) return amount;
-        requireNonNull(amount, 'amount');
-        var years = 0;
-        var months = 0;
-        var days = 0;
-        var units = amount.units();
-        for(var i = 0; i < units.length; i++){
-            var unit = units[i];
-            var unitAmount = amount.get(unit);
-            if (unit === ChronoUnit.YEARS) years = MathUtil.safeToInt(unitAmount);
-            else if (unit === ChronoUnit.MONTHS) months = MathUtil.safeToInt(unitAmount);
-            else if (unit === ChronoUnit.DAYS) days = MathUtil.safeToInt(unitAmount);
-            else throw new DateTimeException("Unit must be Years, Months or Days, but was " + unit);
-        }
-        return Period.create(years, months, days);
-    };
-    Period.between = function between(startDate, endDate) {
-        requireNonNull(startDate, 'startDate');
-        requireNonNull(endDate, 'endDate');
-        requireInstance(startDate, LocalDate, 'startDate');
-        requireInstance(endDate, LocalDate, 'endDate');
-        return startDate.until(endDate);
-    };
-    Period.parse = function parse(text) {
-        requireNonNull(text, 'text');
-        try {
-            return Period._parse(text);
-        } catch (ex) {
-            if (ex instanceof ArithmeticException) throw new DateTimeParseException('Text cannot be parsed to a Period', text, 0, ex);
-            else throw ex;
-        }
-    };
-    Period._parse = function _parse(text) {
-        var matches = PATTERN.exec(text);
-        if (matches != null) {
-            var negate = '-' === matches[1] ? -1 : 1;
-            var yearMatch = matches[2];
-            var monthMatch = matches[3];
-            var weekMatch = matches[4];
-            var dayMatch = matches[5];
-            if (yearMatch != null || monthMatch != null || weekMatch != null || dayMatch != null) {
-                var years = Period._parseNumber(text, yearMatch, negate);
-                var months = Period._parseNumber(text, monthMatch, negate);
-                var weeks = Period._parseNumber(text, weekMatch, negate);
-                var days = Period._parseNumber(text, dayMatch, negate);
-                days = MathUtil.safeAdd(days, MathUtil.safeMultiply(weeks, 7));
-                return Period.create(years, months, days);
-            }
-        }
-        throw new DateTimeParseException('Text cannot be parsed to a Period', text, 0);
-    };
-    Period._parseNumber = function _parseNumber(text, str, negate) {
-        if (str == null) return 0;
-        var val = MathUtil.parseInt(str);
-        return MathUtil.safeMultiply(val, negate);
-    };
-    Period.create = function create(years, months, days) {
-        return new Period(years, months, days);
-    };
-    var _proto = Period.prototype;
-    _proto.units = function units() {
-        return [
-            ChronoUnit.YEARS,
-            ChronoUnit.MONTHS,
-            ChronoUnit.DAYS
-        ];
-    };
-    _proto.chronology = function chronology() {
-        return IsoChronology.INSTANCE;
-    };
-    _proto.get = function get(unit) {
-        if (unit === ChronoUnit.YEARS) return this._years;
-        if (unit === ChronoUnit.MONTHS) return this._months;
-        if (unit === ChronoUnit.DAYS) return this._days;
-        throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-    };
-    _proto.isZero = function isZero() {
-        return this === Period.ZERO;
-    };
-    _proto.isNegative = function isNegative() {
-        return this._years < 0 || this._months < 0 || this._days < 0;
-    };
-    _proto.years = function years() {
-        return this._years;
-    };
-    _proto.months = function months() {
-        return this._months;
-    };
-    _proto.days = function days() {
-        return this._days;
-    };
-    _proto.withYears = function withYears(years) {
-        if (years === this._years) return this;
-        return Period.create(years, this._months, this._days);
-    };
-    _proto.withMonths = function withMonths(months) {
-        if (months === this._months) return this;
-        return Period.create(this._years, months, this._days);
-    };
-    _proto.withDays = function withDays(days) {
-        if (days === this._days) return this;
-        return Period.create(this._years, this._months, days);
-    };
-    _proto.plus = function plus(amountToAdd) {
-        var amount = Period.from(amountToAdd);
-        return Period.create(MathUtil.safeAdd(this._years, amount._years), MathUtil.safeAdd(this._months, amount._months), MathUtil.safeAdd(this._days, amount._days));
-    };
-    _proto.plusYears = function plusYears(yearsToAdd) {
-        if (yearsToAdd === 0) return this;
-        return Period.create(MathUtil.safeToInt(MathUtil.safeAdd(this._years, yearsToAdd)), this._months, this._days);
-    };
-    _proto.plusMonths = function plusMonths(monthsToAdd) {
-        if (monthsToAdd === 0) return this;
-        return Period.create(this._years, MathUtil.safeToInt(MathUtil.safeAdd(this._months, monthsToAdd)), this._days);
-    };
-    _proto.plusDays = function plusDays(daysToAdd) {
-        if (daysToAdd === 0) return this;
-        return Period.create(this._years, this._months, MathUtil.safeToInt(MathUtil.safeAdd(this._days, daysToAdd)));
-    };
-    _proto.minus = function minus(amountToSubtract) {
-        var amount = Period.from(amountToSubtract);
-        return Period.create(MathUtil.safeSubtract(this._years, amount._years), MathUtil.safeSubtract(this._months, amount._months), MathUtil.safeSubtract(this._days, amount._days));
-    };
-    _proto.minusYears = function minusYears(yearsToSubtract) {
-        return this.plusYears(-1 * yearsToSubtract);
-    };
-    _proto.minusMonths = function minusMonths(monthsToSubtract) {
-        return this.plusMonths(-1 * monthsToSubtract);
-    };
-    _proto.minusDays = function minusDays(daysToSubtract) {
-        return this.plusDays(-1 * daysToSubtract);
-    };
-    _proto.multipliedBy = function multipliedBy(scalar) {
-        if (this === Period.ZERO || scalar === 1) return this;
-        return Period.create(MathUtil.safeMultiply(this._years, scalar), MathUtil.safeMultiply(this._months, scalar), MathUtil.safeMultiply(this._days, scalar));
-    };
-    _proto.negated = function negated() {
-        return this.multipliedBy(-1);
-    };
-    _proto.normalized = function normalized() {
-        var totalMonths = this.toTotalMonths();
-        var splitYears = MathUtil.intDiv(totalMonths, 12);
-        var splitMonths = MathUtil.intMod(totalMonths, 12);
-        if (splitYears === this._years && splitMonths === this._months) return this;
-        return Period.create(MathUtil.safeToInt(splitYears), splitMonths, this._days);
-    };
-    _proto.toTotalMonths = function toTotalMonths() {
-        return this._years * 12 + this._months;
-    };
-    _proto.addTo = function addTo(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (this._years !== 0) {
-            if (this._months !== 0) temporal = temporal.plus(this.toTotalMonths(), ChronoUnit.MONTHS);
-            else temporal = temporal.plus(this._years, ChronoUnit.YEARS);
-        } else if (this._months !== 0) temporal = temporal.plus(this._months, ChronoUnit.MONTHS);
-        if (this._days !== 0) temporal = temporal.plus(this._days, ChronoUnit.DAYS);
-        return temporal;
-    };
-    _proto.subtractFrom = function subtractFrom(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (this._years !== 0) {
-            if (this._months !== 0) temporal = temporal.minus(this.toTotalMonths(), ChronoUnit.MONTHS);
-            else temporal = temporal.minus(this._years, ChronoUnit.YEARS);
-        } else if (this._months !== 0) temporal = temporal.minus(this._months, ChronoUnit.MONTHS);
-        if (this._days !== 0) temporal = temporal.minus(this._days, ChronoUnit.DAYS);
-        return temporal;
-    };
-    _proto.equals = function equals(obj) {
-        if (this === obj) return true;
-        if (obj instanceof Period) {
-            var other = obj;
-            return this._years === other._years && this._months === other._months && this._days === other._days;
-        }
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return MathUtil.hashCode(this._years, this._months, this._days);
-    };
-    _proto.toString = function toString() {
-        if (this === Period.ZERO) return 'P0D';
-        else {
-            var buf = 'P';
-            if (this._years !== 0) buf += this._years + "Y";
-            if (this._months !== 0) buf += this._months + "M";
-            if (this._days !== 0) buf += this._days + "D";
-            return buf;
-        }
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return Period;
-}(TemporalAmount);
-function _init$h() {
-    Period.ofDays(0);
-}
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ParsePosition = function() {
-    function ParsePosition(index) {
-        this._index = index;
-        this._errorIndex = -1;
-    }
-    var _proto = ParsePosition.prototype;
-    _proto.getIndex = function getIndex() {
-        return this._index;
-    };
-    _proto.setIndex = function setIndex(index) {
-        this._index = index;
-    };
-    _proto.getErrorIndex = function getErrorIndex() {
-        return this._errorIndex;
-    };
-    _proto.setErrorIndex = function setErrorIndex(errorIndex) {
-        this._errorIndex = errorIndex;
-    };
-    return ParsePosition;
-}();
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var EnumMap = function() {
-    function EnumMap() {
-        this._map = {};
-    }
-    var _proto = EnumMap.prototype;
-    _proto.putAll = function putAll(otherMap) {
-        for(var key in otherMap._map)this._map[key] = otherMap._map[key];
-        return this;
-    };
-    _proto.containsKey = function containsKey(key) {
-        return this._map.hasOwnProperty(key.name()) && this.get(key) !== undefined;
-    };
-    _proto.get = function get(key) {
-        return this._map[key.name()];
-    };
-    _proto.put = function put(key, val) {
-        return this.set(key, val);
-    };
-    _proto.set = function set(key, val) {
-        this._map[key.name()] = val;
-        return this;
-    };
-    _proto.retainAll = function retainAll(keyList) {
-        var map = {};
-        for(var i = 0; i < keyList.length; i++){
-            var key = keyList[i].name();
-            map[key] = this._map[key];
-        }
-        this._map = map;
-        return this;
-    };
-    _proto.remove = function remove(key) {
-        var keyName = key.name();
-        var val = this._map[keyName];
-        this._map[keyName] = undefined;
-        return val;
-    };
-    _proto.keySet = function keySet() {
-        return this._map;
-    };
-    _proto.clear = function clear() {
-        this._map = {};
-    };
-    return EnumMap;
-}();
-var ResolverStyle = function(_Enum) {
-    _inheritsLoose(ResolverStyle, _Enum);
-    function ResolverStyle() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    return ResolverStyle;
-}(Enum);
-ResolverStyle.STRICT = new ResolverStyle('STRICT');
-ResolverStyle.SMART = new ResolverStyle('SMART');
-ResolverStyle.LENIENT = new ResolverStyle('LENIENT');
-var Temporal = function(_TemporalAccessor) {
-    _inheritsLoose(Temporal, _TemporalAccessor);
-    function Temporal() {
-        return _TemporalAccessor.apply(this, arguments) || this;
-    }
-    var _proto = Temporal.prototype;
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        abstractMethodFail('isSupported');
-    };
-    _proto.minus = function minus(amount, unit) {
-        if (arguments.length < 2) return this._minusAmount(amount);
-        else return this._minusUnit(amount, unit);
-    };
-    _proto._minusAmount = function _minusAmount(amount) {
-        requireNonNull(amount, 'amount');
-        requireInstance(amount, TemporalAmount, 'amount');
-        return amount.subtractFrom(this);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        requireNonNull(amountToSubtract, 'amountToSubtract');
-        requireNonNull(unit, 'unit');
-        requireInstance(unit, TemporalUnit, 'unit');
-        return this._plusUnit(-amountToSubtract, unit);
-    };
-    _proto.plus = function plus(amount, unit) {
-        if (arguments.length < 2) return this._plusAmount(amount);
-        else return this._plusUnit(amount, unit);
-    };
-    _proto._plusAmount = function _plusAmount(amount) {
-        requireNonNull(amount, 'amount');
-        requireInstance(amount, TemporalAmount, 'amount');
-        return amount.addTo(this);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        abstractMethodFail('_plusUnit');
-    };
-    _proto.until = function until(endTemporal, unit) {
-        abstractMethodFail('until');
-    };
-    _proto.with = function _with(adjusterOrField, newValue) {
-        if (arguments.length < 2) return this._withAdjuster(adjusterOrField);
-        else return this._withField(adjusterOrField, newValue);
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster, 'adjuster');
-        assert(typeof adjuster.adjustInto === 'function', 'adjuster must be a TemporalAdjuster', IllegalArgumentException);
-        return adjuster.adjustInto(this);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        abstractMethodFail('_withField');
-    };
-    return Temporal;
-}(TemporalAccessor);
-if (typeof Symbol !== 'undefined' && Symbol.toPrimitive) Temporal.prototype[Symbol.toPrimitive] = function(hint) {
-    if (hint !== 'number') return this.toString();
-    throw new TypeError("A conversion from Temporal to a number is not allowed. To compare use the methods .equals(), .compareTo(), .isBefore() or one that is more suitable to your use case.");
-};
-var ChronoLocalDate = function(_Temporal) {
-    _inheritsLoose(ChronoLocalDate, _Temporal);
-    function ChronoLocalDate() {
-        return _Temporal.apply(this, arguments) || this;
-    }
-    var _proto = ChronoLocalDate.prototype;
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit.isDateBased();
-        else if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isDateBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.chronology()) return this.chronology();
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.DAYS;
-        else if (_query === TemporalQueries.localDate()) return LocalDate.ofEpochDay(this.toEpochDay());
-        else if (_query === TemporalQueries.localTime() || _query === TemporalQueries.zone() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.offset()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.EPOCH_DAY, this.toEpochDay());
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return formatter.format(this);
-    };
-    return ChronoLocalDate;
-}(Temporal);
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var StringUtil = function() {
-    function StringUtil() {}
-    StringUtil.startsWith = function startsWith(text, pattern) {
-        return text.indexOf(pattern) === 0;
-    };
-    StringUtil.hashCode = function hashCode(text) {
-        var len = text.length;
-        if (len === 0) return 0;
-        var hash = 0;
-        for(var i = 0; i < len; i++){
-            var chr = text.charCodeAt(i);
-            hash = (hash << 5) - hash + chr;
-            hash |= 0;
-        }
-        return MathUtil.smi(hash);
-    };
-    return StringUtil;
-}();
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ZoneId = function() {
-    function ZoneId() {}
-    ZoneId.systemDefault = function systemDefault() {
-        throw new DateTimeException('not supported operation');
-    };
-    ZoneId.getAvailableZoneIds = function getAvailableZoneIds() {
-        throw new DateTimeException('not supported operation');
-    };
-    ZoneId.of = function of(zoneId) {
-        throw new DateTimeException("not supported operation" + zoneId);
-    };
-    ZoneId.ofOffset = function ofOffset(prefix, offset) {
-        throw new DateTimeException("not supported operation" + prefix + offset);
-    };
-    ZoneId.from = function from(temporal) {
-        throw new DateTimeException("not supported operation" + temporal);
-    };
-    var _proto = ZoneId.prototype;
-    _proto.id = function id() {
-        abstractMethodFail('ZoneId.id');
-    };
-    _proto.rules = function rules() {
-        abstractMethodFail('ZoneId.rules');
-    };
-    _proto.normalized = function normalized() {
-        var rules = this.rules();
-        if (rules.isFixedOffset()) return rules.offset(Instant.EPOCH);
-        return this;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof ZoneId) return this.id() === other.id();
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return StringUtil.hashCode(this.id());
-    };
-    _proto.toString = function toString() {
-        return this.id();
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return ZoneId;
-}();
-var ZoneRules = function() {
-    function ZoneRules() {}
-    ZoneRules.of = function of(offset) {
-        requireNonNull(offset, 'offset');
-        return new Fixed(offset);
-    };
-    var _proto = ZoneRules.prototype;
-    _proto.isFixedOffset = function isFixedOffset() {
-        abstractMethodFail('ZoneRules.isFixedOffset');
-    };
-    _proto.offset = function offset(instantOrLocalDateTime) {
-        if (instantOrLocalDateTime instanceof Instant) return this.offsetOfInstant(instantOrLocalDateTime);
-        else return this.offsetOfLocalDateTime(instantOrLocalDateTime);
-    };
-    _proto.offsetOfInstant = function offsetOfInstant(instant) {
-        abstractMethodFail('ZoneRules.offsetInstant');
-    };
-    _proto.offsetOfEpochMilli = function offsetOfEpochMilli(epochMilli) {
-        abstractMethodFail('ZoneRules.offsetOfEpochMilli');
-    };
-    _proto.offsetOfLocalDateTime = function offsetOfLocalDateTime(localDateTime) {
-        abstractMethodFail('ZoneRules.offsetLocalDateTime');
-    };
-    _proto.validOffsets = function validOffsets(localDateTime) {
-        abstractMethodFail('ZoneRules.validOffsets');
-    };
-    _proto.transition = function transition(localDateTime) {
-        abstractMethodFail('ZoneRules.transition');
-    };
-    _proto.standardOffset = function standardOffset(instant) {
-        abstractMethodFail('ZoneRules.standardOffset');
-    };
-    _proto.daylightSavings = function daylightSavings(instant) {
-        abstractMethodFail('ZoneRules.daylightSavings');
-    };
-    _proto.isDaylightSavings = function isDaylightSavings(instant) {
-        abstractMethodFail('ZoneRules.isDaylightSavings');
-    };
-    _proto.isValidOffset = function isValidOffset(localDateTime, offset) {
-        abstractMethodFail('ZoneRules.isValidOffset');
-    };
-    _proto.nextTransition = function nextTransition(instant) {
-        abstractMethodFail('ZoneRules.nextTransition');
-    };
-    _proto.previousTransition = function previousTransition(instant) {
-        abstractMethodFail('ZoneRules.previousTransition');
-    };
-    _proto.transitions = function transitions() {
-        abstractMethodFail('ZoneRules.transitions');
-    };
-    _proto.transitionRules = function transitionRules() {
-        abstractMethodFail('ZoneRules.transitionRules');
-    };
-    _proto.toString = function toString() {
-        abstractMethodFail('ZoneRules.toString');
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return ZoneRules;
-}();
-var Fixed = function(_ZoneRules) {
-    _inheritsLoose(Fixed, _ZoneRules);
-    function Fixed(offset) {
-        var _this;
-        _this = _ZoneRules.call(this) || this;
-        _this._offset = offset;
-        return _this;
-    }
-    var _proto2 = Fixed.prototype;
-    _proto2.isFixedOffset = function isFixedOffset() {
-        return true;
-    };
-    _proto2.offsetOfInstant = function offsetOfInstant() {
-        return this._offset;
-    };
-    _proto2.offsetOfEpochMilli = function offsetOfEpochMilli() {
-        return this._offset;
-    };
-    _proto2.offsetOfLocalDateTime = function offsetOfLocalDateTime() {
-        return this._offset;
-    };
-    _proto2.validOffsets = function validOffsets() {
-        return [
-            this._offset
-        ];
-    };
-    _proto2.transition = function transition() {
-        return null;
-    };
-    _proto2.standardOffset = function standardOffset() {
-        return this._offset;
-    };
-    _proto2.daylightSavings = function daylightSavings() {
-        return Duration.ZERO;
-    };
-    _proto2.isDaylightSavings = function isDaylightSavings() {
-        return false;
-    };
-    _proto2.isValidOffset = function isValidOffset(localDateTime, offset) {
-        return this._offset.equals(offset);
-    };
-    _proto2.nextTransition = function nextTransition() {
-        return null;
-    };
-    _proto2.previousTransition = function previousTransition() {
-        return null;
-    };
-    _proto2.transitions = function transitions() {
-        return [];
-    };
-    _proto2.transitionRules = function transitionRules() {
-        return [];
-    };
-    _proto2.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof Fixed) return this._offset.equals(other._offset);
-        return false;
-    };
-    _proto2.toString = function toString() {
-        return "FixedRules:" + this._offset.toString();
-    };
-    return Fixed;
-}(ZoneRules);
-var SECONDS_CACHE = {};
-var ID_CACHE = {};
-var ZoneOffset = function(_ZoneId) {
-    _inheritsLoose(ZoneOffset, _ZoneId);
-    function ZoneOffset(totalSeconds) {
-        var _this;
-        _this = _ZoneId.call(this) || this;
-        ZoneOffset._validateTotalSeconds(totalSeconds);
-        _this._totalSeconds = MathUtil.safeToInt(totalSeconds);
-        _this._rules = ZoneRules.of(_assertThisInitialized(_this));
-        _this._id = ZoneOffset._buildId(totalSeconds);
-        return _this;
-    }
-    var _proto = ZoneOffset.prototype;
-    _proto.totalSeconds = function totalSeconds() {
-        return this._totalSeconds;
-    };
-    _proto.id = function id() {
-        return this._id;
-    };
-    ZoneOffset._buildId = function _buildId(totalSeconds) {
-        if (totalSeconds === 0) return 'Z';
-        else {
-            var absTotalSeconds = Math.abs(totalSeconds);
-            var absHours = MathUtil.intDiv(absTotalSeconds, LocalTime.SECONDS_PER_HOUR);
-            var absMinutes = MathUtil.intMod(MathUtil.intDiv(absTotalSeconds, LocalTime.SECONDS_PER_MINUTE), LocalTime.MINUTES_PER_HOUR);
-            var buf = "" + (totalSeconds < 0 ? '-' : '+') + (absHours < 10 ? '0' : '') + absHours + (absMinutes < 10 ? ':0' : ':') + absMinutes;
-            var absSeconds = MathUtil.intMod(absTotalSeconds, LocalTime.SECONDS_PER_MINUTE);
-            if (absSeconds !== 0) buf += (absSeconds < 10 ? ':0' : ':') + absSeconds;
-            return buf;
-        }
-    };
-    ZoneOffset._validateTotalSeconds = function _validateTotalSeconds(totalSeconds) {
-        if (Math.abs(totalSeconds) > ZoneOffset.MAX_SECONDS) throw new DateTimeException('Zone offset not in valid range: -18:00 to +18:00');
-    };
-    ZoneOffset._validate = function _validate(hours, minutes, seconds) {
-        if (hours < -18 || hours > 18) throw new DateTimeException("Zone offset hours not in valid range: value " + hours + " is not in the range -18 to 18");
-        if (hours > 0) {
-            if (minutes < 0 || seconds < 0) throw new DateTimeException('Zone offset minutes and seconds must be positive because hours is positive');
-        } else if (hours < 0) {
-            if (minutes > 0 || seconds > 0) throw new DateTimeException('Zone offset minutes and seconds must be negative because hours is negative');
-        } else if (minutes > 0 && seconds < 0 || minutes < 0 && seconds > 0) throw new DateTimeException('Zone offset minutes and seconds must have the same sign');
-        if (Math.abs(minutes) > 59) throw new DateTimeException("Zone offset minutes not in valid range: abs(value) " + Math.abs(minutes) + " is not in the range 0 to 59");
-        if (Math.abs(seconds) > 59) throw new DateTimeException("Zone offset seconds not in valid range: abs(value) " + Math.abs(seconds) + " is not in the range 0 to 59");
-        if (Math.abs(hours) === 18 && (Math.abs(minutes) > 0 || Math.abs(seconds) > 0)) throw new DateTimeException('Zone offset not in valid range: -18:00 to +18:00');
-    };
-    ZoneOffset.of = function of(offsetId) {
-        requireNonNull(offsetId, 'offsetId');
-        var offset = ID_CACHE[offsetId];
-        if (offset != null) return offset;
-        var hours, minutes, seconds;
-        switch(offsetId.length){
-            case 2:
-                offsetId = offsetId[0] + "0" + offsetId[1];
-            case 3:
-                hours = ZoneOffset._parseNumber(offsetId, 1, false);
-                minutes = 0;
-                seconds = 0;
-                break;
-            case 5:
-                hours = ZoneOffset._parseNumber(offsetId, 1, false);
-                minutes = ZoneOffset._parseNumber(offsetId, 3, false);
-                seconds = 0;
-                break;
-            case 6:
-                hours = ZoneOffset._parseNumber(offsetId, 1, false);
-                minutes = ZoneOffset._parseNumber(offsetId, 4, true);
-                seconds = 0;
-                break;
-            case 7:
-                hours = ZoneOffset._parseNumber(offsetId, 1, false);
-                minutes = ZoneOffset._parseNumber(offsetId, 3, false);
-                seconds = ZoneOffset._parseNumber(offsetId, 5, false);
-                break;
-            case 9:
-                hours = ZoneOffset._parseNumber(offsetId, 1, false);
-                minutes = ZoneOffset._parseNumber(offsetId, 4, true);
-                seconds = ZoneOffset._parseNumber(offsetId, 7, true);
-                break;
-            default:
-                throw new DateTimeException("Invalid ID for ZoneOffset, invalid format: " + offsetId);
-        }
-        var first = offsetId[0];
-        if (first !== '+' && first !== '-') throw new DateTimeException("Invalid ID for ZoneOffset, plus/minus not found when expected: " + offsetId);
-        if (first === '-') return ZoneOffset.ofHoursMinutesSeconds(-hours, -minutes, -seconds);
-        else return ZoneOffset.ofHoursMinutesSeconds(hours, minutes, seconds);
-    };
-    ZoneOffset._parseNumber = function _parseNumber(offsetId, pos, precededByColon) {
-        if (precededByColon && offsetId[pos - 1] !== ':') throw new DateTimeException("Invalid ID for ZoneOffset, colon not found when expected: " + offsetId);
-        var ch1 = offsetId[pos];
-        var ch2 = offsetId[pos + 1];
-        if (ch1 < '0' || ch1 > '9' || ch2 < '0' || ch2 > '9') throw new DateTimeException("Invalid ID for ZoneOffset, non numeric characters found: " + offsetId);
-        return (ch1.charCodeAt(0) - 48) * 10 + (ch2.charCodeAt(0) - 48);
-    };
-    ZoneOffset.ofHours = function ofHours(hours) {
-        return ZoneOffset.ofHoursMinutesSeconds(hours, 0, 0);
-    };
-    ZoneOffset.ofHoursMinutes = function ofHoursMinutes(hours, minutes) {
-        return ZoneOffset.ofHoursMinutesSeconds(hours, minutes, 0);
-    };
-    ZoneOffset.ofHoursMinutesSeconds = function ofHoursMinutesSeconds(hours, minutes, seconds) {
-        ZoneOffset._validate(hours, minutes, seconds);
-        var totalSeconds = hours * LocalTime.SECONDS_PER_HOUR + minutes * LocalTime.SECONDS_PER_MINUTE + seconds;
-        return ZoneOffset.ofTotalSeconds(totalSeconds);
-    };
-    ZoneOffset.ofTotalMinutes = function ofTotalMinutes(totalMinutes) {
-        var totalSeconds = totalMinutes * LocalTime.SECONDS_PER_MINUTE;
-        return ZoneOffset.ofTotalSeconds(totalSeconds);
-    };
-    ZoneOffset.ofTotalSeconds = function ofTotalSeconds(totalSeconds) {
-        if (totalSeconds % (15 * LocalTime.SECONDS_PER_MINUTE) === 0) {
-            var totalSecs = totalSeconds;
-            var result = SECONDS_CACHE[totalSecs];
-            if (result == null) {
-                result = new ZoneOffset(totalSeconds);
-                SECONDS_CACHE[totalSecs] = result;
-                ID_CACHE[result.id()] = result;
-            }
-            return result;
-        } else return new ZoneOffset(totalSeconds);
-    };
-    _proto.rules = function rules() {
-        return this._rules;
-    };
-    _proto.get = function get(field) {
-        return this.getLong(field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field === ChronoField.OFFSET_SECONDS) return this._totalSeconds;
-        else if (field instanceof ChronoField) throw new DateTimeException("Unsupported field: " + field);
-        return field.getFrom(this);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.offset() || _query === TemporalQueries.zone()) return this;
-        else if (_query === TemporalQueries.localDate() || _query === TemporalQueries.localTime() || _query === TemporalQueries.precision() || _query === TemporalQueries.chronology() || _query === TemporalQueries.zoneId()) return null;
-        return _query.queryFrom(this);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.OFFSET_SECONDS, this._totalSeconds);
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        return other._totalSeconds - this._totalSeconds;
-    };
-    _proto.equals = function equals(obj) {
-        if (this === obj) return true;
-        if (obj instanceof ZoneOffset) return this._totalSeconds === obj._totalSeconds;
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._totalSeconds;
-    };
-    _proto.toString = function toString() {
-        return this._id;
-    };
-    return ZoneOffset;
-}(ZoneId);
-function _init$g() {
-    ZoneOffset.MAX_SECONDS = 18 * LocalTime.SECONDS_PER_HOUR;
-    ZoneOffset.UTC = ZoneOffset.ofTotalSeconds(0);
-    ZoneOffset.MIN = ZoneOffset.ofTotalSeconds(-ZoneOffset.MAX_SECONDS);
-    ZoneOffset.MAX = ZoneOffset.ofTotalSeconds(ZoneOffset.MAX_SECONDS);
-}
-var DateTimeBuilder = function(_TemporalAccessor) {
-    _inheritsLoose(DateTimeBuilder, _TemporalAccessor);
-    DateTimeBuilder.create = function create(field, value) {
-        var dtb = new DateTimeBuilder();
-        dtb._addFieldValue(field, value);
-        return dtb;
-    };
-    function DateTimeBuilder() {
-        var _this;
-        _this = _TemporalAccessor.call(this) || this;
-        _this.fieldValues = new EnumMap();
-        _this.chrono = null;
-        _this.zone = null;
-        _this.date = null;
-        _this.time = null;
-        _this.leapSecond = false;
-        _this.excessDays = null;
-        return _this;
-    }
-    var _proto = DateTimeBuilder.prototype;
-    _proto.getFieldValue0 = function getFieldValue0(field) {
-        return this.fieldValues.get(field);
-    };
-    _proto._addFieldValue = function _addFieldValue(field, value) {
-        requireNonNull(field, 'field');
-        var old = this.getFieldValue0(field);
-        if (old != null && old !== value) throw new DateTimeException("Conflict found: " + field + " " + old + " differs from " + field + " " + value + ": " + this);
-        return this._putFieldValue0(field, value);
-    };
-    _proto._putFieldValue0 = function _putFieldValue0(field, value) {
-        this.fieldValues.put(field, value);
-        return this;
-    };
-    _proto.resolve = function resolve(resolverStyle, resolverFields) {
-        if (resolverFields != null) this.fieldValues.retainAll(resolverFields);
-        this._mergeDate(resolverStyle);
-        this._mergeTime(resolverStyle);
-        this._resolveTimeInferZeroes(resolverStyle);
-        if (this.excessDays != null && this.excessDays.isZero() === false && this.date != null && this.time != null) {
-            this.date = this.date.plus(this.excessDays);
-            this.excessDays = Period.ZERO;
-        }
-        this._resolveInstant();
-        return this;
-    };
-    _proto._mergeDate = function _mergeDate(resolverStyle) {
-        this._checkDate(IsoChronology.INSTANCE.resolveDate(this.fieldValues, resolverStyle));
-    };
-    _proto._checkDate = function _checkDate(date) {
-        if (date != null) {
-            this._addObject(date);
-            for(var fieldName in this.fieldValues.keySet()){
-                var field = ChronoField.byName(fieldName);
-                if (field) {
-                    if (this.fieldValues.get(field) !== undefined) {
-                        if (field.isDateBased()) {
-                            var val1 = void 0;
-                            try {
-                                val1 = date.getLong(field);
-                            } catch (ex) {
-                                if (ex instanceof DateTimeException) continue;
-                                else throw ex;
-                            }
-                            var val2 = this.fieldValues.get(field);
-                            if (val1 !== val2) throw new DateTimeException("Conflict found: Field " + field + " " + val1 + " differs from " + field + " " + val2 + " derived from " + date);
-                        }
-                    }
-                }
-            }
-        }
-    };
-    _proto._mergeTime = function _mergeTime(resolverStyle) {
-        if (this.fieldValues.containsKey(ChronoField.CLOCK_HOUR_OF_DAY)) {
-            var ch = this.fieldValues.remove(ChronoField.CLOCK_HOUR_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) {
-                if (resolverStyle === ResolverStyle.SMART && ch === 0) ;
-                else ChronoField.CLOCK_HOUR_OF_DAY.checkValidValue(ch);
-            }
-            this._addFieldValue(ChronoField.HOUR_OF_DAY, ch === 24 ? 0 : ch);
-        }
-        if (this.fieldValues.containsKey(ChronoField.CLOCK_HOUR_OF_AMPM)) {
-            var _ch = this.fieldValues.remove(ChronoField.CLOCK_HOUR_OF_AMPM);
-            if (resolverStyle !== ResolverStyle.LENIENT) {
-                if (resolverStyle === ResolverStyle.SMART && _ch === 0) ;
-                else ChronoField.CLOCK_HOUR_OF_AMPM.checkValidValue(_ch);
-            }
-            this._addFieldValue(ChronoField.HOUR_OF_AMPM, _ch === 12 ? 0 : _ch);
-        }
-        if (resolverStyle !== ResolverStyle.LENIENT) {
-            if (this.fieldValues.containsKey(ChronoField.AMPM_OF_DAY)) ChronoField.AMPM_OF_DAY.checkValidValue(this.fieldValues.get(ChronoField.AMPM_OF_DAY));
-            if (this.fieldValues.containsKey(ChronoField.HOUR_OF_AMPM)) ChronoField.HOUR_OF_AMPM.checkValidValue(this.fieldValues.get(ChronoField.HOUR_OF_AMPM));
-        }
-        if (this.fieldValues.containsKey(ChronoField.AMPM_OF_DAY) && this.fieldValues.containsKey(ChronoField.HOUR_OF_AMPM)) {
-            var ap = this.fieldValues.remove(ChronoField.AMPM_OF_DAY);
-            var hap = this.fieldValues.remove(ChronoField.HOUR_OF_AMPM);
-            this._addFieldValue(ChronoField.HOUR_OF_DAY, ap * 12 + hap);
-        }
-        if (this.fieldValues.containsKey(ChronoField.NANO_OF_DAY)) {
-            var nod = this.fieldValues.remove(ChronoField.NANO_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.NANO_OF_DAY.checkValidValue(nod);
-            this._addFieldValue(ChronoField.SECOND_OF_DAY, MathUtil.intDiv(nod, 1000000000));
-            this._addFieldValue(ChronoField.NANO_OF_SECOND, MathUtil.intMod(nod, 1000000000));
-        }
-        if (this.fieldValues.containsKey(ChronoField.MICRO_OF_DAY)) {
-            var cod = this.fieldValues.remove(ChronoField.MICRO_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.MICRO_OF_DAY.checkValidValue(cod);
-            this._addFieldValue(ChronoField.SECOND_OF_DAY, MathUtil.intDiv(cod, 1000000));
-            this._addFieldValue(ChronoField.MICRO_OF_SECOND, MathUtil.intMod(cod, 1000000));
-        }
-        if (this.fieldValues.containsKey(ChronoField.MILLI_OF_DAY)) {
-            var lod = this.fieldValues.remove(ChronoField.MILLI_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.MILLI_OF_DAY.checkValidValue(lod);
-            this._addFieldValue(ChronoField.SECOND_OF_DAY, MathUtil.intDiv(lod, 1000));
-            this._addFieldValue(ChronoField.MILLI_OF_SECOND, MathUtil.intMod(lod, 1000));
-        }
-        if (this.fieldValues.containsKey(ChronoField.SECOND_OF_DAY)) {
-            var sod = this.fieldValues.remove(ChronoField.SECOND_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.SECOND_OF_DAY.checkValidValue(sod);
-            this._addFieldValue(ChronoField.HOUR_OF_DAY, MathUtil.intDiv(sod, 3600));
-            this._addFieldValue(ChronoField.MINUTE_OF_HOUR, MathUtil.intMod(MathUtil.intDiv(sod, 60), 60));
-            this._addFieldValue(ChronoField.SECOND_OF_MINUTE, MathUtil.intMod(sod, 60));
-        }
-        if (this.fieldValues.containsKey(ChronoField.MINUTE_OF_DAY)) {
-            var mod = this.fieldValues.remove(ChronoField.MINUTE_OF_DAY);
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.MINUTE_OF_DAY.checkValidValue(mod);
-            this._addFieldValue(ChronoField.HOUR_OF_DAY, MathUtil.intDiv(mod, 60));
-            this._addFieldValue(ChronoField.MINUTE_OF_HOUR, MathUtil.intMod(mod, 60));
-        }
-        if (resolverStyle !== ResolverStyle.LENIENT) {
-            if (this.fieldValues.containsKey(ChronoField.MILLI_OF_SECOND)) ChronoField.MILLI_OF_SECOND.checkValidValue(this.fieldValues.get(ChronoField.MILLI_OF_SECOND));
-            if (this.fieldValues.containsKey(ChronoField.MICRO_OF_SECOND)) ChronoField.MICRO_OF_SECOND.checkValidValue(this.fieldValues.get(ChronoField.MICRO_OF_SECOND));
-        }
-        if (this.fieldValues.containsKey(ChronoField.MILLI_OF_SECOND) && this.fieldValues.containsKey(ChronoField.MICRO_OF_SECOND)) {
-            var los = this.fieldValues.remove(ChronoField.MILLI_OF_SECOND);
-            var cos = this.fieldValues.get(ChronoField.MICRO_OF_SECOND);
-            this._putFieldValue0(ChronoField.MICRO_OF_SECOND, los * 1000 + MathUtil.intMod(cos, 1000));
-        }
-        if (this.fieldValues.containsKey(ChronoField.MICRO_OF_SECOND) && this.fieldValues.containsKey(ChronoField.NANO_OF_SECOND)) {
-            var nos = this.fieldValues.get(ChronoField.NANO_OF_SECOND);
-            this._putFieldValue0(ChronoField.MICRO_OF_SECOND, MathUtil.intDiv(nos, 1000));
-            this.fieldValues.remove(ChronoField.MICRO_OF_SECOND);
-        }
-        if (this.fieldValues.containsKey(ChronoField.MILLI_OF_SECOND) && this.fieldValues.containsKey(ChronoField.NANO_OF_SECOND)) {
-            var _nos = this.fieldValues.get(ChronoField.NANO_OF_SECOND);
-            this._putFieldValue0(ChronoField.MILLI_OF_SECOND, MathUtil.intDiv(_nos, 1000000));
-            this.fieldValues.remove(ChronoField.MILLI_OF_SECOND);
-        }
-        if (this.fieldValues.containsKey(ChronoField.MICRO_OF_SECOND)) {
-            var _cos = this.fieldValues.remove(ChronoField.MICRO_OF_SECOND);
-            this._putFieldValue0(ChronoField.NANO_OF_SECOND, _cos * 1000);
-        } else if (this.fieldValues.containsKey(ChronoField.MILLI_OF_SECOND)) {
-            var _los = this.fieldValues.remove(ChronoField.MILLI_OF_SECOND);
-            this._putFieldValue0(ChronoField.NANO_OF_SECOND, _los * 1000000);
-        }
-    };
-    _proto._resolveTimeInferZeroes = function _resolveTimeInferZeroes(resolverStyle) {
-        var hod = this.fieldValues.get(ChronoField.HOUR_OF_DAY);
-        var moh = this.fieldValues.get(ChronoField.MINUTE_OF_HOUR);
-        var som = this.fieldValues.get(ChronoField.SECOND_OF_MINUTE);
-        var nos = this.fieldValues.get(ChronoField.NANO_OF_SECOND);
-        if (hod == null) return;
-        if (moh == null && (som != null || nos != null)) return;
-        if (moh != null && som == null && nos != null) return;
-        if (resolverStyle !== ResolverStyle.LENIENT) {
-            if (hod != null) {
-                if (resolverStyle === ResolverStyle.SMART && hod === 24 && (moh == null || moh === 0) && (som == null || som === 0) && (nos == null || nos === 0)) {
-                    hod = 0;
-                    this.excessDays = Period.ofDays(1);
-                }
-                var hodVal = ChronoField.HOUR_OF_DAY.checkValidIntValue(hod);
-                if (moh != null) {
-                    var mohVal = ChronoField.MINUTE_OF_HOUR.checkValidIntValue(moh);
-                    if (som != null) {
-                        var somVal = ChronoField.SECOND_OF_MINUTE.checkValidIntValue(som);
-                        if (nos != null) {
-                            var nosVal = ChronoField.NANO_OF_SECOND.checkValidIntValue(nos);
-                            this._addObject(LocalTime.of(hodVal, mohVal, somVal, nosVal));
-                        } else this._addObject(LocalTime.of(hodVal, mohVal, somVal));
-                    } else if (nos == null) this._addObject(LocalTime.of(hodVal, mohVal));
-                } else if (som == null && nos == null) this._addObject(LocalTime.of(hodVal, 0));
-            }
-        } else if (hod != null) {
-            var _hodVal = hod;
-            if (moh != null) {
-                if (som != null) {
-                    if (nos == null) nos = 0;
-                    var totalNanos = MathUtil.safeMultiply(_hodVal, 3600000000000);
-                    totalNanos = MathUtil.safeAdd(totalNanos, MathUtil.safeMultiply(moh, 60000000000));
-                    totalNanos = MathUtil.safeAdd(totalNanos, MathUtil.safeMultiply(som, 1000000000));
-                    totalNanos = MathUtil.safeAdd(totalNanos, nos);
-                    var excessDays = MathUtil.floorDiv(totalNanos, 86400000000000);
-                    var nod = MathUtil.floorMod(totalNanos, 86400000000000);
-                    this._addObject(LocalTime.ofNanoOfDay(nod));
-                    this.excessDays = Period.ofDays(excessDays);
-                } else {
-                    var totalSecs = MathUtil.safeMultiply(_hodVal, 3600);
-                    totalSecs = MathUtil.safeAdd(totalSecs, MathUtil.safeMultiply(moh, 60));
-                    var _excessDays = MathUtil.floorDiv(totalSecs, 86400);
-                    var sod = MathUtil.floorMod(totalSecs, 86400);
-                    this._addObject(LocalTime.ofSecondOfDay(sod));
-                    this.excessDays = Period.ofDays(_excessDays);
-                }
-            } else {
-                var _excessDays2 = MathUtil.safeToInt(MathUtil.floorDiv(_hodVal, 24));
-                _hodVal = MathUtil.floorMod(_hodVal, 24);
-                this._addObject(LocalTime.of(_hodVal, 0));
-                this.excessDays = Period.ofDays(_excessDays2);
-            }
-        }
-        this.fieldValues.remove(ChronoField.HOUR_OF_DAY);
-        this.fieldValues.remove(ChronoField.MINUTE_OF_HOUR);
-        this.fieldValues.remove(ChronoField.SECOND_OF_MINUTE);
-        this.fieldValues.remove(ChronoField.NANO_OF_SECOND);
-    };
-    _proto._addObject = function _addObject(dateOrTime) {
-        if (dateOrTime instanceof ChronoLocalDate) this.date = dateOrTime;
-        else if (dateOrTime instanceof LocalTime) this.time = dateOrTime;
-    };
-    _proto._resolveInstant = function _resolveInstant() {
-        if (this.date != null && this.time != null) {
-            var offsetSecs = this.fieldValues.get(ChronoField.OFFSET_SECONDS);
-            if (offsetSecs != null) {
-                var offset = ZoneOffset.ofTotalSeconds(offsetSecs);
-                var instant = this.date.atTime(this.time).atZone(offset).getLong(ChronoField.INSTANT_SECONDS);
-                this.fieldValues.put(ChronoField.INSTANT_SECONDS, instant);
-            } else if (this.zone != null) {
-                var _instant = this.date.atTime(this.time).atZone(this.zone).getLong(ChronoField.INSTANT_SECONDS);
-                this.fieldValues.put(ChronoField.INSTANT_SECONDS, _instant);
-            }
-        }
-    };
-    _proto.build = function build(type) {
-        return type.queryFrom(this);
-    };
-    _proto.isSupported = function isSupported(field) {
-        if (field == null) return false;
-        return this.fieldValues.containsKey(field) && this.fieldValues.get(field) !== undefined || this.date != null && this.date.isSupported(field) || this.time != null && this.time.isSupported(field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        var value = this.getFieldValue0(field);
-        if (value == null) {
-            if (this.date != null && this.date.isSupported(field)) return this.date.getLong(field);
-            if (this.time != null && this.time.isSupported(field)) return this.time.getLong(field);
-            throw new DateTimeException("Field not found: " + field);
-        }
-        return value;
-    };
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.zoneId()) return this.zone;
-        else if (_query === TemporalQueries.chronology()) return this.chrono;
-        else if (_query === TemporalQueries.localDate()) return this.date != null ? LocalDate.from(this.date) : null;
-        else if (_query === TemporalQueries.localTime()) return this.time;
-        else if (_query === TemporalQueries.zone() || _query === TemporalQueries.offset()) return _query.queryFrom(this);
-        else if (_query === TemporalQueries.precision()) return null;
-        return _query.queryFrom(this);
-    };
-    return DateTimeBuilder;
-}(TemporalAccessor);
-var DateTimeParseContext = function() {
-    function DateTimeParseContext() {
-        if (arguments.length === 1) {
-            if (arguments[0] instanceof DateTimeParseContext) {
-                this._constructorSelf.apply(this, arguments);
-                return;
-            } else this._constructorFormatter.apply(this, arguments);
-        } else this._constructorParam.apply(this, arguments);
-        this._caseSensitive = true;
-        this._strict = true;
-        this._parsed = [
-            new Parsed(this)
-        ];
-    }
-    var _proto = DateTimeParseContext.prototype;
-    _proto._constructorParam = function _constructorParam(locale, symbols, chronology) {
-        this._locale = locale;
-        this._symbols = symbols;
-        this._overrideChronology = chronology;
-    };
-    _proto._constructorFormatter = function _constructorFormatter(formatter) {
-        this._locale = formatter.locale();
-        this._symbols = formatter.decimalStyle();
-        this._overrideChronology = formatter.chronology();
-    };
-    _proto._constructorSelf = function _constructorSelf(other) {
-        this._locale = other._locale;
-        this._symbols = other._symbols;
-        this._overrideChronology = other._overrideChronology;
-        this._overrideZone = other._overrideZone;
-        this._caseSensitive = other._caseSensitive;
-        this._strict = other._strict;
-        this._parsed = [
-            new Parsed(this)
-        ];
-    };
-    _proto.copy = function copy() {
-        return new DateTimeParseContext(this);
-    };
-    _proto.symbols = function symbols() {
-        return this._symbols;
-    };
-    _proto.isStrict = function isStrict() {
-        return this._strict;
-    };
-    _proto.setStrict = function setStrict(strict) {
-        this._strict = strict;
-    };
-    _proto.locale = function locale() {
-        return this._locale;
-    };
-    _proto.setLocale = function setLocale(locale) {
-        this._locale = locale;
-    };
-    _proto.startOptional = function startOptional() {
-        this._parsed.push(this.currentParsed().copy());
-    };
-    _proto.endOptional = function endOptional(successful) {
-        if (successful) this._parsed.splice(this._parsed.length - 2, 1);
-        else this._parsed.splice(this._parsed.length - 1, 1);
-    };
-    _proto.isCaseSensitive = function isCaseSensitive() {
-        return this._caseSensitive;
-    };
-    _proto.setCaseSensitive = function setCaseSensitive(caseSensitive) {
-        this._caseSensitive = caseSensitive;
-    };
-    _proto.subSequenceEquals = function subSequenceEquals(cs1, offset1, cs2, offset2, length) {
-        if (offset1 + length > cs1.length || offset2 + length > cs2.length) return false;
-        if (!this.isCaseSensitive()) {
-            cs1 = cs1.toLowerCase();
-            cs2 = cs2.toLowerCase();
-        }
-        for(var i = 0; i < length; i++){
-            var ch1 = cs1[offset1 + i];
-            var ch2 = cs2[offset2 + i];
-            if (ch1 !== ch2) return false;
-        }
-        return true;
-    };
-    _proto.charEquals = function charEquals(ch1, ch2) {
-        if (this.isCaseSensitive()) return ch1 === ch2;
-        return this.charEqualsIgnoreCase(ch1, ch2);
-    };
-    _proto.charEqualsIgnoreCase = function charEqualsIgnoreCase(c1, c2) {
-        return c1 === c2 || c1.toLowerCase() === c2.toLowerCase();
-    };
-    _proto.setParsedField = function setParsedField(field, value, errorPos, successPos) {
-        var currentParsedFieldValues = this.currentParsed().fieldValues;
-        var old = currentParsedFieldValues.get(field);
-        currentParsedFieldValues.set(field, value);
-        return old != null && old !== value ? ~errorPos : successPos;
-    };
-    _proto.setParsedZone = function setParsedZone(zone) {
-        requireNonNull(zone, 'zone');
-        this.currentParsed().zone = zone;
-    };
-    _proto.getParsed = function getParsed(field) {
-        return this.currentParsed().fieldValues.get(field);
-    };
-    _proto.toParsed = function toParsed() {
-        return this.currentParsed();
-    };
-    _proto.currentParsed = function currentParsed() {
-        return this._parsed[this._parsed.length - 1];
-    };
-    _proto.setParsedLeapSecond = function setParsedLeapSecond() {
-        this.currentParsed().leapSecond = true;
-    };
-    _proto.getEffectiveChronology = function getEffectiveChronology() {
-        var chrono = this.currentParsed().chrono;
-        if (chrono == null) {
-            chrono = this._overrideChronology;
-            if (chrono == null) chrono = IsoChronology.INSTANCE;
-        }
-        return chrono;
-    };
-    return DateTimeParseContext;
-}();
-var Parsed = function(_Temporal) {
-    _inheritsLoose(Parsed, _Temporal);
-    function Parsed(dateTimeParseContext) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        _this.chrono = null;
-        _this.zone = null;
-        _this.fieldValues = new EnumMap();
-        _this.leapSecond = false;
-        _this.dateTimeParseContext = dateTimeParseContext;
-        return _this;
-    }
-    var _proto2 = Parsed.prototype;
-    _proto2.copy = function copy() {
-        var cloned = new Parsed();
-        cloned.chrono = this.chrono;
-        cloned.zone = this.zone;
-        cloned.fieldValues.putAll(this.fieldValues);
-        cloned.leapSecond = this.leapSecond;
-        cloned.dateTimeParseContext = this.dateTimeParseContext;
-        return cloned;
-    };
-    _proto2.toString = function toString() {
-        return this.fieldValues + ", " + this.chrono + ", " + this.zone;
-    };
-    _proto2.isSupported = function isSupported(field) {
-        return this.fieldValues.containsKey(field);
-    };
-    _proto2.get = function get(field) {
-        var val = this.fieldValues.get(field);
-        assert(val != null);
-        return val;
-    };
-    _proto2.query = function query(_query) {
-        if (_query === TemporalQueries.chronology()) return this.chrono;
-        if (_query === TemporalQueries.zoneId() || _query === TemporalQueries.zone()) return this.zone;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto2.toBuilder = function toBuilder() {
-        var builder = new DateTimeBuilder();
-        builder.fieldValues.putAll(this.fieldValues);
-        builder.chrono = this.dateTimeParseContext.getEffectiveChronology();
-        if (this.zone != null) builder.zone = this.zone;
-        else builder.zone = this.overrideZone;
-        builder.leapSecond = this.leapSecond;
-        builder.excessDays = this.excessDays;
-        return builder;
-    };
-    return Parsed;
-}(Temporal);
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var DateTimePrintContext = function() {
-    function DateTimePrintContext(temporal, localeOrFormatter, symbols) {
-        if (arguments.length === 2 && arguments[1] instanceof DateTimeFormatter) {
-            this._temporal = DateTimePrintContext.adjust(temporal, localeOrFormatter);
-            this._locale = localeOrFormatter.locale();
-            this._symbols = localeOrFormatter.decimalStyle();
-        } else {
-            this._temporal = temporal;
-            this._locale = localeOrFormatter;
-            this._symbols = symbols;
-        }
-        this._optional = 0;
-    }
-    DateTimePrintContext.adjust = function adjust(temporal, formatter) {
-        return temporal;
-    };
-    var _proto = DateTimePrintContext.prototype;
-    _proto.symbols = function symbols() {
-        return this._symbols;
-    };
-    _proto.startOptional = function startOptional() {
-        this._optional++;
-    };
-    _proto.endOptional = function endOptional() {
-        this._optional--;
-    };
-    _proto.getValueQuery = function getValueQuery(query) {
-        var result = this._temporal.query(query);
-        if (result == null && this._optional === 0) throw new DateTimeException("Unable to extract value: " + this._temporal);
-        return result;
-    };
-    _proto.getValue = function getValue(field) {
-        try {
-            return this._temporal.getLong(field);
-        } catch (ex) {
-            if (ex instanceof DateTimeException && this._optional > 0) return null;
-            throw ex;
-        }
-    };
-    _proto.temporal = function temporal() {
-        return this._temporal;
-    };
-    _proto.locale = function locale() {
-        return this._locale;
-    };
-    _proto.setDateTime = function setDateTime(temporal) {
-        this._temporal = temporal;
-    };
-    _proto.setLocale = function setLocale(locale) {
-        this._locale = locale;
-    };
-    return DateTimePrintContext;
-}();
-var IsoFields = {};
-var QUARTER_DAYS = [
-    0,
-    90,
-    181,
-    273,
-    0,
-    91,
-    182,
-    274
-];
-var Field = function(_TemporalField) {
-    _inheritsLoose(Field, _TemporalField);
-    function Field() {
-        return _TemporalField.apply(this, arguments) || this;
-    }
-    var _proto = Field.prototype;
-    _proto.isDateBased = function isDateBased() {
-        return true;
-    };
-    _proto.isTimeBased = function isTimeBased() {
-        return false;
-    };
-    _proto._isIso = function _isIso() {
-        return true;
-    };
-    Field._getWeekRangeByLocalDate = function _getWeekRangeByLocalDate(date) {
-        var wby = Field._getWeekBasedYear(date);
-        return ValueRange.of(1, Field._getWeekRangeByYear(wby));
-    };
-    Field._getWeekRangeByYear = function _getWeekRangeByYear(wby) {
-        var date = LocalDate.of(wby, 1, 1);
-        if (date.dayOfWeek() === DayOfWeek.THURSDAY || date.dayOfWeek() === DayOfWeek.WEDNESDAY && date.isLeapYear()) return 53;
-        return 52;
-    };
-    Field._getWeek = function _getWeek(date) {
-        var dow0 = date.dayOfWeek().ordinal();
-        var doy0 = date.dayOfYear() - 1;
-        var doyThu0 = doy0 + (3 - dow0);
-        var alignedWeek = MathUtil.intDiv(doyThu0, 7);
-        var firstThuDoy0 = doyThu0 - alignedWeek * 7;
-        var firstMonDoy0 = firstThuDoy0 - 3;
-        if (firstMonDoy0 < -3) firstMonDoy0 += 7;
-        if (doy0 < firstMonDoy0) return Field._getWeekRangeByLocalDate(date.withDayOfYear(180).minusYears(1)).maximum();
-        var week = MathUtil.intDiv(doy0 - firstMonDoy0, 7) + 1;
-        if (week === 53) {
-            if ((firstMonDoy0 === -3 || firstMonDoy0 === -2 && date.isLeapYear()) === false) week = 1;
-        }
-        return week;
-    };
-    Field._getWeekBasedYear = function _getWeekBasedYear(date) {
-        var year = date.year();
-        var doy = date.dayOfYear();
-        if (doy <= 3) {
-            var dow = date.dayOfWeek().ordinal();
-            if (doy - dow < -2) year--;
-        } else if (doy >= 363) {
-            var _dow = date.dayOfWeek().ordinal();
-            doy = doy - 363 - (date.isLeapYear() ? 1 : 0);
-            if (doy - _dow >= 0) year++;
-        }
-        return year;
-    };
-    _proto.displayName = function displayName() {
-        return this.toString();
-    };
-    _proto.resolve = function resolve() {
-        return null;
-    };
-    _proto.name = function name() {
-        return this.toString();
-    };
-    return Field;
-}(TemporalField);
-var DAY_OF_QUARTER_FIELD = function(_Field) {
-    _inheritsLoose(DAY_OF_QUARTER_FIELD, _Field);
-    function DAY_OF_QUARTER_FIELD() {
-        return _Field.apply(this, arguments) || this;
-    }
-    var _proto2 = DAY_OF_QUARTER_FIELD.prototype;
-    _proto2.toString = function toString() {
-        return 'DayOfQuarter';
-    };
-    _proto2.baseUnit = function baseUnit() {
-        return ChronoUnit.DAYS;
-    };
-    _proto2.rangeUnit = function rangeUnit() {
-        return QUARTER_YEARS;
-    };
-    _proto2.range = function range() {
-        return ValueRange.of(1, 90, 92);
-    };
-    _proto2.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(ChronoField.DAY_OF_YEAR) && temporal.isSupported(ChronoField.MONTH_OF_YEAR) && temporal.isSupported(ChronoField.YEAR) && this._isIso(temporal);
-    };
-    _proto2.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: DayOfQuarter');
-        var qoy = temporal.getLong(QUARTER_OF_YEAR);
-        if (qoy === 1) {
-            var year = temporal.getLong(ChronoField.YEAR);
-            return IsoChronology.isLeapYear(year) ? ValueRange.of(1, 91) : ValueRange.of(1, 90);
-        } else if (qoy === 2) return ValueRange.of(1, 91);
-        else if (qoy === 3 || qoy === 4) return ValueRange.of(1, 92);
-        return this.range();
-    };
-    _proto2.getFrom = function getFrom(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: DayOfQuarter');
-        var doy = temporal.get(ChronoField.DAY_OF_YEAR);
-        var moy = temporal.get(ChronoField.MONTH_OF_YEAR);
-        var year = temporal.getLong(ChronoField.YEAR);
-        return doy - QUARTER_DAYS[MathUtil.intDiv(moy - 1, 3) + (IsoChronology.isLeapYear(year) ? 4 : 0)];
-    };
-    _proto2.adjustInto = function adjustInto(temporal, newValue) {
-        var curValue = this.getFrom(temporal);
-        this.range().checkValidValue(newValue, this);
-        return temporal.with(ChronoField.DAY_OF_YEAR, temporal.getLong(ChronoField.DAY_OF_YEAR) + (newValue - curValue));
-    };
-    _proto2.resolve = function resolve(fieldValues, partialTemporal, resolverStyle) {
-        var yearLong = fieldValues.get(ChronoField.YEAR);
-        var qoyLong = fieldValues.get(QUARTER_OF_YEAR);
-        if (yearLong == null || qoyLong == null) return null;
-        var y = ChronoField.YEAR.checkValidIntValue(yearLong);
-        var doq = fieldValues.get(DAY_OF_QUARTER);
-        var date;
-        if (resolverStyle === ResolverStyle.LENIENT) {
-            var qoy = qoyLong;
-            date = LocalDate.of(y, 1, 1);
-            date = date.plusMonths(MathUtil.safeMultiply(MathUtil.safeSubtract(qoy, 1), 3));
-            date = date.plusDays(MathUtil.safeSubtract(doq, 1));
-        } else {
-            var _qoy = QUARTER_OF_YEAR.range().checkValidIntValue(qoyLong, QUARTER_OF_YEAR);
-            if (resolverStyle === ResolverStyle.STRICT) {
-                var max = 92;
-                if (_qoy === 1) max = IsoChronology.isLeapYear(y) ? 91 : 90;
-                else if (_qoy === 2) max = 91;
-                ValueRange.of(1, max).checkValidValue(doq, this);
-            } else this.range().checkValidValue(doq, this);
-            date = LocalDate.of(y, (_qoy - 1) * 3 + 1, 1).plusDays(doq - 1);
-        }
-        fieldValues.remove(this);
-        fieldValues.remove(ChronoField.YEAR);
-        fieldValues.remove(QUARTER_OF_YEAR);
-        return date;
-    };
-    return DAY_OF_QUARTER_FIELD;
-}(Field);
-var QUARTER_OF_YEAR_FIELD = function(_Field2) {
-    _inheritsLoose(QUARTER_OF_YEAR_FIELD, _Field2);
-    function QUARTER_OF_YEAR_FIELD() {
-        return _Field2.apply(this, arguments) || this;
-    }
-    var _proto3 = QUARTER_OF_YEAR_FIELD.prototype;
-    _proto3.toString = function toString() {
-        return 'QuarterOfYear';
-    };
-    _proto3.baseUnit = function baseUnit() {
-        return QUARTER_YEARS;
-    };
-    _proto3.rangeUnit = function rangeUnit() {
-        return ChronoUnit.YEARS;
-    };
-    _proto3.range = function range() {
-        return ValueRange.of(1, 4);
-    };
-    _proto3.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(ChronoField.MONTH_OF_YEAR) && this._isIso(temporal);
-    };
-    _proto3.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        return this.range();
-    };
-    _proto3.getFrom = function getFrom(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: QuarterOfYear');
-        var moy = temporal.getLong(ChronoField.MONTH_OF_YEAR);
-        return MathUtil.intDiv(moy + 2, 3);
-    };
-    _proto3.adjustInto = function adjustInto(temporal, newValue) {
-        var curValue = this.getFrom(temporal);
-        this.range().checkValidValue(newValue, this);
-        return temporal.with(ChronoField.MONTH_OF_YEAR, temporal.getLong(ChronoField.MONTH_OF_YEAR) + (newValue - curValue) * 3);
-    };
-    return QUARTER_OF_YEAR_FIELD;
-}(Field);
-var WEEK_OF_WEEK_BASED_YEAR_FIELD = function(_Field3) {
-    _inheritsLoose(WEEK_OF_WEEK_BASED_YEAR_FIELD, _Field3);
-    function WEEK_OF_WEEK_BASED_YEAR_FIELD() {
-        return _Field3.apply(this, arguments) || this;
-    }
-    var _proto4 = WEEK_OF_WEEK_BASED_YEAR_FIELD.prototype;
-    _proto4.toString = function toString() {
-        return 'WeekOfWeekBasedYear';
-    };
-    _proto4.baseUnit = function baseUnit() {
-        return ChronoUnit.WEEKS;
-    };
-    _proto4.rangeUnit = function rangeUnit() {
-        return WEEK_BASED_YEARS;
-    };
-    _proto4.range = function range() {
-        return ValueRange.of(1, 52, 53);
-    };
-    _proto4.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(ChronoField.EPOCH_DAY) && this._isIso(temporal);
-    };
-    _proto4.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: WeekOfWeekBasedYear');
-        return Field._getWeekRangeByLocalDate(LocalDate.from(temporal));
-    };
-    _proto4.getFrom = function getFrom(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: WeekOfWeekBasedYear');
-        return Field._getWeek(LocalDate.from(temporal));
-    };
-    _proto4.adjustInto = function adjustInto(temporal, newValue) {
-        this.range().checkValidValue(newValue, this);
-        return temporal.plus(MathUtil.safeSubtract(newValue, this.getFrom(temporal)), ChronoUnit.WEEKS);
-    };
-    _proto4.resolve = function resolve(fieldValues, partialTemporal, resolverStyle) {
-        var wbyLong = fieldValues.get(WEEK_BASED_YEAR);
-        var dowLong = fieldValues.get(ChronoField.DAY_OF_WEEK);
-        if (wbyLong == null || dowLong == null) return null;
-        var wby = WEEK_BASED_YEAR.range().checkValidIntValue(wbyLong, WEEK_BASED_YEAR);
-        var wowby = fieldValues.get(WEEK_OF_WEEK_BASED_YEAR);
-        var date;
-        if (resolverStyle === ResolverStyle.LENIENT) {
-            var dow = dowLong;
-            var weeks = 0;
-            if (dow > 7) {
-                weeks = MathUtil.intDiv(dow - 1, 7);
-                dow = MathUtil.intMod(dow - 1, 7) + 1;
-            } else if (dow < 1) {
-                weeks = MathUtil.intDiv(dow, 7) - 1;
-                dow = MathUtil.intMod(dow, 7) + 7;
-            }
-            date = LocalDate.of(wby, 1, 4).plusWeeks(wowby - 1).plusWeeks(weeks).with(ChronoField.DAY_OF_WEEK, dow);
-        } else {
-            var _dow2 = ChronoField.DAY_OF_WEEK.checkValidIntValue(dowLong);
-            if (resolverStyle === ResolverStyle.STRICT) {
-                var temp = LocalDate.of(wby, 1, 4);
-                var range = Field._getWeekRangeByLocalDate(temp);
-                range.checkValidValue(wowby, this);
-            } else this.range().checkValidValue(wowby, this);
-            date = LocalDate.of(wby, 1, 4).plusWeeks(wowby - 1).with(ChronoField.DAY_OF_WEEK, _dow2);
-        }
-        fieldValues.remove(this);
-        fieldValues.remove(WEEK_BASED_YEAR);
-        fieldValues.remove(ChronoField.DAY_OF_WEEK);
-        return date;
-    };
-    _proto4.displayName = function displayName() {
-        return 'Week';
-    };
-    return WEEK_OF_WEEK_BASED_YEAR_FIELD;
-}(Field);
-var WEEK_BASED_YEAR_FIELD = function(_Field4) {
-    _inheritsLoose(WEEK_BASED_YEAR_FIELD, _Field4);
-    function WEEK_BASED_YEAR_FIELD() {
-        return _Field4.apply(this, arguments) || this;
-    }
-    var _proto5 = WEEK_BASED_YEAR_FIELD.prototype;
-    _proto5.toString = function toString() {
-        return 'WeekBasedYear';
-    };
-    _proto5.baseUnit = function baseUnit() {
-        return WEEK_BASED_YEARS;
-    };
-    _proto5.rangeUnit = function rangeUnit() {
-        return ChronoUnit.FOREVER;
-    };
-    _proto5.range = function range() {
-        return ChronoField.YEAR.range();
-    };
-    _proto5.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(ChronoField.EPOCH_DAY) && this._isIso(temporal);
-    };
-    _proto5.rangeRefinedBy = function rangeRefinedBy(temporal) {
-        return ChronoField.YEAR.range();
-    };
-    _proto5.getFrom = function getFrom(temporal) {
-        if (temporal.isSupported(this) === false) throw new UnsupportedTemporalTypeException('Unsupported field: WeekBasedYear');
-        return Field._getWeekBasedYear(LocalDate.from(temporal));
-    };
-    _proto5.adjustInto = function adjustInto(temporal, newValue) {
-        if (this.isSupportedBy(temporal) === false) throw new UnsupportedTemporalTypeException('Unsupported field: WeekBasedYear');
-        var newWby = this.range().checkValidIntValue(newValue, WEEK_BASED_YEAR);
-        var date = LocalDate.from(temporal);
-        var dow = date.get(ChronoField.DAY_OF_WEEK);
-        var week = Field._getWeek(date);
-        if (week === 53 && Field._getWeekRangeByYear(newWby) === 52) week = 52;
-        var resolved = LocalDate.of(newWby, 1, 4);
-        var days = dow - resolved.get(ChronoField.DAY_OF_WEEK) + (week - 1) * 7;
-        resolved = resolved.plusDays(days);
-        return temporal.with(resolved);
-    };
-    return WEEK_BASED_YEAR_FIELD;
-}(Field);
-var Unit = function(_TemporalUnit) {
-    _inheritsLoose(Unit, _TemporalUnit);
-    function Unit(name, estimatedDuration) {
-        var _this;
-        _this = _TemporalUnit.call(this) || this;
-        _this._name = name;
-        _this._duration = estimatedDuration;
-        return _this;
-    }
-    var _proto6 = Unit.prototype;
-    _proto6.duration = function duration() {
-        return this._duration;
-    };
-    _proto6.isDurationEstimated = function isDurationEstimated() {
-        return true;
-    };
-    _proto6.isDateBased = function isDateBased() {
-        return true;
-    };
-    _proto6.isTimeBased = function isTimeBased() {
-        return false;
-    };
-    _proto6.isSupportedBy = function isSupportedBy(temporal) {
-        return temporal.isSupported(ChronoField.EPOCH_DAY);
-    };
-    _proto6.addTo = function addTo(temporal, periodToAdd) {
-        switch(this){
-            case WEEK_BASED_YEARS:
-                var added = MathUtil.safeAdd(temporal.get(WEEK_BASED_YEAR), periodToAdd);
-                return temporal.with(WEEK_BASED_YEAR, added);
-            case QUARTER_YEARS:
-                return temporal.plus(MathUtil.intDiv(periodToAdd, 256), ChronoUnit.YEARS).plus(MathUtil.intMod(periodToAdd, 256) * 3, ChronoUnit.MONTHS);
-            default:
-                throw new IllegalStateException('Unreachable');
-        }
-    };
-    _proto6.between = function between(temporal1, temporal2) {
-        switch(this){
-            case WEEK_BASED_YEARS:
-                return MathUtil.safeSubtract(temporal2.getLong(WEEK_BASED_YEAR), temporal1.getLong(WEEK_BASED_YEAR));
-            case QUARTER_YEARS:
-                return MathUtil.intDiv(temporal1.until(temporal2, ChronoUnit.MONTHS), 3);
-            default:
-                throw new IllegalStateException('Unreachable');
-        }
-    };
-    _proto6.toString = function toString() {
-        return this._name;
-    };
-    return Unit;
-}(TemporalUnit);
-var DAY_OF_QUARTER = null;
-var QUARTER_OF_YEAR = null;
-var WEEK_OF_WEEK_BASED_YEAR = null;
-var WEEK_BASED_YEAR = null;
-var WEEK_BASED_YEARS = null;
-var QUARTER_YEARS = null;
-function _init$f() {
-    DAY_OF_QUARTER = new DAY_OF_QUARTER_FIELD();
-    QUARTER_OF_YEAR = new QUARTER_OF_YEAR_FIELD();
-    WEEK_OF_WEEK_BASED_YEAR = new WEEK_OF_WEEK_BASED_YEAR_FIELD();
-    WEEK_BASED_YEAR = new WEEK_BASED_YEAR_FIELD();
-    WEEK_BASED_YEARS = new Unit('WeekBasedYears', Duration.ofSeconds(31556952));
-    QUARTER_YEARS = new Unit('QuarterYears', Duration.ofSeconds(7889238));
-    IsoFields.DAY_OF_QUARTER = DAY_OF_QUARTER;
-    IsoFields.QUARTER_OF_YEAR = QUARTER_OF_YEAR;
-    IsoFields.WEEK_OF_WEEK_BASED_YEAR = WEEK_OF_WEEK_BASED_YEAR;
-    IsoFields.WEEK_BASED_YEAR = WEEK_BASED_YEAR;
-    IsoFields.WEEK_BASED_YEARS = WEEK_BASED_YEARS;
-    IsoFields.QUARTER_YEARS = QUARTER_YEARS;
-    LocalDate.prototype.isoWeekOfWeekyear = function() {
-        return this.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
-    };
-    LocalDate.prototype.isoWeekyear = function() {
-        return this.get(IsoFields.WEEK_BASED_YEAR);
-    };
-}
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var DecimalStyle = function() {
-    function DecimalStyle(zeroChar, positiveSignChar, negativeSignChar, decimalPointChar) {
-        this._zeroDigit = zeroChar;
-        this._zeroDigitCharCode = zeroChar.charCodeAt(0);
-        this._positiveSign = positiveSignChar;
-        this._negativeSign = negativeSignChar;
-        this._decimalSeparator = decimalPointChar;
-    }
-    var _proto = DecimalStyle.prototype;
-    _proto.positiveSign = function positiveSign() {
-        return this._positiveSign;
-    };
-    _proto.withPositiveSign = function withPositiveSign(positiveSign) {
-        if (positiveSign === this._positiveSign) return this;
-        return new DecimalStyle(this._zeroDigit, positiveSign, this._negativeSign, this._decimalSeparator);
-    };
-    _proto.negativeSign = function negativeSign() {
-        return this._negativeSign;
-    };
-    _proto.withNegativeSign = function withNegativeSign(negativeSign) {
-        if (negativeSign === this._negativeSign) return this;
-        return new DecimalStyle(this._zeroDigit, this._positiveSign, negativeSign, this._decimalSeparator);
-    };
-    _proto.zeroDigit = function zeroDigit() {
-        return this._zeroDigit;
-    };
-    _proto.withZeroDigit = function withZeroDigit(zeroDigit) {
-        if (zeroDigit === this._zeroDigit) return this;
-        return new DecimalStyle(zeroDigit, this._positiveSign, this._negativeSign, this._decimalSeparator);
-    };
-    _proto.decimalSeparator = function decimalSeparator() {
-        return this._decimalSeparator;
-    };
-    _proto.withDecimalSeparator = function withDecimalSeparator(decimalSeparator) {
-        if (decimalSeparator === this._decimalSeparator) return this;
-        return new DecimalStyle(this._zeroDigit, this._positiveSign, this._negativeSign, decimalSeparator);
-    };
-    _proto.convertToDigit = function convertToDigit(char) {
-        var val = char.charCodeAt(0) - this._zeroDigitCharCode;
-        return val >= 0 && val <= 9 ? val : -1;
-    };
-    _proto.convertNumberToI18N = function convertNumberToI18N(numericText) {
-        if (this._zeroDigit === '0') return numericText;
-        var diff = this._zeroDigitCharCode - '0'.charCodeAt(0);
-        var convertedText = '';
-        for(var i = 0; i < numericText.length; i++)convertedText += String.fromCharCode(numericText.charCodeAt(i) + diff);
-        return convertedText;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof DecimalStyle) return this._zeroDigit === other._zeroDigit && this._positiveSign === other._positiveSign && this._negativeSign === other._negativeSign && this._decimalSeparator === other._decimalSeparator;
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._zeroDigit + this._positiveSign + this._negativeSign + this._decimalSeparator;
-    };
-    _proto.toString = function toString() {
-        return "DecimalStyle[" + this._zeroDigit + this._positiveSign + this._negativeSign + this._decimalSeparator + "]";
-    };
-    DecimalStyle.of = function of() {
-        throw new Error('not yet supported');
-    };
-    DecimalStyle.availableLocales = function availableLocales() {
-        throw new Error('not yet supported');
-    };
-    return DecimalStyle;
-}();
-DecimalStyle.STANDARD = new DecimalStyle('0', '+', '-', '.');
-var SignStyle = function(_Enum) {
-    _inheritsLoose(SignStyle, _Enum);
-    function SignStyle() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    var _proto = SignStyle.prototype;
-    _proto.parse = function parse(positive, strict, fixedWidth) {
-        switch(this){
-            case SignStyle.NORMAL:
-                return !positive || !strict;
-            case SignStyle.ALWAYS:
-            case SignStyle.EXCEEDS_PAD:
-                return true;
-            default:
-                return !strict && !fixedWidth;
-        }
-    };
-    return SignStyle;
-}(Enum);
-SignStyle.NORMAL = new SignStyle('NORMAL');
-SignStyle.NEVER = new SignStyle('NEVER');
-SignStyle.ALWAYS = new SignStyle('ALWAYS');
-SignStyle.EXCEEDS_PAD = new SignStyle('EXCEEDS_PAD');
-SignStyle.NOT_NEGATIVE = new SignStyle('NOT_NEGATIVE');
-var TextStyle = function(_Enum) {
-    _inheritsLoose(TextStyle, _Enum);
-    function TextStyle() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    var _proto = TextStyle.prototype;
-    _proto.isStandalone = function isStandalone() {
-        switch(this){
-            case TextStyle.FULL_STANDALONE:
-            case TextStyle.SHORT_STANDALONE:
-            case TextStyle.NARROW_STANDALONE:
-                return true;
-            default:
-                return false;
-        }
-    };
-    _proto.asStandalone = function asStandalone() {
-        switch(this){
-            case TextStyle.FULL:
-                return TextStyle.FULL_STANDALONE;
-            case TextStyle.SHORT:
-                return TextStyle.SHORT_STANDALONE;
-            case TextStyle.NARROW:
-                return TextStyle.NARROW_STANDALONE;
-            default:
-                return this;
-        }
-    };
-    _proto.asNormal = function asNormal() {
-        switch(this){
-            case TextStyle.FULL_STANDALONE:
-                return TextStyle.FULL;
-            case TextStyle.SHORT_STANDALONE:
-                return TextStyle.SHORT;
-            case TextStyle.NARROW_STANDALONE:
-                return TextStyle.NARROW;
-            default:
-                return this;
-        }
-    };
-    return TextStyle;
-}(Enum);
-TextStyle.FULL = new TextStyle('FULL');
-TextStyle.FULL_STANDALONE = new TextStyle('FULL_STANDALONE');
-TextStyle.SHORT = new TextStyle('SHORT');
-TextStyle.SHORT_STANDALONE = new TextStyle('SHORT_STANDALONE');
-TextStyle.NARROW = new TextStyle('NARROW');
-TextStyle.NARROW_STANDALONE = new TextStyle('NARROW_STANDALONE');
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var CharLiteralPrinterParser = function() {
-    function CharLiteralPrinterParser(literal) {
-        if (literal.length > 1) throw new IllegalArgumentException("invalid literal, too long: \"" + literal + "\"");
-        this._literal = literal;
-    }
-    var _proto = CharLiteralPrinterParser.prototype;
-    _proto.print = function print(context, buf) {
-        buf.append(this._literal);
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var length = text.length;
-        if (position === length) return ~position;
-        var ch = text.charAt(position);
-        if (context.charEquals(this._literal, ch) === false) return ~position;
-        return position + this._literal.length;
-    };
-    _proto.toString = function toString() {
-        if (this._literal === '\'') return "''";
-        return "'" + this._literal + "'";
-    };
-    return CharLiteralPrinterParser;
-}();
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var CompositePrinterParser = function() {
-    function CompositePrinterParser(printerParsers, optional) {
-        this._printerParsers = printerParsers;
-        this._optional = optional;
-    }
-    var _proto = CompositePrinterParser.prototype;
-    _proto.withOptional = function withOptional(optional) {
-        if (optional === this._optional) return this;
-        return new CompositePrinterParser(this._printerParsers, optional);
-    };
-    _proto.print = function print(context, buf) {
-        var length = buf.length();
-        if (this._optional) context.startOptional();
-        try {
-            for(var i = 0; i < this._printerParsers.length; i++){
-                var pp = this._printerParsers[i];
-                if (pp.print(context, buf) === false) {
-                    buf.setLength(length);
-                    return true;
-                }
-            }
-        } finally{
-            if (this._optional) context.endOptional();
-        }
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        if (this._optional) {
-            context.startOptional();
-            var pos = position;
-            for(var i = 0; i < this._printerParsers.length; i++){
-                var pp = this._printerParsers[i];
-                pos = pp.parse(context, text, pos);
-                if (pos < 0) {
-                    context.endOptional(false);
-                    return position;
-                }
-            }
-            context.endOptional(true);
-            return pos;
-        } else {
-            for(var _i = 0; _i < this._printerParsers.length; _i++){
-                var _pp = this._printerParsers[_i];
-                position = _pp.parse(context, text, position);
-                if (position < 0) break;
-            }
-            return position;
-        }
-    };
-    _proto.toString = function toString() {
-        var buf = '';
-        if (this._printerParsers != null) {
-            buf += this._optional ? '[' : '(';
-            for(var i = 0; i < this._printerParsers.length; i++){
-                var pp = this._printerParsers[i];
-                buf += pp.toString();
-            }
-            buf += this._optional ? ']' : ')';
-        }
-        return buf;
-    };
-    return CompositePrinterParser;
-}();
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var FractionPrinterParser = function() {
-    function FractionPrinterParser(field, minWidth, maxWidth, decimalPoint) {
-        requireNonNull(field, 'field');
-        if (field.range().isFixed() === false) throw new IllegalArgumentException("Field must have a fixed set of values: " + field);
-        if (minWidth < 0 || minWidth > 9) throw new IllegalArgumentException("Minimum width must be from 0 to 9 inclusive but was " + minWidth);
-        if (maxWidth < 1 || maxWidth > 9) throw new IllegalArgumentException("Maximum width must be from 1 to 9 inclusive but was " + maxWidth);
-        if (maxWidth < minWidth) throw new IllegalArgumentException("Maximum width must exceed or equal the minimum width but " + maxWidth + " < " + minWidth);
-        this.field = field;
-        this.minWidth = minWidth;
-        this.maxWidth = maxWidth;
-        this.decimalPoint = decimalPoint;
-    }
-    var _proto = FractionPrinterParser.prototype;
-    _proto.print = function print(context, buf) {
-        var value = context.getValue(this.field);
-        if (value === null) return false;
-        var symbols = context.symbols();
-        if (value === 0) {
-            if (this.minWidth > 0) {
-                if (this.decimalPoint) buf.append(symbols.decimalSeparator());
-                for(var i = 0; i < this.minWidth; i++)buf.append(symbols.zeroDigit());
-            }
-        } else {
-            var fraction = this.convertToFraction(value, symbols.zeroDigit());
-            var outputScale = Math.min(Math.max(fraction.length, this.minWidth), this.maxWidth);
-            fraction = fraction.substr(0, outputScale);
-            if (fraction * 1 > 0) while(fraction.length > this.minWidth && fraction[fraction.length - 1] === '0')fraction = fraction.substr(0, fraction.length - 1);
-            var str = fraction;
-            str = symbols.convertNumberToI18N(str);
-            if (this.decimalPoint) buf.append(symbols.decimalSeparator());
-            buf.append(str);
-        }
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var effectiveMin = context.isStrict() ? this.minWidth : 0;
-        var effectiveMax = context.isStrict() ? this.maxWidth : 9;
-        var length = text.length;
-        if (position === length) return effectiveMin > 0 ? ~position : position;
-        if (this.decimalPoint) {
-            if (text[position] !== context.symbols().decimalSeparator()) return effectiveMin > 0 ? ~position : position;
-            position++;
-        }
-        var minEndPos = position + effectiveMin;
-        if (minEndPos > length) return ~position;
-        var maxEndPos = Math.min(position + effectiveMax, length);
-        var total = 0;
-        var pos = position;
-        while(pos < maxEndPos){
-            var ch = text.charAt(pos++);
-            var digit = context.symbols().convertToDigit(ch);
-            if (digit < 0) {
-                if (pos < minEndPos) return ~position;
-                pos--;
-                break;
-            }
-            total = total * 10 + digit;
-        }
-        var moveLeft = pos - position;
-        var scale = Math.pow(10, moveLeft);
-        var value = this.convertFromFraction(total, scale);
-        return context.setParsedField(this.field, value, position, pos);
-    };
-    _proto.convertToFraction = function convertToFraction(value, zeroDigit) {
-        var range = this.field.range();
-        range.checkValidValue(value, this.field);
-        var _min = range.minimum();
-        var _range = range.maximum() - _min + 1;
-        var _value = value - _min;
-        var _scaled = MathUtil.intDiv(_value * 1000000000, _range);
-        var fraction = "" + _scaled;
-        while(fraction.length < 9)fraction = zeroDigit + fraction;
-        return fraction;
-    };
-    _proto.convertFromFraction = function convertFromFraction(total, scale) {
-        var range = this.field.range();
-        var _min = range.minimum();
-        var _range = range.maximum() - _min + 1;
-        var _value = MathUtil.intDiv(total * _range, scale);
-        return _value;
-    };
-    _proto.toString = function toString() {
-        var decimal = this.decimalPoint ? ',DecimalPoint' : '';
-        return "Fraction(" + this.field + "," + this.minWidth + "," + this.maxWidth + decimal + ")";
-    };
-    return FractionPrinterParser;
-}();
-var MAX_WIDTH$1 = 15;
-var EXCEED_POINTS = [
-    0,
-    10,
-    100,
-    1000,
-    10000,
-    100000,
-    1000000,
-    10000000,
-    100000000,
-    1000000000
-];
-var NumberPrinterParser = function() {
-    function NumberPrinterParser(field, minWidth, maxWidth, signStyle, subsequentWidth) {
-        if (subsequentWidth === void 0) subsequentWidth = 0;
-        this._field = field;
-        this._minWidth = minWidth;
-        this._maxWidth = maxWidth;
-        this._signStyle = signStyle;
-        this._subsequentWidth = subsequentWidth;
-    }
-    var _proto = NumberPrinterParser.prototype;
-    _proto.field = function field() {
-        return this._field;
-    };
-    _proto.minWidth = function minWidth() {
-        return this._minWidth;
-    };
-    _proto.maxWidth = function maxWidth() {
-        return this._maxWidth;
-    };
-    _proto.signStyle = function signStyle() {
-        return this._signStyle;
-    };
-    _proto.withFixedWidth = function withFixedWidth() {
-        if (this._subsequentWidth === -1) return this;
-        return new NumberPrinterParser(this._field, this._minWidth, this._maxWidth, this._signStyle, -1);
-    };
-    _proto.withSubsequentWidth = function withSubsequentWidth(subsequentWidth) {
-        return new NumberPrinterParser(this._field, this._minWidth, this._maxWidth, this._signStyle, this._subsequentWidth + subsequentWidth);
-    };
-    _proto._isFixedWidth = function _isFixedWidth() {
-        return this._subsequentWidth === -1 || this._subsequentWidth > 0 && this._minWidth === this._maxWidth && this._signStyle === SignStyle.NOT_NEGATIVE;
-    };
-    _proto.print = function print(context, buf) {
-        var contextValue = context.getValue(this._field);
-        if (contextValue == null) return false;
-        var value = this._getValue(context, contextValue);
-        var symbols = context.symbols();
-        var str = "" + Math.abs(value);
-        if (str.length > this._maxWidth) throw new DateTimeException("Field " + this._field + " cannot be printed as the value " + value + " exceeds the maximum print width of " + this._maxWidth);
-        str = symbols.convertNumberToI18N(str);
-        if (value >= 0) switch(this._signStyle){
-            case SignStyle.EXCEEDS_PAD:
-                if (this._minWidth < MAX_WIDTH$1 && value >= EXCEED_POINTS[this._minWidth]) buf.append(symbols.positiveSign());
-                break;
-            case SignStyle.ALWAYS:
-                buf.append(symbols.positiveSign());
-                break;
-        }
-        else switch(this._signStyle){
-            case SignStyle.NORMAL:
-            case SignStyle.EXCEEDS_PAD:
-            case SignStyle.ALWAYS:
-                buf.append(symbols.negativeSign());
-                break;
-            case SignStyle.NOT_NEGATIVE:
-                throw new DateTimeException("Field " + this._field + " cannot be printed as the value " + value + " cannot be negative according to the SignStyle");
-        }
-        for(var i = 0; i < this._minWidth - str.length; i++)buf.append(symbols.zeroDigit());
-        buf.append(str);
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var length = text.length;
-        if (position === length) return ~position;
-        assert(position >= 0 && position < length);
-        var sign = text.charAt(position);
-        var negative = false;
-        var positive = false;
-        if (sign === context.symbols().positiveSign()) {
-            if (this._signStyle.parse(true, context.isStrict(), this._minWidth === this._maxWidth) === false) return ~position;
-            positive = true;
-            position++;
-        } else if (sign === context.symbols().negativeSign()) {
-            if (this._signStyle.parse(false, context.isStrict(), this._minWidth === this._maxWidth) === false) return ~position;
-            negative = true;
-            position++;
-        } else {
-            if (this._signStyle === SignStyle.ALWAYS && context.isStrict()) return ~position;
-        }
-        var effMinWidth = context.isStrict() || this._isFixedWidth() ? this._minWidth : 1;
-        var minEndPos = position + effMinWidth;
-        if (minEndPos > length) return ~position;
-        var effMaxWidth = (context.isStrict() || this._isFixedWidth() ? this._maxWidth : 9) + Math.max(this._subsequentWidth, 0);
-        var total = 0;
-        var pos = position;
-        for(var pass = 0; pass < 2; pass++){
-            var maxEndPos = Math.min(pos + effMaxWidth, length);
-            while(pos < maxEndPos){
-                var ch = text.charAt(pos++);
-                var digit = context.symbols().convertToDigit(ch);
-                if (digit < 0) {
-                    pos--;
-                    if (pos < minEndPos) return ~position;
-                    break;
-                }
-                if (pos - position > MAX_WIDTH$1) throw new ArithmeticException('number text exceeds length');
-                else total = total * 10 + digit;
-            }
-            if (this._subsequentWidth > 0 && pass === 0) {
-                var parseLen = pos - position;
-                effMaxWidth = Math.max(effMinWidth, parseLen - this._subsequentWidth);
-                pos = position;
-                total = 0;
-            } else break;
-        }
-        if (negative) {
-            if (total === 0 && context.isStrict()) return ~(position - 1);
-            if (total !== 0) total = -total;
-        } else if (this._signStyle === SignStyle.EXCEEDS_PAD && context.isStrict()) {
-            var _parseLen = pos - position;
-            if (positive) {
-                if (_parseLen <= this._minWidth) return ~(position - 1);
-            } else {
-                if (_parseLen > this._minWidth) return ~position;
-            }
-        }
-        return this._setValue(context, total, position, pos);
-    };
-    _proto._getValue = function _getValue(context, value) {
-        return value;
-    };
-    _proto._setValue = function _setValue(context, value, errorPos, successPos) {
-        return context.setParsedField(this._field, value, errorPos, successPos);
-    };
-    _proto.toString = function toString() {
-        if (this._minWidth === 1 && this._maxWidth === MAX_WIDTH$1 && this._signStyle === SignStyle.NORMAL) return "Value(" + this._field + ")";
-        if (this._minWidth === this._maxWidth && this._signStyle === SignStyle.NOT_NEGATIVE) return "Value(" + this._field + "," + this._minWidth + ")";
-        return "Value(" + this._field + "," + this._minWidth + "," + this._maxWidth + "," + this._signStyle + ")";
-    };
-    return NumberPrinterParser;
-}();
-var ReducedPrinterParser = function(_NumberPrinterParser) {
-    _inheritsLoose(ReducedPrinterParser, _NumberPrinterParser);
-    function ReducedPrinterParser(field, width, maxWidth, baseValue, baseDate) {
-        var _this;
-        _this = _NumberPrinterParser.call(this, field, width, maxWidth, SignStyle.NOT_NEGATIVE) || this;
-        if (width < 1 || width > 10) throw new IllegalArgumentException("The width must be from 1 to 10 inclusive but was " + width);
-        if (maxWidth < 1 || maxWidth > 10) throw new IllegalArgumentException("The maxWidth must be from 1 to 10 inclusive but was " + maxWidth);
-        if (maxWidth < width) throw new IllegalArgumentException('The maxWidth must be greater than the width');
-        if (baseDate === null) {
-            if (field.range().isValidValue(baseValue) === false) throw new IllegalArgumentException('The base value must be within the range of the field');
-            if (baseValue + EXCEED_POINTS[width] > MathUtil.MAX_SAFE_INTEGER) throw new DateTimeException('Unable to add printer-parser as the range exceeds the capacity of an int');
-        }
-        _this._baseValue = baseValue;
-        _this._baseDate = baseDate;
-        return _this;
-    }
-    var _proto2 = ReducedPrinterParser.prototype;
-    _proto2._getValue = function _getValue(context, value) {
-        var absValue = Math.abs(value);
-        var baseValue = this._baseValue;
-        if (this._baseDate !== null) {
-            context.temporal();
-            var chrono = IsoChronology.INSTANCE;
-            baseValue = chrono.date(this._baseDate).get(this._field);
-        }
-        if (value >= baseValue && value < baseValue + EXCEED_POINTS[this._minWidth]) return absValue % EXCEED_POINTS[this._minWidth];
-        return absValue % EXCEED_POINTS[this._maxWidth];
-    };
-    _proto2._setValue = function _setValue(context, value, errorPos, successPos) {
-        var baseValue = this._baseValue;
-        if (this._baseDate != null) {
-            var chrono = context.getEffectiveChronology();
-            baseValue = chrono.date(this._baseDate).get(this._field);
-        }
-        var parseLen = successPos - errorPos;
-        if (parseLen === this._minWidth && value >= 0) {
-            var range = EXCEED_POINTS[this._minWidth];
-            var lastPart = baseValue % range;
-            var basePart = baseValue - lastPart;
-            if (baseValue > 0) value = basePart + value;
-            else value = basePart - value;
-            if (value < baseValue) value += range;
-        }
-        return context.setParsedField(this._field, value, errorPos, successPos);
-    };
-    _proto2.withFixedWidth = function withFixedWidth() {
-        if (this._subsequentWidth === -1) return this;
-        return new ReducedPrinterParser(this._field, this._minWidth, this._maxWidth, this._baseValue, this._baseDate);
-    };
-    _proto2.withSubsequentWidth = function withSubsequentWidth(subsequentWidth) {
-        return new ReducedPrinterParser(this._field, this._minWidth, this._maxWidth, this._baseValue, this._baseDate, this._subsequentWidth + subsequentWidth);
-    };
-    _proto2.isFixedWidth = function isFixedWidth(context) {
-        if (context.isStrict() === false) return false;
-        return _NumberPrinterParser.prototype.isFixedWidth.call(this, context);
-    };
-    _proto2.toString = function toString() {
-        return "ReducedValue(" + this._field + "," + this._minWidth + "," + this._maxWidth + "," + (this._baseDate != null ? this._baseDate : this._baseValue) + ")";
-    };
-    return ReducedPrinterParser;
-}(NumberPrinterParser);
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var PATTERNS = [
-    '+HH',
-    '+HHmm',
-    '+HH:mm',
-    '+HHMM',
-    '+HH:MM',
-    '+HHMMss',
-    '+HH:MM:ss',
-    '+HHMMSS',
-    '+HH:MM:SS'
-];
-var OffsetIdPrinterParser = function() {
-    function OffsetIdPrinterParser(noOffsetText, pattern) {
-        requireNonNull(noOffsetText, 'noOffsetText');
-        requireNonNull(pattern, 'pattern');
-        this.noOffsetText = noOffsetText;
-        this.type = this._checkPattern(pattern);
-    }
-    var _proto = OffsetIdPrinterParser.prototype;
-    _proto._checkPattern = function _checkPattern(pattern) {
-        for(var i = 0; i < PATTERNS.length; i++){
-            if (PATTERNS[i] === pattern) return i;
-        }
-        throw new IllegalArgumentException("Invalid zone offset pattern: " + pattern);
-    };
-    _proto.print = function print(context, buf) {
-        var offsetSecs = context.getValue(ChronoField.OFFSET_SECONDS);
-        if (offsetSecs == null) return false;
-        var totalSecs = MathUtil.safeToInt(offsetSecs);
-        if (totalSecs === 0) buf.append(this.noOffsetText);
-        else {
-            var absHours = Math.abs(MathUtil.intMod(MathUtil.intDiv(totalSecs, 3600), 100));
-            var absMinutes = Math.abs(MathUtil.intMod(MathUtil.intDiv(totalSecs, 60), 60));
-            var absSeconds = Math.abs(MathUtil.intMod(totalSecs, 60));
-            var bufPos = buf.length();
-            var output = absHours;
-            buf.append(totalSecs < 0 ? '-' : '+').appendChar(MathUtil.intDiv(absHours, 10) + "0").appendChar(MathUtil.intMod(absHours, 10) + "0");
-            if (this.type >= 3 || this.type >= 1 && absMinutes > 0) {
-                buf.append(this.type % 2 === 0 ? ':' : '').appendChar(MathUtil.intDiv(absMinutes, 10) + "0").appendChar(absMinutes % 10 + "0");
-                output += absMinutes;
-                if (this.type >= 7 || this.type >= 5 && absSeconds > 0) {
-                    buf.append(this.type % 2 === 0 ? ':' : '').appendChar(MathUtil.intDiv(absSeconds, 10) + "0").appendChar(absSeconds % 10 + "0");
-                    output += absSeconds;
-                }
-            }
-            if (output === 0) {
-                buf.setLength(bufPos);
-                buf.append(this.noOffsetText);
-            }
-        }
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var length = text.length;
-        var noOffsetLen = this.noOffsetText.length;
-        if (noOffsetLen === 0) {
-            if (position === length) return context.setParsedField(ChronoField.OFFSET_SECONDS, 0, position, position);
-        } else {
-            if (position === length) return ~position;
-            if (context.subSequenceEquals(text, position, this.noOffsetText, 0, noOffsetLen)) return context.setParsedField(ChronoField.OFFSET_SECONDS, 0, position, position + noOffsetLen);
-        }
-        var sign = text[position];
-        if (sign === '+' || sign === '-') {
-            var negative = sign === '-' ? -1 : 1;
-            var array = [
-                0,
-                0,
-                0,
-                0
-            ];
-            array[0] = position + 1;
-            if ((this._parseNumber(array, 1, text, true) || this._parseNumber(array, 2, text, this.type >= 3) || this._parseNumber(array, 3, text, false)) === false) {
-                var offsetSecs = MathUtil.safeZero(negative * (array[1] * 3600 + array[2] * 60 + array[3]));
-                return context.setParsedField(ChronoField.OFFSET_SECONDS, offsetSecs, position, array[0]);
-            }
-        }
-        if (noOffsetLen === 0) return context.setParsedField(ChronoField.OFFSET_SECONDS, 0, position, position + noOffsetLen);
-        return ~position;
-    };
-    _proto._parseNumber = function _parseNumber(array, arrayIndex, parseText, required) {
-        if ((this.type + 3) / 2 < arrayIndex) return false;
-        var pos = array[0];
-        if (this.type % 2 === 0 && arrayIndex > 1) {
-            if (pos + 1 > parseText.length || parseText[pos] !== ':') return required;
-            pos++;
-        }
-        if (pos + 2 > parseText.length) return required;
-        var ch1 = parseText[pos++];
-        var ch2 = parseText[pos++];
-        if (ch1 < '0' || ch1 > '9' || ch2 < '0' || ch2 > '9') return required;
-        var value = (ch1.charCodeAt(0) - 48) * 10 + (ch2.charCodeAt(0) - 48);
-        if (value < 0 || value > 59) return required;
-        array[arrayIndex] = value;
-        array[0] = pos;
-        return false;
-    };
-    _proto.toString = function toString() {
-        var converted = this.noOffsetText.replace('\'', '\'\'');
-        return "Offset(" + PATTERNS[this.type] + ",'" + converted + "')";
-    };
-    return OffsetIdPrinterParser;
-}();
-OffsetIdPrinterParser.INSTANCE_ID = new OffsetIdPrinterParser('Z', '+HH:MM:ss');
-OffsetIdPrinterParser.PATTERNS = PATTERNS;
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var PadPrinterParserDecorator = function() {
-    function PadPrinterParserDecorator(printerParser, padWidth, padChar) {
-        this._printerParser = printerParser;
-        this._padWidth = padWidth;
-        this._padChar = padChar;
-    }
-    var _proto = PadPrinterParserDecorator.prototype;
-    _proto.print = function print(context, buf) {
-        var preLen = buf.length();
-        if (this._printerParser.print(context, buf) === false) return false;
-        var len = buf.length() - preLen;
-        if (len > this._padWidth) throw new DateTimeException("Cannot print as output of " + len + " characters exceeds pad width of " + this._padWidth);
-        for(var i = 0; i < this._padWidth - len; i++)buf.insert(preLen, this._padChar);
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var strict = context.isStrict();
-        var caseSensitive = context.isCaseSensitive();
-        assert(!(position > text.length));
-        assert(position >= 0);
-        if (position === text.length) return ~position;
-        var endPos = position + this._padWidth;
-        if (endPos > text.length) {
-            if (strict) return ~position;
-            endPos = text.length;
-        }
-        var pos = position;
-        while(pos < endPos && (caseSensitive ? text[pos] === this._padChar : context.charEquals(text[pos], this._padChar)))pos++;
-        text = text.substring(0, endPos);
-        var resultPos = this._printerParser.parse(context, text, pos);
-        if (resultPos !== endPos && strict) return ~(position + pos);
-        return resultPos;
-    };
-    _proto.toString = function toString() {
-        return "Pad(" + this._printerParser + "," + this._padWidth + (this._padChar === ' ' ? ')' : ",'" + this._padChar + "')");
-    };
-    return PadPrinterParserDecorator;
-}();
-var SettingsParser = function(_Enum) {
-    _inheritsLoose(SettingsParser, _Enum);
-    function SettingsParser() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    var _proto = SettingsParser.prototype;
-    _proto.print = function print() {
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        switch(this){
-            case SettingsParser.SENSITIVE:
-                context.setCaseSensitive(true);
-                break;
-            case SettingsParser.INSENSITIVE:
-                context.setCaseSensitive(false);
-                break;
-            case SettingsParser.STRICT:
-                context.setStrict(true);
-                break;
-            case SettingsParser.LENIENT:
-                context.setStrict(false);
-                break;
-        }
-        return position;
-    };
-    _proto.toString = function toString() {
-        switch(this){
-            case SettingsParser.SENSITIVE:
-                return 'ParseCaseSensitive(true)';
-            case SettingsParser.INSENSITIVE:
-                return 'ParseCaseSensitive(false)';
-            case SettingsParser.STRICT:
-                return 'ParseStrict(true)';
-            case SettingsParser.LENIENT:
-                return 'ParseStrict(false)';
-        }
-    };
-    return SettingsParser;
-}(Enum);
-SettingsParser.SENSITIVE = new SettingsParser('SENSITIVE');
-SettingsParser.INSENSITIVE = new SettingsParser('INSENSITIVE');
-SettingsParser.STRICT = new SettingsParser('STRICT');
-SettingsParser.LENIENT = new SettingsParser('LENIENT');
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var StringLiteralPrinterParser = function() {
-    function StringLiteralPrinterParser(literal) {
-        this._literal = literal;
-    }
-    var _proto = StringLiteralPrinterParser.prototype;
-    _proto.print = function print(context, buf) {
-        buf.append(this._literal);
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var length = text.length;
-        assert(!(position > length || position < 0));
-        if (context.subSequenceEquals(text, position, this._literal, 0, this._literal.length) === false) return ~position;
-        return position + this._literal.length;
-    };
-    _proto.toString = function toString() {
-        var converted = this._literal.replace("'", "''");
-        return "'" + converted + "'";
-    };
-    return StringLiteralPrinterParser;
-}();
-/*
- * @copyright (c) 2016, Philipp Thürwächter, Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ZoneRulesProvider = function() {
-    function ZoneRulesProvider() {}
-    ZoneRulesProvider.getRules = function getRules(zoneId) {
-        throw new DateTimeException("unsupported ZoneId:" + zoneId);
-    };
-    ZoneRulesProvider.getAvailableZoneIds = function getAvailableZoneIds() {
-        return [];
-    };
-    return ZoneRulesProvider;
-}();
-var ZoneRegion = function(_ZoneId) {
-    _inheritsLoose(ZoneRegion, _ZoneId);
-    ZoneRegion.ofId = function ofId(zoneId) {
-        var rules = ZoneRulesProvider.getRules(zoneId);
-        return new ZoneRegion(zoneId, rules);
-    };
-    function ZoneRegion(id, rules) {
-        var _this;
-        _this = _ZoneId.call(this) || this;
-        _this._id = id;
-        _this._rules = rules;
-        return _this;
-    }
-    var _proto = ZoneRegion.prototype;
-    _proto.id = function id() {
-        return this._id;
-    };
-    _proto.rules = function rules() {
-        return this._rules;
-    };
-    return ZoneRegion;
-}(ZoneId);
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ZoneIdPrinterParser = function() {
-    function ZoneIdPrinterParser(query, description) {
-        this.query = query;
-        this.description = description;
-    }
-    var _proto = ZoneIdPrinterParser.prototype;
-    _proto.print = function print(context, buf) {
-        var zone = context.getValueQuery(this.query);
-        if (zone == null) return false;
-        buf.append(zone.id());
-        return true;
-    };
-    _proto.parse = function parse(context, text, position) {
-        var length = text.length;
-        if (position > length) return ~position;
-        if (position === length) return ~position;
-        var nextChar = text.charAt(position);
-        if (nextChar === '+' || nextChar === '-') {
-            var newContext = context.copy();
-            var endPos = OffsetIdPrinterParser.INSTANCE_ID.parse(newContext, text, position);
-            if (endPos < 0) return endPos;
-            var offset = newContext.getParsed(ChronoField.OFFSET_SECONDS);
-            var zone = ZoneOffset.ofTotalSeconds(offset);
-            context.setParsedZone(zone);
-            return endPos;
-        } else if (length >= position + 2) {
-            var nextNextChar = text.charAt(position + 1);
-            if (context.charEquals(nextChar, 'U') && context.charEquals(nextNextChar, 'T')) {
-                if (length >= position + 3 && context.charEquals(text.charAt(position + 2), 'C')) return this._parsePrefixedOffset(context, text, position, position + 3);
-                return this._parsePrefixedOffset(context, text, position, position + 2);
-            } else if (context.charEquals(nextChar, 'G') && length >= position + 3 && context.charEquals(nextNextChar, 'M') && context.charEquals(text.charAt(position + 2), 'T')) return this._parsePrefixedOffset(context, text, position, position + 3);
-        }
-        if (text.substr(position, 6) === 'SYSTEM') {
-            context.setParsedZone(ZoneId.systemDefault());
-            return position + 6;
-        }
-        if (context.charEquals(nextChar, 'Z')) {
-            context.setParsedZone(ZoneOffset.UTC);
-            return position + 1;
-        }
-        var availableZoneIds = ZoneRulesProvider.getAvailableZoneIds();
-        if (zoneIdTree.size !== availableZoneIds.length) zoneIdTree = ZoneIdTree.createTreeMap(availableZoneIds);
-        var maxParseLength = length - position;
-        var treeMap = zoneIdTree.treeMap;
-        var parsedZoneId = null;
-        var parseLength = 0;
-        while(treeMap != null){
-            var parsedSubZoneId = text.substr(position, Math.min(treeMap.length, maxParseLength));
-            treeMap = treeMap.get(parsedSubZoneId);
-            if (treeMap != null && treeMap.isLeaf) {
-                parsedZoneId = parsedSubZoneId;
-                parseLength = treeMap.length;
-            }
-        }
-        if (parsedZoneId != null) {
-            context.setParsedZone(ZoneRegion.ofId(parsedZoneId));
-            return position + parseLength;
-        }
-        return ~position;
-    };
-    _proto._parsePrefixedOffset = function _parsePrefixedOffset(context, text, prefixPos, position) {
-        var prefix = text.substring(prefixPos, position).toUpperCase();
-        var newContext = context.copy();
-        if (position < text.length && context.charEquals(text.charAt(position), 'Z')) {
-            context.setParsedZone(ZoneId.ofOffset(prefix, ZoneOffset.UTC));
-            return position;
-        }
-        var endPos = OffsetIdPrinterParser.INSTANCE_ID.parse(newContext, text, position);
-        if (endPos < 0) {
-            context.setParsedZone(ZoneId.ofOffset(prefix, ZoneOffset.UTC));
-            return position;
-        }
-        var offsetSecs = newContext.getParsed(ChronoField.OFFSET_SECONDS);
-        var offset = ZoneOffset.ofTotalSeconds(offsetSecs);
-        context.setParsedZone(ZoneId.ofOffset(prefix, offset));
-        return endPos;
-    };
-    _proto.toString = function toString() {
-        return this.description;
-    };
-    return ZoneIdPrinterParser;
-}();
-var ZoneIdTree = function() {
-    ZoneIdTree.createTreeMap = function createTreeMap(availableZoneIds) {
-        var sortedZoneIds = availableZoneIds.sort(function(a, b) {
-            return a.length - b.length;
-        });
-        var treeMap = new ZoneIdTreeMap(sortedZoneIds[0].length, false);
-        for(var i = 0; i < sortedZoneIds.length; i++)treeMap.add(sortedZoneIds[i]);
-        return new ZoneIdTree(sortedZoneIds.length, treeMap);
-    };
-    function ZoneIdTree(size, treeMap) {
-        this.size = size;
-        this.treeMap = treeMap;
-    }
-    return ZoneIdTree;
-}();
-var ZoneIdTreeMap = function() {
-    function ZoneIdTreeMap(length, isLeaf) {
-        if (length === void 0) length = 0;
-        if (isLeaf === void 0) isLeaf = false;
-        this.length = length;
-        this.isLeaf = isLeaf;
-        this._treeMap = {};
-    }
-    var _proto2 = ZoneIdTreeMap.prototype;
-    _proto2.add = function add(zoneId) {
-        var idLength = zoneId.length;
-        if (idLength === this.length) this._treeMap[zoneId] = new ZoneIdTreeMap(idLength, true);
-        else if (idLength > this.length) {
-            var subZoneId = zoneId.substr(0, this.length);
-            var subTreeMap = this._treeMap[subZoneId];
-            if (subTreeMap == null) {
-                subTreeMap = new ZoneIdTreeMap(idLength, false);
-                this._treeMap[subZoneId] = subTreeMap;
-            }
-            subTreeMap.add(zoneId);
-        }
-    };
-    _proto2.get = function get(zoneId) {
-        return this._treeMap[zoneId];
-    };
-    return ZoneIdTreeMap;
-}();
-var zoneIdTree = new ZoneIdTree([]);
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var MAX_WIDTH = 15;
-var DateTimeFormatterBuilder = function() {
-    function DateTimeFormatterBuilder() {
-        this._active = this;
-        this._parent = null;
-        this._printerParsers = [];
-        this._optional = false;
-        this._padNextWidth = 0;
-        this._padNextChar = null;
-        this._valueParserIndex = -1;
-    }
-    DateTimeFormatterBuilder._of = function _of(parent, optional) {
-        requireNonNull(parent, 'parent');
-        requireNonNull(optional, 'optional');
-        var dtFormatterBuilder = new DateTimeFormatterBuilder();
-        dtFormatterBuilder._parent = parent;
-        dtFormatterBuilder._optional = optional;
-        return dtFormatterBuilder;
-    };
-    var _proto = DateTimeFormatterBuilder.prototype;
-    _proto.parseCaseSensitive = function parseCaseSensitive() {
-        this._appendInternalPrinterParser(SettingsParser.SENSITIVE);
-        return this;
-    };
-    _proto.parseCaseInsensitive = function parseCaseInsensitive() {
-        this._appendInternalPrinterParser(SettingsParser.INSENSITIVE);
-        return this;
-    };
-    _proto.parseStrict = function parseStrict() {
-        this._appendInternalPrinterParser(SettingsParser.STRICT);
-        return this;
-    };
-    _proto.parseLenient = function parseLenient() {
-        this._appendInternalPrinterParser(SettingsParser.LENIENT);
-        return this;
-    };
-    _proto.parseDefaulting = function parseDefaulting(field, value) {
-        requireNonNull(field);
-        this._appendInternal(new DefaultingParser(field, value));
-        return this;
-    };
-    _proto.appendValue = function appendValue() {
-        if (arguments.length === 1) return this._appendValue1.apply(this, arguments);
-        else if (arguments.length === 2) return this._appendValue2.apply(this, arguments);
-        else return this._appendValue4.apply(this, arguments);
-    };
-    _proto._appendValue1 = function _appendValue1(field) {
-        requireNonNull(field);
-        this._appendValuePrinterParser(new NumberPrinterParser(field, 1, MAX_WIDTH, SignStyle.NORMAL));
-        return this;
-    };
-    _proto._appendValue2 = function _appendValue2(field, width) {
-        requireNonNull(field);
-        if (width < 1 || width > MAX_WIDTH) throw new IllegalArgumentException("The width must be from 1 to " + MAX_WIDTH + " inclusive but was " + width);
-        var pp = new NumberPrinterParser(field, width, width, SignStyle.NOT_NEGATIVE);
-        this._appendValuePrinterParser(pp);
-        return this;
-    };
-    _proto._appendValue4 = function _appendValue4(field, minWidth, maxWidth, signStyle) {
-        requireNonNull(field);
-        requireNonNull(signStyle);
-        if (minWidth === maxWidth && signStyle === SignStyle.NOT_NEGATIVE) return this._appendValue2(field, maxWidth);
-        if (minWidth < 1 || minWidth > MAX_WIDTH) throw new IllegalArgumentException("The minimum width must be from 1 to " + MAX_WIDTH + " inclusive but was " + minWidth);
-        if (maxWidth < 1 || maxWidth > MAX_WIDTH) throw new IllegalArgumentException("The minimum width must be from 1 to " + MAX_WIDTH + " inclusive but was " + maxWidth);
-        if (maxWidth < minWidth) throw new IllegalArgumentException("The maximum width must exceed or equal the minimum width but " + maxWidth + " < " + minWidth);
-        var pp = new NumberPrinterParser(field, minWidth, maxWidth, signStyle);
-        this._appendValuePrinterParser(pp);
-        return this;
-    };
-    _proto.appendValueReduced = function appendValueReduced() {
-        if (arguments.length === 4 && arguments[3] instanceof ChronoLocalDate) return this._appendValueReducedFieldWidthMaxWidthBaseDate.apply(this, arguments);
-        else return this._appendValueReducedFieldWidthMaxWidthBaseValue.apply(this, arguments);
-    };
-    _proto._appendValueReducedFieldWidthMaxWidthBaseValue = function _appendValueReducedFieldWidthMaxWidthBaseValue(field, width, maxWidth, baseValue) {
-        requireNonNull(field, 'field');
-        var pp = new ReducedPrinterParser(field, width, maxWidth, baseValue, null);
-        this._appendValuePrinterParser(pp);
-        return this;
-    };
-    _proto._appendValueReducedFieldWidthMaxWidthBaseDate = function _appendValueReducedFieldWidthMaxWidthBaseDate(field, width, maxWidth, baseDate) {
-        requireNonNull(field, 'field');
-        requireNonNull(baseDate, 'baseDate');
-        requireInstance(baseDate, ChronoLocalDate, 'baseDate');
-        var pp = new ReducedPrinterParser(field, width, maxWidth, 0, baseDate);
-        this._appendValuePrinterParser(pp);
-        return this;
-    };
-    _proto._appendValuePrinterParser = function _appendValuePrinterParser(pp) {
-        assert(pp != null);
-        if (this._active._valueParserIndex >= 0 && this._active._printerParsers[this._active._valueParserIndex] instanceof NumberPrinterParser) {
-            var activeValueParser = this._active._valueParserIndex;
-            var basePP = this._active._printerParsers[activeValueParser];
-            if (pp.minWidth() === pp.maxWidth() && pp.signStyle() === SignStyle.NOT_NEGATIVE) {
-                basePP = basePP.withSubsequentWidth(pp.maxWidth());
-                this._appendInternal(pp.withFixedWidth());
-                this._active._valueParserIndex = activeValueParser;
-            } else {
-                basePP = basePP.withFixedWidth();
-                this._active._valueParserIndex = this._appendInternal(pp);
-            }
-            this._active._printerParsers[activeValueParser] = basePP;
-        } else this._active._valueParserIndex = this._appendInternal(pp);
-        return this;
-    };
-    _proto.appendFraction = function appendFraction(field, minWidth, maxWidth, decimalPoint) {
-        this._appendInternal(new FractionPrinterParser(field, minWidth, maxWidth, decimalPoint));
-        return this;
-    };
-    _proto.appendInstant = function appendInstant(fractionalDigits) {
-        if (fractionalDigits === void 0) fractionalDigits = -2;
-        if (fractionalDigits < -2 || fractionalDigits > 9) throw new IllegalArgumentException("Invalid fractional digits: " + fractionalDigits);
-        this._appendInternal(new InstantPrinterParser(fractionalDigits));
-        return this;
-    };
-    _proto.appendOffsetId = function appendOffsetId() {
-        this._appendInternal(OffsetIdPrinterParser.INSTANCE_ID);
-        return this;
-    };
-    _proto.appendOffset = function appendOffset(pattern, noOffsetText) {
-        this._appendInternalPrinterParser(new OffsetIdPrinterParser(noOffsetText, pattern));
-        return this;
-    };
-    _proto.appendZoneId = function appendZoneId() {
-        this._appendInternal(new ZoneIdPrinterParser(TemporalQueries.zoneId(), 'ZoneId()'));
-        return this;
-    };
-    _proto.appendPattern = function appendPattern(pattern) {
-        requireNonNull(pattern, 'pattern');
-        this._parsePattern(pattern);
-        return this;
-    };
-    _proto.appendZoneText = function appendZoneText() {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented, use @js-joda/locale plugin!');
-    };
-    _proto.appendText = function appendText() {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented, use @js-joda/locale plugin!');
-    };
-    _proto.appendLocalizedOffset = function appendLocalizedOffset() {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented, use @js-joda/locale plugin!');
-    };
-    _proto.appendWeekField = function appendWeekField() {
-        throw new IllegalArgumentException('Pattern using (localized) text not implemented, use @js-joda/locale plugin!');
-    };
-    _proto._parsePattern = function _parsePattern(pattern) {
-        var FIELD_MAP = {
-            'G': ChronoField.ERA,
-            'y': ChronoField.YEAR_OF_ERA,
-            'u': ChronoField.YEAR,
-            'Q': IsoFields.QUARTER_OF_YEAR,
-            'q': IsoFields.QUARTER_OF_YEAR,
-            'M': ChronoField.MONTH_OF_YEAR,
-            'L': ChronoField.MONTH_OF_YEAR,
-            'D': ChronoField.DAY_OF_YEAR,
-            'd': ChronoField.DAY_OF_MONTH,
-            'F': ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH,
-            'E': ChronoField.DAY_OF_WEEK,
-            'c': ChronoField.DAY_OF_WEEK,
-            'e': ChronoField.DAY_OF_WEEK,
-            'a': ChronoField.AMPM_OF_DAY,
-            'H': ChronoField.HOUR_OF_DAY,
-            'k': ChronoField.CLOCK_HOUR_OF_DAY,
-            'K': ChronoField.HOUR_OF_AMPM,
-            'h': ChronoField.CLOCK_HOUR_OF_AMPM,
-            'm': ChronoField.MINUTE_OF_HOUR,
-            's': ChronoField.SECOND_OF_MINUTE,
-            'S': ChronoField.NANO_OF_SECOND,
-            'A': ChronoField.MILLI_OF_DAY,
-            'n': ChronoField.NANO_OF_SECOND,
-            'N': ChronoField.NANO_OF_DAY
-        };
-        for(var pos = 0; pos < pattern.length; pos++){
-            var cur = pattern.charAt(pos);
-            if (cur >= 'A' && cur <= 'Z' || cur >= 'a' && cur <= 'z') {
-                var start = pos++;
-                for(; pos < pattern.length && pattern.charAt(pos) === cur; pos++);
-                var count = pos - start;
-                if (cur === 'p') {
-                    var pad = 0;
-                    if (pos < pattern.length) {
-                        cur = pattern.charAt(pos);
-                        if (cur >= 'A' && cur <= 'Z' || cur >= 'a' && cur <= 'z') {
-                            pad = count;
-                            start = pos++;
-                            for(; pos < pattern.length && pattern.charAt(pos) === cur; pos++);
-                            count = pos - start;
-                        }
-                    }
-                    if (pad === 0) throw new IllegalArgumentException("Pad letter 'p' must be followed by valid pad pattern: " + pattern);
-                    this.padNext(pad);
-                }
-                var field = FIELD_MAP[cur];
-                if (field != null) this._parseField(cur, count, field);
-                else if (cur === 'z') {
-                    if (count > 4) throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                    else if (count === 4) this.appendZoneText(TextStyle.FULL);
-                    else this.appendZoneText(TextStyle.SHORT);
-                } else if (cur === 'V') {
-                    if (count !== 2) throw new IllegalArgumentException("Pattern letter count must be 2: " + cur);
-                    this.appendZoneId();
-                } else if (cur === 'Z') {
-                    if (count < 4) this.appendOffset('+HHMM', '+0000');
-                    else if (count === 4) this.appendLocalizedOffset(TextStyle.FULL);
-                    else if (count === 5) this.appendOffset('+HH:MM:ss', 'Z');
-                    else throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                } else if (cur === 'O') {
-                    if (count === 1) this.appendLocalizedOffset(TextStyle.SHORT);
-                    else if (count === 4) this.appendLocalizedOffset(TextStyle.FULL);
-                    else throw new IllegalArgumentException("Pattern letter count must be 1 or 4: " + cur);
-                } else if (cur === 'X') {
-                    if (count > 5) throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                    this.appendOffset(OffsetIdPrinterParser.PATTERNS[count + (count === 1 ? 0 : 1)], 'Z');
-                } else if (cur === 'x') {
-                    if (count > 5) throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                    var zero = count === 1 ? '+00' : count % 2 === 0 ? '+0000' : '+00:00';
-                    this.appendOffset(OffsetIdPrinterParser.PATTERNS[count + (count === 1 ? 0 : 1)], zero);
-                } else if (cur === 'W') {
-                    if (count > 1) throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                    this.appendWeekField('W', count);
-                } else if (cur === 'w') {
-                    if (count > 2) throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                    this.appendWeekField('w', count);
-                } else if (cur === 'Y') this.appendWeekField('Y', count);
-                else throw new IllegalArgumentException("Unknown pattern letter: " + cur);
-                pos--;
-            } else if (cur === '\'') {
-                var _start = pos++;
-                for(; pos < pattern.length; pos++)if (pattern.charAt(pos) === '\'') {
-                    if (pos + 1 < pattern.length && pattern.charAt(pos + 1) === '\'') pos++;
-                    else break;
-                }
-                if (pos >= pattern.length) throw new IllegalArgumentException("Pattern ends with an incomplete string literal: " + pattern);
-                var str = pattern.substring(_start + 1, pos);
-                if (str.length === 0) this.appendLiteral('\'');
-                else this.appendLiteral(str.replace('\'\'', '\''));
-            } else if (cur === '[') this.optionalStart();
-            else if (cur === ']') {
-                if (this._active._parent === null) throw new IllegalArgumentException('Pattern invalid as it contains ] without previous [');
-                this.optionalEnd();
-            } else if (cur === '{' || cur === '}' || cur === '#') throw new IllegalArgumentException("Pattern includes reserved character: '" + cur + "'");
-            else this.appendLiteral(cur);
-        }
-    };
-    _proto._parseField = function _parseField(cur, count, field) {
-        switch(cur){
-            case 'u':
-            case 'y':
-                if (count === 2) this.appendValueReduced(field, 2, 2, ReducedPrinterParser.BASE_DATE);
-                else if (count < 4) this.appendValue(field, count, MAX_WIDTH, SignStyle.NORMAL);
-                else this.appendValue(field, count, MAX_WIDTH, SignStyle.EXCEEDS_PAD);
-                break;
-            case 'M':
-            case 'Q':
-                switch(count){
-                    case 1:
-                        this.appendValue(field);
-                        break;
-                    case 2:
-                        this.appendValue(field, 2);
-                        break;
-                    case 3:
-                        this.appendText(field, TextStyle.SHORT);
-                        break;
-                    case 4:
-                        this.appendText(field, TextStyle.FULL);
-                        break;
-                    case 5:
-                        this.appendText(field, TextStyle.NARROW);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                }
-                break;
-            case 'L':
-            case 'q':
-                switch(count){
-                    case 1:
-                        this.appendValue(field);
-                        break;
-                    case 2:
-                        this.appendValue(field, 2);
-                        break;
-                    case 3:
-                        this.appendText(field, TextStyle.SHORT_STANDALONE);
-                        break;
-                    case 4:
-                        this.appendText(field, TextStyle.FULL_STANDALONE);
-                        break;
-                    case 5:
-                        this.appendText(field, TextStyle.NARROW_STANDALONE);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                }
-                break;
-            case 'e':
-                switch(count){
-                    case 1:
-                    case 2:
-                        this.appendWeekField('e', count);
-                        break;
-                    case 3:
-                        this.appendText(field, TextStyle.SHORT);
-                        break;
-                    case 4:
-                        this.appendText(field, TextStyle.FULL);
-                        break;
-                    case 5:
-                        this.appendText(field, TextStyle.NARROW);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                }
-                break;
-            case 'c':
-                switch(count){
-                    case 1:
-                        this.appendWeekField('c', count);
-                        break;
-                    case 2:
-                        throw new IllegalArgumentException("Invalid number of pattern letters: " + cur);
-                    case 3:
-                        this.appendText(field, TextStyle.SHORT_STANDALONE);
-                        break;
-                    case 4:
-                        this.appendText(field, TextStyle.FULL_STANDALONE);
-                        break;
-                    case 5:
-                        this.appendText(field, TextStyle.NARROW_STANDALONE);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                }
-                break;
-            case 'a':
-                if (count === 1) this.appendText(field, TextStyle.SHORT);
-                else throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                break;
-            case 'E':
-            case 'G':
-                switch(count){
-                    case 1:
-                    case 2:
-                    case 3:
-                        this.appendText(field, TextStyle.SHORT);
-                        break;
-                    case 4:
-                        this.appendText(field, TextStyle.FULL);
-                        break;
-                    case 5:
-                        this.appendText(field, TextStyle.NARROW);
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                }
-                break;
-            case 'S':
-                this.appendFraction(ChronoField.NANO_OF_SECOND, count, count, false);
-                break;
-            case 'F':
-                if (count === 1) this.appendValue(field);
-                else throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                break;
-            case 'd':
-            case 'h':
-            case 'H':
-            case 'k':
-            case 'K':
-            case 'm':
-            case 's':
-                if (count === 1) this.appendValue(field);
-                else if (count === 2) this.appendValue(field, count);
-                else throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                break;
-            case 'D':
-                if (count === 1) this.appendValue(field);
-                else if (count <= 3) this.appendValue(field, count);
-                else throw new IllegalArgumentException("Too many pattern letters: " + cur);
-                break;
-            default:
-                if (count === 1) this.appendValue(field);
-                else this.appendValue(field, count);
-                break;
-        }
-    };
-    _proto.padNext = function padNext() {
-        if (arguments.length === 1) return this._padNext1.apply(this, arguments);
-        else return this._padNext2.apply(this, arguments);
-    };
-    _proto._padNext1 = function _padNext1(padWidth) {
-        return this._padNext2(padWidth, ' ');
-    };
-    _proto._padNext2 = function _padNext2(padWidth, padChar) {
-        if (padWidth < 1) throw new IllegalArgumentException("The pad width must be at least one but was " + padWidth);
-        this._active._padNextWidth = padWidth;
-        this._active._padNextChar = padChar;
-        this._active._valueParserIndex = -1;
-        return this;
-    };
-    _proto.optionalStart = function optionalStart() {
-        this._active._valueParserIndex = -1;
-        this._active = DateTimeFormatterBuilder._of(this._active, true);
-        return this;
-    };
-    _proto.optionalEnd = function optionalEnd() {
-        if (this._active._parent == null) throw new IllegalStateException('Cannot call optionalEnd() as there was no previous call to optionalStart()');
-        if (this._active._printerParsers.length > 0) {
-            var cpp = new CompositePrinterParser(this._active._printerParsers, this._active._optional);
-            this._active = this._active._parent;
-            this._appendInternal(cpp);
-        } else this._active = this._active._parent;
-        return this;
-    };
-    _proto._appendInternal = function _appendInternal(pp) {
-        assert(pp != null);
-        if (this._active._padNextWidth > 0) {
-            if (pp != null) pp = new PadPrinterParserDecorator(pp, this._active._padNextWidth, this._active._padNextChar);
-            this._active._padNextWidth = 0;
-            this._active._padNextChar = 0;
-        }
-        this._active._printerParsers.push(pp);
-        this._active._valueParserIndex = -1;
-        return this._active._printerParsers.length - 1;
-    };
-    _proto.appendLiteral = function appendLiteral(literal) {
-        assert(literal != null);
-        if (literal.length > 0) {
-            if (literal.length === 1) this._appendInternalPrinterParser(new CharLiteralPrinterParser(literal.charAt(0)));
-            else this._appendInternalPrinterParser(new StringLiteralPrinterParser(literal));
-        }
-        return this;
-    };
-    _proto._appendInternalPrinterParser = function _appendInternalPrinterParser(pp) {
-        assert(pp != null);
-        if (this._active._padNextWidth > 0) {
-            if (pp != null) pp = new PadPrinterParserDecorator(pp, this._active._padNextWidth, this._active._padNextChar);
-            this._active._padNextWidth = 0;
-            this._active._padNextChar = 0;
-        }
-        this._active._printerParsers.push(pp);
-        this._active._valueParserIndex = -1;
-        return this._active._printerParsers.length - 1;
-    };
-    _proto.append = function append(formatter) {
-        requireNonNull(formatter, 'formatter');
-        this._appendInternal(formatter._toPrinterParser(false));
-        return this;
-    };
-    _proto.toFormatter = function toFormatter(resolverStyle) {
-        if (resolverStyle === void 0) resolverStyle = ResolverStyle.SMART;
-        while(this._active._parent != null)this.optionalEnd();
-        var pp = new CompositePrinterParser(this._printerParsers, false);
-        return new DateTimeFormatter(pp, null, DecimalStyle.STANDARD, resolverStyle, null, null, null);
-    };
-    return DateTimeFormatterBuilder;
-}();
-var SECONDS_PER_10000_YEARS = 315569520000;
-var SECONDS_0000_TO_1970 = 62167219200;
-var InstantPrinterParser = function() {
-    function InstantPrinterParser(fractionalDigits) {
-        this.fractionalDigits = fractionalDigits;
-    }
-    var _proto2 = InstantPrinterParser.prototype;
-    _proto2.print = function print(context, buf) {
-        var inSecs = context.getValue(ChronoField.INSTANT_SECONDS);
-        var inNanos = 0;
-        if (context.temporal().isSupported(ChronoField.NANO_OF_SECOND)) inNanos = context.temporal().getLong(ChronoField.NANO_OF_SECOND);
-        if (inSecs == null) return false;
-        var inSec = inSecs;
-        var inNano = ChronoField.NANO_OF_SECOND.checkValidIntValue(inNanos);
-        if (inSec >= -SECONDS_0000_TO_1970) {
-            var zeroSecs = inSec - SECONDS_PER_10000_YEARS + SECONDS_0000_TO_1970;
-            var hi = MathUtil.floorDiv(zeroSecs, SECONDS_PER_10000_YEARS) + 1;
-            var lo = MathUtil.floorMod(zeroSecs, SECONDS_PER_10000_YEARS);
-            var ldt = LocalDateTime.ofEpochSecond(lo - SECONDS_0000_TO_1970, 0, ZoneOffset.UTC);
-            if (hi > 0) buf.append('+').append(hi);
-            buf.append(ldt.toString());
-            if (ldt.second() === 0) buf.append(':00');
-        } else {
-            var _zeroSecs = inSec + SECONDS_0000_TO_1970;
-            var _hi = MathUtil.intDiv(_zeroSecs, SECONDS_PER_10000_YEARS);
-            var _lo = MathUtil.intMod(_zeroSecs, SECONDS_PER_10000_YEARS);
-            var _ldt = LocalDateTime.ofEpochSecond(_lo - SECONDS_0000_TO_1970, 0, ZoneOffset.UTC);
-            var pos = buf.length();
-            buf.append(_ldt.toString());
-            if (_ldt.second() === 0) buf.append(':00');
-            if (_hi < 0) {
-                if (_ldt.year() === -10000) buf.replace(pos, pos + 2, "" + (_hi - 1));
-                else if (_lo === 0) buf.insert(pos, _hi);
-                else buf.insert(pos + 1, Math.abs(_hi));
-            }
-        }
-        if (this.fractionalDigits === -2) {
-            if (inNano !== 0) {
-                buf.append('.');
-                if (MathUtil.intMod(inNano, 1000000) === 0) buf.append(("" + (MathUtil.intDiv(inNano, 1000000) + 1000)).substring(1));
-                else if (MathUtil.intMod(inNano, 1000) === 0) buf.append(("" + (MathUtil.intDiv(inNano, 1000) + 1000000)).substring(1));
-                else buf.append(("" + (inNano + 1000000000)).substring(1));
-            }
-        } else if (this.fractionalDigits > 0 || this.fractionalDigits === -1 && inNano > 0) {
-            buf.append('.');
-            var div = 100000000;
-            for(var i = 0; this.fractionalDigits === -1 && inNano > 0 || i < this.fractionalDigits; i++){
-                var digit = MathUtil.intDiv(inNano, div);
-                buf.append(digit);
-                inNano = inNano - digit * div;
-                div = MathUtil.intDiv(div, 10);
-            }
-        }
-        buf.append('Z');
-        return true;
-    };
-    _proto2.parse = function parse(context, text, position) {
-        var newContext = context.copy();
-        var minDigits = this.fractionalDigits < 0 ? 0 : this.fractionalDigits;
-        var maxDigits = this.fractionalDigits < 0 ? 9 : this.fractionalDigits;
-        var parser = new DateTimeFormatterBuilder().append(DateTimeFormatter.ISO_LOCAL_DATE).appendLiteral('T').appendValue(ChronoField.HOUR_OF_DAY, 2).appendLiteral(':').appendValue(ChronoField.MINUTE_OF_HOUR, 2).appendLiteral(':').appendValue(ChronoField.SECOND_OF_MINUTE, 2).appendFraction(ChronoField.NANO_OF_SECOND, minDigits, maxDigits, true).appendLiteral('Z').toFormatter()._toPrinterParser(false);
-        var pos = parser.parse(newContext, text, position);
-        if (pos < 0) return pos;
-        var yearParsed = newContext.getParsed(ChronoField.YEAR);
-        var month = newContext.getParsed(ChronoField.MONTH_OF_YEAR);
-        var day = newContext.getParsed(ChronoField.DAY_OF_MONTH);
-        var hour = newContext.getParsed(ChronoField.HOUR_OF_DAY);
-        var min = newContext.getParsed(ChronoField.MINUTE_OF_HOUR);
-        var secVal = newContext.getParsed(ChronoField.SECOND_OF_MINUTE);
-        var nanoVal = newContext.getParsed(ChronoField.NANO_OF_SECOND);
-        var sec = secVal != null ? secVal : 0;
-        var nano = nanoVal != null ? nanoVal : 0;
-        var year = MathUtil.intMod(yearParsed, 10000);
-        var days = 0;
-        if (hour === 24 && min === 0 && sec === 0 && nano === 0) {
-            hour = 0;
-            days = 1;
-        } else if (hour === 23 && min === 59 && sec === 60) {
-            context.setParsedLeapSecond();
-            sec = 59;
-        }
-        var instantSecs;
-        try {
-            var ldt = LocalDateTime.of(year, month, day, hour, min, sec, 0).plusDays(days);
-            instantSecs = ldt.toEpochSecond(ZoneOffset.UTC);
-            instantSecs += MathUtil.safeMultiply(MathUtil.intDiv(yearParsed, 10000), SECONDS_PER_10000_YEARS);
-        } catch (ex) {
-            return ~position;
-        }
-        var successPos = pos;
-        successPos = context.setParsedField(ChronoField.INSTANT_SECONDS, instantSecs, position, successPos);
-        return context.setParsedField(ChronoField.NANO_OF_SECOND, nano, position, successPos);
-    };
-    _proto2.toString = function toString() {
-        return 'Instant()';
-    };
-    return InstantPrinterParser;
-}();
-var DefaultingParser = function() {
-    function DefaultingParser(field, value) {
-        this._field = field;
-        this._value = value;
-    }
-    var _proto3 = DefaultingParser.prototype;
-    _proto3.print = function print() {
-        return true;
-    };
-    _proto3.parse = function parse(context, text, position) {
-        if (context.getParsed(this._field) == null) context.setParsedField(this._field, this._value, position, position);
-        return position;
-    };
-    return DefaultingParser;
-}();
-function _init$e() {
-    ReducedPrinterParser.BASE_DATE = LocalDate.of(2000, 1, 1);
-    DateTimeFormatterBuilder.CompositePrinterParser = CompositePrinterParser;
-    DateTimeFormatterBuilder.PadPrinterParserDecorator = PadPrinterParserDecorator;
-    DateTimeFormatterBuilder.SettingsParser = SettingsParser;
-    DateTimeFormatterBuilder.CharLiteralPrinterParser = StringLiteralPrinterParser;
-    DateTimeFormatterBuilder.StringLiteralPrinterParser = StringLiteralPrinterParser;
-    DateTimeFormatterBuilder.CharLiteralPrinterParser = CharLiteralPrinterParser;
-    DateTimeFormatterBuilder.NumberPrinterParser = NumberPrinterParser;
-    DateTimeFormatterBuilder.ReducedPrinterParser = ReducedPrinterParser;
-    DateTimeFormatterBuilder.FractionPrinterParser = FractionPrinterParser;
-    DateTimeFormatterBuilder.OffsetIdPrinterParser = OffsetIdPrinterParser;
-    DateTimeFormatterBuilder.ZoneIdPrinterParser = ZoneIdPrinterParser;
-}
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var StringBuilder = function() {
-    function StringBuilder() {
-        this._str = '';
-    }
-    var _proto = StringBuilder.prototype;
-    _proto.append = function append(str) {
-        this._str += str;
-        return this;
-    };
-    _proto.appendChar = function appendChar(str) {
-        this._str += str[0];
-        return this;
-    };
-    _proto.insert = function insert(offset, str) {
-        this._str = this._str.slice(0, offset) + str + this._str.slice(offset);
-        return this;
-    };
-    _proto.replace = function replace(start, end, str) {
-        this._str = this._str.slice(0, start) + str + this._str.slice(end);
-        return this;
-    };
-    _proto.length = function length() {
-        return this._str.length;
-    };
-    _proto.setLength = function setLength(length) {
-        this._str = this._str.slice(0, length);
-        return this;
-    };
-    _proto.toString = function toString() {
-        return this._str;
-    };
-    return StringBuilder;
-}();
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var DateTimeFormatter = function() {
-    DateTimeFormatter.parsedExcessDays = function parsedExcessDays() {
-        return DateTimeFormatter.PARSED_EXCESS_DAYS;
-    };
-    DateTimeFormatter.parsedLeapSecond = function parsedLeapSecond() {
-        return DateTimeFormatter.PARSED_LEAP_SECOND;
-    };
-    DateTimeFormatter.ofPattern = function ofPattern(pattern) {
-        return new DateTimeFormatterBuilder().appendPattern(pattern).toFormatter();
-    };
-    function DateTimeFormatter(printerParser, locale, decimalStyle, resolverStyle, resolverFields, chrono, zone) {
-        if (chrono === void 0) chrono = IsoChronology.INSTANCE;
-        assert(printerParser != null);
-        assert(decimalStyle != null);
-        assert(resolverStyle != null);
-        this._printerParser = printerParser;
-        this._locale = locale;
-        this._decimalStyle = decimalStyle;
-        this._resolverStyle = resolverStyle;
-        this._resolverFields = resolverFields;
-        this._chrono = chrono;
-        this._zone = zone;
-    }
-    var _proto = DateTimeFormatter.prototype;
-    _proto.locale = function locale() {
-        return this._locale;
-    };
-    _proto.decimalStyle = function decimalStyle() {
-        return this._decimalStyle;
-    };
-    _proto.chronology = function chronology() {
-        return this._chrono;
-    };
-    _proto.withChronology = function withChronology(chrono) {
-        if (this._chrono != null && this._chrono.equals(chrono)) return this;
-        return new DateTimeFormatter(this._printerParser, this._locale, this._decimalStyle, this._resolverStyle, this._resolverFields, chrono, this._zone);
-    };
-    _proto.withLocale = function withLocale() {
-        return this;
-    };
-    _proto.withResolverStyle = function withResolverStyle(resolverStyle) {
-        requireNonNull(resolverStyle, 'resolverStyle');
-        if (resolverStyle.equals(this._resolverStyle)) return this;
-        return new DateTimeFormatter(this._printerParser, this._locale, this._decimalStyle, resolverStyle, this._resolverFields, this._chrono, this._zone);
-    };
-    _proto.format = function format(temporal) {
-        var buf = new StringBuilder(32);
-        this._formatTo(temporal, buf);
-        return buf.toString();
-    };
-    _proto._formatTo = function _formatTo(temporal, appendable) {
-        requireNonNull(temporal, 'temporal');
-        requireNonNull(appendable, 'appendable');
-        var context = new DateTimePrintContext(temporal, this);
-        this._printerParser.print(context, appendable);
-    };
-    _proto.parse = function parse(text, type) {
-        if (arguments.length === 1) return this.parse1(text);
-        else return this.parse2(text, type);
-    };
-    _proto.parse1 = function parse1(text) {
-        requireNonNull(text, 'text');
-        try {
-            return this._parseToBuilder(text, null).resolve(this._resolverStyle, this._resolverFields);
-        } catch (ex) {
-            if (ex instanceof DateTimeParseException) throw ex;
-            else throw this._createError(text, ex);
-        }
-    };
-    _proto.parse2 = function parse2(text, type) {
-        requireNonNull(text, 'text');
-        requireNonNull(type, 'type');
-        try {
-            var builder = this._parseToBuilder(text, null).resolve(this._resolverStyle, this._resolverFields);
-            return builder.build(type);
-        } catch (ex) {
-            if (ex instanceof DateTimeParseException) throw ex;
-            else throw this._createError(text, ex);
-        }
-    };
-    _proto._createError = function _createError(text, ex) {
-        var abbr = '';
-        if (text.length > 64) abbr = text.substring(0, 64) + "...";
-        else abbr = text;
-        return new DateTimeParseException("Text '" + abbr + "' could not be parsed: " + ex.message, text, 0, ex);
-    };
-    _proto._parseToBuilder = function _parseToBuilder(text, position) {
-        var pos = position != null ? position : new ParsePosition(0);
-        var result = this._parseUnresolved0(text, pos);
-        if (result == null || pos.getErrorIndex() >= 0 || position == null && pos.getIndex() < text.length) {
-            var abbr = '';
-            if (text.length > 64) abbr = text.substr(0, 64).toString() + "...";
-            else abbr = text;
-            if (pos.getErrorIndex() >= 0) throw new DateTimeParseException("Text '" + abbr + "' could not be parsed at index " + pos.getErrorIndex(), text, pos.getErrorIndex());
-            else throw new DateTimeParseException("Text '" + abbr + "' could not be parsed, unparsed text found at index " + pos.getIndex(), text, pos.getIndex());
-        }
-        return result.toBuilder();
-    };
-    _proto.parseUnresolved = function parseUnresolved(text, position) {
-        return this._parseUnresolved0(text, position);
-    };
-    _proto._parseUnresolved0 = function _parseUnresolved0(text, position) {
-        assert(text != null, 'text', NullPointerException);
-        assert(position != null, 'position', NullPointerException);
-        var context = new DateTimeParseContext(this);
-        var pos = position.getIndex();
-        pos = this._printerParser.parse(context, text, pos);
-        if (pos < 0) {
-            position.setErrorIndex(~pos);
-            return null;
-        }
-        position.setIndex(pos);
-        return context.toParsed();
-    };
-    _proto._toPrinterParser = function _toPrinterParser(optional) {
-        return this._printerParser.withOptional(optional);
-    };
-    _proto.toString = function toString() {
-        var pattern = this._printerParser.toString();
-        return pattern.indexOf('[') === 0 ? pattern : pattern.substring(1, pattern.length - 1);
-    };
-    return DateTimeFormatter;
-}();
-function _init$d() {
-    DateTimeFormatter.ISO_LOCAL_DATE = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).appendLiteral('-').appendValue(ChronoField.MONTH_OF_YEAR, 2).appendLiteral('-').appendValue(ChronoField.DAY_OF_MONTH, 2).toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_LOCAL_TIME = new DateTimeFormatterBuilder().appendValue(ChronoField.HOUR_OF_DAY, 2).appendLiteral(':').appendValue(ChronoField.MINUTE_OF_HOUR, 2).optionalStart().appendLiteral(':').appendValue(ChronoField.SECOND_OF_MINUTE, 2).optionalStart().appendFraction(ChronoField.NANO_OF_SECOND, 0, 9, true).toFormatter(ResolverStyle.STRICT);
-    DateTimeFormatter.ISO_LOCAL_DATE_TIME = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_DATE).appendLiteral('T').append(DateTimeFormatter.ISO_LOCAL_TIME).toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_INSTANT = new DateTimeFormatterBuilder().parseCaseInsensitive().appendInstant().toFormatter(ResolverStyle.STRICT);
-    DateTimeFormatter.ISO_OFFSET_DATE_TIME = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_DATE_TIME).appendOffsetId().toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_ZONED_DATE_TIME = new DateTimeFormatterBuilder().append(DateTimeFormatter.ISO_OFFSET_DATE_TIME).optionalStart().appendLiteral('[').parseCaseSensitive().appendZoneId().appendLiteral(']').toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.BASIC_ISO_DATE = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).appendValue(ChronoField.MONTH_OF_YEAR, 2).appendValue(ChronoField.DAY_OF_MONTH, 2).toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_OFFSET_DATE = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_DATE).appendOffsetId().toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_OFFSET_TIME = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_TIME).appendOffsetId().toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_ORDINAL_DATE = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).appendLiteral('-').appendValue(ChronoField.DAY_OF_YEAR).toFormatter(ResolverStyle.STRICT);
-    DateTimeFormatter.ISO_WEEK_DATE = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).appendLiteral('-W').appendValue(ChronoField.ALIGNED_WEEK_OF_YEAR).appendLiteral('-').appendValue(ChronoField.DAY_OF_WEEK).toFormatter(ResolverStyle.STRICT);
-    DateTimeFormatter.ISO_DATE = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_DATE).optionalStart().appendOffsetId().optionalEnd().toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.ISO_TIME = new DateTimeFormatterBuilder().parseCaseInsensitive().append(DateTimeFormatter.ISO_LOCAL_TIME).optionalStart().appendOffsetId().optionalEnd().toFormatter(ResolverStyle.STRICT);
-    DateTimeFormatter.ISO_DATE_TIME = new DateTimeFormatterBuilder().append(DateTimeFormatter.ISO_LOCAL_DATE_TIME).optionalStart().appendOffsetId().optionalEnd().toFormatter(ResolverStyle.STRICT).withChronology(IsoChronology.INSTANCE);
-    DateTimeFormatter.PARSED_EXCESS_DAYS = createTemporalQuery('PARSED_EXCESS_DAYS', function(temporal) {
-        if (temporal instanceof DateTimeBuilder) return temporal.excessDays;
-        else return Period.ZERO;
-    });
-    DateTimeFormatter.PARSED_LEAP_SECOND = createTemporalQuery('PARSED_LEAP_SECOND', function(temporal) {
-        if (temporal instanceof DateTimeBuilder) return temporal.leapSecond;
-        else return false;
-    });
-}
-var MonthDay = function(_TemporalAccessor) {
-    _inheritsLoose(MonthDay, _TemporalAccessor);
-    MonthDay.now = function now(zoneIdOrClock) {
-        if (arguments.length === 0) return MonthDay.now0();
-        else if (arguments.length === 1 && zoneIdOrClock instanceof ZoneId) return MonthDay.nowZoneId(zoneIdOrClock);
-        else return MonthDay.nowClock(zoneIdOrClock);
-    };
-    MonthDay.now0 = function now0() {
-        return this.nowClock(Clock.systemDefaultZone());
-    };
-    MonthDay.nowZoneId = function nowZoneId(zone) {
-        requireNonNull(zone, 'zone');
-        return this.nowClock(Clock.system(zone));
-    };
-    MonthDay.nowClock = function nowClock(clock) {
-        requireNonNull(clock, 'clock');
-        var now = LocalDate.now(clock);
-        return MonthDay.of(now.month(), now.dayOfMonth());
-    };
-    MonthDay.of = function of(monthOrNumber, number) {
-        if (arguments.length === 2 && monthOrNumber instanceof Month) return MonthDay.ofMonthNumber(monthOrNumber, number);
-        else return MonthDay.ofNumberNumber(monthOrNumber, number);
-    };
-    MonthDay.ofMonthNumber = function ofMonthNumber(month, dayOfMonth) {
-        requireNonNull(month, 'month');
-        ChronoField.DAY_OF_MONTH.checkValidValue(dayOfMonth);
-        if (dayOfMonth > month.maxLength()) throw new DateTimeException("Illegal value for DayOfMonth field, value " + dayOfMonth + " is not valid for month " + month.toString());
-        return new MonthDay(month.value(), dayOfMonth);
-    };
-    MonthDay.ofNumberNumber = function ofNumberNumber(month, dayOfMonth) {
-        requireNonNull(month, 'month');
-        requireNonNull(dayOfMonth, 'dayOfMonth');
-        return MonthDay.of(Month.of(month), dayOfMonth);
-    };
-    MonthDay.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        requireInstance(temporal, TemporalAccessor, 'temporal');
-        if (temporal instanceof MonthDay) return temporal;
-        try {
-            return MonthDay.of(temporal.get(ChronoField.MONTH_OF_YEAR), temporal.get(ChronoField.DAY_OF_MONTH));
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain MonthDay from TemporalAccessor: " + temporal + ", type " + (temporal && temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    MonthDay.parse = function parse(text, formatter) {
-        if (arguments.length === 1) return MonthDay.parseString(text);
-        else return MonthDay.parseStringFormatter(text, formatter);
-    };
-    MonthDay.parseString = function parseString(text) {
-        return MonthDay.parseStringFormatter(text, PARSER$2);
-    };
-    MonthDay.parseStringFormatter = function parseStringFormatter(text, formatter) {
-        requireNonNull(text, 'text');
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return formatter.parse(text, MonthDay.FROM);
-    };
-    function MonthDay(month, dayOfMonth) {
-        var _this;
-        _this = _TemporalAccessor.call(this) || this;
-        _this._month = MathUtil.safeToInt(month);
-        _this._day = MathUtil.safeToInt(dayOfMonth);
-        return _this;
-    }
-    var _proto = MonthDay.prototype;
-    _proto.monthValue = function monthValue() {
-        return this._month;
-    };
-    _proto.month = function month() {
-        return Month.of(this._month);
-    };
-    _proto.dayOfMonth = function dayOfMonth() {
-        return this._day;
-    };
-    _proto.isSupported = function isSupported(field) {
-        if (field instanceof ChronoField) return field === ChronoField.MONTH_OF_YEAR || field === ChronoField.DAY_OF_MONTH;
-        return field != null && field.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field === ChronoField.MONTH_OF_YEAR) return field.range();
-        else if (field === ChronoField.DAY_OF_MONTH) return ValueRange.of(1, this.month().minLength(), this.month().maxLength());
-        return _TemporalAccessor.prototype.range.call(this, field);
-    };
-    _proto.get = function get(field) {
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.DAY_OF_MONTH:
-                    return this._day;
-                case ChronoField.MONTH_OF_YEAR:
-                    return this._month;
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    };
-    _proto.isValidYear = function isValidYear(year) {
-        return (this._day === 29 && this._month === 2 && Year.isLeap(year) === false) === false;
-    };
-    _proto.withMonth = function withMonth(month) {
-        return this.with(Month.of(month));
-    };
-    _proto.with = function _with(month) {
-        requireNonNull(month, 'month');
-        if (month.value() === this._month) return this;
-        var day = Math.min(this._day, month.maxLength());
-        return new MonthDay(month.value(), day);
-    };
-    _proto.withDayOfMonth = function withDayOfMonth(dayOfMonth) {
-        if (dayOfMonth === this._day) return this;
-        return MonthDay.of(this._month, dayOfMonth);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        requireInstance(_query, TemporalQuery, 'query');
-        if (_query === TemporalQueries.chronology()) return IsoChronology.INSTANCE;
-        return _TemporalAccessor.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        requireNonNull(temporal, 'temporal');
-        temporal = temporal.with(ChronoField.MONTH_OF_YEAR, this._month);
-        return temporal.with(ChronoField.DAY_OF_MONTH, Math.min(temporal.range(ChronoField.DAY_OF_MONTH).maximum(), this._day));
-    };
-    _proto.atYear = function atYear(year) {
-        return LocalDate.of(year, this._month, this.isValidYear(year) ? this._day : 28);
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, MonthDay, 'other');
-        var cmp = this._month - other.monthValue();
-        if (cmp === 0) cmp = this._day - other.dayOfMonth();
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, MonthDay, 'other');
-        return this.compareTo(other) > 0;
-    };
-    _proto.isBefore = function isBefore(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, MonthDay, 'other');
-        return this.compareTo(other) < 0;
-    };
-    _proto.equals = function equals(obj) {
-        if (this === obj) return true;
-        if (obj instanceof MonthDay) {
-            var other = obj;
-            return this.monthValue() === other.monthValue() && this.dayOfMonth() === other.dayOfMonth();
-        }
-        return false;
-    };
-    _proto.toString = function toString() {
-        return "--" + (this._month < 10 ? '0' : '') + this._month + (this._day < 10 ? '-0' : '-') + this._day;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return formatter.format(this);
-    };
-    return MonthDay;
-}(TemporalAccessor);
-var PARSER$2;
-function _init$c() {
-    PARSER$2 = new DateTimeFormatterBuilder().appendLiteral('--').appendValue(ChronoField.MONTH_OF_YEAR, 2).appendLiteral('-').appendValue(ChronoField.DAY_OF_MONTH, 2).toFormatter();
-    MonthDay.FROM = createTemporalQuery('MonthDay.FROM', function(temporal) {
-        return MonthDay.from(temporal);
-    });
-}
-var YearMonth = function(_Temporal) {
-    _inheritsLoose(YearMonth, _Temporal);
-    YearMonth.now = function now(zoneIdOrClock) {
-        if (arguments.length === 0) return YearMonth.now0();
-        else if (arguments.length === 1 && zoneIdOrClock instanceof ZoneId) return YearMonth.nowZoneId(zoneIdOrClock);
-        else return YearMonth.nowClock(zoneIdOrClock);
-    };
-    YearMonth.now0 = function now0() {
-        return YearMonth.nowClock(Clock.systemDefaultZone());
-    };
-    YearMonth.nowZoneId = function nowZoneId(zone) {
-        return YearMonth.nowClock(Clock.system(zone));
-    };
-    YearMonth.nowClock = function nowClock(clock) {
-        var now = LocalDate.now(clock);
-        return YearMonth.of(now.year(), now.month());
-    };
-    YearMonth.of = function of(year, monthOrNumber) {
-        if (arguments.length === 2 && monthOrNumber instanceof Month) return YearMonth.ofNumberMonth(year, monthOrNumber);
-        else return YearMonth.ofNumberNumber(year, monthOrNumber);
-    };
-    YearMonth.ofNumberMonth = function ofNumberMonth(year, month) {
-        requireNonNull(month, 'month');
-        requireInstance(month, Month, 'month');
-        return YearMonth.ofNumberNumber(year, month.value());
-    };
-    YearMonth.ofNumberNumber = function ofNumberNumber(year, month) {
-        requireNonNull(year, 'year');
-        requireNonNull(month, 'month');
-        ChronoField.YEAR.checkValidValue(year);
-        ChronoField.MONTH_OF_YEAR.checkValidValue(month);
-        return new YearMonth(year, month);
-    };
-    YearMonth.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (temporal instanceof YearMonth) return temporal;
-        try {
-            return YearMonth.of(temporal.get(ChronoField.YEAR), temporal.get(ChronoField.MONTH_OF_YEAR));
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain YearMonth from TemporalAccessor: " + temporal + ", type " + (temporal && temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    YearMonth.parse = function parse(text, formatter) {
-        if (arguments.length === 1) return YearMonth.parseString(text);
-        else return YearMonth.parseStringFormatter(text, formatter);
-    };
-    YearMonth.parseString = function parseString(text) {
-        return YearMonth.parseStringFormatter(text, PARSER$1);
-    };
-    YearMonth.parseStringFormatter = function parseStringFormatter(text, formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, YearMonth.FROM);
-    };
-    function YearMonth(year, month) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        _this._year = MathUtil.safeToInt(year);
-        _this._month = MathUtil.safeToInt(month);
-        return _this;
-    }
-    var _proto = YearMonth.prototype;
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (arguments.length === 1 && fieldOrUnit instanceof TemporalField) return this.isSupportedField(fieldOrUnit);
-        else return this.isSupportedUnit(fieldOrUnit);
-    };
-    _proto.isSupportedField = function isSupportedField(field) {
-        if (field instanceof ChronoField) return field === ChronoField.YEAR || field === ChronoField.MONTH_OF_YEAR || field === ChronoField.PROLEPTIC_MONTH || field === ChronoField.YEAR_OF_ERA || field === ChronoField.ERA;
-        return field != null && field.isSupportedBy(this);
-    };
-    _proto.isSupportedUnit = function isSupportedUnit(unit) {
-        if (unit instanceof ChronoUnit) return unit === ChronoUnit.MONTHS || unit === ChronoUnit.YEARS || unit === ChronoUnit.DECADES || unit === ChronoUnit.CENTURIES || unit === ChronoUnit.MILLENNIA || unit === ChronoUnit.ERAS;
-        return unit != null && unit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field === ChronoField.YEAR_OF_ERA) return this.year() <= 0 ? ValueRange.of(1, Year.MAX_VALUE + 1) : ValueRange.of(1, Year.MAX_VALUE);
-        return _Temporal.prototype.range.call(this, field);
-    };
-    _proto.get = function get(field) {
-        requireNonNull(field, 'field');
-        requireInstance(field, TemporalField, 'field');
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        requireInstance(field, TemporalField, 'field');
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.MONTH_OF_YEAR:
-                    return this._month;
-                case ChronoField.PROLEPTIC_MONTH:
-                    return this._getProlepticMonth();
-                case ChronoField.YEAR_OF_ERA:
-                    return this._year < 1 ? 1 - this._year : this._year;
-                case ChronoField.YEAR:
-                    return this._year;
-                case ChronoField.ERA:
-                    return this._year < 1 ? 0 : 1;
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    };
-    _proto._getProlepticMonth = function _getProlepticMonth() {
-        return MathUtil.safeAdd(MathUtil.safeMultiply(this._year, 12), this._month - 1);
-    };
-    _proto.year = function year() {
-        return this._year;
-    };
-    _proto.monthValue = function monthValue() {
-        return this._month;
-    };
-    _proto.month = function month() {
-        return Month.of(this._month);
-    };
-    _proto.isLeapYear = function isLeapYear() {
-        return IsoChronology.isLeapYear(this._year);
-    };
-    _proto.isValidDay = function isValidDay(dayOfMonth) {
-        return dayOfMonth >= 1 && dayOfMonth <= this.lengthOfMonth();
-    };
-    _proto.lengthOfMonth = function lengthOfMonth() {
-        return this.month().length(this.isLeapYear());
-    };
-    _proto.lengthOfYear = function lengthOfYear() {
-        return this.isLeapYear() ? 366 : 365;
-    };
-    _proto.with = function _with(adjusterOrField, value) {
-        if (arguments.length === 1) return this._withAdjuster(adjusterOrField);
-        else return this._withField(adjusterOrField, value);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        requireInstance(field, TemporalField, 'field');
-        if (field instanceof ChronoField) {
-            var f = field;
-            f.checkValidValue(newValue);
-            switch(f){
-                case ChronoField.MONTH_OF_YEAR:
-                    return this.withMonth(newValue);
-                case ChronoField.PROLEPTIC_MONTH:
-                    return this.plusMonths(newValue - this.getLong(ChronoField.PROLEPTIC_MONTH));
-                case ChronoField.YEAR_OF_ERA:
-                    return this.withYear(this._year < 1 ? 1 - newValue : newValue);
-                case ChronoField.YEAR:
-                    return this.withYear(newValue);
-                case ChronoField.ERA:
-                    return this.getLong(ChronoField.ERA) === newValue ? this : this.withYear(1 - this._year);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.withYear = function withYear(year) {
-        ChronoField.YEAR.checkValidValue(year);
-        return new YearMonth(year, this._month);
-    };
-    _proto.withMonth = function withMonth(month) {
-        ChronoField.MONTH_OF_YEAR.checkValidValue(month);
-        return new YearMonth(this._year, month);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(unit, 'unit');
-        requireInstance(unit, TemporalUnit, 'unit');
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.MONTHS:
-                    return this.plusMonths(amountToAdd);
-                case ChronoUnit.YEARS:
-                    return this.plusYears(amountToAdd);
-                case ChronoUnit.DECADES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 10));
-                case ChronoUnit.CENTURIES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 100));
-                case ChronoUnit.MILLENNIA:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 1000));
-                case ChronoUnit.ERAS:
-                    return this.with(ChronoField.ERA, MathUtil.safeAdd(this.getLong(ChronoField.ERA), amountToAdd));
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(yearsToAdd) {
-        if (yearsToAdd === 0) return this;
-        var newYear = ChronoField.YEAR.checkValidIntValue(this._year + yearsToAdd);
-        return this.withYear(newYear);
-    };
-    _proto.plusMonths = function plusMonths(monthsToAdd) {
-        if (monthsToAdd === 0) return this;
-        var monthCount = this._year * 12 + (this._month - 1);
-        var calcMonths = monthCount + monthsToAdd;
-        var newYear = ChronoField.YEAR.checkValidIntValue(MathUtil.floorDiv(calcMonths, 12));
-        var newMonth = MathUtil.floorMod(calcMonths, 12) + 1;
-        return new YearMonth(newYear, newMonth);
-    };
-    _proto.minusYears = function minusYears(yearsToSubtract) {
-        return yearsToSubtract === MathUtil.MIN_SAFE_INTEGER ? this.plusYears(MathUtil.MIN_SAFE_INTEGER).plusYears(1) : this.plusYears(-yearsToSubtract);
-    };
-    _proto.minusMonths = function minusMonths(monthsToSubtract) {
-        return monthsToSubtract === MathUtil.MIN_SAFE_INTEGER ? this.plusMonths(Math.MAX_SAFE_INTEGER).plusMonths(1) : this.plusMonths(-monthsToSubtract);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        requireInstance(_query, TemporalQuery, 'query');
-        if (_query === TemporalQueries.chronology()) return IsoChronology.INSTANCE;
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.MONTHS;
-        else if (_query === TemporalQueries.localDate() || _query === TemporalQueries.localTime() || _query === TemporalQueries.zone() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.offset()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        requireNonNull(temporal, 'temporal');
-        requireInstance(temporal, Temporal, 'temporal');
-        return temporal.with(ChronoField.PROLEPTIC_MONTH, this._getProlepticMonth());
-    };
-    _proto.until = function until(endExclusive, unit) {
-        requireNonNull(endExclusive, 'endExclusive');
-        requireNonNull(unit, 'unit');
-        requireInstance(endExclusive, Temporal, 'endExclusive');
-        requireInstance(unit, TemporalUnit, 'unit');
-        var end = YearMonth.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            var monthsUntil = end._getProlepticMonth() - this._getProlepticMonth();
-            switch(unit){
-                case ChronoUnit.MONTHS:
-                    return monthsUntil;
-                case ChronoUnit.YEARS:
-                    return MathUtil.intDiv(monthsUntil, 12);
-                case ChronoUnit.DECADES:
-                    return MathUtil.intDiv(monthsUntil, 120);
-                case ChronoUnit.CENTURIES:
-                    return MathUtil.intDiv(monthsUntil, 1200);
-                case ChronoUnit.MILLENNIA:
-                    return MathUtil.intDiv(monthsUntil, 12000);
-                case ChronoUnit.ERAS:
-                    return end.getLong(ChronoField.ERA) - this.getLong(ChronoField.ERA);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.atDay = function atDay(dayOfMonth) {
-        requireNonNull(dayOfMonth, 'dayOfMonth');
-        return LocalDate.of(this._year, this._month, dayOfMonth);
-    };
-    _proto.atEndOfMonth = function atEndOfMonth() {
-        return LocalDate.of(this._year, this._month, this.lengthOfMonth());
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, YearMonth, 'other');
-        var cmp = this._year - other.year();
-        if (cmp === 0) cmp = this._month - other.monthValue();
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        return this.compareTo(other) > 0;
-    };
-    _proto.isBefore = function isBefore(other) {
-        return this.compareTo(other) < 0;
-    };
-    _proto.equals = function equals(obj) {
-        if (this === obj) return true;
-        if (obj instanceof YearMonth) {
-            var other = obj;
-            return this.year() === other.year() && this.monthValue() === other.monthValue();
-        }
-        return false;
-    };
-    _proto.toString = function toString() {
-        return PARSER$1.format(this);
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this);
-    };
-    return YearMonth;
-}(Temporal);
-var PARSER$1;
-function _init$b() {
-    PARSER$1 = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).appendLiteral('-').appendValue(ChronoField.MONTH_OF_YEAR, 2).toFormatter();
-    YearMonth.FROM = createTemporalQuery('YearMonth.FROM', function(temporal) {
-        return YearMonth.from(temporal);
-    });
-}
-var Year = function(_Temporal) {
-    _inheritsLoose(Year, _Temporal);
-    function Year(value) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        _this._year = MathUtil.safeToInt(value);
-        return _this;
-    }
-    var _proto = Year.prototype;
-    _proto.value = function value() {
-        return this._year;
-    };
-    Year.now = function now(zoneIdOrClock) {
-        if (zoneIdOrClock === void 0) zoneIdOrClock = undefined;
-        if (zoneIdOrClock === undefined) return Year.now0();
-        else if (zoneIdOrClock instanceof ZoneId) return Year.nowZoneId(zoneIdOrClock);
-        else return Year.nowClock(zoneIdOrClock);
-    };
-    Year.now0 = function now0() {
-        return Year.nowClock(Clock.systemDefaultZone());
-    };
-    Year.nowZoneId = function nowZoneId(zone) {
-        requireNonNull(zone, 'zone');
-        requireInstance(zone, ZoneId, 'zone');
-        return Year.nowClock(Clock.system(zone));
-    };
-    Year.nowClock = function nowClock(clock) {
-        requireNonNull(clock, 'clock');
-        requireInstance(clock, Clock, 'clock');
-        var now = LocalDate.now(clock);
-        return Year.of(now.year());
-    };
-    Year.of = function of(isoYear) {
-        requireNonNull(isoYear, 'isoYear');
-        ChronoField.YEAR.checkValidValue(isoYear);
-        return new Year(isoYear);
-    };
-    Year.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        requireInstance(temporal, TemporalAccessor, 'temporal');
-        if (temporal instanceof Year) return temporal;
-        try {
-            return Year.of(temporal.get(ChronoField.YEAR));
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain Year from TemporalAccessor: " + temporal + ", type " + (temporal && temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    Year.parse = function parse(text, formatter) {
-        if (arguments.length <= 1) return Year.parseText(text);
-        else return Year.parseTextFormatter(text, formatter);
-    };
-    Year.parseText = function parseText(text) {
-        requireNonNull(text, 'text');
-        return Year.parse(text, PARSER);
-    };
-    Year.parseTextFormatter = function parseTextFormatter(text, formatter) {
-        if (formatter === void 0) formatter = PARSER;
-        requireNonNull(text, 'text');
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return formatter.parse(text, Year.FROM);
-    };
-    Year.isLeap = function isLeap(year) {
-        return MathUtil.intMod(year, 4) === 0 && (MathUtil.intMod(year, 100) !== 0 || MathUtil.intMod(year, 400) === 0);
-    };
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (arguments.length === 1 && fieldOrUnit instanceof TemporalField) return this.isSupportedField(fieldOrUnit);
-        else return this.isSupportedUnit(fieldOrUnit);
-    };
-    _proto.isSupportedField = function isSupportedField(field) {
-        if (field instanceof ChronoField) return field === ChronoField.YEAR || field === ChronoField.YEAR_OF_ERA || field === ChronoField.ERA;
-        return field != null && field.isSupportedBy(this);
-    };
-    _proto.isSupportedUnit = function isSupportedUnit(unit) {
-        if (unit instanceof ChronoUnit) return unit === ChronoUnit.YEARS || unit === ChronoUnit.DECADES || unit === ChronoUnit.CENTURIES || unit === ChronoUnit.MILLENNIA || unit === ChronoUnit.ERAS;
-        return unit != null && unit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (this.isSupported(field)) return field.range();
-        else if (field instanceof ChronoField) throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        return _Temporal.prototype.range.call(this, field);
-    };
-    _proto.get = function get(field) {
-        return this.range(field).checkValidIntValue(this.getLong(field), field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.YEAR_OF_ERA:
-                    return this._year < 1 ? 1 - this._year : this._year;
-                case ChronoField.YEAR:
-                    return this._year;
-                case ChronoField.ERA:
-                    return this._year < 1 ? 0 : 1;
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    };
-    _proto.isLeap = function isLeap() {
-        return Year.isLeap(this._year);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        requireInstance(field, TemporalField, 'field');
-        if (field instanceof ChronoField) {
-            field.checkValidValue(newValue);
-            switch(field){
-                case ChronoField.YEAR_OF_ERA:
-                    return Year.of(this._year < 1 ? 1 - newValue : newValue);
-                case ChronoField.YEAR:
-                    return Year.of(newValue);
-                case ChronoField.ERA:
-                    return this.getLong(ChronoField.ERA) === newValue ? this : Year.of(1 - this._year);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(amountToAdd, 'amountToAdd');
-        requireNonNull(unit, 'unit');
-        requireInstance(unit, TemporalUnit, 'unit');
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.YEARS:
-                    return this.plusYears(amountToAdd);
-                case ChronoUnit.DECADES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 10));
-                case ChronoUnit.CENTURIES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 100));
-                case ChronoUnit.MILLENNIA:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 1000));
-                case ChronoUnit.ERAS:
-                    return this.with(ChronoField.ERA, MathUtil.safeAdd(this.getLong(ChronoField.ERA), amountToAdd));
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(yearsToAdd) {
-        if (yearsToAdd === 0) return this;
-        return Year.of(ChronoField.YEAR.checkValidIntValue(MathUtil.safeAdd(this._year, yearsToAdd)));
-    };
-    _proto.minusYears = function minusYears(yearsToSubtract) {
-        return yearsToSubtract === MathUtil.MIN_SAFE_INTEGER ? this.plusYears(MathUtil.MAX_SAFE_INTEGER).plusYears(1) : this.plusYears(-yearsToSubtract);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        requireNonNull(temporal, 'temporal');
-        return temporal.with(ChronoField.YEAR, this._year);
-    };
-    _proto.isValidMonthDay = function isValidMonthDay(monthDay) {
-        return monthDay != null && monthDay.isValidYear(this._year);
-    };
-    _proto.length = function length() {
-        return this.isLeap() ? 366 : 365;
-    };
-    _proto.atDay = function atDay(dayOfYear) {
-        return LocalDate.ofYearDay(this._year, dayOfYear);
-    };
-    _proto.atMonth = function atMonth(monthOrNumber) {
-        if (arguments.length === 1 && monthOrNumber instanceof Month) return this.atMonthMonth(monthOrNumber);
-        else return this.atMonthNumber(monthOrNumber);
-    };
-    _proto.atMonthMonth = function atMonthMonth(month) {
-        requireNonNull(month, 'month');
-        requireInstance(month, Month, 'month');
-        return YearMonth.of(this._year, month);
-    };
-    _proto.atMonthNumber = function atMonthNumber(month) {
-        requireNonNull(month, 'month');
-        return YearMonth.of(this._year, month);
-    };
-    _proto.atMonthDay = function atMonthDay(monthDay) {
-        requireNonNull(monthDay, 'monthDay');
-        requireInstance(monthDay, MonthDay, 'monthDay');
-        return monthDay.atYear(this._year);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query()');
-        requireInstance(_query, TemporalQuery, 'query()');
-        if (_query === TemporalQueries.chronology()) return IsoChronology.INSTANCE;
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.YEARS;
-        else if (_query === TemporalQueries.localDate() || _query === TemporalQueries.localTime() || _query === TemporalQueries.zone() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.offset()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, Year, 'other');
-        return this._year - other._year;
-    };
-    _proto.isAfter = function isAfter(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, Year, 'other');
-        return this._year > other._year;
-    };
-    _proto.isBefore = function isBefore(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, Year, 'other');
-        return this._year < other._year;
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return formatter.format(this);
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof Year) return this.value() === other.value();
-        return false;
-    };
-    _proto.toString = function toString() {
-        return "" + this._year;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.until = function until(endExclusive, unit) {
-        var end = Year.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            var yearsUntil = end.value() - this.value();
-            switch(unit){
-                case ChronoUnit.YEARS:
-                    return yearsUntil;
-                case ChronoUnit.DECADES:
-                    return MathUtil.intDiv(yearsUntil, 10);
-                case ChronoUnit.CENTURIES:
-                    return MathUtil.intDiv(yearsUntil, 100);
-                case ChronoUnit.MILLENNIA:
-                    return MathUtil.intDiv(yearsUntil, 1000);
-                case ChronoUnit.ERAS:
-                    return end.getLong(ChronoField.ERA) - this.getLong(ChronoField.ERA);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    return Year;
-}(Temporal);
-var PARSER;
-function _init$a() {
-    Year.MIN_VALUE = YearConstants.MIN_VALUE;
-    Year.MAX_VALUE = YearConstants.MAX_VALUE;
-    PARSER = new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD).toFormatter();
-    Year.FROM = createTemporalQuery('Year.FROM', function(temporal) {
-        return Year.from(temporal);
-    });
-}
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var TemporalAdjuster = function() {
-    function TemporalAdjuster() {}
-    var _proto = TemporalAdjuster.prototype;
-    _proto.adjustInto = function adjustInto(temporal) {
-        abstractMethodFail('adjustInto');
-    };
-    return TemporalAdjuster;
-}();
-var TemporalAdjusters = function() {
-    function TemporalAdjusters() {}
-    TemporalAdjusters.firstDayOfMonth = function firstDayOfMonth() {
-        return Impl.FIRST_DAY_OF_MONTH;
-    };
-    TemporalAdjusters.lastDayOfMonth = function lastDayOfMonth() {
-        return Impl.LAST_DAY_OF_MONTH;
-    };
-    TemporalAdjusters.firstDayOfNextMonth = function firstDayOfNextMonth() {
-        return Impl.FIRST_DAY_OF_NEXT_MONTH;
-    };
-    TemporalAdjusters.firstDayOfYear = function firstDayOfYear() {
-        return Impl.FIRST_DAY_OF_YEAR;
-    };
-    TemporalAdjusters.lastDayOfYear = function lastDayOfYear() {
-        return Impl.LAST_DAY_OF_YEAR;
-    };
-    TemporalAdjusters.firstDayOfNextYear = function firstDayOfNextYear() {
-        return Impl.FIRST_DAY_OF_NEXT_YEAR;
-    };
-    TemporalAdjusters.firstInMonth = function firstInMonth(dayOfWeek) {
-        requireNonNull(dayOfWeek, 'dayOfWeek');
-        return new DayOfWeekInMonth(1, dayOfWeek);
-    };
-    TemporalAdjusters.lastInMonth = function lastInMonth(dayOfWeek) {
-        requireNonNull(dayOfWeek, 'dayOfWeek');
-        return new DayOfWeekInMonth(-1, dayOfWeek);
-    };
-    TemporalAdjusters.dayOfWeekInMonth = function dayOfWeekInMonth(ordinal, dayOfWeek) {
-        requireNonNull(dayOfWeek, 'dayOfWeek');
-        return new DayOfWeekInMonth(ordinal, dayOfWeek);
-    };
-    TemporalAdjusters.next = function next(dayOfWeek) {
-        return new RelativeDayOfWeek(2, dayOfWeek);
-    };
-    TemporalAdjusters.nextOrSame = function nextOrSame(dayOfWeek) {
-        return new RelativeDayOfWeek(0, dayOfWeek);
-    };
-    TemporalAdjusters.previous = function previous(dayOfWeek) {
-        return new RelativeDayOfWeek(3, dayOfWeek);
-    };
-    TemporalAdjusters.previousOrSame = function previousOrSame(dayOfWeek) {
-        return new RelativeDayOfWeek(1, dayOfWeek);
-    };
-    return TemporalAdjusters;
-}();
-var Impl = function(_TemporalAdjuster) {
-    _inheritsLoose(Impl, _TemporalAdjuster);
-    function Impl(ordinal) {
-        var _this;
-        _this = _TemporalAdjuster.call(this) || this;
-        _this._ordinal = ordinal;
-        return _this;
-    }
-    var _proto = Impl.prototype;
-    _proto.adjustInto = function adjustInto(temporal) {
-        switch(this._ordinal){
-            case 0:
-                return temporal.with(ChronoField.DAY_OF_MONTH, 1);
-            case 1:
-                return temporal.with(ChronoField.DAY_OF_MONTH, temporal.range(ChronoField.DAY_OF_MONTH).maximum());
-            case 2:
-                return temporal.with(ChronoField.DAY_OF_MONTH, 1).plus(1, ChronoUnit.MONTHS);
-            case 3:
-                return temporal.with(ChronoField.DAY_OF_YEAR, 1);
-            case 4:
-                return temporal.with(ChronoField.DAY_OF_YEAR, temporal.range(ChronoField.DAY_OF_YEAR).maximum());
-            case 5:
-                return temporal.with(ChronoField.DAY_OF_YEAR, 1).plus(1, ChronoUnit.YEARS);
-        }
-        throw new IllegalStateException('Unreachable');
-    };
-    return Impl;
-}(TemporalAdjuster);
-Impl.FIRST_DAY_OF_MONTH = new Impl(0);
-Impl.LAST_DAY_OF_MONTH = new Impl(1);
-Impl.FIRST_DAY_OF_NEXT_MONTH = new Impl(2);
-Impl.FIRST_DAY_OF_YEAR = new Impl(3);
-Impl.LAST_DAY_OF_YEAR = new Impl(4);
-Impl.FIRST_DAY_OF_NEXT_YEAR = new Impl(5);
-var DayOfWeekInMonth = function(_TemporalAdjuster2) {
-    _inheritsLoose(DayOfWeekInMonth, _TemporalAdjuster2);
-    function DayOfWeekInMonth(ordinal, dow) {
-        var _this2;
-        _this2 = _TemporalAdjuster2.call(this) || this;
-        _this2._ordinal = ordinal;
-        _this2._dowValue = dow.value();
-        return _this2;
-    }
-    var _proto2 = DayOfWeekInMonth.prototype;
-    _proto2.adjustInto = function adjustInto(temporal) {
-        if (this._ordinal >= 0) {
-            var temp = temporal.with(ChronoField.DAY_OF_MONTH, 1);
-            var curDow = temp.get(ChronoField.DAY_OF_WEEK);
-            var dowDiff = MathUtil.intMod(this._dowValue - curDow + 7, 7);
-            dowDiff += (this._ordinal - 1) * 7;
-            return temp.plus(dowDiff, ChronoUnit.DAYS);
-        } else {
-            var _temp = temporal.with(ChronoField.DAY_OF_MONTH, temporal.range(ChronoField.DAY_OF_MONTH).maximum());
-            var _curDow = _temp.get(ChronoField.DAY_OF_WEEK);
-            var daysDiff = this._dowValue - _curDow;
-            daysDiff = daysDiff === 0 ? 0 : daysDiff > 0 ? daysDiff - 7 : daysDiff;
-            daysDiff -= (-this._ordinal - 1) * 7;
-            return _temp.plus(daysDiff, ChronoUnit.DAYS);
-        }
-    };
-    return DayOfWeekInMonth;
-}(TemporalAdjuster);
-var RelativeDayOfWeek = function(_TemporalAdjuster3) {
-    _inheritsLoose(RelativeDayOfWeek, _TemporalAdjuster3);
-    function RelativeDayOfWeek(relative, dayOfWeek) {
-        var _this3;
-        _this3 = _TemporalAdjuster3.call(this) || this;
-        requireNonNull(dayOfWeek, 'dayOfWeek');
-        _this3._relative = relative;
-        _this3._dowValue = dayOfWeek.value();
-        return _this3;
-    }
-    var _proto3 = RelativeDayOfWeek.prototype;
-    _proto3.adjustInto = function adjustInto(temporal) {
-        var calDow = temporal.get(ChronoField.DAY_OF_WEEK);
-        if (this._relative < 2 && calDow === this._dowValue) return temporal;
-        if ((this._relative & 1) === 0) {
-            var daysDiff = calDow - this._dowValue;
-            return temporal.plus(daysDiff >= 0 ? 7 - daysDiff : -daysDiff, ChronoUnit.DAYS);
-        } else {
-            var _daysDiff = this._dowValue - calDow;
-            return temporal.minus(_daysDiff >= 0 ? 7 - _daysDiff : -_daysDiff, ChronoUnit.DAYS);
-        }
-    };
-    return RelativeDayOfWeek;
-}(TemporalAdjuster);
-var IsoChronology = function(_Enum) {
-    _inheritsLoose(IsoChronology, _Enum);
-    function IsoChronology() {
-        return _Enum.apply(this, arguments) || this;
-    }
-    IsoChronology.isLeapYear = function isLeapYear(prolepticYear) {
-        return (prolepticYear & 3) === 0 && (prolepticYear % 100 !== 0 || prolepticYear % 400 === 0);
-    };
-    var _proto = IsoChronology.prototype;
-    _proto._updateResolveMap = function _updateResolveMap(fieldValues, field, value) {
-        requireNonNull(fieldValues, 'fieldValues');
-        requireNonNull(field, 'field');
-        var current = fieldValues.get(field);
-        if (current != null && current !== value) throw new DateTimeException("Invalid state, field: " + field + " " + current + " conflicts with " + field + " " + value);
-        fieldValues.put(field, value);
-    };
-    _proto.resolveDate = function resolveDate(fieldValues, resolverStyle) {
-        if (fieldValues.containsKey(ChronoField.EPOCH_DAY)) return LocalDate.ofEpochDay(fieldValues.remove(ChronoField.EPOCH_DAY));
-        var prolepticMonth = fieldValues.remove(ChronoField.PROLEPTIC_MONTH);
-        if (prolepticMonth != null) {
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.PROLEPTIC_MONTH.checkValidValue(prolepticMonth);
-            this._updateResolveMap(fieldValues, ChronoField.MONTH_OF_YEAR, MathUtil.floorMod(prolepticMonth, 12) + 1);
-            this._updateResolveMap(fieldValues, ChronoField.YEAR, MathUtil.floorDiv(prolepticMonth, 12));
-        }
-        var yoeLong = fieldValues.remove(ChronoField.YEAR_OF_ERA);
-        if (yoeLong != null) {
-            if (resolverStyle !== ResolverStyle.LENIENT) ChronoField.YEAR_OF_ERA.checkValidValue(yoeLong);
-            var era = fieldValues.remove(ChronoField.ERA);
-            if (era == null) {
-                var year = fieldValues.get(ChronoField.YEAR);
-                if (resolverStyle === ResolverStyle.STRICT) {
-                    if (year != null) this._updateResolveMap(fieldValues, ChronoField.YEAR, year > 0 ? yoeLong : MathUtil.safeSubtract(1, yoeLong));
-                    else fieldValues.put(ChronoField.YEAR_OF_ERA, yoeLong);
-                } else this._updateResolveMap(fieldValues, ChronoField.YEAR, year == null || year > 0 ? yoeLong : MathUtil.safeSubtract(1, yoeLong));
-            } else if (era === 1) this._updateResolveMap(fieldValues, ChronoField.YEAR, yoeLong);
-            else if (era === 0) this._updateResolveMap(fieldValues, ChronoField.YEAR, MathUtil.safeSubtract(1, yoeLong));
-            else throw new DateTimeException("Invalid value for era: " + era);
-        } else if (fieldValues.containsKey(ChronoField.ERA)) ChronoField.ERA.checkValidValue(fieldValues.get(ChronoField.ERA));
-        if (fieldValues.containsKey(ChronoField.YEAR)) {
-            if (fieldValues.containsKey(ChronoField.MONTH_OF_YEAR)) {
-                if (fieldValues.containsKey(ChronoField.DAY_OF_MONTH)) {
-                    var y = ChronoField.YEAR.checkValidIntValue(fieldValues.remove(ChronoField.YEAR));
-                    var moy = fieldValues.remove(ChronoField.MONTH_OF_YEAR);
-                    var dom = fieldValues.remove(ChronoField.DAY_OF_MONTH);
-                    if (resolverStyle === ResolverStyle.LENIENT) {
-                        var months = moy - 1;
-                        var days = dom - 1;
-                        return LocalDate.of(y, 1, 1).plusMonths(months).plusDays(days);
-                    } else if (resolverStyle === ResolverStyle.SMART) {
-                        ChronoField.DAY_OF_MONTH.checkValidValue(dom);
-                        if (moy === 4 || moy === 6 || moy === 9 || moy === 11) dom = Math.min(dom, 30);
-                        else if (moy === 2) dom = Math.min(dom, Month.FEBRUARY.length(Year.isLeap(y)));
-                        return LocalDate.of(y, moy, dom);
-                    } else return LocalDate.of(y, moy, dom);
-                }
-            }
-            if (fieldValues.containsKey(ChronoField.DAY_OF_YEAR)) {
-                var _y = ChronoField.YEAR.checkValidIntValue(fieldValues.remove(ChronoField.YEAR));
-                if (resolverStyle === ResolverStyle.LENIENT) {
-                    var _days = MathUtil.safeSubtract(fieldValues.remove(ChronoField.DAY_OF_YEAR), 1);
-                    return LocalDate.ofYearDay(_y, 1).plusDays(_days);
-                }
-                var doy = ChronoField.DAY_OF_YEAR.checkValidIntValue(fieldValues.remove(ChronoField.DAY_OF_YEAR));
-                return LocalDate.ofYearDay(_y, doy);
-            }
-            if (fieldValues.containsKey(ChronoField.ALIGNED_WEEK_OF_YEAR)) {
-                if (fieldValues.containsKey(ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR)) {
-                    var _y2 = ChronoField.YEAR.checkValidIntValue(fieldValues.remove(ChronoField.YEAR));
-                    if (resolverStyle === ResolverStyle.LENIENT) {
-                        var weeks = MathUtil.safeSubtract(fieldValues.remove(ChronoField.ALIGNED_WEEK_OF_YEAR), 1);
-                        var _days2 = MathUtil.safeSubtract(fieldValues.remove(ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR), 1);
-                        return LocalDate.of(_y2, 1, 1).plusWeeks(weeks).plusDays(_days2);
-                    }
-                    var aw = ChronoField.ALIGNED_WEEK_OF_YEAR.checkValidIntValue(fieldValues.remove(ChronoField.ALIGNED_WEEK_OF_YEAR));
-                    var ad = ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR.checkValidIntValue(fieldValues.remove(ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR));
-                    var date = LocalDate.of(_y2, 1, 1).plusDays((aw - 1) * 7 + (ad - 1));
-                    if (resolverStyle === ResolverStyle.STRICT && date.get(ChronoField.YEAR) !== _y2) throw new DateTimeException('Strict mode rejected date parsed to a different year');
-                    return date;
-                }
-                if (fieldValues.containsKey(ChronoField.DAY_OF_WEEK)) {
-                    var _y3 = ChronoField.YEAR.checkValidIntValue(fieldValues.remove(ChronoField.YEAR));
-                    if (resolverStyle === ResolverStyle.LENIENT) {
-                        var _weeks = MathUtil.safeSubtract(fieldValues.remove(ChronoField.ALIGNED_WEEK_OF_YEAR), 1);
-                        var _days3 = MathUtil.safeSubtract(fieldValues.remove(ChronoField.DAY_OF_WEEK), 1);
-                        return LocalDate.of(_y3, 1, 1).plusWeeks(_weeks).plusDays(_days3);
-                    }
-                    var _aw = ChronoField.ALIGNED_WEEK_OF_YEAR.checkValidIntValue(fieldValues.remove(ChronoField.ALIGNED_WEEK_OF_YEAR));
-                    var dow = ChronoField.DAY_OF_WEEK.checkValidIntValue(fieldValues.remove(ChronoField.DAY_OF_WEEK));
-                    var _date = LocalDate.of(_y3, 1, 1).plusWeeks(_aw - 1).with(TemporalAdjusters.nextOrSame(DayOfWeek.of(dow)));
-                    if (resolverStyle === ResolverStyle.STRICT && _date.get(ChronoField.YEAR) !== _y3) throw new DateTimeException('Strict mode rejected date parsed to a different month');
-                    return _date;
-                }
-            }
-        }
-        return null;
-    };
-    _proto.date = function date(temporal) {
-        return LocalDate.from(temporal);
-    };
-    return IsoChronology;
-}(Enum);
-function _init$9() {
-    IsoChronology.INSTANCE = new IsoChronology('IsoChronology');
-}
-var OffsetTime = function(_Temporal) {
-    _inheritsLoose(OffsetTime, _Temporal);
-    OffsetTime.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (temporal instanceof OffsetTime) return temporal;
-        else if (temporal instanceof OffsetDateTime) return temporal.toOffsetTime();
-        try {
-            var time = LocalTime.from(temporal);
-            var offset = ZoneOffset.from(temporal);
-            return new OffsetTime(time, offset);
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain OffsetTime TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    OffsetTime.now = function now(clockOrZone) {
-        if (arguments.length === 0) return OffsetTime._now(Clock.systemDefaultZone());
-        else if (clockOrZone instanceof Clock) return OffsetTime._now(clockOrZone);
-        else return OffsetTime._now(Clock.system(clockOrZone));
-    };
-    OffsetTime._now = function _now(clock) {
-        requireNonNull(clock, 'clock');
-        var now = clock.instant();
-        return OffsetTime.ofInstant(now, clock.zone().rules().offset(now));
-    };
-    OffsetTime.of = function of() {
-        if (arguments.length <= 2) return OffsetTime.ofTimeAndOffset.apply(this, arguments);
-        else return OffsetTime.ofNumbers.apply(this, arguments);
-    };
-    OffsetTime.ofNumbers = function ofNumbers(hour, minute, second, nanoOfSecond, offset) {
-        var time = LocalTime.of(hour, minute, second, nanoOfSecond);
-        return new OffsetTime(time, offset);
-    };
-    OffsetTime.ofTimeAndOffset = function ofTimeAndOffset(time, offset) {
-        return new OffsetTime(time, offset);
-    };
-    OffsetTime.ofInstant = function ofInstant(instant, zone) {
-        requireNonNull(instant, 'instant');
-        requireInstance(instant, Instant, 'instant');
-        requireNonNull(zone, 'zone');
-        requireInstance(zone, ZoneId, 'zone');
-        var rules = zone.rules();
-        var offset = rules.offset(instant);
-        var secsOfDay = instant.epochSecond() % LocalTime.SECONDS_PER_DAY;
-        secsOfDay = (secsOfDay + offset.totalSeconds()) % LocalTime.SECONDS_PER_DAY;
-        if (secsOfDay < 0) secsOfDay += LocalTime.SECONDS_PER_DAY;
-        var time = LocalTime.ofSecondOfDay(secsOfDay, instant.nano());
-        return new OffsetTime(time, offset);
-    };
-    OffsetTime.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_OFFSET_TIME;
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, OffsetTime.FROM);
-    };
-    function OffsetTime(time, offset) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        requireNonNull(time, 'time');
-        requireInstance(time, LocalTime, 'time');
-        requireNonNull(offset, 'offset');
-        requireInstance(offset, ZoneOffset, 'offset');
-        _this._time = time;
-        _this._offset = offset;
-        return _this;
-    }
-    var _proto = OffsetTime.prototype;
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.NANO_OF_DAY, this._time.toNanoOfDay()).with(ChronoField.OFFSET_SECONDS, this.offset().totalSeconds());
-    };
-    _proto.atDate = function atDate(date) {
-        return OffsetDateTime.of(date, this._time, this._offset);
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this, OffsetTime.FROM);
-    };
-    _proto.get = function get(field) {
-        return _Temporal.prototype.get.call(this, field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field instanceof ChronoField) {
-            if (field === ChronoField.OFFSET_SECONDS) return this._offset.totalSeconds();
-            return this._time.getLong(field);
-        }
-        return field.getFrom(this);
-    };
-    _proto.hour = function hour() {
-        return this._time.hour();
-    };
-    _proto.minute = function minute() {
-        return this._time.minute();
-    };
-    _proto.second = function second() {
-        return this._time.second();
-    };
-    _proto.nano = function nano() {
-        return this._time.nano();
-    };
-    _proto.offset = function offset() {
-        return this._offset;
-    };
-    _proto.isAfter = function isAfter(other) {
-        requireNonNull(other, 'other');
-        return this._toEpochNano() > other._toEpochNano();
-    };
-    _proto.isBefore = function isBefore(other) {
-        requireNonNull(other, 'other');
-        return this._toEpochNano() < other._toEpochNano();
-    };
-    _proto.isEqual = function isEqual(other) {
-        requireNonNull(other, 'other');
-        return this._toEpochNano() === other._toEpochNano();
-    };
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit.isTimeBased() || fieldOrUnit === ChronoField.OFFSET_SECONDS;
-        else if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isTimeBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.minusHours = function minusHours(hours) {
-        return this._withLocalTimeOffset(this._time.minusHours(hours), this._offset);
-    };
-    _proto.minusMinutes = function minusMinutes(minutes) {
-        return this._withLocalTimeOffset(this._time.minusMinutes(minutes), this._offset);
-    };
-    _proto.minusSeconds = function minusSeconds(seconds) {
-        return this._withLocalTimeOffset(this._time.minusSeconds(seconds), this._offset);
-    };
-    _proto.minusNanos = function minusNanos(nanos) {
-        return this._withLocalTimeOffset(this._time.minusNanos(nanos), this._offset);
-    };
-    _proto._minusAmount = function _minusAmount(amount) {
-        requireNonNull(amount);
-        return amount.subtractFrom(this);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        return this.plus(-1 * amountToSubtract, unit);
-    };
-    _proto._plusAmount = function _plusAmount(amount) {
-        requireNonNull(amount);
-        return amount.addTo(this);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        if (unit instanceof ChronoUnit) return this._withLocalTimeOffset(this._time.plus(amountToAdd, unit), this._offset);
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusHours = function plusHours(hours) {
-        return this._withLocalTimeOffset(this._time.plusHours(hours), this._offset);
-    };
-    _proto.plusMinutes = function plusMinutes(minutes) {
-        return this._withLocalTimeOffset(this._time.plusMinutes(minutes), this._offset);
-    };
-    _proto.plusSeconds = function plusSeconds(seconds) {
-        return this._withLocalTimeOffset(this._time.plusSeconds(seconds), this._offset);
-    };
-    _proto.plusNanos = function plusNanos(nanos) {
-        return this._withLocalTimeOffset(this._time.plusNanos(nanos), this._offset);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        else if (_query === TemporalQueries.offset() || _query === TemporalQueries.zone()) return this.offset();
-        else if (_query === TemporalQueries.localTime()) return this._time;
-        else if (_query === TemporalQueries.chronology() || _query === TemporalQueries.localDate() || _query === TemporalQueries.zoneId()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) {
-            if (field === ChronoField.OFFSET_SECONDS) return field.range();
-            return this._time.range(field);
-        }
-        return field.rangeRefinedBy(this);
-    };
-    _proto.toLocalTime = function toLocalTime() {
-        return this._time;
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        return this._withLocalTimeOffset(this._time.truncatedTo(unit), this._offset);
-    };
-    _proto.until = function until(endExclusive, unit) {
-        requireNonNull(endExclusive, 'endExclusive');
-        requireNonNull(unit, 'unit');
-        var end = OffsetTime.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            var nanosUntil = end._toEpochNano() - this._toEpochNano();
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return nanosUntil;
-                case ChronoUnit.MICROS:
-                    return MathUtil.intDiv(nanosUntil, 1000);
-                case ChronoUnit.MILLIS:
-                    return MathUtil.intDiv(nanosUntil, 1000000);
-                case ChronoUnit.SECONDS:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_SECOND);
-                case ChronoUnit.MINUTES:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_MINUTE);
-                case ChronoUnit.HOURS:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_HOUR);
-                case ChronoUnit.HALF_DAYS:
-                    return MathUtil.intDiv(nanosUntil, 12 * LocalTime.NANOS_PER_HOUR);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.withHour = function withHour(hour) {
-        return this._withLocalTimeOffset(this._time.withHour(hour), this._offset);
-    };
-    _proto.withMinute = function withMinute(minute) {
-        return this._withLocalTimeOffset(this._time.withMinute(minute), this._offset);
-    };
-    _proto.withSecond = function withSecond(second) {
-        return this._withLocalTimeOffset(this._time.withSecond(second), this._offset);
-    };
-    _proto.withNano = function withNano(nano) {
-        return this._withLocalTimeOffset(this._time.withNano(nano), this._offset);
-    };
-    _proto.withOffsetSameInstant = function withOffsetSameInstant(offset) {
-        requireNonNull(offset, 'offset');
-        if (offset.equals(this._offset)) return this;
-        var difference = offset.totalSeconds() - this._offset.totalSeconds();
-        var adjusted = this._time.plusSeconds(difference);
-        return new OffsetTime(adjusted, offset);
-    };
-    _proto.withOffsetSameLocal = function withOffsetSameLocal(offset) {
-        return offset != null && offset.equals(this._offset) ? this : new OffsetTime(this._time, offset);
-    };
-    _proto._toEpochNano = function _toEpochNano() {
-        var nod = this._time.toNanoOfDay();
-        var offsetNanos = this._offset.totalSeconds() * LocalTime.NANOS_PER_SECOND;
-        return nod - offsetNanos;
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster, 'adjuster');
-        if (adjuster instanceof LocalTime) return this._withLocalTimeOffset(adjuster, this._offset);
-        else if (adjuster instanceof ZoneOffset) return this._withLocalTimeOffset(this._time, adjuster);
-        else if (adjuster instanceof OffsetTime) return adjuster;
-        return adjuster.adjustInto(this);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) {
-            if (field === ChronoField.OFFSET_SECONDS) return this._withLocalTimeOffset(this._time, ZoneOffset.ofTotalSeconds(field.checkValidIntValue(newValue)));
-            return this._withLocalTimeOffset(this._time.with(field, newValue), this._offset);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto._withLocalTimeOffset = function _withLocalTimeOffset(time, offset) {
-        if (this._time === time && this._offset.equals(offset)) return this;
-        return new OffsetTime(time, offset);
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, OffsetTime, 'other');
-        if (this._offset.equals(other._offset)) return this._time.compareTo(other._time);
-        var compare = MathUtil.compareNumbers(this._toEpochNano(), other._toEpochNano());
-        if (compare === 0) return this._time.compareTo(other._time);
-        return compare;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof OffsetTime) return this._time.equals(other._time) && this._offset.equals(other._offset);
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._time.hashCode() ^ this._offset.hashCode();
-    };
-    _proto.toString = function toString() {
-        return this._time.toString() + this._offset.toString();
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return OffsetTime;
-}(Temporal);
-function _init$8() {
-    OffsetTime.MIN = OffsetTime.ofNumbers(0, 0, 0, 0, ZoneOffset.MAX);
-    OffsetTime.MAX = OffsetTime.ofNumbers(23, 59, 59, 999999999, ZoneOffset.MIN);
-    OffsetTime.FROM = createTemporalQuery('OffsetTime.FROM', function(temporal) {
-        return OffsetTime.from(temporal);
-    });
-}
-var ChronoZonedDateTime = function(_Temporal) {
-    _inheritsLoose(ChronoZonedDateTime, _Temporal);
-    function ChronoZonedDateTime() {
-        return _Temporal.apply(this, arguments) || this;
-    }
-    var _proto = ChronoZonedDateTime.prototype;
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.zoneId() || _query === TemporalQueries.zone()) return this.zone();
-        else if (_query === TemporalQueries.chronology()) return this.toLocalDate().chronology();
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        else if (_query === TemporalQueries.offset()) return this.offset();
-        else if (_query === TemporalQueries.localDate()) return LocalDate.ofEpochDay(this.toLocalDate().toEpochDay());
-        else if (_query === TemporalQueries.localTime()) return this.toLocalTime();
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this);
-    };
-    _proto.toInstant = function toInstant() {
-        return Instant.ofEpochSecond(this.toEpochSecond(), this.toLocalTime().nano());
-    };
-    _proto.toEpochSecond = function toEpochSecond() {
-        var epochDay = this.toLocalDate().toEpochDay();
-        var secs = epochDay * 86400 + this.toLocalTime().toSecondOfDay();
-        secs -= this.offset().totalSeconds();
-        return secs;
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        var cmp = MathUtil.compareNumbers(this.toEpochSecond(), other.toEpochSecond());
-        if (cmp === 0) {
-            cmp = this.toLocalTime().nano() - other.toLocalTime().nano();
-            if (cmp === 0) {
-                cmp = this.toLocalDateTime().compareTo(other.toLocalDateTime());
-                if (cmp === 0) cmp = strcmp(this.zone().id(), other.zone().id());
-            }
-        }
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        requireNonNull(other, 'other');
-        var thisEpochSec = this.toEpochSecond();
-        var otherEpochSec = other.toEpochSecond();
-        return thisEpochSec > otherEpochSec || thisEpochSec === otherEpochSec && this.toLocalTime().nano() > other.toLocalTime().nano();
-    };
-    _proto.isBefore = function isBefore(other) {
-        requireNonNull(other, 'other');
-        var thisEpochSec = this.toEpochSecond();
-        var otherEpochSec = other.toEpochSecond();
-        return thisEpochSec < otherEpochSec || thisEpochSec === otherEpochSec && this.toLocalTime().nano() < other.toLocalTime().nano();
-    };
-    _proto.isEqual = function isEqual(other) {
-        requireNonNull(other, 'other');
-        return this.toEpochSecond() === other.toEpochSecond() && this.toLocalTime().nano() === other.toLocalTime().nano();
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof ChronoZonedDateTime) return this.compareTo(other) === 0;
-        return false;
-    };
-    return ChronoZonedDateTime;
-}(Temporal);
-function strcmp(a, b) {
-    if (a < b) return -1;
-    if (a > b) return 1;
-    return 0;
-}
-var ZonedDateTime = function(_ChronoZonedDateTime) {
-    _inheritsLoose(ZonedDateTime, _ChronoZonedDateTime);
-    ZonedDateTime.now = function now(clockOrZone) {
-        var clock;
-        if (clockOrZone instanceof ZoneId) clock = Clock.system(clockOrZone);
-        else clock = clockOrZone == null ? Clock.systemDefaultZone() : clockOrZone;
-        return ZonedDateTime.ofInstant(clock.instant(), clock.zone());
-    };
-    ZonedDateTime.of = function of() {
-        if (arguments.length <= 2) return ZonedDateTime.of2.apply(this, arguments);
-        else if (arguments.length === 3 && arguments[0] instanceof LocalDate) return ZonedDateTime.of3.apply(this, arguments);
-        else return ZonedDateTime.of8.apply(this, arguments);
-    };
-    ZonedDateTime.of3 = function of3(date, time, zone) {
-        return ZonedDateTime.of2(LocalDateTime.of(date, time), zone);
-    };
-    ZonedDateTime.of2 = function of2(localDateTime, zone) {
-        return ZonedDateTime.ofLocal(localDateTime, zone, null);
-    };
-    ZonedDateTime.of8 = function of8(year, month, dayOfMonth, hour, minute, second, nanoOfSecond, zone) {
-        var dt = LocalDateTime.of(year, month, dayOfMonth, hour, minute, second, nanoOfSecond);
-        return ZonedDateTime.ofLocal(dt, zone, null);
-    };
-    ZonedDateTime.ofLocal = function ofLocal(localDateTime, zone, preferredOffset) {
-        requireNonNull(localDateTime, 'localDateTime');
-        requireNonNull(zone, 'zone');
-        if (zone instanceof ZoneOffset) return new ZonedDateTime(localDateTime, zone, zone);
-        var offset = null;
-        var rules = zone.rules();
-        var validOffsets = rules.validOffsets(localDateTime);
-        if (validOffsets.length === 1) offset = validOffsets[0];
-        else if (validOffsets.length === 0) {
-            var trans = rules.transition(localDateTime);
-            localDateTime = localDateTime.plusSeconds(trans.duration().seconds());
-            offset = trans.offsetAfter();
-        } else if (preferredOffset != null && validOffsets.some(function(validOffset) {
-            return validOffset.equals(preferredOffset);
-        })) offset = preferredOffset;
-        else offset = requireNonNull(validOffsets[0], 'offset');
-        return new ZonedDateTime(localDateTime, offset, zone);
-    };
-    ZonedDateTime.ofInstant = function ofInstant() {
-        if (arguments.length === 2) return ZonedDateTime.ofInstant2.apply(this, arguments);
-        else return ZonedDateTime.ofInstant3.apply(this, arguments);
-    };
-    ZonedDateTime.ofInstant2 = function ofInstant2(instant, zone) {
-        requireNonNull(instant, 'instant');
-        requireNonNull(zone, 'zone');
-        return ZonedDateTime._create(instant.epochSecond(), instant.nano(), zone);
-    };
-    ZonedDateTime.ofInstant3 = function ofInstant3(localDateTime, offset, zone) {
-        requireNonNull(localDateTime, 'localDateTime');
-        requireNonNull(offset, 'offset');
-        requireNonNull(zone, 'zone');
-        return ZonedDateTime._create(localDateTime.toEpochSecond(offset), localDateTime.nano(), zone);
-    };
-    ZonedDateTime._create = function _create(epochSecond, nanoOfSecond, zone) {
-        var rules = zone.rules();
-        var instant = Instant.ofEpochSecond(epochSecond, nanoOfSecond);
-        var offset = rules.offset(instant);
-        var ldt = LocalDateTime.ofEpochSecond(epochSecond, nanoOfSecond, offset);
-        return new ZonedDateTime(ldt, offset, zone);
-    };
-    ZonedDateTime.ofStrict = function ofStrict(localDateTime, offset, zone) {
-        requireNonNull(localDateTime, 'localDateTime');
-        requireNonNull(offset, 'offset');
-        requireNonNull(zone, 'zone');
-        var rules = zone.rules();
-        if (rules.isValidOffset(localDateTime, offset) === false) {
-            var trans = rules.transition(localDateTime);
-            if (trans != null && trans.isGap()) throw new DateTimeException("LocalDateTime " + localDateTime + " does not exist in zone " + zone + " due to a gap in the local time-line, typically caused by daylight savings");
-            throw new DateTimeException("ZoneOffset \"" + offset + "\" is not valid for LocalDateTime \"" + localDateTime + "\" in zone \"" + zone + "\"");
-        }
-        return new ZonedDateTime(localDateTime, offset, zone);
-    };
-    ZonedDateTime.ofLenient = function ofLenient(localDateTime, offset, zone) {
-        requireNonNull(localDateTime, 'localDateTime');
-        requireNonNull(offset, 'offset');
-        requireNonNull(zone, 'zone');
-        if (zone instanceof ZoneOffset && offset.equals(zone) === false) throw new IllegalArgumentException('ZoneId must match ZoneOffset');
-        return new ZonedDateTime(localDateTime, offset, zone);
-    };
-    ZonedDateTime.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (temporal instanceof ZonedDateTime) return temporal;
-        var zone = ZoneId.from(temporal);
-        if (temporal.isSupported(ChronoField.INSTANT_SECONDS)) {
-            var zdt = ZonedDateTime._from(temporal, zone);
-            if (zdt != null) return zdt;
-        }
-        var ldt = LocalDateTime.from(temporal);
-        return ZonedDateTime.of2(ldt, zone);
-    };
-    ZonedDateTime._from = function _from(temporal, zone) {
-        try {
-            return ZonedDateTime.__from(temporal, zone);
-        } catch (ex) {
-            if (!(ex instanceof DateTimeException)) throw ex;
-        }
-    };
-    ZonedDateTime.__from = function __from(temporal, zone) {
-        var epochSecond = temporal.getLong(ChronoField.INSTANT_SECONDS);
-        var nanoOfSecond = temporal.get(ChronoField.NANO_OF_SECOND);
-        return ZonedDateTime._create(epochSecond, nanoOfSecond, zone);
-    };
-    ZonedDateTime.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_ZONED_DATE_TIME;
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, ZonedDateTime.FROM);
-    };
-    function ZonedDateTime(dateTime, offset, zone) {
-        var _this;
-        requireNonNull(dateTime, 'dateTime');
-        requireNonNull(offset, 'offset');
-        requireNonNull(zone, 'zone');
-        _this = _ChronoZonedDateTime.call(this) || this;
-        _this._dateTime = dateTime;
-        _this._offset = offset;
-        _this._zone = zone;
-        return _this;
-    }
-    var _proto = ZonedDateTime.prototype;
-    _proto._resolveLocal = function _resolveLocal(newDateTime) {
-        requireNonNull(newDateTime, 'newDateTime');
-        return ZonedDateTime.ofLocal(newDateTime, this._zone, this._offset);
-    };
-    _proto._resolveInstant = function _resolveInstant(newDateTime) {
-        return ZonedDateTime.ofInstant3(newDateTime, this._offset, this._zone);
-    };
-    _proto._resolveOffset = function _resolveOffset(offset) {
-        if (offset.equals(this._offset) === false && this._zone.rules().isValidOffset(this._dateTime, offset)) return new ZonedDateTime(this._dateTime, offset, this._zone);
-        return this;
-    };
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return true;
-        else if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isDateBased() || fieldOrUnit.isTimeBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) {
-            if (field === ChronoField.INSTANT_SECONDS || field === ChronoField.OFFSET_SECONDS) return field.range();
-            return this._dateTime.range(field);
-        }
-        return field.rangeRefinedBy(this);
-    };
-    _proto.get = function get(field) {
-        return this.getLong(field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.INSTANT_SECONDS:
-                    return this.toEpochSecond();
-                case ChronoField.OFFSET_SECONDS:
-                    return this._offset.totalSeconds();
-            }
-            return this._dateTime.getLong(field);
-        }
-        requireNonNull(field, 'field');
-        return field.getFrom(this);
-    };
-    _proto.offset = function offset() {
-        return this._offset;
-    };
-    _proto.withEarlierOffsetAtOverlap = function withEarlierOffsetAtOverlap() {
-        var trans = this._zone.rules().transition(this._dateTime);
-        if (trans != null && trans.isOverlap()) {
-            var earlierOffset = trans.offsetBefore();
-            if (earlierOffset.equals(this._offset) === false) return new ZonedDateTime(this._dateTime, earlierOffset, this._zone);
-        }
-        return this;
-    };
-    _proto.withLaterOffsetAtOverlap = function withLaterOffsetAtOverlap() {
-        var trans = this._zone.rules().transition(this.toLocalDateTime());
-        if (trans != null) {
-            var laterOffset = trans.offsetAfter();
-            if (laterOffset.equals(this._offset) === false) return new ZonedDateTime(this._dateTime, laterOffset, this._zone);
-        }
-        return this;
-    };
-    _proto.zone = function zone() {
-        return this._zone;
-    };
-    _proto.withZoneSameLocal = function withZoneSameLocal(zone) {
-        requireNonNull(zone, 'zone');
-        return this._zone.equals(zone) ? this : ZonedDateTime.ofLocal(this._dateTime, zone, this._offset);
-    };
-    _proto.withZoneSameInstant = function withZoneSameInstant(zone) {
-        requireNonNull(zone, 'zone');
-        return this._zone.equals(zone) ? this : ZonedDateTime._create(this._dateTime.toEpochSecond(this._offset), this._dateTime.nano(), zone);
-    };
-    _proto.withFixedOffsetZone = function withFixedOffsetZone() {
-        return this._zone.equals(this._offset) ? this : new ZonedDateTime(this._dateTime, this._offset, this._offset);
-    };
-    _proto.year = function year() {
-        return this._dateTime.year();
-    };
-    _proto.monthValue = function monthValue() {
-        return this._dateTime.monthValue();
-    };
-    _proto.month = function month() {
-        return this._dateTime.month();
-    };
-    _proto.dayOfMonth = function dayOfMonth() {
-        return this._dateTime.dayOfMonth();
-    };
-    _proto.dayOfYear = function dayOfYear() {
-        return this._dateTime.dayOfYear();
-    };
-    _proto.dayOfWeek = function dayOfWeek() {
-        return this._dateTime.dayOfWeek();
-    };
-    _proto.hour = function hour() {
-        return this._dateTime.hour();
-    };
-    _proto.minute = function minute() {
-        return this._dateTime.minute();
-    };
-    _proto.second = function second() {
-        return this._dateTime.second();
-    };
-    _proto.nano = function nano() {
-        return this._dateTime.nano();
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        if (adjuster instanceof LocalDate) return this._resolveLocal(LocalDateTime.of(adjuster, this._dateTime.toLocalTime()));
-        else if (adjuster instanceof LocalTime) return this._resolveLocal(LocalDateTime.of(this._dateTime.toLocalDate(), adjuster));
-        else if (adjuster instanceof LocalDateTime) return this._resolveLocal(adjuster);
-        else if (adjuster instanceof Instant) {
-            var instant = adjuster;
-            return ZonedDateTime._create(instant.epochSecond(), instant.nano(), this._zone);
-        } else if (adjuster instanceof ZoneOffset) return this._resolveOffset(adjuster);
-        return _ChronoZonedDateTime.prototype._withAdjuster.call(this, adjuster);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.INSTANT_SECONDS:
-                    return ZonedDateTime._create(newValue, this.nano(), this._zone);
-                case ChronoField.OFFSET_SECONDS:
-                    var offset = ZoneOffset.ofTotalSeconds(field.checkValidIntValue(newValue));
-                    return this._resolveOffset(offset);
-            }
-            return this._resolveLocal(this._dateTime.with(field, newValue));
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.withYear = function withYear(year) {
-        return this._resolveLocal(this._dateTime.withYear(year));
-    };
-    _proto.withMonth = function withMonth(month) {
-        return this._resolveLocal(this._dateTime.withMonth(month));
-    };
-    _proto.withDayOfMonth = function withDayOfMonth(dayOfMonth) {
-        return this._resolveLocal(this._dateTime.withDayOfMonth(dayOfMonth));
-    };
-    _proto.withDayOfYear = function withDayOfYear(dayOfYear) {
-        return this._resolveLocal(this._dateTime.withDayOfYear(dayOfYear));
-    };
-    _proto.withHour = function withHour(hour) {
-        return this._resolveLocal(this._dateTime.withHour(hour));
-    };
-    _proto.withMinute = function withMinute(minute) {
-        return this._resolveLocal(this._dateTime.withMinute(minute));
-    };
-    _proto.withSecond = function withSecond(second) {
-        return this._resolveLocal(this._dateTime.withSecond(second));
-    };
-    _proto.withNano = function withNano(nanoOfSecond) {
-        return this._resolveLocal(this._dateTime.withNano(nanoOfSecond));
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        return this._resolveLocal(this._dateTime.truncatedTo(unit));
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        if (unit instanceof ChronoUnit) {
-            if (unit.isDateBased()) return this._resolveLocal(this._dateTime.plus(amountToAdd, unit));
-            else return this._resolveInstant(this._dateTime.plus(amountToAdd, unit));
-        }
-        requireNonNull(unit, 'unit');
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(years) {
-        return this._resolveLocal(this._dateTime.plusYears(years));
-    };
-    _proto.plusMonths = function plusMonths(months) {
-        return this._resolveLocal(this._dateTime.plusMonths(months));
-    };
-    _proto.plusWeeks = function plusWeeks(weeks) {
-        return this._resolveLocal(this._dateTime.plusWeeks(weeks));
-    };
-    _proto.plusDays = function plusDays(days) {
-        return this._resolveLocal(this._dateTime.plusDays(days));
-    };
-    _proto.plusHours = function plusHours(hours) {
-        return this._resolveInstant(this._dateTime.plusHours(hours));
-    };
-    _proto.plusMinutes = function plusMinutes(minutes) {
-        return this._resolveInstant(this._dateTime.plusMinutes(minutes));
-    };
-    _proto.plusSeconds = function plusSeconds(seconds) {
-        return this._resolveInstant(this._dateTime.plusSeconds(seconds));
-    };
-    _proto.plusNanos = function plusNanos(nanos) {
-        return this._resolveInstant(this._dateTime.plusNanos(nanos));
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        return this._plusUnit(-1 * amountToSubtract, unit);
-    };
-    _proto.minusYears = function minusYears(years) {
-        return this.plusYears(-1 * years);
-    };
-    _proto.minusMonths = function minusMonths(months) {
-        return this.plusMonths(-1 * months);
-    };
-    _proto.minusWeeks = function minusWeeks(weeks) {
-        return this.plusWeeks(-1 * weeks);
-    };
-    _proto.minusDays = function minusDays(days) {
-        return this.plusDays(-1 * days);
-    };
-    _proto.minusHours = function minusHours(hours) {
-        return this.plusHours(-1 * hours);
-    };
-    _proto.minusMinutes = function minusMinutes(minutes) {
-        return this.plusMinutes(-1 * minutes);
-    };
-    _proto.minusSeconds = function minusSeconds(seconds) {
-        return this.plusSeconds(-1 * seconds);
-    };
-    _proto.minusNanos = function minusNanos(nanos) {
-        return this.plusNanos(-1 * nanos);
-    };
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.localDate()) return this.toLocalDate();
-        requireNonNull(_query, 'query');
-        return _ChronoZonedDateTime.prototype.query.call(this, _query);
-    };
-    _proto.until = function until(endExclusive, unit) {
-        var end = ZonedDateTime.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            end = end.withZoneSameInstant(this._zone);
-            if (unit.isDateBased()) return this._dateTime.until(end._dateTime, unit);
-            else {
-                var difference = this._offset.totalSeconds() - end._offset.totalSeconds();
-                var adjustedEnd = end._dateTime.plusSeconds(difference);
-                return this._dateTime.until(adjustedEnd, unit);
-            }
-        }
-        return unit.between(this, end);
-    };
-    _proto.toLocalDateTime = function toLocalDateTime() {
-        return this._dateTime;
-    };
-    _proto.toLocalDate = function toLocalDate() {
-        return this._dateTime.toLocalDate();
-    };
-    _proto.toLocalTime = function toLocalTime() {
-        return this._dateTime.toLocalTime();
-    };
-    _proto.toOffsetDateTime = function toOffsetDateTime() {
-        return OffsetDateTime.of(this._dateTime, this._offset);
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof ZonedDateTime) return this._dateTime.equals(other._dateTime) && this._offset.equals(other._offset) && this._zone.equals(other._zone);
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return MathUtil.hashCode(this._dateTime.hashCode(), this._offset.hashCode(), this._zone.hashCode());
-    };
-    _proto.toString = function toString() {
-        var str = this._dateTime.toString() + this._offset.toString();
-        if (this._offset !== this._zone) str += "[" + this._zone.toString() + "]";
-        return str;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        return _ChronoZonedDateTime.prototype.format.call(this, formatter);
-    };
-    return ZonedDateTime;
-}(ChronoZonedDateTime);
-function _init$7() {
-    ZonedDateTime.FROM = createTemporalQuery('ZonedDateTime.FROM', function(temporal) {
-        return ZonedDateTime.from(temporal);
-    });
-}
-var OffsetDateTime = function(_Temporal) {
-    _inheritsLoose(OffsetDateTime, _Temporal);
-    OffsetDateTime.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (temporal instanceof OffsetDateTime) return temporal;
-        try {
-            var offset = ZoneOffset.from(temporal);
-            try {
-                var ldt = LocalDateTime.from(temporal);
-                return OffsetDateTime.of(ldt, offset);
-            } catch (_) {
-                var instant = Instant.from(temporal);
-                return OffsetDateTime.ofInstant(instant, offset);
-            }
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain OffsetDateTime TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    OffsetDateTime.now = function now(clockOrZone) {
-        if (arguments.length === 0) return OffsetDateTime.now(Clock.systemDefaultZone());
-        else {
-            requireNonNull(clockOrZone, 'clockOrZone');
-            if (clockOrZone instanceof ZoneId) return OffsetDateTime.now(Clock.system(clockOrZone));
-            else if (clockOrZone instanceof Clock) {
-                var now = clockOrZone.instant();
-                return OffsetDateTime.ofInstant(now, clockOrZone.zone().rules().offset(now));
-            } else throw new IllegalArgumentException('clockOrZone must be an instance of ZoneId or Clock');
-        }
-    };
-    OffsetDateTime.of = function of() {
-        if (arguments.length <= 2) return OffsetDateTime.ofDateTime.apply(this, arguments);
-        else if (arguments.length === 3) return OffsetDateTime.ofDateAndTime.apply(this, arguments);
-        else return OffsetDateTime.ofNumbers.apply(this, arguments);
-    };
-    OffsetDateTime.ofDateTime = function ofDateTime(dateTime, offset) {
-        return new OffsetDateTime(dateTime, offset);
-    };
-    OffsetDateTime.ofDateAndTime = function ofDateAndTime(date, time, offset) {
-        var dt = LocalDateTime.of(date, time);
-        return new OffsetDateTime(dt, offset);
-    };
-    OffsetDateTime.ofNumbers = function ofNumbers(year, month, dayOfMonth, hour, minute, second, nanoOfSecond, offset) {
-        if (hour === void 0) hour = 0;
-        if (minute === void 0) minute = 0;
-        if (second === void 0) second = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        var dt = LocalDateTime.of(year, month, dayOfMonth, hour, minute, second, nanoOfSecond);
-        return new OffsetDateTime(dt, offset);
-    };
-    OffsetDateTime.ofInstant = function ofInstant(instant, zone) {
-        requireNonNull(instant, 'instant');
-        requireNonNull(zone, 'zone');
-        var rules = zone.rules();
-        var offset = rules.offset(instant);
-        var ldt = LocalDateTime.ofEpochSecond(instant.epochSecond(), instant.nano(), offset);
-        return new OffsetDateTime(ldt, offset);
-    };
-    OffsetDateTime.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, OffsetDateTime.FROM);
-    };
-    function OffsetDateTime(dateTime, offset) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        requireNonNull(dateTime, 'dateTime');
-        requireInstance(dateTime, LocalDateTime, 'dateTime');
-        requireNonNull(offset, 'offset');
-        requireInstance(offset, ZoneOffset, 'offset');
-        _this._dateTime = dateTime;
-        _this._offset = offset;
-        return _this;
-    }
-    var _proto = OffsetDateTime.prototype;
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.EPOCH_DAY, this.toLocalDate().toEpochDay()).with(ChronoField.NANO_OF_DAY, this.toLocalTime().toNanoOfDay()).with(ChronoField.OFFSET_SECONDS, this.offset().totalSeconds());
-    };
-    _proto.until = function until(endExclusive, unit) {
-        var end = OffsetDateTime.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            end = end.withOffsetSameInstant(this._offset);
-            return this._dateTime.until(end._dateTime, unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.atZoneSameInstant = function atZoneSameInstant(zone) {
-        return ZonedDateTime.ofInstant(this._dateTime, this._offset, zone);
-    };
-    _proto.atZoneSimilarLocal = function atZoneSimilarLocal(zone) {
-        return ZonedDateTime.ofLocal(this._dateTime, zone, this._offset);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.chronology()) return IsoChronology.INSTANCE;
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        else if (_query === TemporalQueries.offset() || _query === TemporalQueries.zone()) return this.offset();
-        else if (_query === TemporalQueries.localDate()) return this.toLocalDate();
-        else if (_query === TemporalQueries.localTime()) return this.toLocalTime();
-        else if (_query === TemporalQueries.zoneId()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.get = function get(field) {
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.INSTANT_SECONDS:
-                    throw new DateTimeException("Field too large for an int: " + field);
-                case ChronoField.OFFSET_SECONDS:
-                    return this.offset().totalSeconds();
-            }
-            return this._dateTime.get(field);
-        }
-        return _Temporal.prototype.get.call(this, field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.INSTANT_SECONDS:
-                    return this.toEpochSecond();
-                case ChronoField.OFFSET_SECONDS:
-                    return this.offset().totalSeconds();
-            }
-            return this._dateTime.getLong(field);
-        }
-        return field.getFrom(this);
-    };
-    _proto.offset = function offset() {
-        return this._offset;
-    };
-    _proto.year = function year() {
-        return this._dateTime.year();
-    };
-    _proto.monthValue = function monthValue() {
-        return this._dateTime.monthValue();
-    };
-    _proto.month = function month() {
-        return this._dateTime.month();
-    };
-    _proto.dayOfMonth = function dayOfMonth() {
-        return this._dateTime.dayOfMonth();
-    };
-    _proto.dayOfYear = function dayOfYear() {
-        return this._dateTime.dayOfYear();
-    };
-    _proto.dayOfWeek = function dayOfWeek() {
-        return this._dateTime.dayOfWeek();
-    };
-    _proto.hour = function hour() {
-        return this._dateTime.hour();
-    };
-    _proto.minute = function minute() {
-        return this._dateTime.minute();
-    };
-    _proto.second = function second() {
-        return this._dateTime.second();
-    };
-    _proto.nano = function nano() {
-        return this._dateTime.nano();
-    };
-    _proto.toLocalDateTime = function toLocalDateTime() {
-        return this._dateTime;
-    };
-    _proto.toLocalDate = function toLocalDate() {
-        return this._dateTime.toLocalDate();
-    };
-    _proto.toLocalTime = function toLocalTime() {
-        return this._dateTime.toLocalTime();
-    };
-    _proto.toOffsetTime = function toOffsetTime() {
-        return OffsetTime.of(this._dateTime.toLocalTime(), this._offset);
-    };
-    _proto.toZonedDateTime = function toZonedDateTime() {
-        return ZonedDateTime.of(this._dateTime, this._offset);
-    };
-    _proto.toInstant = function toInstant() {
-        return this._dateTime.toInstant(this._offset);
-    };
-    _proto.toEpochSecond = function toEpochSecond() {
-        return this._dateTime.toEpochSecond(this._offset);
-    };
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit.isDateBased() || fieldOrUnit.isTimeBased();
-        if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isDateBased() || fieldOrUnit.isTimeBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) {
-            if (field === ChronoField.INSTANT_SECONDS || field === ChronoField.OFFSET_SECONDS) return field.range();
-            return this._dateTime.range(field);
-        }
-        return field.rangeRefinedBy(this);
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster);
-        if (adjuster instanceof LocalDate || adjuster instanceof LocalTime || adjuster instanceof LocalDateTime) return this._withDateTimeOffset(this._dateTime.with(adjuster), this._offset);
-        else if (adjuster instanceof Instant) return OffsetDateTime.ofInstant(adjuster, this._offset);
-        else if (adjuster instanceof ZoneOffset) return this._withDateTimeOffset(this._dateTime, adjuster);
-        else if (adjuster instanceof OffsetDateTime) return adjuster;
-        return adjuster.adjustInto(this);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field);
-        if (field instanceof ChronoField) {
-            var f = field;
-            switch(f){
-                case ChronoField.INSTANT_SECONDS:
-                    return OffsetDateTime.ofInstant(Instant.ofEpochSecond(newValue, this.nano()), this._offset);
-                case ChronoField.OFFSET_SECONDS:
-                    return this._withDateTimeOffset(this._dateTime, ZoneOffset.ofTotalSeconds(f.checkValidIntValue(newValue)));
-            }
-            return this._withDateTimeOffset(this._dateTime.with(field, newValue), this._offset);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto._withDateTimeOffset = function _withDateTimeOffset(dateTime, offset) {
-        if (this._dateTime === dateTime && this._offset.equals(offset)) return this;
-        return new OffsetDateTime(dateTime, offset);
-    };
-    _proto.withYear = function withYear(year) {
-        return this._withDateTimeOffset(this._dateTime.withYear(year), this._offset);
-    };
-    _proto.withMonth = function withMonth(month) {
-        return this._withDateTimeOffset(this._dateTime.withMonth(month), this._offset);
-    };
-    _proto.withDayOfMonth = function withDayOfMonth(dayOfMonth) {
-        return this._withDateTimeOffset(this._dateTime.withDayOfMonth(dayOfMonth), this._offset);
-    };
-    _proto.withDayOfYear = function withDayOfYear(dayOfYear) {
-        return this._withDateTimeOffset(this._dateTime.withDayOfYear(dayOfYear), this._offset);
-    };
-    _proto.withHour = function withHour(hour) {
-        return this._withDateTimeOffset(this._dateTime.withHour(hour), this._offset);
-    };
-    _proto.withMinute = function withMinute(minute) {
-        return this._withDateTimeOffset(this._dateTime.withMinute(minute), this._offset);
-    };
-    _proto.withSecond = function withSecond(second) {
-        return this._withDateTimeOffset(this._dateTime.withSecond(second), this._offset);
-    };
-    _proto.withNano = function withNano(nanoOfSecond) {
-        return this._withDateTimeOffset(this._dateTime.withNano(nanoOfSecond), this._offset);
-    };
-    _proto.withOffsetSameLocal = function withOffsetSameLocal(offset) {
-        requireNonNull(offset, 'offset');
-        return this._withDateTimeOffset(this._dateTime, offset);
-    };
-    _proto.withOffsetSameInstant = function withOffsetSameInstant(offset) {
-        requireNonNull(offset, 'offset');
-        if (offset.equals(this._offset)) return this;
-        var difference = offset.totalSeconds() - this._offset.totalSeconds();
-        var adjusted = this._dateTime.plusSeconds(difference);
-        return new OffsetDateTime(adjusted, offset);
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        return this._withDateTimeOffset(this._dateTime.truncatedTo(unit), this._offset);
-    };
-    _proto._plusAmount = function _plusAmount(amount) {
-        requireNonNull(amount, 'amount');
-        return amount.addTo(this);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        if (unit instanceof ChronoUnit) return this._withDateTimeOffset(this._dateTime.plus(amountToAdd, unit), this._offset);
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(years) {
-        return this._withDateTimeOffset(this._dateTime.plusYears(years), this._offset);
-    };
-    _proto.plusMonths = function plusMonths(months) {
-        return this._withDateTimeOffset(this._dateTime.plusMonths(months), this._offset);
-    };
-    _proto.plusWeeks = function plusWeeks(weeks) {
-        return this._withDateTimeOffset(this._dateTime.plusWeeks(weeks), this._offset);
-    };
-    _proto.plusDays = function plusDays(days) {
-        return this._withDateTimeOffset(this._dateTime.plusDays(days), this._offset);
-    };
-    _proto.plusHours = function plusHours(hours) {
-        return this._withDateTimeOffset(this._dateTime.plusHours(hours), this._offset);
-    };
-    _proto.plusMinutes = function plusMinutes(minutes) {
-        return this._withDateTimeOffset(this._dateTime.plusMinutes(minutes), this._offset);
-    };
-    _proto.plusSeconds = function plusSeconds(seconds) {
-        return this._withDateTimeOffset(this._dateTime.plusSeconds(seconds), this._offset);
-    };
-    _proto.plusNanos = function plusNanos(nanos) {
-        return this._withDateTimeOffset(this._dateTime.plusNanos(nanos), this._offset);
-    };
-    _proto._minusAmount = function _minusAmount(amount) {
-        requireNonNull(amount);
-        return amount.subtractFrom(this);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        return this.plus(-1 * amountToSubtract, unit);
-    };
-    _proto.minusYears = function minusYears(years) {
-        return this._withDateTimeOffset(this._dateTime.minusYears(years), this._offset);
-    };
-    _proto.minusMonths = function minusMonths(months) {
-        return this._withDateTimeOffset(this._dateTime.minusMonths(months), this._offset);
-    };
-    _proto.minusWeeks = function minusWeeks(weeks) {
-        return this._withDateTimeOffset(this._dateTime.minusWeeks(weeks), this._offset);
-    };
-    _proto.minusDays = function minusDays(days) {
-        return this._withDateTimeOffset(this._dateTime.minusDays(days), this._offset);
-    };
-    _proto.minusHours = function minusHours(hours) {
-        return this._withDateTimeOffset(this._dateTime.minusHours(hours), this._offset);
-    };
-    _proto.minusMinutes = function minusMinutes(minutes) {
-        return this._withDateTimeOffset(this._dateTime.minusMinutes(minutes), this._offset);
-    };
-    _proto.minusSeconds = function minusSeconds(seconds) {
-        return this._withDateTimeOffset(this._dateTime.minusSeconds(seconds), this._offset);
-    };
-    _proto.minusNanos = function minusNanos(nanos) {
-        return this._withDateTimeOffset(this._dateTime.minusNanos(nanos), this._offset);
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, OffsetDateTime, 'other');
-        if (this.offset().equals(other.offset())) return this.toLocalDateTime().compareTo(other.toLocalDateTime());
-        var cmp = MathUtil.compareNumbers(this.toEpochSecond(), other.toEpochSecond());
-        if (cmp === 0) {
-            cmp = this.toLocalTime().nano() - other.toLocalTime().nano();
-            if (cmp === 0) cmp = this.toLocalDateTime().compareTo(other.toLocalDateTime());
-        }
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        requireNonNull(other, 'other');
-        var thisEpochSec = this.toEpochSecond();
-        var otherEpochSec = other.toEpochSecond();
-        return thisEpochSec > otherEpochSec || thisEpochSec === otherEpochSec && this.toLocalTime().nano() > other.toLocalTime().nano();
-    };
-    _proto.isBefore = function isBefore(other) {
-        requireNonNull(other, 'other');
-        var thisEpochSec = this.toEpochSecond();
-        var otherEpochSec = other.toEpochSecond();
-        return thisEpochSec < otherEpochSec || thisEpochSec === otherEpochSec && this.toLocalTime().nano() < other.toLocalTime().nano();
-    };
-    _proto.isEqual = function isEqual(other) {
-        requireNonNull(other, 'other');
-        return this.toEpochSecond() === other.toEpochSecond() && this.toLocalTime().nano() === other.toLocalTime().nano();
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof OffsetDateTime) return this._dateTime.equals(other._dateTime) && this._offset.equals(other._offset);
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._dateTime.hashCode() ^ this._offset.hashCode();
-    };
-    _proto.toString = function toString() {
-        return this._dateTime.toString() + this._offset.toString();
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this);
-    };
-    return OffsetDateTime;
-}(Temporal);
-function _init$6() {
-    OffsetDateTime.MIN = LocalDateTime.MIN.atOffset(ZoneOffset.MAX);
-    OffsetDateTime.MAX = LocalDateTime.MAX.atOffset(ZoneOffset.MIN);
-    OffsetDateTime.FROM = createTemporalQuery('OffsetDateTime.FROM', function(temporal) {
-        return OffsetDateTime.from(temporal);
-    });
-}
-var DAYS_PER_CYCLE = 146097;
-var DAYS_0000_TO_1970 = DAYS_PER_CYCLE * 5 - 10957;
-var LocalDate = function(_ChronoLocalDate) {
-    _inheritsLoose(LocalDate, _ChronoLocalDate);
-    LocalDate.now = function now(clockOrZone) {
-        var clock;
-        if (clockOrZone == null) clock = Clock.systemDefaultZone();
-        else if (clockOrZone instanceof ZoneId) clock = Clock.system(clockOrZone);
-        else clock = clockOrZone;
-        return LocalDate.ofInstant(clock.instant(), clock.zone());
-    };
-    LocalDate.ofInstant = function ofInstant(instant, zone) {
-        if (zone === void 0) zone = ZoneId.systemDefault();
-        requireNonNull(instant, 'instant');
-        var offset = zone.rules().offset(instant);
-        var epochSec = instant.epochSecond() + offset.totalSeconds();
-        var epochDay = MathUtil.floorDiv(epochSec, LocalTime.SECONDS_PER_DAY);
-        return LocalDate.ofEpochDay(epochDay);
-    };
-    LocalDate.of = function of(year, month, dayOfMonth) {
-        return new LocalDate(year, month, dayOfMonth);
-    };
-    LocalDate.ofYearDay = function ofYearDay(year, dayOfYear) {
-        ChronoField.YEAR.checkValidValue(year);
-        var leap = IsoChronology.isLeapYear(year);
-        if (dayOfYear === 366 && leap === false) assert(false, "Invalid date 'DayOfYear 366' as '" + year + "' is not a leap year", DateTimeException);
-        var moy = Month.of(Math.floor((dayOfYear - 1) / 31 + 1));
-        var monthEnd = moy.firstDayOfYear(leap) + moy.length(leap) - 1;
-        if (dayOfYear > monthEnd) moy = moy.plus(1);
-        var dom = dayOfYear - moy.firstDayOfYear(leap) + 1;
-        return new LocalDate(year, moy.value(), dom);
-    };
-    LocalDate.ofEpochDay = function ofEpochDay(epochDay) {
-        if (epochDay === void 0) epochDay = 0;
-        var adjust, adjustCycles, doyEst, yearEst, zeroDay;
-        zeroDay = epochDay + DAYS_0000_TO_1970;
-        zeroDay -= 60;
-        adjust = 0;
-        if (zeroDay < 0) {
-            adjustCycles = MathUtil.intDiv(zeroDay + 1, DAYS_PER_CYCLE) - 1;
-            adjust = adjustCycles * 400;
-            zeroDay += -adjustCycles * DAYS_PER_CYCLE;
-        }
-        yearEst = MathUtil.intDiv(400 * zeroDay + 591, DAYS_PER_CYCLE);
-        doyEst = zeroDay - (365 * yearEst + MathUtil.intDiv(yearEst, 4) - MathUtil.intDiv(yearEst, 100) + MathUtil.intDiv(yearEst, 400));
-        if (doyEst < 0) {
-            yearEst--;
-            doyEst = zeroDay - (365 * yearEst + MathUtil.intDiv(yearEst, 4) - MathUtil.intDiv(yearEst, 100) + MathUtil.intDiv(yearEst, 400));
-        }
-        yearEst += adjust;
-        var marchDoy0 = doyEst;
-        var marchMonth0 = MathUtil.intDiv(marchDoy0 * 5 + 2, 153);
-        var month = (marchMonth0 + 2) % 12 + 1;
-        var dom = marchDoy0 - MathUtil.intDiv(marchMonth0 * 306 + 5, 10) + 1;
-        yearEst += MathUtil.intDiv(marchMonth0, 10);
-        var year = yearEst;
-        return new LocalDate(year, month, dom);
-    };
-    LocalDate.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        var date = temporal.query(TemporalQueries.localDate());
-        if (date == null) throw new DateTimeException("Unable to obtain LocalDate from TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        return date;
-    };
-    LocalDate.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        assert(formatter != null, 'formatter', NullPointerException);
-        return formatter.parse(text, LocalDate.FROM);
-    };
-    LocalDate._resolvePreviousValid = function _resolvePreviousValid(year, month, day) {
-        switch(month){
-            case 2:
-                day = Math.min(day, IsoChronology.isLeapYear(year) ? 29 : 28);
-                break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                day = Math.min(day, 30);
-                break;
-        }
-        return LocalDate.of(year, month, day);
-    };
-    function LocalDate(year, month, dayOfMonth) {
-        var _this;
-        _this = _ChronoLocalDate.call(this) || this;
-        requireNonNull(year, 'year');
-        requireNonNull(month, 'month');
-        requireNonNull(dayOfMonth, 'dayOfMonth');
-        if (month instanceof Month) month = month.value();
-        _this._year = MathUtil.safeToInt(year);
-        _this._month = MathUtil.safeToInt(month);
-        _this._day = MathUtil.safeToInt(dayOfMonth);
-        LocalDate._validate(_this._year, _this._month, _this._day);
-        return _this;
-    }
-    LocalDate._validate = function _validate(year, month, dayOfMonth) {
-        var dom;
-        ChronoField.YEAR.checkValidValue(year);
-        ChronoField.MONTH_OF_YEAR.checkValidValue(month);
-        ChronoField.DAY_OF_MONTH.checkValidValue(dayOfMonth);
-        if (dayOfMonth > 28) {
-            dom = 31;
-            switch(month){
-                case 2:
-                    dom = IsoChronology.isLeapYear(year) ? 29 : 28;
-                    break;
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-                    dom = 30;
-            }
-            if (dayOfMonth > dom) {
-                if (dayOfMonth === 29) assert(false, "Invalid date 'February 29' as '" + year + "' is not a leap year", DateTimeException);
-                else assert(false, "Invalid date '" + year + "' '" + month + "' '" + dayOfMonth + "'", DateTimeException);
-            }
-        }
-    };
-    var _proto = LocalDate.prototype;
-    _proto.isSupported = function isSupported(field) {
-        return _ChronoLocalDate.prototype.isSupported.call(this, field);
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) {
-            if (field.isDateBased()) {
-                switch(field){
-                    case ChronoField.DAY_OF_MONTH:
-                        return ValueRange.of(1, this.lengthOfMonth());
-                    case ChronoField.DAY_OF_YEAR:
-                        return ValueRange.of(1, this.lengthOfYear());
-                    case ChronoField.ALIGNED_WEEK_OF_MONTH:
-                        return ValueRange.of(1, this.month() === Month.FEBRUARY && this.isLeapYear() === false ? 4 : 5);
-                    case ChronoField.YEAR_OF_ERA:
-                        return this._year <= 0 ? ValueRange.of(1, Year.MAX_VALUE + 1) : ValueRange.of(1, Year.MAX_VALUE);
-                }
-                return field.range();
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.rangeRefinedBy(this);
-    };
-    _proto.get = function get(field) {
-        return this.getLong(field);
-    };
-    _proto.getLong = function getLong(field) {
-        assert(field != null, '', NullPointerException);
-        if (field instanceof ChronoField) return this._get0(field);
-        return field.getFrom(this);
-    };
-    _proto._get0 = function _get0(field) {
-        switch(field){
-            case ChronoField.DAY_OF_WEEK:
-                return this.dayOfWeek().value();
-            case ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH:
-                return MathUtil.intMod(this._day - 1, 7) + 1;
-            case ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR:
-                return MathUtil.intMod(this.dayOfYear() - 1, 7) + 1;
-            case ChronoField.DAY_OF_MONTH:
-                return this._day;
-            case ChronoField.DAY_OF_YEAR:
-                return this.dayOfYear();
-            case ChronoField.EPOCH_DAY:
-                return this.toEpochDay();
-            case ChronoField.ALIGNED_WEEK_OF_MONTH:
-                return MathUtil.intDiv(this._day - 1, 7) + 1;
-            case ChronoField.ALIGNED_WEEK_OF_YEAR:
-                return MathUtil.intDiv(this.dayOfYear() - 1, 7) + 1;
-            case ChronoField.MONTH_OF_YEAR:
-                return this._month;
-            case ChronoField.PROLEPTIC_MONTH:
-                return this._prolepticMonth();
-            case ChronoField.YEAR_OF_ERA:
-                return this._year >= 1 ? this._year : 1 - this._year;
-            case ChronoField.YEAR:
-                return this._year;
-            case ChronoField.ERA:
-                return this._year >= 1 ? 1 : 0;
-        }
-        throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-    };
-    _proto._prolepticMonth = function _prolepticMonth() {
-        return this._year * 12 + (this._month - 1);
-    };
-    _proto.chronology = function chronology() {
-        return IsoChronology.INSTANCE;
-    };
-    _proto.year = function year() {
-        return this._year;
-    };
-    _proto.monthValue = function monthValue() {
-        return this._month;
-    };
-    _proto.month = function month() {
-        return Month.of(this._month);
-    };
-    _proto.dayOfMonth = function dayOfMonth() {
-        return this._day;
-    };
-    _proto.dayOfYear = function dayOfYear() {
-        return this.month().firstDayOfYear(this.isLeapYear()) + this._day - 1;
-    };
-    _proto.dayOfWeek = function dayOfWeek() {
-        var dow0 = MathUtil.floorMod(this.toEpochDay() + 3, 7);
-        return DayOfWeek.of(dow0 + 1);
-    };
-    _proto.isLeapYear = function isLeapYear() {
-        return IsoChronology.isLeapYear(this._year);
-    };
-    _proto.lengthOfMonth = function lengthOfMonth() {
-        switch(this._month){
-            case 2:
-                return this.isLeapYear() ? 29 : 28;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
-                return 30;
-            default:
-                return 31;
-        }
-    };
-    _proto.lengthOfYear = function lengthOfYear() {
-        return this.isLeapYear() ? 366 : 365;
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster, 'adjuster');
-        if (adjuster instanceof LocalDate) return adjuster;
-        return _ChronoLocalDate.prototype._withAdjuster.call(this, adjuster);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        assert(field != null, 'field', NullPointerException);
-        if (field instanceof ChronoField) {
-            var f = field;
-            f.checkValidValue(newValue);
-            switch(f){
-                case ChronoField.DAY_OF_WEEK:
-                    return this.plusDays(newValue - this.dayOfWeek().value());
-                case ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH:
-                    return this.plusDays(newValue - this.getLong(ChronoField.ALIGNED_DAY_OF_WEEK_IN_MONTH));
-                case ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR:
-                    return this.plusDays(newValue - this.getLong(ChronoField.ALIGNED_DAY_OF_WEEK_IN_YEAR));
-                case ChronoField.DAY_OF_MONTH:
-                    return this.withDayOfMonth(newValue);
-                case ChronoField.DAY_OF_YEAR:
-                    return this.withDayOfYear(newValue);
-                case ChronoField.EPOCH_DAY:
-                    return LocalDate.ofEpochDay(newValue);
-                case ChronoField.ALIGNED_WEEK_OF_MONTH:
-                    return this.plusWeeks(newValue - this.getLong(ChronoField.ALIGNED_WEEK_OF_MONTH));
-                case ChronoField.ALIGNED_WEEK_OF_YEAR:
-                    return this.plusWeeks(newValue - this.getLong(ChronoField.ALIGNED_WEEK_OF_YEAR));
-                case ChronoField.MONTH_OF_YEAR:
-                    return this.withMonth(newValue);
-                case ChronoField.PROLEPTIC_MONTH:
-                    return this.plusMonths(newValue - this.getLong(ChronoField.PROLEPTIC_MONTH));
-                case ChronoField.YEAR_OF_ERA:
-                    return this.withYear(this._year >= 1 ? newValue : 1 - newValue);
-                case ChronoField.YEAR:
-                    return this.withYear(newValue);
-                case ChronoField.ERA:
-                    return this.getLong(ChronoField.ERA) === newValue ? this : this.withYear(1 - this._year);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.withYear = function withYear(year) {
-        if (this._year === year) return this;
-        ChronoField.YEAR.checkValidValue(year);
-        return LocalDate._resolvePreviousValid(year, this._month, this._day);
-    };
-    _proto.withMonth = function withMonth(month) {
-        var m = month instanceof Month ? month.value() : month;
-        if (this._month === m) return this;
-        ChronoField.MONTH_OF_YEAR.checkValidValue(m);
-        return LocalDate._resolvePreviousValid(this._year, m, this._day);
-    };
-    _proto.withDayOfMonth = function withDayOfMonth(dayOfMonth) {
-        if (this._day === dayOfMonth) return this;
-        return LocalDate.of(this._year, this._month, dayOfMonth);
-    };
-    _proto.withDayOfYear = function withDayOfYear(dayOfYear) {
-        if (this.dayOfYear() === dayOfYear) return this;
-        return LocalDate.ofYearDay(this._year, dayOfYear);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(amountToAdd, 'amountToAdd');
-        requireNonNull(unit, 'unit');
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.DAYS:
-                    return this.plusDays(amountToAdd);
-                case ChronoUnit.WEEKS:
-                    return this.plusWeeks(amountToAdd);
-                case ChronoUnit.MONTHS:
-                    return this.plusMonths(amountToAdd);
-                case ChronoUnit.YEARS:
-                    return this.plusYears(amountToAdd);
-                case ChronoUnit.DECADES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 10));
-                case ChronoUnit.CENTURIES:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 100));
-                case ChronoUnit.MILLENNIA:
-                    return this.plusYears(MathUtil.safeMultiply(amountToAdd, 1000));
-                case ChronoUnit.ERAS:
-                    return this.with(ChronoField.ERA, MathUtil.safeAdd(this.getLong(ChronoField.ERA), amountToAdd));
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(yearsToAdd) {
-        if (yearsToAdd === 0) return this;
-        var newYear = ChronoField.YEAR.checkValidIntValue(this._year + yearsToAdd);
-        return LocalDate._resolvePreviousValid(newYear, this._month, this._day);
-    };
-    _proto.plusMonths = function plusMonths(monthsToAdd) {
-        if (monthsToAdd === 0) return this;
-        var monthCount = this._year * 12 + (this._month - 1);
-        var calcMonths = monthCount + monthsToAdd;
-        var newYear = ChronoField.YEAR.checkValidIntValue(MathUtil.floorDiv(calcMonths, 12));
-        var newMonth = MathUtil.floorMod(calcMonths, 12) + 1;
-        return LocalDate._resolvePreviousValid(newYear, newMonth, this._day);
-    };
-    _proto.plusWeeks = function plusWeeks(weeksToAdd) {
-        return this.plusDays(MathUtil.safeMultiply(weeksToAdd, 7));
-    };
-    _proto.plusDays = function plusDays(daysToAdd) {
-        if (daysToAdd === 0) return this;
-        var mjDay = MathUtil.safeAdd(this.toEpochDay(), daysToAdd);
-        return LocalDate.ofEpochDay(mjDay);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        requireNonNull(amountToSubtract, 'amountToSubtract');
-        requireNonNull(unit, 'unit');
-        return this._plusUnit(-1 * amountToSubtract, unit);
-    };
-    _proto.minusYears = function minusYears(yearsToSubtract) {
-        return this.plusYears(yearsToSubtract * -1);
-    };
-    _proto.minusMonths = function minusMonths(monthsToSubtract) {
-        return this.plusMonths(monthsToSubtract * -1);
-    };
-    _proto.minusWeeks = function minusWeeks(weeksToSubtract) {
-        return this.plusWeeks(weeksToSubtract * -1);
-    };
-    _proto.minusDays = function minusDays(daysToSubtract) {
-        return this.plusDays(daysToSubtract * -1);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.localDate()) return this;
-        return _ChronoLocalDate.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return _ChronoLocalDate.prototype.adjustInto.call(this, temporal);
-    };
-    _proto.until = function until(p1, p2) {
-        if (arguments.length < 2) return this.until1(p1);
-        else return this.until2(p1, p2);
-    };
-    _proto.until2 = function until2(endExclusive, unit) {
-        var end = LocalDate.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.DAYS:
-                    return this.daysUntil(end);
-                case ChronoUnit.WEEKS:
-                    return MathUtil.intDiv(this.daysUntil(end), 7);
-                case ChronoUnit.MONTHS:
-                    return this._monthsUntil(end);
-                case ChronoUnit.YEARS:
-                    return MathUtil.intDiv(this._monthsUntil(end), 12);
-                case ChronoUnit.DECADES:
-                    return MathUtil.intDiv(this._monthsUntil(end), 120);
-                case ChronoUnit.CENTURIES:
-                    return MathUtil.intDiv(this._monthsUntil(end), 1200);
-                case ChronoUnit.MILLENNIA:
-                    return MathUtil.intDiv(this._monthsUntil(end), 12000);
-                case ChronoUnit.ERAS:
-                    return end.getLong(ChronoField.ERA) - this.getLong(ChronoField.ERA);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.daysUntil = function daysUntil(end) {
-        return end.toEpochDay() - this.toEpochDay();
-    };
-    _proto._monthsUntil = function _monthsUntil(end) {
-        var packed1 = this._prolepticMonth() * 32 + this.dayOfMonth();
-        var packed2 = end._prolepticMonth() * 32 + end.dayOfMonth();
-        return MathUtil.intDiv(packed2 - packed1, 32);
-    };
-    _proto.until1 = function until1(endDate) {
-        var end = LocalDate.from(endDate);
-        var totalMonths = end._prolepticMonth() - this._prolepticMonth();
-        var days = end._day - this._day;
-        if (totalMonths > 0 && days < 0) {
-            totalMonths--;
-            var calcDate = this.plusMonths(totalMonths);
-            days = end.toEpochDay() - calcDate.toEpochDay();
-        } else if (totalMonths < 0 && days > 0) {
-            totalMonths++;
-            days -= end.lengthOfMonth();
-        }
-        var years = MathUtil.intDiv(totalMonths, 12);
-        var months = MathUtil.intMod(totalMonths, 12);
-        return Period.of(years, months, days);
-    };
-    _proto.atTime = function atTime() {
-        if (arguments.length === 1) return this.atTime1.apply(this, arguments);
-        else return this.atTime4.apply(this, arguments);
-    };
-    _proto.atTime1 = function atTime1(time) {
-        requireNonNull(time, 'time');
-        if (time instanceof LocalTime) return LocalDateTime.of(this, time);
-        else if (time instanceof OffsetTime) return this._atTimeOffsetTime(time);
-        else throw new IllegalArgumentException("time must be an instance of LocalTime or OffsetTime" + (time && time.constructor && time.constructor.name ? ", but is " + time.constructor.name : ''));
-    };
-    _proto.atTime4 = function atTime4(hour, minute, second, nanoOfSecond) {
-        if (second === void 0) second = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        return this.atTime1(LocalTime.of(hour, minute, second, nanoOfSecond));
-    };
-    _proto._atTimeOffsetTime = function _atTimeOffsetTime(time) {
-        return OffsetDateTime.of(LocalDateTime.of(this, time.toLocalTime()), time.offset());
-    };
-    _proto.atStartOfDay = function atStartOfDay(zone) {
-        if (zone != null) return this._atStartOfDayWithZone(zone);
-        else return LocalDateTime.of(this, LocalTime.MIDNIGHT);
-    };
-    _proto._atStartOfDayWithZone = function _atStartOfDayWithZone(zone) {
-        requireNonNull(zone, 'zone');
-        var ldt = this.atTime(LocalTime.MIDNIGHT);
-        if (zone instanceof ZoneOffset === false) {
-            var trans = zone.rules().transition(ldt);
-            if (trans != null && trans.isGap()) ldt = trans.dateTimeAfter();
-        }
-        return ZonedDateTime.of(ldt, zone);
-    };
-    _proto.toEpochDay = function toEpochDay() {
-        var y = this._year;
-        var m = this._month;
-        var total = 0;
-        total += 365 * y;
-        if (y >= 0) total += MathUtil.intDiv(y + 3, 4) - MathUtil.intDiv(y + 99, 100) + MathUtil.intDiv(y + 399, 400);
-        else total -= MathUtil.intDiv(y, -4) - MathUtil.intDiv(y, -100) + MathUtil.intDiv(y, -400);
-        total += MathUtil.intDiv(367 * m - 362, 12);
-        total += this.dayOfMonth() - 1;
-        if (m > 2) {
-            total--;
-            if (!IsoChronology.isLeapYear(y)) total--;
-        }
-        return total - DAYS_0000_TO_1970;
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, LocalDate, 'other');
-        return this._compareTo0(other);
-    };
-    _proto._compareTo0 = function _compareTo0(otherDate) {
-        var cmp = this._year - otherDate._year;
-        if (cmp === 0) {
-            cmp = this._month - otherDate._month;
-            if (cmp === 0) cmp = this._day - otherDate._day;
-        }
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        return this.compareTo(other) > 0;
-    };
-    _proto.isBefore = function isBefore(other) {
-        return this.compareTo(other) < 0;
-    };
-    _proto.isEqual = function isEqual(other) {
-        return this.compareTo(other) === 0;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof LocalDate) return this._compareTo0(other) === 0;
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        var yearValue = this._year;
-        var monthValue = this._month;
-        var dayValue = this._day;
-        return MathUtil.hash(yearValue & 0xFFFFF800 ^ (yearValue << 11) + (monthValue << 6) + dayValue);
-    };
-    _proto.toString = function toString() {
-        var dayString, monthString, yearString;
-        var yearValue = this._year;
-        var monthValue = this._month;
-        var dayValue = this._day;
-        var absYear = Math.abs(yearValue);
-        if (absYear < 1000) {
-            if (yearValue < 0) yearString = "-" + ("" + (yearValue - 10000)).slice(-4);
-            else yearString = ("" + (yearValue + 10000)).slice(-4);
-        } else if (yearValue > 9999) yearString = "+" + yearValue;
-        else yearString = "" + yearValue;
-        if (monthValue < 10) monthString = "-0" + monthValue;
-        else monthString = "-" + monthValue;
-        if (dayValue < 10) dayString = "-0" + dayValue;
-        else dayString = "-" + dayValue;
-        return yearString + monthString + dayString;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        requireInstance(formatter, DateTimeFormatter, 'formatter');
-        return _ChronoLocalDate.prototype.format.call(this, formatter);
-    };
-    return LocalDate;
-}(ChronoLocalDate);
-function _init$5() {
-    LocalDate.MIN = LocalDate.of(YearConstants.MIN_VALUE, 1, 1);
-    LocalDate.MAX = LocalDate.of(YearConstants.MAX_VALUE, 12, 31);
-    LocalDate.EPOCH_0 = LocalDate.ofEpochDay(0);
-    LocalDate.FROM = createTemporalQuery('LocalDate.FROM', function(temporal) {
-        return LocalDate.from(temporal);
-    });
-}
-var ChronoLocalDateTime = function(_Temporal) {
-    _inheritsLoose(ChronoLocalDateTime, _Temporal);
-    function ChronoLocalDateTime() {
-        return _Temporal.apply(this, arguments) || this;
-    }
-    var _proto = ChronoLocalDateTime.prototype;
-    _proto.chronology = function chronology() {
-        return this.toLocalDate().chronology();
-    };
-    _proto.query = function query(_query) {
-        if (_query === TemporalQueries.chronology()) return this.chronology();
-        else if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        else if (_query === TemporalQueries.localDate()) return LocalDate.ofEpochDay(this.toLocalDate().toEpochDay());
-        else if (_query === TemporalQueries.localTime()) return this.toLocalTime();
-        else if (_query === TemporalQueries.zone() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.offset()) return null;
-        return _Temporal.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(ChronoField.EPOCH_DAY, this.toLocalDate().toEpochDay()).with(ChronoField.NANO_OF_DAY, this.toLocalTime().toNanoOfDay());
-    };
-    _proto.toInstant = function toInstant(offset) {
-        requireInstance(offset, ZoneOffset, 'zoneId');
-        return Instant.ofEpochSecond(this.toEpochSecond(offset), this.toLocalTime().nano());
-    };
-    _proto.toEpochSecond = function toEpochSecond(offset) {
-        requireNonNull(offset, 'offset');
-        var epochDay = this.toLocalDate().toEpochDay();
-        var secs = epochDay * 86400 + this.toLocalTime().toSecondOfDay();
-        secs -= offset.totalSeconds();
-        return MathUtil.safeToInt(secs);
-    };
-    return ChronoLocalDateTime;
-}(Temporal);
-var LocalDateTime = function(_ChronoLocalDateTime) {
-    _inheritsLoose(LocalDateTime, _ChronoLocalDateTime);
-    LocalDateTime.now = function now(clockOrZone) {
-        if (clockOrZone == null) return LocalDateTime._now(Clock.systemDefaultZone());
-        else if (clockOrZone instanceof Clock) return LocalDateTime._now(clockOrZone);
-        else return LocalDateTime._now(Clock.system(clockOrZone));
-    };
-    LocalDateTime._now = function _now(clock) {
-        requireNonNull(clock, 'clock');
-        return LocalDateTime.ofInstant(clock.instant(), clock.zone());
-    };
-    LocalDateTime._ofEpochMillis = function _ofEpochMillis(epochMilli, offset) {
-        var localSecond = MathUtil.floorDiv(epochMilli, 1000) + offset.totalSeconds();
-        var localEpochDay = MathUtil.floorDiv(localSecond, LocalTime.SECONDS_PER_DAY);
-        var secsOfDay = MathUtil.floorMod(localSecond, LocalTime.SECONDS_PER_DAY);
-        var nanoOfSecond = MathUtil.floorMod(epochMilli, 1000) * 1000000;
-        var date = LocalDate.ofEpochDay(localEpochDay);
-        var time = LocalTime.ofSecondOfDay(secsOfDay, nanoOfSecond);
-        return new LocalDateTime(date, time);
-    };
-    LocalDateTime.of = function of() {
-        if (arguments.length <= 2) return LocalDateTime.ofDateAndTime.apply(this, arguments);
-        else return LocalDateTime.ofNumbers.apply(this, arguments);
-    };
-    LocalDateTime.ofNumbers = function ofNumbers(year, month, dayOfMonth, hour, minute, second, nanoOfSecond) {
-        if (hour === void 0) hour = 0;
-        if (minute === void 0) minute = 0;
-        if (second === void 0) second = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        var date = LocalDate.of(year, month, dayOfMonth);
-        var time = LocalTime.of(hour, minute, second, nanoOfSecond);
-        return new LocalDateTime(date, time);
-    };
-    LocalDateTime.ofDateAndTime = function ofDateAndTime(date, time) {
-        requireNonNull(date, 'date');
-        requireNonNull(time, 'time');
-        return new LocalDateTime(date, time);
-    };
-    LocalDateTime.ofInstant = function ofInstant(instant, zone) {
-        if (zone === void 0) zone = ZoneId.systemDefault();
-        requireNonNull(instant, 'instant');
-        requireInstance(instant, Instant, 'instant');
-        requireNonNull(zone, 'zone');
-        var offset = zone.rules().offset(instant);
-        return LocalDateTime.ofEpochSecond(instant.epochSecond(), instant.nano(), offset);
-    };
-    LocalDateTime.ofEpochSecond = function ofEpochSecond(epochSecond, nanoOfSecond, offset) {
-        if (epochSecond === void 0) epochSecond = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        if (arguments.length === 2 && nanoOfSecond instanceof ZoneOffset) {
-            offset = nanoOfSecond;
-            nanoOfSecond = 0;
-        }
-        requireNonNull(offset, 'offset');
-        var localSecond = epochSecond + offset.totalSeconds();
-        var localEpochDay = MathUtil.floorDiv(localSecond, LocalTime.SECONDS_PER_DAY);
-        var secsOfDay = MathUtil.floorMod(localSecond, LocalTime.SECONDS_PER_DAY);
-        var date = LocalDate.ofEpochDay(localEpochDay);
-        var time = LocalTime.ofSecondOfDay(secsOfDay, nanoOfSecond);
-        return new LocalDateTime(date, time);
-    };
-    LocalDateTime.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        if (temporal instanceof LocalDateTime) return temporal;
-        else if (temporal instanceof ZonedDateTime) return temporal.toLocalDateTime();
-        try {
-            var date = LocalDate.from(temporal);
-            var time = LocalTime.from(temporal);
-            return new LocalDateTime(date, time);
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain LocalDateTime TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        }
-    };
-    LocalDateTime.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, LocalDateTime.FROM);
-    };
-    function LocalDateTime(date, time) {
-        var _this;
-        _this = _ChronoLocalDateTime.call(this) || this;
-        requireInstance(date, LocalDate, 'date');
-        requireInstance(time, LocalTime, 'time');
-        _this._date = date;
-        _this._time = time;
-        return _this;
-    }
-    var _proto = LocalDateTime.prototype;
-    _proto._withDateTime = function _withDateTime(newDate, newTime) {
-        if (this._date.equals(newDate) && this._time.equals(newTime)) return this;
-        return new LocalDateTime(newDate, newTime);
-    };
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit.isDateBased() || fieldOrUnit.isTimeBased();
-        else if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isDateBased() || fieldOrUnit.isTimeBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        if (field instanceof ChronoField) return field.isTimeBased() ? this._time.range(field) : this._date.range(field);
-        return field.rangeRefinedBy(this);
-    };
-    _proto.get = function get(field) {
-        if (field instanceof ChronoField) return field.isTimeBased() ? this._time.get(field) : this._date.get(field);
-        return _ChronoLocalDateTime.prototype.get.call(this, field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) return field.isTimeBased() ? this._time.getLong(field) : this._date.getLong(field);
-        return field.getFrom(this);
-    };
-    _proto.year = function year() {
-        return this._date.year();
-    };
-    _proto.monthValue = function monthValue() {
-        return this._date.monthValue();
-    };
-    _proto.month = function month() {
-        return this._date.month();
-    };
-    _proto.dayOfMonth = function dayOfMonth() {
-        return this._date.dayOfMonth();
-    };
-    _proto.dayOfYear = function dayOfYear() {
-        return this._date.dayOfYear();
-    };
-    _proto.dayOfWeek = function dayOfWeek() {
-        return this._date.dayOfWeek();
-    };
-    _proto.hour = function hour() {
-        return this._time.hour();
-    };
-    _proto.minute = function minute() {
-        return this._time.minute();
-    };
-    _proto.second = function second() {
-        return this._time.second();
-    };
-    _proto.nano = function nano() {
-        return this._time.nano();
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster, 'adjuster');
-        if (adjuster instanceof LocalDate) return this._withDateTime(adjuster, this._time);
-        else if (adjuster instanceof LocalTime) return this._withDateTime(this._date, adjuster);
-        else if (adjuster instanceof LocalDateTime) return adjuster;
-        return _ChronoLocalDateTime.prototype._withAdjuster.call(this, adjuster);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) {
-            if (field.isTimeBased()) return this._withDateTime(this._date, this._time.with(field, newValue));
-            else return this._withDateTime(this._date.with(field, newValue), this._time);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.withYear = function withYear(year) {
-        return this._withDateTime(this._date.withYear(year), this._time);
-    };
-    _proto.withMonth = function withMonth(month) {
-        return this._withDateTime(this._date.withMonth(month), this._time);
-    };
-    _proto.withDayOfMonth = function withDayOfMonth(dayOfMonth) {
-        return this._withDateTime(this._date.withDayOfMonth(dayOfMonth), this._time);
-    };
-    _proto.withDayOfYear = function withDayOfYear(dayOfYear) {
-        return this._withDateTime(this._date.withDayOfYear(dayOfYear), this._time);
-    };
-    _proto.withHour = function withHour(hour) {
-        var newTime = this._time.withHour(hour);
-        return this._withDateTime(this._date, newTime);
-    };
-    _proto.withMinute = function withMinute(minute) {
-        var newTime = this._time.withMinute(minute);
-        return this._withDateTime(this._date, newTime);
-    };
-    _proto.withSecond = function withSecond(second) {
-        var newTime = this._time.withSecond(second);
-        return this._withDateTime(this._date, newTime);
-    };
-    _proto.withNano = function withNano(nanoOfSecond) {
-        var newTime = this._time.withNano(nanoOfSecond);
-        return this._withDateTime(this._date, newTime);
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        return this._withDateTime(this._date, this._time.truncatedTo(unit));
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(unit, 'unit');
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return this.plusNanos(amountToAdd);
-                case ChronoUnit.MICROS:
-                    return this.plusDays(MathUtil.intDiv(amountToAdd, LocalTime.MICROS_PER_DAY)).plusNanos(MathUtil.intMod(amountToAdd, LocalTime.MICROS_PER_DAY) * 1000);
-                case ChronoUnit.MILLIS:
-                    return this.plusDays(MathUtil.intDiv(amountToAdd, LocalTime.MILLIS_PER_DAY)).plusNanos(MathUtil.intMod(amountToAdd, LocalTime.MILLIS_PER_DAY) * 1000000);
-                case ChronoUnit.SECONDS:
-                    return this.plusSeconds(amountToAdd);
-                case ChronoUnit.MINUTES:
-                    return this.plusMinutes(amountToAdd);
-                case ChronoUnit.HOURS:
-                    return this.plusHours(amountToAdd);
-                case ChronoUnit.HALF_DAYS:
-                    return this.plusDays(MathUtil.intDiv(amountToAdd, 256)).plusHours(MathUtil.intMod(amountToAdd, 256) * 12);
-            }
-            return this._withDateTime(this._date.plus(amountToAdd, unit), this._time);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusYears = function plusYears(years) {
-        var newDate = this._date.plusYears(years);
-        return this._withDateTime(newDate, this._time);
-    };
-    _proto.plusMonths = function plusMonths(months) {
-        var newDate = this._date.plusMonths(months);
-        return this._withDateTime(newDate, this._time);
-    };
-    _proto.plusWeeks = function plusWeeks(weeks) {
-        var newDate = this._date.plusWeeks(weeks);
-        return this._withDateTime(newDate, this._time);
-    };
-    _proto.plusDays = function plusDays(days) {
-        var newDate = this._date.plusDays(days);
-        return this._withDateTime(newDate, this._time);
-    };
-    _proto.plusHours = function plusHours(hours) {
-        return this._plusWithOverflow(this._date, hours, 0, 0, 0, 1);
-    };
-    _proto.plusMinutes = function plusMinutes(minutes) {
-        return this._plusWithOverflow(this._date, 0, minutes, 0, 0, 1);
-    };
-    _proto.plusSeconds = function plusSeconds(seconds) {
-        return this._plusWithOverflow(this._date, 0, 0, seconds, 0, 1);
-    };
-    _proto.plusNanos = function plusNanos(nanos) {
-        return this._plusWithOverflow(this._date, 0, 0, 0, nanos, 1);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        requireNonNull(unit, 'unit');
-        return this._plusUnit(-1 * amountToSubtract, unit);
-    };
-    _proto.minusYears = function minusYears(years) {
-        return this.plusYears(-1 * years);
-    };
-    _proto.minusMonths = function minusMonths(months) {
-        return this.plusMonths(-1 * months);
-    };
-    _proto.minusWeeks = function minusWeeks(weeks) {
-        return this.plusWeeks(-1 * weeks);
-    };
-    _proto.minusDays = function minusDays(days) {
-        return this.plusDays(-1 * days);
-    };
-    _proto.minusHours = function minusHours(hours) {
-        return this._plusWithOverflow(this._date, hours, 0, 0, 0, -1);
-    };
-    _proto.minusMinutes = function minusMinutes(minutes) {
-        return this._plusWithOverflow(this._date, 0, minutes, 0, 0, -1);
-    };
-    _proto.minusSeconds = function minusSeconds(seconds) {
-        return this._plusWithOverflow(this._date, 0, 0, seconds, 0, -1);
-    };
-    _proto.minusNanos = function minusNanos(nanos) {
-        return this._plusWithOverflow(this._date, 0, 0, 0, nanos, -1);
-    };
-    _proto._plusWithOverflow = function _plusWithOverflow(newDate, hours, minutes, seconds, nanos, sign) {
-        if (hours === 0 && minutes === 0 && seconds === 0 && nanos === 0) return this._withDateTime(newDate, this._time);
-        var totDays = MathUtil.intDiv(nanos, LocalTime.NANOS_PER_DAY) + MathUtil.intDiv(seconds, LocalTime.SECONDS_PER_DAY) + MathUtil.intDiv(minutes, LocalTime.MINUTES_PER_DAY) + MathUtil.intDiv(hours, LocalTime.HOURS_PER_DAY);
-        totDays *= sign;
-        var totNanos = MathUtil.intMod(nanos, LocalTime.NANOS_PER_DAY) + MathUtil.intMod(seconds, LocalTime.SECONDS_PER_DAY) * LocalTime.NANOS_PER_SECOND + MathUtil.intMod(minutes, LocalTime.MINUTES_PER_DAY) * LocalTime.NANOS_PER_MINUTE + MathUtil.intMod(hours, LocalTime.HOURS_PER_DAY) * LocalTime.NANOS_PER_HOUR;
-        var curNoD = this._time.toNanoOfDay();
-        totNanos = totNanos * sign + curNoD;
-        totDays += MathUtil.floorDiv(totNanos, LocalTime.NANOS_PER_DAY);
-        var newNoD = MathUtil.floorMod(totNanos, LocalTime.NANOS_PER_DAY);
-        var newTime = newNoD === curNoD ? this._time : LocalTime.ofNanoOfDay(newNoD);
-        return this._withDateTime(newDate.plusDays(totDays), newTime);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.localDate()) return this.toLocalDate();
-        return _ChronoLocalDateTime.prototype.query.call(this, _query);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return _ChronoLocalDateTime.prototype.adjustInto.call(this, temporal);
-    };
-    _proto.until = function until(endExclusive, unit) {
-        requireNonNull(endExclusive, 'endExclusive');
-        requireNonNull(unit, 'unit');
-        var end = LocalDateTime.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            if (unit.isTimeBased()) {
-                var daysUntil = this._date.daysUntil(end._date);
-                var timeUntil = end._time.toNanoOfDay() - this._time.toNanoOfDay();
-                if (daysUntil > 0 && timeUntil < 0) {
-                    daysUntil--;
-                    timeUntil += LocalTime.NANOS_PER_DAY;
-                } else if (daysUntil < 0 && timeUntil > 0) {
-                    daysUntil++;
-                    timeUntil -= LocalTime.NANOS_PER_DAY;
-                }
-                var amount = daysUntil;
-                switch(unit){
-                    case ChronoUnit.NANOS:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.NANOS_PER_DAY);
-                        return MathUtil.safeAdd(amount, timeUntil);
-                    case ChronoUnit.MICROS:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.MICROS_PER_DAY);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, 1000));
-                    case ChronoUnit.MILLIS:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.MILLIS_PER_DAY);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, 1000000));
-                    case ChronoUnit.SECONDS:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.SECONDS_PER_DAY);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, LocalTime.NANOS_PER_SECOND));
-                    case ChronoUnit.MINUTES:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.MINUTES_PER_DAY);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, LocalTime.NANOS_PER_MINUTE));
-                    case ChronoUnit.HOURS:
-                        amount = MathUtil.safeMultiply(amount, LocalTime.HOURS_PER_DAY);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, LocalTime.NANOS_PER_HOUR));
-                    case ChronoUnit.HALF_DAYS:
-                        amount = MathUtil.safeMultiply(amount, 2);
-                        return MathUtil.safeAdd(amount, MathUtil.intDiv(timeUntil, LocalTime.NANOS_PER_HOUR * 12));
-                }
-                throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-            }
-            var endDate = end._date;
-            var endTime = end._time;
-            if (endDate.isAfter(this._date) && endTime.isBefore(this._time)) endDate = endDate.minusDays(1);
-            else if (endDate.isBefore(this._date) && endTime.isAfter(this._time)) endDate = endDate.plusDays(1);
-            return this._date.until(endDate, unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.atOffset = function atOffset(offset) {
-        return OffsetDateTime.of(this, offset);
-    };
-    _proto.atZone = function atZone(zone) {
-        return ZonedDateTime.of(this, zone);
-    };
-    _proto.toLocalDate = function toLocalDate() {
-        return this._date;
-    };
-    _proto.toLocalTime = function toLocalTime() {
-        return this._time;
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, LocalDateTime, 'other');
-        return this._compareTo0(other);
-    };
-    _proto._compareTo0 = function _compareTo0(other) {
-        var cmp = this._date.compareTo(other.toLocalDate());
-        if (cmp === 0) cmp = this._time.compareTo(other.toLocalTime());
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        return this.compareTo(other) > 0;
-    };
-    _proto.isBefore = function isBefore(other) {
-        return this.compareTo(other) < 0;
-    };
-    _proto.isEqual = function isEqual(other) {
-        return this.compareTo(other) === 0;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof LocalDateTime) return this._date.equals(other._date) && this._time.equals(other._time);
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._date.hashCode() ^ this._time.hashCode();
-    };
-    _proto.toString = function toString() {
-        return this._date.toString() + "T" + this._time.toString();
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this);
-    };
-    return LocalDateTime;
-}(ChronoLocalDateTime);
-function _init$4() {
-    LocalDateTime.MIN = LocalDateTime.of(LocalDate.MIN, LocalTime.MIN);
-    LocalDateTime.MAX = LocalDateTime.of(LocalDate.MAX, LocalTime.MAX);
-    LocalDateTime.FROM = createTemporalQuery('LocalDateTime.FROM', function(temporal) {
-        return LocalDateTime.from(temporal);
-    });
-}
-var LocalTime = function(_Temporal) {
-    _inheritsLoose(LocalTime, _Temporal);
-    LocalTime.now = function now(clockOrZone) {
-        if (clockOrZone == null) return LocalTime._now(Clock.systemDefaultZone());
-        else if (clockOrZone instanceof Clock) return LocalTime._now(clockOrZone);
-        else return LocalTime._now(Clock.system(clockOrZone));
-    };
-    LocalTime._now = function _now(clock) {
-        if (clock === void 0) clock = Clock.systemDefaultZone();
-        requireNonNull(clock, 'clock');
-        return LocalTime.ofInstant(clock.instant(), clock.zone());
-    };
-    LocalTime.ofInstant = function ofInstant(instant, zone) {
-        if (zone === void 0) zone = ZoneId.systemDefault();
-        var offset = zone.rules().offset(instant);
-        var secsOfDay = MathUtil.intMod(instant.epochSecond(), LocalTime.SECONDS_PER_DAY);
-        secsOfDay = MathUtil.intMod(secsOfDay + offset.totalSeconds(), LocalTime.SECONDS_PER_DAY);
-        if (secsOfDay < 0) secsOfDay += LocalTime.SECONDS_PER_DAY;
-        return LocalTime.ofSecondOfDay(secsOfDay, instant.nano());
-    };
-    LocalTime.of = function of(hour, minute, second, nanoOfSecond) {
-        return new LocalTime(hour, minute, second, nanoOfSecond);
-    };
-    LocalTime.ofSecondOfDay = function ofSecondOfDay(secondOfDay, nanoOfSecond) {
-        if (secondOfDay === void 0) secondOfDay = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        ChronoField.SECOND_OF_DAY.checkValidValue(secondOfDay);
-        ChronoField.NANO_OF_SECOND.checkValidValue(nanoOfSecond);
-        var hours = MathUtil.intDiv(secondOfDay, LocalTime.SECONDS_PER_HOUR);
-        secondOfDay -= hours * LocalTime.SECONDS_PER_HOUR;
-        var minutes = MathUtil.intDiv(secondOfDay, LocalTime.SECONDS_PER_MINUTE);
-        secondOfDay -= minutes * LocalTime.SECONDS_PER_MINUTE;
-        return new LocalTime(hours, minutes, secondOfDay, nanoOfSecond);
-    };
-    LocalTime.ofNanoOfDay = function ofNanoOfDay(nanoOfDay) {
-        if (nanoOfDay === void 0) nanoOfDay = 0;
-        ChronoField.NANO_OF_DAY.checkValidValue(nanoOfDay);
-        var hours = MathUtil.intDiv(nanoOfDay, LocalTime.NANOS_PER_HOUR);
-        nanoOfDay -= hours * LocalTime.NANOS_PER_HOUR;
-        var minutes = MathUtil.intDiv(nanoOfDay, LocalTime.NANOS_PER_MINUTE);
-        nanoOfDay -= minutes * LocalTime.NANOS_PER_MINUTE;
-        var seconds = MathUtil.intDiv(nanoOfDay, LocalTime.NANOS_PER_SECOND);
-        nanoOfDay -= seconds * LocalTime.NANOS_PER_SECOND;
-        return new LocalTime(hours, minutes, seconds, nanoOfDay);
-    };
-    LocalTime.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        var time = temporal.query(TemporalQueries.localTime());
-        if (time == null) throw new DateTimeException("Unable to obtain LocalTime TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        return time;
-    };
-    LocalTime.parse = function parse(text, formatter) {
-        if (formatter === void 0) formatter = DateTimeFormatter.ISO_LOCAL_TIME;
-        requireNonNull(formatter, 'formatter');
-        return formatter.parse(text, LocalTime.FROM);
-    };
-    function LocalTime(hour, minute, second, nanoOfSecond) {
-        var _this;
-        if (hour === void 0) hour = 0;
-        if (minute === void 0) minute = 0;
-        if (second === void 0) second = 0;
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        _this = _Temporal.call(this) || this;
-        var _hour = MathUtil.safeToInt(hour);
-        var _minute = MathUtil.safeToInt(minute);
-        var _second = MathUtil.safeToInt(second);
-        var _nanoOfSecond = MathUtil.safeToInt(nanoOfSecond);
-        LocalTime._validate(_hour, _minute, _second, _nanoOfSecond);
-        if (_minute === 0 && _second === 0 && _nanoOfSecond === 0) {
-            if (!LocalTime.HOURS[_hour]) {
-                _this._hour = _hour;
-                _this._minute = _minute;
-                _this._second = _second;
-                _this._nano = _nanoOfSecond;
-                LocalTime.HOURS[_hour] = _assertThisInitialized(_this);
-            }
-            return LocalTime.HOURS[_hour] || _assertThisInitialized(_this);
-        }
-        _this._hour = _hour;
-        _this._minute = _minute;
-        _this._second = _second;
-        _this._nano = _nanoOfSecond;
-        return _this;
-    }
-    LocalTime._validate = function _validate(hour, minute, second, nanoOfSecond) {
-        ChronoField.HOUR_OF_DAY.checkValidValue(hour);
-        ChronoField.MINUTE_OF_HOUR.checkValidValue(minute);
-        ChronoField.SECOND_OF_MINUTE.checkValidValue(second);
-        ChronoField.NANO_OF_SECOND.checkValidValue(nanoOfSecond);
-    };
-    var _proto = LocalTime.prototype;
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit.isTimeBased();
-        else if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isTimeBased();
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        requireNonNull(field);
-        return _Temporal.prototype.range.call(this, field);
-    };
-    _proto.get = function get(field) {
-        return this.getLong(field);
-    };
-    _proto.getLong = function getLong(field) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) return this._get0(field);
-        return field.getFrom(this);
-    };
-    _proto._get0 = function _get0(field) {
-        switch(field){
-            case ChronoField.NANO_OF_SECOND:
-                return this._nano;
-            case ChronoField.NANO_OF_DAY:
-                return this.toNanoOfDay();
-            case ChronoField.MICRO_OF_SECOND:
-                return MathUtil.intDiv(this._nano, 1000);
-            case ChronoField.MICRO_OF_DAY:
-                return MathUtil.intDiv(this.toNanoOfDay(), 1000);
-            case ChronoField.MILLI_OF_SECOND:
-                return MathUtil.intDiv(this._nano, 1000000);
-            case ChronoField.MILLI_OF_DAY:
-                return MathUtil.intDiv(this.toNanoOfDay(), 1000000);
-            case ChronoField.SECOND_OF_MINUTE:
-                return this._second;
-            case ChronoField.SECOND_OF_DAY:
-                return this.toSecondOfDay();
-            case ChronoField.MINUTE_OF_HOUR:
-                return this._minute;
-            case ChronoField.MINUTE_OF_DAY:
-                return this._hour * 60 + this._minute;
-            case ChronoField.HOUR_OF_AMPM:
-                return MathUtil.intMod(this._hour, 12);
-            case ChronoField.CLOCK_HOUR_OF_AMPM:
-                var ham = MathUtil.intMod(this._hour, 12);
-                return ham % 12 === 0 ? 12 : ham;
-            case ChronoField.HOUR_OF_DAY:
-                return this._hour;
-            case ChronoField.CLOCK_HOUR_OF_DAY:
-                return this._hour === 0 ? 24 : this._hour;
-            case ChronoField.AMPM_OF_DAY:
-                return MathUtil.intDiv(this._hour, 12);
-        }
-        throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-    };
-    _proto.hour = function hour() {
-        return this._hour;
-    };
-    _proto.minute = function minute() {
-        return this._minute;
-    };
-    _proto.second = function second() {
-        return this._second;
-    };
-    _proto.nano = function nano() {
-        return this._nano;
-    };
-    _proto._withAdjuster = function _withAdjuster(adjuster) {
-        requireNonNull(adjuster, 'adjuster');
-        if (adjuster instanceof LocalTime) return adjuster;
-        return _Temporal.prototype._withAdjuster.call(this, adjuster);
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        requireInstance(field, TemporalField, 'field');
-        if (field instanceof ChronoField) {
-            field.checkValidValue(newValue);
-            switch(field){
-                case ChronoField.NANO_OF_SECOND:
-                    return this.withNano(newValue);
-                case ChronoField.NANO_OF_DAY:
-                    return LocalTime.ofNanoOfDay(newValue);
-                case ChronoField.MICRO_OF_SECOND:
-                    return this.withNano(newValue * 1000);
-                case ChronoField.MICRO_OF_DAY:
-                    return LocalTime.ofNanoOfDay(newValue * 1000);
-                case ChronoField.MILLI_OF_SECOND:
-                    return this.withNano(newValue * 1000000);
-                case ChronoField.MILLI_OF_DAY:
-                    return LocalTime.ofNanoOfDay(newValue * 1000000);
-                case ChronoField.SECOND_OF_MINUTE:
-                    return this.withSecond(newValue);
-                case ChronoField.SECOND_OF_DAY:
-                    return this.plusSeconds(newValue - this.toSecondOfDay());
-                case ChronoField.MINUTE_OF_HOUR:
-                    return this.withMinute(newValue);
-                case ChronoField.MINUTE_OF_DAY:
-                    return this.plusMinutes(newValue - (this._hour * 60 + this._minute));
-                case ChronoField.HOUR_OF_AMPM:
-                    return this.plusHours(newValue - MathUtil.intMod(this._hour, 12));
-                case ChronoField.CLOCK_HOUR_OF_AMPM:
-                    return this.plusHours((newValue === 12 ? 0 : newValue) - MathUtil.intMod(this._hour, 12));
-                case ChronoField.HOUR_OF_DAY:
-                    return this.withHour(newValue);
-                case ChronoField.CLOCK_HOUR_OF_DAY:
-                    return this.withHour(newValue === 24 ? 0 : newValue);
-                case ChronoField.AMPM_OF_DAY:
-                    return this.plusHours((newValue - MathUtil.intDiv(this._hour, 12)) * 12);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.withHour = function withHour(hour) {
-        if (hour === void 0) hour = 0;
-        if (this._hour === hour) return this;
-        return new LocalTime(hour, this._minute, this._second, this._nano);
-    };
-    _proto.withMinute = function withMinute(minute) {
-        if (minute === void 0) minute = 0;
-        if (this._minute === minute) return this;
-        return new LocalTime(this._hour, minute, this._second, this._nano);
-    };
-    _proto.withSecond = function withSecond(second) {
-        if (second === void 0) second = 0;
-        if (this._second === second) return this;
-        return new LocalTime(this._hour, this._minute, second, this._nano);
-    };
-    _proto.withNano = function withNano(nanoOfSecond) {
-        if (nanoOfSecond === void 0) nanoOfSecond = 0;
-        if (this._nano === nanoOfSecond) return this;
-        return new LocalTime(this._hour, this._minute, this._second, nanoOfSecond);
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        requireNonNull(unit, 'unit');
-        if (unit === ChronoUnit.NANOS) return this;
-        var unitDur = unit.duration();
-        if (unitDur.seconds() > LocalTime.SECONDS_PER_DAY) throw new DateTimeException('Unit is too large to be used for truncation');
-        var dur = unitDur.toNanos();
-        if (MathUtil.intMod(LocalTime.NANOS_PER_DAY, dur) !== 0) throw new DateTimeException('Unit must divide into a standard day without remainder');
-        var nod = this.toNanoOfDay();
-        return LocalTime.ofNanoOfDay(MathUtil.intDiv(nod, dur) * dur);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(unit, 'unit');
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return this.plusNanos(amountToAdd);
-                case ChronoUnit.MICROS:
-                    return this.plusNanos(MathUtil.intMod(amountToAdd, LocalTime.MICROS_PER_DAY) * 1000);
-                case ChronoUnit.MILLIS:
-                    return this.plusNanos(MathUtil.intMod(amountToAdd, LocalTime.MILLIS_PER_DAY) * 1000000);
-                case ChronoUnit.SECONDS:
-                    return this.plusSeconds(amountToAdd);
-                case ChronoUnit.MINUTES:
-                    return this.plusMinutes(amountToAdd);
-                case ChronoUnit.HOURS:
-                    return this.plusHours(amountToAdd);
-                case ChronoUnit.HALF_DAYS:
-                    return this.plusHours(MathUtil.intMod(amountToAdd, 2) * 12);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusHours = function plusHours(hoursToAdd) {
-        if (hoursToAdd === 0) return this;
-        var newHour = MathUtil.intMod(MathUtil.intMod(hoursToAdd, LocalTime.HOURS_PER_DAY) + this._hour + LocalTime.HOURS_PER_DAY, LocalTime.HOURS_PER_DAY);
-        return new LocalTime(newHour, this._minute, this._second, this._nano);
-    };
-    _proto.plusMinutes = function plusMinutes(minutesToAdd) {
-        if (minutesToAdd === 0) return this;
-        var mofd = this._hour * LocalTime.MINUTES_PER_HOUR + this._minute;
-        var newMofd = MathUtil.intMod(MathUtil.intMod(minutesToAdd, LocalTime.MINUTES_PER_DAY) + mofd + LocalTime.MINUTES_PER_DAY, LocalTime.MINUTES_PER_DAY);
-        if (mofd === newMofd) return this;
-        var newHour = MathUtil.intDiv(newMofd, LocalTime.MINUTES_PER_HOUR);
-        var newMinute = MathUtil.intMod(newMofd, LocalTime.MINUTES_PER_HOUR);
-        return new LocalTime(newHour, newMinute, this._second, this._nano);
-    };
-    _proto.plusSeconds = function plusSeconds(secondsToAdd) {
-        if (secondsToAdd === 0) return this;
-        var sofd = this._hour * LocalTime.SECONDS_PER_HOUR + this._minute * LocalTime.SECONDS_PER_MINUTE + this._second;
-        var newSofd = MathUtil.intMod(MathUtil.intMod(secondsToAdd, LocalTime.SECONDS_PER_DAY) + sofd + LocalTime.SECONDS_PER_DAY, LocalTime.SECONDS_PER_DAY);
-        if (sofd === newSofd) return this;
-        var newHour = MathUtil.intDiv(newSofd, LocalTime.SECONDS_PER_HOUR);
-        var newMinute = MathUtil.intMod(MathUtil.intDiv(newSofd, LocalTime.SECONDS_PER_MINUTE), LocalTime.MINUTES_PER_HOUR);
-        var newSecond = MathUtil.intMod(newSofd, LocalTime.SECONDS_PER_MINUTE);
-        return new LocalTime(newHour, newMinute, newSecond, this._nano);
-    };
-    _proto.plusNanos = function plusNanos(nanosToAdd) {
-        if (nanosToAdd === 0) return this;
-        var nofd = this.toNanoOfDay();
-        var newNofd = MathUtil.intMod(MathUtil.intMod(nanosToAdd, LocalTime.NANOS_PER_DAY) + nofd + LocalTime.NANOS_PER_DAY, LocalTime.NANOS_PER_DAY);
-        if (nofd === newNofd) return this;
-        var newHour = MathUtil.intDiv(newNofd, LocalTime.NANOS_PER_HOUR);
-        var newMinute = MathUtil.intMod(MathUtil.intDiv(newNofd, LocalTime.NANOS_PER_MINUTE), LocalTime.MINUTES_PER_HOUR);
-        var newSecond = MathUtil.intMod(MathUtil.intDiv(newNofd, LocalTime.NANOS_PER_SECOND), LocalTime.SECONDS_PER_MINUTE);
-        var newNano = MathUtil.intMod(newNofd, LocalTime.NANOS_PER_SECOND);
-        return new LocalTime(newHour, newMinute, newSecond, newNano);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        requireNonNull(unit, 'unit');
-        return this._plusUnit(-1 * amountToSubtract, unit);
-    };
-    _proto.minusHours = function minusHours(hoursToSubtract) {
-        return this.plusHours(-1 * MathUtil.intMod(hoursToSubtract, LocalTime.HOURS_PER_DAY));
-    };
-    _proto.minusMinutes = function minusMinutes(minutesToSubtract) {
-        return this.plusMinutes(-1 * MathUtil.intMod(minutesToSubtract, LocalTime.MINUTES_PER_DAY));
-    };
-    _proto.minusSeconds = function minusSeconds(secondsToSubtract) {
-        return this.plusSeconds(-1 * MathUtil.intMod(secondsToSubtract, LocalTime.SECONDS_PER_DAY));
-    };
-    _proto.minusNanos = function minusNanos(nanosToSubtract) {
-        return this.plusNanos(-1 * MathUtil.intMod(nanosToSubtract, LocalTime.NANOS_PER_DAY));
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        else if (_query === TemporalQueries.localTime()) return this;
-        if (_query === TemporalQueries.chronology() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.zone() || _query === TemporalQueries.offset() || _query === TemporalQueries.localDate()) return null;
-        return _query.queryFrom(this);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        return temporal.with(LocalTime.NANO_OF_DAY, this.toNanoOfDay());
-    };
-    _proto.until = function until(endExclusive, unit) {
-        requireNonNull(endExclusive, 'endExclusive');
-        requireNonNull(unit, 'unit');
-        var end = LocalTime.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            var nanosUntil = end.toNanoOfDay() - this.toNanoOfDay();
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return nanosUntil;
-                case ChronoUnit.MICROS:
-                    return MathUtil.intDiv(nanosUntil, 1000);
-                case ChronoUnit.MILLIS:
-                    return MathUtil.intDiv(nanosUntil, 1000000);
-                case ChronoUnit.SECONDS:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_SECOND);
-                case ChronoUnit.MINUTES:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_MINUTE);
-                case ChronoUnit.HOURS:
-                    return MathUtil.intDiv(nanosUntil, LocalTime.NANOS_PER_HOUR);
-                case ChronoUnit.HALF_DAYS:
-                    return MathUtil.intDiv(nanosUntil, 12 * LocalTime.NANOS_PER_HOUR);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto.atDate = function atDate(date) {
-        return LocalDateTime.of(date, this);
-    };
-    _proto.atOffset = function atOffset(offset) {
-        return OffsetTime.of(this, offset);
-    };
-    _proto.toSecondOfDay = function toSecondOfDay() {
-        var total = this._hour * LocalTime.SECONDS_PER_HOUR;
-        total += this._minute * LocalTime.SECONDS_PER_MINUTE;
-        total += this._second;
-        return total;
-    };
-    _proto.toNanoOfDay = function toNanoOfDay() {
-        var total = this._hour * LocalTime.NANOS_PER_HOUR;
-        total += this._minute * LocalTime.NANOS_PER_MINUTE;
-        total += this._second * LocalTime.NANOS_PER_SECOND;
-        total += this._nano;
-        return total;
-    };
-    _proto.compareTo = function compareTo(other) {
-        requireNonNull(other, 'other');
-        requireInstance(other, LocalTime, 'other');
-        var cmp = MathUtil.compareNumbers(this._hour, other._hour);
-        if (cmp === 0) {
-            cmp = MathUtil.compareNumbers(this._minute, other._minute);
-            if (cmp === 0) {
-                cmp = MathUtil.compareNumbers(this._second, other._second);
-                if (cmp === 0) cmp = MathUtil.compareNumbers(this._nano, other._nano);
-            }
-        }
-        return cmp;
-    };
-    _proto.isAfter = function isAfter(other) {
-        return this.compareTo(other) > 0;
-    };
-    _proto.isBefore = function isBefore(other) {
-        return this.compareTo(other) < 0;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof LocalTime) return this._hour === other._hour && this._minute === other._minute && this._second === other._second && this._nano === other._nano;
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        var nod = this.toNanoOfDay();
-        return MathUtil.hash(nod);
-    };
-    _proto.toString = function toString() {
-        var buf = '';
-        var hourValue = this._hour;
-        var minuteValue = this._minute;
-        var secondValue = this._second;
-        var nanoValue = this._nano;
-        buf += hourValue < 10 ? '0' : '';
-        buf += hourValue;
-        buf += minuteValue < 10 ? ':0' : ':';
-        buf += minuteValue;
-        if (secondValue > 0 || nanoValue > 0) {
-            buf += secondValue < 10 ? ':0' : ':';
-            buf += secondValue;
-            if (nanoValue > 0) {
-                buf += '.';
-                if (MathUtil.intMod(nanoValue, 1000000) === 0) buf += ("" + (MathUtil.intDiv(nanoValue, 1000000) + 1000)).substring(1);
-                else if (MathUtil.intMod(nanoValue, 1000) === 0) buf += ("" + (MathUtil.intDiv(nanoValue, 1000) + 1000000)).substring(1);
-                else buf += ("" + (nanoValue + 1000000000)).substring(1);
-            }
-        }
-        return buf;
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    _proto.format = function format(formatter) {
-        requireNonNull(formatter, 'formatter');
-        return formatter.format(this);
-    };
-    return LocalTime;
-}(Temporal);
-function _init$3() {
-    LocalTime.HOURS = [];
-    for(var hour = 0; hour < 24; hour++)LocalTime.of(hour, 0, 0, 0);
-    LocalTime.MIN = LocalTime.HOURS[0];
-    LocalTime.MAX = new LocalTime(23, 59, 59, 999999999);
-    LocalTime.MIDNIGHT = LocalTime.HOURS[0];
-    LocalTime.NOON = LocalTime.HOURS[12];
-    LocalTime.FROM = createTemporalQuery('LocalTime.FROM', function(temporal) {
-        return LocalTime.from(temporal);
-    });
-}
-LocalTime.HOURS_PER_DAY = 24;
-LocalTime.MINUTES_PER_HOUR = 60;
-LocalTime.MINUTES_PER_DAY = LocalTime.MINUTES_PER_HOUR * LocalTime.HOURS_PER_DAY;
-LocalTime.SECONDS_PER_MINUTE = 60;
-LocalTime.SECONDS_PER_HOUR = LocalTime.SECONDS_PER_MINUTE * LocalTime.MINUTES_PER_HOUR;
-LocalTime.SECONDS_PER_DAY = LocalTime.SECONDS_PER_HOUR * LocalTime.HOURS_PER_DAY;
-LocalTime.MILLIS_PER_DAY = LocalTime.SECONDS_PER_DAY * 1000;
-LocalTime.MICROS_PER_DAY = LocalTime.SECONDS_PER_DAY * 1000000;
-LocalTime.NANOS_PER_SECOND = 1000000000;
-LocalTime.NANOS_PER_MINUTE = LocalTime.NANOS_PER_SECOND * LocalTime.SECONDS_PER_MINUTE;
-LocalTime.NANOS_PER_HOUR = LocalTime.NANOS_PER_MINUTE * LocalTime.MINUTES_PER_HOUR;
-LocalTime.NANOS_PER_DAY = LocalTime.NANOS_PER_HOUR * LocalTime.HOURS_PER_DAY;
-var NANOS_PER_MILLI = 1000000;
-var Instant = function(_Temporal) {
-    _inheritsLoose(Instant, _Temporal);
-    Instant.now = function now(clock) {
-        if (clock === void 0) clock = Clock.systemUTC();
-        return clock.instant();
-    };
-    Instant.ofEpochSecond = function ofEpochSecond(epochSecond, nanoAdjustment) {
-        if (nanoAdjustment === void 0) nanoAdjustment = 0;
-        var secs = epochSecond + MathUtil.floorDiv(nanoAdjustment, LocalTime.NANOS_PER_SECOND);
-        var nos = MathUtil.floorMod(nanoAdjustment, LocalTime.NANOS_PER_SECOND);
-        return Instant._create(secs, nos);
-    };
-    Instant.ofEpochMilli = function ofEpochMilli(epochMilli) {
-        var secs = MathUtil.floorDiv(epochMilli, 1000);
-        var mos = MathUtil.floorMod(epochMilli, 1000);
-        return Instant._create(secs, mos * 1000000);
-    };
-    Instant.ofEpochMicro = function ofEpochMicro(epochMicro) {
-        var secs = MathUtil.floorDiv(epochMicro, 1000000);
-        var mos = MathUtil.floorMod(epochMicro, 1000000);
-        return Instant._create(secs, mos * 1000);
-    };
-    Instant.from = function from(temporal) {
-        try {
-            var instantSecs = temporal.getLong(ChronoField.INSTANT_SECONDS);
-            var nanoOfSecond = temporal.get(ChronoField.NANO_OF_SECOND);
-            return Instant.ofEpochSecond(instantSecs, nanoOfSecond);
-        } catch (ex) {
-            throw new DateTimeException("Unable to obtain Instant from TemporalAccessor: " + temporal + ", type " + typeof temporal, ex);
-        }
-    };
-    Instant.parse = function parse(text) {
-        return DateTimeFormatter.ISO_INSTANT.parse(text, Instant.FROM);
-    };
-    Instant._create = function _create(seconds, nanoOfSecond) {
-        if (seconds === 0 && nanoOfSecond === 0) return Instant.EPOCH;
-        return new Instant(seconds, nanoOfSecond);
-    };
-    Instant._validate = function _validate(seconds, nanoOfSecond) {
-        if (seconds < Instant.MIN_SECONDS || seconds > Instant.MAX_SECONDS) throw new DateTimeException('Instant exceeds minimum or maximum instant');
-        if (nanoOfSecond < 0 || nanoOfSecond > LocalTime.NANOS_PER_SECOND) throw new DateTimeException('Instant exceeds minimum or maximum instant');
-    };
-    function Instant(seconds, nanoOfSecond) {
-        var _this;
-        _this = _Temporal.call(this) || this;
-        Instant._validate(seconds, nanoOfSecond);
-        _this._seconds = MathUtil.safeToInt(seconds);
-        _this._nanos = MathUtil.safeToInt(nanoOfSecond);
-        return _this;
-    }
-    var _proto = Instant.prototype;
-    _proto.isSupported = function isSupported(fieldOrUnit) {
-        if (fieldOrUnit instanceof ChronoField) return fieldOrUnit === ChronoField.INSTANT_SECONDS || fieldOrUnit === ChronoField.NANO_OF_SECOND || fieldOrUnit === ChronoField.MICRO_OF_SECOND || fieldOrUnit === ChronoField.MILLI_OF_SECOND;
-        if (fieldOrUnit instanceof ChronoUnit) return fieldOrUnit.isTimeBased() || fieldOrUnit === ChronoUnit.DAYS;
-        return fieldOrUnit != null && fieldOrUnit.isSupportedBy(this);
-    };
-    _proto.range = function range(field) {
-        return _Temporal.prototype.range.call(this, field);
-    };
-    _proto.get = function get(field) {
-        return this.getLong(field);
-    };
-    _proto.getLong = function getLong(field) {
-        if (field instanceof ChronoField) {
-            switch(field){
-                case ChronoField.NANO_OF_SECOND:
-                    return this._nanos;
-                case ChronoField.MICRO_OF_SECOND:
-                    return MathUtil.intDiv(this._nanos, 1000);
-                case ChronoField.MILLI_OF_SECOND:
-                    return MathUtil.intDiv(this._nanos, NANOS_PER_MILLI);
-                case ChronoField.INSTANT_SECONDS:
-                    return this._seconds;
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.getFrom(this);
-    };
-    _proto.epochSecond = function epochSecond() {
-        return this._seconds;
-    };
-    _proto.nano = function nano() {
-        return this._nanos;
-    };
-    _proto._withField = function _withField(field, newValue) {
-        requireNonNull(field, 'field');
-        if (field instanceof ChronoField) {
-            field.checkValidValue(newValue);
-            switch(field){
-                case ChronoField.MILLI_OF_SECOND:
-                    var nval = newValue * NANOS_PER_MILLI;
-                    return nval !== this._nanos ? Instant._create(this._seconds, nval) : this;
-                case ChronoField.MICRO_OF_SECOND:
-                    var _nval = newValue * 1000;
-                    return _nval !== this._nanos ? Instant._create(this._seconds, _nval) : this;
-                case ChronoField.NANO_OF_SECOND:
-                    return newValue !== this._nanos ? Instant._create(this._seconds, newValue) : this;
-                case ChronoField.INSTANT_SECONDS:
-                    return newValue !== this._seconds ? Instant._create(newValue, this._nanos) : this;
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported field: " + field);
-        }
-        return field.adjustInto(this, newValue);
-    };
-    _proto.truncatedTo = function truncatedTo(unit) {
-        requireNonNull(unit, 'unit');
-        if (unit === ChronoUnit.NANOS) return this;
-        var unitDur = unit.duration();
-        if (unitDur.seconds() > LocalTime.SECONDS_PER_DAY) throw new DateTimeException('Unit is too large to be used for truncation');
-        var dur = unitDur.toNanos();
-        if (MathUtil.intMod(LocalTime.NANOS_PER_DAY, dur) !== 0) throw new DateTimeException('Unit must divide into a standard day without remainder');
-        var nod = MathUtil.intMod(this._seconds, LocalTime.SECONDS_PER_DAY) * LocalTime.NANOS_PER_SECOND + this._nanos;
-        var result = MathUtil.intDiv(nod, dur) * dur;
-        return this.plusNanos(result - nod);
-    };
-    _proto._plusUnit = function _plusUnit(amountToAdd, unit) {
-        requireNonNull(amountToAdd, 'amountToAdd');
-        requireNonNull(unit, 'unit');
-        requireInstance(unit, TemporalUnit);
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return this.plusNanos(amountToAdd);
-                case ChronoUnit.MICROS:
-                    return this.plusMicros(amountToAdd);
-                case ChronoUnit.MILLIS:
-                    return this.plusMillis(amountToAdd);
-                case ChronoUnit.SECONDS:
-                    return this.plusSeconds(amountToAdd);
-                case ChronoUnit.MINUTES:
-                    return this.plusSeconds(MathUtil.safeMultiply(amountToAdd, LocalTime.SECONDS_PER_MINUTE));
-                case ChronoUnit.HOURS:
-                    return this.plusSeconds(MathUtil.safeMultiply(amountToAdd, LocalTime.SECONDS_PER_HOUR));
-                case ChronoUnit.HALF_DAYS:
-                    return this.plusSeconds(MathUtil.safeMultiply(amountToAdd, LocalTime.SECONDS_PER_DAY / 2));
-                case ChronoUnit.DAYS:
-                    return this.plusSeconds(MathUtil.safeMultiply(amountToAdd, LocalTime.SECONDS_PER_DAY));
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.addTo(this, amountToAdd);
-    };
-    _proto.plusSeconds = function plusSeconds(secondsToAdd) {
-        return this._plus(secondsToAdd, 0);
-    };
-    _proto.plusMillis = function plusMillis(millisToAdd) {
-        return this._plus(MathUtil.intDiv(millisToAdd, 1000), MathUtil.intMod(millisToAdd, 1000) * NANOS_PER_MILLI);
-    };
-    _proto.plusNanos = function plusNanos(nanosToAdd) {
-        return this._plus(0, nanosToAdd);
-    };
-    _proto.plusMicros = function plusMicros(microsToAdd) {
-        return this._plus(MathUtil.intDiv(microsToAdd, 1000000), MathUtil.intMod(microsToAdd, 1000000) * 1000);
-    };
-    _proto._plus = function _plus(secondsToAdd, nanosToAdd) {
-        if (secondsToAdd === 0 && nanosToAdd === 0) return this;
-        var epochSec = this._seconds + secondsToAdd;
-        epochSec = epochSec + MathUtil.intDiv(nanosToAdd, LocalTime.NANOS_PER_SECOND);
-        var nanoAdjustment = this._nanos + nanosToAdd % LocalTime.NANOS_PER_SECOND;
-        return Instant.ofEpochSecond(epochSec, nanoAdjustment);
-    };
-    _proto._minusUnit = function _minusUnit(amountToSubtract, unit) {
-        return this._plusUnit(-1 * amountToSubtract, unit);
-    };
-    _proto.minusSeconds = function minusSeconds(secondsToSubtract) {
-        return this.plusSeconds(secondsToSubtract * -1);
-    };
-    _proto.minusMillis = function minusMillis(millisToSubtract) {
-        return this.plusMillis(-1 * millisToSubtract);
-    };
-    _proto.minusNanos = function minusNanos(nanosToSubtract) {
-        return this.plusNanos(-1 * nanosToSubtract);
-    };
-    _proto.minusMicros = function minusMicros(microsToSubtract) {
-        return this.plusMicros(-1 * microsToSubtract);
-    };
-    _proto.query = function query(_query) {
-        requireNonNull(_query, 'query');
-        if (_query === TemporalQueries.precision()) return ChronoUnit.NANOS;
-        if (_query === TemporalQueries.localDate() || _query === TemporalQueries.localTime() || _query === TemporalQueries.chronology() || _query === TemporalQueries.zoneId() || _query === TemporalQueries.zone() || _query === TemporalQueries.offset()) return null;
-        return _query.queryFrom(this);
-    };
-    _proto.adjustInto = function adjustInto(temporal) {
-        requireNonNull(temporal, 'temporal');
-        return temporal.with(ChronoField.INSTANT_SECONDS, this._seconds).with(ChronoField.NANO_OF_SECOND, this._nanos);
-    };
-    _proto.until = function until(endExclusive, unit) {
-        requireNonNull(endExclusive, 'endExclusive');
-        requireNonNull(unit, 'unit');
-        var end = Instant.from(endExclusive);
-        if (unit instanceof ChronoUnit) {
-            switch(unit){
-                case ChronoUnit.NANOS:
-                    return this._nanosUntil(end);
-                case ChronoUnit.MICROS:
-                    return this._microsUntil(end);
-                case ChronoUnit.MILLIS:
-                    return MathUtil.safeSubtract(end.toEpochMilli(), this.toEpochMilli());
-                case ChronoUnit.SECONDS:
-                    return this._secondsUntil(end);
-                case ChronoUnit.MINUTES:
-                    return MathUtil.intDiv(this._secondsUntil(end), LocalTime.SECONDS_PER_MINUTE);
-                case ChronoUnit.HOURS:
-                    return MathUtil.intDiv(this._secondsUntil(end), LocalTime.SECONDS_PER_HOUR);
-                case ChronoUnit.HALF_DAYS:
-                    return MathUtil.intDiv(this._secondsUntil(end), 12 * LocalTime.SECONDS_PER_HOUR);
-                case ChronoUnit.DAYS:
-                    return MathUtil.intDiv(this._secondsUntil(end), LocalTime.SECONDS_PER_DAY);
-            }
-            throw new UnsupportedTemporalTypeException("Unsupported unit: " + unit);
-        }
-        return unit.between(this, end);
-    };
-    _proto._microsUntil = function _microsUntil(end) {
-        var secsDiff = MathUtil.safeSubtract(end.epochSecond(), this.epochSecond());
-        var totalMicros = MathUtil.safeMultiply(secsDiff, 1000000);
-        return MathUtil.safeAdd(totalMicros, MathUtil.intDiv(end.nano() - this.nano(), 1000));
-    };
-    _proto._nanosUntil = function _nanosUntil(end) {
-        var secsDiff = MathUtil.safeSubtract(end.epochSecond(), this.epochSecond());
-        var totalNanos = MathUtil.safeMultiply(secsDiff, LocalTime.NANOS_PER_SECOND);
-        return MathUtil.safeAdd(totalNanos, end.nano() - this.nano());
-    };
-    _proto._secondsUntil = function _secondsUntil(end) {
-        var secsDiff = MathUtil.safeSubtract(end.epochSecond(), this.epochSecond());
-        var nanosDiff = end.nano() - this.nano();
-        if (secsDiff > 0 && nanosDiff < 0) secsDiff--;
-        else if (secsDiff < 0 && nanosDiff > 0) secsDiff++;
-        return secsDiff;
-    };
-    _proto.atOffset = function atOffset(offset) {
-        return OffsetDateTime.ofInstant(this, offset);
-    };
-    _proto.atZone = function atZone(zone) {
-        return ZonedDateTime.ofInstant(this, zone);
-    };
-    _proto.toEpochMilli = function toEpochMilli() {
-        var millis = MathUtil.safeMultiply(this._seconds, 1000);
-        return millis + MathUtil.intDiv(this._nanos, NANOS_PER_MILLI);
-    };
-    _proto.compareTo = function compareTo(otherInstant) {
-        requireNonNull(otherInstant, 'otherInstant');
-        requireInstance(otherInstant, Instant, 'otherInstant');
-        var cmp = MathUtil.compareNumbers(this._seconds, otherInstant._seconds);
-        if (cmp !== 0) return cmp;
-        return this._nanos - otherInstant._nanos;
-    };
-    _proto.isAfter = function isAfter(otherInstant) {
-        return this.compareTo(otherInstant) > 0;
-    };
-    _proto.isBefore = function isBefore(otherInstant) {
-        return this.compareTo(otherInstant) < 0;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        if (other instanceof Instant) return this.epochSecond() === other.epochSecond() && this.nano() === other.nano();
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return MathUtil.hashCode(this._seconds, this._nanos);
-    };
-    _proto.toString = function toString() {
-        return DateTimeFormatter.ISO_INSTANT.format(this);
-    };
-    _proto.toJSON = function toJSON() {
-        return this.toString();
-    };
-    return Instant;
-}(Temporal);
-function _init$2() {
-    Instant.MIN_SECONDS = -31619119219200;
-    Instant.MAX_SECONDS = 31494816403199;
-    Instant.EPOCH = new Instant(0, 0);
-    Instant.MIN = Instant.ofEpochSecond(Instant.MIN_SECONDS, 0);
-    Instant.MAX = Instant.ofEpochSecond(Instant.MAX_SECONDS, 999999999);
-    Instant.FROM = createTemporalQuery('Instant.FROM', function(temporal) {
-        return Instant.from(temporal);
-    });
-}
-var Clock = function() {
-    function Clock() {}
-    Clock.systemUTC = function systemUTC() {
-        return new SystemClock(ZoneOffset.UTC);
-    };
-    Clock.systemDefaultZone = function systemDefaultZone() {
-        return new SystemClock(ZoneId.systemDefault());
-    };
-    Clock.system = function system(zone) {
-        return new SystemClock(zone);
-    };
-    Clock.fixed = function fixed(fixedInstant, zoneId) {
-        return new FixedClock(fixedInstant, zoneId);
-    };
-    Clock.offset = function offset(baseClock, duration) {
-        return new OffsetClock(baseClock, duration);
-    };
-    var _proto = Clock.prototype;
-    _proto.millis = function millis() {
-        abstractMethodFail('Clock.millis');
-    };
-    _proto.instant = function instant() {
-        abstractMethodFail('Clock.instant');
-    };
-    _proto.zone = function zone() {
-        abstractMethodFail('Clock.zone');
-    };
-    _proto.withZone = function withZone() {
-        abstractMethodFail('Clock.withZone');
-    };
-    return Clock;
-}();
-var SystemClock = function(_Clock) {
-    _inheritsLoose(SystemClock, _Clock);
-    function SystemClock(zone) {
-        var _this;
-        requireNonNull(zone, 'zone');
-        _this = _Clock.call(this) || this;
-        _this._zone = zone;
-        return _this;
-    }
-    var _proto2 = SystemClock.prototype;
-    _proto2.zone = function zone() {
-        return this._zone;
-    };
-    _proto2.millis = function millis() {
-        return new Date().getTime();
-    };
-    _proto2.instant = function instant() {
-        return Instant.ofEpochMilli(this.millis());
-    };
-    _proto2.equals = function equals(obj) {
-        if (obj instanceof SystemClock) return this._zone.equals(obj._zone);
-        return false;
-    };
-    _proto2.withZone = function withZone(zone) {
-        if (zone.equals(this._zone)) return this;
-        return new SystemClock(zone);
-    };
-    _proto2.toString = function toString() {
-        return "SystemClock[" + this._zone.toString() + "]";
-    };
-    return SystemClock;
-}(Clock);
-var FixedClock = function(_Clock2) {
-    _inheritsLoose(FixedClock, _Clock2);
-    function FixedClock(fixedInstant, zoneId) {
-        var _this2;
-        _this2 = _Clock2.call(this) || this;
-        _this2._instant = fixedInstant;
-        _this2._zoneId = zoneId;
-        return _this2;
-    }
-    var _proto3 = FixedClock.prototype;
-    _proto3.instant = function instant() {
-        return this._instant;
-    };
-    _proto3.millis = function millis() {
-        return this._instant.toEpochMilli();
-    };
-    _proto3.zone = function zone() {
-        return this._zoneId;
-    };
-    _proto3.toString = function toString() {
-        return 'FixedClock[]';
-    };
-    _proto3.equals = function equals(obj) {
-        if (obj instanceof FixedClock) return this._instant.equals(obj._instant) && this._zoneId.equals(obj._zoneId);
-        return false;
-    };
-    _proto3.withZone = function withZone(zone) {
-        if (zone.equals(this._zoneId)) return this;
-        return new FixedClock(this._instant, zone);
-    };
-    return FixedClock;
-}(Clock);
-var OffsetClock = function(_Clock3) {
-    _inheritsLoose(OffsetClock, _Clock3);
-    function OffsetClock(baseClock, offset) {
-        var _this3;
-        _this3 = _Clock3.call(this) || this;
-        _this3._baseClock = baseClock;
-        _this3._offset = offset;
-        return _this3;
-    }
-    var _proto4 = OffsetClock.prototype;
-    _proto4.zone = function zone() {
-        return this._baseClock.zone();
-    };
-    _proto4.withZone = function withZone(zone) {
-        if (zone.equals(this._baseClock.zone())) return this;
-        return new OffsetClock(this._baseClock.withZone(zone), this._offset);
-    };
-    _proto4.millis = function millis() {
-        return this._baseClock.millis() + this._offset.toMillis();
-    };
-    _proto4.instant = function instant() {
-        return this._baseClock.instant().plus(this._offset);
-    };
-    _proto4.equals = function equals(obj) {
-        if (obj instanceof OffsetClock) return this._baseClock.equals(obj._baseClock) && this._offset.equals(obj._offset);
-        return false;
-    };
-    _proto4.toString = function toString() {
-        return "OffsetClock[" + this._baseClock + "," + this._offset + "]";
-    };
-    return OffsetClock;
-}(Clock);
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ZoneOffsetTransition = function() {
-    ZoneOffsetTransition.of = function of(transition, offsetBefore, offsetAfter) {
-        return new ZoneOffsetTransition(transition, offsetBefore, offsetAfter);
-    };
-    function ZoneOffsetTransition(transition, offsetBefore, offsetAfter) {
-        requireNonNull(transition, 'transition');
-        requireNonNull(offsetBefore, 'offsetBefore');
-        requireNonNull(offsetAfter, 'offsetAfter');
-        if (offsetBefore.equals(offsetAfter)) throw new IllegalArgumentException('Offsets must not be equal');
-        if (transition.nano() !== 0) throw new IllegalArgumentException('Nano-of-second must be zero');
-        if (transition instanceof LocalDateTime) this._transition = transition;
-        else this._transition = LocalDateTime.ofEpochSecond(transition, 0, offsetBefore);
-        this._offsetBefore = offsetBefore;
-        this._offsetAfter = offsetAfter;
-    }
-    var _proto = ZoneOffsetTransition.prototype;
-    _proto.instant = function instant() {
-        return this._transition.toInstant(this._offsetBefore);
-    };
-    _proto.toEpochSecond = function toEpochSecond() {
-        return this._transition.toEpochSecond(this._offsetBefore);
-    };
-    _proto.dateTimeBefore = function dateTimeBefore() {
-        return this._transition;
-    };
-    _proto.dateTimeAfter = function dateTimeAfter() {
-        return this._transition.plusSeconds(this.durationSeconds());
-    };
-    _proto.offsetBefore = function offsetBefore() {
-        return this._offsetBefore;
-    };
-    _proto.offsetAfter = function offsetAfter() {
-        return this._offsetAfter;
-    };
-    _proto.duration = function duration() {
-        return Duration.ofSeconds(this.durationSeconds());
-    };
-    _proto.durationSeconds = function durationSeconds() {
-        return this._offsetAfter.totalSeconds() - this._offsetBefore.totalSeconds();
-    };
-    _proto.isGap = function isGap() {
-        return this._offsetAfter.totalSeconds() > this._offsetBefore.totalSeconds();
-    };
-    _proto.isOverlap = function isOverlap() {
-        return this._offsetAfter.totalSeconds() < this._offsetBefore.totalSeconds();
-    };
-    _proto.isValidOffset = function isValidOffset(offset) {
-        return this.isGap() ? false : this._offsetBefore.equals(offset) || this._offsetAfter.equals(offset);
-    };
-    _proto.validOffsets = function validOffsets() {
-        if (this.isGap()) return [];
-        else return [
-            this._offsetBefore,
-            this._offsetAfter
-        ];
-    };
-    _proto.compareTo = function compareTo(transition) {
-        return this.instant().compareTo(transition.instant());
-    };
-    _proto.equals = function equals(other) {
-        if (other === this) return true;
-        if (other instanceof ZoneOffsetTransition) {
-            var d = other;
-            return this._transition.equals(d._transition) && this._offsetBefore.equals(d.offsetBefore()) && this._offsetAfter.equals(d.offsetAfter());
-        }
-        return false;
-    };
-    _proto.hashCode = function hashCode() {
-        return this._transition.hashCode() ^ this._offsetBefore.hashCode() ^ this._offsetAfter.hashCode() >>> 16;
-    };
-    _proto.toString = function toString() {
-        return "Transition[" + (this.isGap() ? 'Gap' : 'Overlap') + " at " + this._transition.toString() + this._offsetBefore.toString() + " to " + this._offsetAfter + "]";
-    };
-    return ZoneOffsetTransition;
-}();
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ function _init$1() {
-    TemporalQueries.ZONE_ID = createTemporalQuery('ZONE_ID', function(temporal) {
-        return temporal.query(TemporalQueries.ZONE_ID);
-    });
-    TemporalQueries.CHRONO = createTemporalQuery('CHRONO', function(temporal) {
-        return temporal.query(TemporalQueries.CHRONO);
-    });
-    TemporalQueries.PRECISION = createTemporalQuery('PRECISION', function(temporal) {
-        return temporal.query(TemporalQueries.PRECISION);
-    });
-    TemporalQueries.OFFSET = createTemporalQuery('OFFSET', function(temporal) {
-        if (temporal.isSupported(ChronoField.OFFSET_SECONDS)) return ZoneOffset.ofTotalSeconds(temporal.get(ChronoField.OFFSET_SECONDS));
-        return null;
-    });
-    TemporalQueries.ZONE = createTemporalQuery('ZONE', function(temporal) {
-        var zone = temporal.query(TemporalQueries.ZONE_ID);
-        return zone != null ? zone : temporal.query(TemporalQueries.OFFSET);
-    });
-    TemporalQueries.LOCAL_DATE = createTemporalQuery('LOCAL_DATE', function(temporal) {
-        if (temporal.isSupported(ChronoField.EPOCH_DAY)) return LocalDate.ofEpochDay(temporal.getLong(ChronoField.EPOCH_DAY));
-        return null;
-    });
-    TemporalQueries.LOCAL_TIME = createTemporalQuery('LOCAL_TIME', function(temporal) {
-        if (temporal.isSupported(ChronoField.NANO_OF_DAY)) return LocalTime.ofNanoOfDay(temporal.getLong(ChronoField.NANO_OF_DAY));
-        return null;
-    });
-}
-var SystemDefaultZoneRules = function(_ZoneRules) {
-    _inheritsLoose(SystemDefaultZoneRules, _ZoneRules);
-    function SystemDefaultZoneRules() {
-        return _ZoneRules.apply(this, arguments) || this;
-    }
-    var _proto = SystemDefaultZoneRules.prototype;
-    _proto.isFixedOffset = function isFixedOffset() {
-        return false;
-    };
-    _proto.offsetOfInstant = function offsetOfInstant(instant) {
-        var offsetInMinutes = new Date(instant.toEpochMilli()).getTimezoneOffset();
-        return ZoneOffset.ofTotalMinutes(offsetInMinutes * -1);
-    };
-    _proto.offsetOfEpochMilli = function offsetOfEpochMilli(epochMilli) {
-        var offsetInMinutes = new Date(epochMilli).getTimezoneOffset();
-        return ZoneOffset.ofTotalMinutes(offsetInMinutes * -1);
-    };
-    _proto.offsetOfLocalDateTime = function offsetOfLocalDateTime(localDateTime) {
-        var epochMilli = localDateTime.toEpochSecond(ZoneOffset.UTC) * 1000;
-        var offsetInMinutesBeforePossibleTransition = new Date(epochMilli).getTimezoneOffset();
-        var epochMilliSystemZone = epochMilli + offsetInMinutesBeforePossibleTransition * 60000;
-        var offsetInMinutesAfterPossibleTransition = new Date(epochMilliSystemZone).getTimezoneOffset();
-        return ZoneOffset.ofTotalMinutes(offsetInMinutesAfterPossibleTransition * -1);
-    };
-    _proto.validOffsets = function validOffsets(localDateTime) {
-        return [
-            this.offsetOfLocalDateTime(localDateTime)
-        ];
-    };
-    _proto.transition = function transition() {
-        return null;
-    };
-    _proto.standardOffset = function standardOffset(instant) {
-        return this.offsetOfInstant(instant);
-    };
-    _proto.daylightSavings = function daylightSavings() {
-        this._throwNotSupported();
-    };
-    _proto.isDaylightSavings = function isDaylightSavings() {
-        this._throwNotSupported();
-    };
-    _proto.isValidOffset = function isValidOffset(dateTime, offset) {
-        return this.offsetOfLocalDateTime(dateTime).equals(offset);
-    };
-    _proto.nextTransition = function nextTransition() {
-        this._throwNotSupported();
-    };
-    _proto.previousTransition = function previousTransition() {
-        this._throwNotSupported();
-    };
-    _proto.transitions = function transitions() {
-        this._throwNotSupported();
-    };
-    _proto.transitionRules = function transitionRules() {
-        this._throwNotSupported();
-    };
-    _proto._throwNotSupported = function _throwNotSupported() {
-        throw new DateTimeException('not supported operation');
-    };
-    _proto.equals = function equals(other) {
-        if (this === other || other instanceof SystemDefaultZoneRules) return true;
-        else return false;
-    };
-    _proto.toString = function toString() {
-        return 'SYSTEM';
-    };
-    return SystemDefaultZoneRules;
-}(ZoneRules);
-var SystemDefaultZoneId = function(_ZoneId) {
-    _inheritsLoose(SystemDefaultZoneId, _ZoneId);
-    function SystemDefaultZoneId() {
-        var _this;
-        _this = _ZoneId.call(this) || this;
-        _this._rules = new SystemDefaultZoneRules();
-        return _this;
-    }
-    var _proto = SystemDefaultZoneId.prototype;
-    _proto.rules = function rules() {
-        return this._rules;
-    };
-    _proto.equals = function equals(other) {
-        if (this === other) return true;
-        return false;
-    };
-    _proto.id = function id() {
-        return 'SYSTEM';
-    };
-    return SystemDefaultZoneId;
-}(ZoneId);
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @copyright (c) 2007-present, Stephen Colebourne & Michael Nascimento Santos
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ZoneIdFactory = function() {
-    function ZoneIdFactory() {}
-    ZoneIdFactory.systemDefault = function systemDefault() {
-        return SYSTEM_DEFAULT_ZONE_ID_INSTANCE;
-    };
-    ZoneIdFactory.getAvailableZoneIds = function getAvailableZoneIds() {
-        return ZoneRulesProvider.getAvailableZoneIds();
-    };
-    ZoneIdFactory.of = function of(zoneId) {
-        requireNonNull(zoneId, 'zoneId');
-        if (zoneId === 'Z') return ZoneOffset.UTC;
-        if (zoneId.length === 1) throw new DateTimeException("Invalid zone: " + zoneId);
-        if (StringUtil.startsWith(zoneId, '+') || StringUtil.startsWith(zoneId, '-')) return ZoneOffset.of(zoneId);
-        if (zoneId === 'UTC' || zoneId === 'GMT' || zoneId === 'GMT0' || zoneId === 'UT') return new ZoneRegion(zoneId, ZoneOffset.UTC.rules());
-        if (StringUtil.startsWith(zoneId, 'UTC+') || StringUtil.startsWith(zoneId, 'GMT+') || StringUtil.startsWith(zoneId, 'UTC-') || StringUtil.startsWith(zoneId, 'GMT-')) {
-            var offset = ZoneOffset.of(zoneId.substring(3));
-            if (offset.totalSeconds() === 0) return new ZoneRegion(zoneId.substring(0, 3), offset.rules());
-            return new ZoneRegion(zoneId.substring(0, 3) + offset.id(), offset.rules());
-        }
-        if (StringUtil.startsWith(zoneId, 'UT+') || StringUtil.startsWith(zoneId, 'UT-')) {
-            var _offset = ZoneOffset.of(zoneId.substring(2));
-            if (_offset.totalSeconds() === 0) return new ZoneRegion('UT', _offset.rules());
-            return new ZoneRegion("UT" + _offset.id(), _offset.rules());
-        }
-        if (zoneId === 'SYSTEM') return ZoneId.systemDefault();
-        return ZoneRegion.ofId(zoneId);
-    };
-    ZoneIdFactory.ofOffset = function ofOffset(prefix, offset) {
-        requireNonNull(prefix, 'prefix');
-        requireNonNull(offset, 'offset');
-        if (prefix.length === 0) return offset;
-        if (prefix === 'GMT' || prefix === 'UTC' || prefix === 'UT') {
-            if (offset.totalSeconds() === 0) return new ZoneRegion(prefix, offset.rules());
-            return new ZoneRegion(prefix + offset.id(), offset.rules());
-        }
-        throw new IllegalArgumentException("Invalid prefix, must be GMT, UTC or UT: " + prefix);
-    };
-    ZoneIdFactory.from = function from(temporal) {
-        requireNonNull(temporal, 'temporal');
-        var obj = temporal.query(TemporalQueries.zone());
-        if (obj == null) throw new DateTimeException("Unable to obtain ZoneId from TemporalAccessor: " + temporal + ", type " + (temporal.constructor != null ? temporal.constructor.name : ''));
-        return obj;
-    };
-    return ZoneIdFactory;
-}();
-var SYSTEM_DEFAULT_ZONE_ID_INSTANCE = null;
-function _init() {
-    SYSTEM_DEFAULT_ZONE_ID_INSTANCE = new SystemDefaultZoneId();
-    ZoneId.systemDefault = ZoneIdFactory.systemDefault;
-    ZoneId.getAvailableZoneIds = ZoneIdFactory.getAvailableZoneIds;
-    ZoneId.of = ZoneIdFactory.of;
-    ZoneId.ofOffset = ZoneIdFactory.ofOffset;
-    ZoneId.from = ZoneIdFactory.from;
-    ZoneOffset.from = ZoneIdFactory.from;
-    ZoneId.SYSTEM = SYSTEM_DEFAULT_ZONE_ID_INSTANCE;
-    ZoneId.UTC = ZoneOffset.ofTotalSeconds(0);
-}
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var isInit = false;
-function init() {
-    if (isInit) return;
-    isInit = true;
-    _init$m();
-    _init$n();
-    _init$l();
-    _init$k();
-    _init$3();
-    _init$f();
-    _init$1();
-    _init$j();
-    _init$2();
-    _init$5();
-    _init$4();
-    _init$a();
-    _init$i();
-    _init$b();
-    _init$c();
-    _init$h();
-    _init$g();
-    _init$7();
-    _init();
-    _init$9();
-    _init$d();
-    _init$e();
-    _init$6();
-    _init$8();
-}
-init();
-/*
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var ToNativeJsConverter = function() {
-    function ToNativeJsConverter(temporal, zone) {
-        var zonedDateTime;
-        if (temporal instanceof Instant) {
-            this.instant = temporal;
-            return;
-        } else if (temporal instanceof LocalDate) {
-            zone = zone == null ? ZoneId.systemDefault() : zone;
-            zonedDateTime = temporal.atStartOfDay(zone);
-        } else if (temporal instanceof LocalDateTime) {
-            zone = zone == null ? ZoneId.systemDefault() : zone;
-            zonedDateTime = temporal.atZone(zone);
-        } else if (temporal instanceof ZonedDateTime) {
-            if (zone == null) zonedDateTime = temporal;
-            else zonedDateTime = temporal.withZoneSameInstant(zone);
-        } else throw new IllegalArgumentException("unsupported instance for convert operation:" + temporal);
-        this.instant = zonedDateTime.toInstant();
-    }
-    var _proto = ToNativeJsConverter.prototype;
-    _proto.toDate = function toDate() {
-        return new Date(this.instant.toEpochMilli());
-    };
-    _proto.toEpochMilli = function toEpochMilli() {
-        return this.instant.toEpochMilli();
-    };
-    return ToNativeJsConverter;
-}();
-function convert(temporal, zone) {
-    return new ToNativeJsConverter(temporal, zone);
-}
-/*
- * @copyright (c) 2015-present, Philipp Thürwächter, Pattrick Hüper & js-joda contributors
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ function nativeJs(date, zone) {
-    if (zone === void 0) zone = ZoneId.systemDefault();
-    requireNonNull(date, 'date');
-    requireNonNull(zone, 'zone');
-    if (date instanceof Date) return Instant.ofEpochMilli(date.getTime()).atZone(zone);
-    else if (typeof date.toDate === 'function' && date.toDate() instanceof Date) return Instant.ofEpochMilli(date.toDate().getTime()).atZone(zone);
-    throw new IllegalArgumentException('date must be a javascript Date or a moment instance');
-}
-function bindUse(jsJoda) {
-    var used = [];
-    return function use(fn) {
-        if (!~used.indexOf(fn)) {
-            fn(jsJoda);
-            used.push(fn);
-        }
-        return jsJoda;
-    };
-}
-/**
- * @copyright (c) 2016, Philipp Thürwächter & Pattrick Hüper
- * @license BSD-3-Clause (see LICENSE in the root directory of this source tree)
- */ var _ = {
-    assert: assert$1,
-    DateTimeBuilder: DateTimeBuilder,
-    DateTimeParseContext: DateTimeParseContext,
-    DateTimePrintContext: DateTimePrintContext,
-    MathUtil: MathUtil,
-    StringUtil: StringUtil,
-    StringBuilder: StringBuilder
-};
-var jsJodaExports = {
-    _: _,
-    convert: convert,
-    nativeJs: nativeJs,
-    ArithmeticException: ArithmeticException,
-    DateTimeException: DateTimeException,
-    DateTimeParseException: DateTimeParseException,
-    IllegalArgumentException: IllegalArgumentException,
-    IllegalStateException: IllegalStateException,
-    UnsupportedTemporalTypeException: UnsupportedTemporalTypeException,
-    NullPointerException: NullPointerException,
-    Clock: Clock,
-    DayOfWeek: DayOfWeek,
-    Duration: Duration,
-    Instant: Instant,
-    LocalDate: LocalDate,
-    LocalTime: LocalTime,
-    LocalDateTime: LocalDateTime,
-    OffsetTime: OffsetTime,
-    OffsetDateTime: OffsetDateTime,
-    Month: Month,
-    MonthDay: MonthDay,
-    ParsePosition: ParsePosition,
-    Period: Period,
-    Year: Year,
-    YearConstants: YearConstants,
-    YearMonth: YearMonth,
-    ZonedDateTime: ZonedDateTime,
-    ZoneOffset: ZoneOffset,
-    ZoneId: ZoneId,
-    ZoneRegion: ZoneRegion,
-    ZoneOffsetTransition: ZoneOffsetTransition,
-    ZoneRules: ZoneRules,
-    ZoneRulesProvider: ZoneRulesProvider,
-    ChronoLocalDate: ChronoLocalDate,
-    ChronoLocalDateTime: ChronoLocalDateTime,
-    ChronoZonedDateTime: ChronoZonedDateTime,
-    IsoChronology: IsoChronology,
-    ChronoField: ChronoField,
-    ChronoUnit: ChronoUnit,
-    IsoFields: IsoFields,
-    Temporal: Temporal,
-    TemporalAccessor: TemporalAccessor,
-    TemporalAdjuster: TemporalAdjuster,
-    TemporalAdjusters: TemporalAdjusters,
-    TemporalAmount: TemporalAmount,
-    TemporalField: TemporalField,
-    TemporalQueries: TemporalQueries,
-    TemporalQuery: TemporalQuery,
-    TemporalUnit: TemporalUnit,
-    ValueRange: ValueRange,
-    DateTimeFormatter: DateTimeFormatter,
-    DateTimeFormatterBuilder: DateTimeFormatterBuilder,
-    DecimalStyle: DecimalStyle,
-    ResolverStyle: ResolverStyle,
-    SignStyle: SignStyle,
-    TextStyle: TextStyle
-};
-var use = bindUse(jsJodaExports);
-jsJodaExports.use = use;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cJsRS":[function() {},{}],"j5RH2":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$f147 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$f147.init();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cJsRS":[function() {},{}],"5o12G":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$afa8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$afa8.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f147.prelude(module);
+$parcel$ReactRefreshHelpers$afa8.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>ArticleItem);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
 var _commentApi = require("../api/CommentApi");
@@ -39652,7 +28194,7 @@ var _authApi = require("../api/AuthApi");
 var _commentsCss = require("../format/Comments.css");
 var _articleItemCss = require("../format/ArticleItem.css");
 var _s = $RefreshSig$();
-function ArticleItem() {
+const ArticleItem = ()=>{
     _s();
     const { id } = (0, _reactRouter.useParams)();
     const [article, setArticle] = (0, _react.useState)(null);
@@ -39664,32 +28206,37 @@ function ArticleItem() {
     const navigate = (0, _reactRouter.useNavigate)();
     const { token, currentUser } = (0, _authContext.useAuth)();
     (0, _react.useEffect)(()=>{
+        if (!id) return;
         (0, _articlesApi.fetchArticleById)(id).then(setArticle).catch((err)=>{
-            if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
-            else if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         });
         (0, _commentApi.fetchCommentsByArticleId)(id).then(setComments).catch((err)=>{
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         });
     }, [
         id,
-        token
+        token,
+        navigate
     ]);
-    const handleDelete = async (id)=>{
-        if (!window.confirm('Are you sure?')) return;
+    const handleDelete = async (articleId)=>{
+        if (!window.confirm('Are you sure?') || !token) return;
         try {
-            await (0, _articlesApi.deleteArticle)(id, token);
+            await (0, _articlesApi.deleteArticle)(articleId, token);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
     const handleCommentSubmit = async (e)=>{
         e.preventDefault();
-        // console.log(token, content, id);
+        if (!id || !token) return;
         (0, _commentApi.createComment)(id, token, content).then((newComment)=>{
             setComments([
                 ...comments,
@@ -39697,15 +28244,19 @@ function ArticleItem() {
             ]);
             setContent('');
         }).catch((err)=>{
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         });
     };
     const startEditing = (comment)=>{
-        setEditingCommentId(comment.id);
-        setEditedContent(comment.content);
+        if (comment.id) {
+            setEditingCommentId(comment.id);
+            setEditedContent(comment.content);
+        }
     };
     const handleEditSubmit = async (articleId, commentId)=>{
+        if (!token) return;
         try {
             console.log(articleId, commentId, editedContent, token);
             await (0, _commentApi.editComment)(articleId, commentId, editedContent, token);
@@ -39715,35 +28266,38 @@ function ArticleItem() {
                 } : c));
             setEditingCommentId(null);
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
     const handleCommentDelete = async (articleId, commentId)=>{
+        if (!token) return;
         try {
             console.log(articleId, commentId, token);
             await (0, _commentApi.deleteComment)(articleId, commentId, token);
             setComments(comments.filter((c)=>c.id !== commentId));
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
     if (!article) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
         children: "Loading..."
     }, void 0, false, {
-        fileName: "src/pages/ArticleItem.js",
-        lineNumber: 121,
+        fileName: "src/pages/ArticleItem.tsx",
+        lineNumber: 137,
         columnNumber: 23
-    }, this);
+    }, undefined);
     function formatDateTimeToMin(dateStr) {
         const d = new Date(dateStr);
         return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
     }
     const createdBy = article.author?.username || 'Unknown';
-    const createdAt = article.createdDate;
-    const editedBy = article.editor.username || createdBy;
-    const editedAt = article.updatedDate || createdAt;
+    const createdAt = article.createdDate || article.createdAt || '';
+    const editedBy = article.editor?.username || createdBy;
+    const editedAt = article.updatedDate || article.updatedAt || createdAt;
     const showEdited = createdBy !== editedBy || formatDateTimeToMin(createdAt) !== formatDateTimeToMin(editedAt);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39752,96 +28306,96 @@ function ArticleItem() {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: article.title
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 141,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 157,
                     columnNumber: 4
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: article.content
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 142,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 158,
                     columnNumber: 4
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                    to: `/users/${article.author.id}`,
+                                    to: `/users/${article.author?.id}`,
                                     children: [
                                         "Author: ",
                                         createdBy
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 145,
+                                    fileName: "src/pages/ArticleItem.tsx",
+                                    lineNumber: 161,
                                     columnNumber: 6
-                                }, this),
+                                }, undefined),
                                 " at ",
                                 formatDateTimeToMin(createdAt)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 144,
+                            fileName: "src/pages/ArticleItem.tsx",
+                            lineNumber: 160,
                             columnNumber: 5
-                        }, this),
+                        }, undefined),
                         showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                    fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 149,
+                                    fileName: "src/pages/ArticleItem.tsx",
+                                    lineNumber: 165,
                                     columnNumber: 7
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                     children: [
                                         " ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                            to: `/users/${article.editor.id}`,
+                                            to: `/users/${article.editor?.id}`,
                                             children: [
                                                 "Editor: ",
                                                 editedBy
                                             ]
                                         }, void 0, true, {
-                                            fileName: "src/pages/ArticleItem.js",
-                                            lineNumber: 150,
+                                            fileName: "src/pages/ArticleItem.tsx",
+                                            lineNumber: 166,
                                             columnNumber: 12
-                                        }, this),
+                                        }, undefined),
                                         " at ",
                                         formatDateTimeToMin(editedAt),
                                         " "
                                     ]
                                 }, void 0, true, {
-                                    fileName: "src/pages/ArticleItem.js",
-                                    lineNumber: 150,
+                                    fileName: "src/pages/ArticleItem.tsx",
+                                    lineNumber: 166,
                                     columnNumber: 7
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true)
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 143,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 159,
                     columnNumber: 4
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 155,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 171,
                     columnNumber: 4
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "comments",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                             children: "Comments"
                         }, void 0, false, {
-                            fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 158,
+                            fileName: "src/pages/ArticleItem.tsx",
+                            lineNumber: 174,
                             columnNumber: 5
-                        }, this),
+                        }, undefined),
                         comments.map((comment)=>{
                             const commentCreatedBy = comment.author?.username || 'Unknown';
-                            const commentCreatedAt = comment.dateCreated;
+                            const commentCreatedAt = comment.dateCreated || comment.createdAt || '';
                             const commentEditedBy = comment.editor?.username || commentCreatedBy;
                             const commentEditedAt = comment.dateEdited || commentCreatedAt;
                             const showCommentEdited = commentCreatedBy !== commentEditedBy || formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt);
@@ -39855,17 +28409,17 @@ function ArticleItem() {
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                                         children: commentCreatedBy
                                                     }, void 0, false, {
-                                                        fileName: "src/pages/ArticleItem.js",
-                                                        lineNumber: 171,
+                                                        fileName: "src/pages/ArticleItem.tsx",
+                                                        lineNumber: 187,
                                                         columnNumber: 11
-                                                    }, this),
+                                                    }, undefined),
                                                     ":"
                                                 ]
                                             }, void 0, true, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 171,
+                                                fileName: "src/pages/ArticleItem.tsx",
+                                                lineNumber: 187,
                                                 columnNumber: 8
-                                            }, this),
+                                            }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                 style: {
                                                     fontSize: '0.95em',
@@ -39877,29 +28431,29 @@ function ArticleItem() {
                                                     formatDateTimeToMin(commentCreatedAt)
                                                 ]
                                             }, void 0, true, {
-                                                fileName: "src/pages/ArticleItem.js",
-                                                lineNumber: 172,
+                                                fileName: "src/pages/ArticleItem.tsx",
+                                                lineNumber: 188,
                                                 columnNumber: 8
-                                            }, this),
+                                            }, undefined),
                                             editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
                                                     className: "edit-comment-textarea",
                                                     value: editedContent,
                                                     onChange: (e)=>setEditedContent(e.target.value)
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/ArticleItem.js",
-                                                    lineNumber: 177,
+                                                    fileName: "src/pages/ArticleItem.tsx",
+                                                    lineNumber: 193,
                                                     columnNumber: 9
-                                                }, this)
+                                                }, undefined)
                                             }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                         children: comment.content
                                                     }, void 0, false, {
-                                                        fileName: "src/pages/ArticleItem.js",
-                                                        lineNumber: 185,
+                                                        fileName: "src/pages/ArticleItem.tsx",
+                                                        lineNumber: 201,
                                                         columnNumber: 9
-                                                    }, this),
+                                                    }, undefined),
                                                     showCommentEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                         style: {
                                                             fontSize: '0.93em',
@@ -39911,85 +28465,85 @@ function ArticleItem() {
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                                                 children: commentEditedBy
                                                             }, void 0, false, {
-                                                                fileName: "src/pages/ArticleItem.js",
-                                                                lineNumber: 188,
+                                                                fileName: "src/pages/ArticleItem.tsx",
+                                                                lineNumber: 204,
                                                                 columnNumber: 20
-                                                            }, this),
+                                                            }, undefined),
                                                             " at ",
                                                             formatDateTimeToMin(commentEditedAt)
                                                         ]
                                                     }, void 0, true, {
-                                                        fileName: "src/pages/ArticleItem.js",
-                                                        lineNumber: 187,
+                                                        fileName: "src/pages/ArticleItem.tsx",
+                                                        lineNumber: 203,
                                                         columnNumber: 9
-                                                    }, this)
+                                                    }, undefined)
                                                 ]
                                             }, void 0, true)
                                         ]
                                     }, void 0, true, {
-                                        fileName: "src/pages/ArticleItem.js",
-                                        lineNumber: 170,
+                                        fileName: "src/pages/ArticleItem.tsx",
+                                        lineNumber: 186,
                                         columnNumber: 7
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "comment-actions",
                                         children: editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                    onClick: ()=>handleEditSubmit(article.id, comment.id),
+                                                    onClick: ()=>article.id && comment.id && handleEditSubmit(article.id, comment.id),
                                                     children: "Save"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/ArticleItem.js",
-                                                    lineNumber: 197,
+                                                    fileName: "src/pages/ArticleItem.tsx",
+                                                    lineNumber: 213,
                                                     columnNumber: 9
-                                                }, this),
+                                                }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                     onClick: ()=>setEditingCommentId(null),
                                                     children: "Cancel"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/ArticleItem.js",
-                                                    lineNumber: 198,
+                                                    fileName: "src/pages/ArticleItem.tsx",
+                                                    lineNumber: 214,
                                                     columnNumber: 9
-                                                }, this)
+                                                }, undefined)
                                             ]
-                                        }, void 0, true) : ((0, _authApi.hasRole)("ADMIN") || comment.author.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                        }, void 0, true) : ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                     onClick: ()=>startEditing(comment),
                                                     children: "Edit"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/ArticleItem.js",
-                                                    lineNumber: 203,
+                                                    fileName: "src/pages/ArticleItem.tsx",
+                                                    lineNumber: 219,
                                                     columnNumber: 9
-                                                }, this),
+                                                }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                    onClick: ()=>handleCommentDelete(article.id, comment.id),
+                                                    onClick: ()=>article.id && comment.id && handleCommentDelete(article.id, comment.id),
                                                     children: "Delete"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/ArticleItem.js",
-                                                    lineNumber: 204,
+                                                    fileName: "src/pages/ArticleItem.tsx",
+                                                    lineNumber: 220,
                                                     columnNumber: 9
-                                                }, this)
+                                                }, undefined)
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
-                                        fileName: "src/pages/ArticleItem.js",
-                                        lineNumber: 194,
+                                        fileName: "src/pages/ArticleItem.tsx",
+                                        lineNumber: 210,
                                         columnNumber: 7
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, comment.id, true, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 169,
+                                fileName: "src/pages/ArticleItem.tsx",
+                                lineNumber: 185,
                                 columnNumber: 7
-                            }, this);
+                            }, undefined);
                         })
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 157,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 173,
                     columnNumber: 4
-                }, this),
+                }, undefined),
                 currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                     onSubmit: handleCommentSubmit,
                     className: "comment-form",
@@ -40001,100 +28555,100 @@ function ArticleItem() {
                             rows: 3,
                             placeholder: "Write your comment..."
                         }, void 0, false, {
-                            fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 225,
+                            fileName: "src/pages/ArticleItem.tsx",
+                            lineNumber: 232,
                             columnNumber: 6
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             type: "submit",
                             children: "Post Comment"
                         }, void 0, false, {
-                            fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 232,
+                            fileName: "src/pages/ArticleItem.tsx",
+                            lineNumber: 239,
                             columnNumber: 6
-                        }, this),
+                        }, undefined),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             style: {
                                 color: 'red'
                             },
                             children: error
                         }, void 0, false, {
-                            fileName: "src/pages/ArticleItem.js",
-                            lineNumber: 233,
+                            fileName: "src/pages/ArticleItem.tsx",
+                            lineNumber: 240,
                             columnNumber: 16
-                        }, this)
+                        }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 224,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 231,
                     columnNumber: 5
-                }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                 to: "/login",
                                 children: "Login"
                             }, void 0, false, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 236,
+                                fileName: "src/pages/ArticleItem.tsx",
+                                lineNumber: 243,
                                 columnNumber: 12
-                            }, this),
+                            }, undefined),
                             " to comment."
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 236,
+                        fileName: "src/pages/ArticleItem.tsx",
+                        lineNumber: 243,
                         columnNumber: 8
-                    }, this)
+                    }, undefined)
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 236,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 243,
                     columnNumber: 5
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
                     roles: [
                         "AUTHOR",
                         "ADMIN"
                     ],
-                    children: (article.author.username === currentUser || (0, _authApi.hasRole)("ADMIN")) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: (article.author?.username === currentUser || (0, _authApi.hasRole)("ADMIN")) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "article-actions",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 onClick: ()=>navigate(`/articles/${article.id}/edit`),
                                 children: "Edit"
                             }, void 0, false, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 242,
+                                fileName: "src/pages/ArticleItem.tsx",
+                                lineNumber: 249,
                                 columnNumber: 5
-                            }, this),
+                            }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                onClick: ()=>handleDelete(article.id),
+                                onClick: ()=>article.id && handleDelete(article.id),
                                 children: "Delete"
                             }, void 0, false, {
-                                fileName: "src/pages/ArticleItem.js",
-                                lineNumber: 243,
+                                fileName: "src/pages/ArticleItem.tsx",
+                                lineNumber: 250,
                                 columnNumber: 5
-                            }, this)
+                            }, undefined)
                         ]
                     }, void 0, true, {
-                        fileName: "src/pages/ArticleItem.js",
-                        lineNumber: 241,
+                        fileName: "src/pages/ArticleItem.tsx",
+                        lineNumber: 248,
                         columnNumber: 4
-                    }, this)
+                    }, undefined)
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleItem.js",
-                    lineNumber: 239,
+                    fileName: "src/pages/ArticleItem.tsx",
+                    lineNumber: 246,
                     columnNumber: 4
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/ArticleItem.js",
-            lineNumber: 140,
+            fileName: "src/pages/ArticleItem.tsx",
+            lineNumber: 156,
             columnNumber: 10
-        }, this)
+        }, undefined)
     }, void 0, false);
-}
-_s(ArticleItem, "qo/15UEmC/b8mOfbIhKo2siYnBU=", false, function() {
+};
+_s(ArticleItem, "R3pJ4AerySTjQ+TG2s0ULFmNZy0=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
@@ -40102,15 +28656,16 @@ _s(ArticleItem, "qo/15UEmC/b8mOfbIhKo2siYnBU=", false, function() {
     ];
 });
 _c = ArticleItem;
+exports.default = ArticleItem;
 var _c;
 $RefreshReg$(_c, "ArticleItem");
 
-  $parcel$ReactRefreshHelpers$f147.postlude(module);
+  $parcel$ReactRefreshHelpers$afa8.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"akou4","../api/CommentApi":"4g3i6","../api/RequireRoles":"kFXeM","../api/AuthContext":"5rZLm","../api/AuthApi":"gPkaz","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4g3i6":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"1Jd5p","../api/CommentApi":"7mCLt","../api/RequireRoles":"kluL2","../api/AuthContext":"5P6PV","../api/AuthApi":"fHdgf","../format/Comments.css":"f3Q9r","../format/ArticleItem.css":"7faOT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7mCLt":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
@@ -40187,25 +28742,25 @@ async function deleteComment(articleId, commentId, token) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f3Q9r":[function() {},{}],"7faOT":[function() {},{}],"6O7Ur":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$a788 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$a788.init();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f3Q9r":[function() {},{}],"7faOT":[function() {},{}],"coNDf":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$3023 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$3023.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a788.prelude(module);
+$parcel$ReactRefreshHelpers$3023.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>Login);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _authApi = require("../api/AuthApi");
 var _authContext = require("../api/AuthContext");
 var _loginCss = require("../format/Login.css");
 var _s = $RefreshSig$();
-function Login() {
+const Login = ()=>{
     _s();
     const [username, setUsername] = (0, _react.useState)('');
     const [password, setPassword] = (0, _react.useState)('');
@@ -40223,9 +28778,10 @@ function Login() {
             setError(null);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
-            else if (err.message && err.message.toLowerCase().includes('login')) setError(err.message);
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else if (errorMessage.toLowerCase().includes('login')) setError(errorMessage);
             else navigate('/error');
         }
     };
@@ -40237,10 +28793,10 @@ function Login() {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Login"
                 }, void 0, false, {
-                    fileName: "src/pages/Login.js",
-                    lineNumber: 40,
+                    fileName: "src/pages/Login.tsx",
+                    lineNumber: 41,
                     columnNumber: 17
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                     onSubmit: handleSubmit,
                     children: [
@@ -40253,23 +28809,23 @@ function Login() {
                                     onChange: (e)=>setUsername(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Login.js",
-                                    lineNumber: 43,
+                                    fileName: "src/pages/Login.tsx",
+                                    lineNumber: 44,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Login.js",
-                                    lineNumber: 49,
+                                    fileName: "src/pages/Login.tsx",
+                                    lineNumber: 50,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Login.js",
-                            lineNumber: 42,
+                            fileName: "src/pages/Login.tsx",
+                            lineNumber: 43,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "input-group",
                             children: [
@@ -40279,32 +28835,32 @@ function Login() {
                                     onChange: (e)=>setPassword(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Login.js",
-                                    lineNumber: 52,
+                                    fileName: "src/pages/Login.tsx",
+                                    lineNumber: 53,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Login.js",
-                                    lineNumber: 58,
+                                    fileName: "src/pages/Login.tsx",
+                                    lineNumber: 59,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Login.js",
-                            lineNumber: 51,
+                            fileName: "src/pages/Login.tsx",
+                            lineNumber: 52,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             type: "submit",
                             className: "btn",
                             children: "Login"
                         }, void 0, false, {
-                            fileName: "src/pages/Login.js",
-                            lineNumber: 60,
+                            fileName: "src/pages/Login.tsx",
+                            lineNumber: 61,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                 children: [
@@ -40313,80 +28869,81 @@ function Login() {
                                         to: "/register",
                                         children: "Register"
                                     }, void 0, false, {
-                                        fileName: "src/pages/Login.js",
-                                        lineNumber: 61,
+                                        fileName: "src/pages/Login.tsx",
+                                        lineNumber: 62,
                                         columnNumber: 53
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, void 0, true, {
-                                fileName: "src/pages/Login.js",
-                                lineNumber: 61,
+                                fileName: "src/pages/Login.tsx",
+                                lineNumber: 62,
                                 columnNumber: 26
-                            }, this)
+                            }, undefined)
                         }, void 0, false, {
-                            fileName: "src/pages/Login.js",
-                            lineNumber: 61,
+                            fileName: "src/pages/Login.tsx",
+                            lineNumber: 62,
                             columnNumber: 21
-                        }, this)
+                        }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/Login.js",
-                    lineNumber: 41,
+                    fileName: "src/pages/Login.tsx",
+                    lineNumber: 42,
                     columnNumber: 17
-                }, this),
+                }, undefined),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "error-message",
                     children: error
                 }, void 0, false, {
-                    fileName: "src/pages/Login.js",
-                    lineNumber: 63,
+                    fileName: "src/pages/Login.tsx",
+                    lineNumber: 64,
                     columnNumber: 27
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/Login.js",
-            lineNumber: 39,
+            fileName: "src/pages/Login.tsx",
+            lineNumber: 40,
             columnNumber: 13
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/Login.js",
-        lineNumber: 38,
+        fileName: "src/pages/Login.tsx",
+        lineNumber: 39,
         columnNumber: 9
-    }, this);
-}
-_s(Login, "Zd8zGOhIjYVM53uMwrsWaLwYUFs=", false, function() {
+    }, undefined);
+};
+_s(Login, "uvm9uVLMi7eKamazGz7ChDamjiQ=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
         (0, _authContext.useAuth)
     ];
 });
 _c = Login;
+exports.default = Login;
 var _c;
 $RefreshReg$(_c, "Login");
 
-  $parcel$ReactRefreshHelpers$a788.postlude(module);
+  $parcel$ReactRefreshHelpers$3023.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/AuthApi":"gPkaz","../api/AuthContext":"5rZLm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dajed":[function() {},{}],"k8Hue":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$a9c9 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$a9c9.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/AuthApi":"fHdgf","../api/AuthContext":"5P6PV","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"dajed":[function() {},{}],"20zLP":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$c1ff = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$c1ff.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a9c9.prelude(module);
+$parcel$ReactRefreshHelpers$c1ff.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>Register);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _authApi = require("../api/AuthApi");
 var _reactRouter = require("react-router");
 var _authContext = require("../api/AuthContext");
 var _s = $RefreshSig$();
-function Register() {
+const Register = ()=>{
     _s();
     const [lastName, setLastName] = (0, _react.useState)('');
     const [firstName, setFirstName] = (0, _react.useState)('');
@@ -40410,9 +28967,10 @@ function Register() {
             setError(null);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
-            else if (err.message && err.message.toLowerCase().includes('register')) setError(err.message);
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else if (errorMessage.toLowerCase().includes('register')) setError(errorMessage);
             else navigate('/error');
         }
     };
@@ -40424,10 +28982,10 @@ function Register() {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Register"
                 }, void 0, false, {
-                    fileName: "src/pages/Register.js",
-                    lineNumber: 41,
+                    fileName: "src/pages/Register.tsx",
+                    lineNumber: 42,
                     columnNumber: 17
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                     onSubmit: handleSubmit,
                     children: [
@@ -40440,23 +28998,23 @@ function Register() {
                                     onChange: (e)=>setFirstName(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 44,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 45,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "First name"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 50,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 51,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 43,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 44,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "input-group",
                             children: [
@@ -40466,23 +29024,23 @@ function Register() {
                                     onChange: (e)=>setLastName(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 53,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 54,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Last name"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 59,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 60,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 52,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 53,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "input-group",
                             children: [
@@ -40492,23 +29050,23 @@ function Register() {
                                     onChange: (e)=>setUsername(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 62,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 63,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 68,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 69,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 61,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 62,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "input-group",
                             children: [
@@ -40518,58 +29076,58 @@ function Register() {
                                     onChange: (e)=>setPassword(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 71,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 72,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 77,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 78,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 70,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 71,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "input-group",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "text",
+                                    type: "email",
                                     value: email,
                                     onChange: (e)=>setEmail(e.target.value),
                                     required: true
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 80,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 81,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Email"
                                 }, void 0, false, {
-                                    fileName: "src/pages/Register.js",
-                                    lineNumber: 86,
+                                    fileName: "src/pages/Register.tsx",
+                                    lineNumber: 87,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 79,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 80,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                             type: "submit",
                             className: "btn",
                             children: "Register"
                         }, void 0, false, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 88,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 89,
                             columnNumber: 21
-                        }, this),
+                        }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
                                 children: [
@@ -40578,108 +29136,126 @@ function Register() {
                                         to: "/login",
                                         children: "Login"
                                     }, void 0, false, {
-                                        fileName: "src/pages/Register.js",
-                                        lineNumber: 89,
+                                        fileName: "src/pages/Register.tsx",
+                                        lineNumber: 90,
                                         columnNumber: 55
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, void 0, true, {
-                                fileName: "src/pages/Register.js",
-                                lineNumber: 89,
+                                fileName: "src/pages/Register.tsx",
+                                lineNumber: 90,
                                 columnNumber: 26
-                            }, this)
+                            }, undefined)
                         }, void 0, false, {
-                            fileName: "src/pages/Register.js",
-                            lineNumber: 89,
+                            fileName: "src/pages/Register.tsx",
+                            lineNumber: 90,
                             columnNumber: 21
-                        }, this)
+                        }, undefined)
                     ]
                 }, void 0, true, {
-                    fileName: "src/pages/Register.js",
-                    lineNumber: 42,
+                    fileName: "src/pages/Register.tsx",
+                    lineNumber: 43,
                     columnNumber: 17
-                }, this),
+                }, undefined),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "error-message",
                     children: error
                 }, void 0, false, {
-                    fileName: "src/pages/Register.js",
-                    lineNumber: 91,
+                    fileName: "src/pages/Register.tsx",
+                    lineNumber: 92,
                     columnNumber: 27
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/Register.js",
-            lineNumber: 40,
+            fileName: "src/pages/Register.tsx",
+            lineNumber: 41,
             columnNumber: 13
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/Register.js",
-        lineNumber: 39,
+        fileName: "src/pages/Register.tsx",
+        lineNumber: 40,
         columnNumber: 9
-    }, this);
-}
-_s(Register, "bQUtd7aOwq57avXvIWCw/5gftz4=", false, function() {
+    }, undefined);
+};
+_s(Register, "GHmjRrfIWccloYQI67u6tIhhrRE=", false, function() {
     return [
         (0, _reactRouter.useNavigate),
         (0, _authContext.useAuth)
     ];
 });
 _c = Register;
+exports.default = Register;
 var _c;
 $RefreshReg$(_c, "Register");
 
-  $parcel$ReactRefreshHelpers$a9c9.postlude(module);
+  $parcel$ReactRefreshHelpers$c1ff.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/AuthApi":"gPkaz","react-router":"2jawN","../api/AuthContext":"5rZLm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"hre2g":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$5321 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$5321.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/AuthApi":"fHdgf","react-router":"2jawN","../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7y8Id":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$875f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$875f.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5321.prelude(module);
+$parcel$ReactRefreshHelpers$875f.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>Author);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _usersApi = require("../api/UsersApi");
 var _articlesApi = require("../api/ArticlesApi");
 var _authorItemCss = require("../format/AuthorItem.css");
 var _s = $RefreshSig$();
-function Author() {
+const AuthorItem = ()=>{
     _s();
     const { id } = (0, _reactRouter.useParams)();
     const [author, setAuthor] = (0, _react.useState)(null);
     const [articles, setArticles] = (0, _react.useState)([]);
     const [showArticles, setShowArticles] = (0, _react.useState)(false);
+    const navigate = (0, _reactRouter.useNavigate)();
     (0, _react.useEffect)(()=>{
-        (0, _usersApi.fetchUserById)(id).then(setAuthor).catch((err)=>console.error("Failed to load author", err));
+        if (!id) return;
+        (0, _usersApi.fetchUserById)(id).then(setAuthor).catch((err)=>{
+            console.error("Failed to load author", err);
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else navigate('/error');
+        });
     }, [
-        id
+        id,
+        navigate
     ]);
     const loadArticles = ()=>{
         if (showArticles) {
             setShowArticles(false);
             return;
         }
+        if (!author) return;
         (0, _articlesApi.fetchArticlesByAuthor)(author).then((data)=>{
-            setArticles(data);
+            // Handle both direct array and object with articles property
+            if (Array.isArray(data)) setArticles(data);
+            else setArticles(data.articles || []);
             setShowArticles(true);
-        }).catch((err)=>console.error("Failed to load articles", err));
+        }).catch((err)=>{
+            console.error("Failed to load articles", err);
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else navigate('/error');
+        });
     };
     if (!author) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
         children: "Loading author..."
     }, void 0, false, {
-        fileName: "src/pages/AuthorItem.js",
-        lineNumber: 33,
+        fileName: "src/pages/AuthorItem.tsx",
+        lineNumber: 62,
         columnNumber: 22
-    }, this);
+    }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "author-profile",
         children: [
@@ -40695,23 +29271,23 @@ function Author() {
                         borderRadius: '50%'
                     }
                 }, void 0, false, {
-                    fileName: "src/pages/AuthorItem.js",
-                    lineNumber: 40,
+                    fileName: "src/pages/AuthorItem.tsx",
+                    lineNumber: 69,
                     columnNumber: 6
-                }, this) : author.username ? author.username[0].toUpperCase() : '?'
+                }, undefined) : author.username ? author.username[0].toUpperCase() : '?'
             }, void 0, false, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 37,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 66,
                 columnNumber: 4
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "author-profile-username",
                 children: author.username
             }, void 0, false, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 45,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 83,
                 columnNumber: 4
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "author-profile-email",
                 children: [
@@ -40719,30 +29295,30 @@ function Author() {
                     author.email
                 ]
             }, void 0, true, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 46,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 84,
                 columnNumber: 4
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "author-profile-joined",
                 children: [
                     "Joined: ",
-                    new Date(author.createdDate).toLocaleDateString()
+                    new Date(author.createdDate || author.createdAt || '').toLocaleDateString()
                 ]
             }, void 0, true, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 47,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 85,
                 columnNumber: 4
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 onClick: loadArticles,
                 className: "btn",
                 children: showArticles ? "Hide Articles" : "Show Articles"
             }, void 0, false, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 49,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 89,
                 columnNumber: 4
-            }, this),
+            }, undefined),
             showArticles && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                 className: "author-profile-articles-list",
                 children: articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -40750,42 +29326,44 @@ function Author() {
                             href: `/articles/${article.id}`,
                             children: article.title
                         }, void 0, false, {
-                            fileName: "src/pages/AuthorItem.js",
-                            lineNumber: 57,
+                            fileName: "src/pages/AuthorItem.tsx",
+                            lineNumber: 97,
                             columnNumber: 8
-                        }, this)
+                        }, undefined)
                     }, article.id, false, {
-                        fileName: "src/pages/AuthorItem.js",
-                        lineNumber: 56,
+                        fileName: "src/pages/AuthorItem.tsx",
+                        lineNumber: 96,
                         columnNumber: 7
-                    }, this))
+                    }, undefined))
             }, void 0, false, {
-                fileName: "src/pages/AuthorItem.js",
-                lineNumber: 54,
+                fileName: "src/pages/AuthorItem.tsx",
+                lineNumber: 94,
                 columnNumber: 5
-            }, this)
+            }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/pages/AuthorItem.js",
-        lineNumber: 36,
+        fileName: "src/pages/AuthorItem.tsx",
+        lineNumber: 65,
         columnNumber: 3
-    }, this);
-}
-_s(Author, "dMC0ZFW+gAAX6+gCjmTMcAwQzz8=", false, function() {
+    }, undefined);
+};
+_s(AuthorItem, "OQ0KQJIGial6L4HpWjjmMjb4C5E=", false, function() {
     return [
-        (0, _reactRouter.useParams)
+        (0, _reactRouter.useParams),
+        (0, _reactRouter.useNavigate)
     ];
 });
-_c = Author;
+_c = AuthorItem;
+exports.default = AuthorItem;
 var _c;
-$RefreshReg$(_c, "Author");
+$RefreshReg$(_c, "AuthorItem");
 
-  $parcel$ReactRefreshHelpers$5321.postlude(module);
+  $parcel$ReactRefreshHelpers$875f.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/UsersApi":"6GqQB","../api/ArticlesApi":"akou4","../format/AuthorItem.css":"2y5TA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"6GqQB":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/UsersApi":"emu2c","../api/ArticlesApi":"1Jd5p","../format/AuthorItem.css":"2y5TA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"emu2c":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchUserById", ()=>fetchUserById);
@@ -40794,7 +29372,7 @@ parcelHelpers.export(exports, "fetchUsers", ()=>fetchUsers);
 parcelHelpers.export(exports, "updateUserRole", ()=>updateUserRole);
 parcelHelpers.export(exports, "deleteUser", ()=>deleteUser);
 const authHeader = ()=>({
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token') || 'null')}`,
         'Content-Type': 'application/json'
     });
 function parseSpringError(res, errorData) {
@@ -40865,25 +29443,25 @@ async function deleteUser(id) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2y5TA":[function() {},{}],"kunFd":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$d401 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$d401.init();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2y5TA":[function() {},{}],"duMUr":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$833c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$833c.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$d401.prelude(module);
+$parcel$ReactRefreshHelpers$833c.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>ArticleForm);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _articlesApi = require("../api/ArticlesApi");
 var _articleFormCss = require("../format/ArticleForm.css");
 var _authContext = require("../api/AuthContext");
 var _s = $RefreshSig$();
-function ArticleForm({ isEdit = false }) {
+const ArticleForm = ({ isEdit = false })=>{
     _s();
     const { id } = (0, _reactRouter.useParams)();
     const [title, setTitle] = (0, _react.useState)('');
@@ -40893,14 +29471,20 @@ function ArticleForm({ isEdit = false }) {
     console.log(token);
     console.log(currentUser);
     (0, _react.useEffect)(()=>{
-        if (isEdit) (0, _articlesApi.fetchArticleById)(id).then((article)=>{
+        if (isEdit && id) (0, _articlesApi.fetchArticleById)(id).then((article)=>{
             setTitle(article.title);
             setContent(article.content);
+        }).catch((err)=>{
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else navigate('/error');
         });
     }, [
         id,
         isEdit,
-        token
+        token,
+        navigate
     ]);
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -40909,12 +29493,13 @@ function ArticleForm({ isEdit = false }) {
             content
         };
         try {
-            if (isEdit) await (0, _articlesApi.updateArticle)(id, article, token);
-            else await (0, _articlesApi.createArticle)(article, token);
+            if (isEdit && id && token) await (0, _articlesApi.updateArticle)(id, article, token);
+            else if (token) await (0, _articlesApi.createArticle)(article, token);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (err.message && err.message.toLowerCase().includes('not found')) navigate('/notfound');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
             else navigate('/error');
         }
     };
@@ -40926,51 +29511,51 @@ function ArticleForm({ isEdit = false }) {
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: isEdit ? 'Edit Article' : 'Create Article'
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 51,
+                    fileName: "src/pages/ArticleForm.tsx",
+                    lineNumber: 65,
                     columnNumber: 5
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                     placeholder: "Title",
                     value: title,
                     onChange: (e)=>setTitle(e.target.value),
                     required: true
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 52,
+                    fileName: "src/pages/ArticleForm.tsx",
+                    lineNumber: 66,
                     columnNumber: 5
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
                     placeholder: "Content",
                     value: content,
                     onChange: (e)=>setContent(e.target.value),
                     required: true
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 53,
+                    fileName: "src/pages/ArticleForm.tsx",
+                    lineNumber: 72,
                     columnNumber: 5
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     type: "submit",
                     children: isEdit ? 'Update' : 'Create'
                 }, void 0, false, {
-                    fileName: "src/pages/ArticleForm.js",
-                    lineNumber: 54,
+                    fileName: "src/pages/ArticleForm.tsx",
+                    lineNumber: 78,
                     columnNumber: 5
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/ArticleForm.js",
-            lineNumber: 50,
+            fileName: "src/pages/ArticleForm.tsx",
+            lineNumber: 64,
             columnNumber: 4
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/ArticleForm.js",
-        lineNumber: 49,
+        fileName: "src/pages/ArticleForm.tsx",
+        lineNumber: 63,
         columnNumber: 3
-    }, this);
-}
-_s(ArticleForm, "hb/hI7vAz7V9HmNV5dRcvRDEDSg=", false, function() {
+    }, undefined);
+};
+_s(ArticleForm, "/3m4TjaZH5KhiAlcoD/AgEPc8e0=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
@@ -40978,32 +29563,33 @@ _s(ArticleForm, "hb/hI7vAz7V9HmNV5dRcvRDEDSg=", false, function() {
     ];
 });
 _c = ArticleForm;
+exports.default = ArticleForm;
 var _c;
 $RefreshReg$(_c, "ArticleForm");
 
-  $parcel$ReactRefreshHelpers$d401.postlude(module);
+  $parcel$ReactRefreshHelpers$833c.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"akou4","../format/ArticleForm.css":"fChie","../api/AuthContext":"5rZLm","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"fChie":[function() {},{}],"iUgJE":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$99ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$99ad.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/ArticlesApi":"1Jd5p","../format/ArticleForm.css":"fChie","../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"fChie":[function() {},{}],"1kq2g":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$4047 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$4047.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$99ad.prelude(module);
+$parcel$ReactRefreshHelpers$4047.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>UserManagement);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _usersApi = require("../api/UsersApi");
 var _userManagementCss = require("../format/UserManagement.css");
 var _reactRouter = require("react-router");
 var _s = $RefreshSig$();
-function UserManagement() {
+const UserManagement = ()=>{
     _s();
     const [users, setUsers] = (0, _react.useState)([]);
     const [error, setError] = (0, _react.useState)(null);
@@ -41016,20 +29602,24 @@ function UserManagement() {
             const data = await (0, _usersApi.fetchUsers)();
             setUsers(data);
         } catch (err) {
-            console.log("Error message: ", err.message);
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            console.log("Error message: ", errorMessage);
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
     const handleRoleChange = async (id, newRole)=>{
         try {
-            await (0, _usersApi.updateUserRole)(id, newRole);
+            await (0, _usersApi.updateUserRole)(id, {
+                role: newRole
+            });
             setUsers(users.map((user)=>user.id === id ? {
                     ...user,
                     role: newRole
                 } : user));
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
@@ -41039,7 +29629,8 @@ function UserManagement() {
             await (0, _usersApi.deleteUser)(id);
             setUsers(users.filter((user)=>user.id !== id));
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
             else navigate('/error');
         }
     };
@@ -41049,22 +29640,22 @@ function UserManagement() {
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                 children: "All Users"
             }, void 0, false, {
-                fileName: "src/pages/UserManagement.js",
-                lineNumber: 60,
+                fileName: "src/pages/UserManagement.tsx",
+                lineNumber: 64,
                 columnNumber: 13
-            }, this),
+            }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 style: {
                     color: 'red'
                 },
                 children: error
             }, void 0, false, {
-                fileName: "src/pages/UserManagement.js",
-                lineNumber: 61,
+                fileName: "src/pages/UserManagement.tsx",
+                lineNumber: 65,
                 columnNumber: 23
-            }, this),
+            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
-                border: "1",
+                border: 1,
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
@@ -41072,176 +29663,176 @@ function UserManagement() {
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "ID"
                                 }, void 0, false, {
-                                    fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 65,
+                                    fileName: "src/pages/UserManagement.tsx",
+                                    lineNumber: 69,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Username"
                                 }, void 0, false, {
-                                    fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 66,
+                                    fileName: "src/pages/UserManagement.tsx",
+                                    lineNumber: 70,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Email"
                                 }, void 0, false, {
-                                    fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 67,
+                                    fileName: "src/pages/UserManagement.tsx",
+                                    lineNumber: 71,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Role"
                                 }, void 0, false, {
-                                    fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 68,
+                                    fileName: "src/pages/UserManagement.tsx",
+                                    lineNumber: 72,
                                     columnNumber: 25
-                                }, this),
+                                }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                     children: "Actions"
                                 }, void 0, false, {
-                                    fileName: "src/pages/UserManagement.js",
-                                    lineNumber: 69,
+                                    fileName: "src/pages/UserManagement.tsx",
+                                    lineNumber: 73,
                                     columnNumber: 25
-                                }, this)
+                                }, undefined)
                             ]
                         }, void 0, true, {
-                            fileName: "src/pages/UserManagement.js",
-                            lineNumber: 64,
+                            fileName: "src/pages/UserManagement.tsx",
+                            lineNumber: 68,
                             columnNumber: 21
-                        }, this)
+                        }, undefined)
                     }, void 0, false, {
-                        fileName: "src/pages/UserManagement.js",
-                        lineNumber: 63,
+                        fileName: "src/pages/UserManagement.tsx",
+                        lineNumber: 67,
                         columnNumber: 17
-                    }, this),
+                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
                         children: users.map((user)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: user.id
                                     }, void 0, false, {
-                                        fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 75,
+                                        fileName: "src/pages/UserManagement.tsx",
+                                        lineNumber: 79,
                                         columnNumber: 29
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: user.username
                                     }, void 0, false, {
-                                        fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 76,
+                                        fileName: "src/pages/UserManagement.tsx",
+                                        lineNumber: 80,
                                         columnNumber: 29
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: user.email
                                     }, void 0, false, {
-                                        fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 77,
+                                        fileName: "src/pages/UserManagement.tsx",
+                                        lineNumber: 81,
                                         columnNumber: 29
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                            value: user.role,
+                                            value: user.role || '',
                                             onChange: (e)=>handleRoleChange(user.id, e.target.value),
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                     value: "ROLE_USER",
                                                     children: "USER"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 83,
+                                                    fileName: "src/pages/UserManagement.tsx",
+                                                    lineNumber: 87,
                                                     columnNumber: 37
-                                                }, this),
+                                                }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                     value: "ROLE_AUTHOR",
                                                     children: "AUTHOR"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 84,
+                                                    fileName: "src/pages/UserManagement.tsx",
+                                                    lineNumber: 88,
                                                     columnNumber: 37
-                                                }, this),
+                                                }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                     value: "ROLE_ADMIN",
                                                     children: "ADMIN"
                                                 }, void 0, false, {
-                                                    fileName: "src/pages/UserManagement.js",
-                                                    lineNumber: 85,
+                                                    fileName: "src/pages/UserManagement.tsx",
+                                                    lineNumber: 89,
                                                     columnNumber: 37
-                                                }, this)
+                                                }, undefined)
                                             ]
                                         }, void 0, true, {
-                                            fileName: "src/pages/UserManagement.js",
-                                            lineNumber: 79,
+                                            fileName: "src/pages/UserManagement.tsx",
+                                            lineNumber: 83,
                                             columnNumber: 33
-                                        }, this)
+                                        }, undefined)
                                     }, void 0, false, {
-                                        fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 78,
+                                        fileName: "src/pages/UserManagement.tsx",
+                                        lineNumber: 82,
                                         columnNumber: 29
-                                    }, this),
+                                    }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                             onClick: ()=>handleDelete(user.id),
                                             children: "Delete"
                                         }, void 0, false, {
-                                            fileName: "src/pages/UserManagement.js",
-                                            lineNumber: 89,
+                                            fileName: "src/pages/UserManagement.tsx",
+                                            lineNumber: 93,
                                             columnNumber: 33
-                                        }, this)
+                                        }, undefined)
                                     }, void 0, false, {
-                                        fileName: "src/pages/UserManagement.js",
-                                        lineNumber: 88,
+                                        fileName: "src/pages/UserManagement.tsx",
+                                        lineNumber: 92,
                                         columnNumber: 29
-                                    }, this)
+                                    }, undefined)
                                 ]
                             }, user.id, true, {
-                                fileName: "src/pages/UserManagement.js",
-                                lineNumber: 74,
+                                fileName: "src/pages/UserManagement.tsx",
+                                lineNumber: 78,
                                 columnNumber: 25
-                            }, this))
+                            }, undefined))
                     }, void 0, false, {
-                        fileName: "src/pages/UserManagement.js",
-                        lineNumber: 72,
+                        fileName: "src/pages/UserManagement.tsx",
+                        lineNumber: 76,
                         columnNumber: 17
-                    }, this)
+                    }, undefined)
                 ]
             }, void 0, true, {
-                fileName: "src/pages/UserManagement.js",
-                lineNumber: 62,
+                fileName: "src/pages/UserManagement.tsx",
+                lineNumber: 66,
                 columnNumber: 13
-            }, this)
+            }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/pages/UserManagement.js",
-        lineNumber: 59,
+        fileName: "src/pages/UserManagement.tsx",
+        lineNumber: 63,
         columnNumber: 9
-    }, this);
-}
+    }, undefined);
+};
 _s(UserManagement, "wnYlELZh4EX8EmZGmKTrPqC5qbc=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
 });
 _c = UserManagement;
+exports.default = UserManagement;
 var _c;
 $RefreshReg$(_c, "UserManagement");
 
-  $parcel$ReactRefreshHelpers$99ad.postlude(module);
+  $parcel$ReactRefreshHelpers$4047.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/UsersApi":"6GqQB","../format/UserManagement.css":"ft4SO","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ft4SO":[function() {},{}],"eopva":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$8e84 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$8e84.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../api/UsersApi":"emu2c","../format/UserManagement.css":"ft4SO","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ft4SO":[function() {},{}],"iJUCs":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5be5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5be5.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$8e84.prelude(module);
+$parcel$ReactRefreshHelpers$5be5.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>NotFound);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41249,7 +29840,7 @@ var _reactRouter = require("react-router");
 var _errorCss = require("../format/Error.css");
 var _loginCss = require("../format/Login.css");
 var _s = $RefreshSig$();
-function NotFound() {
+const NotFound = ()=>{
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41261,72 +29852,72 @@ function NotFound() {
                     className: "error-code",
                     children: "404"
                 }, void 0, false, {
-                    fileName: "src/pages/NotFound.js",
+                    fileName: "src/pages/NotFound.tsx",
                     lineNumber: 11,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "error-title",
                     children: "Page Not Found"
                 }, void 0, false, {
-                    fileName: "src/pages/NotFound.js",
+                    fileName: "src/pages/NotFound.tsx",
                     lineNumber: 12,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "error-message",
                     children: "The page you are looking for does not exist."
                 }, void 0, false, {
-                    fileName: "src/pages/NotFound.js",
+                    fileName: "src/pages/NotFound.tsx",
                     lineNumber: 13,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     className: "btn",
                     onClick: ()=>navigate('/'),
                     children: "Go Home"
                 }, void 0, false, {
-                    fileName: "src/pages/NotFound.js",
+                    fileName: "src/pages/NotFound.tsx",
                     lineNumber: 14,
                     columnNumber: 9
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/NotFound.js",
+            fileName: "src/pages/NotFound.tsx",
             lineNumber: 10,
             columnNumber: 7
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/NotFound.js",
+        fileName: "src/pages/NotFound.tsx",
         lineNumber: 9,
         columnNumber: 5
-    }, this);
-}
+    }, undefined);
+};
 _s(NotFound, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
 });
 _c = NotFound;
+exports.default = NotFound;
 var _c;
 $RefreshReg$(_c, "NotFound");
 
-  $parcel$ReactRefreshHelpers$8e84.postlude(module);
+  $parcel$ReactRefreshHelpers$5be5.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"8Nkyr":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$009a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$009a.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"bmDMv":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$64cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$64cc.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$009a.prelude(module);
+$parcel$ReactRefreshHelpers$64cc.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>Forbidden);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41334,7 +29925,7 @@ var _reactRouter = require("react-router");
 var _errorCss = require("../format/Error.css");
 var _loginCss = require("../format/Login.css");
 var _s = $RefreshSig$();
-function Forbidden() {
+const Forbidden = ()=>{
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41346,72 +29937,72 @@ function Forbidden() {
                     className: "error-code",
                     children: "403"
                 }, void 0, false, {
-                    fileName: "src/pages/Forbidden.js",
+                    fileName: "src/pages/Forbidden.tsx",
                     lineNumber: 11,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "error-title",
                     children: "Forbidden"
                 }, void 0, false, {
-                    fileName: "src/pages/Forbidden.js",
+                    fileName: "src/pages/Forbidden.tsx",
                     lineNumber: 12,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "error-message",
                     children: "You do not have permission to access this page."
                 }, void 0, false, {
-                    fileName: "src/pages/Forbidden.js",
+                    fileName: "src/pages/Forbidden.tsx",
                     lineNumber: 13,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     className: "btn",
                     onClick: ()=>navigate('/'),
                     children: "Go Home"
                 }, void 0, false, {
-                    fileName: "src/pages/Forbidden.js",
+                    fileName: "src/pages/Forbidden.tsx",
                     lineNumber: 14,
                     columnNumber: 9
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/Forbidden.js",
+            fileName: "src/pages/Forbidden.tsx",
             lineNumber: 10,
             columnNumber: 7
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/Forbidden.js",
+        fileName: "src/pages/Forbidden.tsx",
         lineNumber: 9,
         columnNumber: 5
-    }, this);
-}
+    }, undefined);
+};
 _s(Forbidden, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
 });
 _c = Forbidden;
+exports.default = Forbidden;
 var _c;
 $RefreshReg$(_c, "Forbidden");
 
-  $parcel$ReactRefreshHelpers$009a.postlude(module);
+  $parcel$ReactRefreshHelpers$64cc.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"fJmHU":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$81ae = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$81ae.init();
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"caOBB":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$02e4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$02e4.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$81ae.prelude(module);
+$parcel$ReactRefreshHelpers$02e4.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>ErrorPage);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41419,7 +30010,7 @@ var _reactRouter = require("react-router");
 var _errorCss = require("../format/Error.css");
 var _loginCss = require("../format/Login.css");
 var _s = $RefreshSig$();
-function ErrorPage({ message }) {
+const ErrorPage = ({ message })=>{
     _s();
     const navigate = (0, _reactRouter.useNavigate)();
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41431,53 +30022,54 @@ function ErrorPage({ message }) {
                     className: "error-title",
                     children: "Something went wrong"
                 }, void 0, false, {
-                    fileName: "src/pages/ErrorPage.js",
-                    lineNumber: 11,
+                    fileName: "src/pages/ErrorPage.tsx",
+                    lineNumber: 15,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "error-message",
                     children: message || 'An unexpected error occurred.'
                 }, void 0, false, {
-                    fileName: "src/pages/ErrorPage.js",
-                    lineNumber: 12,
+                    fileName: "src/pages/ErrorPage.tsx",
+                    lineNumber: 16,
                     columnNumber: 9
-                }, this),
+                }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     className: "btn",
                     onClick: ()=>navigate('/'),
                     children: "Go Home"
                 }, void 0, false, {
-                    fileName: "src/pages/ErrorPage.js",
-                    lineNumber: 13,
+                    fileName: "src/pages/ErrorPage.tsx",
+                    lineNumber: 17,
                     columnNumber: 9
-                }, this)
+                }, undefined)
             ]
         }, void 0, true, {
-            fileName: "src/pages/ErrorPage.js",
-            lineNumber: 10,
+            fileName: "src/pages/ErrorPage.tsx",
+            lineNumber: 14,
             columnNumber: 7
-        }, this)
+        }, undefined)
     }, void 0, false, {
-        fileName: "src/pages/ErrorPage.js",
-        lineNumber: 9,
+        fileName: "src/pages/ErrorPage.tsx",
+        lineNumber: 13,
         columnNumber: 5
-    }, this);
-}
+    }, undefined);
+};
 _s(ErrorPage, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];
 });
 _c = ErrorPage;
+exports.default = ErrorPage;
 var _c;
 $RefreshReg$(_c, "ErrorPage");
 
-  $parcel$ReactRefreshHelpers$81ae.postlude(module);
+  $parcel$ReactRefreshHelpers$02e4.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}]},["7wZbQ","2R06K"], "2R06K", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../format/Error.css":"2ILPm","../format/Login.css":"dajed","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}]},["aKmT1","9T1gr"], "9T1gr", "parcelRequire10c2", {}, null, null, "http://localhost:1234")
 
-//# sourceMappingURL=frontend.0f77c784.js.map
+//# sourceMappingURL=frontend.99b9cdd5.js.map

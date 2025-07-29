@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { loginUser } from '../api/AuthApi';
 import { Link } from 'react-router';
@@ -6,15 +6,15 @@ import { useAuth } from '../api/AuthContext';
 
 import '../format/Login.css';
 
-export default function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+const Login: React.FC = () => {
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    const {login} = useAuth();
+    const { login } = useAuth();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         try {
             const userToken = await loginUser({ username, password });
@@ -22,12 +22,13 @@ export default function Login() {
             setError(null);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+            const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
-            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+            } else if (errorMessage.toLowerCase().includes('not found')) {
                 navigate('/notfound');
-            } else if (err.message && err.message.toLowerCase().includes('login')) {
-                setError(err.message);
+            } else if (errorMessage.toLowerCase().includes('login')) {
+                setError(errorMessage);
             } else {
                 navigate('/error');
             }
@@ -64,4 +65,6 @@ export default function Login() {
             </div>
         </div>
     );
-}
+};
+
+export default Login; 

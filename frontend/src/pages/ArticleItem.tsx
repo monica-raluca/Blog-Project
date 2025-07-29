@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
 import { fetchArticleById, deleteArticle } from '../api/ArticlesApi';
@@ -7,30 +7,34 @@ import { Link } from 'react-router';
 import RequireRoles from '../api/RequireRoles';
 import { useAuth } from '../api/AuthContext';
 import { hasRole, hasUser } from '../api/AuthApi';
+import { Article, Comment } from '../api/types';
 
 import '../format/Comments.css';
 import '../format/ArticleItem.css';
 
-export default function ArticleItem() {
-	const { id } = useParams();
-	const [article, setArticle] = useState(null);
-    const [comments, setComments] = useState([]);
-    const [content, setContent] = useState('');
-	const [editingCommentId, setEditingCommentId] = useState(null);
-	const [editedContent, setEditedContent] = useState('');
+const ArticleItem: React.FC = () => {
+	const { id } = useParams<{ id: string }>();
+	const [article, setArticle] = useState<Article | null>(null);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [content, setContent] = useState<string>('');
+	const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
+	const [editedContent, setEditedContent] = useState<string>('');
 
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
-	const {token, currentUser} = useAuth();
+	const { token, currentUser } = useAuth();
 
 	useEffect(() => {
+		if (!id) return;
+		
 		fetchArticleById(id)
 			.then(setArticle)
 			.catch(err => {
-				if (err.message && err.message.toLowerCase().includes('not found')) {
+				const errorMessage = (err as Error).message || 'An error occurred';
+				if (errorMessage.toLowerCase().includes('not found')) {
 					navigate('/notfound');
-				} else if (err.message && err.message.toLowerCase().includes('forbidden')) {
+				} else if (errorMessage.toLowerCase().includes('forbidden')) {
 					navigate('/forbidden');
 				} else {
 					navigate('/error');
@@ -40,23 +44,25 @@ export default function ArticleItem() {
         fetchCommentsByArticleId(id)
             .then(setComments)
             .catch(err => {
-                if (err.message && err.message.toLowerCase().includes('forbidden')) {
+				const errorMessage = (err as Error).message || 'An error occurred';
+                if (errorMessage.toLowerCase().includes('forbidden')) {
                     navigate('/forbidden');
                 } else {
                     navigate('/error');
                 }
             });
-	}, [id, token]);
+	}, [id, token, navigate]);
 
-    const handleDelete = async (id) => {
-        if (!window.confirm('Are you sure?')) return;
+    const handleDelete = async (articleId: string): Promise<void> => {
+        if (!window.confirm('Are you sure?') || !token) return;
 
         try {
-            await deleteArticle(id, token);
+            await deleteArticle(articleId, token);
             navigate('/articles');
             
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
             } else {
                 navigate('/error');
@@ -64,17 +70,19 @@ export default function ArticleItem() {
         }
     };
 
-    const handleCommentSubmit = async (e) => {
+    const handleCommentSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		e.preventDefault();
+		
+		if (!id || !token) return;
 
-		// console.log(token, content, id);
         createComment(id, token, content)
         .then(newComment => {
             setComments([...comments, newComment]);
             setContent('');
         })
         .catch(err => {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
             } else {
                 navigate('/error');
@@ -82,12 +90,16 @@ export default function ArticleItem() {
         });
 	};
 
-	const startEditing = (comment) => {
-		setEditingCommentId(comment.id);
-		setEditedContent(comment.content);
+	const startEditing = (comment: Comment): void => {
+		if (comment.id) {
+			setEditingCommentId(comment.id);
+			setEditedContent(comment.content);
+		}
 	};
 
-	const handleEditSubmit = async (articleId, commentId) => {
+	const handleEditSubmit = async (articleId: string, commentId: string): Promise<void> => {
+		if (!token) return;
+		
 		try {
 			console.log(articleId, commentId, editedContent, token);
 			await editComment(articleId, commentId, editedContent, token);
@@ -96,7 +108,8 @@ export default function ArticleItem() {
 			));
 			setEditingCommentId(null);
 		} catch (err) {
-			if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+			if (errorMessage.toLowerCase().includes('forbidden')) {
 				navigate('/forbidden');
 			} else {
 				navigate('/error');
@@ -104,13 +117,16 @@ export default function ArticleItem() {
 		}
 	};
 
-	const handleCommentDelete = async (articleId, commentId) => {
+	const handleCommentDelete = async (articleId: string, commentId: string): Promise<void> => {
+		if (!token) return;
+		
 		try {
 			console.log(articleId, commentId, token);
 			await deleteComment(articleId, commentId, token);
 			setComments(comments.filter(c => c.id !== commentId));
 		} catch (err) {
-			if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+			if (errorMessage.toLowerCase().includes('forbidden')) {
 				navigate('/forbidden');
 			} else {
 				navigate('/error');
@@ -120,15 +136,15 @@ export default function ArticleItem() {
 
 	if (!article) return <p>Loading...</p>;
 
-	function formatDateTimeToMin(dateStr) {
+	function formatDateTimeToMin(dateStr: string): string {
 		const d = new Date(dateStr);
 		return d.getFullYear() + '-' + (d.getMonth()+1).toString().padStart(2,'0') + '-' + d.getDate().toString().padStart(2,'0') + ' ' + d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
 	}
 
 	const createdBy = article.author?.username || 'Unknown';
-	const createdAt = article.createdDate;
-	const editedBy = article.editor.username || createdBy;
-	const editedAt = article.updatedDate || createdAt;
+	const createdAt = article.createdDate || article.createdAt || '';
+	const editedBy = article.editor?.username || createdBy;
+	const editedAt = article.updatedDate || article.updatedAt || createdAt;
 
 	const showEdited = (
 		createdBy !== editedBy ||
@@ -142,12 +158,12 @@ export default function ArticleItem() {
 			<p>{article.content}</p>
 			<p>
 				<em>
-					<NavLink to={`/users/${article.author.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
+					<NavLink to={`/users/${article.author?.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
 				</em>
 				{showEdited && (
 					<>
 						<br />
-						<em> <NavLink to={`/users/${article.editor.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
+						<em> <NavLink to={`/users/${article.editor?.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
 					</>
 				)}
 			</p>
@@ -158,7 +174,7 @@ export default function ArticleItem() {
 				<h3>Comments</h3>
 				{comments.map(comment => {
 					const commentCreatedBy = comment.author?.username || 'Unknown';
-					const commentCreatedAt = comment.dateCreated;
+					const commentCreatedAt = comment.dateCreated || comment.createdAt || '';
 					const commentEditedBy = comment.editor?.username || commentCreatedBy;
 					const commentEditedAt = comment.dateEdited || commentCreatedAt;
 					const showCommentEdited = (
@@ -194,14 +210,14 @@ export default function ArticleItem() {
 						<div className="comment-actions">
 							{editingCommentId === comment.id ? (
 							<>
-								<button onClick={() => handleEditSubmit(article.id, comment.id)}>Save</button>
+								<button onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</button>
 								<button onClick={() => setEditingCommentId(null)}>Cancel</button>
 							</>
 							) : (
-							(hasRole("ADMIN") || comment.author.username === currentUser) && (
+							(hasRole("ADMIN") || comment.author?.username === currentUser) && (
 								<>
 								<button onClick={() => startEditing(comment)}>Edit</button>
-								<button onClick={() => handleCommentDelete(article.id, comment.id)}>Delete</button>
+								<button onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</button>
 								</>
 							)
 							)}
@@ -210,15 +226,6 @@ export default function ArticleItem() {
 					);
 					})}
 			</div>
-
-			{/* <h3>Comments</h3>
-			<ul className="comments-list">
-				{comments.map(comment => (
-					<li key={comment.id}>
-						<strong>{comment.author?.username || 'Anonymous'}:</strong> {comment.content}
-					</li>
-				))}
-			</ul> */}
 
 			{currentUser ? (
 				<form onSubmit={handleCommentSubmit} className="comment-form">
@@ -237,18 +244,18 @@ export default function ArticleItem() {
 			)}
 
 			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
-			{(article.author.username === currentUser || hasRole("ADMIN")) &&
+			{(article.author?.username === currentUser || hasRole("ADMIN")) &&
 			<div className="article-actions">
 				<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
-				<button onClick={() => handleDelete(article.id)}>Delete</button>
+				<button onClick={() => article.id && handleDelete(article.id)}>Delete</button>
 			</div>
 			}
 			
 			</RequireRoles>
-			
             
 		</div>
         </>
-       
 	);
-}
+};
+
+export default ArticleItem; 

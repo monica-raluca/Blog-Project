@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router';
 import '../format/Error.css';
 import '../format/Login.css';
 
-export default function ErrorPage({ message }) {
+interface ErrorPageProps {
+  message?: string;
+}
+
+const ErrorPage: React.FC<ErrorPageProps> = ({ message }) => {
   const navigate = useNavigate();
   return (
     <div className="error-wrapper">
@@ -14,4 +18,6 @@ export default function ErrorPage({ message }) {
       </div>
     </div>
   );
-} 
+};
+
+export default ErrorPage; 

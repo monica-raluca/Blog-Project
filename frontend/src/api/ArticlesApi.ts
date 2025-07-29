@@ -1,11 +1,13 @@
-function parseSpringError(res, errorData) {
+import { Article, ArticleFilters, SortCriteria, FetchArticlesParams, ArticlesResponse, User, ApiError } from './types';
+
+function parseSpringError(res: Response, errorData: ApiError): string {
     return errorData?.detail || errorData?.message || res.statusText || 'Unknown error';
 }
 
-export async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }) {
+export async function fetchAllArticles({ filters, sortCriteria, size = 10, from = 0 }: FetchArticlesParams): Promise<ArticlesResponse> {
     const params = new URLSearchParams();
-    params.set('size', size);
-    params.set('from', from);
+    params.set('size', size.toString());
+    params.set('from', from.toString());
     Object.entries(filters).forEach(([key, value]) => {
         if (value) params.append(key, value);
     });
@@ -15,44 +17,44 @@ export async function fetchAllArticles({ filters, sortCriteria, size = 10, from 
     }
     const res = await fetch(`/api/articles?${params.toString()}`);
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function fetchArticleById(id) {
+export async function fetchArticleById(id: string): Promise<Article> {
     const res = await fetch(`/api/articles/${id}`);
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function fetchArticlesByTitle(title) {
+export async function fetchArticlesByTitle(title: string): Promise<ArticlesResponse> {
     const res = await fetch(`/api/articles?title=${title}`);
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function fetchArticlesByAuthor(author) {
+export async function fetchArticlesByAuthor(author: User): Promise<ArticlesResponse> {
     const res = await fetch(`/api/articles?author=${author.username}`);
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function createArticle(article, token) {
+export async function createArticle(article: Article, token: string): Promise<Article> {
     const res = await fetch('/api/articles', {
         method: 'POST',
         headers: {
@@ -62,14 +64,14 @@ export async function createArticle(article, token) {
         body: JSON.stringify(article),
     });
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function updateArticle(id, article, token) {
+export async function updateArticle(id: string, article: Article, token: string): Promise<Article> {
     const res = await fetch(`/api/articles/${id}`, {
         method: 'PUT',
         headers: {
@@ -79,14 +81,14 @@ export async function updateArticle(id, article, token) {
         body: JSON.stringify(article)
     });
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
     return res.json();
 }
 
-export async function deleteArticle(id, token) {
+export async function deleteArticle(id: string, token: string): Promise<void> {
     const res = await fetch(`/api/articles/${id}`, {
         method: 'DELETE',
         headers: {
@@ -94,8 +96,8 @@ export async function deleteArticle(id, token) {
         },
     });
     if (!res.ok) {
-        let errorData = {};
+        let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}
         throw new Error(parseSpringError(res, errorData));
     }
-}
+} 

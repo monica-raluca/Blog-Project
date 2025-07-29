@@ -1,0 +1,108 @@
+// Authentication types
+export interface RegisterUserData {
+	lastName: string;
+	firstName: string;
+	username: string;
+	password: string;
+	email: string;
+}
+
+export interface LoginUserData {
+	username: string;
+	password: string;
+}
+
+export interface AuthResponse {
+	token: string;
+	username: string;
+}
+
+export interface User {
+	id?: string;
+	username: string;
+	authorities: string[];
+}
+
+export interface JwtAuthority {
+	authority: string;
+}
+
+export interface JwtPayload {
+	sub: string;
+	authorities: JwtAuthority[];
+}
+
+// Article types
+export interface Article {
+	id?: string;
+	title: string;
+	content: string;
+	summary?: string;
+	author?: User;
+	editor?: User;
+	createdAt?: string;
+	updatedAt?: string;
+	createdDate?: string;
+	updatedDate?: string;
+}
+
+export interface ArticleFilters {
+	title?: string;
+	author?: string;
+	[key: string]: string | undefined;
+}
+
+export interface SortCriteria {
+	field: string;
+	direction: 'ASC' | 'DESC';
+}
+
+export interface FetchArticlesParams {
+	filters: ArticleFilters;
+	sortCriteria: SortCriteria[];
+	size?: number;
+	from?: number;
+}
+
+export interface ArticlesResponse {
+	articles: Article[];
+	totalElements: number;
+	totalPages: number;
+	currentPage: number;
+}
+
+// Comment types
+export interface Comment {
+	id?: string;
+	content: string;
+	author?: User;
+	editor?: User;
+	articleId: string;
+	createdAt?: string;
+	dateCreated?: string;
+	dateEdited?: string;
+}
+
+// User Management types
+export interface UserDetail {
+	id: string;
+	username: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	role?: string;
+	authorities: string[];
+	createdAt?: string;
+	createdDate?: string;
+	profilePicture?: string;
+}
+
+export interface UserRole {
+	role: string;
+}
+
+// Error types
+export interface ApiError {
+	message?: string;
+	detail?: string;
+} 

@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchUsers, updateUserRole, deleteUser } from '../api/UsersApi';
+import { UserDetail } from '../api/types';
 import '../format/UserManagement.css';
 import { useNavigate } from 'react-router';
 
-export default function UserManagement() {
-    const [users, setUsers] = useState([]);
-    const [error, setError] = useState(null);
+const UserManagement: React.FC = () => {
+    const [users, setUsers] = useState<UserDetail[]>([]);
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         loadUsers();
     }, []);
 
-    const loadUsers = async () => {
+    const loadUsers = async (): Promise<void> => {
         try {
             const data = await fetchUsers();
             setUsers(data);
         } catch (err) {
-            console.log("Error message: ", err.message);
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            console.log("Error message: ", errorMessage);
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
             } else {
                 navigate('/error');
@@ -26,14 +28,15 @@ export default function UserManagement() {
         }
     };
 
-    const handleRoleChange = async (id, newRole) => {
+    const handleRoleChange = async (id: string, newRole: string): Promise<void> => {
         try {
-            await updateUserRole(id, newRole);
+            await updateUserRole(id, { role: newRole });
             setUsers(users.map(user =>
                 user.id === id ? { ...user, role: newRole } : user
             ));
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
             } else {
                 navigate('/error');
@@ -41,13 +44,14 @@ export default function UserManagement() {
         }
     };
 
-    const handleDelete = async (id) => {
+    const handleDelete = async (id: string): Promise<void> => {
         if (!window.confirm('Are you sure you want to delete this user?')) return;
         try {
             await deleteUser(id);
             setUsers(users.filter(user => user.id !== id));
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
             } else {
                 navigate('/error');
@@ -59,7 +63,7 @@ export default function UserManagement() {
         <div className="user-management-container">
             <h2>All Users</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
-            <table border="1">
+            <table border={1}>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -77,7 +81,7 @@ export default function UserManagement() {
                             <td>{user.email}</td>
                             <td>
                                 <select
-                                    value={user.role}
+                                    value={user.role || ''}
                                     onChange={(e) => handleRoleChange(user.id, e.target.value)}
                                 >
                                     <option value="ROLE_USER">USER</option>
@@ -94,4 +98,6 @@ export default function UserManagement() {
             </table>
         </div>
     );
-}
+};
+
+export default UserManagement; 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import '../format/Error.css';
 import '../format/Login.css';
 
-export default function NotFound() {
+const NotFound: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="error-wrapper">
@@ -15,4 +15,6 @@ export default function NotFound() {
       </div>
     </div>
   );
-} 
+};
+
+export default NotFound; 

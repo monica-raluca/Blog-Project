@@ -1,21 +1,21 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { registerUser } from "../api/AuthApi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { useAuth } from "../api/AuthContext";
 
-export default function Register() {
-    const [lastName, setLastName] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState(null);
+const Register: React.FC = () => {
+    const [lastName, setLastName] = useState<string>('');
+    const [firstName, setFirstName] = useState<string>('');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
-    const {login} = useAuth();
+    const { login } = useAuth();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         try {
             const userToken = await registerUser({ lastName, firstName, username, password, email });
@@ -23,12 +23,13 @@ export default function Register() {
             setError(null);
             navigate('/articles');
         } catch (err) {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+            const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
-            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+            } else if (errorMessage.toLowerCase().includes('not found')) {
                 navigate('/notfound');
-            } else if (err.message && err.message.toLowerCase().includes('register')) {
-                setError(err.message);
+            } else if (errorMessage.toLowerCase().includes('register')) {
+                setError(errorMessage);
             } else {
                 navigate('/error');
             }
@@ -78,7 +79,7 @@ export default function Register() {
                     </div>
                     <div className="input-group">                     
                         <input
-                            type="text"
+                            type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -92,4 +93,6 @@ export default function Register() {
             </div>
         </div>
     );
-}
+};
+
+export default Register; 

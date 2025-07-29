@@ -1,6 +1,6 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import { Layout } from './layouts/Layout';
-// import Articles from './pages/Articles';
 import Articles from './pages/Articles';
 import ArticleItem from './pages/ArticleItem';
 import Login from './pages/Login';
@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound';
 import Forbidden from './pages/Forbidden';
 import ErrorPage from './pages/ErrorPage';
 
-export function BlogApp() {
+export function BlogApp(): React.ReactElement {
 	return (
 		<AuthProvider>
 			<BrowserRouter>
@@ -35,6 +35,5 @@ export function BlogApp() {
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>
-		
 	);
-}
+} 

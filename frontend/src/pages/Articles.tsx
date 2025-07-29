@@ -1,21 +1,28 @@
-import { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { fetchAllArticles } from '../api/ArticlesApi';
-// import { ChronoUnit } from '@js-joda/root/packages/core/src/temporal/ChronoUnit.js';
 import { ChronoUnit } from '@js-joda/core';
 import { ArticleControlsContext } from '../layouts/Layout';
+import { Article } from '../api/types';
 
 import '../format/Articles.css';
 
-export default function Articles() {
+const Articles: React.FC = () => {
+	const context = useContext(ArticleControlsContext);
+	
+	if (!context) {
+		throw new Error('Articles must be used within ArticleControlsContext');
+	}
+
 	const {
 		filtersInput, setFiltersInput, filters, setFilters,
 		sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput
-	} = useContext(ArticleControlsContext);
-	const [articles, setArticles] = useState([]);
+	} = context;
+	
+	const [articles, setArticles] = useState<Article[]>([]);
 	const navigate = useNavigate();
-	const [showBottomBar, setShowBottomBar] = useState(false);
-	const lastArticleRef = useRef(null);
+	const [showBottomBar, setShowBottomBar] = useState<boolean>(false);
+	const lastArticleRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         fetchAllArticles({
@@ -23,11 +30,19 @@ export default function Articles() {
             sortCriteria,
             size: pageSize,
             from: pageIndex
-        }).then(setArticles)
+        }).then(response => {
+			// Handle both direct array and object with articles property
+			if (Array.isArray(response)) {
+				setArticles(response);
+			} else {
+				setArticles(response.articles || []);
+			}
+		})
         .catch(err => {
-            if (err.message && err.message.toLowerCase().includes('forbidden')) {
+			const errorMessage = (err as Error).message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) {
                 navigate('/forbidden');
-            } else if (err.message && err.message.toLowerCase().includes('not found')) {
+            } else if (errorMessage.toLowerCase().includes('not found')) {
                 navigate('/notfound');
             } else {
                 navigate('/error');
@@ -36,7 +51,7 @@ export default function Articles() {
     }, [filters, sortCriteria, pageSize, pageIndex, navigate]);
 
 	useEffect(() => {
-		const observer = new window.IntersectionObserver(
+		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries[0].isIntersecting) setShowBottomBar(true);
 				else setShowBottomBar(false);
@@ -47,7 +62,7 @@ export default function Articles() {
 		return () => observer.disconnect();
 	}, [articles]);
 
-    function formatDateTimeToMin(dateStr) {
+    function formatDateTimeToMin(dateStr: string): string {
 		const d = new Date(dateStr);
 		return d.getFullYear() + '-' + (d.getMonth()+1).toString().padStart(2,'0') + '-' + d.getDate().toString().padStart(2,'0') + ' ' + d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
 	}
@@ -55,16 +70,16 @@ export default function Articles() {
     // Pagination controls for bottom bar
     const currentPage = pageIndex + 1;
     const totalPages = 50; // TODO: Replace with real total pages if available
-    const goToPrev = () => setPageIndex(Math.max(0, pageIndex - 1));
-    const goToNext = () => setPageIndex(pageIndex + 1); // Should check max page if available
-    const handlePageInput = (e) => {
+    const goToPrev = (): void => setPageIndex(Math.max(0, pageIndex - 1));
+    const goToNext = (): void => setPageIndex(pageIndex + 1); // Should check max page if available
+    
+	const handlePageInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
       let val = parseInt(e.target.value, 10);
       if (!isNaN(val) && val > 0) setPageIndex(val - 1);
     };
 
 	return (
         <>
-        
         <div className='articles-container'>
 			{articles.map((article, idx) => (
 				<div
@@ -78,10 +93,22 @@ export default function Articles() {
 							{article.title}
 						</div>
 						<div className='article-meta'>
-							<span>Created by <NavLink to={`/users/${article.author.id}`}>{article.author.username}</NavLink> at {formatDateTimeToMin(article.createdDate)}</span>
-                            {(article.author.username !== article.editor.username ||
-                            formatDateTimeToMin(article.createdDate) !== formatDateTimeToMin(article.updatedDate)) &&
-                            <span>Edited by <NavLink to={`/users/${article.editor.id}`}>{article.editor.username}</NavLink> at {formatDateTimeToMin(article.updatedDate)}</span>}
+							<span>
+								Created by{' '}
+								<NavLink to={`/users/${article.author?.id}`}>
+									{article.author?.username}
+								</NavLink>{' '}
+								at {formatDateTimeToMin(article.createdDate || article.createdAt || '')}
+							</span>
+                            {(article.author?.username !== article.editor?.username ||
+                            formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) &&
+                            <span>
+								Edited by{' '}
+								<NavLink to={`/users/${article.editor?.id}`}>
+									{article.editor?.username}
+								</NavLink>{' '}
+								at {formatDateTimeToMin(article.updatedDate || article.updatedAt || '')}
+							</span>}
 						</div>
 						<div className='article-body'>
 							{article.summary}
@@ -110,8 +137,7 @@ export default function Articles() {
           </div>
         </div>
         </>
-		
-
-        
 	);
-}
+};
+
+export default Articles; 

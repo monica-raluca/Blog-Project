@@ -1,52 +1,66 @@
 import React, { useContext, useState } from 'react';
 import { ArticleControlsContext } from '../layouts/Layout';
+import { SortCriteria } from '../api/types';
 import '../format/TopBar.css';
 
-const SORT_FIELDS = [
+interface SortField {
+  label: string;
+  value: string;
+}
+
+const SORT_FIELDS: SortField[] = [
   { label: 'Date', value: 'createdDate' },
   { label: 'Title', value: 'title' },
   { label: 'Author', value: 'author' },
 ];
 
-const PAGE_SIZES = [5, 10, 20, 50];
+const PAGE_SIZES: number[] = [5, 10, 20, 50];
 
-export default function TopBar() {
+const TopBar: React.FC = () => {
+  const context = useContext(ArticleControlsContext);
+  
+  if (!context) {
+    throw new Error('TopBar must be used within ArticleControlsContext');
+  }
+
   const {
     filtersInput, setFiltersInput, filters, setFilters,
     sortCriteria, setSortCriteria, pageSize, setPageSize, pageIndex, setPageIndex, sizeInput, setSizeInput
-  } = useContext(ArticleControlsContext);
+  } = context;
 
-  const [localSort, setLocalSort] = useState(sortCriteria);
-  const [expanded, setExpanded] = useState(false);
+  const [localSort, setLocalSort] = useState<SortCriteria[]>(sortCriteria);
+  const [expanded, setExpanded] = useState<boolean>(false);
 
   // Handle sort field toggle
-  const handleSortToggle = (field) => {
+  const handleSortToggle = (field: string): void => {
     const exists = localSort.find(sc => sc.field === field);
-    let updated;
+    let updated: SortCriteria[];
     if (exists) {
       updated = localSort.filter(sc => sc.field !== field);
     } else {
-      updated = [...localSort, { field, direction: 'asc' }];
+      updated = [...localSort, { field, direction: 'ASC' }];
     }
     setLocalSort(updated);
     setSortCriteria(updated);
   };
 
   // Handle sort direction toggle
-  const handleSortDirection = (field) => {
+  const handleSortDirection = (field: string): void => {
     const updated = localSort.map(sc =>
-      sc.field === field ? { ...sc, direction: sc.direction === 'asc' ? 'desc' : 'asc' } : sc
+      sc.field === field ? { ...sc, direction: (sc.direction === 'ASC' ? 'DESC' : 'ASC') as 'ASC' | 'DESC' } : sc
     );
     setLocalSort(updated);
     setSortCriteria(updated);
   };
 
   // Filter pills
-  const handleFilterChange = (e) => {
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFiltersInput({ ...filtersInput, [e.target.name]: e.target.value });
   };
-  const applyFilters = () => setFilters(filtersInput);
-  const clearFilters = () => {
+  
+  const applyFilters = (): void => setFilters(filtersInput);
+  
+  const clearFilters = (): void => {
     setFiltersInput({ title: '', author: '' });
     setFilters({ title: '', author: '' });
   };
@@ -54,13 +68,15 @@ export default function TopBar() {
   // Pagination
   const currentPage = pageIndex + 1;
   const totalPages = 50;
-  const goToPrev = () => setPageIndex(Math.max(0, pageIndex - 1));
-  const goToNext = () => setPageIndex(pageIndex + 1);
-  const handlePageInput = (e) => {
+  const goToPrev = (): void => setPageIndex(Math.max(0, pageIndex - 1));
+  const goToNext = (): void => setPageIndex(pageIndex + 1);
+  
+  const handlePageInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let val = parseInt(e.target.value, 10);
     if (!isNaN(val) && val > 0) setPageIndex(val - 1);
   };
-  const handlePageSizeChange = (e) => {
+  
+  const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setPageSize(Number(e.target.value));
     setPageIndex(0);
   };
@@ -101,7 +117,7 @@ export default function TopBar() {
                       onClick={() => handleSortDirection(sf.value)}
                       title="Toggle direction"
                     >
-                      {active.direction === 'asc' ? '↑ Asc' : '↓ Desc'}
+                      {active.direction === 'ASC' ? '↑ Asc' : '↓ Desc'}
                     </button>
                   )}
                 </label>
@@ -115,7 +131,7 @@ export default function TopBar() {
               type="text"
               name="title"
               placeholder="Title"
-              value={filtersInput.title}
+              value={filtersInput.title || ''}
               onChange={handleFilterChange}
             />
             <input
@@ -123,7 +139,7 @@ export default function TopBar() {
               type="text"
               name="author"
               placeholder="Author"
-              value={filtersInput.author}
+              value={filtersInput.author || ''}
               onChange={handleFilterChange}
             />
             <button className="topbar-btn" onClick={applyFilters}>Apply</button>
@@ -151,4 +167,6 @@ export default function TopBar() {
       )}
     </div>
   );
-} 
+};
+
+export default TopBar; 
