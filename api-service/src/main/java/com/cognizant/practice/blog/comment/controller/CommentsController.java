@@ -23,6 +23,11 @@ public class CommentsController {
         this.commentsService = commentsService;
     }
 
+    @GetMapping(value="/comments")
+    public List<Comment> getAllComments() {
+        return commentsService.getAllComments();
+    }
+
     @GetMapping(value="/articles/{id}/comments")
     public List<Comment> getCommentsByArticleID(@PathVariable UUID id) {
         return commentsService.getCommentsByArticleId(id);

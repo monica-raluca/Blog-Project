@@ -17,4 +17,17 @@ public class ArticleConvertor {
                 .editor(UserConvertor.toDto(articleEntity.getEditor()))
                 .build();
     }
+
+    public static ArticleEntity toEntity(Article article) {
+        return ArticleEntity.builder()
+                .id(article.getId())
+                .title(article.getTitle())
+                .content(article.getContent())
+                .summary(article.getSummary())
+                .createdDate(article.getCreatedDate())
+                .updatedDate(article.getUpdatedDate())
+                .author(UserConvertor.toEntity(article.getAuthor()))
+                .editor(UserConvertor.toEntity(article.getEditor()))
+                .build();
+    }
 }

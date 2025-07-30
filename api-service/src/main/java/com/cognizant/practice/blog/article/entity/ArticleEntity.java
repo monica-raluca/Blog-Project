@@ -6,6 +6,7 @@ import com.cognizant.practice.blog.user.entity.UserEntity;
 import jakarta.persistence.*;
 import jdk.jfr.ContentType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ArticleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

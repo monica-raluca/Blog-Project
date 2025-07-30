@@ -21,6 +21,16 @@ export async function createComment(id: string, token: string, content: string):
     return res.json();
 }
 
+export async function fetchAllComments(): Promise<Comment[]> {
+    const res = await fetch(`/api/comments`);
+    if (!res.ok) {
+        let errorData: ApiError = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
+}
+
 export async function fetchCommentsByArticleId(id: string): Promise<Comment[]> {
     const res = await fetch(`/api/articles/${id}/comments`);
     if (!res.ok) {

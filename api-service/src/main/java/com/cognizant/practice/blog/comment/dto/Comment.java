@@ -1,5 +1,7 @@
 package com.cognizant.practice.blog.comment.dto;
 
+import com.cognizant.practice.blog.article.dto.Article;
+import com.cognizant.practice.blog.article.entity.ArticleEntity;
 import com.cognizant.practice.blog.user.dto.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +21,8 @@ public class Comment {
     private String content;
     private LocalDateTime dateCreated;
     private LocalDateTime dateEdited;
+
+    private Article article;
 
     private User author;
     private User editor;

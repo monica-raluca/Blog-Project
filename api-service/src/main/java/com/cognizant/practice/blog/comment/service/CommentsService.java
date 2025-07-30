@@ -64,6 +64,10 @@ public class CommentsService {
         return request.content() != null && !request.content().isEmpty();
     }
 
+    public List<Comment> getAllComments() {
+        return commentsRepository.findAll().stream().map(CommentConvertor::toDto).collect(Collectors.toList());
+    }
+
     public List<Comment> getCommentsByArticleId(UUID id) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
         if (article.isEmpty())

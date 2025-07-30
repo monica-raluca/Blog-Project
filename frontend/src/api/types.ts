@@ -81,6 +81,7 @@ export interface Comment {
 	createdAt?: string;
 	dateCreated?: string;
 	dateEdited?: string;
+	article?: Article;
 }
 
 // User Management types
