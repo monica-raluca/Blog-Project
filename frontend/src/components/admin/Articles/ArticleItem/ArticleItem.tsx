@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router';
-import { Article } from '../../../../api/types';
+import { Article, Comment } from '../../../../api/types';
 import { useAuth } from '../../../../api/AuthContext';
 import { hasRole } from '../../../../api/AuthApi';
 import { deleteArticle, fetchArticleById } from '../../../../api/ArticlesApi';
+import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
+import CommentItem from '../../Comments/CommentItem/CommentItem';
 
 import '../AdminArticles.css';
 
@@ -34,6 +36,9 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
     const [loading, setLoading] = useState<boolean>(useRouteParams && !propArticle);
     const [error, setError] = useState<string | null>(null);
     const [showAdminActions, setShowAdminActions] = useState<boolean>(true);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [commentsLoading, setCommentsLoading] = useState<boolean>(false);
+    const [commentsError, setCommentsError] = useState<string | null>(null);
 
     // Load article from route params if needed
     useEffect(() => {
@@ -44,6 +49,14 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
             setLoading(false);
         }
     }, [id, propArticle, useRouteParams]);
+
+    // Load comments when we have an article ID
+    useEffect(() => {
+        const articleId = article?.id || id;
+        if (articleId && variant === 'detailed') {
+            loadComments(articleId);
+        }
+    }, [article?.id, id, variant]);
 
     const loadArticleFromRoute = async (): Promise<void> => {
         if (!id) {
@@ -69,6 +82,20 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
             }
         } finally {
             setLoading(false);
+        }
+    };
+
+    const loadComments = async (articleId: string): Promise<void> => {
+        try {
+            setCommentsLoading(true);
+            setCommentsError(null);
+            const articleComments = await fetchCommentsByArticleId(articleId);
+            setComments(articleComments);
+        } catch (err) {
+            const errorMessage = (err as Error).message || 'Failed to load comments';
+            setCommentsError(errorMessage);
+        } finally {
+            setCommentsLoading(false);
         }
     };
 
@@ -273,6 +300,46 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
                             <div className="admin-article-content-display">
                                 {article?.content}
                             </div>
+                        </div>
+
+                        {/* Comments Section */}
+                        <div className="admin-article-comments-section">
+                            <div className="admin-comments-header">
+                                <h3>Comments ({comments.length})</h3>
+                            </div>
+                            
+                            {commentsLoading ? (
+                                <div className="admin-comments-loading">
+                                    <div className="admin-loading-spinner"></div>
+                                    <p>Loading comments...</p>
+                                </div>
+                            ) : commentsError ? (
+                                <div className="admin-error-banner">
+                                    <strong>Error loading comments:</strong> {commentsError}
+                                    <button 
+                                        onClick={() => article?.id && loadComments(article.id)}
+                                        className="admin-btn admin-btn-sm admin-btn-secondary"
+                                        style={{ marginLeft: '10px' }}
+                                    >
+                                        Retry
+                                    </button>
+                                </div>
+                            ) : comments.length === 0 ? (
+                                <div className="admin-no-comments">
+                                    <p>No comments yet for this article.</p>
+                                </div>
+                            ) : (
+                                <div className="admin-comments-list">
+                                    {comments.map((comment) => (
+                                        <CommentItem
+                                            key={comment.id}
+                                            comment={comment}
+                                            variant="card"
+                                            showActions={true}
+                                        />
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

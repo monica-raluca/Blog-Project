@@ -29988,6 +29988,9 @@ var _reactRouter = require("react-router");
 var _authContext = require("../../../../api/AuthContext");
 var _authApi = require("../../../../api/AuthApi");
 var _articlesApi = require("../../../../api/ArticlesApi");
+var _commentApi = require("../../../../api/CommentApi");
+var _commentItem = require("../../Comments/CommentItem/CommentItem");
+var _commentItemDefault = parcelHelpers.interopDefault(_commentItem);
 var _adminArticlesCss = require("../AdminArticles.css");
 var _s = $RefreshSig$();
 const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActions = true, variant = 'card', useRouteParams = false })=>{
@@ -30000,6 +30003,9 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
     const [loading, setLoading] = (0, _react.useState)(useRouteParams && !propArticle);
     const [error, setError] = (0, _react.useState)(null);
     const [showAdminActions, setShowAdminActions] = (0, _react.useState)(true);
+    const [comments, setComments] = (0, _react.useState)([]);
+    const [commentsLoading, setCommentsLoading] = (0, _react.useState)(false);
+    const [commentsError, setCommentsError] = (0, _react.useState)(null);
     // Load article from route params if needed
     (0, _react.useEffect)(()=>{
         if (useRouteParams && id && !propArticle) loadArticleFromRoute();
@@ -30011,6 +30017,15 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
         id,
         propArticle,
         useRouteParams
+    ]);
+    // Load comments when we have an article ID
+    (0, _react.useEffect)(()=>{
+        const articleId = article?.id || id;
+        if (articleId && variant === 'detailed') loadComments(articleId);
+    }, [
+        article?.id,
+        id,
+        variant
     ]);
     const loadArticleFromRoute = async ()=>{
         if (!id) {
@@ -30030,6 +30045,19 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
             else navigate('/error');
         } finally{
             setLoading(false);
+        }
+    };
+    const loadComments = async (articleId)=>{
+        try {
+            setCommentsLoading(true);
+            setCommentsError(null);
+            const articleComments = await (0, _commentApi.fetchCommentsByArticleId)(articleId);
+            setComments(articleComments);
+        } catch (err) {
+            const errorMessage = err.message || 'Failed to load comments';
+            setCommentsError(errorMessage);
+        } finally{
+            setCommentsLoading(false);
         }
     };
     const formatDateTimeToMin = (dateStr)=>{
@@ -30073,25 +30101,25 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                     className: "admin-loading-spinner"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 134,
+                    lineNumber: 161,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "Loading article..."
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 135,
+                    lineNumber: 162,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-            lineNumber: 133,
+            lineNumber: 160,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-        lineNumber: 132,
+        lineNumber: 159,
         columnNumber: 13
     }, undefined);
     // Error state for route-based usage
@@ -30104,14 +30132,14 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                     children: "Error Loading Article"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 146,
+                    lineNumber: 173,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 147,
+                    lineNumber: 174,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -30120,18 +30148,18 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 148,
+                    lineNumber: 175,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-            lineNumber: 145,
+            lineNumber: 172,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-        lineNumber: 144,
+        lineNumber: 171,
         columnNumber: 13
     }, undefined);
     // Not found state for route-based usage
@@ -30144,14 +30172,14 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                     children: "Article Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 164,
+                    lineNumber: 191,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested article could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 165,
+                    lineNumber: 192,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -30160,18 +30188,18 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                    lineNumber: 166,
+                    lineNumber: 193,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-            lineNumber: 163,
+            lineNumber: 190,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-        lineNumber: 162,
+        lineNumber: 189,
         columnNumber: 13
     }, undefined);
     if (!article) return null;
@@ -30189,12 +30217,12 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                             children: "\u2190 Back to Articles"
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                            lineNumber: 185,
+                            lineNumber: 212,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 184,
+                        lineNumber: 211,
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30205,18 +30233,18 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                            lineNumber: 193,
+                            lineNumber: 220,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 192,
+                        lineNumber: 219,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 183,
+                lineNumber: 210,
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30233,7 +30261,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: article?.title
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 233,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30246,18 +30274,18 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 235,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 207,
+                                        lineNumber: 234,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 205,
+                                lineNumber: 232,
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30270,7 +30298,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: "Edit Article"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 214,
+                                        lineNumber: 241,
                                         columnNumber: 37
                                     }, undefined),
                                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -30281,19 +30309,19 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: isDeleting ? 'Deleting...' : 'Delete'
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 223,
+                                        lineNumber: 250,
                                         columnNumber: 37
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 212,
+                                lineNumber: 239,
                                 columnNumber: 29
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 204,
+                        lineNumber: 231,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30309,7 +30337,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                 children: "Author:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 239,
+                                                lineNumber: 266,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -30318,13 +30346,13 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                 children: createdBy
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 240,
+                                                lineNumber: 267,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 238,
+                                        lineNumber: 265,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30334,20 +30362,20 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                 children: "Created:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 245,
+                                                lineNumber: 272,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: formatDateTimeToMin(createdAt)
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 246,
+                                                lineNumber: 273,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 244,
+                                        lineNumber: 271,
                                         columnNumber: 29
                                     }, undefined),
                                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -30359,7 +30387,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                         children: "Last Editor:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                        lineNumber: 251,
+                                                        lineNumber: 278,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -30368,13 +30396,13 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                         children: editedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                        lineNumber: 252,
+                                                        lineNumber: 279,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 250,
+                                                lineNumber: 277,
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30384,20 +30412,20 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                                         children: "Last Updated:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                        lineNumber: 257,
+                                                        lineNumber: 284,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         children: formatDateTimeToMin(editedAt)
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                        lineNumber: 258,
+                                                        lineNumber: 285,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 283,
                                                 columnNumber: 37
                                             }, undefined)
                                         ]
@@ -30405,7 +30433,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 237,
+                                lineNumber: 264,
                                 columnNumber: 25
                             }, undefined),
                             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30415,7 +30443,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: "Summary:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 293,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -30423,13 +30451,13 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: article.summary
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 267,
+                                        lineNumber: 294,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 265,
+                                lineNumber: 292,
                                 columnNumber: 29
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30439,7 +30467,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: "Content:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 272,
+                                        lineNumber: 299,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30447,31 +30475,138 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                         children: article?.content
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                        lineNumber: 273,
+                                        lineNumber: 300,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 271,
+                                lineNumber: 298,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "admin-article-comments-section",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-comments-header",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            children: [
+                                                "Comments (",
+                                                comments.length,
+                                                ")"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                            lineNumber: 308,
+                                            columnNumber: 33
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                        lineNumber: 307,
+                                        columnNumber: 29
+                                    }, undefined),
+                                    commentsLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-comments-loading",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "admin-loading-spinner"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                                lineNumber: 313,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                children: "Loading comments..."
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                                lineNumber: 314,
+                                                columnNumber: 37
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                        lineNumber: 312,
+                                        columnNumber: 33
+                                    }, undefined) : commentsError ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-error-banner",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                                children: "Error loading comments:"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                                lineNumber: 318,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            " ",
+                                            commentsError,
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                onClick: ()=>article?.id && loadComments(article.id),
+                                                className: "admin-btn admin-btn-sm admin-btn-secondary",
+                                                style: {
+                                                    marginLeft: '10px'
+                                                },
+                                                children: "Retry"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                                lineNumber: 319,
+                                                columnNumber: 37
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                        lineNumber: 317,
+                                        columnNumber: 33
+                                    }, undefined) : comments.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-no-comments",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            children: "No comments yet for this article."
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                            lineNumber: 329,
+                                            columnNumber: 37
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                        lineNumber: 328,
+                                        columnNumber: 33
+                                    }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-comments-list",
+                                        children: comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _commentItemDefault.default), {
+                                                comment: comment,
+                                                variant: "card",
+                                                showActions: true
+                                            }, comment.id, false, {
+                                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                                lineNumber: 334,
+                                                columnNumber: 41
+                                            }, undefined))
+                                    }, void 0, false, {
+                                        fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                        lineNumber: 332,
+                                        columnNumber: 33
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
+                                lineNumber: 306,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 236,
+                        lineNumber: 263,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 203,
+                lineNumber: 230,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-        lineNumber: 181,
+        lineNumber: 208,
         columnNumber: 13
     }, undefined);
     // Card variant (default)
@@ -30486,7 +30621,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                         children: article?.title
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 287,
+                        lineNumber: 354,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -30497,13 +30632,13 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 288,
+                        lineNumber: 355,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 286,
+                lineNumber: 353,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30516,7 +30651,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 children: "By "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 293,
+                                lineNumber: 360,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -30525,7 +30660,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 children: createdBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 294,
+                                lineNumber: 361,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -30535,13 +30670,13 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 297,
+                                lineNumber: 364,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 292,
+                        lineNumber: 359,
                         columnNumber: 17
                     }, undefined),
                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30551,7 +30686,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 children: "Edited by "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 301,
+                                lineNumber: 368,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -30560,7 +30695,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 children: editedBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 302,
+                                lineNumber: 369,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -30570,19 +30705,19 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                                lineNumber: 305,
+                                lineNumber: 372,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 300,
+                        lineNumber: 367,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 291,
+                lineNumber: 358,
                 columnNumber: 13
             }, undefined),
             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30590,7 +30725,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                 children: article.summary.length > 120 ? article.summary.substring(0, 120) + '...' : article.summary
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 311,
+                lineNumber: 378,
                 columnNumber: 17
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -30603,7 +30738,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                         children: "View"
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 320,
+                        lineNumber: 387,
                         columnNumber: 21
                     }, undefined),
                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -30613,7 +30748,7 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                         children: "Edit"
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 328,
+                        lineNumber: 395,
                         columnNumber: 25
                     }, undefined),
                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -30624,23 +30759,23 @@ const ArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActio
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                        lineNumber: 337,
+                        lineNumber: 404,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-                lineNumber: 319,
+                lineNumber: 386,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/ArticleItem/ArticleItem.tsx",
-        lineNumber: 285,
+        lineNumber: 352,
         columnNumber: 9
     }, undefined);
 };
-_s(ArticleItem, "uX9NbQKXdiyKAZqKBqa8aiEyHGQ=", false, function() {
+_s(ArticleItem, "HAk33llj3jpTx6+4hCwl0bEc4yA=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
@@ -30657,577 +30792,13 @@ $RefreshReg$(_c, "ArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../AdminArticles.css":"lzaq6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"j8zhy":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Comments", ()=>(0, _commentsDefault.default));
-parcelHelpers.export(exports, "CommentForm", ()=>(0, _commentFormDefault.default));
-parcelHelpers.export(exports, "CommentItem", ()=>(0, _commentItemDefault.default));
-var _comments = require("./Comments");
-var _commentsDefault = parcelHelpers.interopDefault(_comments);
-var _commentForm = require("./CommentForm");
-var _commentFormDefault = parcelHelpers.interopDefault(_commentForm);
-var _commentItem = require("./CommentItem/CommentItem");
-var _commentItemDefault = parcelHelpers.interopDefault(_commentItem);
-
-},{"./Comments":"dArK9","./CommentForm":"fX2rx","./CommentItem/CommentItem":"9Palx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dArK9":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$5f50 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$5f50.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5f50.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouter = require("react-router");
-var _commentApi = require("../../../api/CommentApi");
-var _articlesApi = require("../../../api/ArticlesApi");
-var _authContext = require("../../../api/AuthContext");
-var _authApi = require("../../../api/AuthApi");
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminCommentsCss = require("./AdminComments.css");
-var _s = $RefreshSig$();
-const Comments = ({ onEdit, onView, filterByArticleId })=>{
-    _s();
-    const [comments, setComments] = (0, _react.useState)([]);
-    const [articles, setArticles] = (0, _react.useState)([]);
-    const [loading, setLoading] = (0, _react.useState)(true);
-    const [selectedArticleId, setSelectedArticleId] = (0, _react.useState)(filterByArticleId || '');
-    const [showBottomBar, setShowBottomBar] = (0, _react.useState)(false);
-    const [currentPage, setCurrentPage] = (0, _react.useState)(0);
-    const pageSize = 20;
-    const { token, currentUser } = (0, _authContext.useAuth)();
-    const navigate = (0, _reactRouter.useNavigate)();
-    const lastCommentRef = (0, _reactDefault.default).useRef(null);
-    (0, _react.useEffect)(()=>{
-        loadArticles();
-    }, []);
-    (0, _react.useEffect)(()=>{
-        loadComments();
-    }, [
-        selectedArticleId,
-        currentPage
-    ]);
-    (0, _react.useEffect)(()=>{
-        const observer = new IntersectionObserver((entries)=>{
-            if (entries[0].isIntersecting) setShowBottomBar(true);
-            else setShowBottomBar(false);
-        }, {
-            threshold: 0.1
-        });
-        if (lastCommentRef.current) observer.observe(lastCommentRef.current);
-        return ()=>observer.disconnect();
-    }, [
-        comments
-    ]);
-    const loadArticles = async ()=>{
-        try {
-            const response = await (0, _articlesApi.fetchAllArticles)({
-                filters: {},
-                sortCriteria: [
-                    {
-                        field: 'title',
-                        direction: 'ASC'
-                    }
-                ],
-                size: 1000,
-                from: 0
-            });
-            if (Array.isArray(response)) setArticles(response);
-            else setArticles(response.articles || []);
-        } catch (err) {
-            console.error('Failed to load articles:', err);
-        }
-    };
-    const loadComments = async ()=>{
-        try {
-            setLoading(true);
-            let commentsData;
-            if (selectedArticleId) commentsData = await (0, _commentApi.fetchCommentsByArticleId)(selectedArticleId);
-            else commentsData = await (0, _commentApi.fetchAllComments)();
-            // Implement pagination locally since API might not support it
-            const startIndex = currentPage * pageSize;
-            const endIndex = startIndex + pageSize;
-            setComments(commentsData.slice(startIndex, endIndex));
-        } catch (err) {
-            const errorMessage = err.message || 'An error occurred';
-            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
-            else navigate('/error');
-        } finally{
-            setLoading(false);
-        }
-    };
-    const handleDelete = async (comment)=>{
-        if (!window.confirm('Are you sure you want to delete this comment?') || !token) return;
-        try {
-            await (0, _commentApi.deleteComment)(comment.articleId, comment.id, token);
-            await loadComments(); // Reload the comments list
-        } catch (err) {
-            const errorMessage = err.message || 'An error occurred';
-            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else navigate('/error');
-        }
-    };
-    const handleEdit = (comment)=>{
-        if (onEdit) onEdit(comment);
-        else navigate(`/admin/comments/${comment.id}/edit`);
-    };
-    const handleView = (comment)=>{
-        if (onView) onView(comment);
-        else navigate(`/admin/comments/${comment.id}`);
-    };
-    const formatDateTimeToMin = (dateStr)=>{
-        const d = new Date(dateStr);
-        return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
-    };
-    const getArticleTitle = (articleId)=>{
-        // const article = articles.find(a => a.id === articleId);
-        // const article = comments.find(c => c.articleEntity?.id === articleId);
-        // console.log(article);
-        // return article?.articleEntity?.title || 'Unknown Article';
-        return 'Unknown Article';
-    };
-    const goToPrev = ()=>setCurrentPage(Math.max(0, currentPage - 1));
-    const goToNext = ()=>setCurrentPage(currentPage + 1);
-    const handlePageInput = (e)=>{
-        let val = parseInt(e.target.value, 10);
-        if (!isNaN(val) && val > 0) setCurrentPage(val - 1);
-    };
-    if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-loading",
-        children: "Loading comments..."
-    }, void 0, false, {
-        fileName: "src/components/admin/Comments/Comments.tsx",
-        lineNumber: 163,
-        columnNumber: 16
-    }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comments-container",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-header",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                                children: "Comments Management"
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 170,
-                                columnNumber: 17
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-actions",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-filter-section",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                            htmlFor: "article-filter",
-                                            children: "Filter by Article:"
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 173,
-                                            columnNumber: 25
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                            id: "article-filter",
-                                            value: selectedArticleId,
-                                            onChange: (e)=>{
-                                                setSelectedArticleId(e.target.value);
-                                                setCurrentPage(0); // Reset to first page when filtering
-                                            },
-                                            className: "admin-filter-select",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                    value: "",
-                                                    children: "All Articles"
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 183,
-                                                    columnNumber: 29
-                                                }, undefined),
-                                                articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                        value: article.id,
-                                                        children: article.title
-                                                    }, article.id, false, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 185,
-                                                        columnNumber: 33
-                                                    }, undefined))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 174,
-                                            columnNumber: 25
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 172,
-                                    columnNumber: 21
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 171,
-                                columnNumber: 17
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 169,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-table-container",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
-                            className: "admin-table",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "ID"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 198,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Content"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 199,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Article"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 200,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Author"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 201,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Created Date"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 202,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Last Updated"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 203,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
-                                                children: "Actions"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 204,
-                                                columnNumber: 29
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 197,
-                                        columnNumber: 25
-                                    }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 196,
-                                    columnNumber: 21
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
-                                    children: comments.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                            colSpan: 7,
-                                            className: "admin-no-data",
-                                            children: selectedArticleId ? 'No comments found for this article' : 'No comments found'
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 210,
-                                            columnNumber: 33
-                                        }, undefined)
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 209,
-                                        columnNumber: 29
-                                    }, undefined) : comments.map((comment, idx)=>{
-                                        // console.log(comment);
-                                        // console.log(comment.article);
-                                        const createdAt = comment.dateCreated || comment.createdAt || '';
-                                        const updatedAt = comment.dateEdited || createdAt;
-                                        const showEdited = comment.author?.username !== comment.editor?.username || formatDateTimeToMin(createdAt) !== formatDateTimeToMin(updatedAt);
-                                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
-                                            ref: idx === comments.length - 1 ? lastCommentRef : null,
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-id-cell",
-                                                    children: [
-                                                        comment.id?.substring(0, 8),
-                                                        "..."
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 233,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-content-cell",
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "comment-content-preview",
-                                                        children: comment.content.length > 100 ? comment.content.substring(0, 100) + '...' : comment.content
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 237,
-                                                        columnNumber: 45
-                                                    }, undefined)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 236,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-article-cell",
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/articles/${comment.article?.id}`,
-                                                        className: "admin-article-link",
-                                                        children: comment.article?.title
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 244,
-                                                        columnNumber: 45
-                                                    }, undefined)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 243,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-author-cell",
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${comment.author?.id}`,
-                                                        children: comment.author?.username || 'Unknown'
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 252,
-                                                        columnNumber: 45
-                                                    }, undefined)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 251,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-date-cell",
-                                                    children: formatDateTimeToMin(createdAt)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 256,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-date-cell",
-                                                    children: showEdited ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        children: [
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                children: formatDateTimeToMin(updatedAt)
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 262,
-                                                                columnNumber: 53
-                                                            }, undefined),
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                className: "editor-info",
-                                                                children: [
-                                                                    "by ",
-                                                                    comment.editor?.username
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 263,
-                                                                columnNumber: 53
-                                                            }, undefined)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 261,
-                                                        columnNumber: 49
-                                                    }, undefined) : '-'
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 259,
-                                                    columnNumber: 41
-                                                }, undefined),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
-                                                    className: "admin-actions-cell",
-                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "admin-action-buttons",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                                onClick: ()=>handleView(comment),
-                                                                className: "admin-btn admin-btn-sm admin-btn-secondary",
-                                                                title: "View Comment",
-                                                                children: "View"
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 273,
-                                                                columnNumber: 49
-                                                            }, undefined),
-                                                            ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                                onClick: ()=>handleEdit(comment),
-                                                                className: "admin-btn admin-btn-sm admin-btn-primary",
-                                                                title: "Edit Comment",
-                                                                children: "Edit"
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 281,
-                                                                columnNumber: 53
-                                                            }, undefined),
-                                                            ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                                                onClick: ()=>handleDelete(comment),
-                                                                className: "admin-btn admin-btn-sm admin-btn-danger",
-                                                                title: "Delete Comment",
-                                                                children: "Delete"
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 290,
-                                                                columnNumber: 53
-                                                            }, undefined)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 272,
-                                                        columnNumber: 45
-                                                    }, undefined)
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 271,
-                                                    columnNumber: 41
-                                                }, undefined)
-                                            ]
-                                        }, comment.id, true, {
-                                            fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 229,
-                                            columnNumber: 37
-                                        }, undefined);
-                                    })
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 207,
-                                    columnNumber: 21
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 195,
-                            columnNumber: 17
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 194,
-                        columnNumber: 13
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 168,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: `admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "admin-pagination",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            className: "admin-btn admin-btn-secondary",
-                            onClick: goToPrev,
-                            disabled: currentPage === 0,
-                            children: "Previous"
-                        }, void 0, false, {
-                            fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 311,
-                            columnNumber: 17
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                            className: "admin-page-info",
-                            children: [
-                                "Page ",
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                    type: "number",
-                                    min: "1",
-                                    value: currentPage + 1,
-                                    onChange: handlePageInput,
-                                    className: "admin-page-input"
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 319,
-                                    columnNumber: 26
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 318,
-                            columnNumber: 17
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            className: "admin-btn admin-btn-secondary",
-                            onClick: goToNext,
-                            children: "Next"
-                        }, void 0, false, {
-                            fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 327,
-                            columnNumber: 17
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/admin/Comments/Comments.tsx",
-                    lineNumber: 310,
-                    columnNumber: 13
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 309,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true);
-};
-_s(Comments, "2z6oXh9VUMm6ecJ5whxfp91BBz0=", false, function() {
-    return [
-        (0, _authContext.useAuth),
-        (0, _reactRouter.useNavigate)
-    ];
-});
-_c = Comments;
-exports.default = Comments;
-var _c;
-$RefreshReg$(_c, "Comments");
-
-  $parcel$ReactRefreshHelpers$5f50.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7mCLt":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../AdminArticles.css":"lzaq6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../../api/CommentApi":"7mCLt","../../Comments/CommentItem/CommentItem":"9Palx"}],"lzaq6":[function() {},{}],"7mCLt":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
 parcelHelpers.export(exports, "fetchAllComments", ()=>fetchAllComments);
 parcelHelpers.export(exports, "fetchCommentsByArticleId", ()=>fetchCommentsByArticleId);
+parcelHelpers.export(exports, "fetchCommentById", ()=>fetchCommentById);
 parcelHelpers.export(exports, "editComment", ()=>editComment);
 parcelHelpers.export(exports, "deleteComment", ()=>deleteComment);
 function parseSpringError(res, errorData) {
@@ -31275,6 +30846,14 @@ async function fetchCommentsByArticleId(id) {
     }
     return res.json();
 }
+async function fetchCommentById(commentId) {
+    // Since we don't have a direct API to fetch a single comment by ID,
+    // we'll fetch all comments and find the one we want
+    const allComments = await fetchAllComments();
+    const foundComment = allComments.find((c)=>c.id === commentId);
+    if (!foundComment) throw new Error('Comment not found');
+    return foundComment;
+}
 async function editComment(articleId, commentId, content, token) {
     const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
         method: 'PUT',
@@ -31311,416 +30890,7 @@ async function deleteComment(articleId, commentId, token) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fX2rx":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$b487 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$b487.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b487.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactRouter = require("react-router");
-var _commentApi = require("../../../api/CommentApi");
-var _articlesApi = require("../../../api/ArticlesApi");
-var _authContext = require("../../../api/AuthContext");
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminCommentsCss = require("./AdminComments.css");
-var _s = $RefreshSig$();
-const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCancel, preselectedArticleId })=>{
-    _s();
-    const { id: routeId } = (0, _reactRouter.useParams)();
-    const finalId = commentId || routeId;
-    const [content, setContent] = (0, _react.useState)(initialComment?.content || '');
-    const [selectedArticleId, setSelectedArticleId] = (0, _react.useState)(preselectedArticleId || initialComment?.articleId || '');
-    const [articles, setArticles] = (0, _react.useState)([]);
-    const [loading, setLoading] = (0, _react.useState)(false);
-    const [error, setError] = (0, _react.useState)(null);
-    const [validationErrors, setValidationErrors] = (0, _react.useState)({});
-    const [isDirty, setIsDirty] = (0, _react.useState)(false);
-    const navigate = (0, _reactRouter.useNavigate)();
-    const { token, currentUser } = (0, _authContext.useAuth)();
-    (0, _react.useEffect)(()=>{
-        loadArticles();
-    }, []);
-    (0, _react.useEffect)(()=>{
-        // Track if form has been modified
-        const hasChanges = content !== (initialComment?.content || '') || selectedArticleId !== (preselectedArticleId || initialComment?.articleId || '');
-        setIsDirty(hasChanges);
-    }, [
-        content,
-        selectedArticleId,
-        initialComment,
-        preselectedArticleId
-    ]);
-    const loadArticles = async ()=>{
-        try {
-            const response = await (0, _articlesApi.fetchAllArticles)({
-                filters: {},
-                sortCriteria: [
-                    {
-                        field: 'title',
-                        direction: 'ASC'
-                    }
-                ],
-                size: 1000,
-                from: 0
-            });
-            if (Array.isArray(response)) setArticles(response);
-            else setArticles(response.articles || []);
-        } catch (err) {
-            console.error('Failed to load articles:', err);
-            setError('Failed to load articles. Please refresh and try again.');
-        }
-    };
-    const validateForm = ()=>{
-        const errors = {};
-        if (!content.trim()) errors.content = 'Comment content is required';
-        else if (content.trim().length < 1) errors.content = 'Comment must not be empty';
-        else if (content.trim().length > 1000) errors.content = 'Comment must be less than 1000 characters';
-        if (!selectedArticleId && !isEdit) errors.articleId = 'Please select an article';
-        setValidationErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-    const handleSubmit = async (e)=>{
-        e.preventDefault();
-        if (!validateForm()) return;
-        if (!token) {
-            setError('Authentication token not found. Please log in again.');
-            return;
-        }
-        if (!selectedArticleId) {
-            setError('Article ID is required.');
-            return;
-        }
-        setLoading(true);
-        setError(null);
-        try {
-            let result;
-            if (isEdit && finalId) result = await (0, _commentApi.editComment)(selectedArticleId, finalId, content.trim(), token);
-            else result = await (0, _commentApi.createComment)(selectedArticleId, token, content.trim());
-            setIsDirty(false);
-            if (onSubmit) onSubmit(result);
-            else navigate('/admin/comments');
-        } catch (err) {
-            const errorMessage = err.message || 'An error occurred';
-            setError(errorMessage);
-            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
-            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
-        } finally{
-            setLoading(false);
-        }
-    };
-    const handleCancel = ()=>{
-        if (isDirty && !window.confirm('You have unsaved changes. Are you sure you want to cancel?')) return;
-        if (onCancel) onCancel();
-        else navigate('/admin/comments');
-    };
-    const selectedArticle = articles.find((a)=>a.id === selectedArticleId);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-comment-form-container",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-form-header",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                    children: isEdit ? 'Edit Comment' : 'Create New Comment'
-                }, void 0, false, {
-                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                    lineNumber: 161,
-                    columnNumber: 17
-                }, undefined)
-            }, void 0, false, {
-                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 160,
-                columnNumber: 13
-            }, undefined),
-            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-error-banner",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                        children: "Error:"
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 166,
-                        columnNumber: 21
-                    }, undefined),
-                    " ",
-                    error
-                ]
-            }, void 0, true, {
-                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 165,
-                columnNumber: 17
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                onSubmit: handleSubmit,
-                className: "admin-comment-form",
-                children: [
-                    !isEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                    htmlFor: "article",
-                                    className: "admin-form-label",
-                                    children: [
-                                        "Select Article ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
-                                            children: "*"
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 175,
-                                            columnNumber: 48
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 174,
-                                    columnNumber: 29
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                    id: "article",
-                                    value: selectedArticleId,
-                                    onChange: (e)=>setSelectedArticleId(e.target.value),
-                                    disabled: loading || !!preselectedArticleId,
-                                    className: `admin-form-select ${validationErrors.articleId ? 'admin-input-error' : ''}`,
-                                    required: true,
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                            value: "",
-                                            children: "Select an article..."
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 185,
-                                            columnNumber: 33
-                                        }, undefined),
-                                        articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                value: article.id,
-                                                children: article.title
-                                            }, article.id, false, {
-                                                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                                lineNumber: 187,
-                                                columnNumber: 37
-                                            }, undefined))
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 177,
-                                    columnNumber: 29
-                                }, undefined),
-                                validationErrors.articleId && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "admin-error-text",
-                                    children: validationErrors.articleId
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 193,
-                                    columnNumber: 33
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 173,
-                            columnNumber: 25
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 172,
-                        columnNumber: 21
-                    }, undefined),
-                    selectedArticle && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-selected-article",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
-                                    children: "Selected Article:"
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 202,
-                                    columnNumber: 29
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-article-preview",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                                            children: selectedArticle.title
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 204,
-                                            columnNumber: 33
-                                        }, undefined),
-                                        selectedArticle.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            className: "admin-article-summary",
-                                            children: selectedArticle.summary.length > 150 ? selectedArticle.summary.substring(0, 150) + '...' : selectedArticle.summary
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 206,
-                                            columnNumber: 37
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 203,
-                                    columnNumber: 29
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 201,
-                            columnNumber: 25
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 200,
-                        columnNumber: 21
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                    htmlFor: "content",
-                                    className: "admin-form-label",
-                                    children: [
-                                        "Comment Content ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
-                                            children: "*"
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 220,
-                                            columnNumber: 45
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 219,
-                                    columnNumber: 25
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
-                                    id: "content",
-                                    placeholder: "Write your comment here...",
-                                    value: content,
-                                    onChange: (e)=>setContent(e.target.value),
-                                    disabled: loading,
-                                    rows: 8,
-                                    className: `admin-form-textarea ${validationErrors.content ? 'admin-input-error' : ''}`,
-                                    maxLength: 1000,
-                                    required: true
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 222,
-                                    columnNumber: 25
-                                }, undefined),
-                                validationErrors.content && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                    className: "admin-error-text",
-                                    children: validationErrors.content
-                                }, void 0, false, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 234,
-                                    columnNumber: 29
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-char-count",
-                                    children: [
-                                        content.length,
-                                        "/1000 characters"
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 236,
-                                    columnNumber: 25
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 218,
-                            columnNumber: 21
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 217,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-actions",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                type: "button",
-                                onClick: handleCancel,
-                                disabled: loading,
-                                className: "admin-btn admin-btn-secondary",
-                                children: "Cancel"
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 243,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                type: "submit",
-                                disabled: loading || !content.trim() || !selectedArticleId && !isEdit,
-                                className: "admin-btn admin-btn-primary",
-                                children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-loading-spinner-small"
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 258,
-                                            columnNumber: 33
-                                        }, undefined),
-                                        isEdit ? 'Updating...' : 'Creating...'
-                                    ]
-                                }, void 0, true) : isEdit ? 'Update Comment' : 'Create Comment'
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 251,
-                                columnNumber: 21
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 242,
-                        columnNumber: 17
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 170,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/admin/Comments/CommentForm.tsx",
-        lineNumber: 159,
-        columnNumber: 9
-    }, undefined);
-};
-_s(CommentForm, "tBBr38Zn864AxTZL1WIcCpwLG28=", false, function() {
-    return [
-        (0, _reactRouter.useParams),
-        (0, _reactRouter.useNavigate),
-        (0, _authContext.useAuth)
-    ];
-});
-_c = CommentForm;
-exports.default = CommentForm;
-var _c;
-$RefreshReg$(_c, "CommentForm");
-
-  $parcel$ReactRefreshHelpers$b487.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"9Palx":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9Palx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$5825 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$5825.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -32455,7 +31625,1029 @@ $RefreshReg$(_c, "CommentItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","../../Articles/AdminArticles.css":"lzaq6","../AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"1KkTo":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","../../Articles/AdminArticles.css":"lzaq6","../AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"j8zhy":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Comments", ()=>(0, _commentsDefault.default));
+parcelHelpers.export(exports, "CommentForm", ()=>(0, _commentFormDefault.default));
+parcelHelpers.export(exports, "CommentItem", ()=>(0, _commentItemDefault.default));
+var _comments = require("./Comments");
+var _commentsDefault = parcelHelpers.interopDefault(_comments);
+var _commentForm = require("./CommentForm");
+var _commentFormDefault = parcelHelpers.interopDefault(_commentForm);
+var _commentItem = require("./CommentItem/CommentItem");
+var _commentItemDefault = parcelHelpers.interopDefault(_commentItem);
+
+},{"./Comments":"dArK9","./CommentForm":"fX2rx","./CommentItem/CommentItem":"9Palx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dArK9":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5f50 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5f50.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5f50.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouter = require("react-router");
+var _commentApi = require("../../../api/CommentApi");
+var _articlesApi = require("../../../api/ArticlesApi");
+var _authContext = require("../../../api/AuthContext");
+var _authApi = require("../../../api/AuthApi");
+var _adminArticlesCss = require("../Articles/AdminArticles.css");
+var _adminCommentsCss = require("./AdminComments.css");
+var _s = $RefreshSig$();
+const Comments = ({ onEdit, onView, filterByArticleId })=>{
+    _s();
+    const [comments, setComments] = (0, _react.useState)([]);
+    const [articles, setArticles] = (0, _react.useState)([]);
+    const [loading, setLoading] = (0, _react.useState)(true);
+    const [selectedArticleId, setSelectedArticleId] = (0, _react.useState)(filterByArticleId || '');
+    const [showBottomBar, setShowBottomBar] = (0, _react.useState)(false);
+    const [currentPage, setCurrentPage] = (0, _react.useState)(0);
+    const pageSize = 20;
+    const { token, currentUser } = (0, _authContext.useAuth)();
+    const navigate = (0, _reactRouter.useNavigate)();
+    const lastCommentRef = (0, _reactDefault.default).useRef(null);
+    (0, _react.useEffect)(()=>{
+        loadArticles();
+    }, []);
+    (0, _react.useEffect)(()=>{
+        loadComments();
+    }, [
+        selectedArticleId,
+        currentPage
+    ]);
+    (0, _react.useEffect)(()=>{
+        const observer = new IntersectionObserver((entries)=>{
+            if (entries[0].isIntersecting) setShowBottomBar(true);
+            else setShowBottomBar(false);
+        }, {
+            threshold: 0.1
+        });
+        if (lastCommentRef.current) observer.observe(lastCommentRef.current);
+        return ()=>observer.disconnect();
+    }, [
+        comments
+    ]);
+    const loadArticles = async ()=>{
+        try {
+            const response = await (0, _articlesApi.fetchAllArticles)({
+                filters: {},
+                sortCriteria: [
+                    {
+                        field: 'title',
+                        direction: 'ASC'
+                    }
+                ],
+                size: 1000,
+                from: 0
+            });
+            if (Array.isArray(response)) setArticles(response);
+            else setArticles(response.articles || []);
+        } catch (err) {
+            console.error('Failed to load articles:', err);
+        }
+    };
+    const loadComments = async ()=>{
+        try {
+            setLoading(true);
+            let commentsData;
+            if (selectedArticleId) commentsData = await (0, _commentApi.fetchCommentsByArticleId)(selectedArticleId);
+            else commentsData = await (0, _commentApi.fetchAllComments)();
+            // Implement pagination locally since API might not support it
+            const startIndex = currentPage * pageSize;
+            const endIndex = startIndex + pageSize;
+            setComments(commentsData.slice(startIndex, endIndex));
+        } catch (err) {
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else navigate('/error');
+        } finally{
+            setLoading(false);
+        }
+    };
+    const handleDelete = async (comment)=>{
+        if (!window.confirm('Are you sure you want to delete this comment?') || !token) return;
+        try {
+            await (0, _commentApi.deleteComment)(comment.articleId, comment.id, token);
+            await loadComments(); // Reload the comments list
+        } catch (err) {
+            const errorMessage = err.message || 'An error occurred';
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else navigate('/error');
+        }
+    };
+    const handleEdit = (comment)=>{
+        if (onEdit) onEdit(comment);
+        else navigate(`/admin/comments/${comment.id}/edit`);
+    };
+    const handleView = (comment)=>{
+        if (onView) onView(comment);
+        else navigate(`/admin/comments/${comment.id}`);
+    };
+    const formatDateTimeToMin = (dateStr)=>{
+        const d = new Date(dateStr);
+        return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+    };
+    const getArticleTitle = (articleId)=>{
+        // const article = articles.find(a => a.id === articleId);
+        // const article = comments.find(c => c.articleEntity?.id === articleId);
+        // console.log(article);
+        // return article?.articleEntity?.title || 'Unknown Article';
+        return 'Unknown Article';
+    };
+    const goToPrev = ()=>setCurrentPage(Math.max(0, currentPage - 1));
+    const goToNext = ()=>setCurrentPage(currentPage + 1);
+    const handlePageInput = (e)=>{
+        let val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val > 0) setCurrentPage(val - 1);
+    };
+    if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "admin-loading",
+        children: "Loading comments..."
+    }, void 0, false, {
+        fileName: "src/components/admin/Comments/Comments.tsx",
+        lineNumber: 163,
+        columnNumber: 16
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "admin-comments-container",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-header",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                                children: "Comments Management"
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                lineNumber: 170,
+                                columnNumber: 17
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "admin-actions",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "admin-filter-section",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                            htmlFor: "article-filter",
+                                            children: "Filter by Article:"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/Comments.tsx",
+                                            lineNumber: 173,
+                                            columnNumber: 25
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                                            id: "article-filter",
+                                            value: selectedArticleId,
+                                            onChange: (e)=>{
+                                                setSelectedArticleId(e.target.value);
+                                                setCurrentPage(0); // Reset to first page when filtering
+                                            },
+                                            className: "admin-filter-select",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                    value: "",
+                                                    children: "All Articles"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 183,
+                                                    columnNumber: 29
+                                                }, undefined),
+                                                articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                        value: article.id,
+                                                        children: article.title
+                                                    }, article.id, false, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 185,
+                                                        columnNumber: 33
+                                                    }, undefined))
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Comments/Comments.tsx",
+                                            lineNumber: 174,
+                                            columnNumber: 25
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                    lineNumber: 172,
+                                    columnNumber: 21
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                lineNumber: 171,
+                                columnNumber: 17
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/admin/Comments/Comments.tsx",
+                        lineNumber: 169,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-table-container",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("table", {
+                            className: "admin-table",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("thead", {
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "ID"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 198,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Content"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 199,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Article"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 200,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Author"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 201,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Created Date"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 202,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Last Updated"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 203,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
+                                                children: "Actions"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                lineNumber: 204,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                        lineNumber: 197,
+                                        columnNumber: 25
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                    lineNumber: 196,
+                                    columnNumber: 21
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
+                                    children: comments.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                            colSpan: 7,
+                                            className: "admin-no-data",
+                                            children: selectedArticleId ? 'No comments found for this article' : 'No comments found'
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/Comments.tsx",
+                                            lineNumber: 210,
+                                            columnNumber: 33
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                        lineNumber: 209,
+                                        columnNumber: 29
+                                    }, undefined) : comments.map((comment, idx)=>{
+                                        // console.log(comment);
+                                        // console.log(comment.article);
+                                        const createdAt = comment.dateCreated || comment.createdAt || '';
+                                        const updatedAt = comment.dateEdited || createdAt;
+                                        const showEdited = comment.author?.username !== comment.editor?.username || formatDateTimeToMin(createdAt) !== formatDateTimeToMin(updatedAt);
+                                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tr", {
+                                            ref: idx === comments.length - 1 ? lastCommentRef : null,
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-id-cell",
+                                                    children: [
+                                                        comment.id?.substring(0, 8),
+                                                        "..."
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 233,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-content-cell",
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        className: "comment-content-preview",
+                                                        children: comment.content.length > 100 ? comment.content.substring(0, 100) + '...' : comment.content
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 237,
+                                                        columnNumber: 45
+                                                    }, undefined)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 236,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-article-cell",
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                        to: `/articles/${comment.article?.id}`,
+                                                        className: "admin-article-link",
+                                                        children: comment.article?.title
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 244,
+                                                        columnNumber: 45
+                                                    }, undefined)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 243,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-author-cell",
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
+                                                        to: `/users/${comment.author?.id}`,
+                                                        children: comment.author?.username || 'Unknown'
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 252,
+                                                        columnNumber: 45
+                                                    }, undefined)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 251,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-date-cell",
+                                                    children: formatDateTimeToMin(createdAt)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 256,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-date-cell",
+                                                    children: showEdited ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        children: [
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                                children: formatDateTimeToMin(updatedAt)
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                                lineNumber: 262,
+                                                                columnNumber: 53
+                                                            }, undefined),
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                                className: "editor-info",
+                                                                children: [
+                                                                    "by ",
+                                                                    comment.editor?.username
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                                lineNumber: 263,
+                                                                columnNumber: 53
+                                                            }, undefined)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 261,
+                                                        columnNumber: 49
+                                                    }, undefined) : '-'
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 259,
+                                                    columnNumber: 41
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
+                                                    className: "admin-actions-cell",
+                                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        className: "admin-action-buttons",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                                onClick: ()=>handleView(comment),
+                                                                className: "admin-btn admin-btn-sm admin-btn-secondary",
+                                                                title: "View Comment",
+                                                                children: "View"
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                                lineNumber: 273,
+                                                                columnNumber: 49
+                                                            }, undefined),
+                                                            ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                                onClick: ()=>handleEdit(comment),
+                                                                className: "admin-btn admin-btn-sm admin-btn-primary",
+                                                                title: "Edit Comment",
+                                                                children: "Edit"
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                                lineNumber: 281,
+                                                                columnNumber: 53
+                                                            }, undefined),
+                                                            ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                                                onClick: ()=>handleDelete(comment),
+                                                                className: "admin-btn admin-btn-sm admin-btn-danger",
+                                                                title: "Delete Comment",
+                                                                children: "Delete"
+                                                            }, void 0, false, {
+                                                                fileName: "src/components/admin/Comments/Comments.tsx",
+                                                                lineNumber: 290,
+                                                                columnNumber: 53
+                                                            }, undefined)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "src/components/admin/Comments/Comments.tsx",
+                                                        lineNumber: 272,
+                                                        columnNumber: 45
+                                                    }, undefined)
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                                    lineNumber: 271,
+                                                    columnNumber: 41
+                                                }, undefined)
+                                            ]
+                                        }, comment.id, true, {
+                                            fileName: "src/components/admin/Comments/Comments.tsx",
+                                            lineNumber: 229,
+                                            columnNumber: 37
+                                        }, undefined);
+                                    })
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                    lineNumber: 207,
+                                    columnNumber: 21
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/admin/Comments/Comments.tsx",
+                            lineNumber: 195,
+                            columnNumber: 17
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/admin/Comments/Comments.tsx",
+                        lineNumber: 194,
+                        columnNumber: 13
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/admin/Comments/Comments.tsx",
+                lineNumber: 168,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: `admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "admin-pagination",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "admin-btn admin-btn-secondary",
+                            onClick: goToPrev,
+                            disabled: currentPage === 0,
+                            children: "Previous"
+                        }, void 0, false, {
+                            fileName: "src/components/admin/Comments/Comments.tsx",
+                            lineNumber: 311,
+                            columnNumber: 17
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "admin-page-info",
+                            children: [
+                                "Page ",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    type: "number",
+                                    min: "1",
+                                    value: currentPage + 1,
+                                    onChange: handlePageInput,
+                                    className: "admin-page-input"
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/Comments.tsx",
+                                    lineNumber: 319,
+                                    columnNumber: 26
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/admin/Comments/Comments.tsx",
+                            lineNumber: 318,
+                            columnNumber: 17
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "admin-btn admin-btn-secondary",
+                            onClick: goToNext,
+                            children: "Next"
+                        }, void 0, false, {
+                            fileName: "src/components/admin/Comments/Comments.tsx",
+                            lineNumber: 327,
+                            columnNumber: 17
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/admin/Comments/Comments.tsx",
+                    lineNumber: 310,
+                    columnNumber: 13
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/admin/Comments/Comments.tsx",
+                lineNumber: 309,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true);
+};
+_s(Comments, "2z6oXh9VUMm6ecJ5whxfp91BBz0=", false, function() {
+    return [
+        (0, _authContext.useAuth),
+        (0, _reactRouter.useNavigate)
+    ];
+});
+_c = Comments;
+exports.default = Comments;
+var _c;
+$RefreshReg$(_c, "Comments");
+
+  $parcel$ReactRefreshHelpers$5f50.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fX2rx":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$b487 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$b487.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b487.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouter = require("react-router");
+var _commentApi = require("../../../api/CommentApi");
+var _articlesApi = require("../../../api/ArticlesApi");
+var _authContext = require("../../../api/AuthContext");
+var _adminArticlesCss = require("../Articles/AdminArticles.css");
+var _adminCommentsCss = require("./AdminComments.css");
+var _s = $RefreshSig$();
+const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCancel, preselectedArticleId })=>{
+    _s();
+    const { id: routeId } = (0, _reactRouter.useParams)();
+    const finalId = commentId || routeId;
+    const [content, setContent] = (0, _react.useState)(initialComment?.content || '');
+    const [selectedArticleId, setSelectedArticleId] = (0, _react.useState)(preselectedArticleId || initialComment?.article?.id || '');
+    const [articles, setArticles] = (0, _react.useState)([]);
+    const [loading, setLoading] = (0, _react.useState)(false);
+    const [error, setError] = (0, _react.useState)(null);
+    const [validationErrors, setValidationErrors] = (0, _react.useState)({});
+    const [isDirty, setIsDirty] = (0, _react.useState)(false);
+    const navigate = (0, _reactRouter.useNavigate)();
+    const { token, currentUser } = (0, _authContext.useAuth)();
+    (0, _react.useEffect)(()=>{
+        loadArticles();
+    }, []);
+    (0, _react.useEffect)(()=>{
+        if (isEdit && finalId && !initialComment) loadComment();
+    }, [
+        finalId,
+        isEdit,
+        initialComment
+    ]);
+    (0, _react.useEffect)(()=>{
+        // Track if form has been modified
+        const hasChanges = content !== (initialComment?.content || '') || selectedArticleId !== (preselectedArticleId || initialComment?.articleId || '');
+        setIsDirty(hasChanges);
+    }, [
+        content,
+        selectedArticleId,
+        initialComment,
+        preselectedArticleId
+    ]);
+    const loadArticles = async ()=>{
+        try {
+            const response = await (0, _articlesApi.fetchAllArticles)({
+                filters: {},
+                sortCriteria: [
+                    {
+                        field: 'title',
+                        direction: 'ASC'
+                    }
+                ],
+                size: 1000,
+                from: 0
+            });
+            if (Array.isArray(response)) setArticles(response);
+            else setArticles(response.articles || []);
+        } catch (err) {
+            console.error('Failed to load articles:', err);
+            setError('Failed to load articles. Please refresh and try again.');
+        }
+    };
+    const loadComment = async ()=>{
+        if (!finalId) return;
+        try {
+            setLoading(true);
+            setError(null);
+            const comment = await (0, _commentApi.fetchCommentById)(finalId);
+            setContent(comment.content);
+            setSelectedArticleId(comment.article?.id || '');
+        } catch (err) {
+            const errorMessage = err.message || 'An error occurred';
+            setError(errorMessage);
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+            else navigate('/error');
+        } finally{
+            setLoading(false);
+        }
+    };
+    const validateForm = ()=>{
+        const errors = {};
+        if (!content.trim()) errors.content = 'Comment content is required';
+        else if (content.trim().length < 1) errors.content = 'Comment must not be empty';
+        else if (content.trim().length > 1000) errors.content = 'Comment must be less than 1000 characters';
+        if (!selectedArticleId && !isEdit) errors.articleId = 'Please select an article';
+        setValidationErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        if (!validateForm()) return;
+        if (!token) {
+            setError('Authentication token not found. Please log in again.');
+            return;
+        }
+        if (!selectedArticleId) {
+            setError('Article ID is required.');
+            return;
+        }
+        setLoading(true);
+        setError(null);
+        try {
+            let result;
+            if (isEdit && finalId) result = await (0, _commentApi.editComment)(selectedArticleId, finalId, content.trim(), token);
+            else result = await (0, _commentApi.createComment)(selectedArticleId, token, content.trim());
+            setIsDirty(false);
+            if (onSubmit) onSubmit(result);
+            else navigate('/admin/comments');
+        } catch (err) {
+            const errorMessage = err.message || 'An error occurred';
+            setError(errorMessage);
+            if (errorMessage.toLowerCase().includes('forbidden')) navigate('/forbidden');
+            else if (errorMessage.toLowerCase().includes('not found')) navigate('/notfound');
+        } finally{
+            setLoading(false);
+        }
+    };
+    const handleCancel = ()=>{
+        if (isDirty && !window.confirm('You have unsaved changes. Are you sure you want to cancel?')) return;
+        if (onCancel) onCancel();
+        else navigate('/admin/comments');
+    };
+    const selectedArticle = articles.find((a)=>a.id === selectedArticleId);
+    if (loading && isEdit && !initialComment) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "admin-form-loading",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "admin-loading-spinner"
+            }, void 0, false, {
+                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                lineNumber: 191,
+                columnNumber: 17
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Loading comment..."
+            }, void 0, false, {
+                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                lineNumber: 192,
+                columnNumber: 17
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/admin/Comments/CommentForm.tsx",
+        lineNumber: 190,
+        columnNumber: 13
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "admin-comment-form-container",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "admin-form-header",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                    children: isEdit ? 'Edit Comment' : 'Create New Comment'
+                }, void 0, false, {
+                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                    lineNumber: 200,
+                    columnNumber: 17
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                lineNumber: 199,
+                columnNumber: 13
+            }, undefined),
+            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "admin-error-banner",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                        children: "Error:"
+                    }, void 0, false, {
+                        fileName: "src/components/admin/Comments/CommentForm.tsx",
+                        lineNumber: 205,
+                        columnNumber: 21
+                    }, undefined),
+                    " ",
+                    error
+                ]
+            }, void 0, true, {
+                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                lineNumber: 204,
+                columnNumber: 17
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                onSubmit: handleSubmit,
+                className: "admin-comment-form",
+                children: [
+                    !isEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-form-row",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "admin-form-group",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    htmlFor: "article",
+                                    className: "admin-form-label",
+                                    children: [
+                                        "Select Article ",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "admin-required",
+                                            children: "*"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 214,
+                                            columnNumber: 48
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 213,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                                    id: "article",
+                                    value: selectedArticleId,
+                                    onChange: (e)=>setSelectedArticleId(e.target.value),
+                                    disabled: loading || !!preselectedArticleId,
+                                    className: `admin-form-select ${validationErrors.articleId ? 'admin-input-error' : ''}`,
+                                    required: true,
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                            value: "",
+                                            children: "Select an article..."
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 224,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                                value: article.id,
+                                                children: article.title
+                                            }, article.id, false, {
+                                                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                                lineNumber: 226,
+                                                columnNumber: 37
+                                            }, undefined))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 216,
+                                    columnNumber: 29
+                                }, undefined),
+                                validationErrors.articleId && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    className: "admin-error-text",
+                                    children: validationErrors.articleId
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 232,
+                                    columnNumber: 33
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                            lineNumber: 212,
+                            columnNumber: 25
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/admin/Comments/CommentForm.tsx",
+                        lineNumber: 211,
+                        columnNumber: 21
+                    }, undefined),
+                    selectedArticle && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-form-row",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "admin-selected-article",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                                    children: "Selected Article:"
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 241,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "admin-article-preview",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                            children: selectedArticle.title
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 243,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        selectedArticle.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "admin-article-summary",
+                                            children: selectedArticle.summary.length > 150 ? selectedArticle.summary.substring(0, 150) + '...' : selectedArticle.summary
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 245,
+                                            columnNumber: 37
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 242,
+                                    columnNumber: 29
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                            lineNumber: 240,
+                            columnNumber: 25
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/admin/Comments/CommentForm.tsx",
+                        lineNumber: 239,
+                        columnNumber: 21
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-form-row",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "admin-form-group",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    htmlFor: "content",
+                                    className: "admin-form-label",
+                                    children: [
+                                        "Comment Content ",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "admin-required",
+                                            children: "*"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 259,
+                                            columnNumber: 45
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 258,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                                    id: "content",
+                                    placeholder: "Write your comment here...",
+                                    value: content,
+                                    onChange: (e)=>setContent(e.target.value),
+                                    disabled: loading,
+                                    rows: 8,
+                                    className: `admin-form-textarea ${validationErrors.content ? 'admin-input-error' : ''}`,
+                                    maxLength: 1000,
+                                    required: true
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 261,
+                                    columnNumber: 25
+                                }, undefined),
+                                validationErrors.content && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    className: "admin-error-text",
+                                    children: validationErrors.content
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 273,
+                                    columnNumber: 29
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "admin-char-count",
+                                    children: [
+                                        content.length,
+                                        "/1000 characters"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                    lineNumber: 275,
+                                    columnNumber: 25
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                            lineNumber: 257,
+                            columnNumber: 21
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/admin/Comments/CommentForm.tsx",
+                        lineNumber: 256,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "admin-form-actions",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                type: "button",
+                                onClick: handleCancel,
+                                disabled: loading,
+                                className: "admin-btn admin-btn-secondary",
+                                children: "Cancel"
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                lineNumber: 282,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                type: "submit",
+                                disabled: loading || !content.trim() || !selectedArticleId && !isEdit,
+                                className: "admin-btn admin-btn-primary",
+                                children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "admin-loading-spinner-small"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                            lineNumber: 297,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        isEdit ? 'Updating...' : 'Creating...'
+                                    ]
+                                }, void 0, true) : isEdit ? 'Update Comment' : 'Create Comment'
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                                lineNumber: 290,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/admin/Comments/CommentForm.tsx",
+                        lineNumber: 281,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/admin/Comments/CommentForm.tsx",
+                lineNumber: 209,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/admin/Comments/CommentForm.tsx",
+        lineNumber: 198,
+        columnNumber: 9
+    }, undefined);
+};
+_s(CommentForm, "14b0O78TDTOW7cLQMzR4ycQ7uQs=", false, function() {
+    return [
+        (0, _reactRouter.useParams),
+        (0, _reactRouter.useNavigate),
+        (0, _authContext.useAuth)
+    ];
+});
+_c = CommentForm;
+exports.default = CommentForm;
+var _c;
+$RefreshReg$(_c, "CommentForm");
+
+  $parcel$ReactRefreshHelpers$b487.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"1KkTo":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Users", ()=>(0, _usersDefault.default));

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { createComment, editComment } from '../../../api/CommentApi';
+import { createComment, editComment, fetchCommentById } from '../../../api/CommentApi';
 import { fetchAllArticles } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
 import { Comment, Article } from '../../../api/types';
@@ -30,7 +30,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     
     const [content, setContent] = useState<string>(initialComment?.content || '');
     const [selectedArticleId, setSelectedArticleId] = useState<string>(
-        preselectedArticleId || initialComment?.articleId || ''
+        preselectedArticleId || initialComment?.article?.id || ''
     );
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -44,6 +44,12 @@ const CommentForm: React.FC<CommentFormProps> = ({
     useEffect(() => {
         loadArticles();
     }, []);
+
+    useEffect(() => {
+        if (isEdit && finalId && !initialComment) {
+            loadComment();
+        }
+    }, [finalId, isEdit, initialComment]);
 
     useEffect(() => {
         // Track if form has been modified
@@ -69,6 +75,30 @@ const CommentForm: React.FC<CommentFormProps> = ({
         } catch (err) {
             console.error('Failed to load articles:', err);
             setError('Failed to load articles. Please refresh and try again.');
+        }
+    };
+
+    const loadComment = async (): Promise<void> => {
+        if (!finalId) return;
+        
+        try {
+            setLoading(true);
+            setError(null);
+            const comment = await fetchCommentById(finalId);
+            setContent(comment.content);
+            setSelectedArticleId(comment.article?.id || '');
+        } catch (err) {
+            const errorMessage = (err as Error).message || 'An error occurred';
+            setError(errorMessage);
+            if (errorMessage.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else if (errorMessage.toLowerCase().includes('not found')) {
+                navigate('/notfound');
+            } else {
+                navigate('/error');
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -154,6 +184,15 @@ const CommentForm: React.FC<CommentFormProps> = ({
     };
 
     const selectedArticle = articles.find(a => a.id === selectedArticleId);
+
+    if (loading && isEdit && !initialComment) {
+        return (
+            <div className="admin-form-loading">
+                <div className="admin-loading-spinner"></div>
+                <p>Loading comment...</p>
+            </div>
+        );
+    }
 
     return (
         <div className="admin-comment-form-container">

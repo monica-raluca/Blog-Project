@@ -1430,6 +1430,62 @@ body {
   }
 }
 
+.admin-article-comments-section {
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  margin-top: 32px;
+  padding: 24px;
+}
+
+.admin-comments-header {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.admin-comments-header h3 {
+  color: #333;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.admin-comments-loading {
+  color: #6c757d;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  display: flex;
+}
+
+.admin-comments-loading .admin-loading-spinner {
+  margin-right: 12px;
+}
+
+.admin-no-comments {
+  text-align: center;
+  color: #6c757d;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.admin-comments-list {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.admin-comments-list .admin-comment-card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: box-shadow .2s;
+}
+
+.admin-comments-list .admin-comment-card:hover {
+  box-shadow: 0 2px 8px #0000001a;
+}
+
 .admin-comments-container {
   max-width: 100%;
   padding: 20px;

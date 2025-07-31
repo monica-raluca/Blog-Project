@@ -41,6 +41,19 @@ export async function fetchCommentsByArticleId(id: string): Promise<Comment[]> {
     return res.json();
 }
 
+export async function fetchCommentById(commentId: string): Promise<Comment> {
+    // Since we don't have a direct API to fetch a single comment by ID,
+    // we'll fetch all comments and find the one we want
+    const allComments = await fetchAllComments();
+    const foundComment = allComments.find(c => c.id === commentId);
+    
+    if (!foundComment) {
+        throw new Error('Comment not found');
+    }
+    
+    return foundComment;
+}
+
 export async function editComment(articleId: string, commentId: string, content: string, token: string): Promise<Comment> {
     const res = await fetch(`/api/articles/${articleId}/comments/${commentId}`, {
         method: 'PUT',
