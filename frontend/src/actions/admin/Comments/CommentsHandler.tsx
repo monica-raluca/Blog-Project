@@ -1,16 +1,16 @@
 import { Comment } from "../../../api/types";
 import { useNavigate } from "react-router";
-import { deleteComment } from "../../../api/CommentApi";
+import { deleteComment, editComment, fetchCommentById } from "../../../api/CommentApi";
 
 export function useCommentHandlers(
     onEdit?: (comment: Comment) => void,
     onView?: (comment: Comment) => void,
-    token?: string,
+    token?: string | null,
     loadComments?: () => void
 ) {
     const navigate = useNavigate();
 
-    const handleEdit = (comment: Comment): void => {
+    const handleCommentEdit = async (comment: Comment): Promise<void> => {
         if (onEdit) {
             onEdit(comment);
         } else {
@@ -18,7 +18,7 @@ export function useCommentHandlers(
         }
     };
 
-    const handleView = (comment: Comment): void => {
+    const handleCommentView = (comment: Comment): void => {
         if (onView) {
             onView(comment);
         } else {
@@ -26,12 +26,15 @@ export function useCommentHandlers(
         }
     };
 
-    const handleDelete = async (comment: Comment): Promise<void> => {
+    const handleCommentDelete = async (comment: Comment): Promise<void> => {
+        console.log('handleCommentDelete');
+        
         if (!window.confirm('Are you sure you want to delete this comment?') || !token) return;
 
         try {
-            await deleteComment(comment.articleId, comment.id!, token);
+            await deleteComment(comment.article?.id!, comment.id!, token);
             if (loadComments) {
+                console.log('loadComments');
                 loadComments();
             }
         } catch (err) {
@@ -45,8 +48,8 @@ export function useCommentHandlers(
     };
 
     return {
-        handleEdit,
-        handleView,
-        handleDelete
+        handleCommentEdit,
+        handleCommentView,
+        handleCommentDelete
     };
 }

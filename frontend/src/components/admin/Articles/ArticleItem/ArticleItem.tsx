@@ -6,6 +6,7 @@ import { hasRole } from '../../../../api/AuthApi';
 import { deleteArticle, fetchArticleById } from '../../../../api/ArticlesApi';
 import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import CommentItem from '../../Comments/CommentItem/CommentItem';
+import { useCommentHandlers } from '../../../../actions/admin/Comments/CommentsHandler';
 
 import '../AdminArticles.css';
 
@@ -39,7 +40,10 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
     const [comments, setComments] = useState<Comment[]>([]);
     const [commentsLoading, setCommentsLoading] = useState<boolean>(false);
     const [commentsError, setCommentsError] = useState<string | null>(null);
+    
+    // const { handleEdit, handleView, handleDelete } = useCommentHandlers(onEdit, onView, token, () => loadComments(article?.id || ''));
 
+    const { handleCommentEdit, handleCommentView, handleCommentDelete } = useCommentHandlers(onEdit, onView, token, () => loadComments(article?.id || ''));
     // Load article from route params if needed
     useEffect(() => {
         if (useRouteParams && id && !propArticle) {
@@ -336,6 +340,9 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
                                             comment={comment}
                                             variant="card"
                                             showActions={true}
+                                            onEdit={() => handleCommentEdit(comment)}
+                                            onView={() => handleCommentView(comment)}
+                                            onDelete={() => handleCommentDelete(comment)}
                                         />
                                     ))}
                                 </div>

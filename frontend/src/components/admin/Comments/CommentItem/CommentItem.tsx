@@ -50,7 +50,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
 
     // Load article details when comment is available
     useEffect(() => {
-        if (comment?.articleId && !article) {
+        if (comment?.article?.id && !article) {
             loadArticle();
         }
     }, [comment, article]);
@@ -92,10 +92,10 @@ const CommentItem: React.FC<CommentItemProps> = ({
     };
 
     const loadArticle = async (): Promise<void> => {
-        if (!comment?.articleId) return;
+        if (!comment?.article?.id) return;
 
         try {
-            const articleData = await fetchArticleById(comment.articleId);
+            const articleData = await fetchArticleById(comment.article.id);
             setArticle(articleData);
         } catch (err) {
             console.error('Failed to load article:', err);
@@ -112,18 +112,27 @@ const CommentItem: React.FC<CommentItemProps> = ({
     };
 
     const handleDelete = async (): Promise<void> => {
+        // If onDelete prop is provided, delegate to parent component
+        if (onDelete) {
+            console.log('onDelete IN COMMENT ITEM TSX');
+            onDelete();
+            return;
+        }
+
         if (!window.confirm('Are you sure you want to delete this comment? This action cannot be undone.')) {
             return;
         }
 
-        if (!token || !comment?.id || !comment?.articleId) return;
+        if (!token || !comment?.id || !comment?.article?.id) return;
+
+        console.log(token);
+        console.log(comment?.id);
+        console.log(comment?.article?.id);
 
         try {
             setIsDeleting(true);
-            await deleteComment(comment.articleId, comment.id, token);
-            if (onDelete) {
-                onDelete();
-            } else if (useRouteParams) {
+            await deleteComment(comment.article?.id, comment.id, token);
+            if (useRouteParams) {
                 navigate('/admin/comments');
             }
         } catch (error) {

@@ -77,7 +77,6 @@ export interface Comment {
 	content: string;
 	author?: User;
 	editor?: User;
-	articleId: string;
 	createdAt?: string;
 	dateCreated?: string;
 	dateEdited?: string;
