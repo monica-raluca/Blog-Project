@@ -4,7 +4,7 @@ import '../format/Layout.css';
 import RequireRoles from '../api/RequireRoles';
 import { hasRole } from '../api/AuthApi';
 import { useAuth } from '../api/AuthContext';
-import TopBar from '../pages/TopBar';
+import TopBar from './TopBar';
 import { SortCriteria, ArticleFilters } from '../api/types';
 
 interface ArticleControlsContextType {
@@ -36,6 +36,22 @@ export function Layout(): React.ReactElement {
 	const [pageSize, setPageSize] = useState<number>(10);
 	const [pageIndex, setPageIndex] = useState<number>(0);
 	const [sizeInput, setSizeInput] = useState<number>(10);
+	
+	// Admin panel dropdown state
+	const [isAdminPanelOpen, setIsAdminPanelOpen] = useState<boolean>(false);
+
+	// Close admin panel when clicking outside
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as Element;
+			if (isAdminPanelOpen && !target.closest('.admin-panel-dropdown')) {
+				setIsAdminPanelOpen(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => document.removeEventListener('mousedown', handleClickOutside);
+	}, [isAdminPanelOpen]);
 
 	console.log(token, currentUser);
 
@@ -85,12 +101,33 @@ export function Layout(): React.ReactElement {
 						<span className="layout-title">My Blog</span>
 					</div>
 					<nav className="layout-nav">
-						<Link to="/articles" className="layout-nav-link">Home</Link>
+						<Link to="/public/articles" className="layout-nav-link">Home</Link>
 						<RequireRoles roles={["AUTHOR", "ADMIN"]}>
-							<Link to="/articles/create" className="layout-nav-link">Create Article</Link>
+							<Link to="/public/articles/create" className="layout-nav-link">Create Article</Link>
 						</RequireRoles>
 						<RequireRoles roles={["ADMIN"]}>
-							<Link to="/admin/users" className="layout-nav-link">User Management</Link>
+							<div className="admin-panel-dropdown">
+								<button
+									className={`layout-nav-link admin-panel-toggle ${isAdminPanelOpen ? 'active' : ''}`}
+									onClick={() => setIsAdminPanelOpen(!isAdminPanelOpen)}
+								>
+									Admin Panel
+									<span className={`dropdown-arrow ${isAdminPanelOpen ? 'open' : ''}`}>▼</span>
+								</button>
+								{isAdminPanelOpen && (
+									<div className="admin-panel-menu">
+										<Link to="/admin/articles" className="admin-panel-item"onClick={() => setIsAdminPanelOpen(false)}>
+											Manage Articles
+										</Link>
+										<Link to="/admin/comments" className="admin-panel-item" onClick={() => setIsAdminPanelOpen(false)}>
+											Manage Comments
+										</Link>
+										<Link to="/admin/users" className="admin-panel-item"onClick={() => setIsAdminPanelOpen(false)}>
+											Manage Users
+										</Link>
+									</div>
+								)}
+							</div>
 						</RequireRoles>
 					</nav>
 					{/* Article Controls Section */}
@@ -122,7 +159,7 @@ export function Layout(): React.ReactElement {
 					</div>
 				</aside>
 				<main className="layout-main">
-					{(location.pathname === '/articles' || location.pathname === '/user/articles') && (
+					{(location.pathname === '/admin/articles' || location.pathname === '/public/articles') && (
 						<div className="sticky-topbar"><TopBar /></div>
 					)}
 					<Outlet />

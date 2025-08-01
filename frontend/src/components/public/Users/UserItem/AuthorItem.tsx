@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { fetchUserById } from '../api/UsersApi';
-import { fetchArticlesByAuthor } from '../api/ArticlesApi';
-import { UserDetail, Article } from '../api/types';
-import '../format/AuthorItem.css';
+import { fetchUserById } from '../../../../api/UsersApi';
+import { fetchArticlesByAuthor } from '../../../../api/ArticlesApi';
+import { UserDetail, Article } from '../../../../api/types';
+import '../../../../format/AuthorItem.css';
 
 const AuthorItem: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -95,7 +95,7 @@ const AuthorItem: React.FC = () => {
 				<ul className="author-profile-articles-list">
 					{articles.map(article => (
 						<li key={article.id}>
-							<a href={`/articles/${article.id}`}>{article.title}</a>
+							<a href={`/public/articles/${article.id}`}>{article.title}</a>
 						</li>
 					))}
 				</ul>

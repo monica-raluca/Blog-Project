@@ -8,7 +8,7 @@ import { Article } from '../../../api/types';
 
 import './AdminArticles.css';
 
-const Articles: React.FC = () => {
+const AdminArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
 	
 	if (!context) {
@@ -33,7 +33,6 @@ const Articles: React.FC = () => {
             size: pageSize,
             from: pageIndex
         }).then(response => {
-			// Handle both direct array and object with articles property
 			if (Array.isArray(response)) {
 				setArticles(response);
 			} else {
@@ -109,11 +108,11 @@ const Articles: React.FC = () => {
 	};
 
 	const handleEdit = (articleId: string): void => {
-		navigate(`/articles/${articleId}/edit`);
+		navigate(`/admin/articles/${articleId}/edit`);
 	};
 
 	const handleView = (articleId: string): void => {
-		navigate(`/articles/${articleId}`);
+		navigate(`/admin/articles/${articleId}`);
 	};
 
 	return (
@@ -123,7 +122,7 @@ const Articles: React.FC = () => {
 				<h2>Articles Management</h2>
 				<button 
 					className="admin-btn admin-btn-primary"
-					onClick={() => navigate('/articles/create')}
+					onClick={() => navigate('/admin/articles/create')}
 				>
 					Create New Article
 				</button>
@@ -176,7 +175,7 @@ const Articles: React.FC = () => {
 											)}
 										</td>
 										<td className="admin-author-cell">
-											<NavLink to={`/users/${article.author?.id}`}>
+											<NavLink to={`/admin/users/${article.author?.id}`}>
 												{article.author?.username || 'Unknown'}
 											</NavLink>
 										</td>
@@ -263,4 +262,4 @@ const Articles: React.FC = () => {
 	);
 };
 
-export default Articles;
+export default AdminArticles;

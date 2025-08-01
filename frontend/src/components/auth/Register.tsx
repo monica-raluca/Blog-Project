@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { registerUser } from "../api/AuthApi";
+import { registerUser } from "../../api/AuthApi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
-import { useAuth } from "../api/AuthContext";
+import { useAuth } from "../../api/AuthContext";
+
+import '../../format/Login.css';
 
 const Register: React.FC = () => {
     const [lastName, setLastName] = useState<string>('');
@@ -21,7 +23,7 @@ const Register: React.FC = () => {
             const userToken = await registerUser({ lastName, firstName, username, password, email });
             login(JSON.stringify(userToken.token), username);
             setError(null);
-            navigate('/articles');
+            navigate('/public/articles');
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             if (errorMessage.toLowerCase().includes('forbidden')) {

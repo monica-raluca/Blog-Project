@@ -36,7 +36,6 @@ const CommentForm: React.FC<CommentFormProps> = ({
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [validationErrors, setValidationErrors] = useState<{[key: string]: string}>({});
     const [isDirty, setIsDirty] = useState<boolean>(false);
     
     const navigate = useNavigate();
@@ -53,9 +52,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
     }, [finalId, isEdit, initialComment]);
 
     useEffect(() => {
-        // Track if form has been modified
+        // Track if form has been modifie
         const hasChanges = content !== (initialComment?.content || '') ||
-                          selectedArticleId !== (preselectedArticleId || initialComment?.articleId || '');
+                          selectedArticleId !== (preselectedArticleId || initialComment?.article?.id || '');
         setIsDirty(hasChanges);
     }, [content, selectedArticleId, initialComment, preselectedArticleId]);
 
@@ -103,31 +102,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
         }
     };
 
-    const validateForm = (): boolean => {
-        const errors: {[key: string]: string} = {};
-        
-        if (!content.trim()) {
-            errors.content = 'Comment content is required';
-        } else if (content.trim().length < 1) {
-            errors.content = 'Comment must not be empty';
-        } else if (content.trim().length > 1000) {
-            errors.content = 'Comment must be less than 1000 characters';
-        }
-        
-        if (!selectedArticleId && !isEdit) {
-            errors.articleId = 'Please select an article';
-        }
-        
-        setValidationErrors(errors);
-        return Object.keys(errors).length === 0;
-    };
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
-        
-        if (!validateForm()) {
-            return;
-        }
         
         if (!token) {
             setError('Authentication token not found. Please log in again.');
@@ -219,7 +195,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                                 value={selectedArticleId}
                                 onChange={(e) => setSelectedArticleId(e.target.value)}
                                 disabled={loading || !!preselectedArticleId}
-                                className={`admin-form-select ${validationErrors.articleId ? 'admin-input-error' : ''}`}
+                                className="admin-form-select"
                                 required
                             >
                                 <option value="">Select an article...</option>
@@ -229,9 +205,6 @@ const CommentForm: React.FC<CommentFormProps> = ({
                                     </option>
                                 ))}
                             </select>
-                            {validationErrors.articleId && (
-                                <span className="admin-error-text">{validationErrors.articleId}</span>
-                            )}
                         </div>
                     </div>
                 )}
@@ -266,13 +239,10 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             onChange={(e) => setContent(e.target.value)}
                             disabled={loading}
                             rows={8}
-                            className={`admin-form-textarea ${validationErrors.content ? 'admin-input-error' : ''}`}
+                            className="admin-form-textarea" 
                             maxLength={1000}
                             required
                         />
-                        {validationErrors.content && (
-                            <span className="admin-error-text">{validationErrors.content}</span>
-                        )}
                         <div className="admin-char-count">
                             {content.length}/1000 characters
                         </div>

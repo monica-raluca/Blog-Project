@@ -58,7 +58,7 @@ const UserArticleItem: React.FC = () => {
 
         try {
             await deleteArticle(articleId, token);
-            navigate('/articles');
+            navigate('/public/articles');
             
         } catch (err) {
 			const errorMessage = (err as Error).message || 'An error occurred';
@@ -246,7 +246,7 @@ const UserArticleItem: React.FC = () => {
 			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
 			{(article.author?.username === currentUser || hasRole("ADMIN")) &&
 			<div className="article-actions">
-				<button onClick={() => navigate(`/articles/${article.id}/edit`)}>Edit</button>
+				<button onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</button>
 				<button onClick={() => article.id && handleDelete(article.id)}>Delete</button>
 			</div>
 			}

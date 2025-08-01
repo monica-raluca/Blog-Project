@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ArticleControlsContext } from '../layouts/Layout';
+import { ArticleControlsContext } from './Layout';
 import { SortCriteria } from '../api/types';
 import '../format/TopBar.css';
 

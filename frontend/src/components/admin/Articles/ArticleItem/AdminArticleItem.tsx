@@ -20,7 +20,7 @@ interface ArticleItemProps {
     useRouteParams?: boolean; // New prop to enable route parameter handling
 }
 
-const ArticleItem: React.FC<ArticleItemProps> = ({
+const AdminArticleItem: React.FC<ArticleItemProps> = ({
     article: propArticle,
     onEdit,
     onDelete,
@@ -423,4 +423,4 @@ const ArticleItem: React.FC<ArticleItemProps> = ({
     );
 };
 
-export default ArticleItem; 
+export default AdminArticleItem; 

@@ -190,7 +190,7 @@ const Users: React.FC<UsersProps> = ({
                             value={selectedRole}
                             onChange={(e) => {
                                 setSelectedRole(e.target.value);
-                                setCurrentPage(0); // Reset to first page when filtering
+                                setCurrentPage(0);
                             }}
                             className="admin-filter-select"
                         >

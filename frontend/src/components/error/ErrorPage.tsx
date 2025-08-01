@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import '../format/Error.css';
-import '../format/Login.css';
-
+import '../../format/Error.css';`
+import '../../format/Login.css';
+`
 interface ErrorPageProps {
   message?: string;
 }

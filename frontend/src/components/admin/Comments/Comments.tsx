@@ -83,7 +83,6 @@ const Comments: React.FC<CommentsProps> = ({
                 commentsData = await fetchAllComments();
             }
             
-            // Implement pagination locally since API might not support it
             const startIndex = currentPage * pageSize;
             const endIndex = startIndex + pageSize;
             setComments(commentsData.slice(startIndex, endIndex));
@@ -106,8 +105,8 @@ const Comments: React.FC<CommentsProps> = ({
         if (!window.confirm('Are you sure you want to delete this comment?') || !token) return;
 
         try {
-            await deleteComment(comment.articleId, comment.id!, token);
-            await loadComments(); // Reload the comments list
+            await deleteComment(comment.article?.id!, comment.id!, token);
+            await loadComments();
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             if (errorMessage.toLowerCase().includes('forbidden')) {
@@ -143,14 +142,6 @@ const Comments: React.FC<CommentsProps> = ({
                d.getMinutes().toString().padStart(2, '0');
     };
 
-    const getArticleTitle = (articleId: string): string => {
-        // const article = articles.find(a => a.id === articleId);
-        // const article = comments.find(c => c.articleEntity?.id === articleId);
-        // console.log(article);
-        // return article?.articleEntity?.title || 'Unknown Article';
-        return 'Unknown Article';
-    };
-
     const goToPrev = (): void => setCurrentPage(Math.max(0, currentPage - 1));
     const goToNext = (): void => setCurrentPage(currentPage + 1);
 
@@ -168,6 +159,12 @@ const Comments: React.FC<CommentsProps> = ({
         <div className="admin-comments-container">
             <div className="admin-header">
                 <h2>Comments Management</h2>
+                <button 
+                    className="admin-btn admin-btn-primary"
+                    onClick={() => navigate('/admin/comments/create')}
+                >
+                    Create New Comment
+                </button>
                 <div className="admin-actions">
                     <div className="admin-filter-section">
                         <label htmlFor="article-filter">Filter by Article:</label>
@@ -176,7 +173,7 @@ const Comments: React.FC<CommentsProps> = ({
                             value={selectedArticleId}
                             onChange={(e) => {
                                 setSelectedArticleId(e.target.value);
-                                setCurrentPage(0); // Reset to first page when filtering
+                                setCurrentPage(0);
                             }}
                             className="admin-filter-select"
                         >
@@ -216,8 +213,6 @@ const Comments: React.FC<CommentsProps> = ({
                             </tr>
                         ) : (
                             comments.map((comment, idx) => {
-                                // console.log(comment);
-                                // console.log(comment.article);
                                 const createdAt = comment.dateCreated || comment.createdAt || '';
                                 const updatedAt = comment.dateEdited || createdAt;
                                 const showEdited = (
@@ -242,14 +237,14 @@ const Comments: React.FC<CommentsProps> = ({
                                         </td>
                                         <td className="admin-article-cell">
                                             <NavLink 
-                                                to={`/articles/${comment.article?.id}`}
+                                                to={`/admin/articles/${comment.article?.id}`}
                                                 className="admin-article-link"
                                             >
                                                 {comment.article?.title}
                                             </NavLink>
                                         </td>
                                         <td className="admin-author-cell">
-                                            <NavLink to={`/users/${comment.author?.id}`}>
+                                            <NavLink to={`/admin/users/${comment.author?.id}`}>
                                                 {comment.author?.username || 'Unknown'}
                                             </NavLink>
                                         </td>

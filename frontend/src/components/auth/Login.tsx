@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { loginUser } from '../api/AuthApi';
+import { loginUser } from '../../api/AuthApi';
 import { Link } from 'react-router';
-import { useAuth } from '../api/AuthContext';
+import { useAuth } from '../../api/AuthContext';
 
-import '../format/Login.css';
+import '../../format/Login.css';
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
             const userToken = await loginUser({ username, password });
             login(JSON.stringify(userToken.token), username);
             setError(null);
-            navigate('/articles');
+            navigate('/public/articles');
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             if (errorMessage.toLowerCase().includes('forbidden')) {
