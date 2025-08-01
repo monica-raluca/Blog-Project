@@ -122,7 +122,7 @@ export function Layout(): React.ReactElement {
 					</div>
 				</aside>
 				<main className="layout-main">
-					{location.pathname === '/articles' && (
+					{(location.pathname === '/articles' || location.pathname === '/user/articles') && (
 						<div className="sticky-topbar"><TopBar /></div>
 					)}
 					<Outlet />

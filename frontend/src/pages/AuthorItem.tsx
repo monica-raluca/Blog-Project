@@ -20,6 +20,7 @@ const AuthorItem: React.FC = () => {
 			.catch(err => {
 				console.error("Failed to load author", err);
 				const errorMessage = (err as Error).message || 'An error occurred';
+				console.log(errorMessage);
 				if (errorMessage.toLowerCase().includes('not found')) {
 					navigate('/notfound');
 				} else if (errorMessage.toLowerCase().includes('forbidden')) {

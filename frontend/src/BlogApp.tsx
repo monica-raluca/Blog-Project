@@ -17,6 +17,8 @@ import Articles from './components/admin/Articles/Articles';
 import { ArticleItem } from './components/admin/Articles';
 import { Comments, CommentForm, CommentItem } from './components/admin/Comments';
 import { Users, UserForm, UserItem } from './components/admin/Users';
+import UserArticles from './components/public/Articles/UserArticles';
+import UserArticleItem from './components/public/Articles/ArticleItem/UserArticleItem';
 
 
 export function BlogApp(): React.ReactElement {
@@ -30,6 +32,9 @@ export function BlogApp(): React.ReactElement {
 						<Route path="articles/:id" element={<ArticleItem variant="detailed" useRouteParams={true} />} />
 						<Route path="/articles/create" element={<ArticleForm />} />
 						<Route path="/articles/:id/edit" element={<ArticleForm isEdit={true} />} />
+
+						<Route path="user/articles" element={<UserArticles />} />
+						<Route path="user/articles/:id" element={<UserArticleItem />} />
 						<Route path="login" element={<Login />} />
 						<Route path="register" element={<Register />} />
 						<Route path="users/:id" element={<AuthorItem />} />
