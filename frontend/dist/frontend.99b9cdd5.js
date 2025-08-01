@@ -28966,7 +28966,7 @@ var _articlesApi = require("../../../../api/ArticlesApi");
 var _commentApi = require("../../../../api/CommentApi");
 var _commentItem = require("../../Comments/CommentItem/CommentItem");
 var _commentItemDefault = parcelHelpers.interopDefault(_commentItem);
-var _commentsHandler = require("../../../../actions/admin/Comments/CommentsHandler");
+var _commentsHandler = require("../../../../handlers/CommentsHandler");
 var _adminArticlesCss = require("../AdminArticles.css");
 var _s = $RefreshSig$();
 const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActions = true, variant = 'card', useRouteParams = false })=>{
@@ -29774,7 +29774,7 @@ $RefreshReg$(_c, "AdminArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../Comments/CommentItem/CommentItem":"9Palx","../../../../actions/admin/Comments/CommentsHandler":"fuMem","../AdminArticles.css":"lzaq6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"7mCLt":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../Comments/CommentItem/CommentItem":"9Palx","../AdminArticles.css":"lzaq6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../../handlers/CommentsHandler":"7sDgS"}],"7mCLt":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
@@ -30615,12 +30615,12 @@ $RefreshReg$(_c, "CommentItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","../../Articles/AdminArticles.css":"lzaq6","../AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fuMem":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","../../Articles/AdminArticles.css":"lzaq6","../AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"lzaq6":[function() {},{}],"7sDgS":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useCommentHandlers", ()=>useCommentHandlers);
 var _reactRouter = require("react-router");
-var _commentApi = require("../../../api/CommentApi");
+var _commentApi = require("../api/CommentApi");
 var _s = $RefreshSig$();
 function useCommentHandlers(onEdit, onView, token, loadComments) {
     _s();
@@ -30660,7 +30660,7 @@ _s(useCommentHandlers, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     ];
 });
 
-},{"react-router":"2jawN","../../../api/CommentApi":"7mCLt","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lzaq6":[function() {},{}],"j8zhy":[function(require,module,exports,__globalThis) {
+},{"react-router":"2jawN","../api/CommentApi":"7mCLt","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"j8zhy":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Comments", ()=>(0, _commentsDefault.default));

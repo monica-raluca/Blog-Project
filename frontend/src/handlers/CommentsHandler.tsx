@@ -1,6 +1,6 @@
-import { Comment } from "../../../api/types";
+import { Comment } from "../api/types";
 import { useNavigate } from "react-router";
-import { deleteComment, editComment, fetchCommentById } from "../../../api/CommentApi";
+import { deleteComment, editComment, fetchCommentById } from "../api/CommentApi";
 
 export function useCommentHandlers(
     onEdit?: (comment: Comment) => void,

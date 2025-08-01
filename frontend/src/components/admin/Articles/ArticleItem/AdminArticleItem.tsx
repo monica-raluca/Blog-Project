@@ -6,7 +6,7 @@ import { hasRole } from '../../../../api/AuthApi';
 import { deleteArticle, fetchArticleById } from '../../../../api/ArticlesApi';
 import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import CommentItem from '../../Comments/CommentItem/CommentItem';
-import { useCommentHandlers } from '../../../../actions/admin/Comments/CommentsHandler';
+import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
 
 import '../AdminArticles.css';
 
