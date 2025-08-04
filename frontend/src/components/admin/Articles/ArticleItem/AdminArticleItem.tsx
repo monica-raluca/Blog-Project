@@ -139,7 +139,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                 onDelete();
             } else if (useRouteParams) {
                 // Navigate back to articles list after deletion
-                navigate('/articles');
+                navigate('/admin/articles');
             }
         } catch (error) {
             console.error('Failed to delete article:', error);
@@ -214,7 +214,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                     <div className="admin-page-header">
                         <div className="admin-page-header-left">
                             <button 
-                                onClick={() => navigate('/articles')}
+                                onClick={() => navigate('/admin/articles')}
                                 className="admin-btn admin-btn-secondary admin-back-btn"
                             >
                                 ← Back to Articles

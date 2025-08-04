@@ -29057,7 +29057,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
             await (0, _articlesApi.deleteArticle)(article.id, token);
             if (onDelete) onDelete();
             else if (useRouteParams) // Navigate back to articles list after deletion
-            navigate('/articles');
+            navigate('/admin/articles');
         } catch (error) {
             console.error('Failed to delete article:', error);
             alert('Failed to delete article. Please try again.');
@@ -29190,7 +29190,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "admin-page-header-left",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                            onClick: ()=>navigate('/articles'),
+                            onClick: ()=>navigate('/admin/articles'),
                             className: "admin-btn admin-btn-secondary admin-back-btn",
                             children: "\u2190 Back to Articles"
                         }, void 0, false, {
