@@ -178,16 +178,12 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             id="title"
                             type="text"
                             placeholder="Enter a compelling title for your article"
-                            {...register("title", { 
-                                required: "Title is required",
-                                maxLength: { value: 200, message: "Title cannot exceed 200 characters" }
-                            })}
+                            {...register("title", {required: "Title is required"})}
                             disabled={loading}
                             className="admin-form-input"
-                            maxLength={200}
                         />
                         <div className="admin-char-count">
-                            {title.length}/200 characters
+                            {title.length} characters
                         </div>
                         {errors.title && (
                             <p className="admin-field-error">{errors.title.message}</p>
