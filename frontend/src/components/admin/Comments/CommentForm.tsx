@@ -4,6 +4,7 @@ import { createComment, editComment, fetchCommentById } from '../../../api/Comme
 import { fetchAllArticles } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
 import { Comment, Article } from '../../../api/types';
+import { useForm } from 'react-hook-form';
 // import { useCommentHandlers } from '../../../actions/admin/Comments/CommentsHandler';
 
 import '../Articles/AdminArticles.css';
@@ -18,6 +19,11 @@ interface CommentFormProps {
     preselectedArticleId?: string;
 }
 
+interface CommentFormData {
+    content: string;
+    articleId: string;
+}
+
 const CommentForm: React.FC<CommentFormProps> = ({
     isEdit = false,
     commentId,
@@ -29,10 +35,6 @@ const CommentForm: React.FC<CommentFormProps> = ({
     const { id: routeId } = useParams<{ id: string }>();
     const finalId = commentId || routeId;
     
-    const [content, setContent] = useState<string>(initialComment?.content || '');
-    const [selectedArticleId, setSelectedArticleId] = useState<string>(
-        preselectedArticleId || initialComment?.article?.id || ''
-    );
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -40,6 +42,22 @@ const CommentForm: React.FC<CommentFormProps> = ({
     
     const navigate = useNavigate();
     const { token, currentUser } = useAuth();
+
+    const { 
+        register, 
+        handleSubmit, 
+        watch, 
+        setValue, 
+        formState: { errors } 
+    } = useForm<CommentFormData>({
+        defaultValues: {
+            content: initialComment?.content || '',
+            articleId: preselectedArticleId || initialComment?.article?.id || ''
+        }
+    });
+
+    const content = watch('content');
+    const selectedArticleId = watch('articleId');
 
     useEffect(() => {
         loadArticles();
@@ -52,7 +70,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     }, [finalId, isEdit, initialComment]);
 
     useEffect(() => {
-        // Track if form has been modifie
+        // Track if form has been modified
         const hasChanges = content !== (initialComment?.content || '') ||
                           selectedArticleId !== (preselectedArticleId || initialComment?.article?.id || '');
         setIsDirty(hasChanges);
@@ -85,8 +103,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
             setLoading(true);
             setError(null);
             const comment = await fetchCommentById(finalId);
-            setContent(comment.content);
-            setSelectedArticleId(comment.article?.id || '');
+            setValue('content', comment.content);
+            setValue('articleId', comment.article?.id || '');
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             setError(errorMessage);
@@ -102,16 +120,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        e.preventDefault();
-        
+    const handleFormSubmit = async (data: CommentFormData): Promise<void> => {
         if (!token) {
             setError('Authentication token not found. Please log in again.');
-            return;
-        }
-
-        if (!selectedArticleId) {
-            setError('Article ID is required.');
             return;
         }
 
@@ -122,9 +133,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
             let result: Comment;
             
             if (isEdit && finalId) {
-                result = await editComment(selectedArticleId, finalId, content.trim(), token);
+                result = await editComment(data.articleId, finalId, data.content.trim(), token);
             } else {
-                result = await createComment(selectedArticleId, token, content.trim());
+                result = await createComment(data.articleId, token, data.content.trim());
             }
 
             setIsDirty(false);
@@ -183,7 +194,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="admin-comment-form">
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-comment-form">
                 {!isEdit && (
                     <div className="admin-form-row">
                         <div className="admin-form-group">
@@ -192,11 +203,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             </label>
                             <select
                                 id="article"
-                                value={selectedArticleId}
-                                onChange={(e) => setSelectedArticleId(e.target.value)}
+                                {...register("articleId", { required: "Please select an article" })}
                                 disabled={loading || !!preselectedArticleId}
                                 className="admin-form-select"
-                                required
                             >
                                 <option value="">Select an article...</option>
                                 {articles.map((article) => (
@@ -205,6 +214,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
                                     </option>
                                 ))}
                             </select>
+                            {errors.articleId && (
+                                <p className="admin-field-error">{errors.articleId.message}</p>
+                            )}
                         </div>
                     </div>
                 )}
@@ -235,17 +247,21 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         <textarea
                             id="content"
                             placeholder="Write your comment here..."
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
+                            {...register("content", { 
+                                required: "Comment content is required",
+                                maxLength: { value: 1000, message: "Comment cannot exceed 1000 characters" }
+                            })}
                             disabled={loading}
                             rows={8}
                             className="admin-form-textarea" 
                             maxLength={1000}
-                            required
                         />
                         <div className="admin-char-count">
                             {content.length}/1000 characters
                         </div>
+                        {errors.content && (
+                            <p className="admin-field-error">{errors.content.message}</p>
+                        )}
                     </div>
                 </div>
 

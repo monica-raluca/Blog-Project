@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
 import { Article } from '../../../api/types';
+import { useForm } from 'react-hook-form';
 
 import './AdminArticles.css';
 
@@ -14,7 +15,12 @@ interface ArticleFormProps {
     initialData?: Partial<Article>;
 }
 
-const ArticleForm: React.FC<ArticleFormProps> = ({
+interface ArticleFormData {
+    title: string;
+    content: string;
+}
+
+const AdminArticleForm: React.FC<ArticleFormProps> = ({
     isEdit = false,
     id,
     onSubmit,
@@ -24,14 +30,28 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     const { id: routeId } = useParams<{ id: string }>();
     const finalId = id || routeId;
     
-    const [title, setTitle] = useState<string>(initialData?.title || '');
-    const [content, setContent] = useState<string>(initialData?.content || '');
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
     
     const navigate = useNavigate();
     const { token } = useAuth();
+
+    const { 
+        register, 
+        handleSubmit, 
+        watch, 
+        setValue, 
+        formState: { errors } 
+    } = useForm<ArticleFormData>({
+        defaultValues: {
+            title: initialData?.title || '',
+            content: initialData?.content || ''
+        }
+    });
+
+    const title = watch('title');
+    const content = watch('content');
 
     useEffect(() => {
         if (isEdit && finalId && !initialData) {
@@ -53,8 +73,8 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
             setLoading(true);
             setError(null);
             fetchArticleById(finalId).then(article => {
-                setTitle(article.title);
-                setContent(article.content);
+                setValue('title', article.title);
+                setValue('content', article.content);
             });
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
@@ -71,9 +91,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        e.preventDefault();
-        
+    const handleFormSubmit = async (data: ArticleFormData): Promise<void> => {
         if (!token) {
             setError('Authentication token not found. Please log in again.');
             return;
@@ -83,8 +101,8 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
         setError(null);
 
         const articleData: Article = { 
-            title: title.trim(), 
-            content: content.trim()
+            title: data.title.trim(), 
+            content: data.content.trim()
         };
 
         try {
@@ -150,7 +168,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="admin-article-form">
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-article-form">
                 <div className="admin-form-row">
                     <div className="admin-form-group">
                         <label htmlFor="title" className="admin-form-label">
@@ -160,8 +178,10 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                             id="title"
                             type="text"
                             placeholder="Enter a compelling title for your article"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            {...register("title", { 
+                                required: "Title is required",
+                                maxLength: { value: 200, message: "Title cannot exceed 200 characters" }
+                            })}
                             disabled={loading}
                             className="admin-form-input"
                             maxLength={200}
@@ -169,6 +189,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                         <div className="admin-char-count">
                             {title.length}/200 characters
                         </div>
+                        {errors.title && (
+                            <p className="admin-field-error">{errors.title.message}</p>
+                        )}
                     </div>
                 </div>
 
@@ -180,8 +203,7 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                         <textarea
                             id="content"
                             placeholder="Write your article content here..."
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
+                            {...register("content", { required: "Content is required" })}
                             disabled={loading}
                             rows={15}
                             className="admin-form-textarea"
@@ -189,6 +211,9 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
                         <div className="admin-char-count">
                             {content.length} characters
                         </div>
+                        {errors.content && (
+                            <p className="admin-field-error">{errors.content.message}</p>
+                        )}
                     </div>
                 </div>
 
@@ -221,4 +246,4 @@ const ArticleForm: React.FC<ArticleFormProps> = ({
     );
 };
 
-export default ArticleForm; 
+export default AdminArticleForm; 

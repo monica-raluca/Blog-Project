@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { updateUserRole, fetchUserById } from '../../../api/UsersApi';
 import { useAuth } from '../../../api/AuthContext';
 import { UserDetail, UserRole } from '../../../api/types';
+import { useForm } from 'react-hook-form';
 
 import '../Articles/AdminArticles.css';
 import './AdminUsers.css';
@@ -12,6 +13,10 @@ interface UserFormProps {
     initialUser?: UserDetail;
     onSubmit?: (user: UserDetail) => void;
     onCancel?: () => void;
+}
+
+interface UserFormData {
+    role: string;
 }
 
 const UserForm: React.FC<UserFormProps> = ({
@@ -24,13 +29,22 @@ const UserForm: React.FC<UserFormProps> = ({
     const finalId = userId || routeId;
     
     const [user, setUser] = useState<UserDetail | null>(initialUser || null);
-    const [selectedRole, setSelectedRole] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
     
     const navigate = useNavigate();
     const { token, currentUser } = useAuth();
+
+    const { 
+        register, 
+        handleSubmit, 
+        watch, 
+        setValue, 
+        formState: { errors } 
+    } = useForm<UserFormData>();
+
+    const selectedRole = watch('role');
 
     const availableRoles = [
         { value: 'ROLE_USER', label: 'User', description: 'Can view and comment on articles' },
@@ -43,9 +57,9 @@ const UserForm: React.FC<UserFormProps> = ({
             loadUser();
         } else if (initialUser) {
             setUser(initialUser);
-            setSelectedRole(getCurrentRole(initialUser));
+            setValue('role', getCurrentRole(initialUser));
         }
-    }, [finalId, initialUser]);
+    }, [finalId, initialUser, setValue]);
 
     useEffect(() => {
         if (user) {
@@ -74,7 +88,7 @@ const UserForm: React.FC<UserFormProps> = ({
             setError(null);
             const userData = await fetchUserById(finalId);
             setUser(userData);
-            setSelectedRole(getCurrentRole(userData));
+            setValue('role', getCurrentRole(userData));
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             setError(errorMessage);
@@ -90,21 +104,14 @@ const UserForm: React.FC<UserFormProps> = ({
         }
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        e.preventDefault();
-        
+    const handleFormSubmit = async (data: UserFormData): Promise<void> => {
         if (!token || !user) {
             setError('Authentication required or user not loaded.');
             return;
         }
 
-        if (!selectedRole) {
-            setError('Please select a role.');
-            return;
-        }
-
         // Prevent changing own role to non-admin
-        if (user.username === currentUser && selectedRole !== 'ROLE_ADMIN') {
+        if (user.username === currentUser && data.role !== 'ROLE_ADMIN') {
             setError('You cannot remove your own admin privileges.');
             return;
         }
@@ -112,13 +119,13 @@ const UserForm: React.FC<UserFormProps> = ({
         setLoading(true);
         setError(null);
 
-        const roleUpdate: UserRole = { role: selectedRole };
+        const roleUpdate: UserRole = { role: data.role };
 
         try {
             console.log('Updating user role:', {
                 userId: user.id,
                 currentRole: getCurrentRole(user),
-                newRole: selectedRole,
+                newRole: data.role,
                 roleUpdate,
                 token: token ? token : 'Missing'
             });
@@ -223,7 +230,7 @@ const UserForm: React.FC<UserFormProps> = ({
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="admin-user-form">
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-user-form">
                 <div className="admin-form-row">
                     <div className="admin-form-group">
                                                  <label className="admin-form-label">
@@ -245,10 +252,8 @@ const UserForm: React.FC<UserFormProps> = ({
                                     <label className="admin-role-option-label">
                                         <input
                                             type="radio"
-                                            name="role"
                                             value={role.value}
-                                            checked={selectedRole === role.value}
-                                            onChange={(e) => setSelectedRole(e.target.value)}
+                                            {...register("role", { required: "Please select a role" })}
                                             disabled={loading || (isCurrentUser && role.value !== 'ROLE_ADMIN')}
                                             className="admin-radio-input"
                                         />
@@ -269,6 +274,9 @@ const UserForm: React.FC<UserFormProps> = ({
                                 </div>
                             ))}
                         </div>
+                        {errors.role && (
+                            <p className="admin-field-error">{errors.role.message}</p>
+                        )}
                     </div>
                 </div>
 

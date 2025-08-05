@@ -3,25 +3,33 @@ import { registerUser } from "../../api/AuthApi";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { useAuth } from "../../api/AuthContext";
+import { useForm } from 'react-hook-form';
 
 import '../../format/Login.css';
 
+interface RegisterFormData {
+    firstName: string;
+    lastName: string;
+    username: string;
+    password: string;
+    email: string;
+}
+
 const Register: React.FC = () => {
-    const [lastName, setLastName] = useState<string>('');
-    const [firstName, setFirstName] = useState<string>('');
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
-
     const { login } = useAuth();
+    
+    const { 
+        register, 
+        handleSubmit, 
+        formState: { errors } 
+    } = useForm<RegisterFormData>();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-        e.preventDefault();
+    const onSubmit = async (data: RegisterFormData): Promise<void> => {
         try {
-            const userToken = await registerUser({ lastName, firstName, username, password, email });
-            login(JSON.stringify(userToken.token), username);
+            const userToken = await registerUser(data);
+            login(JSON.stringify(userToken.token), data.username);
             setError(null);
             navigate('/public/articles');
         } catch (err) {
@@ -42,53 +50,56 @@ const Register: React.FC = () => {
         <div className="login-wrapper">
             <div className="login-box">
                 <h2>Register</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-group">                   
-                        <input
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            required
+                        <input type="text"
+                            {...register("firstName", {required: "First name is required" })}
                         />
                         <label>First name</label>
+                        {errors.firstName && (
+                            <p className="field-error">{errors.firstName.message}</p>
+                        )}
                     </div>
                     <div className="input-group">
-                        <input
-                            type="text"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            required
+                        <input type="text"
+                            {...register("lastName", {required: "Last name is required"})}
                         />
                         <label>Last name</label>
+                        {errors.lastName && (
+                            <p className="field-error">{errors.lastName.message}</p>
+                        )}
                     </div>
                     <div className="input-group">                    
                         <input
                             type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
+                            {...register("username", {required: "Username is required"})}
                         />
                         <label>Username</label>
+                        {errors.username && (
+                            <p className="field-error">{errors.username.message}</p>
+                        )}
                     </div>
                     <div className="input-group">
                         <input
                             type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
+                            {...register("password", {required: "Password is required"})}
                         />
                         <label>Password</label>
+                        {errors.password && (
+                            <p className="field-error">{errors.password.message}</p>
+                        )}
                     </div>
                     <div className="input-group">                     
                         <input
                             type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
+                            {...register("email", {required: "Email is required", pattern: /^\S+@\S+$/i})}
                         />
                         <label>Email</label>
+                        {errors.email && (
+                            <p className="field-error">{errors.email.message}</p>
+                        )}
                     </div>
-                    <button type="submit" className="btn">Register</button>
+                    <input type="submit" value="Register" className="btn" />
                     <div><em>Already have an account? <Link to="/login">Login</Link></em></div>
                 </form>
                 {error && <p className="error-message">{error}</p>}

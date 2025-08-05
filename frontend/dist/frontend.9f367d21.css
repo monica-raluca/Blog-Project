@@ -2649,6 +2649,15 @@ body {
   margin-top: 15px;
 }
 
+.field-error {
+  color: #d32f2f;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: .85em;
+  line-height: 1.2;
+}
+
 .author-profile {
   -webkit-backdrop-filter: blur(3px);
   box-sizing: border-box;
