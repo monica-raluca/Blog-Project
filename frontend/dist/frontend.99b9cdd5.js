@@ -28791,15 +28791,10 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     type: "text",
                                     placeholder: "Enter a compelling title for your article",
                                     ...register("title", {
-                                        required: "Title is required",
-                                        maxLength: {
-                                            value: 200,
-                                            message: "Title cannot exceed 200 characters"
-                                        }
+                                        required: "Title is required"
                                     }),
                                     disabled: loading,
-                                    className: "admin-form-input",
-                                    maxLength: 200
+                                    className: "admin-form-input"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
                                     lineNumber: 177,
@@ -28809,11 +28804,11 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     className: "admin-char-count",
                                     children: [
                                         title.length,
-                                        "/200 characters"
+                                        " characters"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 189,
+                                    lineNumber: 185,
                                     columnNumber: 25
                                 }, undefined),
                                 errors.title && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28821,7 +28816,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 189,
                                     columnNumber: 29
                                 }, undefined)
                             ]
@@ -28850,13 +28845,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 201,
+                                            lineNumber: 197,
                                             columnNumber: 45
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 200,
+                                    lineNumber: 196,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -28870,7 +28865,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     className: "admin-form-textarea"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 199,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28881,7 +28876,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 211,
+                                    lineNumber: 207,
                                     columnNumber: 25
                                 }, undefined),
                                 errors.content && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28889,18 +28884,18 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     children: errors.content.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 215,
+                                    lineNumber: 211,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                            lineNumber: 199,
+                            lineNumber: 195,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 198,
+                        lineNumber: 194,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28914,7 +28909,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 221,
+                                lineNumber: 217,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28927,7 +28922,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 236,
+                                            lineNumber: 232,
                                             columnNumber: 33
                                         }, undefined),
                                         isEdit ? 'Updating...' : 'Creating...'
@@ -28935,13 +28930,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                 }, void 0, true) : isEdit ? 'Update Article' : 'Create Article'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 229,
+                                lineNumber: 225,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 220,
+                        lineNumber: 216,
                         columnNumber: 17
                     }, undefined)
                 ]
