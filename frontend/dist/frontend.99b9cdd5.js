@@ -37988,23 +37988,6 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         lineNumber: 254,
                         columnNumber: 17
                     }, undefined),
-                    isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-warning-box",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                children: "\u26A0\uFE0F Warning:"
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 293,
-                                columnNumber: 25
-                            }, undefined),
-                            " You are editing your own user account. Removing admin privileges will restrict your access to admin features."
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 292,
-                        columnNumber: 21
-                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "admin-form-actions",
                         children: [
@@ -38016,7 +37999,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 299,
+                                lineNumber: 292,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -38029,7 +38012,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 314,
+                                            lineNumber: 307,
                                             columnNumber: 33
                                         }, undefined),
                                         "Updating Role..."
@@ -38037,13 +38020,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 }, void 0, true) : 'Update User Role'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 307,
+                                lineNumber: 300,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 298,
+                        lineNumber: 291,
                         columnNumber: 17
                     }, undefined)
                 ]

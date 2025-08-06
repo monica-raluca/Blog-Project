@@ -288,13 +288,6 @@ const UserForm: React.FC<UserFormProps> = ({
                     </div>
                 </div>
 
-                {isCurrentUser && (
-                    <div className="admin-warning-box">
-                        <strong>⚠️ Warning:</strong> You are editing your own user account. 
-                        Removing admin privileges will restrict your access to admin features.
-                    </div>
-                )}
-
                 <div className="admin-form-actions">
                     <button
                         type="button"
