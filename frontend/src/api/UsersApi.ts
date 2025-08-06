@@ -1,4 +1,4 @@
-import { UserDetail, UserRole, ApiError, RegisterUserData } from './types';
+import { UserDetail, UserRole, ApiError, UserEditRequest } from './types';
 
 const createAuthHeaders = (token: string): HeadersInit => ({
     'Authorization': `Bearer ${token}`,
@@ -64,7 +64,7 @@ export async function updateUserRole(id: string, newRole: UserRole, token: strin
     return res.json();
 }
 
-export async function updateUser(id: string, userRequest: RegisterUserData, token: string): Promise<UserDetail> {
+export async function updateUser(id: string, userRequest: UserEditRequest, token: string): Promise<UserDetail> {
     const res = await fetch(`/api/users/${id}/edit`, {
         method: 'PUT',
         headers: {
@@ -73,7 +73,7 @@ export async function updateUser(id: string, userRequest: RegisterUserData, toke
         },
         body: JSON.stringify(userRequest)
     });
-    
+
     if (!res.ok) {
         let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}

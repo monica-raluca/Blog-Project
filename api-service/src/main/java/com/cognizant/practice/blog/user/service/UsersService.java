@@ -134,12 +134,14 @@ public class UsersService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
         }
 
-        if(userRepository.findByUsername(userRequest.username()).isPresent() && userRepository.findByUsername(userRequest.username()).get().getId() != id) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
-        }
+        for (UserEntity user : userRepository.findAll()) {
+            if (user.getId().equals(id)) {
+                continue;
+            }
 
-        if(userRepository.findByEmail(userRequest.email()).isPresent() && userRepository.findByEmail(userRequest.email()).get().getId() != id) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
+            if (user.getEmail().equals(userRequest.email()) || user.getUsername().equals(userRequest.username())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email or username already exist");
+            }
         }
 
         Optional<UserEntity> user = userRepository.findById(id);

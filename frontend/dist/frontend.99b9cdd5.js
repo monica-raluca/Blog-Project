@@ -37216,8 +37216,8 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                             (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                                 onClick: ()=>handleEdit(user),
                                                                 className: "admin-btn admin-btn-sm admin-btn-primary",
-                                                                title: "Edit User Role",
-                                                                children: "Edit Role"
+                                                                title: "Edit User",
+                                                                children: "Edit User"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
                                                                 lineNumber: 294,
@@ -37481,6 +37481,10 @@ var _adminArticlesCss = require("../Articles/AdminArticles.css");
 var _adminUsersCss = require("./AdminUsers.css");
 var _s = $RefreshSig$();
 const userFormSchema = _yup1.object({
+    firstName: _yup1.string().required('First name is required'),
+    lastName: _yup1.string().required('Last name is required'),
+    email: _yup1.string().email('Invalid email address').required('Email is required'),
+    username: _yup1.string().required('Username is required'),
     role: _yup1.string().required('Role is required')
 }).required();
 const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
@@ -37493,10 +37497,21 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
     const [isDirty, setIsDirty] = (0, _react.useState)(false);
     const navigate = (0, _reactRouter.useNavigate)();
     const { token, currentUser } = (0, _authContext.useAuth)();
-    const { register, handleSubmit, watch, setValue, formState: { errors } } = (0, _reactHookForm.useForm)({
-        resolver: (0, _yup.yupResolver)(userFormSchema)
+    const { register, handleSubmit, watch, setValue, control, formState: { errors } } = (0, _reactHookForm.useForm)({
+        resolver: (0, _yup.yupResolver)(userFormSchema),
+        defaultValues: {
+            firstName: initialUser?.firstName || '',
+            lastName: initialUser?.lastName || '',
+            email: initialUser?.email || '',
+            username: initialUser?.username || '',
+            role: initialUser?.role || ''
+        }
     });
-    const selectedRole = watch('role');
+    const watchedFormData = (0, _reactHookForm.useWatch)({
+        control
+    });
+    const selectedRole = watchedFormData.role;
+    const formData = watch();
     const availableRoles = [
         {
             value: 'ROLE_USER',
@@ -37518,6 +37533,10 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
         if (finalId && !initialUser) loadUser();
         else if (initialUser) {
             setUser(initialUser);
+            setValue('firstName', initialUser.firstName);
+            setValue('lastName', initialUser.lastName);
+            setValue('email', initialUser.email);
+            setValue('username', initialUser.username);
             setValue('role', getCurrentRole(initialUser));
         }
     }, [
@@ -37526,13 +37545,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
         setValue
     ]);
     (0, _react.useEffect)(()=>{
-        if (user) {
+        if (user && watchedFormData) {
             const currentRole = getCurrentRole(user);
-            const hasChanges = selectedRole !== currentRole;
+            const hasChanges = watchedFormData.role !== currentRole || watchedFormData.firstName !== user.firstName || watchedFormData.lastName !== user.lastName || watchedFormData.email !== user.email || watchedFormData.username !== user.username;
             setIsDirty(hasChanges);
         }
     }, [
-        selectedRole,
+        watchedFormData,
         user
     ]);
     const getCurrentRole = (userData)=>{
@@ -37552,6 +37571,10 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
             setError(null);
             const userData = await (0, _usersApi.fetchUserById)(finalId);
             setUser(userData);
+            setValue('firstName', userData.firstName);
+            setValue('lastName', userData.lastName);
+            setValue('email', userData.email);
+            setValue('username', userData.username);
             setValue('role', getCurrentRole(userData));
         } catch (err) {
             const errorMessage = err.message || 'An error occurred';
@@ -37575,19 +37598,23 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
         }
         setLoading(true);
         setError(null);
-        const roleUpdate = {
-            role: data.role
+        const userUpdate = {
+            role: data.role,
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            username: data.username
         };
         try {
             console.log('Updating user role:', {
                 userId: user.id,
                 currentRole: getCurrentRole(user),
                 newRole: data.role,
-                roleUpdate,
+                userUpdate,
                 token: token ? token : 'Missing'
             });
             console.log(token);
-            const updatedUser = await (0, _usersApi.updateUserRole)(user.id, roleUpdate, token);
+            const updatedUser = await (0, _usersApi.updateUser)(user.id, userUpdate, token);
             console.log(updatedUser);
             setIsDirty(false);
             if (onSubmit) onSubmit(updatedUser);
@@ -37613,20 +37640,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 className: "admin-loading-spinner"
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 181,
+                lineNumber: 208,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading user..."
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 182,
+                lineNumber: 209,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 180,
+        lineNumber: 207,
         columnNumber: 13
     }, undefined);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37638,14 +37665,14 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 191,
+                    lineNumber: 218,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 192,
+                    lineNumber: 219,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -37654,18 +37681,18 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 193,
+                    lineNumber: 220,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserForm.tsx",
-            lineNumber: 190,
+            lineNumber: 217,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 189,
+        lineNumber: 216,
         columnNumber: 13
     }, undefined);
     const isCurrentUser = user.username === currentUser;
@@ -37675,15 +37702,15 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "admin-form-header",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                    children: "Edit User Role"
+                    children: "Edit User"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 209,
+                    lineNumber: 236,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 208,
+                lineNumber: 235,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37693,7 +37720,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 214,
+                        lineNumber: 241,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -37701,172 +37728,233 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 213,
+                lineNumber: 240,
                 columnNumber: 17
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-user-info-section",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        children: "User Information"
-                    }, void 0, false, {
-                        fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 219,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-info-grid",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-info-item",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        children: "Username:"
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 222,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "admin-user-username",
-                                        children: [
-                                            user.username,
-                                            isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                className: "admin-current-user-badge",
-                                                children: "You"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 225,
-                                                columnNumber: 47
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 223,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 221,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-info-item",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        children: "Full Name:"
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 229,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        children: `${user.firstName} ${user.lastName}`
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 230,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 228,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-info-item",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        children: "Email:"
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 233,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        children: user.email
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 234,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 232,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-info-item",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                        children: "User ID:"
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 237,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "admin-user-id",
-                                        children: user.id
-                                    }, void 0, false, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 238,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 236,
-                                columnNumber: 21
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 220,
-                        columnNumber: 17
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 218,
-                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                 onSubmit: handleSubmit(handleFormSubmit),
                 className: "admin-user-form",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                                className: "admin-form-label",
+                        className: "admin-form-section",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                children: "Edit User Details"
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                lineNumber: 247,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "admin-form-row",
                                 children: [
-                                    "Current Role: ",
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: `admin-role-badge admin-role-${getCurrentRole(user).replace('ROLE_', '').toLowerCase()}`,
-                                        children: getCurrentRole(user).replace('ROLE_', '')
-                                    }, void 0, false, {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-form-group",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                htmlFor: "firstName",
+                                                className: "admin-form-label",
+                                                children: [
+                                                    "First Name ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                        className: "admin-required",
+                                                        children: "*"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                                        lineNumber: 252,
+                                                        columnNumber: 44
+                                                    }, undefined)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 251,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                type: "text",
+                                                ...register("firstName"),
+                                                disabled: loading,
+                                                className: "admin-form-input",
+                                                placeholder: "Enter first name"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 254,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                className: "admin-field-error",
+                                                children: errors.firstName?.message
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 261,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 247,
-                                        columnNumber: 44
+                                        lineNumber: 250,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-form-group",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                htmlFor: "lastName",
+                                                className: "admin-form-label",
+                                                children: [
+                                                    "Last Name ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                        className: "admin-required",
+                                                        children: "*"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                                        lineNumber: 266,
+                                                        columnNumber: 43
+                                                    }, undefined)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 265,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                type: "text",
+                                                ...register("lastName"),
+                                                disabled: loading,
+                                                className: "admin-form-input",
+                                                placeholder: "Enter last name"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 268,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                className: "admin-field-error",
+                                                children: errors.lastName?.message
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 275,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                        lineNumber: 264,
+                                        columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 246,
-                                columnNumber: 50
+                                lineNumber: 249,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "admin-form-row",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-form-group",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                htmlFor: "email",
+                                                className: "admin-form-label",
+                                                children: [
+                                                    "Email ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                        className: "admin-required",
+                                                        children: "*"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                                        lineNumber: 282,
+                                                        columnNumber: 39
+                                                    }, undefined)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 281,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                type: "email",
+                                                ...register("email"),
+                                                disabled: loading,
+                                                className: "admin-form-input",
+                                                placeholder: "Enter email address"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 284,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                className: "admin-field-error",
+                                                children: errors.email?.message
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 291,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                        lineNumber: 280,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "admin-form-group",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                                htmlFor: "username",
+                                                className: "admin-form-label",
+                                                children: [
+                                                    "Username ",
+                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                        className: "admin-required",
+                                                        children: "*"
+                                                    }, void 0, false, {
+                                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                                        lineNumber: 296,
+                                                        columnNumber: 42
+                                                    }, undefined)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 295,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                type: "text",
+                                                ...register("username"),
+                                                disabled: loading,
+                                                className: "admin-form-input",
+                                                placeholder: "Enter username"
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 298,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                                className: "admin-field-error",
+                                                children: errors.username?.message
+                                            }, void 0, false, {
+                                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                                lineNumber: 305,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/components/admin/Users/UserForm.tsx",
+                                        lineNumber: 294,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/admin/Users/UserForm.tsx",
+                                lineNumber: 279,
+                                columnNumber: 21
                             }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 245,
-                            columnNumber: 21
-                        }, undefined)
-                    }, void 0, false, {
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 244,
+                        lineNumber: 246,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37878,19 +37966,19 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                     htmlFor: "role",
                                     className: "admin-form-label",
                                     children: [
-                                        "New Role ",
+                                        "Role ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                             className: "admin-required",
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 257,
-                                            columnNumber: 38
+                                            lineNumber: 313,
+                                            columnNumber: 34
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 256,
+                                    lineNumber: 312,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37908,7 +37996,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         className: "admin-radio-input"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 263,
+                                                        lineNumber: 319,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37922,7 +38010,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                         children: role.label
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 272,
+                                                                        lineNumber: 328,
                                                                         columnNumber: 49
                                                                     }, undefined),
                                                                     isCurrentUser && role.value !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -37930,13 +38018,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                         children: "(Cannot remove own admin access)"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 276,
+                                                                        lineNumber: 332,
                                                                         columnNumber: 53
                                                                     }, undefined)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 271,
+                                                                lineNumber: 327,
                                                                 columnNumber: 45
                                                             }, undefined),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37944,29 +38032,29 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                 children: role.description
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 279,
+                                                                lineNumber: 335,
                                                                 columnNumber: 45
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 270,
+                                                        lineNumber: 326,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 318,
                                                 columnNumber: 37
                                             }, undefined)
                                         }, role.value, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 317,
                                             columnNumber: 33
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 259,
+                                    lineNumber: 315,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -37974,18 +38062,18 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                     children: errors.role?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 287,
+                                    lineNumber: 343,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 255,
+                            lineNumber: 311,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 254,
+                        lineNumber: 310,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -37999,12 +38087,12 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 292,
+                                lineNumber: 348,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 type: "submit",
-                                disabled: loading || !selectedRole || !isDirty,
+                                disabled: loading || !watchedFormData?.firstName || !watchedFormData?.lastName || !watchedFormData?.email || !watchedFormData?.username || !selectedRole || !isDirty,
                                 className: "admin-btn admin-btn-primary",
                                 children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: [
@@ -38012,42 +38100,43 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 307,
+                                            lineNumber: 363,
                                             columnNumber: 33
                                         }, undefined),
-                                        "Updating Role..."
+                                        "Updating User..."
                                     ]
-                                }, void 0, true) : 'Update User Role'
+                                }, void 0, true) : 'Update User'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 300,
+                                lineNumber: 356,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 291,
+                        lineNumber: 347,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 243,
+                lineNumber: 245,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 207,
+        lineNumber: 234,
         columnNumber: 9
     }, undefined);
 };
-_s(UserForm, "urO1Jj9iiVeHwcaUoQVzD3t6rB0=", false, function() {
+_s(UserForm, "/bFfweucMdwfDj6+mqUuoONxL1I=", false, function() {
     return [
         (0, _reactRouter.useParams),
         (0, _reactRouter.useNavigate),
         (0, _authContext.useAuth),
-        (0, _reactHookForm.useForm)
+        (0, _reactHookForm.useForm),
+        (0, _reactHookForm.useWatch)
     ];
 });
 _c = UserForm;

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { updateUserRole, fetchUserById, updateUser } from '../../../api/UsersApi';
 import { useAuth } from '../../../api/AuthContext';
-import { UserDetail, UserRole } from '../../../api/types';
-import { useForm } from 'react-hook-form';
+import { UserDetail, UserEditRequest, UserRole } from '../../../api/types';
+import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -22,6 +22,10 @@ interface UserFormData {
 }
 
 const userFormSchema = yup.object({
+    firstName: yup.string().required('First name is required'),
+    lastName: yup.string().required('Last name is required'),
+    email: yup.string().email('Invalid email address').required('Email is required'),
+    username: yup.string().required('Username is required'),
     role: yup.string().required('Role is required')
 }).required();
 
@@ -48,13 +52,23 @@ const UserForm: React.FC<UserFormProps> = ({
         register, 
         handleSubmit, 
         watch, 
-        setValue, 
+        setValue,
+        control,
         formState: { errors } 
     } = useForm<FormData>({
-        resolver: yupResolver(userFormSchema)
+        resolver: yupResolver(userFormSchema),
+        defaultValues: {
+            firstName: initialUser?.firstName || '',
+            lastName: initialUser?.lastName || '',
+            email: initialUser?.email || '',
+            username: initialUser?.username || '',
+            role: initialUser?.role || ''
+        }
     });
 
-    const selectedRole = watch('role');
+    const watchedFormData = useWatch({ control });
+    const selectedRole = watchedFormData.role;
+    const formData = watch();
 
     const availableRoles = [
         { value: 'ROLE_USER', label: 'User', description: 'Can view and comment on articles' },
@@ -67,17 +81,26 @@ const UserForm: React.FC<UserFormProps> = ({
             loadUser();
         } else if (initialUser) {
             setUser(initialUser);
+            setValue('firstName', initialUser.firstName);
+            setValue('lastName', initialUser.lastName);
+            setValue('email', initialUser.email);
+            setValue('username', initialUser.username);
             setValue('role', getCurrentRole(initialUser));
         }
     }, [finalId, initialUser, setValue]);
 
     useEffect(() => {
-        if (user) {
+        if (user && watchedFormData) {
             const currentRole = getCurrentRole(user);
-            const hasChanges = selectedRole !== currentRole;
+            const hasChanges = 
+                watchedFormData.role !== currentRole ||
+                watchedFormData.firstName !== user.firstName ||
+                watchedFormData.lastName !== user.lastName ||
+                watchedFormData.email !== user.email ||
+                watchedFormData.username !== user.username;
             setIsDirty(hasChanges);
         }
-    }, [selectedRole, user]);
+    }, [watchedFormData, user]);
 
     const getCurrentRole = (userData: UserDetail): string => {
         if (userData.role) return userData.role;
@@ -98,6 +121,10 @@ const UserForm: React.FC<UserFormProps> = ({
             setError(null);
             const userData = await fetchUserById(finalId);
             setUser(userData);
+            setValue('firstName', userData.firstName);
+            setValue('lastName', userData.lastName);
+            setValue('email', userData.email);
+            setValue('username', userData.username);
             setValue('role', getCurrentRole(userData));
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
@@ -114,7 +141,7 @@ const UserForm: React.FC<UserFormProps> = ({
         }
     };
 
-    const handleFormSubmit = async (data: UserFormData): Promise<void> => {
+    const handleFormSubmit = async (data: FormData): Promise<void> => {
         if (!token || !user) {
             setError('Authentication required or user not loaded.');
             return;
@@ -129,18 +156,18 @@ const UserForm: React.FC<UserFormProps> = ({
         setLoading(true);
         setError(null);
 
-        const roleUpdate: UserRole = { role: data.role };
+        const userUpdate: UserEditRequest = { role: data.role, firstName: data.firstName, lastName: data.lastName, email: data.email, username: data.username };
 
         try {
             console.log('Updating user role:', {
                 userId: user.id,
                 currentRole: getCurrentRole(user),
                 newRole: data.role,
-                roleUpdate,
+                userUpdate,
                 token: token ? token : 'Missing'
             });
             console.log(token);
-            const updatedUser = await updateUserRole(user.id, roleUpdate, token);
+            const updatedUser = await updateUser(user.id, userUpdate, token);
             console.log(updatedUser);
             setIsDirty(false);
             
@@ -206,7 +233,7 @@ const UserForm: React.FC<UserFormProps> = ({
     return (
         <div className="admin-user-form-container">
             <div className="admin-form-header">
-                <h2>Edit User Role</h2>
+                <h2>Edit User</h2>
             </div>
 
             {error && (
@@ -215,46 +242,75 @@ const UserForm: React.FC<UserFormProps> = ({
                 </div>
             )}
 
-            <div className="admin-user-info-section">
-                <h3>User Information</h3>
-                <div className="admin-user-info-grid">
-                    <div className="admin-info-item">
-                        <label>Username:</label>
-                        <span className="admin-user-username">
-                            {user.username}
-                            {isCurrentUser && <span className="admin-current-user-badge">You</span>}
-                        </span>
-                    </div>
-                    <div className="admin-info-item">
-                        <label>Full Name:</label>
-                        <span>{`${user.firstName} ${user.lastName}`}</span>
-                    </div>
-                    <div className="admin-info-item">
-                        <label>Email:</label>
-                        <span>{user.email}</span>
-                    </div>
-                    <div className="admin-info-item">
-                        <label>User ID:</label>
-                        <span className="admin-user-id">{user.id}</span>
-                    </div>
-                </div>
-            </div>
-
             <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-user-form">
-                <div className="admin-form-row">
-                    <div className="admin-form-group">
-                                                 <label className="admin-form-label">
-                             Current Role: <span className={`admin-role-badge admin-role-${getCurrentRole(user).replace('ROLE_', '').toLowerCase()}`}>
-                                 {getCurrentRole(user).replace('ROLE_', '')}
-                             </span>
-                         </label>
+                <div className="admin-form-section">
+                    <h3>Edit User Details</h3>
+                    
+                    <div className="admin-form-row">
+                        <div className="admin-form-group">
+                            <label htmlFor="firstName" className="admin-form-label">
+                                First Name <span className="admin-required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                {...register("firstName")}
+                                disabled={loading}
+                                className="admin-form-input"
+                                placeholder="Enter first name"
+                            />
+                            <p className="admin-field-error">{errors.firstName?.message}</p>
+                        </div>
+                        
+                        <div className="admin-form-group">
+                            <label htmlFor="lastName" className="admin-form-label">
+                                Last Name <span className="admin-required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                {...register("lastName")}
+                                disabled={loading}
+                                className="admin-form-input"
+                                placeholder="Enter last name"
+                            />
+                            <p className="admin-field-error">{errors.lastName?.message}</p>
+                        </div>
+                    </div>
+
+                    <div className="admin-form-row">
+                        <div className="admin-form-group">
+                            <label htmlFor="email" className="admin-form-label">
+                                Email <span className="admin-required">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                {...register("email")}
+                                disabled={loading}
+                                className="admin-form-input"
+                                placeholder="Enter email address"
+                            />
+                            <p className="admin-field-error">{errors.email?.message}</p>
+                        </div>
+                        
+                        <div className="admin-form-group">
+                            <label htmlFor="username" className="admin-form-label">
+                                Username <span className="admin-required">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                {...register("username")}
+                                 disabled={loading}
+                                className="admin-form-input"
+                                placeholder="Enter username"
+                            />
+                            <p className="admin-field-error">{errors.username?.message}</p>
+                        </div>
                     </div>
                 </div>
 
                 <div className="admin-form-row">
                     <div className="admin-form-group">
                         <label htmlFor="role" className="admin-form-label">
-                            New Role <span className="admin-required">*</span>
+                            Role <span className="admin-required">*</span>
                         </label>
                         <div className="admin-role-selection">
                             {availableRoles.map((role) => (
@@ -299,16 +355,16 @@ const UserForm: React.FC<UserFormProps> = ({
                     </button>
                     <button
                         type="submit"
-                        disabled={loading || !selectedRole || !isDirty}
+                        disabled={loading || !watchedFormData?.firstName || !watchedFormData?.lastName || !watchedFormData?.email || !watchedFormData?.username || !selectedRole || !isDirty}
                         className="admin-btn admin-btn-primary"
                     >
                         {loading ? (
                             <>
                                 <span className="admin-loading-spinner-small"></span>
-                                Updating Role...
+                                Updating User...
                             </>
                         ) : (
-                            'Update User Role'
+                            'Update User'
                         )}
                     </button>
                 </div>

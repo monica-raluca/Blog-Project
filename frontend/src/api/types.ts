@@ -7,6 +7,14 @@ export interface RegisterUserData {
 	email: string;
 }
 
+export interface UserEditRequest {
+	lastName: string;
+	firstName: string;
+	email: string;
+	username: string;
+	role: string;
+}
+
 export interface LoginUserData {
 	username: string;
 	password: string;

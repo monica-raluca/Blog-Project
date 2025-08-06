@@ -294,9 +294,9 @@ const Users: React.FC<UsersProps> = ({
                                                     <button
                                                         onClick={() => handleEdit(user)}
                                                         className="admin-btn admin-btn-sm admin-btn-primary"
-                                                        title="Edit User Role"
+                                                        title="Edit User"
                                                     >
-                                                        Edit Role
+                                                        Edit User
                                                     </button>
                                                 )}
                                                 {hasRole("ADMIN") && !isCurrentUser && (
