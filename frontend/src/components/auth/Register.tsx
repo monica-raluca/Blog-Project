@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import { useAuth } from "../../api/AuthContext";
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import '../../format/Login.css';
 
@@ -15,6 +17,16 @@ interface RegisterFormData {
     email: string;
 }
 
+const registerSchema = yup.object({
+    firstName: yup.string().required('First name is required'),
+    lastName: yup.string().required('Last name is required'),
+    username: yup.string().required('Username is required'),
+    password: yup.string().required('Password is required'),
+    email: yup.string().email('Invalid email address').required('Email is required')
+}).required();
+
+type FormData = yup.InferType<typeof registerSchema>;
+
 const Register: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -24,7 +36,9 @@ const Register: React.FC = () => {
         register, 
         handleSubmit, 
         formState: { errors } 
-    } = useForm<RegisterFormData>();
+    } = useForm<FormData>({
+        resolver: yupResolver(registerSchema)
+    });
 
     const onSubmit = async (data: RegisterFormData): Promise<void> => {
         try {
@@ -53,51 +67,41 @@ const Register: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-group">                   
                         <input type="text"
-                            {...register("firstName", {required: "First name is required" })}
+                            {...register("firstName")}
                         />
                         <label>First name</label>
-                        {errors.firstName && (
-                            <p className="field-error">{errors.firstName.message}</p>
-                        )}
+                        <p className="field-error">{errors.firstName?.message}</p>
                     </div>
                     <div className="input-group">
                         <input type="text"
-                            {...register("lastName", {required: "Last name is required"})}
+                            {...register("lastName")}
                         />
                         <label>Last name</label>
-                        {errors.lastName && (
-                            <p className="field-error">{errors.lastName.message}</p>
-                        )}
+                        <p className="field-error">{errors.lastName?.message}</p>
                     </div>
                     <div className="input-group">                    
                         <input
                             type="text"
-                            {...register("username", {required: "Username is required"})}
+                            {...register("username")}
                         />
                         <label>Username</label>
-                        {errors.username && (
-                            <p className="field-error">{errors.username.message}</p>
-                        )}
+                        <p className="field-error">{errors.username?.message}</p>
                     </div>
                     <div className="input-group">
                         <input
                             type="password"
-                            {...register("password", {required: "Password is required"})}
+                            {...register("password")}
                         />
                         <label>Password</label>
-                        {errors.password && (
-                            <p className="field-error">{errors.password.message}</p>
-                        )}
+                        <p className="field-error">{errors.password?.message}</p>
                     </div>
                     <div className="input-group">                     
                         <input
                             type="email"
-                            {...register("email", {required: "Email is required", pattern: /^\S+@\S+$/i})}
+                            {...register("email")}
                         />
                         <label>Email</label>
-                        {errors.email && (
-                            <p className="field-error">{errors.email.message}</p>
-                        )}
+                        <p className="field-error">{errors.email?.message}</p>
                     </div>
                     <input type="submit" value="Register" className="btn" />
                     <div><em>Already have an account? <Link to="/login">Login</Link></em></div>

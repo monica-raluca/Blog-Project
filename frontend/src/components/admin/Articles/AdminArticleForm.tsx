@@ -4,6 +4,8 @@ import { createArticle, updateArticle, fetchArticleById } from '../../../api/Art
 import { useAuth } from '../../../api/AuthContext';
 import { Article } from '../../../api/types';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import './AdminArticles.css';
 
@@ -19,6 +21,13 @@ interface ArticleFormData {
     title: string;
     content: string;
 }
+
+const articleFormSchema = yup.object({
+    title: yup.string().required('Title is required'),
+    content: yup.string().required('Content is required')
+}).required();
+
+type FormData = yup.InferType<typeof articleFormSchema>;
 
 const AdminArticleForm: React.FC<ArticleFormProps> = ({
     isEdit = false,
@@ -43,7 +52,8 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         watch, 
         setValue, 
         formState: { errors } 
-    } = useForm<ArticleFormData>({
+    } = useForm<FormData>({
+        resolver: yupResolver(articleFormSchema),
         defaultValues: {
             title: initialData?.title || '',
             content: initialData?.content || ''
@@ -178,16 +188,14 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             id="title"
                             type="text"
                             placeholder="Enter a compelling title for your article"
-                            {...register("title", {required: "Title is required"})}
+                            {...register("title")}
                             disabled={loading}
                             className="admin-form-input"
                         />
                         <div className="admin-char-count">
                             {title.length} characters
                         </div>
-                        {errors.title && (
-                            <p className="admin-field-error">{errors.title.message}</p>
-                        )}
+                        <p className="admin-field-error">{errors.title?.message}</p>
                     </div>
                 </div>
 
@@ -199,7 +207,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         <textarea
                             id="content"
                             placeholder="Write your article content here..."
-                            {...register("content", { required: "Content is required" })}
+                            {...register("content")}
                             disabled={loading}
                             rows={15}
                             className="admin-form-textarea"
@@ -207,9 +215,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         <div className="admin-char-count">
                             {content.length} characters
                         </div>
-                        {errors.content && (
-                            <p className="admin-field-error">{errors.content.message}</p>
-                        )}
+                        <p className="admin-field-error">{errors.content?.message}</p>
                     </div>
                 </div>
 

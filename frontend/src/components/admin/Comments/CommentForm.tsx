@@ -5,6 +5,8 @@ import { fetchAllArticles } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
 import { Comment, Article } from '../../../api/types';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 // import { useCommentHandlers } from '../../../actions/admin/Comments/CommentsHandler';
 
 import '../Articles/AdminArticles.css';
@@ -23,6 +25,13 @@ interface CommentFormData {
     content: string;
     articleId: string;
 }
+
+const commentFormSchema = yup.object({
+    content: yup.string().required('Content is required'),
+    articleId: yup.string().required('Article is required')
+}).required();
+
+type FormData = yup.InferType<typeof commentFormSchema>;
 
 const CommentForm: React.FC<CommentFormProps> = ({
     isEdit = false,
@@ -49,7 +58,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
         watch, 
         setValue, 
         formState: { errors } 
-    } = useForm<CommentFormData>({
+    } = useForm<FormData>({
+        resolver: yupResolver(commentFormSchema),
         defaultValues: {
             content: initialComment?.content || '',
             articleId: preselectedArticleId || initialComment?.article?.id || ''
@@ -203,7 +213,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             </label>
                             <select
                                 id="article"
-                                {...register("articleId", { required: "Please select an article" })}
+                                {...register("articleId")}
                                 disabled={loading || !!preselectedArticleId}
                                 className="admin-form-select"
                             >
@@ -214,9 +224,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                                     </option>
                                 ))}
                             </select>
-                            {errors.articleId && (
-                                <p className="admin-field-error">{errors.articleId.message}</p>
-                            )}
+                            <p className="admin-field-error">{errors.articleId?.message}</p>
                         </div>
                     </div>
                 )}
@@ -247,10 +255,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         <textarea
                             id="content"
                             placeholder="Write your comment here..."
-                            {...register("content", { 
-                                required: "Comment content is required",
-                                maxLength: { value: 1000, message: "Comment cannot exceed 1000 characters" }
-                            })}
+                            {...register("content")}
                             disabled={loading}
                             rows={8}
                             className="admin-form-textarea" 
@@ -259,9 +264,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         <div className="admin-char-count">
                             {content.length}/1000 characters
                         </div>
-                        {errors.content && (
-                            <p className="admin-field-error">{errors.content.message}</p>
-                        )}
+                        <p className="admin-field-error">{errors.content?.message}</p>
                     </div>
                 </div>
 

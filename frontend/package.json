@@ -12,12 +12,14 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "@js-joda/core": "^5.6.5",
     "jwt-decode": "^4.0.0",
     "react": "^19.1.0",
     "react-cookie": "^8.0.1",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
-    "react-router": "^7.7.0"
+    "react-router": "^7.7.0",
+    "yup": "^1.7.0"
   }
 }

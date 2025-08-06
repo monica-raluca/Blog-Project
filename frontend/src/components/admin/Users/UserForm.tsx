@@ -4,6 +4,8 @@ import { updateUserRole, fetchUserById, updateUser } from '../../../api/UsersApi
 import { useAuth } from '../../../api/AuthContext';
 import { UserDetail, UserRole } from '../../../api/types';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import '../Articles/AdminArticles.css';
 import './AdminUsers.css';
@@ -18,6 +20,12 @@ interface UserFormProps {
 interface UserFormData {
     role: string;
 }
+
+const userFormSchema = yup.object({
+    role: yup.string().required('Role is required')
+}).required();
+
+type FormData = yup.InferType<typeof userFormSchema>;
 
 const UserForm: React.FC<UserFormProps> = ({
     userId,
@@ -42,7 +50,9 @@ const UserForm: React.FC<UserFormProps> = ({
         watch, 
         setValue, 
         formState: { errors } 
-    } = useForm<UserFormData>();
+    } = useForm<FormData>({
+        resolver: yupResolver(userFormSchema)
+    });
 
     const selectedRole = watch('role');
 
@@ -253,7 +263,7 @@ const UserForm: React.FC<UserFormProps> = ({
                                         <input
                                             type="radio"
                                             value={role.value}
-                                            {...register("role", { required: "Please select a role" })}
+                                            {...register("role")}
                                             disabled={loading || (isCurrentUser && role.value !== 'ROLE_ADMIN')}
                                             className="admin-radio-input"
                                         />
@@ -274,9 +284,7 @@ const UserForm: React.FC<UserFormProps> = ({
                                 </div>
                             ))}
                         </div>
-                        {errors.role && (
-                            <p className="admin-field-error">{errors.role.message}</p>
-                        )}
+                        <p className="admin-field-error">{errors.role?.message}</p>
                     </div>
                 </div>
 

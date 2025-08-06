@@ -4,6 +4,8 @@ import { loginUser } from '../../api/AuthApi';
 import { Link } from 'react-router';
 import { useAuth } from '../../api/AuthContext';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 import '../../format/Login.css';
 
@@ -11,6 +13,14 @@ interface LoginFormData {
     username: string;
     password: string;
 }
+
+const loginSchema = yup.object({
+    username: yup.string().required('Username is required'),
+    password: yup.string().required('Password is required')
+}).required();
+
+type FormData = yup.InferType<typeof loginSchema>;
+
 
 const Login: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
@@ -21,7 +31,9 @@ const Login: React.FC = () => {
         register, 
         handleSubmit, 
         formState: { errors } 
-    } = useForm<LoginFormData>();
+    } = useForm<FormData>({
+        resolver: yupResolver(loginSchema)
+    });
 
     const onSubmit = async (data: LoginFormData): Promise<void> => {
         try {
@@ -52,22 +64,18 @@ const Login: React.FC = () => {
                     <div className="input-group">
                         <input
                             type="text"
-                            {...register("username", {required: "Username is required"})}
+                            {...register("username")}
                         />
                         <label>Username</label>
-                        {errors.username && (
-                            <p className="field-error">{errors.username.message}</p>
-                        )}
+                        <p className="field-error">{errors.username?.message}</p>
                     </div>
                     <div className="input-group">
                         <input
                             type="password"
-                            {...register("password", {required: "Password is required"})}
+                            {...register("password")}
                         />
                         <label>Password</label>
-                        {errors.password && (
-                            <p className="field-error">{errors.password.message}</p>
-                        )}
+                        <p className="field-error">{errors.password?.message}</p>
                     </div>
                     <input type="submit" value="Login" className="btn" />
                     <div><em>Don't have an account? <Link to="/register">Register</Link></em></div>

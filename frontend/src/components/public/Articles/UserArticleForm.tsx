@@ -4,6 +4,8 @@ import { createArticle, updateArticle, fetchArticleById } from '../../../api/Art
 import '../../../format/ArticleForm.css';
 import { useAuth } from '../../../api/AuthContext';
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 interface ArticleFormProps {
 	isEdit?: boolean;
@@ -13,6 +15,14 @@ interface ArticleFormData {
 	title: string;
 	content: string;
 }
+
+const articleFormSchema = yup.object({
+    title: yup.string().required('Title is required'),
+    content: yup.string().required('Content is required')
+}).required();
+
+type FormData = yup.InferType<typeof articleFormSchema>;
+
 
 const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const { id } = useParams<{ id: string }>();
@@ -27,7 +37,9 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		handleSubmit, 
 		setValue, 
 		formState: { errors } 
-	} = useForm<ArticleFormData>();
+	} = useForm<FormData>({
+		resolver: yupResolver(articleFormSchema)
+	});
 
 	useEffect(() => {
 		if (isEdit && id) {
@@ -75,18 +87,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 				<h2>{isEdit ? 'Edit Article' : 'Create Article'}</h2>
 				<input 
 					placeholder="Title" 
-					{...register("title", { required: "Title is required" })}
+					{...register("title")}
 				/>
-				{errors.title && (
-					<p className="field-error">{errors.title.message}</p>
-				)}
+				<p className="field-error">{errors.title?.message}</p>
 				<textarea 
 					placeholder="Content" 
-					{...register("content", { required: "Content is required" })}
+					{...register("content")}
 				/>
-				{errors.content && (
-					<p className="field-error">{errors.content.message}</p>
-				)}
+				<p className="field-error">{errors.content?.message}</p>
 				<button type="submit">{isEdit ? 'Update' : 'Create'}</button>
 			</form>
 		</div>
