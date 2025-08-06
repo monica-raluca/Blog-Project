@@ -57,7 +57,6 @@ public class UsersService {
         return isValidParam(request.lastName()) &&
                 isValidParam(request.firstName()) &&
                 isValidParam(request.username()) &&
-                isValidParam(request.password()) &&
                 isValidParam(request.email()) &&
                 (request.role() == Role.ROLE_AUTHOR || request.role() == Role.ROLE_USER || request.role() == Role.ROLE_ADMIN);
     }
@@ -152,7 +151,6 @@ public class UsersService {
         user.get().setFirstName(userRequest.firstName());
         user.get().setUsername(userRequest.username());
         user.get().setEmail(userRequest.email());
-        user.get().setPassword(passwordEncoder.encode(userRequest.password()));
         user.get().setRole(userRequest.role());
 
         return UserConvertor.toDto(userRepository.save(user.get()));
