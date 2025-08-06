@@ -99,7 +99,11 @@
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  position: relative;
 }
 
 .admin-user-info-section {
@@ -139,6 +143,45 @@
 
 .admin-user-form {
   padding: 24px;
+  padding-bottom: 40px; /* Extra padding at bottom for scrolling */
+}
+
+/* Form section styling */
+.admin-form-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.admin-form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.admin-form-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #007bff;
+  display: inline-block;
+}
+
+/* Form help text */
+.admin-form-help-text {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+/* Field error styling */
+.admin-field-error {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
 }
 
 .admin-role-selection {

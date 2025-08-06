@@ -1,4 +1,4 @@
-import { UserDetail, UserRole, ApiError } from './types';
+import { UserDetail, UserRole, ApiError, RegisterUserData } from './types';
 
 const createAuthHeaders = (token: string): HeadersInit => ({
     'Authorization': `Bearer ${token}`,
@@ -56,6 +56,24 @@ export async function updateUserRole(id: string, newRole: UserRole, token: strin
         },
         body: JSON.stringify(newRole.role)
     });
+    if (!res.ok) {
+        let errorData: ApiError = {};
+        try { errorData = await res.json(); } catch {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
+}
+
+export async function updateUser(id: string, userRequest: RegisterUserData, token: string): Promise<UserDetail> {
+    const res = await fetch(`/api/users/${id}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(userRequest)
+    });
+    
     if (!res.ok) {
         let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { updateUserRole, fetchUserById } from '../../../api/UsersApi';
+import { updateUserRole, fetchUserById, updateUser } from '../../../api/UsersApi';
 import { useAuth } from '../../../api/AuthContext';
 import { UserDetail, UserRole } from '../../../api/types';
 import { useForm } from 'react-hook-form';

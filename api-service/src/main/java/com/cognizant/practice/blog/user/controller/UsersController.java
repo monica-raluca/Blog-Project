@@ -58,4 +58,9 @@ public class UsersController {
     public User updateUserRole(@PathVariable UUID id, @RequestBody Role role) {
         return usersService.updateUserRole(id, role);
     }
+
+    @PutMapping(value="/users/{id}/edit")
+    public User updateUser(@PathVariable UUID id, @RequestBody UserEditRequest userRequest) {
+        return usersService.updateUser(id, userRequest);
+    }
 }

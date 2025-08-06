@@ -4,6 +4,7 @@ import com.cognizant.practice.blog.security.JwtService;
 import com.cognizant.practice.blog.user.convertor.UserConvertor;
 import com.cognizant.practice.blog.user.dto.Role;
 import com.cognizant.practice.blog.user.dto.User;
+import com.cognizant.practice.blog.user.dto.UserEditRequest;
 import com.cognizant.practice.blog.user.dto.UserLoginRequest;
 import com.cognizant.practice.blog.user.dto.UserRequest;
 import com.cognizant.practice.blog.user.entity.UserEntity;
@@ -50,6 +51,15 @@ public class UsersService {
                 isValidParam(request.username()) &&
                 isValidParam(request.password()) &&
                 isValidParam(request.email());
+    }
+
+    public boolean isValidRequest(UserEditRequest request) {
+        return isValidParam(request.lastName()) &&
+                isValidParam(request.firstName()) &&
+                isValidParam(request.username()) &&
+                isValidParam(request.password()) &&
+                isValidParam(request.email()) &&
+                (request.role() == Role.ROLE_AUTHOR || request.role() == Role.ROLE_USER || request.role() == Role.ROLE_ADMIN);
     }
 
     public List<User> getAllUsers() {
@@ -117,6 +127,34 @@ public class UsersService {
         }
 
         user.get().setRole(role);
+        return UserConvertor.toDto(userRepository.save(user.get()));
+    }
+
+    public User updateUser(UUID id, UserEditRequest userRequest) {
+        if (!isValidRequest(userRequest)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
+        }
+
+        if(userRepository.findByUsername(userRequest.username()).isPresent() && userRepository.findByUsername(userRequest.username()).get().getId() != id) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
+        }
+
+        if(userRepository.findByEmail(userRequest.email()).isPresent() && userRepository.findByEmail(userRequest.email()).get().getId() != id) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
+        }
+
+        Optional<UserEntity> user = userRepository.findById(id);
+        if(user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        user.get().setLastName(userRequest.lastName());
+        user.get().setFirstName(userRequest.firstName());
+        user.get().setUsername(userRequest.username());
+        user.get().setEmail(userRequest.email());
+        user.get().setPassword(passwordEncoder.encode(userRequest.password()));
+        user.get().setRole(userRequest.role());
+
         return UserConvertor.toDto(userRepository.save(user.get()));
     }
 }

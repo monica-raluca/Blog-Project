@@ -34684,6 +34684,7 @@ parcelHelpers.export(exports, "fetchUserById", ()=>fetchUserById);
 parcelHelpers.export(exports, "fetchCurrentUser", ()=>fetchCurrentUser);
 parcelHelpers.export(exports, "fetchUsers", ()=>fetchUsers);
 parcelHelpers.export(exports, "updateUserRole", ()=>updateUserRole);
+parcelHelpers.export(exports, "updateUser", ()=>updateUser);
 parcelHelpers.export(exports, "deleteUser", ()=>deleteUser);
 const createAuthHeaders = (token)=>({
         'Authorization': `Bearer ${token}`,
@@ -34741,6 +34742,24 @@ async function updateUserRole(id, newRole, token) {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(newRole.role)
+    });
+    if (!res.ok) {
+        let errorData = {};
+        try {
+            errorData = await res.json();
+        } catch  {}
+        throw new Error(parseSpringError(res, errorData));
+    }
+    return res.json();
+}
+async function updateUser(id, userRequest, token) {
+    const res = await fetch(`/api/users/${id}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(userRequest)
     });
     if (!res.ok) {
         let errorData = {};
@@ -34916,20 +34935,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 className: "admin-loading-spinner"
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 171,
+                lineNumber: 180,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading user..."
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 172,
+                lineNumber: 181,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 170,
+        lineNumber: 179,
         columnNumber: 13
     }, undefined);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34941,14 +34960,14 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 181,
+                    lineNumber: 190,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 182,
+                    lineNumber: 191,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -34957,18 +34976,18 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 183,
+                    lineNumber: 192,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserForm.tsx",
-            lineNumber: 180,
+            lineNumber: 189,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 179,
+        lineNumber: 188,
         columnNumber: 13
     }, undefined);
     const isCurrentUser = user.username === currentUser;
@@ -34981,12 +35000,12 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Edit User Role"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 199,
+                    lineNumber: 208,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 198,
+                lineNumber: 207,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -34996,7 +35015,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 204,
+                        lineNumber: 213,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -35004,7 +35023,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 203,
+                lineNumber: 212,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35014,7 +35033,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         children: "User Information"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 209,
+                        lineNumber: 218,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35027,7 +35046,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: "Username:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 212,
+                                        lineNumber: 221,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -35039,19 +35058,19 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 children: "You"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 215,
+                                                lineNumber: 224,
                                                 columnNumber: 47
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 222,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 211,
+                                lineNumber: 220,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35061,20 +35080,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: "Full Name:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 228,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                         children: `${user.firstName} ${user.lastName}`
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 220,
+                                        lineNumber: 229,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 218,
+                                lineNumber: 227,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35084,20 +35103,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: "Email:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 223,
+                                        lineNumber: 232,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                         children: user.email
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 224,
+                                        lineNumber: 233,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 222,
+                                lineNumber: 231,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35107,7 +35126,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: "User ID:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 236,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -35115,25 +35134,25 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: user.id
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 228,
+                                        lineNumber: 237,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 226,
+                                lineNumber: 235,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 210,
+                        lineNumber: 219,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 208,
+                lineNumber: 217,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -35153,23 +35172,23 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                         children: getCurrentRole(user).replace('ROLE_', '')
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 237,
+                                        lineNumber: 246,
                                         columnNumber: 44
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 236,
+                                lineNumber: 245,
                                 columnNumber: 50
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 235,
+                            lineNumber: 244,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 234,
+                        lineNumber: 243,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35187,13 +35206,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 256,
                                             columnNumber: 38
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 246,
+                                    lineNumber: 255,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35213,7 +35232,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         className: "admin-radio-input"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 253,
+                                                        lineNumber: 262,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35227,7 +35246,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                         children: role.label
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 262,
+                                                                        lineNumber: 271,
                                                                         columnNumber: 49
                                                                     }, undefined),
                                                                     isCurrentUser && role.value !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -35235,13 +35254,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                         children: "(Cannot remove own admin access)"
                                                                     }, void 0, false, {
                                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 266,
+                                                                        lineNumber: 275,
                                                                         columnNumber: 53
                                                                     }, undefined)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 261,
+                                                                lineNumber: 270,
                                                                 columnNumber: 45
                                                             }, undefined),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35249,29 +35268,29 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                                 children: role.description
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 269,
+                                                                lineNumber: 278,
                                                                 columnNumber: 45
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 260,
+                                                        lineNumber: 269,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 261,
                                                 columnNumber: 37
                                             }, undefined)
                                         }, role.value, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 251,
+                                            lineNumber: 260,
                                             columnNumber: 33
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 258,
                                     columnNumber: 25
                                 }, undefined),
                                 errors.role && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -35279,18 +35298,18 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                     children: errors.role.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 287,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 245,
+                            lineNumber: 254,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 244,
+                        lineNumber: 253,
                         columnNumber: 17
                     }, undefined),
                     isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35300,14 +35319,14 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "\u26A0\uFE0F Warning:"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 285,
+                                lineNumber: 294,
                                 columnNumber: 25
                             }, undefined),
                             " You are editing your own user account. Removing admin privileges will restrict your access to admin features."
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 284,
+                        lineNumber: 293,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -35321,7 +35340,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 291,
+                                lineNumber: 300,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -35334,7 +35353,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 306,
+                                            lineNumber: 315,
                                             columnNumber: 33
                                         }, undefined),
                                         "Updating Role..."
@@ -35342,25 +35361,25 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 }, void 0, true) : 'Update User Role'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 299,
+                                lineNumber: 308,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 290,
+                        lineNumber: 299,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 233,
+                lineNumber: 242,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 197,
+        lineNumber: 206,
         columnNumber: 9
     }, undefined);
 };
