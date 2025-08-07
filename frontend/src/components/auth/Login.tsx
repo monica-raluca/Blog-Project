@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { useAuth } from '../../api/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input } from '../../../components/ui/input';
 import * as yup from 'yup';
 
 import '../../format/Login.css';

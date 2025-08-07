@@ -39743,7 +39743,7 @@ const Login = ()=>{
                     children: "Login"
                 }, void 0, false, {
                     fileName: "src/components/auth/Login.tsx",
-                    lineNumber: 62,
+                    lineNumber: 63,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -39757,14 +39757,14 @@ const Login = ()=>{
                                     ...register("username")
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 65,
+                                    lineNumber: 66,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 69,
+                                    lineNumber: 70,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39772,13 +39772,13 @@ const Login = ()=>{
                                     children: errors.username?.message
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 71,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/auth/Login.tsx",
-                            lineNumber: 64,
+                            lineNumber: 65,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39789,14 +39789,14 @@ const Login = ()=>{
                                     ...register("password")
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 73,
+                                    lineNumber: 74,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39804,13 +39804,13 @@ const Login = ()=>{
                                     children: errors.password?.message
                                 }, void 0, false, {
                                     fileName: "src/components/auth/Login.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 79,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/auth/Login.tsx",
-                            lineNumber: 72,
+                            lineNumber: 73,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -39819,7 +39819,7 @@ const Login = ()=>{
                             className: "btn"
                         }, void 0, false, {
                             fileName: "src/components/auth/Login.tsx",
-                            lineNumber: 80,
+                            lineNumber: 81,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -39831,24 +39831,24 @@ const Login = ()=>{
                                         children: "Register"
                                     }, void 0, false, {
                                         fileName: "src/components/auth/Login.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 82,
                                         columnNumber: 53
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/auth/Login.tsx",
-                                lineNumber: 81,
+                                lineNumber: 82,
                                 columnNumber: 26
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/auth/Login.tsx",
-                            lineNumber: 81,
+                            lineNumber: 82,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/auth/Login.tsx",
-                    lineNumber: 63,
+                    lineNumber: 64,
                     columnNumber: 17
                 }, undefined),
                 error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -39856,18 +39856,18 @@ const Login = ()=>{
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/auth/Login.tsx",
-                    lineNumber: 83,
+                    lineNumber: 84,
                     columnNumber: 27
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/auth/Login.tsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/auth/Login.tsx",
-        lineNumber: 60,
+        lineNumber: 61,
         columnNumber: 9
     }, undefined);
 };
