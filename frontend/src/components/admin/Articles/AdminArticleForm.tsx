@@ -5,6 +5,7 @@ import { useAuth } from '../../../api/AuthContext';
 import { Article } from '../../../api/types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '../../../../components/ui/button';
 import * as yup from 'yup';
 
 import './AdminArticles.css';
@@ -220,18 +221,20 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                 </div>
 
                 <div className="admin-form-actions">
-                    <button
+                    <Button
                         type="button"
                         onClick={handleCancel}
                         disabled={loading}
-                        className="admin-btn admin-btn-secondary"
+                        variant="cloud"
+                        size="cloud"
                     >
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="submit"
                         disabled={loading || !title.trim() || !content.trim()}
-                        className="admin-btn admin-btn-primary"
+                        variant="cloud"
+                        size="cloud"
                     >
                         {loading ? (
                             <>
@@ -241,7 +244,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         ) : (
                             isEdit ? 'Update Article' : 'Create Article'
                         )}
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

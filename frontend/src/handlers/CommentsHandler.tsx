@@ -25,7 +25,7 @@ export function useCommentHandlers(
             navigate(`/admin/comments/${comment.id}`);
         }
     };
-
+ 
     const handleCommentDelete = async (comment: Comment): Promise<void> => {
         console.log('handleCommentDelete');
         

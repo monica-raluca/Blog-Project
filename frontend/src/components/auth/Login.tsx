@@ -6,6 +6,7 @@ import { useAuth } from '../../api/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../../../components/ui/input';
+import { Button } from '../../../components/ui/button';
 import * as yup from 'yup';
 
 import '../../format/Login.css';
@@ -58,12 +59,12 @@ const Login: React.FC = () => {
     
 
     return (
-        <div className="login-wrapper">
+        <div className="flex justify-center items-center min-h-screen">
             <div className="login-box">
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-group">
-                        <input
+                        <Input
                             type="text"
                             {...register("username")}
                         />
@@ -71,14 +72,14 @@ const Login: React.FC = () => {
                         <p className="field-error">{errors.username?.message}</p>
                     </div>
                     <div className="input-group">
-                        <input
+                        <Input
                             type="password"
                             {...register("password")}
                         />
                         <label>Password</label>
                         <p className="field-error">{errors.password?.message}</p>
                     </div>
-                    <input type="submit" value="Login" className="btn" />
+                    <Button variant="dreamy" size="auth" type="submit">Login</Button>
                     <div><em>Don't have an account? <Link to="/register">Register</Link></em></div>
                 </form>
                 {error && <p className="error-message">{error}</p>}

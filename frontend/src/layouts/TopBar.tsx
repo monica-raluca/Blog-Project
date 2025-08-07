@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ArticleControlsContext } from './Layout';
 import { SortCriteria } from '../api/types';
+import { Button } from '../../components/ui/button';
 import '../format/TopBar.css';
 
 interface SortField {
@@ -142,11 +143,11 @@ const TopBar: React.FC = () => {
               value={filtersInput.author || ''}
               onChange={handleFilterChange}
             />
-            <button className="topbar-btn" onClick={applyFilters}>Apply</button>
-            <button className="topbar-btn clear" onClick={clearFilters}>Clear</button>
+            <Button variant="topbar" size="cozy" onClick={applyFilters}>Apply</Button>
+            <Button variant="cloud" size="cozy" onClick={clearFilters}>Clear</Button>
           </div>
           <div className="topbar-section topbar-pagination">
-            <button className="topbar-btn" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</button>
+            <Button variant="soft" size="cozy" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</Button>
             <span className="topbar-page-label">
               Page <input
                 type="number"
@@ -156,7 +157,7 @@ const TopBar: React.FC = () => {
                 className="topbar-page-input"
               />
             </span>
-            <button className="topbar-btn" onClick={goToNext}>&gt;</button>
+            <Button variant="soft" size="cozy" onClick={goToNext}>&gt;</Button>
             <select className="topbar-page-size" value={pageSize} onChange={handlePageSizeChange}>
               {PAGE_SIZES.map(size => (
                 <option key={size} value={size}>{size} / page</option>

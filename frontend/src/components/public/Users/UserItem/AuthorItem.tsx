@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router';
 import { fetchUserById } from '../../../../api/UsersApi';
 import { fetchArticlesByAuthor } from '../../../../api/ArticlesApi';
 import { UserDetail, Article } from '../../../../api/types';
+import { Button } from '../../../../../components/ui/button';
 import '../../../../format/AuthorItem.css';
 
 const AuthorItem: React.FC = () => {
@@ -87,9 +88,9 @@ const AuthorItem: React.FC = () => {
 				Joined: {new Date(author.createdDate || author.createdAt || '').toLocaleDateString()}
 			</div>
 
-			<button onClick={loadArticles} className='btn'>
+			<Button onClick={loadArticles} variant="pastel" size="elegant">
 				{showArticles ? "Hide Articles" : "Show Articles"}
-			</button>
+			</Button>
 
 			{showArticles && (
 				<ul className="author-profile-articles-list">

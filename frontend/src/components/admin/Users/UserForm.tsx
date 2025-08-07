@@ -5,6 +5,7 @@ import { useAuth } from '../../../api/AuthContext';
 import { UserDetail, UserEditRequest, UserRole } from '../../../api/types';
 import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '../../../../components/ui/button';
 import * as yup from 'yup';
 
 import '../Articles/AdminArticles.css';
@@ -345,18 +346,20 @@ const UserForm: React.FC<UserFormProps> = ({
                 </div>
 
                 <div className="admin-form-actions">
-                    <button
+                    <Button
                         type="button"
                         onClick={handleCancel}
                         disabled={loading}
-                        className="admin-btn admin-btn-secondary"
+                        variant="cloud"
+                        size="cloud"
                     >
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="submit"
                         disabled={loading || !watchedFormData?.firstName || !watchedFormData?.lastName || !watchedFormData?.email || !watchedFormData?.username || !selectedRole || !isDirty}
-                        className="admin-btn admin-btn-primary"
+                        variant="success"
+                        size="cloud"
                     >
                         {loading ? (
                             <>
@@ -366,7 +369,7 @@ const UserForm: React.FC<UserFormProps> = ({
                         ) : (
                             'Update User'
                         )}
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

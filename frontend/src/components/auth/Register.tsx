@@ -5,6 +5,9 @@ import { Link } from "react-router";
 import { useAuth } from "../../api/AuthContext";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input } from '../../../components/ui/input';
+import { Button } from '../../../components/ui/button';
+import { Label } from '../../../components/ui/label';
 import * as yup from 'yup';
 
 import '../../format/Login.css';
@@ -66,44 +69,44 @@ const Register: React.FC = () => {
                 <h2>Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-group">                   
-                        <input type="text"
+                        <Input type="text"
                             {...register("firstName")}
                         />
-                        <label>First name</label>
+                        <Label>First name</Label>
                         <p className="field-error">{errors.firstName?.message}</p>
                     </div>
                     <div className="input-group">
-                        <input type="text"
+                        <Input type="text"
                             {...register("lastName")}
                         />
-                        <label>Last name</label>
+                        <Label>Last name</Label>
                         <p className="field-error">{errors.lastName?.message}</p>
                     </div>
                     <div className="input-group">                    
-                        <input
+                        <Input
                             type="text"
                             {...register("username")}
                         />
-                        <label>Username</label>
+                        <Label>Username</Label>
                         <p className="field-error">{errors.username?.message}</p>
                     </div>
                     <div className="input-group">
-                        <input
+                        <Input
                             type="password"
                             {...register("password")}
                         />
-                        <label>Password</label>
+                        <Label>Password</Label>
                         <p className="field-error">{errors.password?.message}</p>
                     </div>
                     <div className="input-group">                     
-                        <input
+                        <Input
                             type="email"
                             {...register("email")}
                         />
-                        <label>Email</label>
+                        <Label>Email</Label>
                         <p className="field-error">{errors.email?.message}</p>
                     </div>
-                    <input type="submit" value="Register" className="btn" />
+                    <Button variant="sunset" size="auth" type="submit">Register</Button>
                     <div><em>Already have an account? <Link to="/login">Login</Link></em></div>
                 </form>
                 {error && <p className="error-message">{error}</p>}

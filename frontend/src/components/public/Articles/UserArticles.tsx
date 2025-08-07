@@ -4,6 +4,7 @@ import { fetchAllArticles } from '../../../api/ArticlesApi';
 import { ChronoUnit } from '@js-joda/core';
 import { ArticleControlsContext } from '../../../layouts/Layout';
 import { Article } from '../../../api/types';
+import { Button } from '../../../../components/ui/button';
 import TopBar from '../../../layouts/TopBar';
 
 import '../../../format/Articles.css';
@@ -123,7 +124,7 @@ const UserArticles: React.FC = () => {
 		</div>
         <div className={`bottom-pagination-bar-wrapper${showBottomBar ? ' visible' : ''}`}>
           <div className="bottom-pagination-bar">
-            <button className="topbar-btn" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</button>
+            <Button variant="dreamy" size="cozy" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</Button>
             <span className="topbar-page-label">
               Page <input
                 type="number"
@@ -134,7 +135,7 @@ const UserArticles: React.FC = () => {
               />
               {/* / {totalPages} */}
             </span>
-            <button className="topbar-btn" onClick={goToNext} /*disabled={currentPage === totalPages}*/>&gt;</button>
+            <Button variant="dreamy" size="cozy" onClick={goToNext} /*disabled={currentPage === totalPages}*/>&gt;</Button>
           </div>
         </div>
         </>

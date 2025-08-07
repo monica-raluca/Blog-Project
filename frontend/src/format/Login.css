@@ -19,6 +19,7 @@ body {
   min-height: 100vh;
 }
 
+
 .login-box {
   width: 400px;
   padding: 40px;
@@ -99,4 +100,4 @@ body {
   margin-bottom: 0;
   font-size: 0.85em;
   line-height: 1.2;
-} 
+}
