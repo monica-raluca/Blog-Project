@@ -18,6 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 
 interface UsersProps {
     onEdit?: (user: UserDetail) => void;
@@ -44,6 +45,15 @@ const Users: React.FC<UsersProps> = ({
 
     // Available roles for filtering
     const availableRoles = ['ADMIN', 'AUTHOR', 'USER'];
+
+    // Create role options for combobox
+    const roleOptions: ComboboxOption[] = [
+        { value: "", label: "All Roles" },
+        ...availableRoles.map(role => ({
+            value: role,
+            label: role,
+        }))
+    ];
 
     useEffect(() => {
         loadUsers();
@@ -195,22 +205,18 @@ const Users: React.FC<UsersProps> = ({
                 <div className="admin-actions">
                     <div className="admin-filter-section">
                         <Label htmlFor="role-filter">Filter by Role:</Label>
-                        <select
-                            id="role-filter"
+                        <Combobox
+                            options={roleOptions}
                             value={selectedRole}
-                            onChange={(e) => {
-                                setSelectedRole(e.target.value);
+                            onValueChange={(value) => {
+                                setSelectedRole(value);
                                 setCurrentPage(0);
                             }}
-                            className="admin-filter-select"
-                        >
-                            <option value="">All Roles</option>
-                            {availableRoles.map((role) => (
-                                <option key={role} value={role}>
-                                    {role}
-                                </option>
-                            ))}
-                        </select>
+                            placeholder="Select role..."
+                            searchPlaceholder="Search roles..."
+                            className="admin-filter-select min-w-[150px]"
+                            clearable
+                        />
                     </div>
                     <div className="admin-stats">
                         <span className="admin-stat-item">

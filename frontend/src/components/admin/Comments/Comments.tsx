@@ -18,6 +18,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 
 interface CommentsProps {
     onEdit?: (comment: Comment) => void;
@@ -163,6 +164,15 @@ const Comments: React.FC<CommentsProps> = ({
         return <div className="admin-loading">Loading comments...</div>;
     }
 
+    // Create article options for combobox
+    const articleOptions: ComboboxOption[] = [
+        { value: "", label: "All Articles" },
+        ...articles.map(article => ({
+            value: article.id!,
+            label: article.title,
+        }))
+    ];
+
     return (
         <>
         <div className="admin-comments-container">
@@ -177,22 +187,18 @@ const Comments: React.FC<CommentsProps> = ({
                 <div className="admin-actions">
                     <div className="admin-filter-section">
                         <label htmlFor="article-filter">Filter by Article:</label>
-                        <select
-                            id="article-filter"
+                        <Combobox
+                            options={articleOptions}
                             value={selectedArticleId}
-                            onChange={(e) => {
-                                setSelectedArticleId(e.target.value);
+                            onValueChange={(value) => {
+                                setSelectedArticleId(value);
                                 setCurrentPage(0);
                             }}
-                            className="admin-filter-select"
-                        >
-                            <option value="">All Articles</option>
-                            {articles.map((article) => (
-                                <option key={article.id} value={article.id}>
-                                    {article.title}
-                                </option>
-                            ))}
-                        </select>
+                            placeholder="Select article..."
+                            searchPlaceholder="Search articles..."
+                            className="admin-filter-select min-w-[200px]"
+                            clearable
+                        />
                     </div>
                 </div>
             </div>

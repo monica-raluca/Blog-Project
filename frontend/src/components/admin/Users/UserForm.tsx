@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import '../Articles/AdminArticles.css';
 import './AdminUsers.css';
 import { Label } from '@/components/ui/label';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 
 interface UserFormProps {
     userId?: string;
@@ -77,6 +78,8 @@ const UserForm: React.FC<UserFormProps> = ({
         { value: 'ROLE_AUTHOR', label: 'Author', description: 'Can create and edit their own articles' },
         { value: 'ROLE_ADMIN', label: 'Admin', description: 'Full access to all system features' }
     ];
+
+
 
     useEffect(() => {
         if (finalId && !initialUser) {
@@ -232,6 +235,13 @@ const UserForm: React.FC<UserFormProps> = ({
 
     const isCurrentUser = user.username === currentUser;
 
+    // Create role options for combobox
+    const roleOptions: ComboboxOption[] = availableRoles.map(role => ({
+        value: role.value,
+        label: `${role.label} - ${role.description}`,
+        disabled: loading || (isCurrentUser && role.value !== 'ROLE_ADMIN')
+    }));
+
     return (
         <div className="admin-user-form-container">
             <div className="admin-form-header">
@@ -314,34 +324,20 @@ const UserForm: React.FC<UserFormProps> = ({
                         <Label htmlFor="role" className="admin-form-label">
                             Role <span className="admin-required">*</span>
                         </Label>
-                        <div className="admin-role-selection">
-                            {availableRoles.map((role) => (
-                                <div key={role.value} className="admin-role-option">
-                                    <Label className="admin-role-option-label">
-                                        <input
-                                            type="radio"
-                                            value={role.value}
-                                            {...register("role")}
-                                            disabled={loading || (isCurrentUser && role.value !== 'ROLE_ADMIN')}
-                                            className="admin-radio-input"
-                                        />
-                                        <div className="admin-role-option-content">
-                                            <div className="admin-role-option-header">
-                                                <span className={`admin-role-badge admin-role-${role.value.replace('ROLE_', '').toLowerCase()}`}>
-                                                    {role.label}
-                                                </span>
-                                                {isCurrentUser && role.value !== 'ROLE_ADMIN' && (
-                                                    <span className="admin-disabled-notice">(Cannot remove own admin access)</span>
-                                                )}
-                                            </div>
-                                            <div className="admin-role-option-description">
-                                                {role.description}
-                                            </div>
-                                        </div>
-                                    </Label>
-                                </div>
-                            ))}
-                        </div>
+                        <Combobox
+                            options={roleOptions}
+                            value={selectedRole}
+                            onValueChange={(value) => setValue("role", value)}
+                            placeholder="Select a role..."
+                            searchPlaceholder="Search roles..."
+                            className="admin-form-select min-w-[400px]"
+                            disabled={loading}
+                        />
+                        {isCurrentUser && selectedRole !== 'ROLE_ADMIN' && (
+                            <p className="admin-disabled-notice">
+                                Note: You cannot remove your own admin access
+                            </p>
+                        )}
                         <p className="admin-field-error">{errors.role?.message}</p>
                     </div>
                 </div>

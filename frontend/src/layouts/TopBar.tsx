@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/pagination';
 import '../format/TopBar.css';
 import { Label } from '@/components/ui/label';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 
 interface SortField {
   label: string;
@@ -25,6 +26,11 @@ const SORT_FIELDS: SortField[] = [
 ];
 
 const PAGE_SIZES: number[] = [5, 10, 20, 50];
+
+const PAGE_SIZE_OPTIONS: ComboboxOption[] = PAGE_SIZES.map(size => ({
+  value: size.toString(),
+  label: `${size} per page`,
+}));
 
 const TopBar: React.FC = () => {
   const context = useContext(ArticleControlsContext);
@@ -86,8 +92,8 @@ const TopBar: React.FC = () => {
     if (!isNaN(val) && val > 0) setPageIndex(val - 1);
   };
   
-  const handlePageSizeChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    setPageSize(Number(e.target.value));
+  const handlePageSizeChange = (value: string): void => {
+    setPageSize(Number(value));
     setPageIndex(0);
   };
 
@@ -193,11 +199,13 @@ const TopBar: React.FC = () => {
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
-            <select className="topbar-page-size" value={pageSize} onChange={handlePageSizeChange}>
-              {PAGE_SIZES.map(size => (
-                <option key={size} value={size}>{size} / page</option>
-              ))}
-            </select>
+            <Combobox
+              options={PAGE_SIZE_OPTIONS}
+              value={pageSize.toString()}
+              onValueChange={handlePageSizeChange}
+              placeholder="Page size"
+              className="topbar-page-size min-w-[120px]"
+            />
           </div>
         </>
       )}

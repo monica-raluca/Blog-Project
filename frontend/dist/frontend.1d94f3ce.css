@@ -163,6 +163,7 @@
     --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -715,6 +716,10 @@
     margin-top: auto;
   }
 
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+
   .ml-auto {
     margin-left: auto;
   }
@@ -950,6 +955,10 @@
     width: 500px;
   }
 
+  .w-\[var\(--radix-popover-trigger-width\)\] {
+    width: var(--radix-popover-trigger-width);
+  }
+
   .w-auto {
     width: auto;
   }
@@ -988,6 +997,26 @@
 
   .min-w-\[8rem\] {
     min-width: 8rem;
+  }
+
+  .min-w-\[120px\] {
+    min-width: 120px;
+  }
+
+  .min-w-\[150px\] {
+    min-width: 150px;
+  }
+
+  .min-w-\[200px\] {
+    min-width: 200px;
+  }
+
+  .min-w-\[300px\] {
+    min-width: 300px;
+  }
+
+  .min-w-\[400px\] {
+    min-width: 400px;
   }
 
   .min-w-\[var\(--radix-select-trigger-width\)\] {
@@ -1935,6 +1964,11 @@
     font-weight: var(--font-weight-medium);
   }
 
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
+
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
@@ -1971,10 +2005,6 @@
 
   .text-card-foreground {
     color: var(--card-foreground);
-  }
-
-  .text-destructive-foreground {
-    color: var(--destructive-foreground);
   }
 
   .text-foreground {
@@ -2139,12 +2169,20 @@
     -moz-osx-font-smoothing: auto;
   }
 
+  .opacity-0 {
+    opacity: 0;
+  }
+
   .opacity-50 {
     opacity: .5;
   }
 
   .opacity-70 {
     opacity: .7;
+  }
+
+  .opacity-100 {
+    opacity: 1;
   }
 
   .shadow {
@@ -2896,6 +2934,14 @@
     }
   }
 
+  .hover\:bg-transparent {
+    &:hover {
+      @media (hover: hover) {
+        background-color: #0000;
+      }
+    }
+  }
+
   .hover\:bg-white\/30 {
     &:hover {
       @media (hover: hover) {
@@ -3104,6 +3150,14 @@
     &:hover {
       @media (hover: hover) {
         text-decoration-line: underline;
+      }
+    }
+  }
+
+  .hover\:opacity-70 {
+    &:hover {
+      @media (hover: hover) {
+        opacity: .7;
       }
     }
   }

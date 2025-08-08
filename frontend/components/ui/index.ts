@@ -5,6 +5,7 @@
 // export { default as Button } from "./button"
 // export { default as Card } from "./card"
 // export { default as Command } from "./command"
+// export { default as Combobox } from "./combobox"
 // export { default as Dialog } from "./dialog"
 // export { default as HoverCard } from "./hover-card"
 // export { default as Input } from "./input"

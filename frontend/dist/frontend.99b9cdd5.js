@@ -27686,6 +27686,7 @@ var _button = require("@/components/ui/button");
 var _pagination = require("@/components/ui/pagination");
 var _topBarCss = require("../format/TopBar.css");
 var _label = require("@/components/ui/label");
+var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
 const SORT_FIELDS = [
     {
@@ -27707,6 +27708,11 @@ const PAGE_SIZES = [
     20,
     50
 ];
+const PAGE_SIZE_OPTIONS = PAGE_SIZES.map(_c = (size)=>({
+        value: size.toString(),
+        label: `${size} per page`
+    }));
+_c1 = PAGE_SIZE_OPTIONS;
 const TopBar = ()=>{
     _s();
     const context = (0, _react.useContext)((0, _layout.ArticleControlsContext));
@@ -27765,8 +27771,8 @@ const TopBar = ()=>{
         let val = parseInt(e.target.value, 10);
         if (!isNaN(val) && val > 0) setPageIndex(val - 1);
     };
-    const handlePageSizeChange = (e)=>{
-        setPageSize(Number(e.target.value));
+    const handlePageSizeChange = (value)=>{
+        setPageSize(Number(value));
         setPageIndex(0);
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27784,7 +27790,7 @@ const TopBar = ()=>{
                         className: "island-dot"
                     }, void 0, false, {
                         fileName: "src/layouts/TopBar.tsx",
-                        lineNumber: 105,
+                        lineNumber: 111,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -27792,13 +27798,13 @@ const TopBar = ()=>{
                         children: "Show controls"
                     }, void 0, false, {
                         fileName: "src/layouts/TopBar.tsx",
-                        lineNumber: 106,
+                        lineNumber: 112,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/layouts/TopBar.tsx",
-                lineNumber: 104,
+                lineNumber: 110,
                 columnNumber: 9
             }, undefined),
             expanded && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27811,7 +27817,7 @@ const TopBar = ()=>{
                                 children: "Sort by:"
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 112,
+                                lineNumber: 118,
                                 columnNumber: 13
                             }, undefined),
                             SORT_FIELDS.map((sf)=>{
@@ -27825,7 +27831,7 @@ const TopBar = ()=>{
                                             onChange: ()=>handleSortToggle(sf.value)
                                         }, void 0, false, {
                                             fileName: "src/layouts/TopBar.tsx",
-                                            lineNumber: 117,
+                                            lineNumber: 123,
                                             columnNumber: 19
                                         }, undefined),
                                         sf.label,
@@ -27837,20 +27843,20 @@ const TopBar = ()=>{
                                             children: active.direction === 'ASC' ? "\u2191 Asc" : "\u2193 Desc"
                                         }, void 0, false, {
                                             fileName: "src/layouts/TopBar.tsx",
-                                            lineNumber: 124,
+                                            lineNumber: 130,
                                             columnNumber: 21
                                         }, undefined)
                                     ]
                                 }, sf.value, true, {
                                     fileName: "src/layouts/TopBar.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 122,
                                     columnNumber: 17
                                 }, undefined);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/TopBar.tsx",
-                        lineNumber: 111,
+                        lineNumber: 117,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27861,7 +27867,7 @@ const TopBar = ()=>{
                                 children: "Filter:"
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 138,
+                                lineNumber: 144,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27873,7 +27879,7 @@ const TopBar = ()=>{
                                 onChange: handleFilterChange
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 139,
+                                lineNumber: 145,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -27885,7 +27891,7 @@ const TopBar = ()=>{
                                 onChange: handleFilterChange
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 147,
+                                lineNumber: 153,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -27895,7 +27901,7 @@ const TopBar = ()=>{
                                 children: "Apply"
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 155,
+                                lineNumber: 161,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -27905,13 +27911,13 @@ const TopBar = ()=>{
                                 children: "Clear"
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 156,
+                                lineNumber: 162,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/TopBar.tsx",
-                        lineNumber: 137,
+                        lineNumber: 143,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27933,12 +27939,12 @@ const TopBar = ()=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/layouts/TopBar.tsx",
-                                                lineNumber: 162,
+                                                lineNumber: 168,
                                                 columnNumber: 19
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/layouts/TopBar.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 167,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -27954,18 +27960,18 @@ const TopBar = ()=>{
                                                         className: "topbar-page-input"
                                                     }, void 0, false, {
                                                         fileName: "src/layouts/TopBar.tsx",
-                                                        lineNumber: 176,
+                                                        lineNumber: 182,
                                                         columnNumber: 26
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/layouts/TopBar.tsx",
-                                                lineNumber: 175,
+                                                lineNumber: 181,
                                                 columnNumber: 19
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/layouts/TopBar.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 180,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -27977,49 +27983,40 @@ const TopBar = ()=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/layouts/TopBar.tsx",
-                                                lineNumber: 186,
+                                                lineNumber: 192,
                                                 columnNumber: 19
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/layouts/TopBar.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 191,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/layouts/TopBar.tsx",
-                                    lineNumber: 160,
+                                    lineNumber: 166,
                                     columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 159,
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                className: "topbar-page-size",
-                                value: pageSize,
-                                onChange: handlePageSizeChange,
-                                children: PAGE_SIZES.map((size)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                        value: size,
-                                        children: [
-                                            size,
-                                            " / page"
-                                        ]
-                                    }, size, true, {
-                                        fileName: "src/layouts/TopBar.tsx",
-                                        lineNumber: 198,
-                                        columnNumber: 17
-                                    }, undefined))
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                options: PAGE_SIZE_OPTIONS,
+                                value: pageSize.toString(),
+                                onValueChange: handlePageSizeChange,
+                                placeholder: "Page size",
+                                className: "topbar-page-size min-w-[120px]"
                             }, void 0, false, {
                                 fileName: "src/layouts/TopBar.tsx",
-                                lineNumber: 196,
+                                lineNumber: 202,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/layouts/TopBar.tsx",
-                        lineNumber: 158,
+                        lineNumber: 164,
                         columnNumber: 11
                     }, undefined)
                 ]
@@ -28027,22 +28024,24 @@ const TopBar = ()=>{
         ]
     }, void 0, true, {
         fileName: "src/layouts/TopBar.tsx",
-        lineNumber: 95,
+        lineNumber: 101,
         columnNumber: 5
     }, undefined);
 };
 _s(TopBar, "foWFNzrkU5AJXmf6AAY9SE6XEwo=");
-_c = TopBar;
+_c2 = TopBar;
 exports.default = TopBar;
-var _c;
-$RefreshReg$(_c, "TopBar");
+var _c, _c1, _c2;
+$RefreshReg$(_c, "PAGE_SIZE_OPTIONS$PAGE_SIZES.map");
+$RefreshReg$(_c1, "PAGE_SIZE_OPTIONS");
+$RefreshReg$(_c2, "TopBar");
 
   $parcel$ReactRefreshHelpers$d0e3.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Layout":"aGg7E","../format/TopBar.css":"kCG25","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/label":"ibnwz","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3"}],"kCG25":[function() {},{}],"ibnwz":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Layout":"aGg7E","../format/TopBar.css":"kCG25","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/label":"ibnwz","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4"}],"kCG25":[function() {},{}],"ibnwz":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$fd89 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$fd89.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -42187,7 +42186,7 @@ var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJ
 var _iconJs = require("./Icon.js");
 var _iconJsDefault = parcelHelpers.interopDefault(_iconJs);
 
-},{"./icons/index.js":false,"./icons/alarm-clock-check.js":false,"./icons/alarm-clock-minus.js":false,"./icons/alarm-clock-plus.js":false,"./icons/arrow-down-a-z.js":false,"./icons/arrow-down-wide-narrow.js":false,"./icons/arrow-down-z-a.js":false,"./icons/arrow-up-a-z.js":false,"./icons/arrow-up-narrow-wide.js":false,"./icons/arrow-up-z-a.js":false,"./icons/axis-3d.js":false,"./icons/badge-check.js":false,"./icons/badge-question-mark.js":false,"./icons/between-horizontal-end.js":false,"./icons/between-horizontal-start.js":false,"./icons/book-dashed.js":false,"./icons/braces.js":false,"./icons/captions.js":false,"./icons/chart-area.js":false,"./icons/chart-bar-big.js":false,"./icons/chart-bar.js":false,"./icons/chart-candlestick.js":false,"./icons/chart-column-big.js":false,"./icons/chart-column-increasing.js":false,"./icons/chart-column.js":false,"./icons/chart-line.js":false,"./icons/chart-no-axes-column-increasing.js":false,"./icons/chart-no-axes-column.js":false,"./icons/chart-no-axes-gantt.js":false,"./icons/chart-scatter.js":false,"./icons/chart-pie.js":false,"./icons/circle-arrow-down.js":false,"./icons/circle-alert.js":false,"./icons/circle-arrow-left.js":false,"./icons/circle-arrow-out-down-left.js":false,"./icons/circle-arrow-out-down-right.js":false,"./icons/circle-arrow-out-up-left.js":false,"./icons/circle-arrow-out-up-right.js":false,"./icons/circle-arrow-right.js":false,"./icons/circle-arrow-up.js":false,"./icons/circle-check-big.js":false,"./icons/circle-check.js":false,"./icons/circle-chevron-down.js":false,"./icons/circle-chevron-left.js":false,"./icons/circle-chevron-right.js":false,"./icons/circle-chevron-up.js":false,"./icons/circle-divide.js":false,"./icons/circle-gauge.js":false,"./icons/circle-minus.js":false,"./icons/circle-parking.js":false,"./icons/circle-parking-off.js":false,"./icons/circle-pause.js":false,"./icons/circle-percent.js":false,"./icons/circle-play.js":false,"./icons/circle-plus.js":false,"./icons/circle-power.js":false,"./icons/circle-question-mark.js":false,"./icons/circle-slash-2.js":false,"./icons/circle-stop.js":false,"./icons/circle-user-round.js":false,"./icons/circle-user.js":false,"./icons/circle-x.js":false,"./icons/clipboard-pen-line.js":false,"./icons/clipboard-pen.js":false,"./icons/cloud-download.js":false,"./icons/cloud-upload.js":false,"./icons/code-xml.js":false,"./icons/columns-2.js":false,"./icons/columns-3-cog.js":false,"./icons/columns-3.js":false,"./icons/contact-round.js":false,"./icons/diamond-percent.js":false,"./icons/earth.js":false,"./icons/ellipsis-vertical.js":false,"./icons/ellipsis.js":"kjwbV","./icons/file-axis-3d.js":false,"./icons/file-chart-column-increasing.js":false,"./icons/file-chart-line.js":false,"./icons/file-chart-column.js":false,"./icons/file-chart-pie.js":false,"./icons/file-cog.js":false,"./icons/file-pen-line.js":false,"./icons/file-pen.js":false,"./icons/file-play.js":false,"./icons/file-question-mark.js":false,"./icons/file-video-camera.js":false,"./icons/folder-cog.js":false,"./icons/folder-pen.js":false,"./icons/funnel-x.js":false,"./icons/funnel.js":false,"./icons/git-commit-horizontal.js":false,"./icons/grid-2x2-check.js":false,"./icons/grid-2x2-plus.js":false,"./icons/grid-2x2-x.js":false,"./icons/grid-2x2.js":false,"./icons/grid-3x3.js":false,"./icons/hand-grab.js":false,"./icons/hand-helping.js":false,"./icons/house.js":false,"./icons/ice-cream-bowl.js":false,"./icons/ice-cream-cone.js":false,"./icons/indent-decrease.js":false,"./icons/indent-increase.js":false,"./icons/laptop-minimal.js":false,"./icons/layers.js":false,"./icons/loader-circle.js":false,"./icons/lock-keyhole-open.js":false,"./icons/lock-open.js":false,"./icons/mail-question-mark.js":false,"./icons/map-pin-pen.js":false,"./icons/message-circle-question-mark.js":false,"./icons/mic-vocal.js":false,"./icons/move-3d.js":false,"./icons/octagon-alert.js":false,"./icons/octagon-pause.js":false,"./icons/octagon-x.js":false,"./icons/paintbrush-vertical.js":false,"./icons/panel-bottom-dashed.js":false,"./icons/panel-left-close.js":false,"./icons/panel-left-dashed.js":false,"./icons/panel-left-open.js":false,"./icons/panel-left.js":false,"./icons/panel-right-dashed.js":false,"./icons/panel-top-dashed.js":false,"./icons/panels-top-left.js":false,"./icons/pen.js":false,"./icons/pen-line.js":false,"./icons/plug-zap.js":false,"./icons/rectangle-ellipsis.js":false,"./icons/rotate-3d.js":false,"./icons/rows-2.js":false,"./icons/rows-3.js":false,"./icons/scale-3d.js":false,"./icons/send-horizontal.js":false,"./icons/shield-question-mark.js":false,"./icons/shield-x.js":false,"./icons/sliders-vertical.js":false,"./icons/sparkles.js":false,"./icons/square-activity.js":false,"./icons/square-arrow-down-left.js":false,"./icons/square-arrow-down-right.js":false,"./icons/square-arrow-down.js":false,"./icons/square-arrow-left.js":false,"./icons/square-arrow-out-down-left.js":false,"./icons/square-arrow-out-down-right.js":false,"./icons/square-arrow-out-up-left.js":false,"./icons/square-arrow-out-up-right.js":false,"./icons/square-arrow-up-left.js":false,"./icons/square-arrow-right.js":false,"./icons/square-arrow-up-right.js":false,"./icons/square-arrow-up.js":false,"./icons/square-asterisk.js":false,"./icons/square-chart-gantt.js":false,"./icons/square-bottom-dashed-scissors.js":false,"./icons/square-check-big.js":false,"./icons/square-check.js":false,"./icons/square-chevron-left.js":false,"./icons/square-chevron-down.js":false,"./icons/square-chevron-right.js":false,"./icons/square-chevron-up.js":false,"./icons/square-code.js":false,"./icons/square-dashed-kanban.js":false,"./icons/square-dashed-mouse-pointer.js":false,"./icons/square-dashed.js":false,"./icons/square-dot.js":false,"./icons/square-divide.js":false,"./icons/square-function.js":false,"./icons/square-equal.js":false,"./icons/square-library.js":false,"./icons/square-kanban.js":false,"./icons/square-menu.js":false,"./icons/square-m.js":false,"./icons/square-minus.js":false,"./icons/square-mouse-pointer.js":false,"./icons/square-parking-off.js":false,"./icons/square-parking.js":false,"./icons/square-pen.js":false,"./icons/square-percent.js":false,"./icons/square-pi.js":false,"./icons/square-pilcrow.js":false,"./icons/square-play.js":false,"./icons/square-plus.js":false,"./icons/square-power.js":false,"./icons/square-scissors.js":false,"./icons/square-sigma.js":false,"./icons/square-slash.js":false,"./icons/square-split-horizontal.js":false,"./icons/square-terminal.js":false,"./icons/square-split-vertical.js":false,"./icons/square-user-round.js":false,"./icons/square-user.js":false,"./icons/square-x.js":false,"./icons/test-tube-diagonal.js":false,"./icons/text-select.js":false,"./icons/tram-front.js":false,"./icons/tree-palm.js":false,"./icons/triangle-alert.js":false,"./icons/tv-minimal.js":false,"./icons/university.js":false,"./icons/user-round-check.js":false,"./icons/user-round-cog.js":false,"./icons/user-round-minus.js":false,"./icons/user-round-plus.js":false,"./icons/user-round-x.js":false,"./icons/user-round.js":false,"./icons/users-round.js":false,"./icons/utensils-crossed.js":false,"./icons/utensils.js":false,"./icons/wallet-minimal.js":false,"./icons/wand-sparkles.js":false,"./icons/a-arrow-down.js":false,"./icons/a-arrow-up.js":false,"./icons/a-large-small.js":false,"./icons/accessibility.js":false,"./icons/activity.js":false,"./icons/air-vent.js":false,"./icons/airplay.js":false,"./icons/alarm-clock-off.js":false,"./icons/alarm-clock.js":false,"./icons/alarm-smoke.js":false,"./icons/album.js":false,"./icons/align-center-horizontal.js":false,"./icons/align-center-vertical.js":false,"./icons/align-center.js":false,"./icons/align-end-horizontal.js":false,"./icons/align-horizontal-distribute-center.js":false,"./icons/align-horizontal-distribute-end.js":false,"./icons/align-end-vertical.js":false,"./icons/align-horizontal-distribute-start.js":false,"./icons/align-horizontal-justify-center.js":false,"./icons/align-horizontal-justify-end.js":false,"./icons/align-horizontal-justify-start.js":false,"./icons/align-horizontal-space-around.js":false,"./icons/align-horizontal-space-between.js":false,"./icons/align-justify.js":false,"./icons/align-left.js":false,"./icons/align-right.js":false,"./icons/align-start-horizontal.js":false,"./icons/align-start-vertical.js":false,"./icons/align-vertical-distribute-center.js":false,"./icons/align-vertical-distribute-end.js":false,"./icons/align-vertical-distribute-start.js":false,"./icons/align-vertical-justify-center.js":false,"./icons/align-vertical-justify-start.js":false,"./icons/align-vertical-justify-end.js":false,"./icons/align-vertical-space-around.js":false,"./icons/align-vertical-space-between.js":false,"./icons/ambulance.js":false,"./icons/ampersand.js":false,"./icons/ampersands.js":false,"./icons/amphora.js":false,"./icons/anchor.js":false,"./icons/angry.js":false,"./icons/annoyed.js":false,"./icons/antenna.js":false,"./icons/anvil.js":false,"./icons/aperture.js":false,"./icons/app-window.js":false,"./icons/app-window-mac.js":false,"./icons/apple.js":false,"./icons/archive-restore.js":false,"./icons/archive-x.js":false,"./icons/archive.js":false,"./icons/armchair.js":false,"./icons/arrow-big-down-dash.js":false,"./icons/arrow-big-down.js":false,"./icons/arrow-big-left-dash.js":false,"./icons/arrow-big-left.js":false,"./icons/arrow-big-right-dash.js":false,"./icons/arrow-big-right.js":false,"./icons/arrow-big-up.js":false,"./icons/arrow-big-up-dash.js":false,"./icons/arrow-down-from-line.js":false,"./icons/arrow-down-left.js":false,"./icons/arrow-down-narrow-wide.js":false,"./icons/arrow-down-right.js":false,"./icons/arrow-down-to-dot.js":false,"./icons/arrow-down-to-line.js":false,"./icons/arrow-down-up.js":false,"./icons/arrow-down.js":false,"./icons/arrow-left-right.js":false,"./icons/arrow-left-from-line.js":false,"./icons/arrow-left-to-line.js":false,"./icons/arrow-left.js":false,"./icons/arrow-right-from-line.js":false,"./icons/arrow-right-left.js":false,"./icons/arrow-right-to-line.js":false,"./icons/arrow-right.js":false,"./icons/arrow-up-down.js":false,"./icons/arrow-up-from-dot.js":false,"./icons/arrow-up-from-line.js":false,"./icons/arrow-up-left.js":false,"./icons/arrow-up-right.js":false,"./icons/arrow-up-to-line.js":false,"./icons/arrow-up-wide-narrow.js":false,"./icons/arrow-up.js":false,"./icons/arrows-up-from-line.js":false,"./icons/asterisk.js":false,"./icons/at-sign.js":false,"./icons/atom.js":false,"./icons/audio-lines.js":false,"./icons/award.js":false,"./icons/audio-waveform.js":false,"./icons/axe.js":false,"./icons/baby.js":false,"./icons/backpack.js":false,"./icons/badge-alert.js":false,"./icons/badge-cent.js":false,"./icons/badge-dollar-sign.js":false,"./icons/badge-euro.js":false,"./icons/badge-indian-rupee.js":false,"./icons/badge-info.js":false,"./icons/badge-japanese-yen.js":false,"./icons/badge-minus.js":false,"./icons/badge-percent.js":false,"./icons/badge-plus.js":false,"./icons/badge-pound-sterling.js":false,"./icons/badge-russian-ruble.js":false,"./icons/badge-swiss-franc.js":false,"./icons/badge-turkish-lira.js":false,"./icons/badge-x.js":false,"./icons/badge.js":false,"./icons/baggage-claim.js":false,"./icons/ban.js":false,"./icons/banana.js":false,"./icons/bandage.js":false,"./icons/banknote-arrow-down.js":false,"./icons/banknote-arrow-up.js":false,"./icons/banknote-x.js":false,"./icons/banknote.js":false,"./icons/barcode.js":false,"./icons/baseline.js":false,"./icons/barrel.js":false,"./icons/bath.js":false,"./icons/battery-full.js":false,"./icons/battery-low.js":false,"./icons/battery-charging.js":false,"./icons/battery-medium.js":false,"./icons/battery-plus.js":false,"./icons/battery-warning.js":false,"./icons/battery.js":false,"./icons/beaker.js":false,"./icons/bean-off.js":false,"./icons/bean.js":false,"./icons/bed-double.js":false,"./icons/bed-single.js":false,"./icons/bed.js":false,"./icons/beef.js":false,"./icons/beer-off.js":false,"./icons/beer.js":false,"./icons/bell-dot.js":false,"./icons/bell-electric.js":false,"./icons/bell-minus.js":false,"./icons/bell-off.js":false,"./icons/bell-plus.js":false,"./icons/bell-ring.js":false,"./icons/bell.js":false,"./icons/between-vertical-start.js":false,"./icons/between-vertical-end.js":false,"./icons/biceps-flexed.js":false,"./icons/bike.js":false,"./icons/binary.js":false,"./icons/binoculars.js":false,"./icons/biohazard.js":false,"./icons/bird.js":false,"./icons/bitcoin.js":false,"./icons/blend.js":false,"./icons/blinds.js":false,"./icons/blocks.js":false,"./icons/bluetooth-connected.js":false,"./icons/bluetooth-off.js":false,"./icons/bluetooth-searching.js":false,"./icons/bluetooth.js":false,"./icons/bold.js":false,"./icons/bolt.js":false,"./icons/bomb.js":false,"./icons/bone.js":false,"./icons/book-a.js":false,"./icons/book-alert.js":false,"./icons/book-audio.js":false,"./icons/book-check.js":false,"./icons/book-copy.js":false,"./icons/book-down.js":false,"./icons/book-headphones.js":false,"./icons/book-heart.js":false,"./icons/book-image.js":false,"./icons/book-key.js":false,"./icons/book-lock.js":false,"./icons/book-marked.js":false,"./icons/book-minus.js":false,"./icons/book-open-check.js":false,"./icons/book-open-text.js":false,"./icons/book-open.js":false,"./icons/book-plus.js":false,"./icons/book-text.js":false,"./icons/book-type.js":false,"./icons/book-up-2.js":false,"./icons/book-user.js":false,"./icons/book-up.js":false,"./icons/book-x.js":false,"./icons/book.js":false,"./icons/bookmark-check.js":false,"./icons/bookmark-minus.js":false,"./icons/bookmark-plus.js":false,"./icons/bookmark-x.js":false,"./icons/bookmark.js":false,"./icons/boom-box.js":false,"./icons/bot-message-square.js":false,"./icons/bot-off.js":false,"./icons/bot.js":false,"./icons/bottle-wine.js":false,"./icons/bow-arrow.js":false,"./icons/box.js":false,"./icons/brackets.js":false,"./icons/boxes.js":false,"./icons/brain-circuit.js":false,"./icons/brain-cog.js":false,"./icons/brain.js":false,"./icons/brick-wall-fire.js":false,"./icons/brick-wall.js":false,"./icons/briefcase-business.js":false,"./icons/briefcase-conveyor-belt.js":false,"./icons/briefcase-medical.js":false,"./icons/briefcase.js":false,"./icons/bring-to-front.js":false,"./icons/brush-cleaning.js":false,"./icons/brush.js":false,"./icons/bubbles.js":false,"./icons/bug-off.js":false,"./icons/bug-play.js":false,"./icons/bug.js":false,"./icons/building-2.js":false,"./icons/building.js":false,"./icons/bus-front.js":false,"./icons/bus.js":false,"./icons/cable-car.js":false,"./icons/cable.js":false,"./icons/cake-slice.js":false,"./icons/calculator.js":false,"./icons/cake.js":false,"./icons/calendar-1.js":false,"./icons/calendar-arrow-down.js":false,"./icons/calendar-arrow-up.js":false,"./icons/calendar-check-2.js":false,"./icons/calendar-check.js":false,"./icons/calendar-clock.js":false,"./icons/calendar-cog.js":false,"./icons/calendar-days.js":false,"./icons/calendar-fold.js":false,"./icons/calendar-minus-2.js":false,"./icons/calendar-minus.js":false,"./icons/calendar-heart.js":false,"./icons/calendar-plus-2.js":false,"./icons/calendar-off.js":false,"./icons/calendar-plus.js":false,"./icons/calendar-range.js":false,"./icons/calendar-search.js":false,"./icons/calendar-sync.js":false,"./icons/calendar-x-2.js":false,"./icons/calendar-x.js":false,"./icons/calendar.js":false,"./icons/camera-off.js":false,"./icons/camera.js":false,"./icons/candy-cane.js":false,"./icons/candy-off.js":false,"./icons/candy.js":false,"./icons/cannabis.js":false,"./icons/car-front.js":false,"./icons/captions-off.js":false,"./icons/car-taxi-front.js":false,"./icons/car.js":false,"./icons/caravan.js":false,"./icons/carrot.js":false,"./icons/card-sim.js":false,"./icons/case-lower.js":false,"./icons/case-sensitive.js":false,"./icons/case-upper.js":false,"./icons/cassette-tape.js":false,"./icons/cast.js":false,"./icons/castle.js":false,"./icons/cat.js":false,"./icons/cctv.js":false,"./icons/chart-bar-decreasing.js":false,"./icons/chart-bar-increasing.js":false,"./icons/chart-bar-stacked.js":false,"./icons/chart-column-decreasing.js":false,"./icons/chart-column-stacked.js":false,"./icons/chart-gantt.js":false,"./icons/chart-network.js":false,"./icons/chart-no-axes-column-decreasing.js":false,"./icons/chart-no-axes-combined.js":false,"./icons/chart-spline.js":false,"./icons/check-line.js":false,"./icons/check-check.js":false,"./icons/check.js":false,"./icons/chef-hat.js":false,"./icons/cherry.js":false,"./icons/chevron-down.js":"jfA6v","./icons/chevron-first.js":false,"./icons/chevron-last.js":false,"./icons/chevron-right.js":"iP6bz","./icons/chevron-left.js":"bYeKh","./icons/chevron-up.js":false,"./icons/chevrons-down.js":false,"./icons/chevrons-down-up.js":false,"./icons/chevrons-left-right-ellipsis.js":false,"./icons/chevrons-left-right.js":false,"./icons/chevrons-left.js":false,"./icons/chevrons-right-left.js":false,"./icons/chevrons-right.js":false,"./icons/chevrons-up-down.js":false,"./icons/chevrons-up.js":false,"./icons/chrome.js":false,"./icons/church.js":false,"./icons/cigarette-off.js":false,"./icons/cigarette.js":false,"./icons/circle-dashed.js":false,"./icons/circle-dollar-sign.js":false,"./icons/circle-dot-dashed.js":false,"./icons/circle-dot.js":false,"./icons/circle-ellipsis.js":false,"./icons/circle-equal.js":false,"./icons/circle-fading-arrow-up.js":false,"./icons/circle-fading-plus.js":false,"./icons/circle-off.js":false,"./icons/circle-pound-sterling.js":false,"./icons/circle-slash.js":false,"./icons/circle-small.js":false,"./icons/circle.js":false,"./icons/circuit-board.js":false,"./icons/citrus.js":false,"./icons/clapperboard.js":false,"./icons/clipboard-check.js":false,"./icons/clipboard-clock.js":false,"./icons/clipboard-copy.js":false,"./icons/clipboard-list.js":false,"./icons/clipboard-minus.js":false,"./icons/clipboard-paste.js":false,"./icons/clipboard-plus.js":false,"./icons/clipboard-type.js":false,"./icons/clipboard-x.js":false,"./icons/clock-1.js":false,"./icons/clipboard.js":false,"./icons/clock-10.js":false,"./icons/clock-11.js":false,"./icons/clock-12.js":false,"./icons/clock-2.js":false,"./icons/clock-3.js":false,"./icons/clock-4.js":false,"./icons/clock-5.js":false,"./icons/clock-6.js":false,"./icons/clock-7.js":false,"./icons/clock-8.js":false,"./icons/clock-9.js":false,"./icons/clock-alert.js":false,"./icons/clock-arrow-down.js":false,"./icons/clock-arrow-up.js":false,"./icons/clock-fading.js":false,"./icons/clock-plus.js":false,"./icons/clock.js":false,"./icons/closed-caption.js":false,"./icons/cloud-alert.js":false,"./icons/cloud-check.js":false,"./icons/cloud-cog.js":false,"./icons/cloud-drizzle.js":false,"./icons/cloud-fog.js":false,"./icons/cloud-hail.js":false,"./icons/cloud-lightning.js":false,"./icons/cloud-moon-rain.js":false,"./icons/cloud-moon.js":false,"./icons/cloud-off.js":false,"./icons/cloud-rain-wind.js":false,"./icons/cloud-rain.js":false,"./icons/cloud-snow.js":false,"./icons/cloud-sun.js":false,"./icons/cloud-sun-rain.js":false,"./icons/cloud.js":false,"./icons/cloudy.js":false,"./icons/clover.js":false,"./icons/club.js":false,"./icons/code.js":false,"./icons/codepen.js":false,"./icons/codesandbox.js":false,"./icons/cog.js":false,"./icons/coins.js":false,"./icons/coffee.js":false,"./icons/columns-4.js":false,"./icons/combine.js":false,"./icons/command.js":false,"./icons/compass.js":false,"./icons/component.js":false,"./icons/computer.js":false,"./icons/cone.js":false,"./icons/concierge-bell.js":false,"./icons/construction.js":false,"./icons/contact.js":false,"./icons/container.js":false,"./icons/contrast.js":false,"./icons/cookie.js":false,"./icons/cooking-pot.js":false,"./icons/copy-minus.js":false,"./icons/copy-check.js":false,"./icons/copy-plus.js":false,"./icons/copy-slash.js":false,"./icons/copy-x.js":false,"./icons/copy.js":false,"./icons/copyleft.js":false,"./icons/copyright.js":false,"./icons/corner-down-left.js":false,"./icons/corner-down-right.js":false,"./icons/corner-left-down.js":false,"./icons/corner-right-down.js":false,"./icons/corner-left-up.js":false,"./icons/corner-right-up.js":false,"./icons/corner-up-left.js":false,"./icons/cpu.js":false,"./icons/corner-up-right.js":false,"./icons/credit-card.js":false,"./icons/creative-commons.js":false,"./icons/croissant.js":false,"./icons/crop.js":false,"./icons/cross.js":false,"./icons/crosshair.js":false,"./icons/crown.js":false,"./icons/cuboid.js":false,"./icons/cup-soda.js":false,"./icons/currency.js":false,"./icons/cylinder.js":false,"./icons/dam.js":false,"./icons/database-backup.js":false,"./icons/database.js":false,"./icons/decimals-arrow-left.js":false,"./icons/database-zap.js":false,"./icons/decimals-arrow-right.js":false,"./icons/delete.js":false,"./icons/dessert.js":false,"./icons/diameter.js":false,"./icons/diamond-minus.js":false,"./icons/diamond-plus.js":false,"./icons/diamond.js":false,"./icons/dice-1.js":false,"./icons/dice-2.js":false,"./icons/dice-3.js":false,"./icons/dice-4.js":false,"./icons/dice-5.js":false,"./icons/dice-6.js":false,"./icons/dices.js":false,"./icons/diff.js":false,"./icons/disc-2.js":false,"./icons/disc-3.js":false,"./icons/disc-album.js":false,"./icons/disc.js":false,"./icons/divide.js":false,"./icons/dna-off.js":false,"./icons/dna.js":false,"./icons/dock.js":false,"./icons/dog.js":false,"./icons/dollar-sign.js":false,"./icons/donut.js":false,"./icons/door-closed.js":false,"./icons/door-closed-locked.js":false,"./icons/door-open.js":false,"./icons/dot.js":false,"./icons/download.js":false,"./icons/drafting-compass.js":false,"./icons/drama.js":false,"./icons/dribbble.js":false,"./icons/drill.js":false,"./icons/drone.js":false,"./icons/droplet-off.js":false,"./icons/droplet.js":false,"./icons/droplets.js":false,"./icons/drum.js":false,"./icons/drumstick.js":false,"./icons/dumbbell.js":false,"./icons/ear-off.js":false,"./icons/ear.js":false,"./icons/earth-lock.js":false,"./icons/eclipse.js":false,"./icons/egg-fried.js":false,"./icons/egg-off.js":false,"./icons/egg.js":false,"./icons/equal-approximately.js":false,"./icons/equal-not.js":false,"./icons/equal.js":false,"./icons/eraser.js":false,"./icons/ethernet-port.js":false,"./icons/euro.js":false,"./icons/expand.js":false,"./icons/external-link.js":false,"./icons/eye-closed.js":false,"./icons/eye-off.js":false,"./icons/eye.js":false,"./icons/facebook.js":false,"./icons/factory.js":false,"./icons/fan.js":false,"./icons/fast-forward.js":false,"./icons/feather.js":false,"./icons/fence.js":false,"./icons/ferris-wheel.js":false,"./icons/figma.js":false,"./icons/file-archive.js":false,"./icons/file-audio-2.js":false,"./icons/file-audio.js":false,"./icons/file-badge.js":false,"./icons/file-badge-2.js":false,"./icons/file-box.js":false,"./icons/file-check-2.js":false,"./icons/file-check.js":false,"./icons/file-clock.js":false,"./icons/file-code-2.js":false,"./icons/file-code.js":false,"./icons/file-diff.js":false,"./icons/file-digit.js":false,"./icons/file-down.js":false,"./icons/file-heart.js":false,"./icons/file-image.js":false,"./icons/file-input.js":false,"./icons/file-json-2.js":false,"./icons/file-json.js":false,"./icons/file-key-2.js":false,"./icons/file-key.js":false,"./icons/file-lock-2.js":false,"./icons/file-lock.js":false,"./icons/file-minus-2.js":false,"./icons/file-minus.js":false,"./icons/file-music.js":false,"./icons/file-output.js":false,"./icons/file-plus-2.js":false,"./icons/file-plus.js":false,"./icons/file-scan.js":false,"./icons/file-search-2.js":false,"./icons/file-search.js":false,"./icons/file-sliders.js":false,"./icons/file-spreadsheet.js":false,"./icons/file-symlink.js":false,"./icons/file-stack.js":false,"./icons/file-terminal.js":false,"./icons/file-text.js":false,"./icons/file-type-2.js":false,"./icons/file-type.js":false,"./icons/file-up.js":false,"./icons/file-user.js":false,"./icons/file-volume-2.js":false,"./icons/file-volume.js":false,"./icons/file-warning.js":false,"./icons/file-x-2.js":false,"./icons/file-x.js":false,"./icons/files.js":false,"./icons/file.js":false,"./icons/fingerprint.js":false,"./icons/film.js":false,"./icons/fire-extinguisher.js":false,"./icons/fish-off.js":false,"./icons/fish-symbol.js":false,"./icons/fish.js":false,"./icons/flag-off.js":false,"./icons/flag-triangle-left.js":false,"./icons/flag-triangle-right.js":false,"./icons/flag.js":false,"./icons/flame-kindling.js":false,"./icons/flame.js":false,"./icons/flashlight-off.js":false,"./icons/flashlight.js":false,"./icons/flask-conical-off.js":false,"./icons/flask-conical.js":false,"./icons/flask-round.js":false,"./icons/flip-horizontal-2.js":false,"./icons/flip-horizontal.js":false,"./icons/flip-vertical-2.js":false,"./icons/flip-vertical.js":false,"./icons/flower-2.js":false,"./icons/flower.js":false,"./icons/focus.js":false,"./icons/fold-horizontal.js":false,"./icons/fold-vertical.js":false,"./icons/folder-archive.js":false,"./icons/folder-check.js":false,"./icons/folder-clock.js":false,"./icons/folder-closed.js":false,"./icons/folder-code.js":false,"./icons/folder-dot.js":false,"./icons/folder-down.js":false,"./icons/folder-git-2.js":false,"./icons/folder-git.js":false,"./icons/folder-heart.js":false,"./icons/folder-input.js":false,"./icons/folder-kanban.js":false,"./icons/folder-key.js":false,"./icons/folder-lock.js":false,"./icons/folder-minus.js":false,"./icons/folder-open-dot.js":false,"./icons/folder-open.js":false,"./icons/folder-output.js":false,"./icons/folder-plus.js":false,"./icons/folder-root.js":false,"./icons/folder-search-2.js":false,"./icons/folder-search.js":false,"./icons/folder-symlink.js":false,"./icons/folder-sync.js":false,"./icons/folder-tree.js":false,"./icons/folder-up.js":false,"./icons/folder.js":false,"./icons/folder-x.js":false,"./icons/folders.js":false,"./icons/footprints.js":false,"./icons/forklift.js":false,"./icons/forward.js":false,"./icons/frame.js":false,"./icons/frown.js":false,"./icons/framer.js":false,"./icons/fullscreen.js":false,"./icons/fuel.js":false,"./icons/funnel-plus.js":false,"./icons/gallery-horizontal-end.js":false,"./icons/gallery-horizontal.js":false,"./icons/gallery-thumbnails.js":false,"./icons/gallery-vertical-end.js":false,"./icons/gallery-vertical.js":false,"./icons/gamepad-2.js":false,"./icons/gamepad.js":false,"./icons/gauge.js":false,"./icons/gem.js":false,"./icons/georgian-lari.js":false,"./icons/gavel.js":false,"./icons/ghost.js":false,"./icons/gift.js":false,"./icons/git-branch-plus.js":false,"./icons/git-branch.js":false,"./icons/git-commit-vertical.js":false,"./icons/git-compare-arrows.js":false,"./icons/git-compare.js":false,"./icons/git-fork.js":false,"./icons/git-merge.js":false,"./icons/git-graph.js":false,"./icons/git-pull-request-arrow.js":false,"./icons/git-pull-request-closed.js":false,"./icons/git-pull-request-create-arrow.js":false,"./icons/git-pull-request-create.js":false,"./icons/git-pull-request-draft.js":false,"./icons/git-pull-request.js":false,"./icons/github.js":false,"./icons/gitlab.js":false,"./icons/glass-water.js":false,"./icons/glasses.js":false,"./icons/globe-lock.js":false,"./icons/globe.js":false,"./icons/gpu.js":false,"./icons/goal.js":false,"./icons/graduation-cap.js":false,"./icons/grape.js":false,"./icons/grid-3x2.js":false,"./icons/grip-horizontal.js":false,"./icons/grip-vertical.js":false,"./icons/grip.js":false,"./icons/group.js":false,"./icons/guitar.js":false,"./icons/ham.js":false,"./icons/hamburger.js":false,"./icons/hammer.js":false,"./icons/hand-coins.js":false,"./icons/hand-fist.js":false,"./icons/hand-heart.js":false,"./icons/hand-metal.js":false,"./icons/hand-platter.js":false,"./icons/hand.js":false,"./icons/handbag.js":false,"./icons/handshake.js":false,"./icons/hard-drive-download.js":false,"./icons/hard-drive-upload.js":false,"./icons/hard-drive.js":false,"./icons/hard-hat.js":false,"./icons/hash.js":false,"./icons/hat-glasses.js":false,"./icons/haze.js":false,"./icons/hdmi-port.js":false,"./icons/heading-1.js":false,"./icons/heading-2.js":false,"./icons/heading-3.js":false,"./icons/heading-4.js":false,"./icons/heading-5.js":false,"./icons/heading-6.js":false,"./icons/heading.js":false,"./icons/headphone-off.js":false,"./icons/headphones.js":false,"./icons/headset.js":false,"./icons/heart-crack.js":false,"./icons/heart-handshake.js":false,"./icons/heart-off.js":false,"./icons/heart-plus.js":false,"./icons/heart-minus.js":false,"./icons/heart-pulse.js":false,"./icons/heart.js":false,"./icons/heater.js":false,"./icons/hexagon.js":false,"./icons/highlighter.js":false,"./icons/history.js":false,"./icons/hop-off.js":false,"./icons/hop.js":false,"./icons/hospital.js":false,"./icons/hotel.js":false,"./icons/hourglass.js":false,"./icons/house-plug.js":false,"./icons/house-plus.js":false,"./icons/house-wifi.js":false,"./icons/id-card-lanyard.js":false,"./icons/id-card.js":false,"./icons/image-minus.js":false,"./icons/image-down.js":false,"./icons/image-off.js":false,"./icons/image-play.js":false,"./icons/image-plus.js":false,"./icons/image-upscale.js":false,"./icons/image-up.js":false,"./icons/image.js":false,"./icons/images.js":false,"./icons/import.js":false,"./icons/inbox.js":false,"./icons/indian-rupee.js":false,"./icons/infinity.js":false,"./icons/info.js":false,"./icons/inspection-panel.js":false,"./icons/instagram.js":false,"./icons/italic.js":false,"./icons/iteration-ccw.js":false,"./icons/iteration-cw.js":false,"./icons/japanese-yen.js":false,"./icons/joystick.js":false,"./icons/kanban.js":false,"./icons/key-round.js":false,"./icons/key-square.js":false,"./icons/key.js":false,"./icons/keyboard-music.js":false,"./icons/keyboard-off.js":false,"./icons/keyboard.js":false,"./icons/lamp-ceiling.js":false,"./icons/lamp-desk.js":false,"./icons/lamp-floor.js":false,"./icons/lamp-wall-down.js":false,"./icons/lamp-wall-up.js":false,"./icons/landmark.js":false,"./icons/lamp.js":false,"./icons/languages.js":false,"./icons/land-plot.js":false,"./icons/laptop-minimal-check.js":false,"./icons/laptop.js":false,"./icons/lasso.js":false,"./icons/lasso-select.js":false,"./icons/laugh.js":false,"./icons/layers-2.js":false,"./icons/layout-grid.js":false,"./icons/layout-dashboard.js":false,"./icons/layout-list.js":false,"./icons/layout-panel-left.js":false,"./icons/layout-panel-top.js":false,"./icons/layout-template.js":false,"./icons/leaf.js":false,"./icons/lectern.js":false,"./icons/leafy-green.js":false,"./icons/letter-text.js":false,"./icons/library-big.js":false,"./icons/library.js":false,"./icons/life-buoy.js":false,"./icons/ligature.js":false,"./icons/lightbulb-off.js":false,"./icons/lightbulb.js":false,"./icons/line-squiggle.js":false,"./icons/link-2.js":false,"./icons/link-2-off.js":false,"./icons/link.js":false,"./icons/linkedin.js":false,"./icons/list-check.js":false,"./icons/list-checks.js":false,"./icons/list-collapse.js":false,"./icons/list-end.js":false,"./icons/list-filter-plus.js":false,"./icons/list-filter.js":false,"./icons/list-minus.js":false,"./icons/list-music.js":false,"./icons/list-ordered.js":false,"./icons/list-plus.js":false,"./icons/list-restart.js":false,"./icons/list-start.js":false,"./icons/list-todo.js":false,"./icons/list-tree.js":false,"./icons/list-video.js":false,"./icons/list-x.js":false,"./icons/list.js":false,"./icons/loader-pinwheel.js":false,"./icons/loader.js":false,"./icons/locate-fixed.js":false,"./icons/locate-off.js":false,"./icons/locate.js":false,"./icons/lock-keyhole.js":false,"./icons/lock.js":false,"./icons/log-in.js":false,"./icons/log-out.js":false,"./icons/logs.js":false,"./icons/lollipop.js":false,"./icons/magnet.js":false,"./icons/luggage.js":false,"./icons/mail-check.js":false,"./icons/mail-minus.js":false,"./icons/mail-open.js":false,"./icons/mail-plus.js":false,"./icons/mail-search.js":false,"./icons/mail-warning.js":false,"./icons/mail-x.js":false,"./icons/mail.js":false,"./icons/mailbox.js":false,"./icons/mails.js":false,"./icons/map-minus.js":false,"./icons/map-pin-check-inside.js":false,"./icons/map-pin-check.js":false,"./icons/map-pin-house.js":false,"./icons/map-pin-minus-inside.js":false,"./icons/map-pin-minus.js":false,"./icons/map-pin-off.js":false,"./icons/map-pin-plus-inside.js":false,"./icons/map-pin-plus.js":false,"./icons/map-pin-x-inside.js":false,"./icons/map-pin-x.js":false,"./icons/map-pin.js":false,"./icons/map-pinned.js":false,"./icons/map-plus.js":false,"./icons/map.js":false,"./icons/mars-stroke.js":false,"./icons/martini.js":false,"./icons/mars.js":false,"./icons/maximize-2.js":false,"./icons/maximize.js":false,"./icons/medal.js":false,"./icons/megaphone-off.js":false,"./icons/meh.js":false,"./icons/megaphone.js":false,"./icons/memory-stick.js":false,"./icons/menu.js":false,"./icons/message-circle-code.js":false,"./icons/merge.js":false,"./icons/message-circle-dashed.js":false,"./icons/message-circle-heart.js":false,"./icons/message-circle-more.js":false,"./icons/message-circle-off.js":false,"./icons/message-circle-plus.js":false,"./icons/message-circle-reply.js":false,"./icons/message-circle-warning.js":false,"./icons/message-circle-x.js":false,"./icons/message-circle.js":false,"./icons/message-square-code.js":false,"./icons/message-square-dashed.js":false,"./icons/message-square-diff.js":false,"./icons/message-square-dot.js":false,"./icons/message-square-lock.js":false,"./icons/message-square-heart.js":false,"./icons/message-square-more.js":false,"./icons/message-square-off.js":false,"./icons/message-square-plus.js":false,"./icons/message-square-quote.js":false,"./icons/message-square-reply.js":false,"./icons/message-square-share.js":false,"./icons/message-square-text.js":false,"./icons/message-square-warning.js":false,"./icons/message-square-x.js":false,"./icons/message-square.js":false,"./icons/messages-square.js":false,"./icons/mic-off.js":false,"./icons/mic.js":false,"./icons/microchip.js":false,"./icons/microscope.js":false,"./icons/microwave.js":false,"./icons/milestone.js":false,"./icons/milk-off.js":false,"./icons/minimize-2.js":false,"./icons/milk.js":false,"./icons/minimize.js":false,"./icons/minus.js":false,"./icons/monitor-check.js":false,"./icons/monitor-cog.js":false,"./icons/monitor-dot.js":false,"./icons/monitor-down.js":false,"./icons/monitor-off.js":false,"./icons/monitor-pause.js":false,"./icons/monitor-play.js":false,"./icons/monitor-smartphone.js":false,"./icons/monitor-speaker.js":false,"./icons/monitor-stop.js":false,"./icons/monitor-up.js":false,"./icons/monitor.js":false,"./icons/monitor-x.js":false,"./icons/moon-star.js":false,"./icons/moon.js":false,"./icons/mountain-snow.js":false,"./icons/mountain.js":false,"./icons/mouse-off.js":false,"./icons/mouse-pointer-2.js":false,"./icons/mouse-pointer-ban.js":false,"./icons/mouse-pointer-click.js":false,"./icons/mouse-pointer.js":false,"./icons/mouse.js":false,"./icons/move-diagonal-2.js":false,"./icons/move-diagonal.js":false,"./icons/move-down-left.js":false,"./icons/move-down-right.js":false,"./icons/move-horizontal.js":false,"./icons/move-right.js":false,"./icons/move-down.js":false,"./icons/move-left.js":false,"./icons/move-up-left.js":false,"./icons/move-up-right.js":false,"./icons/move-up.js":false,"./icons/move-vertical.js":false,"./icons/move.js":false,"./icons/music-2.js":false,"./icons/music-3.js":false,"./icons/music-4.js":false,"./icons/navigation-2-off.js":false,"./icons/music.js":false,"./icons/navigation-2.js":false,"./icons/navigation-off.js":false,"./icons/navigation.js":false,"./icons/network.js":false,"./icons/newspaper.js":false,"./icons/nfc.js":false,"./icons/non-binary.js":false,"./icons/notebook-pen.js":false,"./icons/notebook-tabs.js":false,"./icons/notebook.js":false,"./icons/notebook-text.js":false,"./icons/notepad-text-dashed.js":false,"./icons/nut-off.js":false,"./icons/notepad-text.js":false,"./icons/nut.js":false,"./icons/octagon-minus.js":false,"./icons/octagon.js":false,"./icons/omega.js":false,"./icons/option.js":false,"./icons/orbit.js":false,"./icons/package-2.js":false,"./icons/origami.js":false,"./icons/package-check.js":false,"./icons/package-minus.js":false,"./icons/package-plus.js":false,"./icons/package-search.js":false,"./icons/package-open.js":false,"./icons/package-x.js":false,"./icons/package.js":false,"./icons/paint-roller.js":false,"./icons/paint-bucket.js":false,"./icons/paintbrush.js":false,"./icons/palette.js":false,"./icons/panda.js":false,"./icons/panel-bottom-close.js":false,"./icons/panel-bottom.js":false,"./icons/panel-bottom-open.js":false,"./icons/panel-right-close.js":false,"./icons/panel-right-open.js":false,"./icons/panel-right.js":false,"./icons/panel-top-open.js":false,"./icons/panel-top-close.js":false,"./icons/panel-top.js":false,"./icons/panels-left-bottom.js":false,"./icons/panels-right-bottom.js":false,"./icons/paperclip.js":false,"./icons/parentheses.js":false,"./icons/parking-meter.js":false,"./icons/party-popper.js":false,"./icons/pause.js":false,"./icons/paw-print.js":false,"./icons/pc-case.js":false,"./icons/pen-off.js":false,"./icons/pen-tool.js":false,"./icons/pencil-line.js":false,"./icons/pencil-off.js":false,"./icons/pencil-ruler.js":false,"./icons/pentagon.js":false,"./icons/pencil.js":false,"./icons/percent.js":false,"./icons/person-standing.js":false,"./icons/phone-call.js":false,"./icons/philippine-peso.js":false,"./icons/phone-forwarded.js":false,"./icons/phone-missed.js":false,"./icons/phone-incoming.js":false,"./icons/phone-off.js":false,"./icons/phone-outgoing.js":false,"./icons/phone.js":false,"./icons/piano.js":false,"./icons/pi.js":false,"./icons/pickaxe.js":false,"./icons/picture-in-picture-2.js":false,"./icons/picture-in-picture.js":false,"./icons/piggy-bank.js":false,"./icons/pilcrow-left.js":false,"./icons/pilcrow-right.js":false,"./icons/pilcrow.js":false,"./icons/pill-bottle.js":false,"./icons/pill.js":false,"./icons/pin-off.js":false,"./icons/pin.js":false,"./icons/pipette.js":false,"./icons/pizza.js":false,"./icons/plane-landing.js":false,"./icons/plane.js":false,"./icons/plane-takeoff.js":false,"./icons/play.js":false,"./icons/plug-2.js":false,"./icons/plus.js":false,"./icons/plug.js":false,"./icons/pocket-knife.js":false,"./icons/pocket.js":false,"./icons/pointer-off.js":false,"./icons/podcast.js":false,"./icons/pointer.js":false,"./icons/popcorn.js":false,"./icons/popsicle.js":false,"./icons/pound-sterling.js":false,"./icons/power-off.js":false,"./icons/power.js":false,"./icons/presentation.js":false,"./icons/printer.js":false,"./icons/printer-check.js":false,"./icons/projector.js":false,"./icons/proportions.js":false,"./icons/puzzle.js":false,"./icons/pyramid.js":false,"./icons/qr-code.js":false,"./icons/quote.js":false,"./icons/rabbit.js":false,"./icons/radar.js":false,"./icons/radiation.js":false,"./icons/radical.js":false,"./icons/radio-receiver.js":false,"./icons/radio-tower.js":false,"./icons/radio.js":false,"./icons/radius.js":false,"./icons/rail-symbol.js":false,"./icons/rainbow.js":false,"./icons/rat.js":false,"./icons/ratio.js":false,"./icons/receipt-cent.js":false,"./icons/receipt-euro.js":false,"./icons/receipt-indian-rupee.js":false,"./icons/receipt-japanese-yen.js":false,"./icons/receipt-pound-sterling.js":false,"./icons/receipt-swiss-franc.js":false,"./icons/receipt-russian-ruble.js":false,"./icons/receipt-text.js":false,"./icons/receipt-turkish-lira.js":false,"./icons/receipt.js":false,"./icons/rectangle-circle.js":false,"./icons/rectangle-goggles.js":false,"./icons/rectangle-horizontal.js":false,"./icons/rectangle-vertical.js":false,"./icons/recycle.js":false,"./icons/redo-2.js":false,"./icons/redo-dot.js":false,"./icons/redo.js":false,"./icons/refresh-ccw.js":false,"./icons/refresh-ccw-dot.js":false,"./icons/refresh-cw-off.js":false,"./icons/refresh-cw.js":false,"./icons/refrigerator.js":false,"./icons/regex.js":false,"./icons/remove-formatting.js":false,"./icons/repeat-1.js":false,"./icons/repeat-2.js":false,"./icons/repeat.js":false,"./icons/replace-all.js":false,"./icons/replace.js":false,"./icons/reply-all.js":false,"./icons/reply.js":false,"./icons/rewind.js":false,"./icons/ribbon.js":false,"./icons/rocket.js":false,"./icons/rocking-chair.js":false,"./icons/roller-coaster.js":false,"./icons/rotate-ccw-key.js":false,"./icons/rotate-ccw-square.js":false,"./icons/rotate-ccw.js":false,"./icons/rotate-cw-square.js":false,"./icons/rotate-cw.js":false,"./icons/route-off.js":false,"./icons/route.js":false,"./icons/router.js":false,"./icons/rows-4.js":false,"./icons/rss.js":false,"./icons/ruler-dimension-line.js":false,"./icons/ruler.js":false,"./icons/russian-ruble.js":false,"./icons/salad.js":false,"./icons/sailboat.js":false,"./icons/sandwich.js":false,"./icons/satellite-dish.js":false,"./icons/satellite.js":false,"./icons/saudi-riyal.js":false,"./icons/save-off.js":false,"./icons/save-all.js":false,"./icons/save.js":false,"./icons/scale.js":false,"./icons/scaling.js":false,"./icons/scan-barcode.js":false,"./icons/scan-eye.js":false,"./icons/scan-face.js":false,"./icons/scan-heart.js":false,"./icons/scan-line.js":false,"./icons/scan-qr-code.js":false,"./icons/scan-search.js":false,"./icons/scan-text.js":false,"./icons/scan.js":false,"./icons/school.js":false,"./icons/scissors-line-dashed.js":false,"./icons/scissors.js":false,"./icons/screen-share-off.js":false,"./icons/screen-share.js":false,"./icons/scroll-text.js":false,"./icons/scroll.js":false,"./icons/search-code.js":false,"./icons/search-check.js":false,"./icons/search-slash.js":false,"./icons/search-x.js":false,"./icons/search.js":false,"./icons/section.js":false,"./icons/send-to-back.js":false,"./icons/send.js":false,"./icons/separator-horizontal.js":false,"./icons/separator-vertical.js":false,"./icons/server-cog.js":false,"./icons/server-crash.js":false,"./icons/server-off.js":false,"./icons/server.js":false,"./icons/settings-2.js":false,"./icons/shapes.js":false,"./icons/settings.js":false,"./icons/share.js":false,"./icons/share-2.js":false,"./icons/sheet.js":false,"./icons/shell.js":false,"./icons/shield-alert.js":false,"./icons/shield-ban.js":false,"./icons/shield-check.js":false,"./icons/shield-ellipsis.js":false,"./icons/shield-half.js":false,"./icons/shield-minus.js":false,"./icons/shield-off.js":false,"./icons/shield-plus.js":false,"./icons/shield-user.js":false,"./icons/shield.js":false,"./icons/ship-wheel.js":false,"./icons/ship.js":false,"./icons/shirt.js":false,"./icons/shopping-bag.js":false,"./icons/shopping-basket.js":false,"./icons/shopping-cart.js":false,"./icons/shovel.js":false,"./icons/shower-head.js":false,"./icons/shredder.js":false,"./icons/shrimp.js":false,"./icons/shrink.js":false,"./icons/shrub.js":false,"./icons/shuffle.js":false,"./icons/sigma.js":false,"./icons/signal-high.js":false,"./icons/signal-low.js":false,"./icons/signal-medium.js":false,"./icons/signal-zero.js":false,"./icons/signal.js":false,"./icons/signature.js":false,"./icons/signpost-big.js":false,"./icons/signpost.js":false,"./icons/siren.js":false,"./icons/skip-back.js":false,"./icons/skip-forward.js":false,"./icons/skull.js":false,"./icons/slack.js":false,"./icons/slice.js":false,"./icons/slash.js":false,"./icons/sliders-horizontal.js":false,"./icons/smartphone-charging.js":false,"./icons/smartphone-nfc.js":false,"./icons/smartphone.js":false,"./icons/smile-plus.js":false,"./icons/snail.js":false,"./icons/smile.js":false,"./icons/snowflake.js":false,"./icons/soap-dispenser-droplet.js":false,"./icons/soup.js":false,"./icons/sofa.js":false,"./icons/spade.js":false,"./icons/space.js":false,"./icons/sparkle.js":false,"./icons/speaker.js":false,"./icons/speech.js":false,"./icons/spell-check.js":false,"./icons/spell-check-2.js":false,"./icons/spline-pointer.js":false,"./icons/spline.js":false,"./icons/split.js":false,"./icons/spool.js":false,"./icons/spotlight.js":false,"./icons/spray-can.js":false,"./icons/sprout.js":false,"./icons/square-dashed-bottom-code.js":false,"./icons/square-dashed-bottom.js":false,"./icons/square-dashed-top-solid.js":false,"./icons/square-pause.js":false,"./icons/square-radical.js":false,"./icons/square-round-corner.js":false,"./icons/square-square.js":false,"./icons/square-stop.js":false,"./icons/square-stack.js":false,"./icons/square.js":false,"./icons/squares-exclude.js":false,"./icons/squares-intersect.js":false,"./icons/squares-unite.js":false,"./icons/squares-subtract.js":false,"./icons/squircle.js":false,"./icons/squircle-dashed.js":false,"./icons/squirrel.js":false,"./icons/star-half.js":false,"./icons/stamp.js":false,"./icons/star-off.js":false,"./icons/star.js":false,"./icons/step-back.js":false,"./icons/step-forward.js":false,"./icons/stethoscope.js":false,"./icons/sticker.js":false,"./icons/sticky-note.js":false,"./icons/store.js":false,"./icons/stretch-horizontal.js":false,"./icons/stretch-vertical.js":false,"./icons/strikethrough.js":false,"./icons/subscript.js":false,"./icons/sun-dim.js":false,"./icons/sun-medium.js":false,"./icons/sun-moon.js":false,"./icons/sun-snow.js":false,"./icons/sun.js":false,"./icons/sunrise.js":false,"./icons/sunset.js":false,"./icons/superscript.js":false,"./icons/swatch-book.js":false,"./icons/swiss-franc.js":false,"./icons/switch-camera.js":false,"./icons/sword.js":false,"./icons/swords.js":false,"./icons/syringe.js":false,"./icons/table-2.js":false,"./icons/table-cells-merge.js":false,"./icons/table-cells-split.js":false,"./icons/table-columns-split.js":false,"./icons/table-of-contents.js":false,"./icons/table-properties.js":false,"./icons/table-rows-split.js":false,"./icons/table.js":false,"./icons/tablet-smartphone.js":false,"./icons/tablet.js":false,"./icons/tablets.js":false,"./icons/tag.js":false,"./icons/tags.js":false,"./icons/tally-1.js":false,"./icons/tally-2.js":false,"./icons/tally-3.js":false,"./icons/tally-4.js":false,"./icons/tally-5.js":false,"./icons/tangent.js":false,"./icons/target.js":false,"./icons/telescope.js":false,"./icons/tent-tree.js":false,"./icons/tent.js":false,"./icons/terminal.js":false,"./icons/test-tube.js":false,"./icons/test-tubes.js":false,"./icons/text-cursor-input.js":false,"./icons/text-cursor.js":false,"./icons/text-quote.js":false,"./icons/text-search.js":false,"./icons/theater.js":false,"./icons/text.js":false,"./icons/thermometer-sun.js":false,"./icons/thermometer-snowflake.js":false,"./icons/thermometer.js":false,"./icons/thumbs-down.js":false,"./icons/thumbs-up.js":false,"./icons/ticket-check.js":false,"./icons/ticket-minus.js":false,"./icons/ticket-percent.js":false,"./icons/ticket-plus.js":false,"./icons/ticket-slash.js":false,"./icons/ticket-x.js":false,"./icons/ticket.js":false,"./icons/tickets-plane.js":false,"./icons/tickets.js":false,"./icons/timer-off.js":false,"./icons/timer-reset.js":false,"./icons/timer.js":false,"./icons/toggle-left.js":false,"./icons/toggle-right.js":false,"./icons/toilet.js":false,"./icons/tool-case.js":false,"./icons/tornado.js":false,"./icons/torus.js":false,"./icons/touchpad-off.js":false,"./icons/touchpad.js":false,"./icons/tower-control.js":false,"./icons/toy-brick.js":false,"./icons/tractor.js":false,"./icons/traffic-cone.js":false,"./icons/train-front-tunnel.js":false,"./icons/train-track.js":false,"./icons/train-front.js":false,"./icons/transgender.js":false,"./icons/trash-2.js":false,"./icons/trash.js":false,"./icons/tree-deciduous.js":false,"./icons/tree-pine.js":false,"./icons/trees.js":false,"./icons/trello.js":false,"./icons/trending-down.js":false,"./icons/trending-up-down.js":false,"./icons/trending-up.js":false,"./icons/triangle-dashed.js":false,"./icons/triangle-right.js":false,"./icons/triangle.js":false,"./icons/trophy.js":false,"./icons/truck-electric.js":false,"./icons/truck.js":false,"./icons/turkish-lira.js":false,"./icons/turtle.js":false,"./icons/turntable.js":false,"./icons/tv-minimal-play.js":false,"./icons/tv.js":false,"./icons/twitch.js":false,"./icons/twitter.js":false,"./icons/type-outline.js":false,"./icons/type.js":false,"./icons/umbrella-off.js":false,"./icons/umbrella.js":false,"./icons/underline.js":false,"./icons/undo-dot.js":false,"./icons/undo-2.js":false,"./icons/undo.js":false,"./icons/unfold-horizontal.js":false,"./icons/unfold-vertical.js":false,"./icons/ungroup.js":false,"./icons/unlink-2.js":false,"./icons/unlink.js":false,"./icons/unplug.js":false,"./icons/upload.js":false,"./icons/usb.js":false,"./icons/user-check.js":false,"./icons/user-cog.js":false,"./icons/user-lock.js":false,"./icons/user-minus.js":false,"./icons/user-pen.js":false,"./icons/user-plus.js":false,"./icons/user-round-pen.js":false,"./icons/user-round-search.js":false,"./icons/user-search.js":false,"./icons/user-star.js":false,"./icons/user-x.js":false,"./icons/user.js":false,"./icons/users.js":false,"./icons/utility-pole.js":false,"./icons/variable.js":false,"./icons/vault.js":false,"./icons/vector-square.js":false,"./icons/vegan.js":false,"./icons/venus-and-mars.js":false,"./icons/venetian-mask.js":false,"./icons/venus.js":false,"./icons/vibrate-off.js":false,"./icons/video-off.js":false,"./icons/vibrate.js":false,"./icons/video.js":false,"./icons/videotape.js":false,"./icons/view.js":false,"./icons/voicemail.js":false,"./icons/volleyball.js":false,"./icons/volume-1.js":false,"./icons/volume-2.js":false,"./icons/volume-off.js":false,"./icons/volume-x.js":false,"./icons/wallet-cards.js":false,"./icons/volume.js":false,"./icons/vote.js":false,"./icons/wallet.js":false,"./icons/wallpaper.js":false,"./icons/wand.js":false,"./icons/warehouse.js":false,"./icons/washing-machine.js":false,"./icons/waves.js":false,"./icons/watch.js":false,"./icons/waves-ladder.js":false,"./icons/waypoints.js":false,"./icons/webcam.js":false,"./icons/webhook-off.js":false,"./icons/webhook.js":false,"./icons/weight.js":false,"./icons/wheat-off.js":false,"./icons/wheat.js":false,"./icons/whole-word.js":false,"./icons/wifi-cog.js":false,"./icons/wifi-high.js":false,"./icons/wifi-low.js":false,"./icons/wifi-off.js":false,"./icons/wifi-pen.js":false,"./icons/wifi-sync.js":false,"./icons/wifi-zero.js":false,"./icons/wifi.js":false,"./icons/wind.js":false,"./icons/wind-arrow-down.js":false,"./icons/wine-off.js":false,"./icons/wine.js":false,"./icons/worm.js":false,"./icons/workflow.js":false,"./icons/wrap-text.js":false,"./icons/wrench.js":false,"./icons/x.js":false,"./icons/youtube.js":false,"./icons/zap-off.js":false,"./icons/zoom-in.js":false,"./icons/zap.js":false,"./icons/zoom-out.js":false,"./icons/arrow-down-0-1.js":false,"./icons/arrow-down-1-0.js":false,"./icons/arrow-up-0-1.js":false,"./icons/arrow-up-1-0.js":false,"./createLucideIcon.js":false,"./Icon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kjwbV":[function(require,module,exports,__globalThis) {
+},{"./icons/index.js":false,"./icons/alarm-clock-check.js":false,"./icons/alarm-clock-minus.js":false,"./icons/alarm-clock-plus.js":false,"./icons/arrow-down-a-z.js":false,"./icons/arrow-down-wide-narrow.js":false,"./icons/arrow-down-z-a.js":false,"./icons/arrow-up-a-z.js":false,"./icons/arrow-up-narrow-wide.js":false,"./icons/arrow-up-z-a.js":false,"./icons/axis-3d.js":false,"./icons/badge-check.js":false,"./icons/badge-question-mark.js":false,"./icons/between-horizontal-end.js":false,"./icons/between-horizontal-start.js":false,"./icons/book-dashed.js":false,"./icons/braces.js":false,"./icons/captions.js":false,"./icons/chart-area.js":false,"./icons/chart-bar-big.js":false,"./icons/chart-bar.js":false,"./icons/chart-candlestick.js":false,"./icons/chart-column-big.js":false,"./icons/chart-column-increasing.js":false,"./icons/chart-column.js":false,"./icons/chart-line.js":false,"./icons/chart-no-axes-column-increasing.js":false,"./icons/chart-no-axes-column.js":false,"./icons/chart-no-axes-gantt.js":false,"./icons/chart-scatter.js":false,"./icons/chart-pie.js":false,"./icons/circle-arrow-down.js":false,"./icons/circle-alert.js":false,"./icons/circle-arrow-left.js":false,"./icons/circle-arrow-out-down-left.js":false,"./icons/circle-arrow-out-down-right.js":false,"./icons/circle-arrow-out-up-left.js":false,"./icons/circle-arrow-out-up-right.js":false,"./icons/circle-arrow-right.js":false,"./icons/circle-arrow-up.js":false,"./icons/circle-check-big.js":false,"./icons/circle-check.js":false,"./icons/circle-chevron-down.js":false,"./icons/circle-chevron-left.js":false,"./icons/circle-chevron-right.js":false,"./icons/circle-chevron-up.js":false,"./icons/circle-divide.js":false,"./icons/circle-gauge.js":false,"./icons/circle-minus.js":false,"./icons/circle-parking.js":false,"./icons/circle-parking-off.js":false,"./icons/circle-pause.js":false,"./icons/circle-percent.js":false,"./icons/circle-play.js":false,"./icons/circle-plus.js":false,"./icons/circle-power.js":false,"./icons/circle-question-mark.js":false,"./icons/circle-slash-2.js":false,"./icons/circle-stop.js":false,"./icons/circle-user-round.js":false,"./icons/circle-user.js":false,"./icons/circle-x.js":false,"./icons/clipboard-pen-line.js":false,"./icons/clipboard-pen.js":false,"./icons/cloud-download.js":false,"./icons/cloud-upload.js":false,"./icons/code-xml.js":false,"./icons/columns-2.js":false,"./icons/columns-3-cog.js":false,"./icons/columns-3.js":false,"./icons/contact-round.js":false,"./icons/diamond-percent.js":false,"./icons/earth.js":false,"./icons/ellipsis-vertical.js":false,"./icons/ellipsis.js":"kjwbV","./icons/file-axis-3d.js":false,"./icons/file-chart-column-increasing.js":false,"./icons/file-chart-line.js":false,"./icons/file-chart-column.js":false,"./icons/file-chart-pie.js":false,"./icons/file-cog.js":false,"./icons/file-pen-line.js":false,"./icons/file-pen.js":false,"./icons/file-play.js":false,"./icons/file-question-mark.js":false,"./icons/file-video-camera.js":false,"./icons/folder-cog.js":false,"./icons/folder-pen.js":false,"./icons/funnel-x.js":false,"./icons/funnel.js":false,"./icons/git-commit-horizontal.js":false,"./icons/grid-2x2-check.js":false,"./icons/grid-2x2-plus.js":false,"./icons/grid-2x2-x.js":false,"./icons/grid-2x2.js":false,"./icons/grid-3x3.js":false,"./icons/hand-grab.js":false,"./icons/hand-helping.js":false,"./icons/house.js":false,"./icons/ice-cream-bowl.js":false,"./icons/ice-cream-cone.js":false,"./icons/indent-decrease.js":false,"./icons/indent-increase.js":false,"./icons/laptop-minimal.js":false,"./icons/layers.js":false,"./icons/loader-circle.js":false,"./icons/lock-keyhole-open.js":false,"./icons/lock-open.js":false,"./icons/mail-question-mark.js":false,"./icons/map-pin-pen.js":false,"./icons/message-circle-question-mark.js":false,"./icons/mic-vocal.js":false,"./icons/move-3d.js":false,"./icons/octagon-alert.js":false,"./icons/octagon-pause.js":false,"./icons/octagon-x.js":false,"./icons/paintbrush-vertical.js":false,"./icons/panel-bottom-dashed.js":false,"./icons/panel-left-close.js":false,"./icons/panel-left-dashed.js":false,"./icons/panel-left-open.js":false,"./icons/panel-left.js":false,"./icons/panel-right-dashed.js":false,"./icons/panel-top-dashed.js":false,"./icons/panels-top-left.js":false,"./icons/pen.js":false,"./icons/pen-line.js":false,"./icons/plug-zap.js":false,"./icons/rectangle-ellipsis.js":false,"./icons/rotate-3d.js":false,"./icons/rows-2.js":false,"./icons/rows-3.js":false,"./icons/scale-3d.js":false,"./icons/send-horizontal.js":false,"./icons/shield-question-mark.js":false,"./icons/shield-x.js":false,"./icons/sliders-vertical.js":false,"./icons/sparkles.js":false,"./icons/square-activity.js":false,"./icons/square-arrow-down-left.js":false,"./icons/square-arrow-down-right.js":false,"./icons/square-arrow-down.js":false,"./icons/square-arrow-left.js":false,"./icons/square-arrow-out-down-left.js":false,"./icons/square-arrow-out-down-right.js":false,"./icons/square-arrow-out-up-left.js":false,"./icons/square-arrow-out-up-right.js":false,"./icons/square-arrow-up-left.js":false,"./icons/square-arrow-right.js":false,"./icons/square-arrow-up-right.js":false,"./icons/square-arrow-up.js":false,"./icons/square-asterisk.js":false,"./icons/square-chart-gantt.js":false,"./icons/square-bottom-dashed-scissors.js":false,"./icons/square-check-big.js":false,"./icons/square-check.js":false,"./icons/square-chevron-left.js":false,"./icons/square-chevron-down.js":false,"./icons/square-chevron-right.js":false,"./icons/square-chevron-up.js":false,"./icons/square-code.js":false,"./icons/square-dashed-kanban.js":false,"./icons/square-dashed-mouse-pointer.js":false,"./icons/square-dashed.js":false,"./icons/square-dot.js":false,"./icons/square-divide.js":false,"./icons/square-function.js":false,"./icons/square-equal.js":false,"./icons/square-library.js":false,"./icons/square-kanban.js":false,"./icons/square-menu.js":false,"./icons/square-m.js":false,"./icons/square-minus.js":false,"./icons/square-mouse-pointer.js":false,"./icons/square-parking-off.js":false,"./icons/square-parking.js":false,"./icons/square-pen.js":false,"./icons/square-percent.js":false,"./icons/square-pi.js":false,"./icons/square-pilcrow.js":false,"./icons/square-play.js":false,"./icons/square-plus.js":false,"./icons/square-power.js":false,"./icons/square-scissors.js":false,"./icons/square-sigma.js":false,"./icons/square-slash.js":false,"./icons/square-split-horizontal.js":false,"./icons/square-terminal.js":false,"./icons/square-split-vertical.js":false,"./icons/square-user-round.js":false,"./icons/square-user.js":false,"./icons/square-x.js":false,"./icons/test-tube-diagonal.js":false,"./icons/text-select.js":false,"./icons/tram-front.js":false,"./icons/tree-palm.js":false,"./icons/triangle-alert.js":false,"./icons/tv-minimal.js":false,"./icons/university.js":false,"./icons/user-round-check.js":false,"./icons/user-round-cog.js":false,"./icons/user-round-minus.js":false,"./icons/user-round-plus.js":false,"./icons/user-round-x.js":false,"./icons/user-round.js":false,"./icons/users-round.js":false,"./icons/utensils-crossed.js":false,"./icons/utensils.js":false,"./icons/wallet-minimal.js":false,"./icons/wand-sparkles.js":false,"./icons/a-arrow-down.js":false,"./icons/a-arrow-up.js":false,"./icons/a-large-small.js":false,"./icons/accessibility.js":false,"./icons/activity.js":false,"./icons/air-vent.js":false,"./icons/airplay.js":false,"./icons/alarm-clock-off.js":false,"./icons/alarm-clock.js":false,"./icons/alarm-smoke.js":false,"./icons/album.js":false,"./icons/align-center-horizontal.js":false,"./icons/align-center-vertical.js":false,"./icons/align-center.js":false,"./icons/align-end-horizontal.js":false,"./icons/align-horizontal-distribute-center.js":false,"./icons/align-horizontal-distribute-end.js":false,"./icons/align-end-vertical.js":false,"./icons/align-horizontal-distribute-start.js":false,"./icons/align-horizontal-justify-center.js":false,"./icons/align-horizontal-justify-end.js":false,"./icons/align-horizontal-justify-start.js":false,"./icons/align-horizontal-space-around.js":false,"./icons/align-horizontal-space-between.js":false,"./icons/align-justify.js":false,"./icons/align-left.js":false,"./icons/align-right.js":false,"./icons/align-start-horizontal.js":false,"./icons/align-start-vertical.js":false,"./icons/align-vertical-distribute-center.js":false,"./icons/align-vertical-distribute-end.js":false,"./icons/align-vertical-distribute-start.js":false,"./icons/align-vertical-justify-center.js":false,"./icons/align-vertical-justify-start.js":false,"./icons/align-vertical-justify-end.js":false,"./icons/align-vertical-space-around.js":false,"./icons/align-vertical-space-between.js":false,"./icons/ambulance.js":false,"./icons/ampersand.js":false,"./icons/ampersands.js":false,"./icons/amphora.js":false,"./icons/anchor.js":false,"./icons/angry.js":false,"./icons/annoyed.js":false,"./icons/antenna.js":false,"./icons/anvil.js":false,"./icons/aperture.js":false,"./icons/app-window.js":false,"./icons/app-window-mac.js":false,"./icons/apple.js":false,"./icons/archive-restore.js":false,"./icons/archive-x.js":false,"./icons/archive.js":false,"./icons/armchair.js":false,"./icons/arrow-big-down-dash.js":false,"./icons/arrow-big-down.js":false,"./icons/arrow-big-left-dash.js":false,"./icons/arrow-big-left.js":false,"./icons/arrow-big-right-dash.js":false,"./icons/arrow-big-right.js":false,"./icons/arrow-big-up.js":false,"./icons/arrow-big-up-dash.js":false,"./icons/arrow-down-from-line.js":false,"./icons/arrow-down-left.js":false,"./icons/arrow-down-narrow-wide.js":false,"./icons/arrow-down-right.js":false,"./icons/arrow-down-to-dot.js":false,"./icons/arrow-down-to-line.js":false,"./icons/arrow-down-up.js":false,"./icons/arrow-down.js":false,"./icons/arrow-left-right.js":false,"./icons/arrow-left-from-line.js":false,"./icons/arrow-left-to-line.js":false,"./icons/arrow-left.js":false,"./icons/arrow-right-from-line.js":false,"./icons/arrow-right-left.js":false,"./icons/arrow-right-to-line.js":false,"./icons/arrow-right.js":false,"./icons/arrow-up-down.js":false,"./icons/arrow-up-from-dot.js":false,"./icons/arrow-up-from-line.js":false,"./icons/arrow-up-left.js":false,"./icons/arrow-up-right.js":false,"./icons/arrow-up-to-line.js":false,"./icons/arrow-up-wide-narrow.js":false,"./icons/arrow-up.js":false,"./icons/arrows-up-from-line.js":false,"./icons/asterisk.js":false,"./icons/at-sign.js":false,"./icons/atom.js":false,"./icons/audio-lines.js":false,"./icons/award.js":false,"./icons/audio-waveform.js":false,"./icons/axe.js":false,"./icons/baby.js":false,"./icons/backpack.js":false,"./icons/badge-alert.js":false,"./icons/badge-cent.js":false,"./icons/badge-dollar-sign.js":false,"./icons/badge-euro.js":false,"./icons/badge-indian-rupee.js":false,"./icons/badge-info.js":false,"./icons/badge-japanese-yen.js":false,"./icons/badge-minus.js":false,"./icons/badge-percent.js":false,"./icons/badge-plus.js":false,"./icons/badge-pound-sterling.js":false,"./icons/badge-russian-ruble.js":false,"./icons/badge-swiss-franc.js":false,"./icons/badge-turkish-lira.js":false,"./icons/badge-x.js":false,"./icons/badge.js":false,"./icons/baggage-claim.js":false,"./icons/ban.js":false,"./icons/banana.js":false,"./icons/bandage.js":false,"./icons/banknote-arrow-down.js":false,"./icons/banknote-arrow-up.js":false,"./icons/banknote-x.js":false,"./icons/banknote.js":false,"./icons/barcode.js":false,"./icons/baseline.js":false,"./icons/barrel.js":false,"./icons/bath.js":false,"./icons/battery-full.js":false,"./icons/battery-low.js":false,"./icons/battery-charging.js":false,"./icons/battery-medium.js":false,"./icons/battery-plus.js":false,"./icons/battery-warning.js":false,"./icons/battery.js":false,"./icons/beaker.js":false,"./icons/bean-off.js":false,"./icons/bean.js":false,"./icons/bed-double.js":false,"./icons/bed-single.js":false,"./icons/bed.js":false,"./icons/beef.js":false,"./icons/beer-off.js":false,"./icons/beer.js":false,"./icons/bell-dot.js":false,"./icons/bell-electric.js":false,"./icons/bell-minus.js":false,"./icons/bell-off.js":false,"./icons/bell-plus.js":false,"./icons/bell-ring.js":false,"./icons/bell.js":false,"./icons/between-vertical-start.js":false,"./icons/between-vertical-end.js":false,"./icons/biceps-flexed.js":false,"./icons/bike.js":false,"./icons/binary.js":false,"./icons/binoculars.js":false,"./icons/biohazard.js":false,"./icons/bird.js":false,"./icons/bitcoin.js":false,"./icons/blend.js":false,"./icons/blinds.js":false,"./icons/blocks.js":false,"./icons/bluetooth-connected.js":false,"./icons/bluetooth-off.js":false,"./icons/bluetooth-searching.js":false,"./icons/bluetooth.js":false,"./icons/bold.js":false,"./icons/bolt.js":false,"./icons/bomb.js":false,"./icons/bone.js":false,"./icons/book-a.js":false,"./icons/book-alert.js":false,"./icons/book-audio.js":false,"./icons/book-check.js":false,"./icons/book-copy.js":false,"./icons/book-down.js":false,"./icons/book-headphones.js":false,"./icons/book-heart.js":false,"./icons/book-image.js":false,"./icons/book-key.js":false,"./icons/book-lock.js":false,"./icons/book-marked.js":false,"./icons/book-minus.js":false,"./icons/book-open-check.js":false,"./icons/book-open-text.js":false,"./icons/book-open.js":false,"./icons/book-plus.js":false,"./icons/book-text.js":false,"./icons/book-type.js":false,"./icons/book-up-2.js":false,"./icons/book-user.js":false,"./icons/book-up.js":false,"./icons/book-x.js":false,"./icons/book.js":false,"./icons/bookmark-check.js":false,"./icons/bookmark-minus.js":false,"./icons/bookmark-plus.js":false,"./icons/bookmark-x.js":false,"./icons/bookmark.js":false,"./icons/boom-box.js":false,"./icons/bot-message-square.js":false,"./icons/bot-off.js":false,"./icons/bot.js":false,"./icons/bottle-wine.js":false,"./icons/bow-arrow.js":false,"./icons/box.js":false,"./icons/brackets.js":false,"./icons/boxes.js":false,"./icons/brain-circuit.js":false,"./icons/brain-cog.js":false,"./icons/brain.js":false,"./icons/brick-wall-fire.js":false,"./icons/brick-wall.js":false,"./icons/briefcase-business.js":false,"./icons/briefcase-conveyor-belt.js":false,"./icons/briefcase-medical.js":false,"./icons/briefcase.js":false,"./icons/bring-to-front.js":false,"./icons/brush-cleaning.js":false,"./icons/brush.js":false,"./icons/bubbles.js":false,"./icons/bug-off.js":false,"./icons/bug-play.js":false,"./icons/bug.js":false,"./icons/building-2.js":false,"./icons/building.js":false,"./icons/bus-front.js":false,"./icons/bus.js":false,"./icons/cable-car.js":false,"./icons/cable.js":false,"./icons/cake-slice.js":false,"./icons/calculator.js":false,"./icons/cake.js":false,"./icons/calendar-1.js":false,"./icons/calendar-arrow-down.js":false,"./icons/calendar-arrow-up.js":false,"./icons/calendar-check-2.js":false,"./icons/calendar-check.js":false,"./icons/calendar-clock.js":false,"./icons/calendar-cog.js":false,"./icons/calendar-days.js":false,"./icons/calendar-fold.js":false,"./icons/calendar-minus-2.js":false,"./icons/calendar-minus.js":false,"./icons/calendar-heart.js":false,"./icons/calendar-plus-2.js":false,"./icons/calendar-off.js":false,"./icons/calendar-plus.js":false,"./icons/calendar-range.js":false,"./icons/calendar-search.js":false,"./icons/calendar-sync.js":false,"./icons/calendar-x-2.js":false,"./icons/calendar-x.js":false,"./icons/calendar.js":false,"./icons/camera-off.js":false,"./icons/camera.js":false,"./icons/candy-cane.js":false,"./icons/candy-off.js":false,"./icons/candy.js":false,"./icons/cannabis.js":false,"./icons/car-front.js":false,"./icons/captions-off.js":false,"./icons/car-taxi-front.js":false,"./icons/car.js":false,"./icons/caravan.js":false,"./icons/carrot.js":false,"./icons/card-sim.js":false,"./icons/case-lower.js":false,"./icons/case-sensitive.js":false,"./icons/case-upper.js":false,"./icons/cassette-tape.js":false,"./icons/cast.js":false,"./icons/castle.js":false,"./icons/cat.js":false,"./icons/cctv.js":false,"./icons/chart-bar-decreasing.js":false,"./icons/chart-bar-increasing.js":false,"./icons/chart-bar-stacked.js":false,"./icons/chart-column-decreasing.js":false,"./icons/chart-column-stacked.js":false,"./icons/chart-gantt.js":false,"./icons/chart-network.js":false,"./icons/chart-no-axes-column-decreasing.js":false,"./icons/chart-no-axes-combined.js":false,"./icons/chart-spline.js":false,"./icons/check-line.js":false,"./icons/check-check.js":false,"./icons/check.js":"irEtD","./icons/chef-hat.js":false,"./icons/cherry.js":false,"./icons/chevron-down.js":"jfA6v","./icons/chevron-first.js":false,"./icons/chevron-last.js":false,"./icons/chevron-right.js":"iP6bz","./icons/chevron-left.js":"bYeKh","./icons/chevron-up.js":false,"./icons/chevrons-down.js":false,"./icons/chevrons-down-up.js":false,"./icons/chevrons-left-right-ellipsis.js":false,"./icons/chevrons-left-right.js":false,"./icons/chevrons-left.js":false,"./icons/chevrons-right-left.js":false,"./icons/chevrons-right.js":false,"./icons/chevrons-up-down.js":"4dz6Z","./icons/chevrons-up.js":false,"./icons/chrome.js":false,"./icons/church.js":false,"./icons/cigarette-off.js":false,"./icons/cigarette.js":false,"./icons/circle-dashed.js":false,"./icons/circle-dollar-sign.js":false,"./icons/circle-dot-dashed.js":false,"./icons/circle-dot.js":false,"./icons/circle-ellipsis.js":false,"./icons/circle-equal.js":false,"./icons/circle-fading-arrow-up.js":false,"./icons/circle-fading-plus.js":false,"./icons/circle-off.js":false,"./icons/circle-pound-sterling.js":false,"./icons/circle-slash.js":false,"./icons/circle-small.js":false,"./icons/circle.js":false,"./icons/circuit-board.js":false,"./icons/citrus.js":false,"./icons/clapperboard.js":false,"./icons/clipboard-check.js":false,"./icons/clipboard-clock.js":false,"./icons/clipboard-copy.js":false,"./icons/clipboard-list.js":false,"./icons/clipboard-minus.js":false,"./icons/clipboard-paste.js":false,"./icons/clipboard-plus.js":false,"./icons/clipboard-type.js":false,"./icons/clipboard-x.js":false,"./icons/clock-1.js":false,"./icons/clipboard.js":false,"./icons/clock-10.js":false,"./icons/clock-11.js":false,"./icons/clock-12.js":false,"./icons/clock-2.js":false,"./icons/clock-3.js":false,"./icons/clock-4.js":false,"./icons/clock-5.js":false,"./icons/clock-6.js":false,"./icons/clock-7.js":false,"./icons/clock-8.js":false,"./icons/clock-9.js":false,"./icons/clock-alert.js":false,"./icons/clock-arrow-down.js":false,"./icons/clock-arrow-up.js":false,"./icons/clock-fading.js":false,"./icons/clock-plus.js":false,"./icons/clock.js":false,"./icons/closed-caption.js":false,"./icons/cloud-alert.js":false,"./icons/cloud-check.js":false,"./icons/cloud-cog.js":false,"./icons/cloud-drizzle.js":false,"./icons/cloud-fog.js":false,"./icons/cloud-hail.js":false,"./icons/cloud-lightning.js":false,"./icons/cloud-moon-rain.js":false,"./icons/cloud-moon.js":false,"./icons/cloud-off.js":false,"./icons/cloud-rain-wind.js":false,"./icons/cloud-rain.js":false,"./icons/cloud-snow.js":false,"./icons/cloud-sun.js":false,"./icons/cloud-sun-rain.js":false,"./icons/cloud.js":false,"./icons/cloudy.js":false,"./icons/clover.js":false,"./icons/club.js":false,"./icons/code.js":false,"./icons/codepen.js":false,"./icons/codesandbox.js":false,"./icons/cog.js":false,"./icons/coins.js":false,"./icons/coffee.js":false,"./icons/columns-4.js":false,"./icons/combine.js":false,"./icons/command.js":false,"./icons/compass.js":false,"./icons/component.js":false,"./icons/computer.js":false,"./icons/cone.js":false,"./icons/concierge-bell.js":false,"./icons/construction.js":false,"./icons/contact.js":false,"./icons/container.js":false,"./icons/contrast.js":false,"./icons/cookie.js":false,"./icons/cooking-pot.js":false,"./icons/copy-minus.js":false,"./icons/copy-check.js":false,"./icons/copy-plus.js":false,"./icons/copy-slash.js":false,"./icons/copy-x.js":false,"./icons/copy.js":false,"./icons/copyleft.js":false,"./icons/copyright.js":false,"./icons/corner-down-left.js":false,"./icons/corner-down-right.js":false,"./icons/corner-left-down.js":false,"./icons/corner-right-down.js":false,"./icons/corner-left-up.js":false,"./icons/corner-right-up.js":false,"./icons/corner-up-left.js":false,"./icons/cpu.js":false,"./icons/corner-up-right.js":false,"./icons/credit-card.js":false,"./icons/creative-commons.js":false,"./icons/croissant.js":false,"./icons/crop.js":false,"./icons/cross.js":false,"./icons/crosshair.js":false,"./icons/crown.js":false,"./icons/cuboid.js":false,"./icons/cup-soda.js":false,"./icons/currency.js":false,"./icons/cylinder.js":false,"./icons/dam.js":false,"./icons/database-backup.js":false,"./icons/database.js":false,"./icons/decimals-arrow-left.js":false,"./icons/database-zap.js":false,"./icons/decimals-arrow-right.js":false,"./icons/delete.js":false,"./icons/dessert.js":false,"./icons/diameter.js":false,"./icons/diamond-minus.js":false,"./icons/diamond-plus.js":false,"./icons/diamond.js":false,"./icons/dice-1.js":false,"./icons/dice-2.js":false,"./icons/dice-3.js":false,"./icons/dice-4.js":false,"./icons/dice-5.js":false,"./icons/dice-6.js":false,"./icons/dices.js":false,"./icons/diff.js":false,"./icons/disc-2.js":false,"./icons/disc-3.js":false,"./icons/disc-album.js":false,"./icons/disc.js":false,"./icons/divide.js":false,"./icons/dna-off.js":false,"./icons/dna.js":false,"./icons/dock.js":false,"./icons/dog.js":false,"./icons/dollar-sign.js":false,"./icons/donut.js":false,"./icons/door-closed.js":false,"./icons/door-closed-locked.js":false,"./icons/door-open.js":false,"./icons/dot.js":false,"./icons/download.js":false,"./icons/drafting-compass.js":false,"./icons/drama.js":false,"./icons/dribbble.js":false,"./icons/drill.js":false,"./icons/drone.js":false,"./icons/droplet-off.js":false,"./icons/droplet.js":false,"./icons/droplets.js":false,"./icons/drum.js":false,"./icons/drumstick.js":false,"./icons/dumbbell.js":false,"./icons/ear-off.js":false,"./icons/ear.js":false,"./icons/earth-lock.js":false,"./icons/eclipse.js":false,"./icons/egg-fried.js":false,"./icons/egg-off.js":false,"./icons/egg.js":false,"./icons/equal-approximately.js":false,"./icons/equal-not.js":false,"./icons/equal.js":false,"./icons/eraser.js":false,"./icons/ethernet-port.js":false,"./icons/euro.js":false,"./icons/expand.js":false,"./icons/external-link.js":false,"./icons/eye-closed.js":false,"./icons/eye-off.js":false,"./icons/eye.js":false,"./icons/facebook.js":false,"./icons/factory.js":false,"./icons/fan.js":false,"./icons/fast-forward.js":false,"./icons/feather.js":false,"./icons/fence.js":false,"./icons/ferris-wheel.js":false,"./icons/figma.js":false,"./icons/file-archive.js":false,"./icons/file-audio-2.js":false,"./icons/file-audio.js":false,"./icons/file-badge.js":false,"./icons/file-badge-2.js":false,"./icons/file-box.js":false,"./icons/file-check-2.js":false,"./icons/file-check.js":false,"./icons/file-clock.js":false,"./icons/file-code-2.js":false,"./icons/file-code.js":false,"./icons/file-diff.js":false,"./icons/file-digit.js":false,"./icons/file-down.js":false,"./icons/file-heart.js":false,"./icons/file-image.js":false,"./icons/file-input.js":false,"./icons/file-json-2.js":false,"./icons/file-json.js":false,"./icons/file-key-2.js":false,"./icons/file-key.js":false,"./icons/file-lock-2.js":false,"./icons/file-lock.js":false,"./icons/file-minus-2.js":false,"./icons/file-minus.js":false,"./icons/file-music.js":false,"./icons/file-output.js":false,"./icons/file-plus-2.js":false,"./icons/file-plus.js":false,"./icons/file-scan.js":false,"./icons/file-search-2.js":false,"./icons/file-search.js":false,"./icons/file-sliders.js":false,"./icons/file-spreadsheet.js":false,"./icons/file-symlink.js":false,"./icons/file-stack.js":false,"./icons/file-terminal.js":false,"./icons/file-text.js":false,"./icons/file-type-2.js":false,"./icons/file-type.js":false,"./icons/file-up.js":false,"./icons/file-user.js":false,"./icons/file-volume-2.js":false,"./icons/file-volume.js":false,"./icons/file-warning.js":false,"./icons/file-x-2.js":false,"./icons/file-x.js":false,"./icons/files.js":false,"./icons/file.js":false,"./icons/fingerprint.js":false,"./icons/film.js":false,"./icons/fire-extinguisher.js":false,"./icons/fish-off.js":false,"./icons/fish-symbol.js":false,"./icons/fish.js":false,"./icons/flag-off.js":false,"./icons/flag-triangle-left.js":false,"./icons/flag-triangle-right.js":false,"./icons/flag.js":false,"./icons/flame-kindling.js":false,"./icons/flame.js":false,"./icons/flashlight-off.js":false,"./icons/flashlight.js":false,"./icons/flask-conical-off.js":false,"./icons/flask-conical.js":false,"./icons/flask-round.js":false,"./icons/flip-horizontal-2.js":false,"./icons/flip-horizontal.js":false,"./icons/flip-vertical-2.js":false,"./icons/flip-vertical.js":false,"./icons/flower-2.js":false,"./icons/flower.js":false,"./icons/focus.js":false,"./icons/fold-horizontal.js":false,"./icons/fold-vertical.js":false,"./icons/folder-archive.js":false,"./icons/folder-check.js":false,"./icons/folder-clock.js":false,"./icons/folder-closed.js":false,"./icons/folder-code.js":false,"./icons/folder-dot.js":false,"./icons/folder-down.js":false,"./icons/folder-git-2.js":false,"./icons/folder-git.js":false,"./icons/folder-heart.js":false,"./icons/folder-input.js":false,"./icons/folder-kanban.js":false,"./icons/folder-key.js":false,"./icons/folder-lock.js":false,"./icons/folder-minus.js":false,"./icons/folder-open-dot.js":false,"./icons/folder-open.js":false,"./icons/folder-output.js":false,"./icons/folder-plus.js":false,"./icons/folder-root.js":false,"./icons/folder-search-2.js":false,"./icons/folder-search.js":false,"./icons/folder-symlink.js":false,"./icons/folder-sync.js":false,"./icons/folder-tree.js":false,"./icons/folder-up.js":false,"./icons/folder.js":false,"./icons/folder-x.js":false,"./icons/folders.js":false,"./icons/footprints.js":false,"./icons/forklift.js":false,"./icons/forward.js":false,"./icons/frame.js":false,"./icons/frown.js":false,"./icons/framer.js":false,"./icons/fullscreen.js":false,"./icons/fuel.js":false,"./icons/funnel-plus.js":false,"./icons/gallery-horizontal-end.js":false,"./icons/gallery-horizontal.js":false,"./icons/gallery-thumbnails.js":false,"./icons/gallery-vertical-end.js":false,"./icons/gallery-vertical.js":false,"./icons/gamepad-2.js":false,"./icons/gamepad.js":false,"./icons/gauge.js":false,"./icons/gem.js":false,"./icons/georgian-lari.js":false,"./icons/gavel.js":false,"./icons/ghost.js":false,"./icons/gift.js":false,"./icons/git-branch-plus.js":false,"./icons/git-branch.js":false,"./icons/git-commit-vertical.js":false,"./icons/git-compare-arrows.js":false,"./icons/git-compare.js":false,"./icons/git-fork.js":false,"./icons/git-merge.js":false,"./icons/git-graph.js":false,"./icons/git-pull-request-arrow.js":false,"./icons/git-pull-request-closed.js":false,"./icons/git-pull-request-create-arrow.js":false,"./icons/git-pull-request-create.js":false,"./icons/git-pull-request-draft.js":false,"./icons/git-pull-request.js":false,"./icons/github.js":false,"./icons/gitlab.js":false,"./icons/glass-water.js":false,"./icons/glasses.js":false,"./icons/globe-lock.js":false,"./icons/globe.js":false,"./icons/gpu.js":false,"./icons/goal.js":false,"./icons/graduation-cap.js":false,"./icons/grape.js":false,"./icons/grid-3x2.js":false,"./icons/grip-horizontal.js":false,"./icons/grip-vertical.js":false,"./icons/grip.js":false,"./icons/group.js":false,"./icons/guitar.js":false,"./icons/ham.js":false,"./icons/hamburger.js":false,"./icons/hammer.js":false,"./icons/hand-coins.js":false,"./icons/hand-fist.js":false,"./icons/hand-heart.js":false,"./icons/hand-metal.js":false,"./icons/hand-platter.js":false,"./icons/hand.js":false,"./icons/handbag.js":false,"./icons/handshake.js":false,"./icons/hard-drive-download.js":false,"./icons/hard-drive-upload.js":false,"./icons/hard-drive.js":false,"./icons/hard-hat.js":false,"./icons/hash.js":false,"./icons/hat-glasses.js":false,"./icons/haze.js":false,"./icons/hdmi-port.js":false,"./icons/heading-1.js":false,"./icons/heading-2.js":false,"./icons/heading-3.js":false,"./icons/heading-4.js":false,"./icons/heading-5.js":false,"./icons/heading-6.js":false,"./icons/heading.js":false,"./icons/headphone-off.js":false,"./icons/headphones.js":false,"./icons/headset.js":false,"./icons/heart-crack.js":false,"./icons/heart-handshake.js":false,"./icons/heart-off.js":false,"./icons/heart-plus.js":false,"./icons/heart-minus.js":false,"./icons/heart-pulse.js":false,"./icons/heart.js":false,"./icons/heater.js":false,"./icons/hexagon.js":false,"./icons/highlighter.js":false,"./icons/history.js":false,"./icons/hop-off.js":false,"./icons/hop.js":false,"./icons/hospital.js":false,"./icons/hotel.js":false,"./icons/hourglass.js":false,"./icons/house-plug.js":false,"./icons/house-plus.js":false,"./icons/house-wifi.js":false,"./icons/id-card-lanyard.js":false,"./icons/id-card.js":false,"./icons/image-minus.js":false,"./icons/image-down.js":false,"./icons/image-off.js":false,"./icons/image-play.js":false,"./icons/image-plus.js":false,"./icons/image-upscale.js":false,"./icons/image-up.js":false,"./icons/image.js":false,"./icons/images.js":false,"./icons/import.js":false,"./icons/inbox.js":false,"./icons/indian-rupee.js":false,"./icons/infinity.js":false,"./icons/info.js":false,"./icons/inspection-panel.js":false,"./icons/instagram.js":false,"./icons/italic.js":false,"./icons/iteration-ccw.js":false,"./icons/iteration-cw.js":false,"./icons/japanese-yen.js":false,"./icons/joystick.js":false,"./icons/kanban.js":false,"./icons/key-round.js":false,"./icons/key-square.js":false,"./icons/key.js":false,"./icons/keyboard-music.js":false,"./icons/keyboard-off.js":false,"./icons/keyboard.js":false,"./icons/lamp-ceiling.js":false,"./icons/lamp-desk.js":false,"./icons/lamp-floor.js":false,"./icons/lamp-wall-down.js":false,"./icons/lamp-wall-up.js":false,"./icons/landmark.js":false,"./icons/lamp.js":false,"./icons/languages.js":false,"./icons/land-plot.js":false,"./icons/laptop-minimal-check.js":false,"./icons/laptop.js":false,"./icons/lasso.js":false,"./icons/lasso-select.js":false,"./icons/laugh.js":false,"./icons/layers-2.js":false,"./icons/layout-grid.js":false,"./icons/layout-dashboard.js":false,"./icons/layout-list.js":false,"./icons/layout-panel-left.js":false,"./icons/layout-panel-top.js":false,"./icons/layout-template.js":false,"./icons/leaf.js":false,"./icons/lectern.js":false,"./icons/leafy-green.js":false,"./icons/letter-text.js":false,"./icons/library-big.js":false,"./icons/library.js":false,"./icons/life-buoy.js":false,"./icons/ligature.js":false,"./icons/lightbulb-off.js":false,"./icons/lightbulb.js":false,"./icons/line-squiggle.js":false,"./icons/link-2.js":false,"./icons/link-2-off.js":false,"./icons/link.js":false,"./icons/linkedin.js":false,"./icons/list-check.js":false,"./icons/list-checks.js":false,"./icons/list-collapse.js":false,"./icons/list-end.js":false,"./icons/list-filter-plus.js":false,"./icons/list-filter.js":false,"./icons/list-minus.js":false,"./icons/list-music.js":false,"./icons/list-ordered.js":false,"./icons/list-plus.js":false,"./icons/list-restart.js":false,"./icons/list-start.js":false,"./icons/list-todo.js":false,"./icons/list-tree.js":false,"./icons/list-video.js":false,"./icons/list-x.js":false,"./icons/list.js":false,"./icons/loader-pinwheel.js":false,"./icons/loader.js":false,"./icons/locate-fixed.js":false,"./icons/locate-off.js":false,"./icons/locate.js":false,"./icons/lock-keyhole.js":false,"./icons/lock.js":false,"./icons/log-in.js":false,"./icons/log-out.js":false,"./icons/logs.js":false,"./icons/lollipop.js":false,"./icons/magnet.js":false,"./icons/luggage.js":false,"./icons/mail-check.js":false,"./icons/mail-minus.js":false,"./icons/mail-open.js":false,"./icons/mail-plus.js":false,"./icons/mail-search.js":false,"./icons/mail-warning.js":false,"./icons/mail-x.js":false,"./icons/mail.js":false,"./icons/mailbox.js":false,"./icons/mails.js":false,"./icons/map-minus.js":false,"./icons/map-pin-check-inside.js":false,"./icons/map-pin-check.js":false,"./icons/map-pin-house.js":false,"./icons/map-pin-minus-inside.js":false,"./icons/map-pin-minus.js":false,"./icons/map-pin-off.js":false,"./icons/map-pin-plus-inside.js":false,"./icons/map-pin-plus.js":false,"./icons/map-pin-x-inside.js":false,"./icons/map-pin-x.js":false,"./icons/map-pin.js":false,"./icons/map-pinned.js":false,"./icons/map-plus.js":false,"./icons/map.js":false,"./icons/mars-stroke.js":false,"./icons/martini.js":false,"./icons/mars.js":false,"./icons/maximize-2.js":false,"./icons/maximize.js":false,"./icons/medal.js":false,"./icons/megaphone-off.js":false,"./icons/meh.js":false,"./icons/megaphone.js":false,"./icons/memory-stick.js":false,"./icons/menu.js":false,"./icons/message-circle-code.js":false,"./icons/merge.js":false,"./icons/message-circle-dashed.js":false,"./icons/message-circle-heart.js":false,"./icons/message-circle-more.js":false,"./icons/message-circle-off.js":false,"./icons/message-circle-plus.js":false,"./icons/message-circle-reply.js":false,"./icons/message-circle-warning.js":false,"./icons/message-circle-x.js":false,"./icons/message-circle.js":false,"./icons/message-square-code.js":false,"./icons/message-square-dashed.js":false,"./icons/message-square-diff.js":false,"./icons/message-square-dot.js":false,"./icons/message-square-lock.js":false,"./icons/message-square-heart.js":false,"./icons/message-square-more.js":false,"./icons/message-square-off.js":false,"./icons/message-square-plus.js":false,"./icons/message-square-quote.js":false,"./icons/message-square-reply.js":false,"./icons/message-square-share.js":false,"./icons/message-square-text.js":false,"./icons/message-square-warning.js":false,"./icons/message-square-x.js":false,"./icons/message-square.js":false,"./icons/messages-square.js":false,"./icons/mic-off.js":false,"./icons/mic.js":false,"./icons/microchip.js":false,"./icons/microscope.js":false,"./icons/microwave.js":false,"./icons/milestone.js":false,"./icons/milk-off.js":false,"./icons/minimize-2.js":false,"./icons/milk.js":false,"./icons/minimize.js":false,"./icons/minus.js":false,"./icons/monitor-check.js":false,"./icons/monitor-cog.js":false,"./icons/monitor-dot.js":false,"./icons/monitor-down.js":false,"./icons/monitor-off.js":false,"./icons/monitor-pause.js":false,"./icons/monitor-play.js":false,"./icons/monitor-smartphone.js":false,"./icons/monitor-speaker.js":false,"./icons/monitor-stop.js":false,"./icons/monitor-up.js":false,"./icons/monitor.js":false,"./icons/monitor-x.js":false,"./icons/moon-star.js":false,"./icons/moon.js":false,"./icons/mountain-snow.js":false,"./icons/mountain.js":false,"./icons/mouse-off.js":false,"./icons/mouse-pointer-2.js":false,"./icons/mouse-pointer-ban.js":false,"./icons/mouse-pointer-click.js":false,"./icons/mouse-pointer.js":false,"./icons/mouse.js":false,"./icons/move-diagonal-2.js":false,"./icons/move-diagonal.js":false,"./icons/move-down-left.js":false,"./icons/move-down-right.js":false,"./icons/move-horizontal.js":false,"./icons/move-right.js":false,"./icons/move-down.js":false,"./icons/move-left.js":false,"./icons/move-up-left.js":false,"./icons/move-up-right.js":false,"./icons/move-up.js":false,"./icons/move-vertical.js":false,"./icons/move.js":false,"./icons/music-2.js":false,"./icons/music-3.js":false,"./icons/music-4.js":false,"./icons/navigation-2-off.js":false,"./icons/music.js":false,"./icons/navigation-2.js":false,"./icons/navigation-off.js":false,"./icons/navigation.js":false,"./icons/network.js":false,"./icons/newspaper.js":false,"./icons/nfc.js":false,"./icons/non-binary.js":false,"./icons/notebook-pen.js":false,"./icons/notebook-tabs.js":false,"./icons/notebook.js":false,"./icons/notebook-text.js":false,"./icons/notepad-text-dashed.js":false,"./icons/nut-off.js":false,"./icons/notepad-text.js":false,"./icons/nut.js":false,"./icons/octagon-minus.js":false,"./icons/octagon.js":false,"./icons/omega.js":false,"./icons/option.js":false,"./icons/orbit.js":false,"./icons/package-2.js":false,"./icons/origami.js":false,"./icons/package-check.js":false,"./icons/package-minus.js":false,"./icons/package-plus.js":false,"./icons/package-search.js":false,"./icons/package-open.js":false,"./icons/package-x.js":false,"./icons/package.js":false,"./icons/paint-roller.js":false,"./icons/paint-bucket.js":false,"./icons/paintbrush.js":false,"./icons/palette.js":false,"./icons/panda.js":false,"./icons/panel-bottom-close.js":false,"./icons/panel-bottom.js":false,"./icons/panel-bottom-open.js":false,"./icons/panel-right-close.js":false,"./icons/panel-right-open.js":false,"./icons/panel-right.js":false,"./icons/panel-top-open.js":false,"./icons/panel-top-close.js":false,"./icons/panel-top.js":false,"./icons/panels-left-bottom.js":false,"./icons/panels-right-bottom.js":false,"./icons/paperclip.js":false,"./icons/parentheses.js":false,"./icons/parking-meter.js":false,"./icons/party-popper.js":false,"./icons/pause.js":false,"./icons/paw-print.js":false,"./icons/pc-case.js":false,"./icons/pen-off.js":false,"./icons/pen-tool.js":false,"./icons/pencil-line.js":false,"./icons/pencil-off.js":false,"./icons/pencil-ruler.js":false,"./icons/pentagon.js":false,"./icons/pencil.js":false,"./icons/percent.js":false,"./icons/person-standing.js":false,"./icons/phone-call.js":false,"./icons/philippine-peso.js":false,"./icons/phone-forwarded.js":false,"./icons/phone-missed.js":false,"./icons/phone-incoming.js":false,"./icons/phone-off.js":false,"./icons/phone-outgoing.js":false,"./icons/phone.js":false,"./icons/piano.js":false,"./icons/pi.js":false,"./icons/pickaxe.js":false,"./icons/picture-in-picture-2.js":false,"./icons/picture-in-picture.js":false,"./icons/piggy-bank.js":false,"./icons/pilcrow-left.js":false,"./icons/pilcrow-right.js":false,"./icons/pilcrow.js":false,"./icons/pill-bottle.js":false,"./icons/pill.js":false,"./icons/pin-off.js":false,"./icons/pin.js":false,"./icons/pipette.js":false,"./icons/pizza.js":false,"./icons/plane-landing.js":false,"./icons/plane.js":false,"./icons/plane-takeoff.js":false,"./icons/play.js":false,"./icons/plug-2.js":false,"./icons/plus.js":false,"./icons/plug.js":false,"./icons/pocket-knife.js":false,"./icons/pocket.js":false,"./icons/pointer-off.js":false,"./icons/podcast.js":false,"./icons/pointer.js":false,"./icons/popcorn.js":false,"./icons/popsicle.js":false,"./icons/pound-sterling.js":false,"./icons/power-off.js":false,"./icons/power.js":false,"./icons/presentation.js":false,"./icons/printer.js":false,"./icons/printer-check.js":false,"./icons/projector.js":false,"./icons/proportions.js":false,"./icons/puzzle.js":false,"./icons/pyramid.js":false,"./icons/qr-code.js":false,"./icons/quote.js":false,"./icons/rabbit.js":false,"./icons/radar.js":false,"./icons/radiation.js":false,"./icons/radical.js":false,"./icons/radio-receiver.js":false,"./icons/radio-tower.js":false,"./icons/radio.js":false,"./icons/radius.js":false,"./icons/rail-symbol.js":false,"./icons/rainbow.js":false,"./icons/rat.js":false,"./icons/ratio.js":false,"./icons/receipt-cent.js":false,"./icons/receipt-euro.js":false,"./icons/receipt-indian-rupee.js":false,"./icons/receipt-japanese-yen.js":false,"./icons/receipt-pound-sterling.js":false,"./icons/receipt-swiss-franc.js":false,"./icons/receipt-russian-ruble.js":false,"./icons/receipt-text.js":false,"./icons/receipt-turkish-lira.js":false,"./icons/receipt.js":false,"./icons/rectangle-circle.js":false,"./icons/rectangle-goggles.js":false,"./icons/rectangle-horizontal.js":false,"./icons/rectangle-vertical.js":false,"./icons/recycle.js":false,"./icons/redo-2.js":false,"./icons/redo-dot.js":false,"./icons/redo.js":false,"./icons/refresh-ccw.js":false,"./icons/refresh-ccw-dot.js":false,"./icons/refresh-cw-off.js":false,"./icons/refresh-cw.js":false,"./icons/refrigerator.js":false,"./icons/regex.js":false,"./icons/remove-formatting.js":false,"./icons/repeat-1.js":false,"./icons/repeat-2.js":false,"./icons/repeat.js":false,"./icons/replace-all.js":false,"./icons/replace.js":false,"./icons/reply-all.js":false,"./icons/reply.js":false,"./icons/rewind.js":false,"./icons/ribbon.js":false,"./icons/rocket.js":false,"./icons/rocking-chair.js":false,"./icons/roller-coaster.js":false,"./icons/rotate-ccw-key.js":false,"./icons/rotate-ccw-square.js":false,"./icons/rotate-ccw.js":false,"./icons/rotate-cw-square.js":false,"./icons/rotate-cw.js":false,"./icons/route-off.js":false,"./icons/route.js":false,"./icons/router.js":false,"./icons/rows-4.js":false,"./icons/rss.js":false,"./icons/ruler-dimension-line.js":false,"./icons/ruler.js":false,"./icons/russian-ruble.js":false,"./icons/salad.js":false,"./icons/sailboat.js":false,"./icons/sandwich.js":false,"./icons/satellite-dish.js":false,"./icons/satellite.js":false,"./icons/saudi-riyal.js":false,"./icons/save-off.js":false,"./icons/save-all.js":false,"./icons/save.js":false,"./icons/scale.js":false,"./icons/scaling.js":false,"./icons/scan-barcode.js":false,"./icons/scan-eye.js":false,"./icons/scan-face.js":false,"./icons/scan-heart.js":false,"./icons/scan-line.js":false,"./icons/scan-qr-code.js":false,"./icons/scan-search.js":false,"./icons/scan-text.js":false,"./icons/scan.js":false,"./icons/school.js":false,"./icons/scissors-line-dashed.js":false,"./icons/scissors.js":false,"./icons/screen-share-off.js":false,"./icons/screen-share.js":false,"./icons/scroll-text.js":false,"./icons/scroll.js":false,"./icons/search-code.js":false,"./icons/search-check.js":false,"./icons/search-slash.js":false,"./icons/search-x.js":false,"./icons/search.js":"fZL10","./icons/section.js":false,"./icons/send-to-back.js":false,"./icons/send.js":false,"./icons/separator-horizontal.js":false,"./icons/separator-vertical.js":false,"./icons/server-cog.js":false,"./icons/server-crash.js":false,"./icons/server-off.js":false,"./icons/server.js":false,"./icons/settings-2.js":false,"./icons/shapes.js":false,"./icons/settings.js":false,"./icons/share.js":false,"./icons/share-2.js":false,"./icons/sheet.js":false,"./icons/shell.js":false,"./icons/shield-alert.js":false,"./icons/shield-ban.js":false,"./icons/shield-check.js":false,"./icons/shield-ellipsis.js":false,"./icons/shield-half.js":false,"./icons/shield-minus.js":false,"./icons/shield-off.js":false,"./icons/shield-plus.js":false,"./icons/shield-user.js":false,"./icons/shield.js":false,"./icons/ship-wheel.js":false,"./icons/ship.js":false,"./icons/shirt.js":false,"./icons/shopping-bag.js":false,"./icons/shopping-basket.js":false,"./icons/shopping-cart.js":false,"./icons/shovel.js":false,"./icons/shower-head.js":false,"./icons/shredder.js":false,"./icons/shrimp.js":false,"./icons/shrink.js":false,"./icons/shrub.js":false,"./icons/shuffle.js":false,"./icons/sigma.js":false,"./icons/signal-high.js":false,"./icons/signal-low.js":false,"./icons/signal-medium.js":false,"./icons/signal-zero.js":false,"./icons/signal.js":false,"./icons/signature.js":false,"./icons/signpost-big.js":false,"./icons/signpost.js":false,"./icons/siren.js":false,"./icons/skip-back.js":false,"./icons/skip-forward.js":false,"./icons/skull.js":false,"./icons/slack.js":false,"./icons/slice.js":false,"./icons/slash.js":false,"./icons/sliders-horizontal.js":false,"./icons/smartphone-charging.js":false,"./icons/smartphone-nfc.js":false,"./icons/smartphone.js":false,"./icons/smile-plus.js":false,"./icons/snail.js":false,"./icons/smile.js":false,"./icons/snowflake.js":false,"./icons/soap-dispenser-droplet.js":false,"./icons/soup.js":false,"./icons/sofa.js":false,"./icons/spade.js":false,"./icons/space.js":false,"./icons/sparkle.js":false,"./icons/speaker.js":false,"./icons/speech.js":false,"./icons/spell-check.js":false,"./icons/spell-check-2.js":false,"./icons/spline-pointer.js":false,"./icons/spline.js":false,"./icons/split.js":false,"./icons/spool.js":false,"./icons/spotlight.js":false,"./icons/spray-can.js":false,"./icons/sprout.js":false,"./icons/square-dashed-bottom-code.js":false,"./icons/square-dashed-bottom.js":false,"./icons/square-dashed-top-solid.js":false,"./icons/square-pause.js":false,"./icons/square-radical.js":false,"./icons/square-round-corner.js":false,"./icons/square-square.js":false,"./icons/square-stop.js":false,"./icons/square-stack.js":false,"./icons/square.js":false,"./icons/squares-exclude.js":false,"./icons/squares-intersect.js":false,"./icons/squares-unite.js":false,"./icons/squares-subtract.js":false,"./icons/squircle.js":false,"./icons/squircle-dashed.js":false,"./icons/squirrel.js":false,"./icons/star-half.js":false,"./icons/stamp.js":false,"./icons/star-off.js":false,"./icons/star.js":false,"./icons/step-back.js":false,"./icons/step-forward.js":false,"./icons/stethoscope.js":false,"./icons/sticker.js":false,"./icons/sticky-note.js":false,"./icons/store.js":false,"./icons/stretch-horizontal.js":false,"./icons/stretch-vertical.js":false,"./icons/strikethrough.js":false,"./icons/subscript.js":false,"./icons/sun-dim.js":false,"./icons/sun-medium.js":false,"./icons/sun-moon.js":false,"./icons/sun-snow.js":false,"./icons/sun.js":false,"./icons/sunrise.js":false,"./icons/sunset.js":false,"./icons/superscript.js":false,"./icons/swatch-book.js":false,"./icons/swiss-franc.js":false,"./icons/switch-camera.js":false,"./icons/sword.js":false,"./icons/swords.js":false,"./icons/syringe.js":false,"./icons/table-2.js":false,"./icons/table-cells-merge.js":false,"./icons/table-cells-split.js":false,"./icons/table-columns-split.js":false,"./icons/table-of-contents.js":false,"./icons/table-properties.js":false,"./icons/table-rows-split.js":false,"./icons/table.js":false,"./icons/tablet-smartphone.js":false,"./icons/tablet.js":false,"./icons/tablets.js":false,"./icons/tag.js":false,"./icons/tags.js":false,"./icons/tally-1.js":false,"./icons/tally-2.js":false,"./icons/tally-3.js":false,"./icons/tally-4.js":false,"./icons/tally-5.js":false,"./icons/tangent.js":false,"./icons/target.js":false,"./icons/telescope.js":false,"./icons/tent-tree.js":false,"./icons/tent.js":false,"./icons/terminal.js":false,"./icons/test-tube.js":false,"./icons/test-tubes.js":false,"./icons/text-cursor-input.js":false,"./icons/text-cursor.js":false,"./icons/text-quote.js":false,"./icons/text-search.js":false,"./icons/theater.js":false,"./icons/text.js":false,"./icons/thermometer-sun.js":false,"./icons/thermometer-snowflake.js":false,"./icons/thermometer.js":false,"./icons/thumbs-down.js":false,"./icons/thumbs-up.js":false,"./icons/ticket-check.js":false,"./icons/ticket-minus.js":false,"./icons/ticket-percent.js":false,"./icons/ticket-plus.js":false,"./icons/ticket-slash.js":false,"./icons/ticket-x.js":false,"./icons/ticket.js":false,"./icons/tickets-plane.js":false,"./icons/tickets.js":false,"./icons/timer-off.js":false,"./icons/timer-reset.js":false,"./icons/timer.js":false,"./icons/toggle-left.js":false,"./icons/toggle-right.js":false,"./icons/toilet.js":false,"./icons/tool-case.js":false,"./icons/tornado.js":false,"./icons/torus.js":false,"./icons/touchpad-off.js":false,"./icons/touchpad.js":false,"./icons/tower-control.js":false,"./icons/toy-brick.js":false,"./icons/tractor.js":false,"./icons/traffic-cone.js":false,"./icons/train-front-tunnel.js":false,"./icons/train-track.js":false,"./icons/train-front.js":false,"./icons/transgender.js":false,"./icons/trash-2.js":false,"./icons/trash.js":false,"./icons/tree-deciduous.js":false,"./icons/tree-pine.js":false,"./icons/trees.js":false,"./icons/trello.js":false,"./icons/trending-down.js":false,"./icons/trending-up-down.js":false,"./icons/trending-up.js":false,"./icons/triangle-dashed.js":false,"./icons/triangle-right.js":false,"./icons/triangle.js":false,"./icons/trophy.js":false,"./icons/truck-electric.js":false,"./icons/truck.js":false,"./icons/turkish-lira.js":false,"./icons/turtle.js":false,"./icons/turntable.js":false,"./icons/tv-minimal-play.js":false,"./icons/tv.js":false,"./icons/twitch.js":false,"./icons/twitter.js":false,"./icons/type-outline.js":false,"./icons/type.js":false,"./icons/umbrella-off.js":false,"./icons/umbrella.js":false,"./icons/underline.js":false,"./icons/undo-dot.js":false,"./icons/undo-2.js":false,"./icons/undo.js":false,"./icons/unfold-horizontal.js":false,"./icons/unfold-vertical.js":false,"./icons/ungroup.js":false,"./icons/unlink-2.js":false,"./icons/unlink.js":false,"./icons/unplug.js":false,"./icons/upload.js":false,"./icons/usb.js":false,"./icons/user-check.js":false,"./icons/user-cog.js":false,"./icons/user-lock.js":false,"./icons/user-minus.js":false,"./icons/user-pen.js":false,"./icons/user-plus.js":false,"./icons/user-round-pen.js":false,"./icons/user-round-search.js":false,"./icons/user-search.js":false,"./icons/user-star.js":false,"./icons/user-x.js":false,"./icons/user.js":false,"./icons/users.js":false,"./icons/utility-pole.js":false,"./icons/variable.js":false,"./icons/vault.js":false,"./icons/vector-square.js":false,"./icons/vegan.js":false,"./icons/venus-and-mars.js":false,"./icons/venetian-mask.js":false,"./icons/venus.js":false,"./icons/vibrate-off.js":false,"./icons/video-off.js":false,"./icons/vibrate.js":false,"./icons/video.js":false,"./icons/videotape.js":false,"./icons/view.js":false,"./icons/voicemail.js":false,"./icons/volleyball.js":false,"./icons/volume-1.js":false,"./icons/volume-2.js":false,"./icons/volume-off.js":false,"./icons/volume-x.js":false,"./icons/wallet-cards.js":false,"./icons/volume.js":false,"./icons/vote.js":false,"./icons/wallet.js":false,"./icons/wallpaper.js":false,"./icons/wand.js":false,"./icons/warehouse.js":false,"./icons/washing-machine.js":false,"./icons/waves.js":false,"./icons/watch.js":false,"./icons/waves-ladder.js":false,"./icons/waypoints.js":false,"./icons/webcam.js":false,"./icons/webhook-off.js":false,"./icons/webhook.js":false,"./icons/weight.js":false,"./icons/wheat-off.js":false,"./icons/wheat.js":false,"./icons/whole-word.js":false,"./icons/wifi-cog.js":false,"./icons/wifi-high.js":false,"./icons/wifi-low.js":false,"./icons/wifi-off.js":false,"./icons/wifi-pen.js":false,"./icons/wifi-sync.js":false,"./icons/wifi-zero.js":false,"./icons/wifi.js":false,"./icons/wind.js":false,"./icons/wind-arrow-down.js":false,"./icons/wine-off.js":false,"./icons/wine.js":false,"./icons/worm.js":false,"./icons/workflow.js":false,"./icons/wrap-text.js":false,"./icons/wrench.js":false,"./icons/x.js":"aJBqa","./icons/youtube.js":false,"./icons/zap-off.js":false,"./icons/zoom-in.js":false,"./icons/zap.js":false,"./icons/zoom-out.js":false,"./icons/arrow-down-0-1.js":false,"./icons/arrow-down-1-0.js":false,"./icons/arrow-up-0-1.js":false,"./icons/arrow-up-1-0.js":false,"./createLucideIcon.js":false,"./Icon.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kjwbV":[function(require,module,exports,__globalThis) {
 /**
  * @license lucide-react v0.536.0 - ISC
  *
@@ -42335,7 +42334,30 @@ var defaultAttributes = {
     strokeLinejoin: "round"
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jfA6v":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"irEtD":[function(require,module,exports,__globalThis) {
+/**
+ * @license lucide-react v0.536.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
+parcelHelpers.export(exports, "default", ()=>Check);
+var _createLucideIconJs = require("../createLucideIcon.js");
+var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M20 6 9 17l-5-5",
+            key: "1gmf2c"
+        }
+    ]
+];
+const Check = (0, _createLucideIconJsDefault.default)("check", __iconNode);
+
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jfA6v":[function(require,module,exports,__globalThis) {
 /**
  * @license lucide-react v0.536.0 - ISC
  *
@@ -42404,7 +42426,7121 @@ const __iconNode = [
 ];
 const ChevronLeft = (0, _createLucideIconJsDefault.default)("chevron-left", __iconNode);
 
-},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"gzQU8":[function(require,module,exports,__globalThis) {
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4dz6Z":[function(require,module,exports,__globalThis) {
+/**
+ * @license lucide-react v0.536.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
+parcelHelpers.export(exports, "default", ()=>ChevronsUpDown);
+var _createLucideIconJs = require("../createLucideIcon.js");
+var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "m7 15 5 5 5-5",
+            key: "1hf1tw"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "m7 9 5-5 5 5",
+            key: "sgt6xg"
+        }
+    ]
+];
+const ChevronsUpDown = (0, _createLucideIconJsDefault.default)("chevrons-up-down", __iconNode);
+
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fZL10":[function(require,module,exports,__globalThis) {
+/**
+ * @license lucide-react v0.536.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
+parcelHelpers.export(exports, "default", ()=>Search);
+var _createLucideIconJs = require("../createLucideIcon.js");
+var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "m21 21-4.34-4.34",
+            key: "14j7rj"
+        }
+    ],
+    [
+        "circle",
+        {
+            cx: "11",
+            cy: "11",
+            r: "8",
+            key: "4ej97u"
+        }
+    ]
+];
+const Search = (0, _createLucideIconJsDefault.default)("search", __iconNode);
+
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aJBqa":[function(require,module,exports,__globalThis) {
+/**
+ * @license lucide-react v0.536.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "__iconNode", ()=>__iconNode);
+parcelHelpers.export(exports, "default", ()=>X);
+var _createLucideIconJs = require("../createLucideIcon.js");
+var _createLucideIconJsDefault = parcelHelpers.interopDefault(_createLucideIconJs);
+const __iconNode = [
+    [
+        "path",
+        {
+            d: "M18 6 6 18",
+            key: "1bl5f8"
+        }
+    ],
+    [
+        "path",
+        {
+            d: "m6 6 12 12",
+            key: "d8bk6v"
+        }
+    ]
+];
+const X = (0, _createLucideIconJsDefault.default)("x", __iconNode);
+
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5yRh4":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5ef0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5ef0.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5ef0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Combobox", ()=>Combobox);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _lucideReact = require("lucide-react");
+var _utils = require("../../lib/utils");
+var _button = require("./button");
+var _command = require("./command");
+var _popover = require("./popover");
+var _s = $RefreshSig$();
+function Combobox({ options, value, onValueChange, placeholder = "Select option...", searchPlaceholder = "Search...", emptyText = "No option found.", className, disabled = false, clearable = false }) {
+    _s();
+    const [open, setOpen] = _react.useState(false);
+    const selectedOption = options.find((option)=>option.value === value);
+    const handleSelect = (selectedValue)=>{
+        const newValue = selectedValue === value ? "" : selectedValue;
+        onValueChange?.(newValue);
+        setOpen(false);
+    };
+    const handleClear = (e)=>{
+        e.stopPropagation();
+        onValueChange?.("");
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.Popover), {
+        open: open,
+        onOpenChange: setOpen,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverTrigger), {
+                asChild: true,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
+                    variant: "outline",
+                    role: "combobox",
+                    "aria-expanded": open,
+                    className: (0, _utils.cn)("justify-between font-normal", !selectedOption && "text-muted-foreground", className),
+                    disabled: disabled,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "truncate",
+                            children: selectedOption ? selectedOption.label : placeholder
+                        }, void 0, false, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 78,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "flex items-center gap-1",
+                            children: [
+                                clearable && selectedOption && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    type: "button",
+                                    className: "h-4 w-4 p-0 hover:bg-transparent hover:opacity-70 transition-opacity",
+                                    onClick: handleClear,
+                                    children: "\xd7"
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 83,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronsUpDown), {
+                                    className: "h-4 w-4 shrink-0 opacity-50"
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 91,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 81,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "components/ui/combobox.tsx",
+                    lineNumber: 67,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/ui/combobox.tsx",
+                lineNumber: 66,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverContent), {
+                className: "w-[var(--radix-popover-trigger-width)] p-0",
+                align: "start",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.Command), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandInput), {
+                            placeholder: searchPlaceholder
+                        }, void 0, false, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 97,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandList), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandEmpty), {
+                                    children: emptyText
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 99,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandGroup), {
+                                    children: options.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandItem), {
+                                            value: option.value,
+                                            onSelect: handleSelect,
+                                            disabled: option.disabled,
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Check), {
+                                                    className: (0, _utils.cn)("mr-2 h-4 w-4", value === option.value ? "opacity-100" : "opacity-0")
+                                                }, void 0, false, {
+                                                    fileName: "components/ui/combobox.tsx",
+                                                    lineNumber: 108,
+                                                    columnNumber: 19
+                                                }, this),
+                                                option.label
+                                            ]
+                                        }, option.value, true, {
+                                            fileName: "components/ui/combobox.tsx",
+                                            lineNumber: 102,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 100,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 98,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "components/ui/combobox.tsx",
+                    lineNumber: 96,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/ui/combobox.tsx",
+                lineNumber: 95,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/combobox.tsx",
+        lineNumber: 65,
+        columnNumber: 5
+    }, this);
+}
+_s(Combobox, "xG1TONbKtDWtdOTrXaTAsNhPg/Q=");
+_c = Combobox;
+var _c;
+$RefreshReg$(_c, "Combobox");
+
+  $parcel$ReactRefreshHelpers$5ef0.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","lucide-react":"2I7qR","../../lib/utils":"asoho","./button":"8xMbg","./command":"az9LN","./popover":"8lktE","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"az9LN":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$a30c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$a30c.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a30c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Command", ()=>Command);
+parcelHelpers.export(exports, "CommandDialog", ()=>CommandDialog);
+parcelHelpers.export(exports, "CommandInput", ()=>CommandInput);
+parcelHelpers.export(exports, "CommandList", ()=>CommandList);
+parcelHelpers.export(exports, "CommandEmpty", ()=>CommandEmpty);
+parcelHelpers.export(exports, "CommandGroup", ()=>CommandGroup);
+parcelHelpers.export(exports, "CommandItem", ()=>CommandItem);
+parcelHelpers.export(exports, "CommandShortcut", ()=>CommandShortcut);
+parcelHelpers.export(exports, "CommandSeparator", ()=>CommandSeparator);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _cmdk = require("cmdk");
+var _lucideReact = require("lucide-react");
+var _utils = require("../../lib/utils");
+var _dialog = require("./dialog");
+function Command({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command), {
+        "data-slot": "command",
+        className: (0, _utils.cn)("bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 19,
+        columnNumber: 5
+    }, this);
+}
+_c = Command;
+function CommandDialog({ title = "Command Palette", description = "Search for a command to run...", children, className, showCloseButton = true, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dialog.Dialog), {
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dialog.DialogHeader), {
+                className: "sr-only",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dialog.DialogTitle), {
+                        children: title
+                    }, void 0, false, {
+                        fileName: "components/ui/command.tsx",
+                        lineNumber: 46,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dialog.DialogDescription), {
+                        children: description
+                    }, void 0, false, {
+                        fileName: "components/ui/command.tsx",
+                        lineNumber: 47,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "components/ui/command.tsx",
+                lineNumber: 45,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _dialog.DialogContent), {
+                className: (0, _utils.cn)("overflow-hidden p-0", className),
+                showCloseButton: showCloseButton,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Command, {
+                    className: "[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
+                    children: children
+                }, void 0, false, {
+                    fileName: "components/ui/command.tsx",
+                    lineNumber: 53,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/ui/command.tsx",
+                lineNumber: 49,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 44,
+        columnNumber: 5
+    }, this);
+}
+_c1 = CommandDialog;
+function CommandInput({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        "data-slot": "command-input-wrapper",
+        className: "flex h-9 items-center gap-2 border-b px-3",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.SearchIcon), {
+                className: "size-4 shrink-0 opacity-50"
+            }, void 0, false, {
+                fileName: "components/ui/command.tsx",
+                lineNumber: 70,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).Input, {
+                "data-slot": "command-input",
+                className: (0, _utils.cn)("placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50", className),
+                ...props
+            }, void 0, false, {
+                fileName: "components/ui/command.tsx",
+                lineNumber: 71,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 66,
+        columnNumber: 5
+    }, this);
+}
+_c2 = CommandInput;
+function CommandList({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).List, {
+        "data-slot": "command-list",
+        className: (0, _utils.cn)("max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 88,
+        columnNumber: 5
+    }, this);
+}
+_c3 = CommandList;
+function CommandEmpty({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).Empty, {
+        "data-slot": "command-empty",
+        className: "py-6 text-center text-sm",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 103,
+        columnNumber: 5
+    }, this);
+}
+_c4 = CommandEmpty;
+function CommandGroup({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).Group, {
+        "data-slot": "command-group",
+        className: (0, _utils.cn)("text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 116,
+        columnNumber: 5
+    }, this);
+}
+_c5 = CommandGroup;
+function CommandSeparator({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).Separator, {
+        "data-slot": "command-separator",
+        className: (0, _utils.cn)("bg-border -mx-1 h-px", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 132,
+        columnNumber: 5
+    }, this);
+}
+_c6 = CommandSeparator;
+function CommandItem({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cmdk.Command).Item, {
+        "data-slot": "command-item",
+        className: (0, _utils.cn)("data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 145,
+        columnNumber: 5
+    }, this);
+}
+_c7 = CommandItem;
+function CommandShortcut({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+        "data-slot": "command-shortcut",
+        className: (0, _utils.cn)("text-muted-foreground ml-auto text-xs tracking-widest", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/command.tsx",
+        lineNumber: 161,
+        columnNumber: 5
+    }, this);
+}
+_c8 = CommandShortcut;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8;
+$RefreshReg$(_c, "Command");
+$RefreshReg$(_c1, "CommandDialog");
+$RefreshReg$(_c2, "CommandInput");
+$RefreshReg$(_c3, "CommandList");
+$RefreshReg$(_c4, "CommandEmpty");
+$RefreshReg$(_c5, "CommandGroup");
+$RefreshReg$(_c6, "CommandSeparator");
+$RefreshReg$(_c7, "CommandItem");
+$RefreshReg$(_c8, "CommandShortcut");
+
+  $parcel$ReactRefreshHelpers$a30c.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","cmdk":"deSkJ","lucide-react":"2I7qR","../../lib/utils":"asoho","./dialog":"8wDEa","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"deSkJ":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Command", ()=>_e);
+parcelHelpers.export(exports, "CommandDialog", ()=>xe);
+parcelHelpers.export(exports, "CommandEmpty", ()=>Ie);
+parcelHelpers.export(exports, "CommandGroup", ()=>Ee);
+parcelHelpers.export(exports, "CommandInput", ()=>Se);
+parcelHelpers.export(exports, "CommandItem", ()=>he);
+parcelHelpers.export(exports, "CommandList", ()=>Ce);
+parcelHelpers.export(exports, "CommandLoading", ()=>Pe);
+parcelHelpers.export(exports, "CommandRoot", ()=>me);
+parcelHelpers.export(exports, "CommandSeparator", ()=>ye);
+parcelHelpers.export(exports, "defaultFilter", ()=>Re);
+parcelHelpers.export(exports, "useCommandState", ()=>P);
+var _chunkNZJY6EH4Mjs = require("./chunk-NZJY6EH4.mjs");
+var _reactDialog = require("@radix-ui/react-dialog");
+var _react = require("react");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactId = require("@radix-ui/react-id");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+"use client";
+var N = '[cmdk-group=""]', Y = '[cmdk-group-items=""]', be = '[cmdk-group-heading=""]', le = '[cmdk-item=""]', ce = `${le}:not([aria-disabled="true"])`, Z = "cmdk-item-select", T = "data-value", Re = (r, o, n)=>(0, _chunkNZJY6EH4Mjs.a)(r, o, n), ue = _react.createContext(void 0), K = ()=>_react.useContext(ue), de = _react.createContext(void 0), ee = ()=>_react.useContext(de), fe = _react.createContext(void 0), me = _react.forwardRef((r, o)=>{
+    let n = L(()=>{
+        var e, a;
+        return {
+            search: "",
+            value: (a = (e = r.value) != null ? e : r.defaultValue) != null ? a : "",
+            selectedItemId: void 0,
+            filtered: {
+                count: 0,
+                items: new Map,
+                groups: new Set
+            }
+        };
+    }), u = L(()=>new Set), c = L(()=>new Map), d = L(()=>new Map), f = L(()=>new Set), p = pe(r), { label: b, children: m, value: R, onValueChange: x, filter: C, shouldFilter: S, loop: A, disablePointerSelection: ge = !1, vimBindings: j = !0, ...O } = r, $ = (0, _reactId.useId)(), q = (0, _reactId.useId)(), _ = (0, _reactId.useId)(), I = _react.useRef(null), v = ke();
+    k(()=>{
+        if (R !== void 0) {
+            let e = R.trim();
+            n.current.value = e, E.emit();
+        }
+    }, [
+        R
+    ]), k(()=>{
+        v(6, ne);
+    }, []);
+    let E = _react.useMemo(()=>({
+            subscribe: (e)=>(f.current.add(e), ()=>f.current.delete(e)),
+            snapshot: ()=>n.current,
+            setState: (e, a, s)=>{
+                var i, l, g, y;
+                if (!Object.is(n.current[e], a)) {
+                    if (n.current[e] = a, e === "search") J(), z(), v(1, W);
+                    else if (e === "value") {
+                        if (document.activeElement.hasAttribute("cmdk-input") || document.activeElement.hasAttribute("cmdk-root")) {
+                            let h = document.getElementById(_);
+                            h ? h.focus() : (i = document.getElementById($)) == null || i.focus();
+                        }
+                        if (v(7, ()=>{
+                            var h;
+                            n.current.selectedItemId = (h = M()) == null ? void 0 : h.id, E.emit();
+                        }), s || v(5, ne), ((l = p.current) == null ? void 0 : l.value) !== void 0) {
+                            let h = a != null ? a : "";
+                            (y = (g = p.current).onValueChange) == null || y.call(g, h);
+                            return;
+                        }
+                    }
+                    E.emit();
+                }
+            },
+            emit: ()=>{
+                f.current.forEach((e)=>e());
+            }
+        }), []), U = _react.useMemo(()=>({
+            value: (e, a, s)=>{
+                var i;
+                a !== ((i = d.current.get(e)) == null ? void 0 : i.value) && (d.current.set(e, {
+                    value: a,
+                    keywords: s
+                }), n.current.filtered.items.set(e, te(a, s)), v(2, ()=>{
+                    z(), E.emit();
+                }));
+            },
+            item: (e, a)=>(u.current.add(e), a && (c.current.has(a) ? c.current.get(a).add(e) : c.current.set(a, new Set([
+                    e
+                ]))), v(3, ()=>{
+                    J(), z(), n.current.value || W(), E.emit();
+                }), ()=>{
+                    d.current.delete(e), u.current.delete(e), n.current.filtered.items.delete(e);
+                    let s = M();
+                    v(4, ()=>{
+                        J(), (s == null ? void 0 : s.getAttribute("id")) === e && W(), E.emit();
+                    });
+                }),
+            group: (e)=>(c.current.has(e) || c.current.set(e, new Set), ()=>{
+                    d.current.delete(e), c.current.delete(e);
+                }),
+            filter: ()=>p.current.shouldFilter,
+            label: b || r["aria-label"],
+            getDisablePointerSelection: ()=>p.current.disablePointerSelection,
+            listId: $,
+            inputId: _,
+            labelId: q,
+            listInnerRef: I
+        }), []);
+    function te(e, a) {
+        var i, l;
+        let s = (l = (i = p.current) == null ? void 0 : i.filter) != null ? l : Re;
+        return e ? s(e, n.current.search, a) : 0;
+    }
+    function z() {
+        if (!n.current.search || p.current.shouldFilter === !1) return;
+        let e = n.current.filtered.items, a = [];
+        n.current.filtered.groups.forEach((i)=>{
+            let l = c.current.get(i), g = 0;
+            l.forEach((y)=>{
+                let h = e.get(y);
+                g = Math.max(h, g);
+            }), a.push([
+                i,
+                g
+            ]);
+        });
+        let s = I.current;
+        V().sort((i, l)=>{
+            var h, F;
+            let g = i.getAttribute("id"), y = l.getAttribute("id");
+            return ((h = e.get(y)) != null ? h : 0) - ((F = e.get(g)) != null ? F : 0);
+        }).forEach((i)=>{
+            let l = i.closest(Y);
+            l ? l.appendChild(i.parentElement === l ? i : i.closest(`${Y} > *`)) : s.appendChild(i.parentElement === s ? i : i.closest(`${Y} > *`));
+        }), a.sort((i, l)=>l[1] - i[1]).forEach((i)=>{
+            var g;
+            let l = (g = I.current) == null ? void 0 : g.querySelector(`${N}[${T}="${encodeURIComponent(i[0])}"]`);
+            l == null || l.parentElement.appendChild(l);
+        });
+    }
+    function W() {
+        let e = V().find((s)=>s.getAttribute("aria-disabled") !== "true"), a = e == null ? void 0 : e.getAttribute(T);
+        E.setState("value", a || void 0);
+    }
+    function J() {
+        var a, s, i, l;
+        if (!n.current.search || p.current.shouldFilter === !1) {
+            n.current.filtered.count = u.current.size;
+            return;
+        }
+        n.current.filtered.groups = new Set;
+        let e = 0;
+        for (let g of u.current){
+            let y = (s = (a = d.current.get(g)) == null ? void 0 : a.value) != null ? s : "", h = (l = (i = d.current.get(g)) == null ? void 0 : i.keywords) != null ? l : [], F = te(y, h);
+            n.current.filtered.items.set(g, F), F > 0 && e++;
+        }
+        for (let [g, y] of c.current)for (let h of y)if (n.current.filtered.items.get(h) > 0) {
+            n.current.filtered.groups.add(g);
+            break;
+        }
+        n.current.filtered.count = e;
+    }
+    function ne() {
+        var a, s, i;
+        let e = M();
+        e && (((a = e.parentElement) == null ? void 0 : a.firstChild) === e && ((i = (s = e.closest(N)) == null ? void 0 : s.querySelector(be)) == null || i.scrollIntoView({
+            block: "nearest"
+        })), e.scrollIntoView({
+            block: "nearest"
+        }));
+    }
+    function M() {
+        var e;
+        return (e = I.current) == null ? void 0 : e.querySelector(`${le}[aria-selected="true"]`);
+    }
+    function V() {
+        var e;
+        return Array.from(((e = I.current) == null ? void 0 : e.querySelectorAll(ce)) || []);
+    }
+    function X(e) {
+        let s = V()[e];
+        s && E.setState("value", s.getAttribute(T));
+    }
+    function Q(e) {
+        var g;
+        let a = M(), s = V(), i = s.findIndex((y)=>y === a), l = s[i + e];
+        (g = p.current) != null && g.loop && (l = i + e < 0 ? s[s.length - 1] : i + e === s.length ? s[0] : s[i + e]), l && E.setState("value", l.getAttribute(T));
+    }
+    function re(e) {
+        let a = M(), s = a == null ? void 0 : a.closest(N), i;
+        for(; s && !i;)s = e > 0 ? we(s, N) : De(s, N), i = s == null ? void 0 : s.querySelector(ce);
+        i ? E.setState("value", i.getAttribute(T)) : Q(e);
+    }
+    let oe = ()=>X(V().length - 1), ie = (e)=>{
+        e.preventDefault(), e.metaKey ? oe() : e.altKey ? re(1) : Q(1);
+    }, se = (e)=>{
+        e.preventDefault(), e.metaKey ? X(0) : e.altKey ? re(-1) : Q(-1);
+    };
+    return _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: o,
+        tabIndex: -1,
+        ...O,
+        "cmdk-root": "",
+        onKeyDown: (e)=>{
+            var s;
+            (s = O.onKeyDown) == null || s.call(O, e);
+            let a = e.nativeEvent.isComposing || e.keyCode === 229;
+            if (!(e.defaultPrevented || a)) switch(e.key){
+                case "n":
+                case "j":
+                    j && e.ctrlKey && ie(e);
+                    break;
+                case "ArrowDown":
+                    ie(e);
+                    break;
+                case "p":
+                case "k":
+                    j && e.ctrlKey && se(e);
+                    break;
+                case "ArrowUp":
+                    se(e);
+                    break;
+                case "Home":
+                    e.preventDefault(), X(0);
+                    break;
+                case "End":
+                    e.preventDefault(), oe();
+                    break;
+                case "Enter":
+                    {
+                        e.preventDefault();
+                        let i = M();
+                        if (i) {
+                            let l = new Event(Z);
+                            i.dispatchEvent(l);
+                        }
+                    }
+            }
+        }
+    }, _react.createElement("label", {
+        "cmdk-label": "",
+        htmlFor: U.inputId,
+        id: U.labelId,
+        style: Te
+    }, b), B(r, (e)=>_react.createElement(de.Provider, {
+            value: E
+        }, _react.createElement(ue.Provider, {
+            value: U
+        }, e))));
+}), he = _react.forwardRef((r, o)=>{
+    var _, I;
+    let n = (0, _reactId.useId)(), u = _react.useRef(null), c = _react.useContext(fe), d = K(), f = pe(r), p = (I = (_ = f.current) == null ? void 0 : _.forceMount) != null ? I : c == null ? void 0 : c.forceMount;
+    k(()=>{
+        if (!p) return d.item(n, c == null ? void 0 : c.id);
+    }, [
+        p
+    ]);
+    let b = ve(n, u, [
+        r.value,
+        r.children,
+        u
+    ], r.keywords), m = ee(), R = P((v)=>v.value && v.value === b.current), x = P((v)=>p || d.filter() === !1 ? !0 : v.search ? v.filtered.items.get(n) > 0 : !0);
+    _react.useEffect(()=>{
+        let v = u.current;
+        if (!(!v || r.disabled)) return v.addEventListener(Z, C), ()=>v.removeEventListener(Z, C);
+    }, [
+        x,
+        r.onSelect,
+        r.disabled
+    ]);
+    function C() {
+        var v, E;
+        S(), (E = (v = f.current).onSelect) == null || E.call(v, b.current);
+    }
+    function S() {
+        m.setState("value", b.current, !0);
+    }
+    if (!x) return null;
+    let { disabled: A, value: ge, onSelect: j, forceMount: O, keywords: $, ...q } = r;
+    return _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: (0, _reactComposeRefs.composeRefs)(u, o),
+        ...q,
+        id: n,
+        "cmdk-item": "",
+        role: "option",
+        "aria-disabled": !!A,
+        "aria-selected": !!R,
+        "data-disabled": !!A,
+        "data-selected": !!R,
+        onPointerMove: A || d.getDisablePointerSelection() ? void 0 : S,
+        onClick: A ? void 0 : C
+    }, r.children);
+}), Ee = _react.forwardRef((r, o)=>{
+    let { heading: n, children: u, forceMount: c, ...d } = r, f = (0, _reactId.useId)(), p = _react.useRef(null), b = _react.useRef(null), m = (0, _reactId.useId)(), R = K(), x = P((S)=>c || R.filter() === !1 ? !0 : S.search ? S.filtered.groups.has(f) : !0);
+    k(()=>R.group(f), []), ve(f, p, [
+        r.value,
+        r.heading,
+        b
+    ]);
+    let C = _react.useMemo(()=>({
+            id: f,
+            forceMount: c
+        }), [
+        c
+    ]);
+    return _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: (0, _reactComposeRefs.composeRefs)(p, o),
+        ...d,
+        "cmdk-group": "",
+        role: "presentation",
+        hidden: x ? void 0 : !0
+    }, n && _react.createElement("div", {
+        ref: b,
+        "cmdk-group-heading": "",
+        "aria-hidden": !0,
+        id: m
+    }, n), B(r, (S)=>_react.createElement("div", {
+            "cmdk-group-items": "",
+            role: "group",
+            "aria-labelledby": n ? m : void 0
+        }, _react.createElement(fe.Provider, {
+            value: C
+        }, S))));
+}), ye = _react.forwardRef((r, o)=>{
+    let { alwaysRender: n, ...u } = r, c = _react.useRef(null), d = P((f)=>!f.search);
+    return !n && !d ? null : _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: (0, _reactComposeRefs.composeRefs)(c, o),
+        ...u,
+        "cmdk-separator": "",
+        role: "separator"
+    });
+}), Se = _react.forwardRef((r, o)=>{
+    let { onValueChange: n, ...u } = r, c = r.value != null, d = ee(), f = P((m)=>m.search), p = P((m)=>m.selectedItemId), b = K();
+    return _react.useEffect(()=>{
+        r.value != null && d.setState("search", r.value);
+    }, [
+        r.value
+    ]), _react.createElement((0, _reactPrimitive.Primitive).input, {
+        ref: o,
+        ...u,
+        "cmdk-input": "",
+        autoComplete: "off",
+        autoCorrect: "off",
+        spellCheck: !1,
+        "aria-autocomplete": "list",
+        role: "combobox",
+        "aria-expanded": !0,
+        "aria-controls": b.listId,
+        "aria-labelledby": b.labelId,
+        "aria-activedescendant": p,
+        id: b.inputId,
+        type: "text",
+        value: c ? r.value : f,
+        onChange: (m)=>{
+            c || d.setState("search", m.target.value), n == null || n(m.target.value);
+        }
+    });
+}), Ce = _react.forwardRef((r, o)=>{
+    let { children: n, label: u = "Suggestions", ...c } = r, d = _react.useRef(null), f = _react.useRef(null), p = P((m)=>m.selectedItemId), b = K();
+    return _react.useEffect(()=>{
+        if (f.current && d.current) {
+            let m = f.current, R = d.current, x, C = new ResizeObserver(()=>{
+                x = requestAnimationFrame(()=>{
+                    let S = m.offsetHeight;
+                    R.style.setProperty("--cmdk-list-height", S.toFixed(1) + "px");
+                });
+            });
+            return C.observe(m), ()=>{
+                cancelAnimationFrame(x), C.unobserve(m);
+            };
+        }
+    }, []), _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: (0, _reactComposeRefs.composeRefs)(d, o),
+        ...c,
+        "cmdk-list": "",
+        role: "listbox",
+        tabIndex: -1,
+        "aria-activedescendant": p,
+        "aria-label": u,
+        id: b.listId
+    }, B(r, (m)=>_react.createElement("div", {
+            ref: (0, _reactComposeRefs.composeRefs)(f, b.listInnerRef),
+            "cmdk-list-sizer": ""
+        }, m)));
+}), xe = _react.forwardRef((r, o)=>{
+    let { open: n, onOpenChange: u, overlayClassName: c, contentClassName: d, container: f, ...p } = r;
+    return _react.createElement(_reactDialog.Root, {
+        open: n,
+        onOpenChange: u
+    }, _react.createElement(_reactDialog.Portal, {
+        container: f
+    }, _react.createElement(_reactDialog.Overlay, {
+        "cmdk-overlay": "",
+        className: c
+    }), _react.createElement(_reactDialog.Content, {
+        "aria-label": r.label,
+        "cmdk-dialog": "",
+        className: d
+    }, _react.createElement(me, {
+        ref: o,
+        ...p
+    }))));
+}), Ie = _react.forwardRef((r, o)=>P((u)=>u.filtered.count === 0) ? _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: o,
+        ...r,
+        "cmdk-empty": "",
+        role: "presentation"
+    }) : null), Pe = _react.forwardRef((r, o)=>{
+    let { progress: n, children: u, label: c = "Loading...", ...d } = r;
+    return _react.createElement((0, _reactPrimitive.Primitive).div, {
+        ref: o,
+        ...d,
+        "cmdk-loading": "",
+        role: "progressbar",
+        "aria-valuenow": n,
+        "aria-valuemin": 0,
+        "aria-valuemax": 100,
+        "aria-label": c
+    }, B(r, (f)=>_react.createElement("div", {
+            "aria-hidden": !0
+        }, f)));
+}), _e = Object.assign(me, {
+    List: Ce,
+    Item: he,
+    Input: Se,
+    Group: Ee,
+    Separator: ye,
+    Dialog: xe,
+    Empty: Ie,
+    Loading: Pe
+});
+function we(r, o) {
+    let n = r.nextElementSibling;
+    for(; n;){
+        if (n.matches(o)) return n;
+        n = n.nextElementSibling;
+    }
+}
+function De(r, o) {
+    let n = r.previousElementSibling;
+    for(; n;){
+        if (n.matches(o)) return n;
+        n = n.previousElementSibling;
+    }
+}
+function pe(r) {
+    let o = _react.useRef(r);
+    return k(()=>{
+        o.current = r;
+    }), o;
+}
+var k = typeof window == "undefined" ? _react.useEffect : _react.useLayoutEffect;
+function L(r) {
+    let o = _react.useRef();
+    return o.current === void 0 && (o.current = r()), o;
+}
+function P(r) {
+    let o = ee(), n = ()=>r(o.snapshot());
+    return _react.useSyncExternalStore(o.subscribe, n, n);
+}
+function ve(r, o, n, u = []) {
+    let c = _react.useRef(), d = K();
+    return k(()=>{
+        var b;
+        let f = (()=>{
+            var m;
+            for (let R of n){
+                if (typeof R == "string") return R.trim();
+                if (typeof R == "object" && "current" in R) return R.current ? (m = R.current.textContent) == null ? void 0 : m.trim() : c.current;
+            }
+        })(), p = u.map((m)=>m.trim());
+        d.value(r, f, p), (b = o.current) == null || b.setAttribute(T, f), c.current = f;
+    }), c;
+}
+var ke = ()=>{
+    let [r, o] = _react.useState(), n = L(()=>new Map);
+    return k(()=>{
+        n.current.forEach((u)=>u()), n.current = new Map;
+    }, [
+        r
+    ]), (u, c)=>{
+        n.current.set(u, c), o({});
+    };
+};
+function Me(r) {
+    let o = r.type;
+    return typeof o == "function" ? o(r.props) : "render" in o ? o.render(r.props) : r;
+}
+function B({ asChild: r, children: o }, n) {
+    return r && _react.isValidElement(o) ? _react.cloneElement(Me(o), {
+        ref: o.ref
+    }, n(o.props.children)) : n(o);
+}
+var Te = {
+    position: "absolute",
+    width: "1px",
+    height: "1px",
+    padding: "0",
+    margin: "-1px",
+    overflow: "hidden",
+    clip: "rect(0, 0, 0, 0)",
+    whiteSpace: "nowrap",
+    borderWidth: "0"
+};
+
+},{"./chunk-NZJY6EH4.mjs":"fTYU4","@radix-ui/react-dialog":"5HLWS","react":"jMk1U","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-id":"SmdnD","@radix-ui/react-compose-refs":"8NEPR","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fTYU4":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "a", ()=>W);
+var U = 1, Y = .9, H = .8, J = .17, p = .1, u = .999, $ = .9999;
+var k = .99, m = /[\\\/_+.#"@\[\(\{&]/, B = /[\\\/_+.#"@\[\(\{&]/g, K = /[\s-]/, X = /[\s-]/g;
+function G(_, C, h, P, A, f, O) {
+    if (f === C.length) return A === _.length ? U : k;
+    var T = `${A},${f}`;
+    if (O[T] !== void 0) return O[T];
+    for(var L = P.charAt(f), c = h.indexOf(L, A), S = 0, E, N, R, M; c >= 0;)E = G(_, C, h, P, c + 1, f + 1, O), E > S && (c === A ? E *= U : m.test(_.charAt(c - 1)) ? (E *= H, R = _.slice(A, c - 1).match(B), R && A > 0 && (E *= Math.pow(u, R.length))) : K.test(_.charAt(c - 1)) ? (E *= Y, M = _.slice(A, c - 1).match(X), M && A > 0 && (E *= Math.pow(u, M.length))) : (E *= J, A > 0 && (E *= Math.pow(u, c - A))), _.charAt(c) !== C.charAt(f) && (E *= $)), (E < p && h.charAt(c - 1) === P.charAt(f + 1) || P.charAt(f + 1) === P.charAt(f) && h.charAt(c - 1) !== P.charAt(f)) && (N = G(_, C, h, P, c + 1, f + 2, O), N * p > E && (E = N * p)), E > S && (S = E), c = h.indexOf(L, c + 1);
+    return O[T] = S, S;
+}
+function D(_) {
+    return _.toLowerCase().replace(X, " ");
+}
+function W(_, C, h) {
+    return _ = h && h.length > 0 ? `${_ + " " + h.join(" ")}` : _, G(_, C, D(_), D(C), 0, 0, {});
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5HLWS":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Close", ()=>Close);
+parcelHelpers.export(exports, "Content", ()=>Content);
+parcelHelpers.export(exports, "Description", ()=>Description);
+parcelHelpers.export(exports, "Dialog", ()=>Dialog);
+parcelHelpers.export(exports, "DialogClose", ()=>DialogClose);
+parcelHelpers.export(exports, "DialogContent", ()=>DialogContent);
+parcelHelpers.export(exports, "DialogDescription", ()=>DialogDescription);
+parcelHelpers.export(exports, "DialogOverlay", ()=>DialogOverlay);
+parcelHelpers.export(exports, "DialogPortal", ()=>DialogPortal);
+parcelHelpers.export(exports, "DialogTitle", ()=>DialogTitle);
+parcelHelpers.export(exports, "DialogTrigger", ()=>DialogTrigger);
+parcelHelpers.export(exports, "Overlay", ()=>Overlay);
+parcelHelpers.export(exports, "Portal", ()=>Portal);
+parcelHelpers.export(exports, "Root", ()=>Root);
+parcelHelpers.export(exports, "Title", ()=>Title);
+parcelHelpers.export(exports, "Trigger", ()=>Trigger);
+parcelHelpers.export(exports, "WarningProvider", ()=>WarningProvider);
+parcelHelpers.export(exports, "createDialogScope", ()=>createDialogScope);
+// src/dialog.tsx
+var _react = require("react");
+var _primitive = require("@radix-ui/primitive");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactContext = require("@radix-ui/react-context");
+var _reactId = require("@radix-ui/react-id");
+var _reactUseControllableState = require("@radix-ui/react-use-controllable-state");
+var _reactDismissableLayer = require("@radix-ui/react-dismissable-layer");
+var _reactFocusScope = require("@radix-ui/react-focus-scope");
+var _reactPortal = require("@radix-ui/react-portal");
+var _reactPresence = require("@radix-ui/react-presence");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactFocusGuards = require("@radix-ui/react-focus-guards");
+var _reactRemoveScroll = require("react-remove-scroll");
+var _ariaHidden = require("aria-hidden");
+var _reactSlot = require("@radix-ui/react-slot");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var DIALOG_NAME = "Dialog";
+var [createDialogContext, createDialogScope] = (0, _reactContext.createContextScope)(DIALOG_NAME);
+var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
+var Dialog = (props)=>{
+    const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
+    const triggerRef = _react.useRef(null);
+    const contentRef = _react.useRef(null);
+    const [open, setOpen] = (0, _reactUseControllableState.useControllableState)({
+        prop: openProp,
+        defaultProp: defaultOpen ?? false,
+        onChange: onOpenChange,
+        caller: DIALOG_NAME
+    });
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogProvider, {
+        scope: __scopeDialog,
+        triggerRef,
+        contentRef,
+        contentId: (0, _reactId.useId)(),
+        titleId: (0, _reactId.useId)(),
+        descriptionId: (0, _reactId.useId)(),
+        open,
+        onOpenChange: setOpen,
+        onOpenToggle: _react.useCallback(()=>setOpen((prevOpen)=>!prevOpen), [
+            setOpen
+        ]),
+        modal,
+        children
+    });
+};
+Dialog.displayName = DIALOG_NAME;
+var TRIGGER_NAME = "DialogTrigger";
+var DialogTrigger = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, ...triggerProps } = props;
+    const context = useDialogContext(TRIGGER_NAME, __scopeDialog);
+    const composedTriggerRef = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, context.triggerRef);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).button, {
+        type: "button",
+        "aria-haspopup": "dialog",
+        "aria-expanded": context.open,
+        "aria-controls": context.contentId,
+        "data-state": getState(context.open),
+        ...triggerProps,
+        ref: composedTriggerRef,
+        onClick: (0, _primitive.composeEventHandlers)(props.onClick, context.onOpenToggle)
+    });
+});
+DialogTrigger.displayName = TRIGGER_NAME;
+var PORTAL_NAME = "DialogPortal";
+var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME, {
+    forceMount: void 0
+});
+var DialogPortal = (props)=>{
+    const { __scopeDialog, forceMount, children, container } = props;
+    const context = useDialogContext(PORTAL_NAME, __scopeDialog);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(PortalProvider, {
+        scope: __scopeDialog,
+        forceMount,
+        children: _react.Children.map(children, (child)=>/* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPresence.Presence), {
+                present: forceMount || context.open,
+                children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPortal.Portal), {
+                    asChild: true,
+                    container,
+                    children: child
+                })
+            }))
+    });
+};
+DialogPortal.displayName = PORTAL_NAME;
+var OVERLAY_NAME = "DialogOverlay";
+var DialogOverlay = _react.forwardRef((props, forwardedRef)=>{
+    const portalContext = usePortalContext(OVERLAY_NAME, props.__scopeDialog);
+    const { forceMount = portalContext.forceMount, ...overlayProps } = props;
+    const context = useDialogContext(OVERLAY_NAME, props.__scopeDialog);
+    return context.modal ? /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPresence.Presence), {
+        present: forceMount || context.open,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogOverlayImpl, {
+            ...overlayProps,
+            ref: forwardedRef
+        })
+    }) : null;
+});
+DialogOverlay.displayName = OVERLAY_NAME;
+var Slot = (0, _reactSlot.createSlot)("DialogOverlay.RemoveScroll");
+var DialogOverlayImpl = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, ...overlayProps } = props;
+    const context = useDialogContext(OVERLAY_NAME, __scopeDialog);
+    return(// Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
+    // ie. when `Overlay` and `Content` are siblings
+    /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactRemoveScroll.RemoveScroll), {
+        as: Slot,
+        allowPinchZoom: true,
+        shards: [
+            context.contentRef
+        ],
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+            "data-state": getState(context.open),
+            ...overlayProps,
+            ref: forwardedRef,
+            style: {
+                pointerEvents: "auto",
+                ...overlayProps.style
+            }
+        })
+    }));
+});
+var CONTENT_NAME = "DialogContent";
+var DialogContent = _react.forwardRef((props, forwardedRef)=>{
+    const portalContext = usePortalContext(CONTENT_NAME, props.__scopeDialog);
+    const { forceMount = portalContext.forceMount, ...contentProps } = props;
+    const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPresence.Presence), {
+        present: forceMount || context.open,
+        children: context.modal ? /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogContentModal, {
+            ...contentProps,
+            ref: forwardedRef
+        }) : /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogContentNonModal, {
+            ...contentProps,
+            ref: forwardedRef
+        })
+    });
+});
+DialogContent.displayName = CONTENT_NAME;
+var DialogContentModal = _react.forwardRef((props, forwardedRef)=>{
+    const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+    const contentRef = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, context.contentRef, contentRef);
+    _react.useEffect(()=>{
+        const content = contentRef.current;
+        if (content) return (0, _ariaHidden.hideOthers)(content);
+    }, []);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogContentImpl, {
+        ...props,
+        ref: composedRefs,
+        trapFocus: context.open,
+        disableOutsidePointerEvents: true,
+        onCloseAutoFocus: (0, _primitive.composeEventHandlers)(props.onCloseAutoFocus, (event)=>{
+            event.preventDefault();
+            context.triggerRef.current?.focus();
+        }),
+        onPointerDownOutside: (0, _primitive.composeEventHandlers)(props.onPointerDownOutside, (event)=>{
+            const originalEvent = event.detail.originalEvent;
+            const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+            const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+            if (isRightClick) event.preventDefault();
+        }),
+        onFocusOutside: (0, _primitive.composeEventHandlers)(props.onFocusOutside, (event)=>event.preventDefault())
+    });
+});
+var DialogContentNonModal = _react.forwardRef((props, forwardedRef)=>{
+    const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+    const hasInteractedOutsideRef = _react.useRef(false);
+    const hasPointerDownOutsideRef = _react.useRef(false);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(DialogContentImpl, {
+        ...props,
+        ref: forwardedRef,
+        trapFocus: false,
+        disableOutsidePointerEvents: false,
+        onCloseAutoFocus: (event)=>{
+            props.onCloseAutoFocus?.(event);
+            if (!event.defaultPrevented) {
+                if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+                event.preventDefault();
+            }
+            hasInteractedOutsideRef.current = false;
+            hasPointerDownOutsideRef.current = false;
+        },
+        onInteractOutside: (event)=>{
+            props.onInteractOutside?.(event);
+            if (!event.defaultPrevented) {
+                hasInteractedOutsideRef.current = true;
+                if (event.detail.originalEvent.type === "pointerdown") hasPointerDownOutsideRef.current = true;
+            }
+            const target = event.target;
+            const targetIsTrigger = context.triggerRef.current?.contains(target);
+            if (targetIsTrigger) event.preventDefault();
+            if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) event.preventDefault();
+        }
+    });
+});
+var DialogContentImpl = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
+    const context = useDialogContext(CONTENT_NAME, __scopeDialog);
+    const contentRef = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, contentRef);
+    (0, _reactFocusGuards.useFocusGuards)();
+    return /* @__PURE__ */ (0, _jsxRuntime.jsxs)((0, _jsxRuntime.Fragment), {
+        children: [
+            /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactFocusScope.FocusScope), {
+                asChild: true,
+                loop: true,
+                trapped: trapFocus,
+                onMountAutoFocus: onOpenAutoFocus,
+                onUnmountAutoFocus: onCloseAutoFocus,
+                children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactDismissableLayer.DismissableLayer), {
+                    role: "dialog",
+                    id: context.contentId,
+                    "aria-describedby": context.descriptionId,
+                    "aria-labelledby": context.titleId,
+                    "data-state": getState(context.open),
+                    ...contentProps,
+                    ref: composedRefs,
+                    onDismiss: ()=>context.onOpenChange(false)
+                })
+            }),
+            /* @__PURE__ */ (0, _jsxRuntime.jsxs)((0, _jsxRuntime.Fragment), {
+                children: [
+                    /* @__PURE__ */ (0, _jsxRuntime.jsx)(TitleWarning, {
+                        titleId: context.titleId
+                    }),
+                    /* @__PURE__ */ (0, _jsxRuntime.jsx)(DescriptionWarning, {
+                        contentRef,
+                        descriptionId: context.descriptionId
+                    })
+                ]
+            })
+        ]
+    });
+});
+var TITLE_NAME = "DialogTitle";
+var DialogTitle = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, ...titleProps } = props;
+    const context = useDialogContext(TITLE_NAME, __scopeDialog);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).h2, {
+        id: context.titleId,
+        ...titleProps,
+        ref: forwardedRef
+    });
+});
+DialogTitle.displayName = TITLE_NAME;
+var DESCRIPTION_NAME = "DialogDescription";
+var DialogDescription = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, ...descriptionProps } = props;
+    const context = useDialogContext(DESCRIPTION_NAME, __scopeDialog);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).p, {
+        id: context.descriptionId,
+        ...descriptionProps,
+        ref: forwardedRef
+    });
+});
+DialogDescription.displayName = DESCRIPTION_NAME;
+var CLOSE_NAME = "DialogClose";
+var DialogClose = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopeDialog, ...closeProps } = props;
+    const context = useDialogContext(CLOSE_NAME, __scopeDialog);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).button, {
+        type: "button",
+        ...closeProps,
+        ref: forwardedRef,
+        onClick: (0, _primitive.composeEventHandlers)(props.onClick, ()=>context.onOpenChange(false))
+    });
+});
+DialogClose.displayName = CLOSE_NAME;
+function getState(open) {
+    return open ? "open" : "closed";
+}
+var TITLE_WARNING_NAME = "DialogTitleWarning";
+var [WarningProvider, useWarningContext] = (0, _reactContext.createContext)(TITLE_WARNING_NAME, {
+    contentName: CONTENT_NAME,
+    titleName: TITLE_NAME,
+    docsSlug: "dialog"
+});
+var TitleWarning = ({ titleId })=>{
+    const titleWarningContext = useWarningContext(TITLE_WARNING_NAME);
+    const MESSAGE = `\`${titleWarningContext.contentName}\` requires a \`${titleWarningContext.titleName}\` for the component to be accessible for screen reader users.
+
+If you want to hide the \`${titleWarningContext.titleName}\`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/${titleWarningContext.docsSlug}`;
+    _react.useEffect(()=>{
+        if (titleId) {
+            const hasTitle = document.getElementById(titleId);
+            if (!hasTitle) console.error(MESSAGE);
+        }
+    }, [
+        MESSAGE,
+        titleId
+    ]);
+    return null;
+};
+var DESCRIPTION_WARNING_NAME = "DialogDescriptionWarning";
+var DescriptionWarning = ({ contentRef, descriptionId })=>{
+    const descriptionWarningContext = useWarningContext(DESCRIPTION_WARNING_NAME);
+    const MESSAGE = `Warning: Missing \`Description\` or \`aria-describedby={undefined}\` for {${descriptionWarningContext.contentName}}.`;
+    _react.useEffect(()=>{
+        const describedById = contentRef.current?.getAttribute("aria-describedby");
+        if (descriptionId && describedById) {
+            const hasDescription = document.getElementById(descriptionId);
+            if (!hasDescription) console.warn(MESSAGE);
+        }
+    }, [
+        MESSAGE,
+        contentRef,
+        descriptionId
+    ]);
+    return null;
+};
+var Root = Dialog;
+var Trigger = DialogTrigger;
+var Portal = DialogPortal;
+var Overlay = DialogOverlay;
+var Content = DialogContent;
+var Title = DialogTitle;
+var Description = DialogDescription;
+var Close = DialogClose;
+
+},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-context":"aRUGq","@radix-ui/react-id":"SmdnD","@radix-ui/react-use-controllable-state":"59sI3","@radix-ui/react-dismissable-layer":"bY4sh","@radix-ui/react-focus-scope":"9mDTe","@radix-ui/react-portal":"29eEC","@radix-ui/react-presence":"5MpGF","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-focus-guards":"dAs9Q","react-remove-scroll":"8jRAr","aria-hidden":"2QB19","@radix-ui/react-slot":"049tr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jakGl":[function(require,module,exports,__globalThis) {
+// packages/core/primitive/src/primitive.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "composeEventHandlers", ()=>composeEventHandlers);
+function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
+    return function handleEvent(event) {
+        originalEventHandler?.(event);
+        if (checkForDefaultPrevented === false || !event.defaultPrevented) return ourEventHandler?.(event);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aRUGq":[function(require,module,exports,__globalThis) {
+// packages/react/context/src/create-context.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createContext", ()=>createContext2);
+parcelHelpers.export(exports, "createContextScope", ()=>createContextScope);
+var _react = require("react");
+var _jsxRuntime = require("react/jsx-runtime");
+function createContext2(rootComponentName, defaultContext) {
+    const Context = _react.createContext(defaultContext);
+    const Provider = (props)=>{
+        const { children, ...context } = props;
+        const value = _react.useMemo(()=>context, Object.values(context));
+        return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Context.Provider, {
+            value,
+            children
+        });
+    };
+    Provider.displayName = rootComponentName + "Provider";
+    function useContext2(consumerName) {
+        const context = _react.useContext(Context);
+        if (context) return context;
+        if (defaultContext !== void 0) return defaultContext;
+        throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+    }
+    return [
+        Provider,
+        useContext2
+    ];
+}
+function createContextScope(scopeName, createContextScopeDeps = []) {
+    let defaultContexts = [];
+    function createContext3(rootComponentName, defaultContext) {
+        const BaseContext = _react.createContext(defaultContext);
+        const index = defaultContexts.length;
+        defaultContexts = [
+            ...defaultContexts,
+            defaultContext
+        ];
+        const Provider = (props)=>{
+            const { scope, children, ...context } = props;
+            const Context = scope?.[scopeName]?.[index] || BaseContext;
+            const value = _react.useMemo(()=>context, Object.values(context));
+            return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Context.Provider, {
+                value,
+                children
+            });
+        };
+        Provider.displayName = rootComponentName + "Provider";
+        function useContext2(consumerName, scope) {
+            const Context = scope?.[scopeName]?.[index] || BaseContext;
+            const context = _react.useContext(Context);
+            if (context) return context;
+            if (defaultContext !== void 0) return defaultContext;
+            throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+        }
+        return [
+            Provider,
+            useContext2
+        ];
+    }
+    const createScope = ()=>{
+        const scopeContexts = defaultContexts.map((defaultContext)=>{
+            return _react.createContext(defaultContext);
+        });
+        return function useScope(scope) {
+            const contexts = scope?.[scopeName] || scopeContexts;
+            return _react.useMemo(()=>({
+                    [`__scope${scopeName}`]: {
+                        ...scope,
+                        [scopeName]: contexts
+                    }
+                }), [
+                scope,
+                contexts
+            ]);
+        };
+    };
+    createScope.scopeName = scopeName;
+    return [
+        createContext3,
+        composeContextScopes(createScope, ...createContextScopeDeps)
+    ];
+}
+function composeContextScopes(...scopes) {
+    const baseScope = scopes[0];
+    if (scopes.length === 1) return baseScope;
+    const createScope = ()=>{
+        const scopeHooks = scopes.map((createScope2)=>({
+                useScope: createScope2(),
+                scopeName: createScope2.scopeName
+            }));
+        return function useComposedScopes(overrideScopes) {
+            const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName })=>{
+                const scopeProps = useScope(overrideScopes);
+                const currentScope = scopeProps[`__scope${scopeName}`];
+                return {
+                    ...nextScopes2,
+                    ...currentScope
+                };
+            }, {});
+            return _react.useMemo(()=>({
+                    [`__scope${baseScope.scopeName}`]: nextScopes
+                }), [
+                nextScopes
+            ]);
+        };
+    };
+    createScope.scopeName = baseScope.scopeName;
+    return createScope;
+}
+
+},{"react":"jMk1U","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"SmdnD":[function(require,module,exports,__globalThis) {
+// packages/react/id/src/id.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useId", ()=>useId);
+var _react = require("react");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+var useReactId = _react[" useId ".trim().toString()] || (()=>void 0);
+var count = 0;
+function useId(deterministicId) {
+    const [id, setId] = _react.useState(useReactId());
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        if (!deterministicId) setId((reactId)=>reactId ?? String(count++));
+    }, [
+        deterministicId
+    ]);
+    return deterministicId || (id ? `radix-${id}` : "");
+}
+
+},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"enSS6":[function(require,module,exports,__globalThis) {
+// packages/react/use-layout-effect/src/use-layout-effect.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useLayoutEffect", ()=>useLayoutEffect2);
+var _react = require("react");
+var useLayoutEffect2 = globalThis?.document ? _react.useLayoutEffect : ()=>{};
+
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"59sI3":[function(require,module,exports,__globalThis) {
+// src/use-controllable-state.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useControllableState", ()=>useControllableState);
+parcelHelpers.export(exports, "useControllableStateReducer", ()=>useControllableStateReducer);
+var _react = require("react");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+var _reactUseEffectEvent = require("@radix-ui/react-use-effect-event");
+var useInsertionEffect = _react[" useInsertionEffect ".trim().toString()] || (0, _reactUseLayoutEffect.useLayoutEffect);
+function useControllableState({ prop, defaultProp, onChange = ()=>{}, caller }) {
+    const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
+        defaultProp,
+        onChange
+    });
+    const isControlled = prop !== void 0;
+    const value = isControlled ? prop : uncontrolledProp;
+    {
+        const isControlledRef = _react.useRef(prop !== void 0);
+        _react.useEffect(()=>{
+            const wasControlled = isControlledRef.current;
+            if (wasControlled !== isControlled) {
+                const from = wasControlled ? "controlled" : "uncontrolled";
+                const to = isControlled ? "controlled" : "uncontrolled";
+                console.warn(`${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
+            }
+            isControlledRef.current = isControlled;
+        }, [
+            isControlled,
+            caller
+        ]);
+    }
+    const setValue = _react.useCallback((nextValue)=>{
+        if (isControlled) {
+            const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
+            if (value2 !== prop) onChangeRef.current?.(value2);
+        } else setUncontrolledProp(nextValue);
+    }, [
+        isControlled,
+        prop,
+        setUncontrolledProp,
+        onChangeRef
+    ]);
+    return [
+        value,
+        setValue
+    ];
+}
+function useUncontrolledState({ defaultProp, onChange }) {
+    const [value, setValue] = _react.useState(defaultProp);
+    const prevValueRef = _react.useRef(value);
+    const onChangeRef = _react.useRef(onChange);
+    useInsertionEffect(()=>{
+        onChangeRef.current = onChange;
+    }, [
+        onChange
+    ]);
+    _react.useEffect(()=>{
+        if (prevValueRef.current !== value) {
+            onChangeRef.current?.(value);
+            prevValueRef.current = value;
+        }
+    }, [
+        value,
+        prevValueRef
+    ]);
+    return [
+        value,
+        setValue,
+        onChangeRef
+    ];
+}
+function isFunction(value) {
+    return typeof value === "function";
+}
+var SYNC_STATE = Symbol("RADIX:SYNC_STATE");
+function useControllableStateReducer(reducer, userArgs, initialArg, init) {
+    const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
+    const isControlled = controlledState !== void 0;
+    const onChange = (0, _reactUseEffectEvent.useEffectEvent)(onChangeProp);
+    {
+        const isControlledRef = _react.useRef(controlledState !== void 0);
+        _react.useEffect(()=>{
+            const wasControlled = isControlledRef.current;
+            if (wasControlled !== isControlled) {
+                const from = wasControlled ? "controlled" : "uncontrolled";
+                const to = isControlled ? "controlled" : "uncontrolled";
+                console.warn(`${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
+            }
+            isControlledRef.current = isControlled;
+        }, [
+            isControlled,
+            caller
+        ]);
+    }
+    const args = [
+        {
+            ...initialArg,
+            state: defaultProp
+        }
+    ];
+    if (init) args.push(init);
+    const [internalState, dispatch] = _react.useReducer((state2, action)=>{
+        if (action.type === SYNC_STATE) return {
+            ...state2,
+            state: action.state
+        };
+        const next = reducer(state2, action);
+        if (isControlled && !Object.is(next.state, state2.state)) onChange(next.state);
+        return next;
+    }, ...args);
+    const uncontrolledState = internalState.state;
+    const prevValueRef = _react.useRef(uncontrolledState);
+    _react.useEffect(()=>{
+        if (prevValueRef.current !== uncontrolledState) {
+            prevValueRef.current = uncontrolledState;
+            if (!isControlled) onChange(uncontrolledState);
+        }
+    }, [
+        onChange,
+        uncontrolledState,
+        prevValueRef,
+        isControlled
+    ]);
+    const state = _react.useMemo(()=>{
+        const isControlled2 = controlledState !== void 0;
+        if (isControlled2) return {
+            ...internalState,
+            state: controlledState
+        };
+        return internalState;
+    }, [
+        internalState,
+        controlledState
+    ]);
+    _react.useEffect(()=>{
+        if (isControlled && !Object.is(controlledState, internalState.state)) dispatch({
+            type: SYNC_STATE,
+            state: controlledState
+        });
+    }, [
+        controlledState,
+        internalState.state,
+        isControlled
+    ]);
+    return [
+        state,
+        dispatch
+    ];
+}
+
+},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@radix-ui/react-use-effect-event":"fbd2q","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fbd2q":[function(require,module,exports,__globalThis) {
+// src/use-effect-event.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useEffectEvent", ()=>useEffectEvent);
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+var _react = require("react");
+var useReactEffectEvent = _react[" useEffectEvent ".trim().toString()];
+var useReactInsertionEffect = _react[" useInsertionEffect ".trim().toString()];
+function useEffectEvent(callback) {
+    if (typeof useReactEffectEvent === "function") return useReactEffectEvent(callback);
+    const ref = _react.useRef(()=>{
+        throw new Error("Cannot call an event handler while rendering.");
+    });
+    if (typeof useReactInsertionEffect === "function") useReactInsertionEffect(()=>{
+        ref.current = callback;
+    });
+    else (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        ref.current = callback;
+    });
+    return _react.useMemo(()=>(...args)=>ref.current?.(...args), []);
+}
+
+},{"@radix-ui/react-use-layout-effect":"enSS6","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"bY4sh":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Branch", ()=>Branch);
+parcelHelpers.export(exports, "DismissableLayer", ()=>DismissableLayer);
+parcelHelpers.export(exports, "DismissableLayerBranch", ()=>DismissableLayerBranch);
+parcelHelpers.export(exports, "Root", ()=>Root);
+// src/dismissable-layer.tsx
+var _react = require("react");
+var _primitive = require("@radix-ui/primitive");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactUseCallbackRef = require("@radix-ui/react-use-callback-ref");
+var _reactUseEscapeKeydown = require("@radix-ui/react-use-escape-keydown");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var DISMISSABLE_LAYER_NAME = "DismissableLayer";
+var CONTEXT_UPDATE = "dismissableLayer.update";
+var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
+var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
+var originalBodyPointerEvents;
+var DismissableLayerContext = _react.createContext({
+    layers: /* @__PURE__ */ new Set(),
+    layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
+    branches: /* @__PURE__ */ new Set()
+});
+var DismissableLayer = _react.forwardRef((props, forwardedRef)=>{
+    const { disableOutsidePointerEvents = false, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, onDismiss, ...layerProps } = props;
+    const context = _react.useContext(DismissableLayerContext);
+    const [node, setNode] = _react.useState(null);
+    const ownerDocument = node?.ownerDocument ?? globalThis?.document;
+    const [, force] = _react.useState({});
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, (node2)=>setNode(node2));
+    const layers = Array.from(context.layers);
+    const [highestLayerWithOutsidePointerEventsDisabled] = [
+        ...context.layersWithOutsidePointerEventsDisabled
+    ].slice(-1);
+    const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
+    const index = node ? layers.indexOf(node) : -1;
+    const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
+    const isPointerEventsEnabled = index >= highestLayerWithOutsidePointerEventsDisabledIndex;
+    const pointerDownOutside = usePointerDownOutside((event)=>{
+        const target = event.target;
+        const isPointerDownOnBranch = [
+            ...context.branches
+        ].some((branch)=>branch.contains(target));
+        if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
+        onPointerDownOutside?.(event);
+        onInteractOutside?.(event);
+        if (!event.defaultPrevented) onDismiss?.();
+    }, ownerDocument);
+    const focusOutside = useFocusOutside((event)=>{
+        const target = event.target;
+        const isFocusInBranch = [
+            ...context.branches
+        ].some((branch)=>branch.contains(target));
+        if (isFocusInBranch) return;
+        onFocusOutside?.(event);
+        onInteractOutside?.(event);
+        if (!event.defaultPrevented) onDismiss?.();
+    }, ownerDocument);
+    (0, _reactUseEscapeKeydown.useEscapeKeydown)((event)=>{
+        const isHighestLayer = index === context.layers.size - 1;
+        if (!isHighestLayer) return;
+        onEscapeKeyDown?.(event);
+        if (!event.defaultPrevented && onDismiss) {
+            event.preventDefault();
+            onDismiss();
+        }
+    }, ownerDocument);
+    _react.useEffect(()=>{
+        if (!node) return;
+        if (disableOutsidePointerEvents) {
+            if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
+                originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
+                ownerDocument.body.style.pointerEvents = "none";
+            }
+            context.layersWithOutsidePointerEventsDisabled.add(node);
+        }
+        context.layers.add(node);
+        dispatchUpdate();
+        return ()=>{
+            if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1) ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+        };
+    }, [
+        node,
+        ownerDocument,
+        disableOutsidePointerEvents,
+        context
+    ]);
+    _react.useEffect(()=>{
+        return ()=>{
+            if (!node) return;
+            context.layers.delete(node);
+            context.layersWithOutsidePointerEventsDisabled.delete(node);
+            dispatchUpdate();
+        };
+    }, [
+        node,
+        context
+    ]);
+    _react.useEffect(()=>{
+        const handleUpdate = ()=>force({});
+        document.addEventListener(CONTEXT_UPDATE, handleUpdate);
+        return ()=>document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
+    }, []);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+        ...layerProps,
+        ref: composedRefs,
+        style: {
+            pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
+            ...props.style
+        },
+        onFocusCapture: (0, _primitive.composeEventHandlers)(props.onFocusCapture, focusOutside.onFocusCapture),
+        onBlurCapture: (0, _primitive.composeEventHandlers)(props.onBlurCapture, focusOutside.onBlurCapture),
+        onPointerDownCapture: (0, _primitive.composeEventHandlers)(props.onPointerDownCapture, pointerDownOutside.onPointerDownCapture)
+    });
+});
+DismissableLayer.displayName = DISMISSABLE_LAYER_NAME;
+var BRANCH_NAME = "DismissableLayerBranch";
+var DismissableLayerBranch = _react.forwardRef((props, forwardedRef)=>{
+    const context = _react.useContext(DismissableLayerContext);
+    const ref = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, ref);
+    _react.useEffect(()=>{
+        const node = ref.current;
+        if (node) {
+            context.branches.add(node);
+            return ()=>{
+                context.branches.delete(node);
+            };
+        }
+    }, [
+        context.branches
+    ]);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+        ...props,
+        ref: composedRefs
+    });
+});
+DismissableLayerBranch.displayName = BRANCH_NAME;
+function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis?.document) {
+    const handlePointerDownOutside = (0, _reactUseCallbackRef.useCallbackRef)(onPointerDownOutside);
+    const isPointerInsideReactTreeRef = _react.useRef(false);
+    const handleClickRef = _react.useRef(()=>{});
+    _react.useEffect(()=>{
+        const handlePointerDown = (event)=>{
+            if (event.target && !isPointerInsideReactTreeRef.current) {
+                let handleAndDispatchPointerDownOutsideEvent2 = function() {
+                    handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE, handlePointerDownOutside, eventDetail, {
+                        discrete: true
+                    });
+                };
+                var handleAndDispatchPointerDownOutsideEvent = handleAndDispatchPointerDownOutsideEvent2;
+                const eventDetail = {
+                    originalEvent: event
+                };
+                if (event.pointerType === "touch") {
+                    ownerDocument.removeEventListener("click", handleClickRef.current);
+                    handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
+                    ownerDocument.addEventListener("click", handleClickRef.current, {
+                        once: true
+                    });
+                } else handleAndDispatchPointerDownOutsideEvent2();
+            } else ownerDocument.removeEventListener("click", handleClickRef.current);
+            isPointerInsideReactTreeRef.current = false;
+        };
+        const timerId = window.setTimeout(()=>{
+            ownerDocument.addEventListener("pointerdown", handlePointerDown);
+        }, 0);
+        return ()=>{
+            window.clearTimeout(timerId);
+            ownerDocument.removeEventListener("pointerdown", handlePointerDown);
+            ownerDocument.removeEventListener("click", handleClickRef.current);
+        };
+    }, [
+        ownerDocument,
+        handlePointerDownOutside
+    ]);
+    return {
+        // ensures we check React component tree (not just DOM tree)
+        onPointerDownCapture: ()=>isPointerInsideReactTreeRef.current = true
+    };
+}
+function useFocusOutside(onFocusOutside, ownerDocument = globalThis?.document) {
+    const handleFocusOutside = (0, _reactUseCallbackRef.useCallbackRef)(onFocusOutside);
+    const isFocusInsideReactTreeRef = _react.useRef(false);
+    _react.useEffect(()=>{
+        const handleFocus = (event)=>{
+            if (event.target && !isFocusInsideReactTreeRef.current) {
+                const eventDetail = {
+                    originalEvent: event
+                };
+                handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, eventDetail, {
+                    discrete: false
+                });
+            }
+        };
+        ownerDocument.addEventListener("focusin", handleFocus);
+        return ()=>ownerDocument.removeEventListener("focusin", handleFocus);
+    }, [
+        ownerDocument,
+        handleFocusOutside
+    ]);
+    return {
+        onFocusCapture: ()=>isFocusInsideReactTreeRef.current = true,
+        onBlurCapture: ()=>isFocusInsideReactTreeRef.current = false
+    };
+}
+function dispatchUpdate() {
+    const event = new CustomEvent(CONTEXT_UPDATE);
+    document.dispatchEvent(event);
+}
+function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
+    const target = detail.originalEvent.target;
+    const event = new CustomEvent(name, {
+        bubbles: false,
+        cancelable: true,
+        detail
+    });
+    if (handler) target.addEventListener(name, handler, {
+        once: true
+    });
+    if (discrete) (0, _reactPrimitive.dispatchDiscreteCustomEvent)(target, event);
+    else target.dispatchEvent(event);
+}
+var Root = DismissableLayer;
+var Branch = DismissableLayerBranch;
+
+},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-use-callback-ref":"92pad","@radix-ui/react-use-escape-keydown":"1mwS0","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"92pad":[function(require,module,exports,__globalThis) {
+// packages/react/use-callback-ref/src/use-callback-ref.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useCallbackRef", ()=>useCallbackRef);
+var _react = require("react");
+function useCallbackRef(callback) {
+    const callbackRef = _react.useRef(callback);
+    _react.useEffect(()=>{
+        callbackRef.current = callback;
+    });
+    return _react.useMemo(()=>(...args)=>callbackRef.current?.(...args), []);
+}
+
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"1mwS0":[function(require,module,exports,__globalThis) {
+// packages/react/use-escape-keydown/src/use-escape-keydown.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useEscapeKeydown", ()=>useEscapeKeydown);
+var _react = require("react");
+var _reactUseCallbackRef = require("@radix-ui/react-use-callback-ref");
+function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis?.document) {
+    const onEscapeKeyDown = (0, _reactUseCallbackRef.useCallbackRef)(onEscapeKeyDownProp);
+    _react.useEffect(()=>{
+        const handleKeyDown = (event)=>{
+            if (event.key === "Escape") onEscapeKeyDown(event);
+        };
+        ownerDocument.addEventListener("keydown", handleKeyDown, {
+            capture: true
+        });
+        return ()=>ownerDocument.removeEventListener("keydown", handleKeyDown, {
+                capture: true
+            });
+    }, [
+        onEscapeKeyDown,
+        ownerDocument
+    ]);
+}
+
+},{"react":"jMk1U","@radix-ui/react-use-callback-ref":"92pad","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9mDTe":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FocusScope", ()=>FocusScope);
+parcelHelpers.export(exports, "Root", ()=>Root);
+// src/focus-scope.tsx
+var _react = require("react");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactUseCallbackRef = require("@radix-ui/react-use-callback-ref");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
+var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
+var EVENT_OPTIONS = {
+    bubbles: false,
+    cancelable: true
+};
+var FOCUS_SCOPE_NAME = "FocusScope";
+var FocusScope = _react.forwardRef((props, forwardedRef)=>{
+    const { loop = false, trapped = false, onMountAutoFocus: onMountAutoFocusProp, onUnmountAutoFocus: onUnmountAutoFocusProp, ...scopeProps } = props;
+    const [container, setContainer] = _react.useState(null);
+    const onMountAutoFocus = (0, _reactUseCallbackRef.useCallbackRef)(onMountAutoFocusProp);
+    const onUnmountAutoFocus = (0, _reactUseCallbackRef.useCallbackRef)(onUnmountAutoFocusProp);
+    const lastFocusedElementRef = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, (node)=>setContainer(node));
+    const focusScope = _react.useRef({
+        paused: false,
+        pause () {
+            this.paused = true;
+        },
+        resume () {
+            this.paused = false;
+        }
+    }).current;
+    _react.useEffect(()=>{
+        if (trapped) {
+            let handleFocusIn2 = function(event) {
+                if (focusScope.paused || !container) return;
+                const target = event.target;
+                if (container.contains(target)) lastFocusedElementRef.current = target;
+                else focus(lastFocusedElementRef.current, {
+                    select: true
+                });
+            }, handleFocusOut2 = function(event) {
+                if (focusScope.paused || !container) return;
+                const relatedTarget = event.relatedTarget;
+                if (relatedTarget === null) return;
+                if (!container.contains(relatedTarget)) focus(lastFocusedElementRef.current, {
+                    select: true
+                });
+            }, handleMutations2 = function(mutations) {
+                const focusedElement = document.activeElement;
+                if (focusedElement !== document.body) return;
+                for (const mutation of mutations)if (mutation.removedNodes.length > 0) focus(container);
+            };
+            var handleFocusIn = handleFocusIn2, handleFocusOut = handleFocusOut2, handleMutations = handleMutations2;
+            document.addEventListener("focusin", handleFocusIn2);
+            document.addEventListener("focusout", handleFocusOut2);
+            const mutationObserver = new MutationObserver(handleMutations2);
+            if (container) mutationObserver.observe(container, {
+                childList: true,
+                subtree: true
+            });
+            return ()=>{
+                document.removeEventListener("focusin", handleFocusIn2);
+                document.removeEventListener("focusout", handleFocusOut2);
+                mutationObserver.disconnect();
+            };
+        }
+    }, [
+        trapped,
+        container,
+        focusScope.paused
+    ]);
+    _react.useEffect(()=>{
+        if (container) {
+            focusScopesStack.add(focusScope);
+            const previouslyFocusedElement = document.activeElement;
+            const hasFocusedCandidate = container.contains(previouslyFocusedElement);
+            if (!hasFocusedCandidate) {
+                const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS);
+                container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+                container.dispatchEvent(mountEvent);
+                if (!mountEvent.defaultPrevented) {
+                    focusFirst(removeLinks(getTabbableCandidates(container)), {
+                        select: true
+                    });
+                    if (document.activeElement === previouslyFocusedElement) focus(container);
+                }
+            }
+            return ()=>{
+                container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+                setTimeout(()=>{
+                    const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
+                    container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+                    container.dispatchEvent(unmountEvent);
+                    if (!unmountEvent.defaultPrevented) focus(previouslyFocusedElement ?? document.body, {
+                        select: true
+                    });
+                    container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+                    focusScopesStack.remove(focusScope);
+                }, 0);
+            };
+        }
+    }, [
+        container,
+        onMountAutoFocus,
+        onUnmountAutoFocus,
+        focusScope
+    ]);
+    const handleKeyDown = _react.useCallback((event)=>{
+        if (!loop && !trapped) return;
+        if (focusScope.paused) return;
+        const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
+        const focusedElement = document.activeElement;
+        if (isTabKey && focusedElement) {
+            const container2 = event.currentTarget;
+            const [first, last] = getTabbableEdges(container2);
+            const hasTabbableElementsInside = first && last;
+            if (!hasTabbableElementsInside) {
+                if (focusedElement === container2) event.preventDefault();
+            } else {
+                if (!event.shiftKey && focusedElement === last) {
+                    event.preventDefault();
+                    if (loop) focus(first, {
+                        select: true
+                    });
+                } else if (event.shiftKey && focusedElement === first) {
+                    event.preventDefault();
+                    if (loop) focus(last, {
+                        select: true
+                    });
+                }
+            }
+        }
+    }, [
+        loop,
+        trapped,
+        focusScope.paused
+    ]);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+        tabIndex: -1,
+        ...scopeProps,
+        ref: composedRefs,
+        onKeyDown: handleKeyDown
+    });
+});
+FocusScope.displayName = FOCUS_SCOPE_NAME;
+function focusFirst(candidates, { select = false } = {}) {
+    const previouslyFocusedElement = document.activeElement;
+    for (const candidate of candidates){
+        focus(candidate, {
+            select
+        });
+        if (document.activeElement !== previouslyFocusedElement) return;
+    }
+}
+function getTabbableEdges(container) {
+    const candidates = getTabbableCandidates(container);
+    const first = findVisible(candidates, container);
+    const last = findVisible(candidates.reverse(), container);
+    return [
+        first,
+        last
+    ];
+}
+function getTabbableCandidates(container) {
+    const nodes = [];
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
+        acceptNode: (node)=>{
+            const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
+            if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
+            return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        }
+    });
+    while(walker.nextNode())nodes.push(walker.currentNode);
+    return nodes;
+}
+function findVisible(elements, container) {
+    for (const element of elements){
+        if (!isHidden(element, {
+            upTo: container
+        })) return element;
+    }
+}
+function isHidden(node, { upTo }) {
+    if (getComputedStyle(node).visibility === "hidden") return true;
+    while(node){
+        if (upTo !== void 0 && node === upTo) return false;
+        if (getComputedStyle(node).display === "none") return true;
+        node = node.parentElement;
+    }
+    return false;
+}
+function isSelectableInput(element) {
+    return element instanceof HTMLInputElement && "select" in element;
+}
+function focus(element, { select = false } = {}) {
+    if (element && element.focus) {
+        const previouslyFocusedElement = document.activeElement;
+        element.focus({
+            preventScroll: true
+        });
+        if (element !== previouslyFocusedElement && isSelectableInput(element) && select) element.select();
+    }
+}
+var focusScopesStack = createFocusScopesStack();
+function createFocusScopesStack() {
+    let stack = [];
+    return {
+        add (focusScope) {
+            const activeFocusScope = stack[0];
+            if (focusScope !== activeFocusScope) activeFocusScope?.pause();
+            stack = arrayRemove(stack, focusScope);
+            stack.unshift(focusScope);
+        },
+        remove (focusScope) {
+            stack = arrayRemove(stack, focusScope);
+            stack[0]?.resume();
+        }
+    };
+}
+function arrayRemove(array, item) {
+    const updatedArray = [
+        ...array
+    ];
+    const index = updatedArray.indexOf(item);
+    if (index !== -1) updatedArray.splice(index, 1);
+    return updatedArray;
+}
+function removeLinks(items) {
+    return items.filter((item)=>item.tagName !== "A");
+}
+var Root = FocusScope;
+
+},{"react":"jMk1U","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-use-callback-ref":"92pad","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"29eEC":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Portal", ()=>Portal);
+parcelHelpers.export(exports, "Root", ()=>Root);
+// src/portal.tsx
+var _react = require("react");
+var _reactDom = require("react-dom");
+var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var PORTAL_NAME = "Portal";
+var Portal = _react.forwardRef((props, forwardedRef)=>{
+    const { container: containerProp, ...portalProps } = props;
+    const [mounted, setMounted] = _react.useState(false);
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>setMounted(true), []);
+    const container = containerProp || mounted && globalThis?.document?.body;
+    return container ? (0, _reactDomDefault.default).createPortal(/* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+        ...portalProps,
+        ref: forwardedRef
+    }), container) : null;
+});
+Portal.displayName = PORTAL_NAME;
+var Root = Portal;
+
+},{"react":"jMk1U","react-dom":"i4X7T","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-use-layout-effect":"enSS6","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5MpGF":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Presence", ()=>Presence);
+parcelHelpers.export(exports, "Root", ()=>Root);
+// src/presence.tsx
+var _react = require("react");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+"use client";
+function useStateMachine(initialState, machine) {
+    return _react.useReducer((state, event)=>{
+        const nextState = machine[state][event];
+        return nextState ?? state;
+    }, initialState);
+}
+// src/presence.tsx
+var Presence = (props)=>{
+    const { present, children } = props;
+    const presence = usePresence(present);
+    const child = typeof children === "function" ? children({
+        present: presence.isPresent
+    }) : _react.Children.only(children);
+    const ref = (0, _reactComposeRefs.useComposedRefs)(presence.ref, getElementRef(child));
+    const forceMount = typeof children === "function";
+    return forceMount || presence.isPresent ? _react.cloneElement(child, {
+        ref
+    }) : null;
+};
+Presence.displayName = "Presence";
+function usePresence(present) {
+    const [node, setNode] = _react.useState();
+    const stylesRef = _react.useRef(null);
+    const prevPresentRef = _react.useRef(present);
+    const prevAnimationNameRef = _react.useRef("none");
+    const initialState = present ? "mounted" : "unmounted";
+    const [state, send] = useStateMachine(initialState, {
+        mounted: {
+            UNMOUNT: "unmounted",
+            ANIMATION_OUT: "unmountSuspended"
+        },
+        unmountSuspended: {
+            MOUNT: "mounted",
+            ANIMATION_END: "unmounted"
+        },
+        unmounted: {
+            MOUNT: "mounted"
+        }
+    });
+    _react.useEffect(()=>{
+        const currentAnimationName = getAnimationName(stylesRef.current);
+        prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
+    }, [
+        state
+    ]);
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        const styles = stylesRef.current;
+        const wasPresent = prevPresentRef.current;
+        const hasPresentChanged = wasPresent !== present;
+        if (hasPresentChanged) {
+            const prevAnimationName = prevAnimationNameRef.current;
+            const currentAnimationName = getAnimationName(styles);
+            if (present) send("MOUNT");
+            else if (currentAnimationName === "none" || styles?.display === "none") send("UNMOUNT");
+            else {
+                const isAnimating = prevAnimationName !== currentAnimationName;
+                if (wasPresent && isAnimating) send("ANIMATION_OUT");
+                else send("UNMOUNT");
+            }
+            prevPresentRef.current = present;
+        }
+    }, [
+        present,
+        send
+    ]);
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        if (node) {
+            let timeoutId;
+            const ownerWindow = node.ownerDocument.defaultView ?? window;
+            const handleAnimationEnd = (event)=>{
+                const currentAnimationName = getAnimationName(stylesRef.current);
+                const isCurrentAnimation = currentAnimationName.includes(event.animationName);
+                if (event.target === node && isCurrentAnimation) {
+                    send("ANIMATION_END");
+                    if (!prevPresentRef.current) {
+                        const currentFillMode = node.style.animationFillMode;
+                        node.style.animationFillMode = "forwards";
+                        timeoutId = ownerWindow.setTimeout(()=>{
+                            if (node.style.animationFillMode === "forwards") node.style.animationFillMode = currentFillMode;
+                        });
+                    }
+                }
+            };
+            const handleAnimationStart = (event)=>{
+                if (event.target === node) prevAnimationNameRef.current = getAnimationName(stylesRef.current);
+            };
+            node.addEventListener("animationstart", handleAnimationStart);
+            node.addEventListener("animationcancel", handleAnimationEnd);
+            node.addEventListener("animationend", handleAnimationEnd);
+            return ()=>{
+                ownerWindow.clearTimeout(timeoutId);
+                node.removeEventListener("animationstart", handleAnimationStart);
+                node.removeEventListener("animationcancel", handleAnimationEnd);
+                node.removeEventListener("animationend", handleAnimationEnd);
+            };
+        } else send("ANIMATION_END");
+    }, [
+        node,
+        send
+    ]);
+    return {
+        isPresent: [
+            "mounted",
+            "unmountSuspended"
+        ].includes(state),
+        ref: _react.useCallback((node2)=>{
+            stylesRef.current = node2 ? getComputedStyle(node2) : null;
+            setNode(node2);
+        }, [])
+    };
+}
+function getAnimationName(styles) {
+    return styles?.animationName || "none";
+}
+function getElementRef(element) {
+    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+    if (mayWarn) return element.ref;
+    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+    if (mayWarn) return element.props.ref;
+    return element.props.ref || element.ref;
+}
+var Root = Presence;
+
+},{"react":"jMk1U","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dAs9Q":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FocusGuards", ()=>FocusGuards);
+parcelHelpers.export(exports, "Root", ()=>Root);
+parcelHelpers.export(exports, "useFocusGuards", ()=>useFocusGuards);
+// packages/react/focus-guards/src/focus-guards.tsx
+var _react = require("react");
+"use client";
+var count = 0;
+function FocusGuards(props) {
+    useFocusGuards();
+    return props.children;
+}
+function useFocusGuards() {
+    _react.useEffect(()=>{
+        const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
+        document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
+        document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
+        count++;
+        return ()=>{
+            if (count === 1) document.querySelectorAll("[data-radix-focus-guard]").forEach((node)=>node.remove());
+            count--;
+        };
+    }, []);
+}
+function createFocusGuard() {
+    const element = document.createElement("span");
+    element.setAttribute("data-radix-focus-guard", "");
+    element.tabIndex = 0;
+    element.style.outline = "none";
+    element.style.opacity = "0";
+    element.style.position = "fixed";
+    element.style.pointerEvents = "none";
+    return element;
+}
+var Root = FocusGuards;
+
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8jRAr":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "RemoveScroll", ()=>(0, _combinationDefault.default));
+var _combination = require("./Combination");
+var _combinationDefault = parcelHelpers.interopDefault(_combination);
+
+},{"./Combination":"d6Hzj","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"d6Hzj":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _tslib = require("tslib");
+var _react = require("react");
+var _ui = require("./UI");
+var _sidecar = require("./sidecar");
+var _sidecarDefault = parcelHelpers.interopDefault(_sidecar);
+var ReactRemoveScroll = _react.forwardRef(function(props, ref) {
+    return _react.createElement((0, _ui.RemoveScroll), (0, _tslib.__assign)({}, props, {
+        ref: ref,
+        sideCar: (0, _sidecarDefault.default)
+    }));
+});
+ReactRemoveScroll.classNames = (0, _ui.RemoveScroll).classNames;
+exports.default = ReactRemoveScroll;
+
+},{"tslib":"iC1Dx","react":"jMk1U","./UI":"jO1Sa","./sidecar":"le5eL","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"iC1Dx":[function(require,module,exports,__globalThis) {
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */ /* global Reflect, Promise, SuppressedError, Symbol, Iterator */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "__extends", ()=>__extends);
+parcelHelpers.export(exports, "__assign", ()=>__assign);
+parcelHelpers.export(exports, "__rest", ()=>__rest);
+parcelHelpers.export(exports, "__decorate", ()=>__decorate);
+parcelHelpers.export(exports, "__param", ()=>__param);
+parcelHelpers.export(exports, "__esDecorate", ()=>__esDecorate);
+parcelHelpers.export(exports, "__runInitializers", ()=>__runInitializers);
+parcelHelpers.export(exports, "__propKey", ()=>__propKey);
+parcelHelpers.export(exports, "__setFunctionName", ()=>__setFunctionName);
+parcelHelpers.export(exports, "__metadata", ()=>__metadata);
+parcelHelpers.export(exports, "__awaiter", ()=>__awaiter);
+parcelHelpers.export(exports, "__generator", ()=>__generator);
+parcelHelpers.export(exports, "__createBinding", ()=>__createBinding);
+parcelHelpers.export(exports, "__exportStar", ()=>__exportStar);
+parcelHelpers.export(exports, "__values", ()=>__values);
+parcelHelpers.export(exports, "__read", ()=>__read);
+/** @deprecated */ parcelHelpers.export(exports, "__spread", ()=>__spread);
+/** @deprecated */ parcelHelpers.export(exports, "__spreadArrays", ()=>__spreadArrays);
+parcelHelpers.export(exports, "__spreadArray", ()=>__spreadArray);
+parcelHelpers.export(exports, "__await", ()=>__await);
+parcelHelpers.export(exports, "__asyncGenerator", ()=>__asyncGenerator);
+parcelHelpers.export(exports, "__asyncDelegator", ()=>__asyncDelegator);
+parcelHelpers.export(exports, "__asyncValues", ()=>__asyncValues);
+parcelHelpers.export(exports, "__makeTemplateObject", ()=>__makeTemplateObject);
+parcelHelpers.export(exports, "__importStar", ()=>__importStar);
+parcelHelpers.export(exports, "__importDefault", ()=>__importDefault);
+parcelHelpers.export(exports, "__classPrivateFieldGet", ()=>__classPrivateFieldGet);
+parcelHelpers.export(exports, "__classPrivateFieldSet", ()=>__classPrivateFieldSet);
+parcelHelpers.export(exports, "__classPrivateFieldIn", ()=>__classPrivateFieldIn);
+parcelHelpers.export(exports, "__addDisposableResource", ()=>__addDisposableResource);
+parcelHelpers.export(exports, "__disposeResources", ()=>__disposeResources);
+parcelHelpers.export(exports, "__rewriteRelativeImportExtension", ()=>__rewriteRelativeImportExtension);
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf || ({
+        __proto__: []
+    }) instanceof Array && function(d, b) {
+        d.__proto__ = b;
+    } || function(d, b) {
+        for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+    };
+    return extendStatics(d, b);
+};
+function __extends(d, b) {
+    if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+    extendStatics(d, b);
+    function __() {
+        this.constructor = d;
+    }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for(var s, i = 1, n = arguments.length; i < n; i++){
+            s = arguments[i];
+            for(var p in s)if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+    var t = {};
+    for(var p in s)if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function") {
+        for(var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++)if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+    }
+    return t;
+}
+function __decorate(decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for(var i = decorators.length - 1; i >= 0; i--)if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
+function __param(paramIndex, decorator) {
+    return function(target, key) {
+        decorator(target, key, paramIndex);
+    };
+}
+function __esDecorate(ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) {
+    function accept(f) {
+        if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected");
+        return f;
+    }
+    var kind = contextIn.kind, key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
+    var target = !descriptorIn && ctor ? contextIn["static"] ? ctor : ctor.prototype : null;
+    var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
+    var _, done = false;
+    for(var i = decorators.length - 1; i >= 0; i--){
+        var context = {};
+        for(var p in contextIn)context[p] = p === "access" ? {} : contextIn[p];
+        for(var p in contextIn.access)context.access[p] = contextIn.access[p];
+        context.addInitializer = function(f) {
+            if (done) throw new TypeError("Cannot add initializers after decoration has completed");
+            extraInitializers.push(accept(f || null));
+        };
+        var result = (0, decorators[i])(kind === "accessor" ? {
+            get: descriptor.get,
+            set: descriptor.set
+        } : descriptor[key], context);
+        if (kind === "accessor") {
+            if (result === void 0) continue;
+            if (result === null || typeof result !== "object") throw new TypeError("Object expected");
+            if (_ = accept(result.get)) descriptor.get = _;
+            if (_ = accept(result.set)) descriptor.set = _;
+            if (_ = accept(result.init)) initializers.unshift(_);
+        } else if (_ = accept(result)) {
+            if (kind === "field") initializers.unshift(_);
+            else descriptor[key] = _;
+        }
+    }
+    if (target) Object.defineProperty(target, contextIn.name, descriptor);
+    done = true;
+}
+function __runInitializers(thisArg, initializers, value) {
+    var useValue = arguments.length > 2;
+    for(var i = 0; i < initializers.length; i++)value = useValue ? initializers[i].call(thisArg, value) : initializers[i].call(thisArg);
+    return useValue ? value : void 0;
+}
+function __propKey(x) {
+    return typeof x === "symbol" ? x : "".concat(x);
+}
+function __setFunctionName(f, name, prefix) {
+    if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
+    return Object.defineProperty(f, "name", {
+        configurable: true,
+        value: prefix ? "".concat(prefix, " ", name) : name
+    });
+}
+function __metadata(metadataKey, metadataValue) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+}
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+            resolve(value);
+        });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function rejected(value) {
+            try {
+                step(generator["throw"](value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function step(result) {
+            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+function __generator(thisArg, body) {
+    var _ = {
+        label: 0,
+        sent: function() {
+            if (t[0] & 1) throw t[1];
+            return t[1];
+        },
+        trys: [],
+        ops: []
+    }, f, y, t, g = Object.create((typeof Iterator === "function" ? Iterator : Object).prototype);
+    return g.next = verb(0), g["throw"] = verb(1), g["return"] = verb(2), typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+        return this;
+    }), g;
+    function verb(n) {
+        return function(v) {
+            return step([
+                n,
+                v
+            ]);
+        };
+    }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while(g && (g = 0, op[0] && (_ = 0)), _)try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [
+                op[0] & 2,
+                t.value
+            ];
+            switch(op[0]){
+                case 0:
+                case 1:
+                    t = op;
+                    break;
+                case 4:
+                    _.label++;
+                    return {
+                        value: op[1],
+                        done: false
+                    };
+                case 5:
+                    _.label++;
+                    y = op[1];
+                    op = [
+                        0
+                    ];
+                    continue;
+                case 7:
+                    op = _.ops.pop();
+                    _.trys.pop();
+                    continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                        _ = 0;
+                        continue;
+                    }
+                    if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                        _.label = op[1];
+                        break;
+                    }
+                    if (op[0] === 6 && _.label < t[1]) {
+                        _.label = t[1];
+                        t = op;
+                        break;
+                    }
+                    if (t && _.label < t[2]) {
+                        _.label = t[2];
+                        _.ops.push(op);
+                        break;
+                    }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop();
+                    continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) {
+            op = [
+                6,
+                e
+            ];
+            y = 0;
+        } finally{
+            f = t = 0;
+        }
+        if (op[0] & 5) throw op[1];
+        return {
+            value: op[0] ? op[1] : void 0,
+            done: true
+        };
+    }
+}
+var __createBinding = Object.create ? function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
+        enumerable: true,
+        get: function() {
+            return m[k];
+        }
+    };
+    Object.defineProperty(o, k2, desc);
+} : function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+};
+function __exportStar(m, o) {
+    for(var p in m)if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+}
+function __values(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function() {
+            if (o && i >= o.length) o = void 0;
+            return {
+                value: o && o[i++],
+                done: !o
+            };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+function __read(o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while((n === void 0 || n-- > 0) && !(r = i.next()).done)ar.push(r.value);
+    } catch (error) {
+        e = {
+            error: error
+        };
+    } finally{
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally{
+            if (e) throw e.error;
+        }
+    }
+    return ar;
+}
+function __spread() {
+    for(var ar = [], i = 0; i < arguments.length; i++)ar = ar.concat(__read(arguments[i]));
+    return ar;
+}
+function __spreadArrays() {
+    for(var s = 0, i = 0, il = arguments.length; i < il; i++)s += arguments[i].length;
+    for(var r = Array(s), k = 0, i = 0; i < il; i++)for(var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)r[k] = a[j];
+    return r;
+}
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) {
+        for(var i = 0, l = from.length, ar; i < l; i++)if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = Object.create((typeof AsyncIterator === "function" ? AsyncIterator : Object).prototype), verb("next"), verb("throw"), verb("return", awaitReturn), i[Symbol.asyncIterator] = function() {
+        return this;
+    }, i;
+    function awaitReturn(f) {
+        return function(v) {
+            return Promise.resolve(v).then(f, reject);
+        };
+    }
+    function verb(n, f) {
+        if (g[n]) {
+            i[n] = function(v) {
+                return new Promise(function(a, b) {
+                    q.push([
+                        n,
+                        v,
+                        a,
+                        b
+                    ]) > 1 || resume(n, v);
+                });
+            };
+            if (f) i[n] = f(i[n]);
+        }
+    }
+    function resume(n, v) {
+        try {
+            step(g[n](v));
+        } catch (e) {
+            settle(q[0][3], e);
+        }
+    }
+    function step(r) {
+        r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+    }
+    function fulfill(value) {
+        resume("next", value);
+    }
+    function reject(value) {
+        resume("throw", value);
+    }
+    function settle(f, v) {
+        if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]);
+    }
+}
+function __asyncDelegator(o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function(e) {
+        throw e;
+    }), verb("return"), i[Symbol.iterator] = function() {
+        return this;
+    }, i;
+    function verb(n, f) {
+        i[n] = o[n] ? function(v) {
+            return (p = !p) ? {
+                value: __await(o[n](v)),
+                done: false
+            } : f ? f(v) : v;
+        } : f;
+    }
+}
+function __asyncValues(o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+        return this;
+    }, i);
+    function verb(n) {
+        i[n] = o[n] && function(v) {
+            return new Promise(function(resolve, reject) {
+                v = o[n](v), settle(resolve, reject, v.done, v.value);
+            });
+        };
+    }
+    function settle(resolve, reject, d, v) {
+        Promise.resolve(v).then(function(v) {
+            resolve({
+                value: v,
+                done: d
+            });
+        }, reject);
+    }
+}
+function __makeTemplateObject(cooked, raw) {
+    if (Object.defineProperty) Object.defineProperty(cooked, "raw", {
+        value: raw
+    });
+    else cooked.raw = raw;
+    return cooked;
+}
+var __setModuleDefault = Object.create ? function(o, v) {
+    Object.defineProperty(o, "default", {
+        enumerable: true,
+        value: v
+    });
+} : function(o, v) {
+    o["default"] = v;
+};
+var ownKeys = function(o) {
+    ownKeys = Object.getOwnPropertyNames || function(o) {
+        var ar = [];
+        for(var k in o)if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+        return ar;
+    };
+    return ownKeys(o);
+};
+function __importStar(mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) {
+        for(var k = ownKeys(mod), i = 0; i < k.length; i++)if (k[i] !== "default") __createBinding(result, mod, k[i]);
+    }
+    __setModuleDefault(result, mod);
+    return result;
+}
+function __importDefault(mod) {
+    return mod && mod.__esModule ? mod : {
+        default: mod
+    };
+}
+function __classPrivateFieldGet(receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+}
+function __classPrivateFieldSet(receiver, state, value, kind, f) {
+    if (kind === "m") throw new TypeError("Private method is not writable");
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+    return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+}
+function __classPrivateFieldIn(state, receiver) {
+    if (receiver === null || typeof receiver !== "object" && typeof receiver !== "function") throw new TypeError("Cannot use 'in' operator on non-object");
+    return typeof state === "function" ? receiver === state : state.has(receiver);
+}
+function __addDisposableResource(env, value, async) {
+    if (value !== null && value !== void 0) {
+        if (typeof value !== "object" && typeof value !== "function") throw new TypeError("Object expected.");
+        var dispose, inner;
+        if (async) {
+            if (!Symbol.asyncDispose) throw new TypeError("Symbol.asyncDispose is not defined.");
+            dispose = value[Symbol.asyncDispose];
+        }
+        if (dispose === void 0) {
+            if (!Symbol.dispose) throw new TypeError("Symbol.dispose is not defined.");
+            dispose = value[Symbol.dispose];
+            if (async) inner = dispose;
+        }
+        if (typeof dispose !== "function") throw new TypeError("Object not disposable.");
+        if (inner) dispose = function() {
+            try {
+                inner.call(this);
+            } catch (e) {
+                return Promise.reject(e);
+            }
+        };
+        env.stack.push({
+            value: value,
+            dispose: dispose,
+            async: async
+        });
+    } else if (async) env.stack.push({
+        async: true
+    });
+    return value;
+}
+var _SuppressedError = typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+function __disposeResources(env) {
+    function fail(e) {
+        env.error = env.hasError ? new _SuppressedError(e, env.error, "An error was suppressed during disposal.") : e;
+        env.hasError = true;
+    }
+    var r, s = 0;
+    function next() {
+        while(r = env.stack.pop())try {
+            if (!r.async && s === 1) return s = 0, env.stack.push(r), Promise.resolve().then(next);
+            if (r.dispose) {
+                var result = r.dispose.call(r.value);
+                if (r.async) return s |= 2, Promise.resolve(result).then(next, function(e) {
+                    fail(e);
+                    return next();
+                });
+            } else s |= 1;
+        } catch (e) {
+            fail(e);
+        }
+        if (s === 1) return env.hasError ? Promise.reject(env.error) : Promise.resolve();
+        if (env.hasError) throw env.error;
+    }
+    return next();
+}
+function __rewriteRelativeImportExtension(path, preserveJsx) {
+    if (typeof path === "string" && /^\.\.?\//.test(path)) return path.replace(/\.(tsx)$|((?:\.d)?)((?:\.[^./]+?)?)\.([cm]?)ts$/i, function(m, tsx, d, ext, cm) {
+        return tsx ? preserveJsx ? ".jsx" : ".js" : d && (!ext || !cm) ? m : d + ext + "." + cm.toLowerCase() + "js";
+    });
+    return path;
+}
+exports.default = {
+    __extends: __extends,
+    __assign: __assign,
+    __rest: __rest,
+    __decorate: __decorate,
+    __param: __param,
+    __esDecorate: __esDecorate,
+    __runInitializers: __runInitializers,
+    __propKey: __propKey,
+    __setFunctionName: __setFunctionName,
+    __metadata: __metadata,
+    __awaiter: __awaiter,
+    __generator: __generator,
+    __createBinding: __createBinding,
+    __exportStar: __exportStar,
+    __values: __values,
+    __read: __read,
+    __spread: __spread,
+    __spreadArrays: __spreadArrays,
+    __spreadArray: __spreadArray,
+    __await: __await,
+    __asyncGenerator: __asyncGenerator,
+    __asyncDelegator: __asyncDelegator,
+    __asyncValues: __asyncValues,
+    __makeTemplateObject: __makeTemplateObject,
+    __importStar: __importStar,
+    __importDefault: __importDefault,
+    __classPrivateFieldGet: __classPrivateFieldGet,
+    __classPrivateFieldSet: __classPrivateFieldSet,
+    __classPrivateFieldIn: __classPrivateFieldIn,
+    __addDisposableResource: __addDisposableResource,
+    __disposeResources: __disposeResources,
+    __rewriteRelativeImportExtension: __rewriteRelativeImportExtension
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jO1Sa":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "RemoveScroll", ()=>RemoveScroll);
+var _tslib = require("tslib");
+var _react = require("react");
+var _constants = require("react-remove-scroll-bar/constants");
+var _useCallbackRef = require("use-callback-ref");
+var _medium = require("./medium");
+var nothing = function() {
+    return;
+};
+/**
+ * Removes scrollbar from the page and contain the scroll within the Lock
+ */ var RemoveScroll = _react.forwardRef(function(props, parentRef) {
+    var ref = _react.useRef(null);
+    var _a = _react.useState({
+        onScrollCapture: nothing,
+        onWheelCapture: nothing,
+        onTouchMoveCapture: nothing
+    }), callbacks = _a[0], setCallbacks = _a[1];
+    var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? 'div' : _b, gapMode = props.gapMode, rest = (0, _tslib.__rest)(props, [
+        "forwardProps",
+        "children",
+        "className",
+        "removeScrollBar",
+        "enabled",
+        "shards",
+        "sideCar",
+        "noRelative",
+        "noIsolation",
+        "inert",
+        "allowPinchZoom",
+        "as",
+        "gapMode"
+    ]);
+    var SideCar = sideCar;
+    var containerRef = (0, _useCallbackRef.useMergeRefs)([
+        ref,
+        parentRef
+    ]);
+    var containerProps = (0, _tslib.__assign)((0, _tslib.__assign)({}, rest), callbacks);
+    return _react.createElement(_react.Fragment, null, enabled && _react.createElement(SideCar, {
+        sideCar: (0, _medium.effectCar),
+        removeScrollBar: removeScrollBar,
+        shards: shards,
+        noRelative: noRelative,
+        noIsolation: noIsolation,
+        inert: inert,
+        setCallbacks: setCallbacks,
+        allowPinchZoom: !!allowPinchZoom,
+        lockRef: ref,
+        gapMode: gapMode
+    }), forwardProps ? _react.cloneElement(_react.Children.only(children), (0, _tslib.__assign)((0, _tslib.__assign)({}, containerProps), {
+        ref: containerRef
+    })) : _react.createElement(Container, (0, _tslib.__assign)({}, containerProps, {
+        className: className,
+        ref: containerRef
+    }), children));
+});
+RemoveScroll.defaultProps = {
+    enabled: true,
+    removeScrollBar: true,
+    inert: false
+};
+RemoveScroll.classNames = {
+    fullWidth: (0, _constants.fullWidthClassName),
+    zeroRight: (0, _constants.zeroRightClassName)
+};
+
+},{"tslib":"iC1Dx","react":"jMk1U","react-remove-scroll-bar/constants":"aFGUt","use-callback-ref":"aWIcL","./medium":"hUXZN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aFGUt":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "zeroRightClassName", ()=>zeroRightClassName);
+parcelHelpers.export(exports, "fullWidthClassName", ()=>fullWidthClassName);
+parcelHelpers.export(exports, "noScrollbarsClassName", ()=>noScrollbarsClassName);
+parcelHelpers.export(exports, "removedBarSizeVariable", ()=>removedBarSizeVariable);
+var zeroRightClassName = 'right-scroll-bar-position';
+var fullWidthClassName = 'width-before-scroll-bar';
+var noScrollbarsClassName = 'with-scroll-bars-hidden';
+var removedBarSizeVariable = '--removed-body-scroll-bar-size';
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aWIcL":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "assignRef", ()=>(0, _assignRef.assignRef));
+// callback ref
+parcelHelpers.export(exports, "useCallbackRef", ()=>(0, _useRef.useCallbackRef));
+parcelHelpers.export(exports, "createCallbackRef", ()=>(0, _createRef.createCallbackRef));
+// merge ref
+parcelHelpers.export(exports, "mergeRefs", ()=>(0, _mergeRef.mergeRefs));
+parcelHelpers.export(exports, "useMergeRefs", ()=>(0, _useMergeRef.useMergeRefs));
+// transform ref
+parcelHelpers.export(exports, "useTransformRef", ()=>(0, _useTransformRef.useTransformRef));
+parcelHelpers.export(exports, "transformRef", ()=>(0, _transformRef.transformRef));
+// refToCallback
+parcelHelpers.export(exports, "refToCallback", ()=>(0, _refToCallback.refToCallback));
+parcelHelpers.export(exports, "useRefToCallback", ()=>(0, _refToCallback.useRefToCallback));
+var _assignRef = require("./assignRef");
+var _useRef = require("./useRef");
+var _createRef = require("./createRef");
+var _mergeRef = require("./mergeRef");
+var _useMergeRef = require("./useMergeRef");
+var _useTransformRef = require("./useTransformRef");
+var _transformRef = require("./transformRef");
+var _refToCallback = require("./refToCallback");
+
+},{"./assignRef":false,"./useRef":false,"./createRef":false,"./mergeRef":false,"./useMergeRef":"asiBb","./useTransformRef":false,"./transformRef":false,"./refToCallback":false,"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8SxUu":[function(require,module,exports,__globalThis) {
+/**
+ * Assigns a value for a given ref, no matter of the ref format
+ * @param {RefObject} ref - a callback function or ref object
+ * @param value - a new value
+ *
+ * @see https://github.com/theKashey/use-callback-ref#assignref
+ * @example
+ * const refObject = useRef();
+ * const refFn = (ref) => {....}
+ *
+ * assignRef(refObject, "refValue");
+ * assignRef(refFn, "refValue");
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "assignRef", ()=>assignRef);
+function assignRef(ref, value) {
+    if (typeof ref === 'function') ref(value);
+    else if (ref) ref.current = value;
+    return ref;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"i7LVT":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * creates a MutableRef with ref change callback
+ * @param initialValue - initial ref value
+ * @param {Function} callback - a callback to run when value changes
+ *
+ * @example
+ * const ref = useCallbackRef(0, (newValue, oldValue) => console.log(oldValue, '->', newValue);
+ * ref.current = 1;
+ * // prints 0 -> 1
+ *
+ * @see https://reactjs.org/docs/hooks-reference.html#useref
+ * @see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
+ * @returns {MutableRefObject}
+ */ parcelHelpers.export(exports, "useCallbackRef", ()=>useCallbackRef);
+var _react = require("react");
+function useCallbackRef(initialValue, callback) {
+    var ref = (0, _react.useState)(function() {
+        return {
+            // value
+            value: initialValue,
+            // last callback
+            callback: callback,
+            // "memoized" public interface
+            facade: {
+                get current () {
+                    return ref.value;
+                },
+                set current (value){
+                    var last = ref.value;
+                    if (last !== value) {
+                        ref.value = value;
+                        ref.callback(value, last);
+                    }
+                }
+            }
+        };
+    })[0];
+    // update callback
+    ref.callback = callback;
+    return ref.facade;
+}
+
+},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"asiBb":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * Merges two or more refs together providing a single interface to set their value
+ * @param {RefObject|Ref} refs
+ * @returns {MutableRefObject} - a new ref, which translates all changes to {refs}
+ *
+ * @see {@link mergeRefs} a version without buit-in memoization
+ * @see https://github.com/theKashey/use-callback-ref#usemergerefs
+ * @example
+ * const Component = React.forwardRef((props, ref) => {
+ *   const ownRef = useRef();
+ *   const domRef = useMergeRefs([ref, ownRef]); // 👈 merge together
+ *   return <div ref={domRef}>...</div>
+ * }
+ */ parcelHelpers.export(exports, "useMergeRefs", ()=>useMergeRefs);
+var _react = require("react");
+var _assignRef = require("./assignRef");
+var _useRef = require("./useRef");
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' ? _react.useLayoutEffect : _react.useEffect;
+var currentValues = new WeakMap();
+function useMergeRefs(refs, defaultValue) {
+    var callbackRef = (0, _useRef.useCallbackRef)(defaultValue || null, function(newValue) {
+        return refs.forEach(function(ref) {
+            return (0, _assignRef.assignRef)(ref, newValue);
+        });
+    });
+    // handle refs changes - added or removed
+    useIsomorphicLayoutEffect(function() {
+        var oldValue = currentValues.get(callbackRef);
+        if (oldValue) {
+            var prevRefs_1 = new Set(oldValue);
+            var nextRefs_1 = new Set(refs);
+            var current_1 = callbackRef.current;
+            prevRefs_1.forEach(function(ref) {
+                if (!nextRefs_1.has(ref)) (0, _assignRef.assignRef)(ref, null);
+            });
+            nextRefs_1.forEach(function(ref) {
+                if (!prevRefs_1.has(ref)) (0, _assignRef.assignRef)(ref, current_1);
+            });
+        }
+        currentValues.set(callbackRef, refs);
+    }, [
+        refs
+    ]);
+    return callbackRef;
+}
+
+},{"react":"jMk1U","./assignRef":"8SxUu","./useRef":"i7LVT","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"hUXZN":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "effectCar", ()=>effectCar);
+var _useSidecar = require("use-sidecar");
+var effectCar = (0, _useSidecar.createSidecarMedium)();
+
+},{"use-sidecar":"9DKys","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9DKys":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "sidecar", ()=>(0, _hoc.sidecar));
+parcelHelpers.export(exports, "useSidecar", ()=>(0, _hook.useSidecar));
+parcelHelpers.export(exports, "setConfig", ()=>(0, _config.setConfig));
+parcelHelpers.export(exports, "createMedium", ()=>(0, _medium.createMedium));
+parcelHelpers.export(exports, "createSidecarMedium", ()=>(0, _medium.createSidecarMedium));
+parcelHelpers.export(exports, "renderCar", ()=>(0, _renderProp.renderCar));
+parcelHelpers.export(exports, "exportSidecar", ()=>(0, _exports.exportSidecar));
+var _hoc = require("./hoc");
+var _hook = require("./hook");
+var _config = require("./config");
+var _medium = require("./medium");
+var _renderProp = require("./renderProp");
+var _exports = require("./exports");
+
+},{"./hoc":false,"./hook":false,"./config":false,"./medium":"fJZJz","./renderProp":false,"./exports":"aFIQR","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fJZJz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createMedium", ()=>createMedium);
+// eslint-disable-next-line @typescript-eslint/ban-types
+parcelHelpers.export(exports, "createSidecarMedium", ()=>createSidecarMedium);
+var _tslib = require("tslib");
+function ItoI(a) {
+    return a;
+}
+function innerCreateMedium(defaults, middleware) {
+    if (middleware === void 0) middleware = ItoI;
+    var buffer = [];
+    var assigned = false;
+    var medium = {
+        read: function() {
+            if (assigned) throw new Error('Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.');
+            if (buffer.length) return buffer[buffer.length - 1];
+            return defaults;
+        },
+        useMedium: function(data) {
+            var item = middleware(data, assigned);
+            buffer.push(item);
+            return function() {
+                buffer = buffer.filter(function(x) {
+                    return x !== item;
+                });
+            };
+        },
+        assignSyncMedium: function(cb) {
+            assigned = true;
+            while(buffer.length){
+                var cbs = buffer;
+                buffer = [];
+                cbs.forEach(cb);
+            }
+            buffer = {
+                push: function(x) {
+                    return cb(x);
+                },
+                filter: function() {
+                    return buffer;
+                }
+            };
+        },
+        assignMedium: function(cb) {
+            assigned = true;
+            var pendingQueue = [];
+            if (buffer.length) {
+                var cbs = buffer;
+                buffer = [];
+                cbs.forEach(cb);
+                pendingQueue = buffer;
+            }
+            var executeQueue = function() {
+                var cbs = pendingQueue;
+                pendingQueue = [];
+                cbs.forEach(cb);
+            };
+            var cycle = function() {
+                return Promise.resolve().then(executeQueue);
+            };
+            cycle();
+            buffer = {
+                push: function(x) {
+                    pendingQueue.push(x);
+                    cycle();
+                },
+                filter: function(filter) {
+                    pendingQueue = pendingQueue.filter(filter);
+                    return buffer;
+                }
+            };
+        }
+    };
+    return medium;
+}
+function createMedium(defaults, middleware) {
+    if (middleware === void 0) middleware = ItoI;
+    return innerCreateMedium(defaults, middleware);
+}
+function createSidecarMedium(options) {
+    if (options === void 0) options = {};
+    var medium = innerCreateMedium(null);
+    medium.options = (0, _tslib.__assign)({
+        async: true,
+        ssr: false
+    }, options);
+    return medium;
+}
+
+},{"tslib":"iC1Dx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aFIQR":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "exportSidecar", ()=>exportSidecar);
+var _tslib = require("tslib");
+var _react = require("react");
+var SideCar = function(_a) {
+    var sideCar = _a.sideCar, rest = (0, _tslib.__rest)(_a, [
+        "sideCar"
+    ]);
+    if (!sideCar) throw new Error('Sidecar: please provide `sideCar` property to import the right car');
+    var Target = sideCar.read();
+    if (!Target) throw new Error('Sidecar medium not found');
+    return _react.createElement(Target, (0, _tslib.__assign)({}, rest));
+};
+SideCar.isSideCarExport = true;
+function exportSidecar(medium, exported) {
+    medium.useMedium(exported);
+    return SideCar;
+}
+
+},{"tslib":"iC1Dx","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"le5eL":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _useSidecar = require("use-sidecar");
+var _sideEffect = require("./SideEffect");
+var _medium = require("./medium");
+exports.default = (0, _useSidecar.exportSidecar)((0, _medium.effectCar), (0, _sideEffect.RemoveScrollSideCar));
+
+},{"use-sidecar":"9DKys","./SideEffect":"3Q2rB","./medium":"hUXZN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"3Q2rB":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getTouchXY", ()=>getTouchXY);
+parcelHelpers.export(exports, "getDeltaXY", ()=>getDeltaXY);
+parcelHelpers.export(exports, "RemoveScrollSideCar", ()=>RemoveScrollSideCar);
+var _tslib = require("tslib");
+var _react = require("react");
+var _reactRemoveScrollBar = require("react-remove-scroll-bar");
+var _reactStyleSingleton = require("react-style-singleton");
+var _aggresiveCapture = require("./aggresiveCapture");
+var _handleScroll = require("./handleScroll");
+var getTouchXY = function(event) {
+    return 'changedTouches' in event ? [
+        event.changedTouches[0].clientX,
+        event.changedTouches[0].clientY
+    ] : [
+        0,
+        0
+    ];
+};
+var getDeltaXY = function(event) {
+    return [
+        event.deltaX,
+        event.deltaY
+    ];
+};
+var extractRef = function(ref) {
+    return ref && 'current' in ref ? ref.current : ref;
+};
+var deltaCompare = function(x, y) {
+    return x[0] === y[0] && x[1] === y[1];
+};
+var generateStyle = function(id) {
+    return "\n  .block-interactivity-".concat(id, " {pointer-events: none;}\n  .allow-interactivity-").concat(id, " {pointer-events: all;}\n");
+};
+var idCounter = 0;
+var lockStack = [];
+function RemoveScrollSideCar(props) {
+    var shouldPreventQueue = _react.useRef([]);
+    var touchStartRef = _react.useRef([
+        0,
+        0
+    ]);
+    var activeAxis = _react.useRef();
+    var id = _react.useState(idCounter++)[0];
+    var Style = _react.useState((0, _reactStyleSingleton.styleSingleton))[0];
+    var lastProps = _react.useRef(props);
+    _react.useEffect(function() {
+        lastProps.current = props;
+    }, [
+        props
+    ]);
+    _react.useEffect(function() {
+        if (props.inert) {
+            document.body.classList.add("block-interactivity-".concat(id));
+            var allow_1 = (0, _tslib.__spreadArray)([
+                props.lockRef.current
+            ], (props.shards || []).map(extractRef), true).filter(Boolean);
+            allow_1.forEach(function(el) {
+                return el.classList.add("allow-interactivity-".concat(id));
+            });
+            return function() {
+                document.body.classList.remove("block-interactivity-".concat(id));
+                allow_1.forEach(function(el) {
+                    return el.classList.remove("allow-interactivity-".concat(id));
+                });
+            };
+        }
+        return;
+    }, [
+        props.inert,
+        props.lockRef.current,
+        props.shards
+    ]);
+    var shouldCancelEvent = _react.useCallback(function(event, parent) {
+        if ('touches' in event && event.touches.length === 2 || event.type === 'wheel' && event.ctrlKey) return !lastProps.current.allowPinchZoom;
+        var touch = getTouchXY(event);
+        var touchStart = touchStartRef.current;
+        var deltaX = 'deltaX' in event ? event.deltaX : touchStart[0] - touch[0];
+        var deltaY = 'deltaY' in event ? event.deltaY : touchStart[1] - touch[1];
+        var currentAxis;
+        var target = event.target;
+        var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? 'h' : 'v';
+        // allow horizontal touch move on Range inputs. They will not cause any scroll
+        if ('touches' in event && moveDirection === 'h' && target.type === 'range') return false;
+        var canBeScrolledInMainDirection = (0, _handleScroll.locationCouldBeScrolled)(moveDirection, target);
+        if (!canBeScrolledInMainDirection) return true;
+        if (canBeScrolledInMainDirection) currentAxis = moveDirection;
+        else {
+            currentAxis = moveDirection === 'v' ? 'h' : 'v';
+            canBeScrolledInMainDirection = (0, _handleScroll.locationCouldBeScrolled)(moveDirection, target);
+        // other axis might be not scrollable
+        }
+        if (!canBeScrolledInMainDirection) return false;
+        if (!activeAxis.current && 'changedTouches' in event && (deltaX || deltaY)) activeAxis.current = currentAxis;
+        if (!currentAxis) return true;
+        var cancelingAxis = activeAxis.current || currentAxis;
+        return (0, _handleScroll.handleScroll)(cancelingAxis, parent, event, cancelingAxis === 'h' ? deltaX : deltaY, true);
+    }, []);
+    var shouldPrevent = _react.useCallback(function(_event) {
+        var event = _event;
+        if (!lockStack.length || lockStack[lockStack.length - 1] !== Style) // not the last active
+        return;
+        var delta = 'deltaY' in event ? getDeltaXY(event) : getTouchXY(event);
+        var sourceEvent = shouldPreventQueue.current.filter(function(e) {
+            return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
+        })[0];
+        // self event, and should be canceled
+        if (sourceEvent && sourceEvent.should) {
+            if (event.cancelable) event.preventDefault();
+            return;
+        }
+        // outside or shard event
+        if (!sourceEvent) {
+            var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
+                return node.contains(event.target);
+            });
+            var shouldStop = shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation;
+            if (shouldStop) {
+                if (event.cancelable) event.preventDefault();
+            }
+        }
+    }, []);
+    var shouldCancel = _react.useCallback(function(name, delta, target, should) {
+        var event = {
+            name: name,
+            delta: delta,
+            target: target,
+            should: should,
+            shadowParent: getOutermostShadowParent(target)
+        };
+        shouldPreventQueue.current.push(event);
+        setTimeout(function() {
+            shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
+                return e !== event;
+            });
+        }, 1);
+    }, []);
+    var scrollTouchStart = _react.useCallback(function(event) {
+        touchStartRef.current = getTouchXY(event);
+        activeAxis.current = undefined;
+    }, []);
+    var scrollWheel = _react.useCallback(function(event) {
+        shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+    }, []);
+    var scrollTouchMove = _react.useCallback(function(event) {
+        shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+    }, []);
+    _react.useEffect(function() {
+        lockStack.push(Style);
+        props.setCallbacks({
+            onScrollCapture: scrollWheel,
+            onWheelCapture: scrollWheel,
+            onTouchMoveCapture: scrollTouchMove
+        });
+        document.addEventListener('wheel', shouldPrevent, (0, _aggresiveCapture.nonPassive));
+        document.addEventListener('touchmove', shouldPrevent, (0, _aggresiveCapture.nonPassive));
+        document.addEventListener('touchstart', scrollTouchStart, (0, _aggresiveCapture.nonPassive));
+        return function() {
+            lockStack = lockStack.filter(function(inst) {
+                return inst !== Style;
+            });
+            document.removeEventListener('wheel', shouldPrevent, (0, _aggresiveCapture.nonPassive));
+            document.removeEventListener('touchmove', shouldPrevent, (0, _aggresiveCapture.nonPassive));
+            document.removeEventListener('touchstart', scrollTouchStart, (0, _aggresiveCapture.nonPassive));
+        };
+    }, []);
+    var removeScrollBar = props.removeScrollBar, inert = props.inert;
+    return _react.createElement(_react.Fragment, null, inert ? _react.createElement(Style, {
+        styles: generateStyle(id)
+    }) : null, removeScrollBar ? _react.createElement((0, _reactRemoveScrollBar.RemoveScrollBar), {
+        noRelative: props.noRelative,
+        gapMode: props.gapMode
+    }) : null);
+}
+function getOutermostShadowParent(node) {
+    var shadowParent = null;
+    while(node !== null){
+        if (node instanceof ShadowRoot) {
+            shadowParent = node.host;
+            node = node.host;
+        }
+        node = node.parentNode;
+    }
+    return shadowParent;
+}
+
+},{"tslib":"iC1Dx","react":"jMk1U","react-remove-scroll-bar":"56cnY","react-style-singleton":"fetdF","./aggresiveCapture":"2XG5L","./handleScroll":"fsxF0","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"56cnY":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "RemoveScrollBar", ()=>(0, _component.RemoveScrollBar));
+parcelHelpers.export(exports, "zeroRightClassName", ()=>(0, _constants.zeroRightClassName));
+parcelHelpers.export(exports, "fullWidthClassName", ()=>(0, _constants.fullWidthClassName));
+parcelHelpers.export(exports, "noScrollbarsClassName", ()=>(0, _constants.noScrollbarsClassName));
+parcelHelpers.export(exports, "removedBarSizeVariable", ()=>(0, _constants.removedBarSizeVariable));
+parcelHelpers.export(exports, "getGapWidth", ()=>(0, _utils.getGapWidth));
+var _component = require("./component");
+var _constants = require("./constants");
+var _utils = require("./utils");
+
+},{"./component":"bR8HH","./constants":"aFGUt","./utils":"9C7iE","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"bR8HH":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "lockAttribute", ()=>lockAttribute);
+parcelHelpers.export(exports, "useLockAttribute", ()=>useLockAttribute);
+parcelHelpers.export(exports, "RemoveScrollBar", ()=>RemoveScrollBar);
+var _react = require("react");
+var _reactStyleSingleton = require("react-style-singleton");
+var _constants = require("./constants");
+var _utils = require("./utils");
+var Style = (0, _reactStyleSingleton.styleSingleton)();
+var lockAttribute = 'data-scroll-locked';
+// important tip - once we measure scrollBar width and remove them
+// we could not repeat this operation
+// thus we are using style-singleton - only the first "yet correct" style will be applied.
+var getStyles = function(_a, allowRelative, gapMode, important) {
+    var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+    if (gapMode === void 0) gapMode = 'margin';
+    return "\n  .".concat((0, _constants.noScrollbarsClassName), " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+        allowRelative && "position: relative ".concat(important, ";"),
+        gapMode === 'margin' && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
+        gapMode === 'padding' && "padding-right: ".concat(gap, "px ").concat(important, ";")
+    ].filter(Boolean).join(''), "\n  }\n  \n  .").concat((0, _constants.zeroRightClassName), " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat((0, _constants.fullWidthClassName), " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat((0, _constants.zeroRightClassName), " .").concat((0, _constants.zeroRightClassName), " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat((0, _constants.fullWidthClassName), " .").concat((0, _constants.fullWidthClassName), " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat((0, _constants.removedBarSizeVariable), ": ").concat(gap, "px;\n  }\n");
+};
+var getCurrentUseCounter = function() {
+    var counter = parseInt(document.body.getAttribute(lockAttribute) || '0', 10);
+    return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+    _react.useEffect(function() {
+        document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+        return function() {
+            var newCounter = getCurrentUseCounter() - 1;
+            if (newCounter <= 0) document.body.removeAttribute(lockAttribute);
+            else document.body.setAttribute(lockAttribute, newCounter.toString());
+        };
+    }, []);
+};
+var RemoveScrollBar = function(_a) {
+    var noRelative = _a.noRelative, noImportant = _a.noImportant, _b = _a.gapMode, gapMode = _b === void 0 ? 'margin' : _b;
+    useLockAttribute();
+    /*
+     gap will be measured on every component mount
+     however it will be used only by the "first" invocation
+     due to singleton nature of <Style
+     */ var gap = _react.useMemo(function() {
+        return (0, _utils.getGapWidth)(gapMode);
+    }, [
+        gapMode
+    ]);
+    return _react.createElement(Style, {
+        styles: getStyles(gap, !noRelative, gapMode, !noImportant ? '!important' : '')
+    });
+};
+
+},{"react":"jMk1U","react-style-singleton":"fetdF","./constants":"aFGUt","./utils":"9C7iE","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fetdF":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "styleSingleton", ()=>(0, _component.styleSingleton));
+parcelHelpers.export(exports, "stylesheetSingleton", ()=>(0, _singleton.stylesheetSingleton));
+parcelHelpers.export(exports, "styleHookSingleton", ()=>(0, _hook.styleHookSingleton));
+var _component = require("./component");
+var _singleton = require("./singleton");
+var _hook = require("./hook");
+
+},{"./component":"kebmf","./singleton":"1CXwN","./hook":"2LaSz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kebmf":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "styleSingleton", ()=>styleSingleton);
+var _hook = require("./hook");
+var styleSingleton = function() {
+    var useStyle = (0, _hook.styleHookSingleton)();
+    var Sheet = function(_a) {
+        var styles = _a.styles, dynamic = _a.dynamic;
+        useStyle(styles, dynamic);
+        return null;
+    };
+    return Sheet;
+};
+
+},{"./hook":"2LaSz","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2LaSz":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "styleHookSingleton", ()=>styleHookSingleton);
+var _react = require("react");
+var _singleton = require("./singleton");
+var styleHookSingleton = function() {
+    var sheet = (0, _singleton.stylesheetSingleton)();
+    return function(styles, isDynamic) {
+        _react.useEffect(function() {
+            sheet.add(styles);
+            return function() {
+                sheet.remove();
+            };
+        }, [
+            styles && isDynamic
+        ]);
+    };
+};
+
+},{"react":"jMk1U","./singleton":"1CXwN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"1CXwN":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "stylesheetSingleton", ()=>stylesheetSingleton);
+var _getNonce = require("get-nonce");
+function makeStyleTag() {
+    if (!document) return null;
+    var tag = document.createElement('style');
+    tag.type = 'text/css';
+    var nonce = (0, _getNonce.getNonce)();
+    if (nonce) tag.setAttribute('nonce', nonce);
+    return tag;
+}
+function injectStyles(tag, css) {
+    // @ts-ignore
+    if (tag.styleSheet) // @ts-ignore
+    tag.styleSheet.cssText = css;
+    else tag.appendChild(document.createTextNode(css));
+}
+function insertStyleTag(tag) {
+    var head = document.head || document.getElementsByTagName('head')[0];
+    head.appendChild(tag);
+}
+var stylesheetSingleton = function() {
+    var counter = 0;
+    var stylesheet = null;
+    return {
+        add: function(style) {
+            if (counter == 0) {
+                if (stylesheet = makeStyleTag()) {
+                    injectStyles(stylesheet, style);
+                    insertStyleTag(stylesheet);
+                }
+            }
+            counter++;
+        },
+        remove: function() {
+            counter--;
+            if (!counter && stylesheet) {
+                stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
+                stylesheet = null;
+            }
+        }
+    };
+};
+
+},{"get-nonce":"3EFG9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"3EFG9":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "setNonce", ()=>setNonce);
+parcelHelpers.export(exports, "getNonce", ()=>getNonce);
+var currentNonce;
+var setNonce = function(nonce) {
+    currentNonce = nonce;
+};
+var getNonce = function() {
+    if (currentNonce) return currentNonce;
+    if (typeof __webpack_nonce__ !== 'undefined') return __webpack_nonce__;
+    return undefined;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9C7iE":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "zeroGap", ()=>zeroGap);
+parcelHelpers.export(exports, "getGapWidth", ()=>getGapWidth);
+var zeroGap = {
+    left: 0,
+    top: 0,
+    right: 0,
+    gap: 0
+};
+var parse = function(x) {
+    return parseInt(x || '', 10) || 0;
+};
+var getOffset = function(gapMode) {
+    var cs = window.getComputedStyle(document.body);
+    var left = cs[gapMode === 'padding' ? 'paddingLeft' : 'marginLeft'];
+    var top = cs[gapMode === 'padding' ? 'paddingTop' : 'marginTop'];
+    var right = cs[gapMode === 'padding' ? 'paddingRight' : 'marginRight'];
+    return [
+        parse(left),
+        parse(top),
+        parse(right)
+    ];
+};
+var getGapWidth = function(gapMode) {
+    if (gapMode === void 0) gapMode = 'margin';
+    if (typeof window === 'undefined') return zeroGap;
+    var offsets = getOffset(gapMode);
+    var documentWidth = document.documentElement.clientWidth;
+    var windowWidth = window.innerWidth;
+    return {
+        left: offsets[0],
+        top: offsets[1],
+        right: offsets[2],
+        gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2XG5L":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "nonPassive", ()=>nonPassive);
+var passiveSupported = false;
+if (typeof window !== 'undefined') try {
+    var options = Object.defineProperty({}, 'passive', {
+        get: function() {
+            passiveSupported = true;
+            return true;
+        }
+    });
+    // @ts-ignore
+    window.addEventListener('test', options, options);
+    // @ts-ignore
+    window.removeEventListener('test', options, options);
+} catch (err) {
+    passiveSupported = false;
+}
+var nonPassive = passiveSupported ? {
+    passive: false
+} : false;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fsxF0":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "locationCouldBeScrolled", ()=>locationCouldBeScrolled);
+parcelHelpers.export(exports, "handleScroll", ()=>handleScroll);
+var alwaysContainsScroll = function(node) {
+    // textarea will always _contain_ scroll inside self. It only can be hidden
+    return node.tagName === 'TEXTAREA';
+};
+var elementCanBeScrolled = function(node, overflow) {
+    if (!(node instanceof Element)) return false;
+    var styles = window.getComputedStyle(node);
+    return(// not-not-scrollable
+    styles[overflow] !== 'hidden' && // contains scroll inside self
+    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === 'visible'));
+};
+var elementCouldBeVScrolled = function(node) {
+    return elementCanBeScrolled(node, 'overflowY');
+};
+var elementCouldBeHScrolled = function(node) {
+    return elementCanBeScrolled(node, 'overflowX');
+};
+var locationCouldBeScrolled = function(axis, node) {
+    var ownerDocument = node.ownerDocument;
+    var current = node;
+    do {
+        // Skip over shadow root
+        if (typeof ShadowRoot !== 'undefined' && current instanceof ShadowRoot) current = current.host;
+        var isScrollable = elementCouldBeScrolled(axis, current);
+        if (isScrollable) {
+            var _a = getScrollVariables(axis, current), scrollHeight = _a[1], clientHeight = _a[2];
+            if (scrollHeight > clientHeight) return true;
+        }
+        current = current.parentNode;
+    }while (current && current !== ownerDocument.body);
+    return false;
+};
+var getVScrollVariables = function(_a) {
+    var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+    return [
+        scrollTop,
+        scrollHeight,
+        clientHeight
+    ];
+};
+var getHScrollVariables = function(_a) {
+    var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
+    return [
+        scrollLeft,
+        scrollWidth,
+        clientWidth
+    ];
+};
+var elementCouldBeScrolled = function(axis, node) {
+    return axis === 'v' ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
+};
+var getScrollVariables = function(axis, node) {
+    return axis === 'v' ? getVScrollVariables(node) : getHScrollVariables(node);
+};
+var getDirectionFactor = function(axis, direction) {
+    /**
+     * If the element's direction is rtl (right-to-left), then scrollLeft is 0 when the scrollbar is at its rightmost position,
+     * and then increasingly negative as you scroll towards the end of the content.
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft
+     */ return axis === 'h' && direction === 'rtl' ? -1 : 1;
+};
+var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
+    var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
+    var delta = directionFactor * sourceDelta;
+    // find scrollable target
+    var target = event.target;
+    var targetInLock = endTarget.contains(target);
+    var shouldCancelScroll = false;
+    var isDeltaPositive = delta > 0;
+    var availableScroll = 0;
+    var availableScrollTop = 0;
+    do {
+        if (!target) break;
+        var _a = getScrollVariables(axis, target), position = _a[0], scroll_1 = _a[1], capacity = _a[2];
+        var elementScroll = scroll_1 - capacity - directionFactor * position;
+        if (position || elementScroll) {
+            if (elementCouldBeScrolled(axis, target)) {
+                availableScroll += elementScroll;
+                availableScrollTop += position;
+            }
+        }
+        var parent_1 = target.parentNode;
+        // we will "bubble" from ShadowDom in case we are, or just to the parent in normal case
+        // this is the same logic used in focus-lock
+        target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
+    }while (// portaled content
+    !targetInLock && target !== document.body || // self content
+    targetInLock && (endTarget.contains(target) || endTarget === target));
+    // handle epsilon around 0 (non standard zoom levels)
+    if (isDeltaPositive && (noOverscroll && Math.abs(availableScroll) < 1 || !noOverscroll && delta > availableScroll)) shouldCancelScroll = true;
+    else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
+    return shouldCancelScroll;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2QB19":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "hideOthers", ()=>hideOthers);
+parcelHelpers.export(exports, "inertOthers", ()=>inertOthers);
+parcelHelpers.export(exports, "supportsInert", ()=>supportsInert);
+parcelHelpers.export(exports, "suppressOthers", ()=>suppressOthers);
+var getDefaultParent = function(originalTarget) {
+    if (typeof document === 'undefined') return null;
+    var sampleTarget = Array.isArray(originalTarget) ? originalTarget[0] : originalTarget;
+    return sampleTarget.ownerDocument.body;
+};
+var counterMap = new WeakMap();
+var uncontrolledNodes = new WeakMap();
+var markerMap = {};
+var lockCount = 0;
+var unwrapHost = function(node) {
+    return node && (node.host || unwrapHost(node.parentNode));
+};
+var correctTargets = function(parent, targets) {
+    return targets.map(function(target) {
+        if (parent.contains(target)) return target;
+        var correctedTarget = unwrapHost(target);
+        if (correctedTarget && parent.contains(correctedTarget)) return correctedTarget;
+        console.error('aria-hidden', target, 'in not contained inside', parent, '. Doing nothing');
+        return null;
+    }).filter(function(x) {
+        return Boolean(x);
+    });
+};
+/**
+ * Marks everything except given node(or nodes) as aria-hidden
+ * @param {Element | Element[]} originalTarget - elements to keep on the page
+ * @param [parentNode] - top element, defaults to document.body
+ * @param {String} [markerName] - a special attribute to mark every node
+ * @param {String} [controlAttribute] - html Attribute to control
+ * @return {Undo} undo command
+ */ var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
+    var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [
+        originalTarget
+    ]);
+    if (!markerMap[markerName]) markerMap[markerName] = new WeakMap();
+    var markerCounter = markerMap[markerName];
+    var hiddenNodes = [];
+    var elementsToKeep = new Set();
+    var elementsToStop = new Set(targets);
+    var keep = function(el) {
+        if (!el || elementsToKeep.has(el)) return;
+        elementsToKeep.add(el);
+        keep(el.parentNode);
+    };
+    targets.forEach(keep);
+    var deep = function(parent) {
+        if (!parent || elementsToStop.has(parent)) return;
+        Array.prototype.forEach.call(parent.children, function(node) {
+            if (elementsToKeep.has(node)) deep(node);
+            else try {
+                var attr = node.getAttribute(controlAttribute);
+                var alreadyHidden = attr !== null && attr !== 'false';
+                var counterValue = (counterMap.get(node) || 0) + 1;
+                var markerValue = (markerCounter.get(node) || 0) + 1;
+                counterMap.set(node, counterValue);
+                markerCounter.set(node, markerValue);
+                hiddenNodes.push(node);
+                if (counterValue === 1 && alreadyHidden) uncontrolledNodes.set(node, true);
+                if (markerValue === 1) node.setAttribute(markerName, 'true');
+                if (!alreadyHidden) node.setAttribute(controlAttribute, 'true');
+            } catch (e) {
+                console.error('aria-hidden: cannot operate on ', node, e);
+            }
+        });
+    };
+    deep(parentNode);
+    elementsToKeep.clear();
+    lockCount++;
+    return function() {
+        hiddenNodes.forEach(function(node) {
+            var counterValue = counterMap.get(node) - 1;
+            var markerValue = markerCounter.get(node) - 1;
+            counterMap.set(node, counterValue);
+            markerCounter.set(node, markerValue);
+            if (!counterValue) {
+                if (!uncontrolledNodes.has(node)) node.removeAttribute(controlAttribute);
+                uncontrolledNodes.delete(node);
+            }
+            if (!markerValue) node.removeAttribute(markerName);
+        });
+        lockCount--;
+        if (!lockCount) {
+            // clear
+            counterMap = new WeakMap();
+            counterMap = new WeakMap();
+            uncontrolledNodes = new WeakMap();
+            markerMap = {};
+        }
+    };
+};
+var hideOthers = function(originalTarget, parentNode, markerName) {
+    if (markerName === void 0) markerName = 'data-aria-hidden';
+    var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [
+        originalTarget
+    ]);
+    var activeParentNode = parentNode || getDefaultParent(originalTarget);
+    if (!activeParentNode) return function() {
+        return null;
+    };
+    // we should not hide aria-live elements - https://github.com/theKashey/aria-hidden/issues/10
+    // and script elements, as they have no impact on accessibility.
+    targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll('[aria-live], script')));
+    return applyAttributeToOthers(targets, activeParentNode, markerName, 'aria-hidden');
+};
+var inertOthers = function(originalTarget, parentNode, markerName) {
+    if (markerName === void 0) markerName = 'data-inert-ed';
+    var activeParentNode = parentNode || getDefaultParent(originalTarget);
+    if (!activeParentNode) return function() {
+        return null;
+    };
+    return applyAttributeToOthers(originalTarget, activeParentNode, markerName, 'inert');
+};
+var supportsInert = function() {
+    return typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
+};
+var suppressOthers = function(originalTarget, parentNode, markerName) {
+    if (markerName === void 0) markerName = 'data-suppressed';
+    return (supportsInert() ? inertOthers : hideOthers)(originalTarget, parentNode, markerName);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8wDEa":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$8d1c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$8d1c.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8d1c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Dialog", ()=>Dialog);
+parcelHelpers.export(exports, "DialogClose", ()=>DialogClose);
+parcelHelpers.export(exports, "DialogContent", ()=>DialogContent);
+parcelHelpers.export(exports, "DialogDescription", ()=>DialogDescription);
+parcelHelpers.export(exports, "DialogFooter", ()=>DialogFooter);
+parcelHelpers.export(exports, "DialogHeader", ()=>DialogHeader);
+parcelHelpers.export(exports, "DialogOverlay", ()=>DialogOverlay);
+parcelHelpers.export(exports, "DialogPortal", ()=>DialogPortal);
+parcelHelpers.export(exports, "DialogTitle", ()=>DialogTitle);
+parcelHelpers.export(exports, "DialogTrigger", ()=>DialogTrigger);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDialog = require("@radix-ui/react-dialog");
+var _lucideReact = require("lucide-react");
+var _utils = require("../../lib/utils");
+"use client";
+function Dialog({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Root, {
+        "data-slot": "dialog",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 12,
+        columnNumber: 10
+    }, this);
+}
+_c = Dialog;
+function DialogTrigger({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Trigger, {
+        "data-slot": "dialog-trigger",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 18,
+        columnNumber: 10
+    }, this);
+}
+_c1 = DialogTrigger;
+function DialogPortal({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Portal, {
+        "data-slot": "dialog-portal",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 24,
+        columnNumber: 10
+    }, this);
+}
+_c2 = DialogPortal;
+function DialogClose({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Close, {
+        "data-slot": "dialog-close",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 30,
+        columnNumber: 10
+    }, this);
+}
+_c3 = DialogClose;
+function DialogOverlay({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Overlay, {
+        "data-slot": "dialog-overlay",
+        className: (0, _utils.cn)("data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 38,
+        columnNumber: 5
+    }, this);
+}
+_c4 = DialogOverlay;
+function DialogContent({ className, children, showCloseButton = true, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(DialogPortal, {
+        "data-slot": "dialog-portal",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(DialogOverlay, {}, void 0, false, {
+                fileName: "components/ui/dialog.tsx",
+                lineNumber: 59,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Content, {
+                "data-slot": "dialog-content",
+                className: (0, _utils.cn)("bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg", className),
+                ...props,
+                children: [
+                    children,
+                    showCloseButton && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Close, {
+                        "data-slot": "dialog-close",
+                        className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.XIcon), {}, void 0, false, {
+                                fileName: "components/ui/dialog.tsx",
+                                lineNumber: 74,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                className: "sr-only",
+                                children: "Close"
+                            }, void 0, false, {
+                                fileName: "components/ui/dialog.tsx",
+                                lineNumber: 75,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "components/ui/dialog.tsx",
+                        lineNumber: 70,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "components/ui/dialog.tsx",
+                lineNumber: 60,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 58,
+        columnNumber: 5
+    }, this);
+}
+_c5 = DialogContent;
+function DialogHeader({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        "data-slot": "dialog-header",
+        className: (0, _utils.cn)("flex flex-col gap-2 text-center sm:text-left", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 85,
+        columnNumber: 5
+    }, this);
+}
+_c6 = DialogHeader;
+function DialogFooter({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        "data-slot": "dialog-footer",
+        className: (0, _utils.cn)("flex flex-col-reverse gap-2 sm:flex-row sm:justify-end", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 95,
+        columnNumber: 5
+    }, this);
+}
+_c7 = DialogFooter;
+function DialogTitle({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Title, {
+        "data-slot": "dialog-title",
+        className: (0, _utils.cn)("text-lg leading-none font-semibold", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 111,
+        columnNumber: 5
+    }, this);
+}
+_c8 = DialogTitle;
+function DialogDescription({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactDialog.Description, {
+        "data-slot": "dialog-description",
+        className: (0, _utils.cn)("text-muted-foreground text-sm", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/dialog.tsx",
+        lineNumber: 124,
+        columnNumber: 5
+    }, this);
+}
+_c9 = DialogDescription;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9;
+$RefreshReg$(_c, "Dialog");
+$RefreshReg$(_c1, "DialogTrigger");
+$RefreshReg$(_c2, "DialogPortal");
+$RefreshReg$(_c3, "DialogClose");
+$RefreshReg$(_c4, "DialogOverlay");
+$RefreshReg$(_c5, "DialogContent");
+$RefreshReg$(_c6, "DialogHeader");
+$RefreshReg$(_c7, "DialogFooter");
+$RefreshReg$(_c8, "DialogTitle");
+$RefreshReg$(_c9, "DialogDescription");
+
+  $parcel$ReactRefreshHelpers$8d1c.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-dialog":"5HLWS","lucide-react":"2I7qR","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"8lktE":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$2abc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$2abc.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2abc.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Popover", ()=>Popover);
+parcelHelpers.export(exports, "PopoverTrigger", ()=>PopoverTrigger);
+parcelHelpers.export(exports, "PopoverContent", ()=>PopoverContent);
+parcelHelpers.export(exports, "PopoverAnchor", ()=>PopoverAnchor);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactPopover = require("@radix-ui/react-popover");
+var _utils = require("../../lib/utils");
+function Popover({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactPopover.Root, {
+        "data-slot": "popover",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/popover.tsx",
+        lineNumber: 9,
+        columnNumber: 10
+    }, this);
+}
+_c = Popover;
+function PopoverTrigger({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactPopover.Trigger, {
+        "data-slot": "popover-trigger",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/popover.tsx",
+        lineNumber: 15,
+        columnNumber: 10
+    }, this);
+}
+_c1 = PopoverTrigger;
+function PopoverContent({ className, align = "center", sideOffset = 4, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactPopover.Portal, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactPopover.Content, {
+            "data-slot": "popover-content",
+            align: align,
+            sideOffset: sideOffset,
+            className: (0, _utils.cn)("bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden", className),
+            ...props
+        }, void 0, false, {
+            fileName: "components/ui/popover.tsx",
+            lineNumber: 26,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "components/ui/popover.tsx",
+        lineNumber: 25,
+        columnNumber: 5
+    }, this);
+}
+_c2 = PopoverContent;
+function PopoverAnchor({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactPopover.Anchor, {
+        "data-slot": "popover-anchor",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/popover.tsx",
+        lineNumber: 43,
+        columnNumber: 10
+    }, this);
+}
+_c3 = PopoverAnchor;
+var _c, _c1, _c2, _c3;
+$RefreshReg$(_c, "Popover");
+$RefreshReg$(_c1, "PopoverTrigger");
+$RefreshReg$(_c2, "PopoverContent");
+$RefreshReg$(_c3, "PopoverAnchor");
+
+  $parcel$ReactRefreshHelpers$2abc.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-popover":"jx07a","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jx07a":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Anchor", ()=>Anchor2);
+parcelHelpers.export(exports, "Arrow", ()=>Arrow2);
+parcelHelpers.export(exports, "Close", ()=>Close);
+parcelHelpers.export(exports, "Content", ()=>Content2);
+parcelHelpers.export(exports, "Popover", ()=>Popover);
+parcelHelpers.export(exports, "PopoverAnchor", ()=>PopoverAnchor);
+parcelHelpers.export(exports, "PopoverArrow", ()=>PopoverArrow);
+parcelHelpers.export(exports, "PopoverClose", ()=>PopoverClose);
+parcelHelpers.export(exports, "PopoverContent", ()=>PopoverContent);
+parcelHelpers.export(exports, "PopoverPortal", ()=>PopoverPortal);
+parcelHelpers.export(exports, "PopoverTrigger", ()=>PopoverTrigger);
+parcelHelpers.export(exports, "Portal", ()=>Portal);
+parcelHelpers.export(exports, "Root", ()=>Root2);
+parcelHelpers.export(exports, "Trigger", ()=>Trigger);
+parcelHelpers.export(exports, "createPopoverScope", ()=>createPopoverScope);
+// src/popover.tsx
+var _react = require("react");
+var _primitive = require("@radix-ui/primitive");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactContext = require("@radix-ui/react-context");
+var _reactDismissableLayer = require("@radix-ui/react-dismissable-layer");
+var _reactFocusGuards = require("@radix-ui/react-focus-guards");
+var _reactFocusScope = require("@radix-ui/react-focus-scope");
+var _reactId = require("@radix-ui/react-id");
+var _reactPopper = require("@radix-ui/react-popper");
+var _reactPortal = require("@radix-ui/react-portal");
+var _reactPresence = require("@radix-ui/react-presence");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactSlot = require("@radix-ui/react-slot");
+var _reactUseControllableState = require("@radix-ui/react-use-controllable-state");
+var _ariaHidden = require("aria-hidden");
+var _reactRemoveScroll = require("react-remove-scroll");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var POPOVER_NAME = "Popover";
+var [createPopoverContext, createPopoverScope] = (0, _reactContext.createContextScope)(POPOVER_NAME, [
+    (0, _reactPopper.createPopperScope)
+]);
+var usePopperScope = (0, _reactPopper.createPopperScope)();
+var [PopoverProvider, usePopoverContext] = createPopoverContext(POPOVER_NAME);
+var Popover = (props)=>{
+    const { __scopePopover, children, open: openProp, defaultOpen, onOpenChange, modal = false } = props;
+    const popperScope = usePopperScope(__scopePopover);
+    const triggerRef = _react.useRef(null);
+    const [hasCustomAnchor, setHasCustomAnchor] = _react.useState(false);
+    const [open, setOpen] = (0, _reactUseControllableState.useControllableState)({
+        prop: openProp,
+        defaultProp: defaultOpen ?? false,
+        onChange: onOpenChange,
+        caller: POPOVER_NAME
+    });
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactPopper.Root, {
+        ...popperScope,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopoverProvider, {
+            scope: __scopePopover,
+            contentId: (0, _reactId.useId)(),
+            triggerRef,
+            open,
+            onOpenChange: setOpen,
+            onOpenToggle: _react.useCallback(()=>setOpen((prevOpen)=>!prevOpen), [
+                setOpen
+            ]),
+            hasCustomAnchor,
+            onCustomAnchorAdd: _react.useCallback(()=>setHasCustomAnchor(true), []),
+            onCustomAnchorRemove: _react.useCallback(()=>setHasCustomAnchor(false), []),
+            modal,
+            children
+        })
+    });
+};
+Popover.displayName = POPOVER_NAME;
+var ANCHOR_NAME = "PopoverAnchor";
+var PopoverAnchor = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopover, ...anchorProps } = props;
+    const context = usePopoverContext(ANCHOR_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    const { onCustomAnchorAdd, onCustomAnchorRemove } = context;
+    _react.useEffect(()=>{
+        onCustomAnchorAdd();
+        return ()=>onCustomAnchorRemove();
+    }, [
+        onCustomAnchorAdd,
+        onCustomAnchorRemove
+    ]);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactPopper.Anchor, {
+        ...popperScope,
+        ...anchorProps,
+        ref: forwardedRef
+    });
+});
+PopoverAnchor.displayName = ANCHOR_NAME;
+var TRIGGER_NAME = "PopoverTrigger";
+var PopoverTrigger = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopover, ...triggerProps } = props;
+    const context = usePopoverContext(TRIGGER_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    const composedTriggerRef = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, context.triggerRef);
+    const trigger = /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).button, {
+        type: "button",
+        "aria-haspopup": "dialog",
+        "aria-expanded": context.open,
+        "aria-controls": context.contentId,
+        "data-state": getState(context.open),
+        ...triggerProps,
+        ref: composedTriggerRef,
+        onClick: (0, _primitive.composeEventHandlers)(props.onClick, context.onOpenToggle)
+    });
+    return context.hasCustomAnchor ? trigger : /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactPopper.Anchor, {
+        asChild: true,
+        ...popperScope,
+        children: trigger
+    });
+});
+PopoverTrigger.displayName = TRIGGER_NAME;
+var PORTAL_NAME = "PopoverPortal";
+var [PortalProvider, usePortalContext] = createPopoverContext(PORTAL_NAME, {
+    forceMount: void 0
+});
+var PopoverPortal = (props)=>{
+    const { __scopePopover, forceMount, children, container } = props;
+    const context = usePopoverContext(PORTAL_NAME, __scopePopover);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(PortalProvider, {
+        scope: __scopePopover,
+        forceMount,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPresence.Presence), {
+            present: forceMount || context.open,
+            children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPortal.Portal), {
+                asChild: true,
+                container,
+                children
+            })
+        })
+    });
+};
+PopoverPortal.displayName = PORTAL_NAME;
+var CONTENT_NAME = "PopoverContent";
+var PopoverContent = _react.forwardRef((props, forwardedRef)=>{
+    const portalContext = usePortalContext(CONTENT_NAME, props.__scopePopover);
+    const { forceMount = portalContext.forceMount, ...contentProps } = props;
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPresence.Presence), {
+        present: forceMount || context.open,
+        children: context.modal ? /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopoverContentModal, {
+            ...contentProps,
+            ref: forwardedRef
+        }) : /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopoverContentNonModal, {
+            ...contentProps,
+            ref: forwardedRef
+        })
+    });
+});
+PopoverContent.displayName = CONTENT_NAME;
+var Slot = (0, _reactSlot.createSlot)("PopoverContent.RemoveScroll");
+var PopoverContentModal = _react.forwardRef((props, forwardedRef)=>{
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    const contentRef = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, contentRef);
+    const isRightClickOutsideRef = _react.useRef(false);
+    _react.useEffect(()=>{
+        const content = contentRef.current;
+        if (content) return (0, _ariaHidden.hideOthers)(content);
+    }, []);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactRemoveScroll.RemoveScroll), {
+        as: Slot,
+        allowPinchZoom: true,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopoverContentImpl, {
+            ...props,
+            ref: composedRefs,
+            trapFocus: context.open,
+            disableOutsidePointerEvents: true,
+            onCloseAutoFocus: (0, _primitive.composeEventHandlers)(props.onCloseAutoFocus, (event)=>{
+                event.preventDefault();
+                if (!isRightClickOutsideRef.current) context.triggerRef.current?.focus();
+            }),
+            onPointerDownOutside: (0, _primitive.composeEventHandlers)(props.onPointerDownOutside, (event)=>{
+                const originalEvent = event.detail.originalEvent;
+                const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+                const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+                isRightClickOutsideRef.current = isRightClick;
+            }, {
+                checkForDefaultPrevented: false
+            }),
+            onFocusOutside: (0, _primitive.composeEventHandlers)(props.onFocusOutside, (event)=>event.preventDefault(), {
+                checkForDefaultPrevented: false
+            })
+        })
+    });
+});
+var PopoverContentNonModal = _react.forwardRef((props, forwardedRef)=>{
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    const hasInteractedOutsideRef = _react.useRef(false);
+    const hasPointerDownOutsideRef = _react.useRef(false);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopoverContentImpl, {
+        ...props,
+        ref: forwardedRef,
+        trapFocus: false,
+        disableOutsidePointerEvents: false,
+        onCloseAutoFocus: (event)=>{
+            props.onCloseAutoFocus?.(event);
+            if (!event.defaultPrevented) {
+                if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+                event.preventDefault();
+            }
+            hasInteractedOutsideRef.current = false;
+            hasPointerDownOutsideRef.current = false;
+        },
+        onInteractOutside: (event)=>{
+            props.onInteractOutside?.(event);
+            if (!event.defaultPrevented) {
+                hasInteractedOutsideRef.current = true;
+                if (event.detail.originalEvent.type === "pointerdown") hasPointerDownOutsideRef.current = true;
+            }
+            const target = event.target;
+            const targetIsTrigger = context.triggerRef.current?.contains(target);
+            if (targetIsTrigger) event.preventDefault();
+            if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) event.preventDefault();
+        }
+    });
+});
+var PopoverContentImpl = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopover, trapFocus, onOpenAutoFocus, onCloseAutoFocus, disableOutsidePointerEvents, onEscapeKeyDown, onPointerDownOutside, onFocusOutside, onInteractOutside, ...contentProps } = props;
+    const context = usePopoverContext(CONTENT_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    (0, _reactFocusGuards.useFocusGuards)();
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactFocusScope.FocusScope), {
+        asChild: true,
+        loop: true,
+        trapped: trapFocus,
+        onMountAutoFocus: onOpenAutoFocus,
+        onUnmountAutoFocus: onCloseAutoFocus,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactDismissableLayer.DismissableLayer), {
+            asChild: true,
+            disableOutsidePointerEvents,
+            onInteractOutside,
+            onEscapeKeyDown,
+            onPointerDownOutside,
+            onFocusOutside,
+            onDismiss: ()=>context.onOpenChange(false),
+            children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactPopper.Content, {
+                "data-state": getState(context.open),
+                role: "dialog",
+                id: context.contentId,
+                ...popperScope,
+                ...contentProps,
+                ref: forwardedRef,
+                style: {
+                    ...contentProps.style,
+                    "--radix-popover-content-transform-origin": "var(--radix-popper-transform-origin)",
+                    "--radix-popover-content-available-width": "var(--radix-popper-available-width)",
+                    "--radix-popover-content-available-height": "var(--radix-popper-available-height)",
+                    "--radix-popover-trigger-width": "var(--radix-popper-anchor-width)",
+                    "--radix-popover-trigger-height": "var(--radix-popper-anchor-height)"
+                }
+            })
+        })
+    });
+});
+var CLOSE_NAME = "PopoverClose";
+var PopoverClose = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopover, ...closeProps } = props;
+    const context = usePopoverContext(CLOSE_NAME, __scopePopover);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).button, {
+        type: "button",
+        ...closeProps,
+        ref: forwardedRef,
+        onClick: (0, _primitive.composeEventHandlers)(props.onClick, ()=>context.onOpenChange(false))
+    });
+});
+PopoverClose.displayName = CLOSE_NAME;
+var ARROW_NAME = "PopoverArrow";
+var PopoverArrow = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopover, ...arrowProps } = props;
+    const popperScope = usePopperScope(__scopePopover);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactPopper.Arrow, {
+        ...popperScope,
+        ...arrowProps,
+        ref: forwardedRef
+    });
+});
+PopoverArrow.displayName = ARROW_NAME;
+function getState(open) {
+    return open ? "open" : "closed";
+}
+var Root2 = Popover;
+var Anchor2 = PopoverAnchor;
+var Trigger = PopoverTrigger;
+var Portal = PopoverPortal;
+var Content2 = PopoverContent;
+var Close = PopoverClose;
+var Arrow2 = PopoverArrow;
+
+},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-context":"aRUGq","@radix-ui/react-dismissable-layer":"bY4sh","@radix-ui/react-focus-guards":"dAs9Q","@radix-ui/react-focus-scope":"9mDTe","@radix-ui/react-id":"SmdnD","@radix-ui/react-popper":"5hPZ1","@radix-ui/react-portal":"29eEC","@radix-ui/react-presence":"5MpGF","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-slot":"049tr","@radix-ui/react-use-controllable-state":"59sI3","aria-hidden":"2QB19","react-remove-scroll":"8jRAr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5hPZ1":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ALIGN_OPTIONS", ()=>ALIGN_OPTIONS);
+parcelHelpers.export(exports, "Anchor", ()=>Anchor);
+parcelHelpers.export(exports, "Arrow", ()=>Arrow);
+parcelHelpers.export(exports, "Content", ()=>Content);
+parcelHelpers.export(exports, "Popper", ()=>Popper);
+parcelHelpers.export(exports, "PopperAnchor", ()=>PopperAnchor);
+parcelHelpers.export(exports, "PopperArrow", ()=>PopperArrow);
+parcelHelpers.export(exports, "PopperContent", ()=>PopperContent);
+parcelHelpers.export(exports, "Root", ()=>Root2);
+parcelHelpers.export(exports, "SIDE_OPTIONS", ()=>SIDE_OPTIONS);
+parcelHelpers.export(exports, "createPopperScope", ()=>createPopperScope);
+// src/popper.tsx
+var _react = require("react");
+var _reactDom = require("@floating-ui/react-dom");
+var _reactArrow = require("@radix-ui/react-arrow");
+var _reactComposeRefs = require("@radix-ui/react-compose-refs");
+var _reactContext = require("@radix-ui/react-context");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _reactUseCallbackRef = require("@radix-ui/react-use-callback-ref");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+var _reactUseSize = require("@radix-ui/react-use-size");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var SIDE_OPTIONS = [
+    "top",
+    "right",
+    "bottom",
+    "left"
+];
+var ALIGN_OPTIONS = [
+    "start",
+    "center",
+    "end"
+];
+var POPPER_NAME = "Popper";
+var [createPopperContext, createPopperScope] = (0, _reactContext.createContextScope)(POPPER_NAME);
+var [PopperProvider, usePopperContext] = createPopperContext(POPPER_NAME);
+var Popper = (props)=>{
+    const { __scopePopper, children } = props;
+    const [anchor, setAnchor] = _react.useState(null);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopperProvider, {
+        scope: __scopePopper,
+        anchor,
+        onAnchorChange: setAnchor,
+        children
+    });
+};
+Popper.displayName = POPPER_NAME;
+var ANCHOR_NAME = "PopperAnchor";
+var PopperAnchor = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopper, virtualRef, ...anchorProps } = props;
+    const context = usePopperContext(ANCHOR_NAME, __scopePopper);
+    const ref = _react.useRef(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, ref);
+    _react.useEffect(()=>{
+        context.onAnchorChange(virtualRef?.current || ref.current);
+    });
+    return virtualRef ? null : /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+        ...anchorProps,
+        ref: composedRefs
+    });
+});
+PopperAnchor.displayName = ANCHOR_NAME;
+var CONTENT_NAME = "PopperContent";
+var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME);
+var PopperContent = _react.forwardRef((props, forwardedRef)=>{
+    const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, avoidCollisions = true, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, updatePositionStrategy = "optimized", onPlaced, ...contentProps } = props;
+    const context = usePopperContext(CONTENT_NAME, __scopePopper);
+    const [content, setContent] = _react.useState(null);
+    const composedRefs = (0, _reactComposeRefs.useComposedRefs)(forwardedRef, (node)=>setContent(node));
+    const [arrow, setArrow] = _react.useState(null);
+    const arrowSize = (0, _reactUseSize.useSize)(arrow);
+    const arrowWidth = arrowSize?.width ?? 0;
+    const arrowHeight = arrowSize?.height ?? 0;
+    const desiredPlacement = side + (align !== "center" ? "-" + align : "");
+    const collisionPadding = typeof collisionPaddingProp === "number" ? collisionPaddingProp : {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        ...collisionPaddingProp
+    };
+    const boundary = Array.isArray(collisionBoundary) ? collisionBoundary : [
+        collisionBoundary
+    ];
+    const hasExplicitBoundaries = boundary.length > 0;
+    const detectOverflowOptions = {
+        padding: collisionPadding,
+        boundary: boundary.filter(isNotNull),
+        // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
+        altBoundary: hasExplicitBoundaries
+    };
+    const { refs, floatingStyles, placement, isPositioned, middlewareData } = (0, _reactDom.useFloating)({
+        // default to `fixed` strategy so users don't have to pick and we also avoid focus scroll issues
+        strategy: "fixed",
+        placement: desiredPlacement,
+        whileElementsMounted: (...args)=>{
+            const cleanup = (0, _reactDom.autoUpdate)(...args, {
+                animationFrame: updatePositionStrategy === "always"
+            });
+            return cleanup;
+        },
+        elements: {
+            reference: context.anchor
+        },
+        middleware: [
+            (0, _reactDom.offset)({
+                mainAxis: sideOffset + arrowHeight,
+                alignmentAxis: alignOffset
+            }),
+            avoidCollisions && (0, _reactDom.shift)({
+                mainAxis: true,
+                crossAxis: false,
+                limiter: sticky === "partial" ? (0, _reactDom.limitShift)() : void 0,
+                ...detectOverflowOptions
+            }),
+            avoidCollisions && (0, _reactDom.flip)({
+                ...detectOverflowOptions
+            }),
+            (0, _reactDom.size)({
+                ...detectOverflowOptions,
+                apply: ({ elements, rects, availableWidth, availableHeight })=>{
+                    const { width: anchorWidth, height: anchorHeight } = rects.reference;
+                    const contentStyle = elements.floating.style;
+                    contentStyle.setProperty("--radix-popper-available-width", `${availableWidth}px`);
+                    contentStyle.setProperty("--radix-popper-available-height", `${availableHeight}px`);
+                    contentStyle.setProperty("--radix-popper-anchor-width", `${anchorWidth}px`);
+                    contentStyle.setProperty("--radix-popper-anchor-height", `${anchorHeight}px`);
+                }
+            }),
+            arrow && (0, _reactDom.arrow)({
+                element: arrow,
+                padding: arrowPadding
+            }),
+            transformOrigin({
+                arrowWidth,
+                arrowHeight
+            }),
+            hideWhenDetached && (0, _reactDom.hide)({
+                strategy: "referenceHidden",
+                ...detectOverflowOptions
+            })
+        ]
+    });
+    const [placedSide, placedAlign] = getSideAndAlignFromPlacement(placement);
+    const handlePlaced = (0, _reactUseCallbackRef.useCallbackRef)(onPlaced);
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        if (isPositioned) handlePlaced?.();
+    }, [
+        isPositioned,
+        handlePlaced
+    ]);
+    const arrowX = middlewareData.arrow?.x;
+    const arrowY = middlewareData.arrow?.y;
+    const cannotCenterArrow = middlewareData.arrow?.centerOffset !== 0;
+    const [contentZIndex, setContentZIndex] = _react.useState();
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        if (content) setContentZIndex(window.getComputedStyle(content).zIndex);
+    }, [
+        content
+    ]);
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)("div", {
+        ref: refs.setFloating,
+        "data-radix-popper-content-wrapper": "",
+        style: {
+            ...floatingStyles,
+            transform: isPositioned ? floatingStyles.transform : "translate(0, -200%)",
+            // keep off the page when measuring
+            minWidth: "max-content",
+            zIndex: contentZIndex,
+            ["--radix-popper-transform-origin"]: [
+                middlewareData.transformOrigin?.x,
+                middlewareData.transformOrigin?.y
+            ].join(" "),
+            // hide the content if using the hide middleware and should be hidden
+            // set visibility to hidden and disable pointer events so the UI behaves
+            // as if the PopperContent isn't there at all
+            ...middlewareData.hide?.referenceHidden && {
+                visibility: "hidden",
+                pointerEvents: "none"
+            }
+        },
+        dir: props.dir,
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(PopperContentProvider, {
+            scope: __scopePopper,
+            placedSide,
+            onArrowChange: setArrow,
+            arrowX,
+            arrowY,
+            shouldHideArrow: cannotCenterArrow,
+            children: /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).div, {
+                "data-side": placedSide,
+                "data-align": placedAlign,
+                ...contentProps,
+                ref: composedRefs,
+                style: {
+                    ...contentProps.style,
+                    // if the PopperContent hasn't been placed yet (not all measurements done)
+                    // we prevent animations so that users's animation don't kick in too early referring wrong sides
+                    animation: !isPositioned ? "none" : void 0
+                }
+            })
+        })
+    });
+});
+PopperContent.displayName = CONTENT_NAME;
+var ARROW_NAME = "PopperArrow";
+var OPPOSITE_SIDE = {
+    top: "bottom",
+    right: "left",
+    bottom: "top",
+    left: "right"
+};
+var PopperArrow = _react.forwardRef(function PopperArrow2(props, forwardedRef) {
+    const { __scopePopper, ...arrowProps } = props;
+    const contentContext = useContentContext(ARROW_NAME, __scopePopper);
+    const baseSide = OPPOSITE_SIDE[contentContext.placedSide];
+    return(// we have to use an extra wrapper because `ResizeObserver` (used by `useSize`)
+    // doesn't report size as we'd expect on SVG elements.
+    // it reports their bounding box which is effectively the largest path inside the SVG.
+    /* @__PURE__ */ (0, _jsxRuntime.jsx)("span", {
+        ref: contentContext.onArrowChange,
+        style: {
+            position: "absolute",
+            left: contentContext.arrowX,
+            top: contentContext.arrowY,
+            [baseSide]: 0,
+            transformOrigin: {
+                top: "",
+                right: "0 0",
+                bottom: "center 0",
+                left: "100% 0"
+            }[contentContext.placedSide],
+            transform: {
+                top: "translateY(100%)",
+                right: "translateY(50%) rotate(90deg) translateX(-50%)",
+                bottom: `rotate(180deg)`,
+                left: "translateY(50%) rotate(-90deg) translateX(50%)"
+            }[contentContext.placedSide],
+            visibility: contentContext.shouldHideArrow ? "hidden" : void 0
+        },
+        children: /* @__PURE__ */ (0, _jsxRuntime.jsx)(_reactArrow.Root, {
+            ...arrowProps,
+            ref: forwardedRef,
+            style: {
+                ...arrowProps.style,
+                // ensures the element can be measured correctly (mostly for if SVG)
+                display: "block"
+            }
+        })
+    }));
+});
+PopperArrow.displayName = ARROW_NAME;
+function isNotNull(value) {
+    return value !== null;
+}
+var transformOrigin = (options)=>({
+        name: "transformOrigin",
+        options,
+        fn (data) {
+            const { placement, rects, middlewareData } = data;
+            const cannotCenterArrow = middlewareData.arrow?.centerOffset !== 0;
+            const isArrowHidden = cannotCenterArrow;
+            const arrowWidth = isArrowHidden ? 0 : options.arrowWidth;
+            const arrowHeight = isArrowHidden ? 0 : options.arrowHeight;
+            const [placedSide, placedAlign] = getSideAndAlignFromPlacement(placement);
+            const noArrowAlign = {
+                start: "0%",
+                center: "50%",
+                end: "100%"
+            }[placedAlign];
+            const arrowXCenter = (middlewareData.arrow?.x ?? 0) + arrowWidth / 2;
+            const arrowYCenter = (middlewareData.arrow?.y ?? 0) + arrowHeight / 2;
+            let x = "";
+            let y = "";
+            if (placedSide === "bottom") {
+                x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
+                y = `${-arrowHeight}px`;
+            } else if (placedSide === "top") {
+                x = isArrowHidden ? noArrowAlign : `${arrowXCenter}px`;
+                y = `${rects.floating.height + arrowHeight}px`;
+            } else if (placedSide === "right") {
+                x = `${-arrowHeight}px`;
+                y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
+            } else if (placedSide === "left") {
+                x = `${rects.floating.width + arrowHeight}px`;
+                y = isArrowHidden ? noArrowAlign : `${arrowYCenter}px`;
+            }
+            return {
+                data: {
+                    x,
+                    y
+                }
+            };
+        }
+    });
+function getSideAndAlignFromPlacement(placement) {
+    const [side, align = "center"] = placement.split("-");
+    return [
+        side,
+        align
+    ];
+}
+var Root2 = Popper;
+var Anchor = PopperAnchor;
+var Content = PopperContent;
+var Arrow = PopperArrow;
+
+},{"react":"jMk1U","@floating-ui/react-dom":"4vY0I","@radix-ui/react-arrow":"40aoY","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-context":"aRUGq","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-use-callback-ref":"92pad","@radix-ui/react-use-layout-effect":"enSS6","@radix-ui/react-use-size":"kuUSP","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4vY0I":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "autoUpdate", ()=>(0, _dom.autoUpdate));
+parcelHelpers.export(exports, "computePosition", ()=>(0, _dom.computePosition));
+parcelHelpers.export(exports, "detectOverflow", ()=>(0, _dom.detectOverflow));
+parcelHelpers.export(exports, "getOverflowAncestors", ()=>(0, _dom.getOverflowAncestors));
+parcelHelpers.export(exports, "platform", ()=>(0, _dom.platform));
+parcelHelpers.export(exports, "arrow", ()=>arrow);
+parcelHelpers.export(exports, "autoPlacement", ()=>autoPlacement);
+parcelHelpers.export(exports, "flip", ()=>flip);
+parcelHelpers.export(exports, "hide", ()=>hide);
+parcelHelpers.export(exports, "inline", ()=>inline);
+parcelHelpers.export(exports, "limitShift", ()=>limitShift);
+parcelHelpers.export(exports, "offset", ()=>offset);
+parcelHelpers.export(exports, "shift", ()=>shift);
+parcelHelpers.export(exports, "size", ()=>size);
+parcelHelpers.export(exports, "useFloating", ()=>useFloating);
+var _dom = require("@floating-ui/dom");
+var _react = require("react");
+var _reactDom = require("react-dom");
+var isClient = typeof document !== 'undefined';
+var noop = function noop() {};
+var index = isClient ? (0, _react.useLayoutEffect) : noop;
+// Fork of `fast-deep-equal` that only does the comparisons we need and compares
+// functions
+function deepEqual(a, b) {
+    if (a === b) return true;
+    if (typeof a !== typeof b) return false;
+    if (typeof a === 'function' && a.toString() === b.toString()) return true;
+    let length;
+    let i;
+    let keys;
+    if (a && b && typeof a === 'object') {
+        if (Array.isArray(a)) {
+            length = a.length;
+            if (length !== b.length) return false;
+            for(i = length; i-- !== 0;){
+                if (!deepEqual(a[i], b[i])) return false;
+            }
+            return true;
+        }
+        keys = Object.keys(a);
+        length = keys.length;
+        if (length !== Object.keys(b).length) return false;
+        for(i = length; i-- !== 0;){
+            if (!({}).hasOwnProperty.call(b, keys[i])) return false;
+        }
+        for(i = length; i-- !== 0;){
+            const key = keys[i];
+            if (key === '_owner' && a.$$typeof) continue;
+            if (!deepEqual(a[key], b[key])) return false;
+        }
+        return true;
+    }
+    return a !== a && b !== b;
+}
+function getDPR(element) {
+    if (typeof window === 'undefined') return 1;
+    const win = element.ownerDocument.defaultView || window;
+    return win.devicePixelRatio || 1;
+}
+function roundByDPR(element, value) {
+    const dpr = getDPR(element);
+    return Math.round(value * dpr) / dpr;
+}
+function useLatestRef(value) {
+    const ref = _react.useRef(value);
+    index(()=>{
+        ref.current = value;
+    });
+    return ref;
+}
+/**
+ * Provides data to position a floating element.
+ * @see https://floating-ui.com/docs/useFloating
+ */ function useFloating(options) {
+    if (options === void 0) options = {};
+    const { placement = 'bottom', strategy = 'absolute', middleware = [], platform, elements: { reference: externalReference, floating: externalFloating } = {}, transform = true, whileElementsMounted, open } = options;
+    const [data, setData] = _react.useState({
+        x: 0,
+        y: 0,
+        strategy,
+        placement,
+        middlewareData: {},
+        isPositioned: false
+    });
+    const [latestMiddleware, setLatestMiddleware] = _react.useState(middleware);
+    if (!deepEqual(latestMiddleware, middleware)) setLatestMiddleware(middleware);
+    const [_reference, _setReference] = _react.useState(null);
+    const [_floating, _setFloating] = _react.useState(null);
+    const setReference = _react.useCallback((node)=>{
+        if (node !== referenceRef.current) {
+            referenceRef.current = node;
+            _setReference(node);
+        }
+    }, []);
+    const setFloating = _react.useCallback((node)=>{
+        if (node !== floatingRef.current) {
+            floatingRef.current = node;
+            _setFloating(node);
+        }
+    }, []);
+    const referenceEl = externalReference || _reference;
+    const floatingEl = externalFloating || _floating;
+    const referenceRef = _react.useRef(null);
+    const floatingRef = _react.useRef(null);
+    const dataRef = _react.useRef(data);
+    const hasWhileElementsMounted = whileElementsMounted != null;
+    const whileElementsMountedRef = useLatestRef(whileElementsMounted);
+    const platformRef = useLatestRef(platform);
+    const openRef = useLatestRef(open);
+    const update = _react.useCallback(()=>{
+        if (!referenceRef.current || !floatingRef.current) return;
+        const config = {
+            placement,
+            strategy,
+            middleware: latestMiddleware
+        };
+        if (platformRef.current) config.platform = platformRef.current;
+        (0, _dom.computePosition)(referenceRef.current, floatingRef.current, config).then((data)=>{
+            const fullData = {
+                ...data,
+                // The floating element's position may be recomputed while it's closed
+                // but still mounted (such as when transitioning out). To ensure
+                // `isPositioned` will be `false` initially on the next open, avoid
+                // setting it to `true` when `open === false` (must be specified).
+                isPositioned: openRef.current !== false
+            };
+            if (isMountedRef.current && !deepEqual(dataRef.current, fullData)) {
+                dataRef.current = fullData;
+                _reactDom.flushSync(()=>{
+                    setData(fullData);
+                });
+            }
+        });
+    }, [
+        latestMiddleware,
+        placement,
+        strategy,
+        platformRef,
+        openRef
+    ]);
+    index(()=>{
+        if (open === false && dataRef.current.isPositioned) {
+            dataRef.current.isPositioned = false;
+            setData((data)=>({
+                    ...data,
+                    isPositioned: false
+                }));
+        }
+    }, [
+        open
+    ]);
+    const isMountedRef = _react.useRef(false);
+    index(()=>{
+        isMountedRef.current = true;
+        return ()=>{
+            isMountedRef.current = false;
+        };
+    }, []);
+    index(()=>{
+        if (referenceEl) referenceRef.current = referenceEl;
+        if (floatingEl) floatingRef.current = floatingEl;
+        if (referenceEl && floatingEl) {
+            if (whileElementsMountedRef.current) return whileElementsMountedRef.current(referenceEl, floatingEl, update);
+            update();
+        }
+    }, [
+        referenceEl,
+        floatingEl,
+        update,
+        whileElementsMountedRef,
+        hasWhileElementsMounted
+    ]);
+    const refs = _react.useMemo(()=>({
+            reference: referenceRef,
+            floating: floatingRef,
+            setReference,
+            setFloating
+        }), [
+        setReference,
+        setFloating
+    ]);
+    const elements = _react.useMemo(()=>({
+            reference: referenceEl,
+            floating: floatingEl
+        }), [
+        referenceEl,
+        floatingEl
+    ]);
+    const floatingStyles = _react.useMemo(()=>{
+        const initialStyles = {
+            position: strategy,
+            left: 0,
+            top: 0
+        };
+        if (!elements.floating) return initialStyles;
+        const x = roundByDPR(elements.floating, data.x);
+        const y = roundByDPR(elements.floating, data.y);
+        if (transform) return {
+            ...initialStyles,
+            transform: "translate(" + x + "px, " + y + "px)",
+            ...getDPR(elements.floating) >= 1.5 && {
+                willChange: 'transform'
+            }
+        };
+        return {
+            position: strategy,
+            left: x,
+            top: y
+        };
+    }, [
+        strategy,
+        transform,
+        elements.floating,
+        data.x,
+        data.y
+    ]);
+    return _react.useMemo(()=>({
+            ...data,
+            update,
+            refs,
+            elements,
+            floatingStyles
+        }), [
+        data,
+        update,
+        refs,
+        elements,
+        floatingStyles
+    ]);
+}
+/**
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
+ * This wraps the core `arrow` middleware to allow React refs as the element.
+ * @see https://floating-ui.com/docs/arrow
+ */ const arrow$1 = (options)=>{
+    function isRef(value) {
+        return ({}).hasOwnProperty.call(value, 'current');
+    }
+    return {
+        name: 'arrow',
+        options,
+        fn (state) {
+            const { element, padding } = typeof options === 'function' ? options(state) : options;
+            if (element && isRef(element)) {
+                if (element.current != null) return (0, _dom.arrow)({
+                    element: element.current,
+                    padding
+                }).fn(state);
+                return {};
+            }
+            if (element) return (0, _dom.arrow)({
+                element,
+                padding
+            }).fn(state);
+            return {};
+        }
+    };
+};
+/**
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
+ * @see https://floating-ui.com/docs/offset
+ */ const offset = (options, deps)=>({
+        ...(0, _dom.offset)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Optimizes the visibility of the floating element by shifting it in order to
+ * keep it in view when it will overflow the clipping boundary.
+ * @see https://floating-ui.com/docs/shift
+ */ const shift = (options, deps)=>({
+        ...(0, _dom.shift)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Built-in `limiter` that will stop `shift()` at a certain point.
+ */ const limitShift = (options, deps)=>({
+        ...(0, _dom.limitShift)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Optimizes the visibility of the floating element by flipping the `placement`
+ * in order to keep it in view when the preferred placement(s) will overflow the
+ * clipping boundary. Alternative to `autoPlacement`.
+ * @see https://floating-ui.com/docs/flip
+ */ const flip = (options, deps)=>({
+        ...(0, _dom.flip)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Provides data that allows you to change the size of the floating element —
+ * for instance, prevent it from overflowing the clipping boundary or match the
+ * width of the reference element.
+ * @see https://floating-ui.com/docs/size
+ */ const size = (options, deps)=>({
+        ...(0, _dom.size)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Optimizes the visibility of the floating element by choosing the placement
+ * that has the most space available automatically, without needing to specify a
+ * preferred placement. Alternative to `flip`.
+ * @see https://floating-ui.com/docs/autoPlacement
+ */ const autoPlacement = (options, deps)=>({
+        ...(0, _dom.autoPlacement)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Provides data to hide the floating element in applicable situations, such as
+ * when it is not in the same clipping context as the reference element.
+ * @see https://floating-ui.com/docs/hide
+ */ const hide = (options, deps)=>({
+        ...(0, _dom.hide)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Provides improved positioning for inline reference elements that can span
+ * over multiple lines, such as hyperlinks or range selections.
+ * @see https://floating-ui.com/docs/inline
+ */ const inline = (options, deps)=>({
+        ...(0, _dom.inline)(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+/**
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
+ * This wraps the core `arrow` middleware to allow React refs as the element.
+ * @see https://floating-ui.com/docs/arrow
+ */ const arrow = (options, deps)=>({
+        ...arrow$1(options),
+        options: [
+            options,
+            deps
+        ]
+    });
+
+},{"@floating-ui/dom":"9ipqt","react":"jMk1U","react-dom":"i4X7T","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9ipqt":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getOverflowAncestors", ()=>(0, _dom.getOverflowAncestors));
+parcelHelpers.export(exports, "arrow", ()=>arrow);
+parcelHelpers.export(exports, "autoPlacement", ()=>autoPlacement);
+parcelHelpers.export(exports, "autoUpdate", ()=>autoUpdate);
+parcelHelpers.export(exports, "computePosition", ()=>computePosition);
+parcelHelpers.export(exports, "detectOverflow", ()=>detectOverflow);
+parcelHelpers.export(exports, "flip", ()=>flip);
+parcelHelpers.export(exports, "hide", ()=>hide);
+parcelHelpers.export(exports, "inline", ()=>inline);
+parcelHelpers.export(exports, "limitShift", ()=>limitShift);
+parcelHelpers.export(exports, "offset", ()=>offset);
+parcelHelpers.export(exports, "platform", ()=>platform);
+parcelHelpers.export(exports, "shift", ()=>shift);
+parcelHelpers.export(exports, "size", ()=>size);
+var _core = require("@floating-ui/core");
+var _utils = require("@floating-ui/utils");
+var _dom = require("@floating-ui/utils/dom");
+function getCssDimensions(element) {
+    const css = (0, _dom.getComputedStyle)(element);
+    // In testing environments, the `width` and `height` properties are empty
+    // strings for SVG elements, returning NaN. Fallback to `0` in this case.
+    let width = parseFloat(css.width) || 0;
+    let height = parseFloat(css.height) || 0;
+    const hasOffset = (0, _dom.isHTMLElement)(element);
+    const offsetWidth = hasOffset ? element.offsetWidth : width;
+    const offsetHeight = hasOffset ? element.offsetHeight : height;
+    const shouldFallback = (0, _utils.round)(width) !== offsetWidth || (0, _utils.round)(height) !== offsetHeight;
+    if (shouldFallback) {
+        width = offsetWidth;
+        height = offsetHeight;
+    }
+    return {
+        width,
+        height,
+        $: shouldFallback
+    };
+}
+function unwrapElement(element) {
+    return !(0, _dom.isElement)(element) ? element.contextElement : element;
+}
+function getScale(element) {
+    const domElement = unwrapElement(element);
+    if (!(0, _dom.isHTMLElement)(domElement)) return (0, _utils.createCoords)(1);
+    const rect = domElement.getBoundingClientRect();
+    const { width, height, $ } = getCssDimensions(domElement);
+    let x = ($ ? (0, _utils.round)(rect.width) : rect.width) / width;
+    let y = ($ ? (0, _utils.round)(rect.height) : rect.height) / height;
+    // 0, NaN, or Infinity should always fallback to 1.
+    if (!x || !Number.isFinite(x)) x = 1;
+    if (!y || !Number.isFinite(y)) y = 1;
+    return {
+        x,
+        y
+    };
+}
+const noOffsets = /*#__PURE__*/ (0, _utils.createCoords)(0);
+function getVisualOffsets(element) {
+    const win = (0, _dom.getWindow)(element);
+    if (!(0, _dom.isWebKit)() || !win.visualViewport) return noOffsets;
+    return {
+        x: win.visualViewport.offsetLeft,
+        y: win.visualViewport.offsetTop
+    };
+}
+function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
+    if (isFixed === void 0) isFixed = false;
+    if (!floatingOffsetParent || isFixed && floatingOffsetParent !== (0, _dom.getWindow)(element)) return false;
+    return isFixed;
+}
+function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetParent) {
+    if (includeScale === void 0) includeScale = false;
+    if (isFixedStrategy === void 0) isFixedStrategy = false;
+    const clientRect = element.getBoundingClientRect();
+    const domElement = unwrapElement(element);
+    let scale = (0, _utils.createCoords)(1);
+    if (includeScale) {
+        if (offsetParent) {
+            if ((0, _dom.isElement)(offsetParent)) scale = getScale(offsetParent);
+        } else scale = getScale(element);
+    }
+    const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : (0, _utils.createCoords)(0);
+    let x = (clientRect.left + visualOffsets.x) / scale.x;
+    let y = (clientRect.top + visualOffsets.y) / scale.y;
+    let width = clientRect.width / scale.x;
+    let height = clientRect.height / scale.y;
+    if (domElement) {
+        const win = (0, _dom.getWindow)(domElement);
+        const offsetWin = offsetParent && (0, _dom.isElement)(offsetParent) ? (0, _dom.getWindow)(offsetParent) : offsetParent;
+        let currentWin = win;
+        let currentIFrame = (0, _dom.getFrameElement)(currentWin);
+        while(currentIFrame && offsetParent && offsetWin !== currentWin){
+            const iframeScale = getScale(currentIFrame);
+            const iframeRect = currentIFrame.getBoundingClientRect();
+            const css = (0, _dom.getComputedStyle)(currentIFrame);
+            const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
+            const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
+            x *= iframeScale.x;
+            y *= iframeScale.y;
+            width *= iframeScale.x;
+            height *= iframeScale.y;
+            x += left;
+            y += top;
+            currentWin = (0, _dom.getWindow)(currentIFrame);
+            currentIFrame = (0, _dom.getFrameElement)(currentWin);
+        }
+    }
+    return (0, _core.rectToClientRect)({
+        width,
+        height,
+        x,
+        y
+    });
+}
+// If <html> has a CSS width greater than the viewport, then this will be
+// incorrect for RTL.
+function getWindowScrollBarX(element, rect) {
+    const leftScroll = (0, _dom.getNodeScroll)(element).scrollLeft;
+    if (!rect) return getBoundingClientRect((0, _dom.getDocumentElement)(element)).left + leftScroll;
+    return rect.left + leftScroll;
+}
+function getHTMLOffset(documentElement, scroll, ignoreScrollbarX) {
+    if (ignoreScrollbarX === void 0) ignoreScrollbarX = false;
+    const htmlRect = documentElement.getBoundingClientRect();
+    const x = htmlRect.left + scroll.scrollLeft - (ignoreScrollbarX ? 0 : // RTL <body> scrollbar.
+    getWindowScrollBarX(documentElement, htmlRect));
+    const y = htmlRect.top + scroll.scrollTop;
+    return {
+        x,
+        y
+    };
+}
+function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
+    let { elements, rect, offsetParent, strategy } = _ref;
+    const isFixed = strategy === 'fixed';
+    const documentElement = (0, _dom.getDocumentElement)(offsetParent);
+    const topLayer = elements ? (0, _dom.isTopLayer)(elements.floating) : false;
+    if (offsetParent === documentElement || topLayer && isFixed) return rect;
+    let scroll = {
+        scrollLeft: 0,
+        scrollTop: 0
+    };
+    let scale = (0, _utils.createCoords)(1);
+    const offsets = (0, _utils.createCoords)(0);
+    const isOffsetParentAnElement = (0, _dom.isHTMLElement)(offsetParent);
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+        if ((0, _dom.getNodeName)(offsetParent) !== 'body' || (0, _dom.isOverflowElement)(documentElement)) scroll = (0, _dom.getNodeScroll)(offsetParent);
+        if ((0, _dom.isHTMLElement)(offsetParent)) {
+            const offsetRect = getBoundingClientRect(offsetParent);
+            scale = getScale(offsetParent);
+            offsets.x = offsetRect.x + offsetParent.clientLeft;
+            offsets.y = offsetRect.y + offsetParent.clientTop;
+        }
+    }
+    const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll, true) : (0, _utils.createCoords)(0);
+    return {
+        width: rect.width * scale.x,
+        height: rect.height * scale.y,
+        x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x + htmlOffset.x,
+        y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y + htmlOffset.y
+    };
+}
+function getClientRects(element) {
+    return Array.from(element.getClientRects());
+}
+// Gets the entire size of the scrollable document area, even extending outside
+// of the `<html>` and `<body>` rect bounds if horizontally scrollable.
+function getDocumentRect(element) {
+    const html = (0, _dom.getDocumentElement)(element);
+    const scroll = (0, _dom.getNodeScroll)(element);
+    const body = element.ownerDocument.body;
+    const width = (0, _utils.max)(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
+    const height = (0, _utils.max)(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
+    let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+    const y = -scroll.scrollTop;
+    if ((0, _dom.getComputedStyle)(body).direction === 'rtl') x += (0, _utils.max)(html.clientWidth, body.clientWidth) - width;
+    return {
+        width,
+        height,
+        x,
+        y
+    };
+}
+function getViewportRect(element, strategy) {
+    const win = (0, _dom.getWindow)(element);
+    const html = (0, _dom.getDocumentElement)(element);
+    const visualViewport = win.visualViewport;
+    let width = html.clientWidth;
+    let height = html.clientHeight;
+    let x = 0;
+    let y = 0;
+    if (visualViewport) {
+        width = visualViewport.width;
+        height = visualViewport.height;
+        const visualViewportBased = (0, _dom.isWebKit)();
+        if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
+            x = visualViewport.offsetLeft;
+            y = visualViewport.offsetTop;
+        }
+    }
+    return {
+        width,
+        height,
+        x,
+        y
+    };
+}
+const absoluteOrFixed = /*#__PURE__*/ new Set([
+    'absolute',
+    'fixed'
+]);
+// Returns the inner client rect, subtracting scrollbars if present.
+function getInnerBoundingClientRect(element, strategy) {
+    const clientRect = getBoundingClientRect(element, true, strategy === 'fixed');
+    const top = clientRect.top + element.clientTop;
+    const left = clientRect.left + element.clientLeft;
+    const scale = (0, _dom.isHTMLElement)(element) ? getScale(element) : (0, _utils.createCoords)(1);
+    const width = element.clientWidth * scale.x;
+    const height = element.clientHeight * scale.y;
+    const x = left * scale.x;
+    const y = top * scale.y;
+    return {
+        width,
+        height,
+        x,
+        y
+    };
+}
+function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
+    let rect;
+    if (clippingAncestor === 'viewport') rect = getViewportRect(element, strategy);
+    else if (clippingAncestor === 'document') rect = getDocumentRect((0, _dom.getDocumentElement)(element));
+    else if ((0, _dom.isElement)(clippingAncestor)) rect = getInnerBoundingClientRect(clippingAncestor, strategy);
+    else {
+        const visualOffsets = getVisualOffsets(element);
+        rect = {
+            x: clippingAncestor.x - visualOffsets.x,
+            y: clippingAncestor.y - visualOffsets.y,
+            width: clippingAncestor.width,
+            height: clippingAncestor.height
+        };
+    }
+    return (0, _core.rectToClientRect)(rect);
+}
+function hasFixedPositionAncestor(element, stopNode) {
+    const parentNode = (0, _dom.getParentNode)(element);
+    if (parentNode === stopNode || !(0, _dom.isElement)(parentNode) || (0, _dom.isLastTraversableNode)(parentNode)) return false;
+    return (0, _dom.getComputedStyle)(parentNode).position === 'fixed' || hasFixedPositionAncestor(parentNode, stopNode);
+}
+// A "clipping ancestor" is an `overflow` element with the characteristic of
+// clipping (or hiding) child elements. This returns all clipping ancestors
+// of the given element up the tree.
+function getClippingElementAncestors(element, cache) {
+    const cachedResult = cache.get(element);
+    if (cachedResult) return cachedResult;
+    let result = (0, _dom.getOverflowAncestors)(element, [], false).filter((el)=>(0, _dom.isElement)(el) && (0, _dom.getNodeName)(el) !== 'body');
+    let currentContainingBlockComputedStyle = null;
+    const elementIsFixed = (0, _dom.getComputedStyle)(element).position === 'fixed';
+    let currentNode = elementIsFixed ? (0, _dom.getParentNode)(element) : element;
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+    while((0, _dom.isElement)(currentNode) && !(0, _dom.isLastTraversableNode)(currentNode)){
+        const computedStyle = (0, _dom.getComputedStyle)(currentNode);
+        const currentNodeIsContaining = (0, _dom.isContainingBlock)(currentNode);
+        if (!currentNodeIsContaining && computedStyle.position === 'fixed') currentContainingBlockComputedStyle = null;
+        const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && absoluteOrFixed.has(currentContainingBlockComputedStyle.position) || (0, _dom.isOverflowElement)(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
+        if (shouldDropCurrentNode) // Drop non-containing blocks.
+        result = result.filter((ancestor)=>ancestor !== currentNode);
+        else // Record last containing block for next iteration.
+        currentContainingBlockComputedStyle = computedStyle;
+        currentNode = (0, _dom.getParentNode)(currentNode);
+    }
+    cache.set(element, result);
+    return result;
+}
+// Gets the maximum area that the element is visible in due to any number of
+// clipping ancestors.
+function getClippingRect(_ref) {
+    let { element, boundary, rootBoundary, strategy } = _ref;
+    const elementClippingAncestors = boundary === 'clippingAncestors' ? (0, _dom.isTopLayer)(element) ? [] : getClippingElementAncestors(element, this._c) : [].concat(boundary);
+    const clippingAncestors = [
+        ...elementClippingAncestors,
+        rootBoundary
+    ];
+    const firstClippingAncestor = clippingAncestors[0];
+    const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor)=>{
+        const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
+        accRect.top = (0, _utils.max)(rect.top, accRect.top);
+        accRect.right = (0, _utils.min)(rect.right, accRect.right);
+        accRect.bottom = (0, _utils.min)(rect.bottom, accRect.bottom);
+        accRect.left = (0, _utils.max)(rect.left, accRect.left);
+        return accRect;
+    }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+    return {
+        width: clippingRect.right - clippingRect.left,
+        height: clippingRect.bottom - clippingRect.top,
+        x: clippingRect.left,
+        y: clippingRect.top
+    };
+}
+function getDimensions(element) {
+    const { width, height } = getCssDimensions(element);
+    return {
+        width,
+        height
+    };
+}
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+    const isOffsetParentAnElement = (0, _dom.isHTMLElement)(offsetParent);
+    const documentElement = (0, _dom.getDocumentElement)(offsetParent);
+    const isFixed = strategy === 'fixed';
+    const rect = getBoundingClientRect(element, true, isFixed, offsetParent);
+    let scroll = {
+        scrollLeft: 0,
+        scrollTop: 0
+    };
+    const offsets = (0, _utils.createCoords)(0);
+    // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
+    // Firefox with layout.scrollbar.side = 3 in about:config to test this.
+    function setLeftRTLScrollbarOffset() {
+        offsets.x = getWindowScrollBarX(documentElement);
+    }
+    if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+        if ((0, _dom.getNodeName)(offsetParent) !== 'body' || (0, _dom.isOverflowElement)(documentElement)) scroll = (0, _dom.getNodeScroll)(offsetParent);
+        if (isOffsetParentAnElement) {
+            const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
+            offsets.x = offsetRect.x + offsetParent.clientLeft;
+            offsets.y = offsetRect.y + offsetParent.clientTop;
+        } else if (documentElement) setLeftRTLScrollbarOffset();
+    }
+    if (isFixed && !isOffsetParentAnElement && documentElement) setLeftRTLScrollbarOffset();
+    const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : (0, _utils.createCoords)(0);
+    const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
+    const y = rect.top + scroll.scrollTop - offsets.y - htmlOffset.y;
+    return {
+        x,
+        y,
+        width: rect.width,
+        height: rect.height
+    };
+}
+function isStaticPositioned(element) {
+    return (0, _dom.getComputedStyle)(element).position === 'static';
+}
+function getTrueOffsetParent(element, polyfill) {
+    if (!(0, _dom.isHTMLElement)(element) || (0, _dom.getComputedStyle)(element).position === 'fixed') return null;
+    if (polyfill) return polyfill(element);
+    let rawOffsetParent = element.offsetParent;
+    // Firefox returns the <html> element as the offsetParent if it's non-static,
+    // while Chrome and Safari return the <body> element. The <body> element must
+    // be used to perform the correct calculations even if the <html> element is
+    // non-static.
+    if ((0, _dom.getDocumentElement)(element) === rawOffsetParent) rawOffsetParent = rawOffsetParent.ownerDocument.body;
+    return rawOffsetParent;
+}
+// Gets the closest ancestor positioned element. Handles some edge cases,
+// such as table ancestors and cross browser bugs.
+function getOffsetParent(element, polyfill) {
+    const win = (0, _dom.getWindow)(element);
+    if ((0, _dom.isTopLayer)(element)) return win;
+    if (!(0, _dom.isHTMLElement)(element)) {
+        let svgOffsetParent = (0, _dom.getParentNode)(element);
+        while(svgOffsetParent && !(0, _dom.isLastTraversableNode)(svgOffsetParent)){
+            if ((0, _dom.isElement)(svgOffsetParent) && !isStaticPositioned(svgOffsetParent)) return svgOffsetParent;
+            svgOffsetParent = (0, _dom.getParentNode)(svgOffsetParent);
+        }
+        return win;
+    }
+    let offsetParent = getTrueOffsetParent(element, polyfill);
+    while(offsetParent && (0, _dom.isTableElement)(offsetParent) && isStaticPositioned(offsetParent))offsetParent = getTrueOffsetParent(offsetParent, polyfill);
+    if (offsetParent && (0, _dom.isLastTraversableNode)(offsetParent) && isStaticPositioned(offsetParent) && !(0, _dom.isContainingBlock)(offsetParent)) return win;
+    return offsetParent || (0, _dom.getContainingBlock)(element) || win;
+}
+const getElementRects = async function(data) {
+    const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
+    const getDimensionsFn = this.getDimensions;
+    const floatingDimensions = await getDimensionsFn(data.floating);
+    return {
+        reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy),
+        floating: {
+            x: 0,
+            y: 0,
+            width: floatingDimensions.width,
+            height: floatingDimensions.height
+        }
+    };
+};
+function isRTL(element) {
+    return (0, _dom.getComputedStyle)(element).direction === 'rtl';
+}
+const platform = {
+    convertOffsetParentRelativeRectToViewportRelativeRect,
+    getDocumentElement: (0, _dom.getDocumentElement),
+    getClippingRect,
+    getOffsetParent,
+    getElementRects,
+    getClientRects,
+    getDimensions,
+    getScale,
+    isElement: (0, _dom.isElement),
+    isRTL
+};
+function rectsAreEqual(a, b) {
+    return a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
+}
+// https://samthor.au/2021/observing-dom/
+function observeMove(element, onMove) {
+    let io = null;
+    let timeoutId;
+    const root = (0, _dom.getDocumentElement)(element);
+    function cleanup() {
+        var _io;
+        clearTimeout(timeoutId);
+        (_io = io) == null || _io.disconnect();
+        io = null;
+    }
+    function refresh(skip, threshold) {
+        if (skip === void 0) skip = false;
+        if (threshold === void 0) threshold = 1;
+        cleanup();
+        const elementRectForRootMargin = element.getBoundingClientRect();
+        const { left, top, width, height } = elementRectForRootMargin;
+        if (!skip) onMove();
+        if (!width || !height) return;
+        const insetTop = (0, _utils.floor)(top);
+        const insetRight = (0, _utils.floor)(root.clientWidth - (left + width));
+        const insetBottom = (0, _utils.floor)(root.clientHeight - (top + height));
+        const insetLeft = (0, _utils.floor)(left);
+        const rootMargin = -insetTop + "px " + -insetRight + "px " + -insetBottom + "px " + -insetLeft + "px";
+        const options = {
+            rootMargin,
+            threshold: (0, _utils.max)(0, (0, _utils.min)(1, threshold)) || 1
+        };
+        let isFirstUpdate = true;
+        function handleObserve(entries) {
+            const ratio = entries[0].intersectionRatio;
+            if (ratio !== threshold) {
+                if (!isFirstUpdate) return refresh();
+                if (!ratio) // If the reference is clipped, the ratio is 0. Throttle the refresh
+                // to prevent an infinite loop of updates.
+                timeoutId = setTimeout(()=>{
+                    refresh(false, 1e-7);
+                }, 1000);
+                else refresh(false, ratio);
+            }
+            if (ratio === 1 && !rectsAreEqual(elementRectForRootMargin, element.getBoundingClientRect())) // It's possible that even though the ratio is reported as 1, the
+            // element is not actually fully within the IntersectionObserver's root
+            // area anymore. This can happen under performance constraints. This may
+            // be a bug in the browser's IntersectionObserver implementation. To
+            // work around this, we compare the element's bounding rect now with
+            // what it was at the time we created the IntersectionObserver. If they
+            // are not equal then the element moved, so we refresh.
+            refresh();
+            isFirstUpdate = false;
+        }
+        // Older browsers don't support a `document` as the root and will throw an
+        // error.
+        try {
+            io = new IntersectionObserver(handleObserve, {
+                ...options,
+                // Handle <iframe>s
+                root: root.ownerDocument
+            });
+        } catch (_e) {
+            io = new IntersectionObserver(handleObserve, options);
+        }
+        io.observe(element);
+    }
+    refresh(true);
+    return cleanup;
+}
+/**
+ * Automatically updates the position of the floating element when necessary.
+ * Should only be called when the floating element is mounted on the DOM or
+ * visible on the screen.
+ * @returns cleanup function that should be invoked when the floating element is
+ * removed from the DOM or hidden from the screen.
+ * @see https://floating-ui.com/docs/autoUpdate
+ */ function autoUpdate(reference, floating, update, options) {
+    if (options === void 0) options = {};
+    const { ancestorScroll = true, ancestorResize = true, elementResize = typeof ResizeObserver === 'function', layoutShift = typeof IntersectionObserver === 'function', animationFrame = false } = options;
+    const referenceEl = unwrapElement(reference);
+    const ancestors = ancestorScroll || ancestorResize ? [
+        ...referenceEl ? (0, _dom.getOverflowAncestors)(referenceEl) : [],
+        ...(0, _dom.getOverflowAncestors)(floating)
+    ] : [];
+    ancestors.forEach((ancestor)=>{
+        ancestorScroll && ancestor.addEventListener('scroll', update, {
+            passive: true
+        });
+        ancestorResize && ancestor.addEventListener('resize', update);
+    });
+    const cleanupIo = referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
+    let reobserveFrame = -1;
+    let resizeObserver = null;
+    if (elementResize) {
+        resizeObserver = new ResizeObserver((_ref)=>{
+            let [firstEntry] = _ref;
+            if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
+                // Prevent update loops when using the `size` middleware.
+                // https://github.com/floating-ui/floating-ui/issues/1740
+                resizeObserver.unobserve(floating);
+                cancelAnimationFrame(reobserveFrame);
+                reobserveFrame = requestAnimationFrame(()=>{
+                    var _resizeObserver;
+                    (_resizeObserver = resizeObserver) == null || _resizeObserver.observe(floating);
+                });
+            }
+            update();
+        });
+        if (referenceEl && !animationFrame) resizeObserver.observe(referenceEl);
+        resizeObserver.observe(floating);
+    }
+    let frameId;
+    let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
+    if (animationFrame) frameLoop();
+    function frameLoop() {
+        const nextRefRect = getBoundingClientRect(reference);
+        if (prevRefRect && !rectsAreEqual(prevRefRect, nextRefRect)) update();
+        prevRefRect = nextRefRect;
+        frameId = requestAnimationFrame(frameLoop);
+    }
+    update();
+    return ()=>{
+        var _resizeObserver2;
+        ancestors.forEach((ancestor)=>{
+            ancestorScroll && ancestor.removeEventListener('scroll', update);
+            ancestorResize && ancestor.removeEventListener('resize', update);
+        });
+        cleanupIo == null || cleanupIo();
+        (_resizeObserver2 = resizeObserver) == null || _resizeObserver2.disconnect();
+        resizeObserver = null;
+        if (animationFrame) cancelAnimationFrame(frameId);
+    };
+}
+/**
+ * Resolves with an object of overflow side offsets that determine how much the
+ * element is overflowing a given clipping boundary on each side.
+ * - positive = overflowing the boundary by that number of pixels
+ * - negative = how many pixels left before it will overflow
+ * - 0 = lies flush with the boundary
+ * @see https://floating-ui.com/docs/detectOverflow
+ */ const detectOverflow = (0, _core.detectOverflow);
+/**
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
+ * @see https://floating-ui.com/docs/offset
+ */ const offset = (0, _core.offset);
+/**
+ * Optimizes the visibility of the floating element by choosing the placement
+ * that has the most space available automatically, without needing to specify a
+ * preferred placement. Alternative to `flip`.
+ * @see https://floating-ui.com/docs/autoPlacement
+ */ const autoPlacement = (0, _core.autoPlacement);
+/**
+ * Optimizes the visibility of the floating element by shifting it in order to
+ * keep it in view when it will overflow the clipping boundary.
+ * @see https://floating-ui.com/docs/shift
+ */ const shift = (0, _core.shift);
+/**
+ * Optimizes the visibility of the floating element by flipping the `placement`
+ * in order to keep it in view when the preferred placement(s) will overflow the
+ * clipping boundary. Alternative to `autoPlacement`.
+ * @see https://floating-ui.com/docs/flip
+ */ const flip = (0, _core.flip);
+/**
+ * Provides data that allows you to change the size of the floating element —
+ * for instance, prevent it from overflowing the clipping boundary or match the
+ * width of the reference element.
+ * @see https://floating-ui.com/docs/size
+ */ const size = (0, _core.size);
+/**
+ * Provides data to hide the floating element in applicable situations, such as
+ * when it is not in the same clipping context as the reference element.
+ * @see https://floating-ui.com/docs/hide
+ */ const hide = (0, _core.hide);
+/**
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
+ * @see https://floating-ui.com/docs/arrow
+ */ const arrow = (0, _core.arrow);
+/**
+ * Provides improved positioning for inline reference elements that can span
+ * over multiple lines, such as hyperlinks or range selections.
+ * @see https://floating-ui.com/docs/inline
+ */ const inline = (0, _core.inline);
+/**
+ * Built-in `limiter` that will stop `shift()` at a certain point.
+ */ const limitShift = (0, _core.limitShift);
+/**
+ * Computes the `x` and `y` coordinates that will place the floating element
+ * next to a given reference element.
+ */ const computePosition = (reference, floating, options)=>{
+    // This caches the expensive `getClippingElementAncestors` function so that
+    // multiple lifecycle resets re-use the same result. It only lives for a
+    // single call. If other functions become expensive, we can add them as well.
+    const cache = new Map();
+    const mergedOptions = {
+        platform,
+        ...options
+    };
+    const platformWithCache = {
+        ...mergedOptions.platform,
+        _c: cache
+    };
+    return (0, _core.computePosition)(reference, floating, {
+        ...mergedOptions,
+        platform: platformWithCache
+    });
+};
+
+},{"@floating-ui/core":"9Yzy9","@floating-ui/utils":"jY82y","@floating-ui/utils/dom":"Dh21b","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9Yzy9":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "rectToClientRect", ()=>(0, _utils.rectToClientRect));
+parcelHelpers.export(exports, "arrow", ()=>arrow);
+parcelHelpers.export(exports, "autoPlacement", ()=>autoPlacement);
+parcelHelpers.export(exports, "computePosition", ()=>computePosition);
+parcelHelpers.export(exports, "detectOverflow", ()=>detectOverflow);
+parcelHelpers.export(exports, "flip", ()=>flip);
+parcelHelpers.export(exports, "hide", ()=>hide);
+parcelHelpers.export(exports, "inline", ()=>inline);
+parcelHelpers.export(exports, "limitShift", ()=>limitShift);
+parcelHelpers.export(exports, "offset", ()=>offset);
+parcelHelpers.export(exports, "shift", ()=>shift);
+parcelHelpers.export(exports, "size", ()=>size);
+var _utils = require("@floating-ui/utils");
+function computeCoordsFromPlacement(_ref, placement, rtl) {
+    let { reference, floating } = _ref;
+    const sideAxis = (0, _utils.getSideAxis)(placement);
+    const alignmentAxis = (0, _utils.getAlignmentAxis)(placement);
+    const alignLength = (0, _utils.getAxisLength)(alignmentAxis);
+    const side = (0, _utils.getSide)(placement);
+    const isVertical = sideAxis === 'y';
+    const commonX = reference.x + reference.width / 2 - floating.width / 2;
+    const commonY = reference.y + reference.height / 2 - floating.height / 2;
+    const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
+    let coords;
+    switch(side){
+        case 'top':
+            coords = {
+                x: commonX,
+                y: reference.y - floating.height
+            };
+            break;
+        case 'bottom':
+            coords = {
+                x: commonX,
+                y: reference.y + reference.height
+            };
+            break;
+        case 'right':
+            coords = {
+                x: reference.x + reference.width,
+                y: commonY
+            };
+            break;
+        case 'left':
+            coords = {
+                x: reference.x - floating.width,
+                y: commonY
+            };
+            break;
+        default:
+            coords = {
+                x: reference.x,
+                y: reference.y
+            };
+    }
+    switch((0, _utils.getAlignment)(placement)){
+        case 'start':
+            coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+            break;
+        case 'end':
+            coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+            break;
+    }
+    return coords;
+}
+/**
+ * Computes the `x` and `y` coordinates that will place the floating element
+ * next to a given reference element.
+ *
+ * This export does not have any `platform` interface logic. You will need to
+ * write one for the platform you are using Floating UI with.
+ */ const computePosition = async (reference, floating, config)=>{
+    const { placement = 'bottom', strategy = 'absolute', middleware = [], platform } = config;
+    const validMiddleware = middleware.filter(Boolean);
+    const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(floating));
+    let rects = await platform.getElementRects({
+        reference,
+        floating,
+        strategy
+    });
+    let { x, y } = computeCoordsFromPlacement(rects, placement, rtl);
+    let statefulPlacement = placement;
+    let middlewareData = {};
+    let resetCount = 0;
+    for(let i = 0; i < validMiddleware.length; i++){
+        const { name, fn } = validMiddleware[i];
+        const { x: nextX, y: nextY, data, reset } = await fn({
+            x,
+            y,
+            initialPlacement: placement,
+            placement: statefulPlacement,
+            strategy,
+            middlewareData,
+            rects,
+            platform,
+            elements: {
+                reference,
+                floating
+            }
+        });
+        x = nextX != null ? nextX : x;
+        y = nextY != null ? nextY : y;
+        middlewareData = {
+            ...middlewareData,
+            [name]: {
+                ...middlewareData[name],
+                ...data
+            }
+        };
+        if (reset && resetCount <= 50) {
+            resetCount++;
+            if (typeof reset === 'object') {
+                if (reset.placement) statefulPlacement = reset.placement;
+                if (reset.rects) rects = reset.rects === true ? await platform.getElementRects({
+                    reference,
+                    floating,
+                    strategy
+                }) : reset.rects;
+                ({ x, y } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+            }
+            i = -1;
+        }
+    }
+    return {
+        x,
+        y,
+        placement: statefulPlacement,
+        strategy,
+        middlewareData
+    };
+};
+/**
+ * Resolves with an object of overflow side offsets that determine how much the
+ * element is overflowing a given clipping boundary on each side.
+ * - positive = overflowing the boundary by that number of pixels
+ * - negative = how many pixels left before it will overflow
+ * - 0 = lies flush with the boundary
+ * @see https://floating-ui.com/docs/detectOverflow
+ */ async function detectOverflow(state, options) {
+    var _await$platform$isEle;
+    if (options === void 0) options = {};
+    const { x, y, platform, rects, elements, strategy } = state;
+    const { boundary = 'clippingAncestors', rootBoundary = 'viewport', elementContext = 'floating', altBoundary = false, padding = 0 } = (0, _utils.evaluate)(options, state);
+    const paddingObject = (0, _utils.getPaddingObject)(padding);
+    const altContext = elementContext === 'floating' ? 'reference' : 'floating';
+    const element = elements[altBoundary ? altContext : elementContext];
+    const clippingClientRect = (0, _utils.rectToClientRect)(await platform.getClippingRect({
+        element: ((_await$platform$isEle = await (platform.isElement == null ? void 0 : platform.isElement(element))) != null ? _await$platform$isEle : true) ? element : element.contextElement || await (platform.getDocumentElement == null ? void 0 : platform.getDocumentElement(elements.floating)),
+        boundary,
+        rootBoundary,
+        strategy
+    }));
+    const rect = elementContext === 'floating' ? {
+        x,
+        y,
+        width: rects.floating.width,
+        height: rects.floating.height
+    } : rects.reference;
+    const offsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating));
+    const offsetScale = await (platform.isElement == null ? void 0 : platform.isElement(offsetParent)) ? await (platform.getScale == null ? void 0 : platform.getScale(offsetParent)) || {
+        x: 1,
+        y: 1
+    } : {
+        x: 1,
+        y: 1
+    };
+    const elementClientRect = (0, _utils.rectToClientRect)(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
+        elements,
+        rect,
+        offsetParent,
+        strategy
+    }) : rect);
+    return {
+        top: (clippingClientRect.top - elementClientRect.top + paddingObject.top) / offsetScale.y,
+        bottom: (elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom) / offsetScale.y,
+        left: (clippingClientRect.left - elementClientRect.left + paddingObject.left) / offsetScale.x,
+        right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
+    };
+}
+/**
+ * Provides data to position an inner element of the floating element so that it
+ * appears centered to the reference element.
+ * @see https://floating-ui.com/docs/arrow
+ */ const arrow = (options)=>({
+        name: 'arrow',
+        options,
+        async fn (state) {
+            const { x, y, placement, rects, platform, elements, middlewareData } = state;
+            // Since `element` is required, we don't Partial<> the type.
+            const { element, padding = 0 } = (0, _utils.evaluate)(options, state) || {};
+            if (element == null) return {};
+            const paddingObject = (0, _utils.getPaddingObject)(padding);
+            const coords = {
+                x,
+                y
+            };
+            const axis = (0, _utils.getAlignmentAxis)(placement);
+            const length = (0, _utils.getAxisLength)(axis);
+            const arrowDimensions = await platform.getDimensions(element);
+            const isYAxis = axis === 'y';
+            const minProp = isYAxis ? 'top' : 'left';
+            const maxProp = isYAxis ? 'bottom' : 'right';
+            const clientProp = isYAxis ? 'clientHeight' : 'clientWidth';
+            const endDiff = rects.reference[length] + rects.reference[axis] - coords[axis] - rects.floating[length];
+            const startDiff = coords[axis] - rects.reference[axis];
+            const arrowOffsetParent = await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(element));
+            let clientSize = arrowOffsetParent ? arrowOffsetParent[clientProp] : 0;
+            // DOM platform can return `window` as the `offsetParent`.
+            if (!clientSize || !await (platform.isElement == null ? void 0 : platform.isElement(arrowOffsetParent))) clientSize = elements.floating[clientProp] || rects.floating[length];
+            const centerToReference = endDiff / 2 - startDiff / 2;
+            // If the padding is large enough that it causes the arrow to no longer be
+            // centered, modify the padding so that it is centered.
+            const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
+            const minPadding = (0, _utils.min)(paddingObject[minProp], largestPossiblePadding);
+            const maxPadding = (0, _utils.min)(paddingObject[maxProp], largestPossiblePadding);
+            // Make sure the arrow doesn't overflow the floating element if the center
+            // point is outside the floating element's bounds.
+            const min$1 = minPadding;
+            const max = clientSize - arrowDimensions[length] - maxPadding;
+            const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
+            const offset = (0, _utils.clamp)(min$1, center, max);
+            // If the reference is small enough that the arrow's padding causes it to
+            // to point to nothing for an aligned placement, adjust the offset of the
+            // floating element itself. To ensure `shift()` continues to take action,
+            // a single reset is performed when this is true.
+            const shouldAddOffset = !middlewareData.arrow && (0, _utils.getAlignment)(placement) != null && center !== offset && rects.reference[length] / 2 - (center < min$1 ? minPadding : maxPadding) - arrowDimensions[length] / 2 < 0;
+            const alignmentOffset = shouldAddOffset ? center < min$1 ? center - min$1 : center - max : 0;
+            return {
+                [axis]: coords[axis] + alignmentOffset,
+                data: {
+                    [axis]: offset,
+                    centerOffset: center - offset - alignmentOffset,
+                    ...shouldAddOffset && {
+                        alignmentOffset
+                    }
+                },
+                reset: shouldAddOffset
+            };
+        }
+    });
+function getPlacementList(alignment, autoAlignment, allowedPlacements) {
+    const allowedPlacementsSortedByAlignment = alignment ? [
+        ...allowedPlacements.filter((placement)=>(0, _utils.getAlignment)(placement) === alignment),
+        ...allowedPlacements.filter((placement)=>(0, _utils.getAlignment)(placement) !== alignment)
+    ] : allowedPlacements.filter((placement)=>(0, _utils.getSide)(placement) === placement);
+    return allowedPlacementsSortedByAlignment.filter((placement)=>{
+        if (alignment) return (0, _utils.getAlignment)(placement) === alignment || (autoAlignment ? (0, _utils.getOppositeAlignmentPlacement)(placement) !== placement : false);
+        return true;
+    });
+}
+/**
+ * Optimizes the visibility of the floating element by choosing the placement
+ * that has the most space available automatically, without needing to specify a
+ * preferred placement. Alternative to `flip`.
+ * @see https://floating-ui.com/docs/autoPlacement
+ */ const autoPlacement = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'autoPlacement',
+        options,
+        async fn (state) {
+            var _middlewareData$autoP, _middlewareData$autoP2, _placementsThatFitOnE;
+            const { rects, middlewareData, placement, platform, elements } = state;
+            const { crossAxis = false, alignment, allowedPlacements = (0, _utils.placements), autoAlignment = true, ...detectOverflowOptions } = (0, _utils.evaluate)(options, state);
+            const placements$1 = alignment !== undefined || allowedPlacements === (0, _utils.placements) ? getPlacementList(alignment || null, autoAlignment, allowedPlacements) : allowedPlacements;
+            const overflow = await detectOverflow(state, detectOverflowOptions);
+            const currentIndex = ((_middlewareData$autoP = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP.index) || 0;
+            const currentPlacement = placements$1[currentIndex];
+            if (currentPlacement == null) return {};
+            const alignmentSides = (0, _utils.getAlignmentSides)(currentPlacement, rects, await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)));
+            // Make `computeCoords` start from the right place.
+            if (placement !== currentPlacement) return {
+                reset: {
+                    placement: placements$1[0]
+                }
+            };
+            const currentOverflows = [
+                overflow[(0, _utils.getSide)(currentPlacement)],
+                overflow[alignmentSides[0]],
+                overflow[alignmentSides[1]]
+            ];
+            const allOverflows = [
+                ...((_middlewareData$autoP2 = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP2.overflows) || [],
+                {
+                    placement: currentPlacement,
+                    overflows: currentOverflows
+                }
+            ];
+            const nextPlacement = placements$1[currentIndex + 1];
+            // There are more placements to check.
+            if (nextPlacement) return {
+                data: {
+                    index: currentIndex + 1,
+                    overflows: allOverflows
+                },
+                reset: {
+                    placement: nextPlacement
+                }
+            };
+            const placementsSortedByMostSpace = allOverflows.map((d)=>{
+                const alignment = (0, _utils.getAlignment)(d.placement);
+                return [
+                    d.placement,
+                    alignment && crossAxis ? // Check along the mainAxis and main crossAxis side.
+                    d.overflows.slice(0, 2).reduce((acc, v)=>acc + v, 0) : // Check only the mainAxis.
+                    d.overflows[0],
+                    d.overflows
+                ];
+            }).sort((a, b)=>a[1] - b[1]);
+            const placementsThatFitOnEachSide = placementsSortedByMostSpace.filter((d)=>d[2].slice(0, // Aligned placements should not check their opposite crossAxis
+                // side.
+                (0, _utils.getAlignment)(d[0]) ? 2 : 3).every((v)=>v <= 0));
+            const resetPlacement = ((_placementsThatFitOnE = placementsThatFitOnEachSide[0]) == null ? void 0 : _placementsThatFitOnE[0]) || placementsSortedByMostSpace[0][0];
+            if (resetPlacement !== placement) return {
+                data: {
+                    index: currentIndex + 1,
+                    overflows: allOverflows
+                },
+                reset: {
+                    placement: resetPlacement
+                }
+            };
+            return {};
+        }
+    };
+};
+/**
+ * Optimizes the visibility of the floating element by flipping the `placement`
+ * in order to keep it in view when the preferred placement(s) will overflow the
+ * clipping boundary. Alternative to `autoPlacement`.
+ * @see https://floating-ui.com/docs/flip
+ */ const flip = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'flip',
+        options,
+        async fn (state) {
+            var _middlewareData$arrow, _middlewareData$flip;
+            const { placement, middlewareData, rects, initialPlacement, platform, elements } = state;
+            const { mainAxis: checkMainAxis = true, crossAxis: checkCrossAxis = true, fallbackPlacements: specifiedFallbackPlacements, fallbackStrategy = 'bestFit', fallbackAxisSideDirection = 'none', flipAlignment = true, ...detectOverflowOptions } = (0, _utils.evaluate)(options, state);
+            // If a reset by the arrow was caused due to an alignment offset being
+            // added, we should skip any logic now since `flip()` has already done its
+            // work.
+            // https://github.com/floating-ui/floating-ui/issues/2549#issuecomment-1719601643
+            if ((_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) return {};
+            const side = (0, _utils.getSide)(placement);
+            const initialSideAxis = (0, _utils.getSideAxis)(initialPlacement);
+            const isBasePlacement = (0, _utils.getSide)(initialPlacement) === initialPlacement;
+            const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
+            const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [
+                (0, _utils.getOppositePlacement)(initialPlacement)
+            ] : (0, _utils.getExpandedPlacements)(initialPlacement));
+            const hasFallbackAxisSideDirection = fallbackAxisSideDirection !== 'none';
+            if (!specifiedFallbackPlacements && hasFallbackAxisSideDirection) fallbackPlacements.push(...(0, _utils.getOppositeAxisPlacements)(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
+            const placements = [
+                initialPlacement,
+                ...fallbackPlacements
+            ];
+            const overflow = await detectOverflow(state, detectOverflowOptions);
+            const overflows = [];
+            let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
+            if (checkMainAxis) overflows.push(overflow[side]);
+            if (checkCrossAxis) {
+                const sides = (0, _utils.getAlignmentSides)(placement, rects, rtl);
+                overflows.push(overflow[sides[0]], overflow[sides[1]]);
+            }
+            overflowsData = [
+                ...overflowsData,
+                {
+                    placement,
+                    overflows
+                }
+            ];
+            // One or more sides is overflowing.
+            if (!overflows.every((side)=>side <= 0)) {
+                var _middlewareData$flip2, _overflowsData$filter;
+                const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
+                const nextPlacement = placements[nextIndex];
+                if (nextPlacement) {
+                    const ignoreCrossAxisOverflow = checkCrossAxis === 'alignment' ? initialSideAxis !== (0, _utils.getSideAxis)(nextPlacement) : false;
+                    if (!ignoreCrossAxisOverflow || // We leave the current main axis only if every placement on that axis
+                    // overflows the main axis.
+                    overflowsData.every((d)=>(0, _utils.getSideAxis)(d.placement) === initialSideAxis ? d.overflows[0] > 0 : true)) // Try next placement and re-run the lifecycle.
+                    return {
+                        data: {
+                            index: nextIndex,
+                            overflows: overflowsData
+                        },
+                        reset: {
+                            placement: nextPlacement
+                        }
+                    };
+                }
+                // First, find the candidates that fit on the mainAxis side of overflow,
+                // then find the placement that fits the best on the main crossAxis side.
+                let resetPlacement = (_overflowsData$filter = overflowsData.filter((d)=>d.overflows[0] <= 0).sort((a, b)=>a.overflows[1] - b.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
+                // Otherwise fallback.
+                if (!resetPlacement) switch(fallbackStrategy){
+                    case 'bestFit':
+                        {
+                            var _overflowsData$filter2;
+                            const placement = (_overflowsData$filter2 = overflowsData.filter((d)=>{
+                                if (hasFallbackAxisSideDirection) {
+                                    const currentSideAxis = (0, _utils.getSideAxis)(d.placement);
+                                    return currentSideAxis === initialSideAxis || // Create a bias to the `y` side axis due to horizontal
+                                    // reading directions favoring greater width.
+                                    currentSideAxis === 'y';
+                                }
+                                return true;
+                            }).map((d)=>[
+                                    d.placement,
+                                    d.overflows.filter((overflow)=>overflow > 0).reduce((acc, overflow)=>acc + overflow, 0)
+                                ]).sort((a, b)=>a[1] - b[1])[0]) == null ? void 0 : _overflowsData$filter2[0];
+                            if (placement) resetPlacement = placement;
+                            break;
+                        }
+                    case 'initialPlacement':
+                        resetPlacement = initialPlacement;
+                        break;
+                }
+                if (placement !== resetPlacement) return {
+                    reset: {
+                        placement: resetPlacement
+                    }
+                };
+            }
+            return {};
+        }
+    };
+};
+function getSideOffsets(overflow, rect) {
+    return {
+        top: overflow.top - rect.height,
+        right: overflow.right - rect.width,
+        bottom: overflow.bottom - rect.height,
+        left: overflow.left - rect.width
+    };
+}
+function isAnySideFullyClipped(overflow) {
+    return (0, _utils.sides).some((side)=>overflow[side] >= 0);
+}
+/**
+ * Provides data to hide the floating element in applicable situations, such as
+ * when it is not in the same clipping context as the reference element.
+ * @see https://floating-ui.com/docs/hide
+ */ const hide = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'hide',
+        options,
+        async fn (state) {
+            const { rects } = state;
+            const { strategy = 'referenceHidden', ...detectOverflowOptions } = (0, _utils.evaluate)(options, state);
+            switch(strategy){
+                case 'referenceHidden':
+                    {
+                        const overflow = await detectOverflow(state, {
+                            ...detectOverflowOptions,
+                            elementContext: 'reference'
+                        });
+                        const offsets = getSideOffsets(overflow, rects.reference);
+                        return {
+                            data: {
+                                referenceHiddenOffsets: offsets,
+                                referenceHidden: isAnySideFullyClipped(offsets)
+                            }
+                        };
+                    }
+                case 'escaped':
+                    {
+                        const overflow = await detectOverflow(state, {
+                            ...detectOverflowOptions,
+                            altBoundary: true
+                        });
+                        const offsets = getSideOffsets(overflow, rects.floating);
+                        return {
+                            data: {
+                                escapedOffsets: offsets,
+                                escaped: isAnySideFullyClipped(offsets)
+                            }
+                        };
+                    }
+                default:
+                    return {};
+            }
+        }
+    };
+};
+function getBoundingRect(rects) {
+    const minX = (0, _utils.min)(...rects.map((rect)=>rect.left));
+    const minY = (0, _utils.min)(...rects.map((rect)=>rect.top));
+    const maxX = (0, _utils.max)(...rects.map((rect)=>rect.right));
+    const maxY = (0, _utils.max)(...rects.map((rect)=>rect.bottom));
+    return {
+        x: minX,
+        y: minY,
+        width: maxX - minX,
+        height: maxY - minY
+    };
+}
+function getRectsByLine(rects) {
+    const sortedRects = rects.slice().sort((a, b)=>a.y - b.y);
+    const groups = [];
+    let prevRect = null;
+    for(let i = 0; i < sortedRects.length; i++){
+        const rect = sortedRects[i];
+        if (!prevRect || rect.y - prevRect.y > prevRect.height / 2) groups.push([
+            rect
+        ]);
+        else groups[groups.length - 1].push(rect);
+        prevRect = rect;
+    }
+    return groups.map((rect)=>(0, _utils.rectToClientRect)(getBoundingRect(rect)));
+}
+/**
+ * Provides improved positioning for inline reference elements that can span
+ * over multiple lines, such as hyperlinks or range selections.
+ * @see https://floating-ui.com/docs/inline
+ */ const inline = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'inline',
+        options,
+        async fn (state) {
+            const { placement, elements, rects, platform, strategy } = state;
+            // A MouseEvent's client{X,Y} coords can be up to 2 pixels off a
+            // ClientRect's bounds, despite the event listener being triggered. A
+            // padding of 2 seems to handle this issue.
+            const { padding = 2, x, y } = (0, _utils.evaluate)(options, state);
+            const nativeClientRects = Array.from(await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference)) || []);
+            const clientRects = getRectsByLine(nativeClientRects);
+            const fallback = (0, _utils.rectToClientRect)(getBoundingRect(nativeClientRects));
+            const paddingObject = (0, _utils.getPaddingObject)(padding);
+            function getBoundingClientRect() {
+                // There are two rects and they are disjoined.
+                if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x != null && y != null) // Find the first rect in which the point is fully inside.
+                return clientRects.find((rect)=>x > rect.left - paddingObject.left && x < rect.right + paddingObject.right && y > rect.top - paddingObject.top && y < rect.bottom + paddingObject.bottom) || fallback;
+                // There are 2 or more connected rects.
+                if (clientRects.length >= 2) {
+                    if ((0, _utils.getSideAxis)(placement) === 'y') {
+                        const firstRect = clientRects[0];
+                        const lastRect = clientRects[clientRects.length - 1];
+                        const isTop = (0, _utils.getSide)(placement) === 'top';
+                        const top = firstRect.top;
+                        const bottom = lastRect.bottom;
+                        const left = isTop ? firstRect.left : lastRect.left;
+                        const right = isTop ? firstRect.right : lastRect.right;
+                        const width = right - left;
+                        const height = bottom - top;
+                        return {
+                            top,
+                            bottom,
+                            left,
+                            right,
+                            width,
+                            height,
+                            x: left,
+                            y: top
+                        };
+                    }
+                    const isLeftSide = (0, _utils.getSide)(placement) === 'left';
+                    const maxRight = (0, _utils.max)(...clientRects.map((rect)=>rect.right));
+                    const minLeft = (0, _utils.min)(...clientRects.map((rect)=>rect.left));
+                    const measureRects = clientRects.filter((rect)=>isLeftSide ? rect.left === minLeft : rect.right === maxRight);
+                    const top = measureRects[0].top;
+                    const bottom = measureRects[measureRects.length - 1].bottom;
+                    const left = minLeft;
+                    const right = maxRight;
+                    const width = right - left;
+                    const height = bottom - top;
+                    return {
+                        top,
+                        bottom,
+                        left,
+                        right,
+                        width,
+                        height,
+                        x: left,
+                        y: top
+                    };
+                }
+                return fallback;
+            }
+            const resetRects = await platform.getElementRects({
+                reference: {
+                    getBoundingClientRect
+                },
+                floating: elements.floating,
+                strategy
+            });
+            if (rects.reference.x !== resetRects.reference.x || rects.reference.y !== resetRects.reference.y || rects.reference.width !== resetRects.reference.width || rects.reference.height !== resetRects.reference.height) return {
+                reset: {
+                    rects: resetRects
+                }
+            };
+            return {};
+        }
+    };
+};
+const originSides = /*#__PURE__*/ new Set([
+    'left',
+    'top'
+]);
+// For type backwards-compatibility, the `OffsetOptions` type was also
+// Derivable.
+async function convertValueToCoords(state, options) {
+    const { placement, platform, elements } = state;
+    const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
+    const side = (0, _utils.getSide)(placement);
+    const alignment = (0, _utils.getAlignment)(placement);
+    const isVertical = (0, _utils.getSideAxis)(placement) === 'y';
+    const mainAxisMulti = originSides.has(side) ? -1 : 1;
+    const crossAxisMulti = rtl && isVertical ? -1 : 1;
+    const rawValue = (0, _utils.evaluate)(options, state);
+    // eslint-disable-next-line prefer-const
+    let { mainAxis, crossAxis, alignmentAxis } = typeof rawValue === 'number' ? {
+        mainAxis: rawValue,
+        crossAxis: 0,
+        alignmentAxis: null
+    } : {
+        mainAxis: rawValue.mainAxis || 0,
+        crossAxis: rawValue.crossAxis || 0,
+        alignmentAxis: rawValue.alignmentAxis
+    };
+    if (alignment && typeof alignmentAxis === 'number') crossAxis = alignment === 'end' ? alignmentAxis * -1 : alignmentAxis;
+    return isVertical ? {
+        x: crossAxis * crossAxisMulti,
+        y: mainAxis * mainAxisMulti
+    } : {
+        x: mainAxis * mainAxisMulti,
+        y: crossAxis * crossAxisMulti
+    };
+}
+/**
+ * Modifies the placement by translating the floating element along the
+ * specified axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
+ * @see https://floating-ui.com/docs/offset
+ */ const offset = function(options) {
+    if (options === void 0) options = 0;
+    return {
+        name: 'offset',
+        options,
+        async fn (state) {
+            var _middlewareData$offse, _middlewareData$arrow;
+            const { x, y, placement, middlewareData } = state;
+            const diffCoords = await convertValueToCoords(state, options);
+            // If the placement is the same and the arrow caused an alignment offset
+            // then we don't need to change the positioning coordinates.
+            if (placement === ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse.placement) && (_middlewareData$arrow = middlewareData.arrow) != null && _middlewareData$arrow.alignmentOffset) return {};
+            return {
+                x: x + diffCoords.x,
+                y: y + diffCoords.y,
+                data: {
+                    ...diffCoords,
+                    placement
+                }
+            };
+        }
+    };
+};
+/**
+ * Optimizes the visibility of the floating element by shifting it in order to
+ * keep it in view when it will overflow the clipping boundary.
+ * @see https://floating-ui.com/docs/shift
+ */ const shift = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'shift',
+        options,
+        async fn (state) {
+            const { x, y, placement } = state;
+            const { mainAxis: checkMainAxis = true, crossAxis: checkCrossAxis = false, limiter = {
+                fn: (_ref)=>{
+                    let { x, y } = _ref;
+                    return {
+                        x,
+                        y
+                    };
+                }
+            }, ...detectOverflowOptions } = (0, _utils.evaluate)(options, state);
+            const coords = {
+                x,
+                y
+            };
+            const overflow = await detectOverflow(state, detectOverflowOptions);
+            const crossAxis = (0, _utils.getSideAxis)((0, _utils.getSide)(placement));
+            const mainAxis = (0, _utils.getOppositeAxis)(crossAxis);
+            let mainAxisCoord = coords[mainAxis];
+            let crossAxisCoord = coords[crossAxis];
+            if (checkMainAxis) {
+                const minSide = mainAxis === 'y' ? 'top' : 'left';
+                const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
+                const min = mainAxisCoord + overflow[minSide];
+                const max = mainAxisCoord - overflow[maxSide];
+                mainAxisCoord = (0, _utils.clamp)(min, mainAxisCoord, max);
+            }
+            if (checkCrossAxis) {
+                const minSide = crossAxis === 'y' ? 'top' : 'left';
+                const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
+                const min = crossAxisCoord + overflow[minSide];
+                const max = crossAxisCoord - overflow[maxSide];
+                crossAxisCoord = (0, _utils.clamp)(min, crossAxisCoord, max);
+            }
+            const limitedCoords = limiter.fn({
+                ...state,
+                [mainAxis]: mainAxisCoord,
+                [crossAxis]: crossAxisCoord
+            });
+            return {
+                ...limitedCoords,
+                data: {
+                    x: limitedCoords.x - x,
+                    y: limitedCoords.y - y,
+                    enabled: {
+                        [mainAxis]: checkMainAxis,
+                        [crossAxis]: checkCrossAxis
+                    }
+                }
+            };
+        }
+    };
+};
+/**
+ * Built-in `limiter` that will stop `shift()` at a certain point.
+ */ const limitShift = function(options) {
+    if (options === void 0) options = {};
+    return {
+        options,
+        fn (state) {
+            const { x, y, placement, rects, middlewareData } = state;
+            const { offset = 0, mainAxis: checkMainAxis = true, crossAxis: checkCrossAxis = true } = (0, _utils.evaluate)(options, state);
+            const coords = {
+                x,
+                y
+            };
+            const crossAxis = (0, _utils.getSideAxis)(placement);
+            const mainAxis = (0, _utils.getOppositeAxis)(crossAxis);
+            let mainAxisCoord = coords[mainAxis];
+            let crossAxisCoord = coords[crossAxis];
+            const rawOffset = (0, _utils.evaluate)(offset, state);
+            const computedOffset = typeof rawOffset === 'number' ? {
+                mainAxis: rawOffset,
+                crossAxis: 0
+            } : {
+                mainAxis: 0,
+                crossAxis: 0,
+                ...rawOffset
+            };
+            if (checkMainAxis) {
+                const len = mainAxis === 'y' ? 'height' : 'width';
+                const limitMin = rects.reference[mainAxis] - rects.floating[len] + computedOffset.mainAxis;
+                const limitMax = rects.reference[mainAxis] + rects.reference[len] - computedOffset.mainAxis;
+                if (mainAxisCoord < limitMin) mainAxisCoord = limitMin;
+                else if (mainAxisCoord > limitMax) mainAxisCoord = limitMax;
+            }
+            if (checkCrossAxis) {
+                var _middlewareData$offse, _middlewareData$offse2;
+                const len = mainAxis === 'y' ? 'width' : 'height';
+                const isOriginSide = originSides.has((0, _utils.getSide)(placement));
+                const limitMin = rects.reference[crossAxis] - rects.floating[len] + (isOriginSide ? ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse[crossAxis]) || 0 : 0) + (isOriginSide ? 0 : computedOffset.crossAxis);
+                const limitMax = rects.reference[crossAxis] + rects.reference[len] + (isOriginSide ? 0 : ((_middlewareData$offse2 = middlewareData.offset) == null ? void 0 : _middlewareData$offse2[crossAxis]) || 0) - (isOriginSide ? computedOffset.crossAxis : 0);
+                if (crossAxisCoord < limitMin) crossAxisCoord = limitMin;
+                else if (crossAxisCoord > limitMax) crossAxisCoord = limitMax;
+            }
+            return {
+                [mainAxis]: mainAxisCoord,
+                [crossAxis]: crossAxisCoord
+            };
+        }
+    };
+};
+/**
+ * Provides data that allows you to change the size of the floating element —
+ * for instance, prevent it from overflowing the clipping boundary or match the
+ * width of the reference element.
+ * @see https://floating-ui.com/docs/size
+ */ const size = function(options) {
+    if (options === void 0) options = {};
+    return {
+        name: 'size',
+        options,
+        async fn (state) {
+            var _state$middlewareData, _state$middlewareData2;
+            const { placement, rects, platform, elements } = state;
+            const { apply = ()=>{}, ...detectOverflowOptions } = (0, _utils.evaluate)(options, state);
+            const overflow = await detectOverflow(state, detectOverflowOptions);
+            const side = (0, _utils.getSide)(placement);
+            const alignment = (0, _utils.getAlignment)(placement);
+            const isYAxis = (0, _utils.getSideAxis)(placement) === 'y';
+            const { width, height } = rects.floating;
+            let heightSide;
+            let widthSide;
+            if (side === 'top' || side === 'bottom') {
+                heightSide = side;
+                widthSide = alignment === (await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)) ? 'start' : 'end') ? 'left' : 'right';
+            } else {
+                widthSide = side;
+                heightSide = alignment === 'end' ? 'top' : 'bottom';
+            }
+            const maximumClippingHeight = height - overflow.top - overflow.bottom;
+            const maximumClippingWidth = width - overflow.left - overflow.right;
+            const overflowAvailableHeight = (0, _utils.min)(height - overflow[heightSide], maximumClippingHeight);
+            const overflowAvailableWidth = (0, _utils.min)(width - overflow[widthSide], maximumClippingWidth);
+            const noShift = !state.middlewareData.shift;
+            let availableHeight = overflowAvailableHeight;
+            let availableWidth = overflowAvailableWidth;
+            if ((_state$middlewareData = state.middlewareData.shift) != null && _state$middlewareData.enabled.x) availableWidth = maximumClippingWidth;
+            if ((_state$middlewareData2 = state.middlewareData.shift) != null && _state$middlewareData2.enabled.y) availableHeight = maximumClippingHeight;
+            if (noShift && !alignment) {
+                const xMin = (0, _utils.max)(overflow.left, 0);
+                const xMax = (0, _utils.max)(overflow.right, 0);
+                const yMin = (0, _utils.max)(overflow.top, 0);
+                const yMax = (0, _utils.max)(overflow.bottom, 0);
+                if (isYAxis) availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : (0, _utils.max)(overflow.left, overflow.right));
+                else availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : (0, _utils.max)(overflow.top, overflow.bottom));
+            }
+            await apply({
+                ...state,
+                availableWidth,
+                availableHeight
+            });
+            const nextDimensions = await platform.getDimensions(elements.floating);
+            if (width !== nextDimensions.width || height !== nextDimensions.height) return {
+                reset: {
+                    rects: true
+                }
+            };
+            return {};
+        }
+    };
+};
+
+},{"@floating-ui/utils":"jY82y","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jY82y":[function(require,module,exports,__globalThis) {
+/**
+ * Custom positioning reference element.
+ * @see https://floating-ui.com/docs/virtual-elements
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "alignments", ()=>alignments);
+parcelHelpers.export(exports, "clamp", ()=>clamp);
+parcelHelpers.export(exports, "createCoords", ()=>createCoords);
+parcelHelpers.export(exports, "evaluate", ()=>evaluate);
+parcelHelpers.export(exports, "expandPaddingObject", ()=>expandPaddingObject);
+parcelHelpers.export(exports, "floor", ()=>floor);
+parcelHelpers.export(exports, "getAlignment", ()=>getAlignment);
+parcelHelpers.export(exports, "getAlignmentAxis", ()=>getAlignmentAxis);
+parcelHelpers.export(exports, "getAlignmentSides", ()=>getAlignmentSides);
+parcelHelpers.export(exports, "getAxisLength", ()=>getAxisLength);
+parcelHelpers.export(exports, "getExpandedPlacements", ()=>getExpandedPlacements);
+parcelHelpers.export(exports, "getOppositeAlignmentPlacement", ()=>getOppositeAlignmentPlacement);
+parcelHelpers.export(exports, "getOppositeAxis", ()=>getOppositeAxis);
+parcelHelpers.export(exports, "getOppositeAxisPlacements", ()=>getOppositeAxisPlacements);
+parcelHelpers.export(exports, "getOppositePlacement", ()=>getOppositePlacement);
+parcelHelpers.export(exports, "getPaddingObject", ()=>getPaddingObject);
+parcelHelpers.export(exports, "getSide", ()=>getSide);
+parcelHelpers.export(exports, "getSideAxis", ()=>getSideAxis);
+parcelHelpers.export(exports, "max", ()=>max);
+parcelHelpers.export(exports, "min", ()=>min);
+parcelHelpers.export(exports, "placements", ()=>placements);
+parcelHelpers.export(exports, "rectToClientRect", ()=>rectToClientRect);
+parcelHelpers.export(exports, "round", ()=>round);
+parcelHelpers.export(exports, "sides", ()=>sides);
+const sides = [
+    'top',
+    'right',
+    'bottom',
+    'left'
+];
+const alignments = [
+    'start',
+    'end'
+];
+const placements = /*#__PURE__*/ sides.reduce((acc, side)=>acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
+const min = Math.min;
+const max = Math.max;
+const round = Math.round;
+const floor = Math.floor;
+const createCoords = (v)=>({
+        x: v,
+        y: v
+    });
+const oppositeSideMap = {
+    left: 'right',
+    right: 'left',
+    bottom: 'top',
+    top: 'bottom'
+};
+const oppositeAlignmentMap = {
+    start: 'end',
+    end: 'start'
+};
+function clamp(start, value, end) {
+    return max(start, min(value, end));
+}
+function evaluate(value, param) {
+    return typeof value === 'function' ? value(param) : value;
+}
+function getSide(placement) {
+    return placement.split('-')[0];
+}
+function getAlignment(placement) {
+    return placement.split('-')[1];
+}
+function getOppositeAxis(axis) {
+    return axis === 'x' ? 'y' : 'x';
+}
+function getAxisLength(axis) {
+    return axis === 'y' ? 'height' : 'width';
+}
+const yAxisSides = /*#__PURE__*/ new Set([
+    'top',
+    'bottom'
+]);
+function getSideAxis(placement) {
+    return yAxisSides.has(getSide(placement)) ? 'y' : 'x';
+}
+function getAlignmentAxis(placement) {
+    return getOppositeAxis(getSideAxis(placement));
+}
+function getAlignmentSides(placement, rects, rtl) {
+    if (rtl === void 0) rtl = false;
+    const alignment = getAlignment(placement);
+    const alignmentAxis = getAlignmentAxis(placement);
+    const length = getAxisLength(alignmentAxis);
+    let mainAlignmentSide = alignmentAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
+    if (rects.reference[length] > rects.floating[length]) mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+    return [
+        mainAlignmentSide,
+        getOppositePlacement(mainAlignmentSide)
+    ];
+}
+function getExpandedPlacements(placement) {
+    const oppositePlacement = getOppositePlacement(placement);
+    return [
+        getOppositeAlignmentPlacement(placement),
+        oppositePlacement,
+        getOppositeAlignmentPlacement(oppositePlacement)
+    ];
+}
+function getOppositeAlignmentPlacement(placement) {
+    return placement.replace(/start|end/g, (alignment)=>oppositeAlignmentMap[alignment]);
+}
+const lrPlacement = [
+    'left',
+    'right'
+];
+const rlPlacement = [
+    'right',
+    'left'
+];
+const tbPlacement = [
+    'top',
+    'bottom'
+];
+const btPlacement = [
+    'bottom',
+    'top'
+];
+function getSideList(side, isStart, rtl) {
+    switch(side){
+        case 'top':
+        case 'bottom':
+            if (rtl) return isStart ? rlPlacement : lrPlacement;
+            return isStart ? lrPlacement : rlPlacement;
+        case 'left':
+        case 'right':
+            return isStart ? tbPlacement : btPlacement;
+        default:
+            return [];
+    }
+}
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+    const alignment = getAlignment(placement);
+    let list = getSideList(getSide(placement), direction === 'start', rtl);
+    if (alignment) {
+        list = list.map((side)=>side + "-" + alignment);
+        if (flipAlignment) list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+    return list;
+}
+function getOppositePlacement(placement) {
+    return placement.replace(/left|right|bottom|top/g, (side)=>oppositeSideMap[side]);
+}
+function expandPaddingObject(padding) {
+    return {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        ...padding
+    };
+}
+function getPaddingObject(padding) {
+    return typeof padding !== 'number' ? expandPaddingObject(padding) : {
+        top: padding,
+        right: padding,
+        bottom: padding,
+        left: padding
+    };
+}
+function rectToClientRect(rect) {
+    const { x, y, width, height } = rect;
+    return {
+        width,
+        height,
+        top: y,
+        left: x,
+        right: x + width,
+        bottom: y + height,
+        x,
+        y
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"Dh21b":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getComputedStyle", ()=>getComputedStyle);
+parcelHelpers.export(exports, "getContainingBlock", ()=>getContainingBlock);
+parcelHelpers.export(exports, "getDocumentElement", ()=>getDocumentElement);
+parcelHelpers.export(exports, "getFrameElement", ()=>getFrameElement);
+parcelHelpers.export(exports, "getNearestOverflowAncestor", ()=>getNearestOverflowAncestor);
+parcelHelpers.export(exports, "getNodeName", ()=>getNodeName);
+parcelHelpers.export(exports, "getNodeScroll", ()=>getNodeScroll);
+parcelHelpers.export(exports, "getOverflowAncestors", ()=>getOverflowAncestors);
+parcelHelpers.export(exports, "getParentNode", ()=>getParentNode);
+parcelHelpers.export(exports, "getWindow", ()=>getWindow);
+parcelHelpers.export(exports, "isContainingBlock", ()=>isContainingBlock);
+parcelHelpers.export(exports, "isElement", ()=>isElement);
+parcelHelpers.export(exports, "isHTMLElement", ()=>isHTMLElement);
+parcelHelpers.export(exports, "isLastTraversableNode", ()=>isLastTraversableNode);
+parcelHelpers.export(exports, "isNode", ()=>isNode);
+parcelHelpers.export(exports, "isOverflowElement", ()=>isOverflowElement);
+parcelHelpers.export(exports, "isShadowRoot", ()=>isShadowRoot);
+parcelHelpers.export(exports, "isTableElement", ()=>isTableElement);
+parcelHelpers.export(exports, "isTopLayer", ()=>isTopLayer);
+parcelHelpers.export(exports, "isWebKit", ()=>isWebKit);
+function hasWindow() {
+    return typeof window !== 'undefined';
+}
+function getNodeName(node) {
+    if (isNode(node)) return (node.nodeName || '').toLowerCase();
+    // Mocked nodes in testing environments may not be instances of Node. By
+    // returning `#document` an infinite loop won't occur.
+    // https://github.com/floating-ui/floating-ui/issues/2317
+    return '#document';
+}
+function getWindow(node) {
+    var _node$ownerDocument;
+    return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+function getDocumentElement(node) {
+    var _ref;
+    return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+}
+function isNode(value) {
+    if (!hasWindow()) return false;
+    return value instanceof Node || value instanceof getWindow(value).Node;
+}
+function isElement(value) {
+    if (!hasWindow()) return false;
+    return value instanceof Element || value instanceof getWindow(value).Element;
+}
+function isHTMLElement(value) {
+    if (!hasWindow()) return false;
+    return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
+}
+function isShadowRoot(value) {
+    if (!hasWindow() || typeof ShadowRoot === 'undefined') return false;
+    return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
+}
+const invalidOverflowDisplayValues = /*#__PURE__*/ new Set([
+    'inline',
+    'contents'
+]);
+function isOverflowElement(element) {
+    const { overflow, overflowX, overflowY, display } = getComputedStyle(element);
+    return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && !invalidOverflowDisplayValues.has(display);
+}
+const tableElements = /*#__PURE__*/ new Set([
+    'table',
+    'td',
+    'th'
+]);
+function isTableElement(element) {
+    return tableElements.has(getNodeName(element));
+}
+const topLayerSelectors = [
+    ':popover-open',
+    ':modal'
+];
+function isTopLayer(element) {
+    return topLayerSelectors.some((selector)=>{
+        try {
+            return element.matches(selector);
+        } catch (_e) {
+            return false;
+        }
+    });
+}
+const transformProperties = [
+    'transform',
+    'translate',
+    'scale',
+    'rotate',
+    'perspective'
+];
+const willChangeValues = [
+    'transform',
+    'translate',
+    'scale',
+    'rotate',
+    'perspective',
+    'filter'
+];
+const containValues = [
+    'paint',
+    'layout',
+    'strict',
+    'content'
+];
+function isContainingBlock(elementOrCss) {
+    const webkit = isWebKit();
+    const css = isElement(elementOrCss) ? getComputedStyle(elementOrCss) : elementOrCss;
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+    // https://drafts.csswg.org/css-transforms-2/#individual-transforms
+    return transformProperties.some((value)=>css[value] ? css[value] !== 'none' : false) || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || willChangeValues.some((value)=>(css.willChange || '').includes(value)) || containValues.some((value)=>(css.contain || '').includes(value));
+}
+function getContainingBlock(element) {
+    let currentNode = getParentNode(element);
+    while(isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)){
+        if (isContainingBlock(currentNode)) return currentNode;
+        else if (isTopLayer(currentNode)) return null;
+        currentNode = getParentNode(currentNode);
+    }
+    return null;
+}
+function isWebKit() {
+    if (typeof CSS === 'undefined' || !CSS.supports) return false;
+    return CSS.supports('-webkit-backdrop-filter', 'none');
+}
+const lastTraversableNodeNames = /*#__PURE__*/ new Set([
+    'html',
+    'body',
+    '#document'
+]);
+function isLastTraversableNode(node) {
+    return lastTraversableNodeNames.has(getNodeName(node));
+}
+function getComputedStyle(element) {
+    return getWindow(element).getComputedStyle(element);
+}
+function getNodeScroll(element) {
+    if (isElement(element)) return {
+        scrollLeft: element.scrollLeft,
+        scrollTop: element.scrollTop
+    };
+    return {
+        scrollLeft: element.scrollX,
+        scrollTop: element.scrollY
+    };
+}
+function getParentNode(node) {
+    if (getNodeName(node) === 'html') return node;
+    const result = // Step into the shadow DOM of the parent of a slotted node.
+    node.assignedSlot || // DOM Element detected.
+    node.parentNode || // ShadowRoot detected.
+    isShadowRoot(node) && node.host || // Fallback.
+    getDocumentElement(node);
+    return isShadowRoot(result) ? result.host : result;
+}
+function getNearestOverflowAncestor(node) {
+    const parentNode = getParentNode(node);
+    if (isLastTraversableNode(parentNode)) return node.ownerDocument ? node.ownerDocument.body : node.body;
+    if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) return parentNode;
+    return getNearestOverflowAncestor(parentNode);
+}
+function getOverflowAncestors(node, list, traverseIframes) {
+    var _node$ownerDocument2;
+    if (list === void 0) list = [];
+    if (traverseIframes === void 0) traverseIframes = true;
+    const scrollableAncestor = getNearestOverflowAncestor(node);
+    const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
+    const win = getWindow(scrollableAncestor);
+    if (isBody) {
+        const frameElement = getFrameElement(win);
+        return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
+    }
+    return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
+}
+function getFrameElement(win) {
+    return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"40aoY":[function(require,module,exports,__globalThis) {
+// src/arrow.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Arrow", ()=>Arrow);
+parcelHelpers.export(exports, "Root", ()=>Root);
+var _react = require("react");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _jsxRuntime = require("react/jsx-runtime");
+var NAME = "Arrow";
+var Arrow = _react.forwardRef((props, forwardedRef)=>{
+    const { children, width = 10, height = 5, ...arrowProps } = props;
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).svg, {
+        ...arrowProps,
+        ref: forwardedRef,
+        width,
+        height,
+        viewBox: "0 0 30 10",
+        preserveAspectRatio: "none",
+        children: props.asChild ? children : /* @__PURE__ */ (0, _jsxRuntime.jsx)("polygon", {
+            points: "0,0 30,0 15,10"
+        })
+    });
+});
+Arrow.displayName = NAME;
+var Root = Arrow;
+
+},{"react":"jMk1U","@radix-ui/react-primitive":"i0I8C","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kuUSP":[function(require,module,exports,__globalThis) {
+// packages/react/use-size/src/use-size.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useSize", ()=>useSize);
+var _react = require("react");
+var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
+function useSize(element) {
+    const [size, setSize] = _react.useState(void 0);
+    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
+        if (element) {
+            setSize({
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            });
+            const resizeObserver = new ResizeObserver((entries)=>{
+                if (!Array.isArray(entries)) return;
+                if (!entries.length) return;
+                const entry = entries[0];
+                let width;
+                let height;
+                if ("borderBoxSize" in entry) {
+                    const borderSizeEntry = entry["borderBoxSize"];
+                    const borderSize = Array.isArray(borderSizeEntry) ? borderSizeEntry[0] : borderSizeEntry;
+                    width = borderSize["inlineSize"];
+                    height = borderSize["blockSize"];
+                } else {
+                    width = element.offsetWidth;
+                    height = element.offsetHeight;
+                }
+                setSize({
+                    width,
+                    height
+                });
+            });
+            resizeObserver.observe(element, {
+                box: "border-box"
+            });
+            return ()=>resizeObserver.unobserve(element);
+        } else setSize(void 0);
+    }, [
+        element
+    ]);
+    return size;
+}
+
+},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"gzQU8":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$4bd1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$4bd1.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -42798,119 +49934,7 @@ var Header = AccordionHeader;
 var Trigger2 = AccordionTrigger;
 var Content2 = AccordionContent;
 
-},{"react":"jMk1U","@radix-ui/react-context":"aRUGq","@radix-ui/react-collection":"ke1La","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/primitive":"jakGl","@radix-ui/react-use-controllable-state":"59sI3","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-collapsible":"9VvZn","@radix-ui/react-id":"SmdnD","@radix-ui/react-direction":"cmpkM","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aRUGq":[function(require,module,exports,__globalThis) {
-// packages/react/context/src/create-context.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createContext", ()=>createContext2);
-parcelHelpers.export(exports, "createContextScope", ()=>createContextScope);
-var _react = require("react");
-var _jsxRuntime = require("react/jsx-runtime");
-function createContext2(rootComponentName, defaultContext) {
-    const Context = _react.createContext(defaultContext);
-    const Provider = (props)=>{
-        const { children, ...context } = props;
-        const value = _react.useMemo(()=>context, Object.values(context));
-        return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Context.Provider, {
-            value,
-            children
-        });
-    };
-    Provider.displayName = rootComponentName + "Provider";
-    function useContext2(consumerName) {
-        const context = _react.useContext(Context);
-        if (context) return context;
-        if (defaultContext !== void 0) return defaultContext;
-        throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-    }
-    return [
-        Provider,
-        useContext2
-    ];
-}
-function createContextScope(scopeName, createContextScopeDeps = []) {
-    let defaultContexts = [];
-    function createContext3(rootComponentName, defaultContext) {
-        const BaseContext = _react.createContext(defaultContext);
-        const index = defaultContexts.length;
-        defaultContexts = [
-            ...defaultContexts,
-            defaultContext
-        ];
-        const Provider = (props)=>{
-            const { scope, children, ...context } = props;
-            const Context = scope?.[scopeName]?.[index] || BaseContext;
-            const value = _react.useMemo(()=>context, Object.values(context));
-            return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Context.Provider, {
-                value,
-                children
-            });
-        };
-        Provider.displayName = rootComponentName + "Provider";
-        function useContext2(consumerName, scope) {
-            const Context = scope?.[scopeName]?.[index] || BaseContext;
-            const context = _react.useContext(Context);
-            if (context) return context;
-            if (defaultContext !== void 0) return defaultContext;
-            throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-        }
-        return [
-            Provider,
-            useContext2
-        ];
-    }
-    const createScope = ()=>{
-        const scopeContexts = defaultContexts.map((defaultContext)=>{
-            return _react.createContext(defaultContext);
-        });
-        return function useScope(scope) {
-            const contexts = scope?.[scopeName] || scopeContexts;
-            return _react.useMemo(()=>({
-                    [`__scope${scopeName}`]: {
-                        ...scope,
-                        [scopeName]: contexts
-                    }
-                }), [
-                scope,
-                contexts
-            ]);
-        };
-    };
-    createScope.scopeName = scopeName;
-    return [
-        createContext3,
-        composeContextScopes(createScope, ...createContextScopeDeps)
-    ];
-}
-function composeContextScopes(...scopes) {
-    const baseScope = scopes[0];
-    if (scopes.length === 1) return baseScope;
-    const createScope = ()=>{
-        const scopeHooks = scopes.map((createScope2)=>({
-                useScope: createScope2(),
-                scopeName: createScope2.scopeName
-            }));
-        return function useComposedScopes(overrideScopes) {
-            const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName })=>{
-                const scopeProps = useScope(overrideScopes);
-                const currentScope = scopeProps[`__scope${scopeName}`];
-                return {
-                    ...nextScopes2,
-                    ...currentScope
-                };
-            }, {});
-            return _react.useMemo(()=>({
-                    [`__scope${baseScope.scopeName}`]: nextScopes
-                }), [
-                nextScopes
-            ]);
-        };
-    };
-    createScope.scopeName = baseScope.scopeName;
-    return createScope;
-}
-
-},{"react":"jMk1U","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ke1La":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","@radix-ui/react-context":"aRUGq","@radix-ui/react-collection":"ke1La","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/primitive":"jakGl","@radix-ui/react-use-controllable-state":"59sI3","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-collapsible":"9VvZn","@radix-ui/react-id":"SmdnD","@radix-ui/react-direction":"cmpkM","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ke1La":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createCollection", ()=>createCollection);
@@ -43467,201 +50491,7 @@ function getChildListObserver(callback) {
     return observer;
 }
 
-},{"react":"jMk1U","@radix-ui/react-context":"aRUGq","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-slot":"049tr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jakGl":[function(require,module,exports,__globalThis) {
-// packages/core/primitive/src/primitive.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "composeEventHandlers", ()=>composeEventHandlers);
-function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
-    return function handleEvent(event) {
-        originalEventHandler?.(event);
-        if (checkForDefaultPrevented === false || !event.defaultPrevented) return ourEventHandler?.(event);
-    };
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"59sI3":[function(require,module,exports,__globalThis) {
-// src/use-controllable-state.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useControllableState", ()=>useControllableState);
-parcelHelpers.export(exports, "useControllableStateReducer", ()=>useControllableStateReducer);
-var _react = require("react");
-var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
-var _reactUseEffectEvent = require("@radix-ui/react-use-effect-event");
-var useInsertionEffect = _react[" useInsertionEffect ".trim().toString()] || (0, _reactUseLayoutEffect.useLayoutEffect);
-function useControllableState({ prop, defaultProp, onChange = ()=>{}, caller }) {
-    const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
-        defaultProp,
-        onChange
-    });
-    const isControlled = prop !== void 0;
-    const value = isControlled ? prop : uncontrolledProp;
-    {
-        const isControlledRef = _react.useRef(prop !== void 0);
-        _react.useEffect(()=>{
-            const wasControlled = isControlledRef.current;
-            if (wasControlled !== isControlled) {
-                const from = wasControlled ? "controlled" : "uncontrolled";
-                const to = isControlled ? "controlled" : "uncontrolled";
-                console.warn(`${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-            }
-            isControlledRef.current = isControlled;
-        }, [
-            isControlled,
-            caller
-        ]);
-    }
-    const setValue = _react.useCallback((nextValue)=>{
-        if (isControlled) {
-            const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
-            if (value2 !== prop) onChangeRef.current?.(value2);
-        } else setUncontrolledProp(nextValue);
-    }, [
-        isControlled,
-        prop,
-        setUncontrolledProp,
-        onChangeRef
-    ]);
-    return [
-        value,
-        setValue
-    ];
-}
-function useUncontrolledState({ defaultProp, onChange }) {
-    const [value, setValue] = _react.useState(defaultProp);
-    const prevValueRef = _react.useRef(value);
-    const onChangeRef = _react.useRef(onChange);
-    useInsertionEffect(()=>{
-        onChangeRef.current = onChange;
-    }, [
-        onChange
-    ]);
-    _react.useEffect(()=>{
-        if (prevValueRef.current !== value) {
-            onChangeRef.current?.(value);
-            prevValueRef.current = value;
-        }
-    }, [
-        value,
-        prevValueRef
-    ]);
-    return [
-        value,
-        setValue,
-        onChangeRef
-    ];
-}
-function isFunction(value) {
-    return typeof value === "function";
-}
-var SYNC_STATE = Symbol("RADIX:SYNC_STATE");
-function useControllableStateReducer(reducer, userArgs, initialArg, init) {
-    const { prop: controlledState, defaultProp, onChange: onChangeProp, caller } = userArgs;
-    const isControlled = controlledState !== void 0;
-    const onChange = (0, _reactUseEffectEvent.useEffectEvent)(onChangeProp);
-    {
-        const isControlledRef = _react.useRef(controlledState !== void 0);
-        _react.useEffect(()=>{
-            const wasControlled = isControlledRef.current;
-            if (wasControlled !== isControlled) {
-                const from = wasControlled ? "controlled" : "uncontrolled";
-                const to = isControlled ? "controlled" : "uncontrolled";
-                console.warn(`${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`);
-            }
-            isControlledRef.current = isControlled;
-        }, [
-            isControlled,
-            caller
-        ]);
-    }
-    const args = [
-        {
-            ...initialArg,
-            state: defaultProp
-        }
-    ];
-    if (init) args.push(init);
-    const [internalState, dispatch] = _react.useReducer((state2, action)=>{
-        if (action.type === SYNC_STATE) return {
-            ...state2,
-            state: action.state
-        };
-        const next = reducer(state2, action);
-        if (isControlled && !Object.is(next.state, state2.state)) onChange(next.state);
-        return next;
-    }, ...args);
-    const uncontrolledState = internalState.state;
-    const prevValueRef = _react.useRef(uncontrolledState);
-    _react.useEffect(()=>{
-        if (prevValueRef.current !== uncontrolledState) {
-            prevValueRef.current = uncontrolledState;
-            if (!isControlled) onChange(uncontrolledState);
-        }
-    }, [
-        onChange,
-        uncontrolledState,
-        prevValueRef,
-        isControlled
-    ]);
-    const state = _react.useMemo(()=>{
-        const isControlled2 = controlledState !== void 0;
-        if (isControlled2) return {
-            ...internalState,
-            state: controlledState
-        };
-        return internalState;
-    }, [
-        internalState,
-        controlledState
-    ]);
-    _react.useEffect(()=>{
-        if (isControlled && !Object.is(controlledState, internalState.state)) dispatch({
-            type: SYNC_STATE,
-            state: controlledState
-        });
-    }, [
-        controlledState,
-        internalState.state,
-        isControlled
-    ]);
-    return [
-        state,
-        dispatch
-    ];
-}
-
-},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@radix-ui/react-use-effect-event":"fbd2q","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"enSS6":[function(require,module,exports,__globalThis) {
-// packages/react/use-layout-effect/src/use-layout-effect.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useLayoutEffect", ()=>useLayoutEffect2);
-var _react = require("react");
-var useLayoutEffect2 = globalThis?.document ? _react.useLayoutEffect : ()=>{};
-
-},{"react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"fbd2q":[function(require,module,exports,__globalThis) {
-// src/use-effect-event.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useEffectEvent", ()=>useEffectEvent);
-var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
-var _react = require("react");
-var useReactEffectEvent = _react[" useEffectEvent ".trim().toString()];
-var useReactInsertionEffect = _react[" useInsertionEffect ".trim().toString()];
-function useEffectEvent(callback) {
-    if (typeof useReactEffectEvent === "function") return useReactEffectEvent(callback);
-    const ref = _react.useRef(()=>{
-        throw new Error("Cannot call an event handler while rendering.");
-    });
-    if (typeof useReactInsertionEffect === "function") useReactInsertionEffect(()=>{
-        ref.current = callback;
-    });
-    else (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
-        ref.current = callback;
-    });
-    return _react.useMemo(()=>(...args)=>ref.current?.(...args), []);
-}
-
-},{"@radix-ui/react-use-layout-effect":"enSS6","react":"jMk1U","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9VvZn":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","@radix-ui/react-context":"aRUGq","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-slot":"049tr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9VvZn":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Collapsible", ()=>Collapsible);
@@ -43803,161 +50633,7 @@ var Root = Collapsible;
 var Trigger = CollapsibleTrigger;
 var Content = CollapsibleContent;
 
-},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-context":"aRUGq","@radix-ui/react-use-controllable-state":"59sI3","@radix-ui/react-use-layout-effect":"enSS6","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-presence":"5MpGF","@radix-ui/react-id":"SmdnD","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5MpGF":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Presence", ()=>Presence);
-parcelHelpers.export(exports, "Root", ()=>Root);
-// src/presence.tsx
-var _react = require("react");
-var _reactComposeRefs = require("@radix-ui/react-compose-refs");
-var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
-"use client";
-function useStateMachine(initialState, machine) {
-    return _react.useReducer((state, event)=>{
-        const nextState = machine[state][event];
-        return nextState ?? state;
-    }, initialState);
-}
-// src/presence.tsx
-var Presence = (props)=>{
-    const { present, children } = props;
-    const presence = usePresence(present);
-    const child = typeof children === "function" ? children({
-        present: presence.isPresent
-    }) : _react.Children.only(children);
-    const ref = (0, _reactComposeRefs.useComposedRefs)(presence.ref, getElementRef(child));
-    const forceMount = typeof children === "function";
-    return forceMount || presence.isPresent ? _react.cloneElement(child, {
-        ref
-    }) : null;
-};
-Presence.displayName = "Presence";
-function usePresence(present) {
-    const [node, setNode] = _react.useState();
-    const stylesRef = _react.useRef(null);
-    const prevPresentRef = _react.useRef(present);
-    const prevAnimationNameRef = _react.useRef("none");
-    const initialState = present ? "mounted" : "unmounted";
-    const [state, send] = useStateMachine(initialState, {
-        mounted: {
-            UNMOUNT: "unmounted",
-            ANIMATION_OUT: "unmountSuspended"
-        },
-        unmountSuspended: {
-            MOUNT: "mounted",
-            ANIMATION_END: "unmounted"
-        },
-        unmounted: {
-            MOUNT: "mounted"
-        }
-    });
-    _react.useEffect(()=>{
-        const currentAnimationName = getAnimationName(stylesRef.current);
-        prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
-    }, [
-        state
-    ]);
-    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
-        const styles = stylesRef.current;
-        const wasPresent = prevPresentRef.current;
-        const hasPresentChanged = wasPresent !== present;
-        if (hasPresentChanged) {
-            const prevAnimationName = prevAnimationNameRef.current;
-            const currentAnimationName = getAnimationName(styles);
-            if (present) send("MOUNT");
-            else if (currentAnimationName === "none" || styles?.display === "none") send("UNMOUNT");
-            else {
-                const isAnimating = prevAnimationName !== currentAnimationName;
-                if (wasPresent && isAnimating) send("ANIMATION_OUT");
-                else send("UNMOUNT");
-            }
-            prevPresentRef.current = present;
-        }
-    }, [
-        present,
-        send
-    ]);
-    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
-        if (node) {
-            let timeoutId;
-            const ownerWindow = node.ownerDocument.defaultView ?? window;
-            const handleAnimationEnd = (event)=>{
-                const currentAnimationName = getAnimationName(stylesRef.current);
-                const isCurrentAnimation = currentAnimationName.includes(event.animationName);
-                if (event.target === node && isCurrentAnimation) {
-                    send("ANIMATION_END");
-                    if (!prevPresentRef.current) {
-                        const currentFillMode = node.style.animationFillMode;
-                        node.style.animationFillMode = "forwards";
-                        timeoutId = ownerWindow.setTimeout(()=>{
-                            if (node.style.animationFillMode === "forwards") node.style.animationFillMode = currentFillMode;
-                        });
-                    }
-                }
-            };
-            const handleAnimationStart = (event)=>{
-                if (event.target === node) prevAnimationNameRef.current = getAnimationName(stylesRef.current);
-            };
-            node.addEventListener("animationstart", handleAnimationStart);
-            node.addEventListener("animationcancel", handleAnimationEnd);
-            node.addEventListener("animationend", handleAnimationEnd);
-            return ()=>{
-                ownerWindow.clearTimeout(timeoutId);
-                node.removeEventListener("animationstart", handleAnimationStart);
-                node.removeEventListener("animationcancel", handleAnimationEnd);
-                node.removeEventListener("animationend", handleAnimationEnd);
-            };
-        } else send("ANIMATION_END");
-    }, [
-        node,
-        send
-    ]);
-    return {
-        isPresent: [
-            "mounted",
-            "unmountSuspended"
-        ].includes(state),
-        ref: _react.useCallback((node2)=>{
-            stylesRef.current = node2 ? getComputedStyle(node2) : null;
-            setNode(node2);
-        }, [])
-    };
-}
-function getAnimationName(styles) {
-    return styles?.animationName || "none";
-}
-function getElementRef(element) {
-    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) return element.ref;
-    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) return element.props.ref;
-    return element.props.ref || element.ref;
-}
-var Root = Presence;
-
-},{"react":"jMk1U","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"SmdnD":[function(require,module,exports,__globalThis) {
-// packages/react/id/src/id.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useId", ()=>useId);
-var _react = require("react");
-var _reactUseLayoutEffect = require("@radix-ui/react-use-layout-effect");
-var useReactId = _react[" useId ".trim().toString()] || (()=>void 0);
-var count = 0;
-function useId(deterministicId) {
-    const [id, setId] = _react.useState(useReactId());
-    (0, _reactUseLayoutEffect.useLayoutEffect)(()=>{
-        if (!deterministicId) setId((reactId)=>reactId ?? String(count++));
-    }, [
-        deterministicId
-    ]);
-    return deterministicId || (id ? `radix-${id}` : "");
-}
-
-},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cmpkM":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-context":"aRUGq","@radix-ui/react-use-controllable-state":"59sI3","@radix-ui/react-use-layout-effect":"enSS6","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-presence":"5MpGF","@radix-ui/react-id":"SmdnD","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"cmpkM":[function(require,module,exports,__globalThis) {
 // packages/react/direction/src/direction.tsx
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -51769,6 +58445,7 @@ var _adminArticlesCss = require("../Articles/AdminArticles.css");
 var _adminCommentsCss = require("./AdminComments.css");
 var _button = require("@/components/ui/button");
 var _pagination = require("@/components/ui/pagination");
+var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
 const Comments = ({ onEdit, onView, filterByArticleId })=>{
     _s();
@@ -51874,9 +58551,20 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
         children: "Loading comments..."
     }, void 0, false, {
         fileName: "src/components/admin/Comments/Comments.tsx",
-        lineNumber: 163,
+        lineNumber: 164,
         columnNumber: 16
     }, undefined);
+    // Create article options for combobox
+    const articleOptions = [
+        {
+            value: "",
+            label: "All Articles"
+        },
+        ...articles.map((article)=>({
+                value: article.id,
+                label: article.title
+            }))
+    ];
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -51889,7 +58577,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 children: "Comments Management"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 170,
+                                lineNumber: 180,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -51898,7 +58586,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 children: "Create New Comment"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 171,
+                                lineNumber: 181,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -51911,55 +58599,40 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             children: "Filter by Article:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 179,
+                                            lineNumber: 189,
                                             columnNumber: 25
                                         }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                            id: "article-filter",
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                            options: articleOptions,
                                             value: selectedArticleId,
-                                            onChange: (e)=>{
-                                                setSelectedArticleId(e.target.value);
+                                            onValueChange: (value)=>{
+                                                setSelectedArticleId(value);
                                                 setCurrentPage(0);
                                             },
-                                            className: "admin-filter-select",
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                    value: "",
-                                                    children: "All Articles"
-                                                }, void 0, false, {
-                                                    fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 189,
-                                                    columnNumber: 29
-                                                }, undefined),
-                                                articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                        value: article.id,
-                                                        children: article.title
-                                                    }, article.id, false, {
-                                                        fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 191,
-                                                        columnNumber: 33
-                                                    }, undefined))
-                                            ]
-                                        }, void 0, true, {
+                                            placeholder: "Select article...",
+                                            searchPlaceholder: "Search articles...",
+                                            className: "admin-filter-select min-w-[200px]",
+                                            clearable: true
+                                        }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 180,
+                                            lineNumber: 190,
                                             columnNumber: 25
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 188,
                                     columnNumber: 21
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 177,
+                                lineNumber: 187,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 169,
+                        lineNumber: 179,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -51974,60 +58647,60 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "ID"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 204,
+                                                lineNumber: 210,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Content"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 205,
+                                                lineNumber: 211,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Article"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 206,
+                                                lineNumber: 212,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Author"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 207,
+                                                lineNumber: 213,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Created Date"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 208,
+                                                lineNumber: 214,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Last Updated"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 209,
+                                                lineNumber: 215,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 210,
+                                                lineNumber: 216,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 203,
+                                        lineNumber: 209,
                                         columnNumber: 25
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 202,
+                                    lineNumber: 208,
                                     columnNumber: 21
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
@@ -52038,12 +58711,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             children: selectedArticleId ? 'No comments found for this article' : 'No comments found'
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 222,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 221,
                                         columnNumber: 29
                                     }, undefined) : comments.map((comment, idx)=>{
                                         const createdAt = comment.dateCreated || comment.createdAt || '';
@@ -52060,7 +58733,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 237,
+                                                    lineNumber: 243,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52070,12 +58743,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.content.length > 100 ? comment.content.substring(0, 100) + '...' : comment.content
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 241,
+                                                        lineNumber: 247,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 240,
+                                                    lineNumber: 246,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52086,12 +58759,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.article?.title
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 248,
+                                                        lineNumber: 254,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 247,
+                                                    lineNumber: 253,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52101,12 +58774,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.author?.username || 'Unknown'
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 256,
+                                                        lineNumber: 262,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 255,
+                                                    lineNumber: 261,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52114,7 +58787,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                     children: formatDateTimeToMin(createdAt)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 260,
+                                                    lineNumber: 266,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52125,7 +58798,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: formatDateTimeToMin(updatedAt)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 266,
+                                                                lineNumber: 272,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52136,18 +58809,18 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 267,
+                                                                lineNumber: 273,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 265,
+                                                        lineNumber: 271,
                                                         columnNumber: 49
                                                     }, undefined) : '-'
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 269,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -52162,7 +58835,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "View"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 277,
+                                                                lineNumber: 283,
                                                                 columnNumber: 49
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52172,7 +58845,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "Edit"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 285,
+                                                                lineNumber: 291,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52182,47 +58855,47 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "Delete"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 294,
+                                                                lineNumber: 300,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 276,
+                                                        lineNumber: 282,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 275,
+                                                    lineNumber: 281,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, comment.id, true, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 233,
+                                            lineNumber: 239,
                                             columnNumber: 37
                                         }, undefined);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 219,
                                     columnNumber: 21
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 201,
+                            lineNumber: 207,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 200,
+                        lineNumber: 206,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 168,
+                lineNumber: 178,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52244,12 +58917,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 318,
+                                        lineNumber: 324,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 317,
+                                    lineNumber: 323,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -52265,18 +58938,18 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 className: "admin-page-input"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 332,
+                                                lineNumber: 338,
                                                 columnNumber: 38
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 331,
+                                        lineNumber: 337,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 330,
+                                    lineNumber: 336,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -52288,33 +58961,33 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 342,
+                                        lineNumber: 348,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 341,
+                                    lineNumber: 347,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 316,
+                            lineNumber: 322,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 315,
+                        lineNumber: 321,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/Comments.tsx",
-                    lineNumber: 314,
+                    lineNumber: 320,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 313,
+                lineNumber: 319,
                 columnNumber: 9
             }, undefined)
         ]
@@ -52336,7 +59009,7 @@ $RefreshReg$(_c, "Comments");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fX2rx":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fX2rx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b487 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$b487.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -52361,6 +59034,7 @@ var _adminArticlesCss = require("../Articles/AdminArticles.css");
 var _adminCommentsCss = require("./AdminComments.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
+var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
 const commentFormSchema = _yup1.object({
     content: _yup1.string().required('Content is required'),
@@ -52479,22 +59153,33 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                 className: "admin-loading-spinner"
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 191,
+                lineNumber: 192,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading comment..."
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 192,
+                lineNumber: 193,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentForm.tsx",
-        lineNumber: 190,
+        lineNumber: 191,
         columnNumber: 13
     }, undefined);
+    // Create article options for combobox
+    const articleOptions = [
+        {
+            value: "",
+            label: "Select an article..."
+        },
+        ...articles.map((article)=>({
+                value: article.id,
+                label: article.title
+            }))
+    ];
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "admin-comment-form-container",
         children: [
@@ -52504,12 +59189,12 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                     children: isEdit ? 'Edit Comment' : 'Create New Comment'
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                    lineNumber: 200,
+                    lineNumber: 210,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 199,
+                lineNumber: 209,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52519,7 +59204,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 205,
+                        lineNumber: 215,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -52527,7 +59212,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 204,
+                lineNumber: 214,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -52549,41 +59234,26 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 214,
+                                            lineNumber: 224,
                                             columnNumber: 48
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 223,
                                     columnNumber: 29
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                    id: "article",
-                                    ...register("articleId"),
-                                    disabled: loading || !!preselectedArticleId,
-                                    className: "admin-form-select",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                            value: "",
-                                            children: "Select an article..."
-                                        }, void 0, false, {
-                                            fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 222,
-                                            columnNumber: 33
-                                        }, undefined),
-                                        articles.map((article)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                value: article.id,
-                                                children: article.title
-                                            }, article.id, false, {
-                                                fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                                lineNumber: 224,
-                                                columnNumber: 37
-                                            }, undefined))
-                                    ]
-                                }, void 0, true, {
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                    options: articleOptions,
+                                    value: selectedArticleId,
+                                    onValueChange: (value)=>setValue("articleId", value),
+                                    placeholder: "Select an article...",
+                                    searchPlaceholder: "Search articles...",
+                                    className: "admin-form-select min-w-[300px]",
+                                    disabled: loading || !!preselectedArticleId
+                                }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 216,
+                                    lineNumber: 226,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -52591,18 +59261,18 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: errors.articleId?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 229,
+                                    lineNumber: 235,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 212,
+                            lineNumber: 222,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 211,
+                        lineNumber: 221,
                         columnNumber: 21
                     }, undefined),
                     selectedArticle && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52614,7 +59284,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: "Selected Article:"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 243,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52624,7 +59294,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: selectedArticle.title
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 239,
+                                            lineNumber: 245,
                                             columnNumber: 33
                                         }, undefined),
                                         selectedArticle.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -52632,24 +59302,24 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: selectedArticle.summary.length > 150 ? selectedArticle.summary.substring(0, 150) + '...' : selectedArticle.summary
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 241,
+                                            lineNumber: 247,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 244,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 236,
+                            lineNumber: 242,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 235,
+                        lineNumber: 241,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52667,13 +59337,13 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 255,
+                                            lineNumber: 261,
                                             columnNumber: 45
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 254,
+                                    lineNumber: 260,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -52686,7 +59356,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     maxLength: 1000
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 257,
+                                    lineNumber: 263,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52697,7 +59367,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 272,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -52705,18 +59375,18 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: errors.content?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 269,
+                                    lineNumber: 275,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 253,
+                            lineNumber: 259,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 252,
+                        lineNumber: 258,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52730,7 +59400,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 274,
+                                lineNumber: 280,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52743,7 +59413,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 289,
+                                            lineNumber: 295,
                                             columnNumber: 33
                                         }, undefined),
                                         isEdit ? 'Updating...' : 'Creating...'
@@ -52751,25 +59421,25 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                 }, void 0, true) : isEdit ? 'Update Comment' : 'Create Comment'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 282,
+                                lineNumber: 288,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 273,
+                        lineNumber: 279,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 209,
+                lineNumber: 219,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentForm.tsx",
-        lineNumber: 198,
+        lineNumber: 208,
         columnNumber: 9
     }, undefined);
 };
@@ -52791,7 +59461,7 @@ $RefreshReg$(_c, "CommentForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"1KkTo":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"1KkTo":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Users", ()=>(0, _usersDefault.default));
@@ -52826,6 +59496,7 @@ var _adminUsersCss = require("./AdminUsers.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
 var _pagination = require("@/components/ui/pagination");
+var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
 const Users = ({ onEdit, onView, filterByRole })=>{
     _s();
@@ -52844,6 +59515,17 @@ const Users = ({ onEdit, onView, filterByRole })=>{
         'ADMIN',
         'AUTHOR',
         'USER'
+    ];
+    // Create role options for combobox
+    const roleOptions = [
+        {
+            value: "",
+            label: "All Roles"
+        },
+        ...availableRoles.map((role)=>({
+                value: role,
+                label: role
+            }))
     ];
     (0, _react.useEffect)(()=>{
         loadUsers();
@@ -52958,7 +59640,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
         children: "Loading users..."
     }, void 0, false, {
         fileName: "src/components/admin/Users/Users.tsx",
-        lineNumber: 187,
+        lineNumber: 197,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -52973,7 +59655,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                 children: "Users Management"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/Users.tsx",
-                                lineNumber: 194,
+                                lineNumber: 204,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52987,44 +59669,29 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Filter by Role:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 207,
                                                 columnNumber: 25
                                             }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-                                                id: "role-filter",
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                                options: roleOptions,
                                                 value: selectedRole,
-                                                onChange: (e)=>{
-                                                    setSelectedRole(e.target.value);
+                                                onValueChange: (value)=>{
+                                                    setSelectedRole(value);
                                                     setCurrentPage(0);
                                                 },
-                                                className: "admin-filter-select",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                        value: "",
-                                                        children: "All Roles"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 207,
-                                                        columnNumber: 29
-                                                    }, undefined),
-                                                    availableRoles.map((role)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                                            value: role,
-                                                            children: role
-                                                        }, role, false, {
-                                                            fileName: "src/components/admin/Users/Users.tsx",
-                                                            lineNumber: 209,
-                                                            columnNumber: 33
-                                                        }, undefined))
-                                                ]
-                                            }, void 0, true, {
+                                                placeholder: "Select role...",
+                                                searchPlaceholder: "Search roles...",
+                                                className: "admin-filter-select min-w-[150px]",
+                                                clearable: true
+                                            }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 208,
                                                 columnNumber: 25
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 196,
+                                        lineNumber: 206,
                                         columnNumber: 21
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53038,13 +59705,13 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: users.length
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 217,
+                                                        lineNumber: 223,
                                                         columnNumber: 42
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 222,
                                                 columnNumber: 25
                                             }, undefined),
                                             selectedRole && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -53060,31 +59727,31 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         }).length
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 221,
+                                                        lineNumber: 227,
                                                         columnNumber: 49
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 220,
+                                                lineNumber: 226,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 221,
                                         columnNumber: 21
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/Users.tsx",
-                                lineNumber: 195,
+                                lineNumber: 205,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 193,
+                        lineNumber: 203,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53099,60 +59766,60 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "ID"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 236,
+                                                lineNumber: 242,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Username"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 237,
+                                                lineNumber: 243,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Full Name"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 238,
+                                                lineNumber: 244,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Email"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 239,
+                                                lineNumber: 245,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Role"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 240,
+                                                lineNumber: 246,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Created Date"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 247,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("th", {
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 242,
+                                                lineNumber: 248,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 235,
+                                        lineNumber: 241,
                                         columnNumber: 25
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 240,
                                     columnNumber: 21
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("tbody", {
@@ -53163,12 +59830,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                             children: selectedRole ? `No users found with role: ${selectedRole}` : 'No users found'
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/Users.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 254,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 247,
+                                        lineNumber: 253,
                                         columnNumber: 29
                                     }, undefined) : filteredUsers.map((user, idx)=>{
                                         const createdAt = user.createdDate || user.createdAt || '';
@@ -53186,7 +59853,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 267,
+                                                    lineNumber: 273,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53200,18 +59867,18 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "You"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 274,
+                                                                lineNumber: 280,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 271,
+                                                        lineNumber: 277,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 270,
+                                                    lineNumber: 276,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53219,7 +59886,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                     children: `${user.firstName} ${user.lastName}`
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 278,
+                                                    lineNumber: 284,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53230,12 +59897,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: user.email
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 282,
+                                                        lineNumber: 288,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 281,
+                                                    lineNumber: 287,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53245,12 +59912,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: userRole
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 287,
+                                                        lineNumber: 293,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 286,
+                                                    lineNumber: 292,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53258,7 +59925,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                     children: createdAt ? formatDateTimeToMin(createdAt) : '-'
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 291,
+                                                    lineNumber: 297,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
@@ -53273,7 +59940,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "View"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 296,
+                                                                lineNumber: 302,
                                                                 columnNumber: 49
                                                             }, undefined),
                                                             (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -53283,7 +59950,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "Edit User"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 304,
+                                                                lineNumber: 310,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             (0, _authApi.hasRole)("ADMIN") && !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -53293,47 +59960,47 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "Delete"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 313,
+                                                                lineNumber: 319,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 295,
+                                                        lineNumber: 301,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 294,
+                                                    lineNumber: 300,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, user.id, true, {
                                             fileName: "src/components/admin/Users/Users.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 268,
                                             columnNumber: 37
                                         }, undefined);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 251,
                                     columnNumber: 21
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/Users.tsx",
-                            lineNumber: 233,
+                            lineNumber: 239,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 232,
+                        lineNumber: 238,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/Users.tsx",
-                lineNumber: 192,
+                lineNumber: 202,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53355,12 +60022,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 337,
+                                        lineNumber: 343,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 336,
+                                    lineNumber: 342,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -53376,18 +60043,18 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 className: "admin-page-input"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 351,
+                                                lineNumber: 357,
                                                 columnNumber: 38
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 350,
+                                        lineNumber: 356,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 349,
+                                    lineNumber: 355,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -53399,33 +60066,33 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 361,
+                                        lineNumber: 367,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 360,
+                                    lineNumber: 366,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/Users.tsx",
-                            lineNumber: 335,
+                            lineNumber: 341,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 334,
+                        lineNumber: 340,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/Users.tsx",
-                    lineNumber: 333,
+                    lineNumber: 339,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/Users.tsx",
-                lineNumber: 332,
+                lineNumber: 338,
                 columnNumber: 9
             }, undefined)
         ]
@@ -53447,7 +60114,7 @@ $RefreshReg$(_c, "Users");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/pagination":"ifYd3"}],"emu2c":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4"}],"emu2c":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchUserById", ()=>fetchUserById);
@@ -53580,6 +60247,7 @@ var _yup1 = require("yup");
 var _adminArticlesCss = require("../Articles/AdminArticles.css");
 var _adminUsersCss = require("./AdminUsers.css");
 var _label = require("@/components/ui/label");
+var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
 const userFormSchema = _yup1.object({
     firstName: _yup1.string().required('First name is required'),
@@ -53741,20 +60409,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 className: "admin-loading-spinner"
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 210,
+                lineNumber: 213,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading user..."
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 211,
+                lineNumber: 214,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 209,
+        lineNumber: 212,
         columnNumber: 13
     }, undefined);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53766,14 +60434,14 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 220,
+                    lineNumber: 223,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 221,
+                    lineNumber: 224,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -53782,21 +60450,27 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 222,
+                    lineNumber: 225,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserForm.tsx",
-            lineNumber: 219,
+            lineNumber: 222,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 218,
+        lineNumber: 221,
         columnNumber: 13
     }, undefined);
     const isCurrentUser = user.username === currentUser;
+    // Create role options for combobox
+    const roleOptions = availableRoles.map((role)=>({
+            value: role.value,
+            label: `${role.label} - ${role.description}`,
+            disabled: loading || isCurrentUser && role.value !== 'ROLE_ADMIN'
+        }));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "admin-user-form-container",
         children: [
@@ -53806,12 +60480,12 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Edit User"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 238,
+                    lineNumber: 248,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 237,
+                lineNumber: 247,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53821,7 +60495,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 243,
+                        lineNumber: 253,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -53829,7 +60503,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 242,
+                lineNumber: 252,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -53843,7 +60517,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Edit User Details"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 249,
+                                lineNumber: 259,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53862,13 +60536,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 254,
+                                                        lineNumber: 264,
                                                         columnNumber: 44
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 263,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -53879,7 +60553,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 placeholder: "Enter first name"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 266,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -53887,13 +60561,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 children: errors.firstName?.message
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 263,
+                                                lineNumber: 273,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 252,
+                                        lineNumber: 262,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53909,13 +60583,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 268,
+                                                        lineNumber: 278,
                                                         columnNumber: 43
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 267,
+                                                lineNumber: 277,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -53926,7 +60600,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 placeholder: "Enter last name"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 270,
+                                                lineNumber: 280,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -53934,19 +60608,19 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 children: errors.lastName?.message
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 277,
+                                                lineNumber: 287,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 266,
+                                        lineNumber: 276,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 251,
+                                lineNumber: 261,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53965,13 +60639,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 284,
+                                                        lineNumber: 294,
                                                         columnNumber: 39
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 283,
+                                                lineNumber: 293,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -53982,7 +60656,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 placeholder: "Enter email address"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 286,
+                                                lineNumber: 296,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -53990,13 +60664,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 children: errors.email?.message
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 293,
+                                                lineNumber: 303,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 282,
+                                        lineNumber: 292,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -54012,13 +60686,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                         children: "*"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 298,
+                                                        lineNumber: 308,
                                                         columnNumber: 42
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 297,
+                                                lineNumber: 307,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -54029,7 +60703,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 placeholder: "Enter username"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 300,
+                                                lineNumber: 310,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -54037,25 +60711,25 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                 children: errors.username?.message
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 307,
+                                                lineNumber: 317,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 296,
+                                        lineNumber: 306,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 281,
+                                lineNumber: 291,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 248,
+                        lineNumber: 258,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -54073,108 +60747,53 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 325,
                                             columnNumber: 34
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 314,
+                                    lineNumber: 324,
                                     columnNumber: 25
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-role-selection",
-                                    children: availableRoles.map((role)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "admin-role-option",
-                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                className: "admin-role-option-label",
-                                                children: [
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                        type: "radio",
-                                                        value: role.value,
-                                                        ...register("role"),
-                                                        disabled: loading || isCurrentUser && role.value !== 'ROLE_ADMIN',
-                                                        className: "admin-radio-input"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 321,
-                                                        columnNumber: 41
-                                                    }, undefined),
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                        className: "admin-role-option-content",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                className: "admin-role-option-header",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                        className: `admin-role-badge admin-role-${role.value.replace('ROLE_', '').toLowerCase()}`,
-                                                                        children: role.label
-                                                                    }, void 0, false, {
-                                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 330,
-                                                                        columnNumber: 49
-                                                                    }, undefined),
-                                                                    isCurrentUser && role.value !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                        className: "admin-disabled-notice",
-                                                                        children: "(Cannot remove own admin access)"
-                                                                    }, void 0, false, {
-                                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                        lineNumber: 334,
-                                                                        columnNumber: 53
-                                                                    }, undefined)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 329,
-                                                                columnNumber: 45
-                                                            }, undefined),
-                                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                                className: "admin-role-option-description",
-                                                                children: role.description
-                                                            }, void 0, false, {
-                                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                                lineNumber: 337,
-                                                                columnNumber: 45
-                                                            }, undefined)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 328,
-                                                        columnNumber: 41
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 320,
-                                                columnNumber: 37
-                                            }, undefined)
-                                        }, role.value, false, {
-                                            fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 319,
-                                            columnNumber: 33
-                                        }, undefined))
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                    options: roleOptions,
+                                    value: selectedRole,
+                                    onValueChange: (value)=>setValue("role", value),
+                                    placeholder: "Select a role...",
+                                    searchPlaceholder: "Search roles...",
+                                    className: "admin-form-select min-w-[400px]",
+                                    disabled: loading
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 317,
+                                    lineNumber: 327,
                                     columnNumber: 25
+                                }, undefined),
+                                isCurrentUser && selectedRole !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    className: "admin-disabled-notice",
+                                    children: "Note: You cannot remove your own admin access"
+                                }, void 0, false, {
+                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                    lineNumber: 337,
+                                    columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                     className: "admin-field-error",
                                     children: errors.role?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 345,
+                                    lineNumber: 341,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 313,
+                            lineNumber: 323,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 312,
+                        lineNumber: 322,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -54189,7 +60808,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 350,
+                                lineNumber: 346,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -54203,7 +60822,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             className: "admin-loading-spinner-small"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 367,
+                                            lineNumber: 363,
                                             columnNumber: 33
                                         }, undefined),
                                         "Updating User..."
@@ -54211,25 +60830,25 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 }, void 0, true) : 'Update User'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 359,
+                                lineNumber: 355,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 349,
+                        lineNumber: 345,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 247,
+                lineNumber: 257,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 236,
+        lineNumber: 246,
         columnNumber: 9
     }, undefined);
 };
@@ -54252,7 +60871,7 @@ $RefreshReg$(_c, "UserForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","../../../../components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"lzaq6":[function() {},{}],"4aOlA":[function() {},{}],"k0Q5o":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","../../../../components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4"}],"lzaq6":[function() {},{}],"4aOlA":[function() {},{}],"k0Q5o":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b8ed = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$b8ed.init();
 var prevRefreshReg = globalThis.$RefreshReg$;

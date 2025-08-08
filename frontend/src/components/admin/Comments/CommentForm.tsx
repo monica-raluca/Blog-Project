@@ -13,6 +13,7 @@ import '../Articles/AdminArticles.css';
 import './AdminComments.css';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 
 interface CommentFormProps {
     isEdit?: boolean;
@@ -194,6 +195,15 @@ const CommentForm: React.FC<CommentFormProps> = ({
         );
     }
 
+    // Create article options for combobox
+    const articleOptions: ComboboxOption[] = [
+        { value: "", label: "Select an article..." },
+        ...articles.map(article => ({
+            value: article.id!,
+            label: article.title,
+        }))
+    ];
+
     return (
         <div className="admin-comment-form-container">
             <div className="admin-form-header">
@@ -213,19 +223,15 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             <Label htmlFor="article" className="admin-form-label">
                                 Select Article <span className="admin-required">*</span>
                             </Label>
-                            <select
-                                id="article"
-                                {...register("articleId")}
+                            <Combobox
+                                options={articleOptions}
+                                value={selectedArticleId}
+                                onValueChange={(value) => setValue("articleId", value)}
+                                placeholder="Select an article..."
+                                searchPlaceholder="Search articles..."
+                                className="admin-form-select min-w-[300px]"
                                 disabled={loading || !!preselectedArticleId}
-                                className="admin-form-select"
-                            >
-                                <option value="">Select an article...</option>
-                                {articles.map((article) => (
-                                    <option key={article.id} value={article.id}>
-                                        {article.title}
-                                    </option>
-                                ))}
-                            </select>
+                            />
                             <p className="admin-field-error">{errors.articleId?.message}</p>
                         </div>
                     </div>
