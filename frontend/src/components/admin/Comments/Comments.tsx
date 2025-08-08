@@ -19,6 +19,15 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 
 interface CommentsProps {
     onEdit?: (comment: Comment) => void;
@@ -203,29 +212,29 @@ const Comments: React.FC<CommentsProps> = ({
                 </div>
             </div>
 
-            <div className="admin-table-container">
-                <table className="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Content</th>
-                            <th>Article</th>
-                            <th>Author</th>
-                            <th>Created Date</th>
-                            <th>Last Updated</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="rounded-md border bg-card overflow-hidden">
+                <Table>
+                    <TableHeader>
+                        <TableRow className="hover:bg-transparent border-b bg-muted/50">
+                            <TableHead className="w-[100px] font-semibold text-foreground">ID</TableHead>
+                            <TableHead className="font-semibold text-foreground">Content</TableHead>
+                            <TableHead className="w-[200px] font-semibold text-foreground">Article</TableHead>
+                            <TableHead className="w-[120px] font-semibold text-foreground">Author</TableHead>
+                            <TableHead className="w-[140px] font-semibold text-foreground">Created Date</TableHead>
+                            <TableHead className="w-[140px] font-semibold text-foreground">Last Updated</TableHead>
+                            <TableHead className="w-[120px] font-semibold text-foreground text-center">Actions</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
                         {comments.length === 0 ? (
-                            <tr>
-                                <td colSpan={7} className="admin-no-data">
+                            <TableRow>
+                                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
                                     {selectedArticleId 
                                         ? 'No comments found for this article' 
                                         : 'No comments found'
                                     }
-                                </td>
-                            </tr>
+                                </TableCell>
+                            </TableRow>
                         ) : (
                             comments.map((comment, idx) => {
                                 const createdAt = comment.dateCreated || comment.createdAt || '';
@@ -236,53 +245,60 @@ const Comments: React.FC<CommentsProps> = ({
                                 );
                                 
                                 return (
-                                    <tr 
+                                    <TableRow 
                                         key={comment.id}
                                         ref={idx === comments.length - 1 ? lastCommentRef : null}
+                                        className="group hover:bg-muted/50 transition-colors"
                                     >
-                                        <td className="admin-id-cell">
+                                        <TableCell className="font-mono text-xs text-muted-foreground">
                                             {comment.id?.substring(0, 8)}...
-                                        </td>
-                                        <td className="admin-content-cell">
-                                            <div className="comment-content-preview">
+                                        </TableCell>
+                                        <TableCell className="max-w-xs">
+                                            <div className="truncate pr-2">
                                                 {comment.content.length > 100 
                                                     ? comment.content.substring(0, 100) + '...'
                                                     : comment.content}
                                             </div>
-                                        </td>
-                                        <td className="admin-article-cell">
+                                        </TableCell>
+                                        <TableCell>
                                             <NavLink 
                                                 to={`/admin/articles/${comment.article?.id}`}
-                                                className="admin-article-link"
+                                                className="text-primary hover:underline font-medium"
                                             >
                                                 {comment.article?.title}
                                             </NavLink>
-                                        </td>
-                                        <td className="admin-author-cell">
-                                            <NavLink to={`/admin/users/${comment.author?.id}`}>
+                                        </TableCell>
+                                        <TableCell>
+                                            <NavLink 
+                                                to={`/admin/users/${comment.author?.id}`}
+                                                className="text-primary hover:underline"
+                                            >
                                                 {comment.author?.username || 'Unknown'}
                                             </NavLink>
-                                        </td>
-                                        <td className="admin-date-cell">
+                                        </TableCell>
+                                        <TableCell className="text-sm text-muted-foreground">
                                             {formatDateTimeToMin(createdAt)}
-                                        </td>
-                                        <td className="admin-date-cell">
+                                        </TableCell>
+                                        <TableCell className="text-sm">
                                             {showEdited ? (
-                                                <div>
-                                                    <div>{formatDateTimeToMin(updatedAt)}</div>
-                                                    <div className="editor-info">
-                                                        by {comment.editor?.username}
+                                                <div className="space-y-1">
+                                                    <div className="text-muted-foreground">
+                                                        {formatDateTimeToMin(updatedAt)}
                                                     </div>
+                                                    <Badge variant="outline" className="text-xs">
+                                                        by {comment.editor?.username}
+                                                    </Badge>
                                                 </div>
                                             ) : (
-                                                '-'
+                                                <span className="text-muted-foreground">-</span>
                                             )}
-                                        </td>
-                                        <td className="admin-actions-cell">
-                                            <div className="admin-action-buttons">
+                                        </TableCell>
+                                        <TableCell className="text-center">
+                                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <Button
                                                     onClick={() => handleView(comment)}
-                                                    className="admin-btn admin-btn-sm admin-btn-secondary"
+                                                    variant="outline"
+                                                    size="sm"
                                                     title="View Comment"
                                                 >
                                                     View
@@ -290,7 +306,8 @@ const Comments: React.FC<CommentsProps> = ({
                                                 {(hasRole("ADMIN") || comment.author?.username === currentUser) && (
                                                     <Button
                                                         onClick={() => handleEdit(comment)}
-                                                        className="admin-btn admin-btn-sm admin-btn-primary"
+                                                        variant="default"
+                                                        size="sm"
                                                         title="Edit Comment"
                                                     >
                                                         Edit
@@ -299,20 +316,21 @@ const Comments: React.FC<CommentsProps> = ({
                                                 {(hasRole("ADMIN") || comment.author?.username === currentUser) && (
                                                     <Button
                                                         onClick={() => handleDelete(comment)}
-                                                        className="admin-btn admin-btn-sm admin-btn-danger"
+                                                        variant="destructive"
+                                                        size="sm"
                                                         title="Delete Comment"
                                                     >
                                                         Delete
                                                     </Button>
                                                 )}
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </TableCell>
+                                    </TableRow>
                                 );
                             })
                         )}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         </div>
 

@@ -19,6 +19,15 @@ import {
   PaginationPrevious,
 } from '@/components/ui/pagination';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 
 interface UsersProps {
     onEdit?: (user: UserDetail) => void;
@@ -41,7 +50,7 @@ const Users: React.FC<UsersProps> = ({
     
     const { token, currentUser } = useAuth();
     const navigate = useNavigate();
-    const lastUserRef = React.useRef<HTMLTableRowElement>(null);
+    const lastUserRef = React.useRef<HTMLDivElement>(null);
 
     // Available roles for filtering
     const availableRoles = ['ADMIN', 'AUTHOR', 'USER'];
@@ -235,29 +244,29 @@ const Users: React.FC<UsersProps> = ({
                 </div>
             </div>
 
-            <div className="admin-table-container">
-                <table className="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Username</th>
-                            <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Created Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="rounded-md border bg-card overflow-hidden">
+                <Table>
+                    <TableHeader>
+                        <TableRow className="hover:bg-transparent border-b bg-muted/50">
+                            <TableHead className="w-[100px] font-semibold text-foreground">ID</TableHead>
+                            <TableHead className="font-semibold text-foreground">Username</TableHead>
+                            <TableHead className="font-semibold text-foreground">Full Name</TableHead>
+                            <TableHead className="font-semibold text-foreground">Email</TableHead>
+                            <TableHead className="w-[120px] font-semibold text-foreground">Role</TableHead>
+                            <TableHead className="w-[140px] font-semibold text-foreground">Created Date</TableHead>
+                            <TableHead className="w-[120px] font-semibold text-foreground text-center">Actions</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
                         {filteredUsers.length === 0 ? (
-                            <tr>
-                                <td colSpan={7} className="admin-no-data">
+                            <TableRow>
+                                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
                                     {selectedRole 
                                         ? `No users found with role: ${selectedRole}` 
                                         : 'No users found'
                                     }
-                                </td>
-                            </tr>
+                                </TableCell>
+                            </TableRow>
                         ) : (
                             filteredUsers.map((user, idx) => {
                                 const createdAt = user.createdDate || user.createdAt || '';
@@ -265,43 +274,55 @@ const Users: React.FC<UsersProps> = ({
                                 const isCurrentUser = user.username === currentUser;
                                 
                                 return (
-                                    <tr 
+                                    <TableRow 
                                         key={user.id}
                                         ref={idx === filteredUsers.length - 1 ? lastUserRef : null}
-                                        className={isCurrentUser ? 'admin-current-user-row' : ''}
+                                        className={`group hover:bg-muted/50 transition-colors ${isCurrentUser ? 'bg-primary/5 border-primary/20' : ''}`}
                                     >
-                                        <td className="admin-id-cell">
+                                        <TableCell className="font-mono text-xs text-muted-foreground">
                                             {user.id.substring(0, 8)}...
-                                        </td>
-                                        <td className="admin-username-cell">
-                                            <div className="admin-username-display">
+                                        </TableCell>
+                                        <TableCell className="font-medium">
+                                            <div className="flex items-center gap-2">
                                                 {user.username}
                                                 {isCurrentUser && (
-                                                    <span className="admin-current-user-badge">You</span>
+                                                    <Badge variant="secondary" className="text-xs px-2 py-0">
+                                                        You
+                                                    </Badge>
                                                 )}
                                             </div>
-                                        </td>
-                                        <td className="admin-fullname-cell">
+                                        </TableCell>
+                                        <TableCell>
                                             {`${user.firstName} ${user.lastName}`}
-                                        </td>
-                                        <td className="admin-email-cell">
-                                            <a href={`mailto:${user.email}`} className="admin-email-link">
+                                        </TableCell>
+                                        <TableCell>
+                                            <a 
+                                                href={`mailto:${user.email}`} 
+                                                className="text-primary hover:underline"
+                                            >
                                                 {user.email}
                                             </a>
-                                        </td>
-                                        <td className="admin-role-cell">
-                                            <span className={`admin-role-badge ${getRoleBadgeColor(userRole)}`}>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Badge 
+                                                variant={
+                                                    userRole === 'ADMIN' ? 'destructive' : 
+                                                    userRole === 'AUTHOR' ? 'default' : 'secondary'
+                                                }
+                                                className="font-medium"
+                                            >
                                                 {userRole}
-                                            </span>
-                                        </td>
-                                        <td className="admin-date-cell">
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="text-sm text-muted-foreground">
                                             {createdAt ? formatDateTimeToMin(createdAt) : '-'}
-                                        </td>
-                                        <td className="admin-actions-cell">
-                                            <div className="admin-action-buttons">
+                                        </TableCell>
+                                        <TableCell className="text-center">
+                                            <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <Button
                                                     onClick={() => handleView(user)}
-                                                    className="admin-btn admin-btn-sm admin-btn-secondary"
+                                                    variant="outline"
+                                                    size="sm"
                                                     title="View User"
                                                 >
                                                     View
@@ -309,29 +330,31 @@ const Users: React.FC<UsersProps> = ({
                                                 {hasRole("ADMIN") && (
                                                     <Button
                                                         onClick={() => handleEdit(user)}
-                                                        className="admin-btn admin-btn-sm admin-btn-primary"
+                                                        variant="default"
+                                                        size="sm"
                                                         title="Edit User"
                                                     >
-                                                        Edit User
+                                                        Edit
                                                     </Button>
                                                 )}
                                                 {hasRole("ADMIN") && !isCurrentUser && (
                                                     <Button
                                                         onClick={() => handleDelete(user)}
-                                                        className="admin-btn admin-btn-sm admin-btn-danger"
+                                                        variant="destructive"
+                                                        size="sm"
                                                         title="Delete User"
                                                     >
                                                         Delete
                                                     </Button>
                                                 )}
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </TableCell>
+                                    </TableRow>
                                 );
                             })
                         )}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         </div>
 

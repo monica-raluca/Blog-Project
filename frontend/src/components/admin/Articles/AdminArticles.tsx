@@ -16,6 +16,15 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 
 const AdminArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -137,25 +146,25 @@ const AdminArticles: React.FC = () => {
 				</Button>
 			</div>
 
-			<div className="admin-table-container">
-				<table className="admin-table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Title</th>
-							<th>Author</th>
-							<th>Created Date</th>
-							<th>Last Updated</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
+			<div className="rounded-md border bg-card overflow-hidden">
+				<Table>
+					<TableHeader>
+						<TableRow className="hover:bg-transparent border-b bg-muted/50">
+							<TableHead className="w-[100px] font-semibold text-foreground">ID</TableHead>
+							<TableHead className="font-semibold text-foreground">Title</TableHead>
+							<TableHead className="w-[150px] font-semibold text-foreground">Author</TableHead>
+							<TableHead className="w-[140px] font-semibold text-foreground">Created Date</TableHead>
+							<TableHead className="w-[140px] font-semibold text-foreground">Last Updated</TableHead>
+							<TableHead className="w-[120px] font-semibold text-foreground text-center">Actions</TableHead>
+						</TableRow>
+					</TableHeader>
+					<TableBody>
 						{articles.length === 0 ? (
-							<tr>
-								<td colSpan={6} className="admin-no-data">
+							<TableRow>
+								<TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
 									No articles found
-								</td>
-							</tr>
+								</TableCell>
+							</TableRow>
 						) : (
 							articles.map((article, idx) => {
 								const createdAt = article.createdDate || article.createdAt || '';
@@ -166,48 +175,59 @@ const AdminArticles: React.FC = () => {
 								);
 								
 								return (
-									<tr 
+									<TableRow 
 										key={article.id}
 										ref={idx === articles.length - 1 ? lastArticleRef : null}
+										className="group hover:bg-muted/50 transition-colors"
 									>
-										<td className="admin-id-cell">
+										<TableCell className="font-mono text-xs text-muted-foreground">
 											{article.id?.substring(0, 8)}...
-										</td>
-										<td className="admin-title-cell">
-											<div className="article-title-truncated">
-												{article.title}
-											</div>
-											{article.summary && (
-												<div className="article-summary-truncated">
-													{article.summary.substring(0, 100)}...
+										</TableCell>
+										<TableCell className="max-w-[400px]">
+											<div className="space-y-1">
+												<div className="font-medium truncate">
+													{article.title}
 												</div>
-											)}
-										</td>
-										<td className="admin-author-cell">
-											<NavLink to={`/admin/users/${article.author?.id}`}>
+												{article.summary && (
+													<div className="text-sm text-muted-foreground line-clamp-2">
+														{article.summary.length > 100 
+															? article.summary.substring(0, 100) + '...'
+															: article.summary}
+													</div>
+												)}
+											</div>
+										</TableCell>
+										<TableCell>
+											<NavLink 
+												to={`/admin/users/${article.author?.id}`}
+												className="text-primary hover:underline"
+											>
 												{article.author?.username || 'Unknown'}
 											</NavLink>
-										</td>
-										<td className="admin-date-cell">
+										</TableCell>
+										<TableCell className="text-sm text-muted-foreground">
 											{formatDateTimeToMin(createdAt)}
-										</td>
-										<td className="admin-date-cell">
+										</TableCell>
+										<TableCell className="text-sm">
 											{showEdited ? (
-												<div>
-													<div>{formatDateTimeToMin(updatedAt)}</div>
-													<div className="editor-info">
-														by {article.editor?.username}
+												<div className="space-y-1">
+													<div className="text-muted-foreground">
+														{formatDateTimeToMin(updatedAt)}
 													</div>
+													<Badge variant="outline" className="text-xs">
+														by {article.editor?.username}
+													</Badge>
 												</div>
 											) : (
-												'-'
+												<span className="text-muted-foreground">-</span>
 											)}
-										</td>
-										<td className="admin-actions-cell">
-											<div className="admin-action-buttons">
+										</TableCell>
+										<TableCell className="text-center">
+											<div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
 												<Button
 													onClick={() => handleView(article.id!)}
-													className="admin-btn admin-btn-sm admin-btn-secondary"
+													variant="outline"
+													size="sm"
 													title="View Article"
 												>
 													View
@@ -215,7 +235,8 @@ const AdminArticles: React.FC = () => {
 												{(hasRole("ADMIN") || article.author?.username === currentUser) && (
 													<Button
 														onClick={() => handleEdit(article.id!)}
-														className="admin-btn admin-btn-sm admin-btn-primary"
+														variant="default"
+														size="sm"
 														title="Edit Article"
 													>
 														Edit
@@ -224,20 +245,21 @@ const AdminArticles: React.FC = () => {
 												{(hasRole("ADMIN") || article.author?.username === currentUser) && (
 													<Button
 														onClick={() => handleDelete(article.id!)}
-														className="admin-btn admin-btn-sm admin-btn-danger"
+														variant="destructive"
+														size="sm"
 														title="Delete Article"
 													>
 														Delete
 													</Button>
 												)}
 											</div>
-										</td>
-									</tr>
+										</TableCell>
+									</TableRow>
 								);
 							})
 						)}
-					</tbody>
-				</table>
+					</TableBody>
+				</Table>
 			</div>
 		</div>
 
