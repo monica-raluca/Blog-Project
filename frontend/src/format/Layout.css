@@ -183,62 +183,50 @@ body::before {
   }
 }
 
-/* Admin Panel Dropdown Styles */
-.admin-panel-dropdown {
-  position: relative;
+/* Admin Panel Accordion Styles */
+.admin-panel-accordion {
   width: 100%;
 }
 
-.admin-panel-toggle {
+.admin-panel-trigger {
+  color: #162938;
+  text-decoration: none;
+  font-size: 1.08em;
+  font-weight: 500;
+  padding: 8px 0 8px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
   width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.admin-panel-toggle:hover {
+.admin-panel-trigger:hover {
   background: #ececec !important;
   color: #270023 !important;
 }
 
-.dropdown-arrow {
-  font-size: 0.8em;
-  transition: transform 0.2s ease;
-  color: #666;
+.admin-panel-trigger[data-state="open"] {
+  background: #ececec;
+  color: #270023;
 }
 
-.dropdown-arrow.open {
-  transform: rotate(180deg);
-}
-
-.admin-panel-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-  margin-top: 4px;
-  backdrop-filter: blur(4px);
+.admin-panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 8px;
 }
 
 .admin-panel-item {
   display: block;
   color: #162938;
   text-decoration: none;
-  font-size: 1em;
-  font-weight: 500;
-  padding: 12px 16px;
-  border-radius: 6px;
+  font-size: 0.95em;
+  font-weight: 400;
+  padding: 8px 12px;
+  border-radius: 4px;
   transition: background 0.2s, color 0.2s;
-  margin: 4px;
+  margin-left: 8px;
 }
 
 .admin-panel-item:hover {
@@ -246,21 +234,14 @@ body::before {
   color: #270023;
 }
 
-.admin-panel-item:first-child {
-  margin-top: 4px;
-}
-
-.admin-panel-item:last-child {
-  margin-bottom: 4px;
-}
-
 /* Mobile adjustments for admin panel */
 @media (max-width: 700px) {
-  .admin-panel-menu {
-    position: fixed;
-    top: auto;
-    left: 8px;
-    right: 8px;
-    margin-top: 8px;
+  .admin-panel-content {
+    padding-left: 4px;
+  }
+  
+  .admin-panel-item {
+    margin-left: 4px;
+    padding: 10px 12px;
   }
 }

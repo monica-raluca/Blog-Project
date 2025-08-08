@@ -11,6 +11,7 @@ import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
 
 import '../AdminArticles.css';
 import { Label } from '@/components/ui/label';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 interface ArticleItemProps {
     article?: Article;
@@ -131,7 +132,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
         if (!window.confirm('Are you sure you want to delete this article? This action cannot be undone.')) {
             return;
         }
-
+        
         if (!token || !article?.id) return;
 
         try {
@@ -178,12 +179,12 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                 <div className="admin-error-container">
                     <h2>Error Loading Article</h2>
                     <p>{error}</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/articles')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Articles
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -196,12 +197,12 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                 <div className="admin-error-container">
                     <h2>Article Not Found</h2>
                     <p>The requested article could not be found.</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/articles')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Articles
-                    </button>
+                    </Button>
                 </div>
             </div>
         );

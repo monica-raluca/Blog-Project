@@ -7,6 +7,12 @@ import { useAuth } from '../api/AuthContext';
 import TopBar from './TopBar';
 import { SortCriteria, ArticleFilters } from '../api/types';
 import { Button } from '@/components/ui/button';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 interface ArticleControlsContextType {
 	filtersInput: ArticleFilters;
@@ -38,21 +44,7 @@ export function Layout(): React.ReactElement {
 	const [pageIndex, setPageIndex] = useState<number>(0);
 	const [sizeInput, setSizeInput] = useState<number>(10);
 	
-	// Admin panel dropdown state
-	const [isAdminPanelOpen, setIsAdminPanelOpen] = useState<boolean>(false);
-
-	// Close admin panel when clicking outside
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			const target = event.target as Element;
-			if (isAdminPanelOpen && !target.closest('.admin-panel-dropdown')) {
-				setIsAdminPanelOpen(false);
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, [isAdminPanelOpen]);
+	// No longer need state management for accordion as it's handled internally
 
 	console.log(token, currentUser);
 
@@ -107,28 +99,26 @@ export function Layout(): React.ReactElement {
 							<Link to="/public/articles/create" className="layout-nav-link">Create Article</Link>
 						</RequireRoles>
 						<RequireRoles roles={["ADMIN"]}>
-							<div className="admin-panel-dropdown">
-								<Button
-									className={`layout-nav-link admin-panel-toggle ${isAdminPanelOpen ? 'active' : ''}`}
-									onClick={() => setIsAdminPanelOpen(!isAdminPanelOpen)}
-								>
-									Admin Panel
-									<span className={`dropdown-arrow ${isAdminPanelOpen ? 'open' : ''}`}>▼</span>
-								</Button>
-								{isAdminPanelOpen && (
-									<div className="admin-panel-menu">
-										<Link to="/admin/articles" className="admin-panel-item"onClick={() => setIsAdminPanelOpen(false)}>
-											Manage Articles
-										</Link>
-										<Link to="/admin/comments" className="admin-panel-item" onClick={() => setIsAdminPanelOpen(false)}>
-											Manage Comments
-										</Link>
-										<Link to="/admin/users" className="admin-panel-item"onClick={() => setIsAdminPanelOpen(false)}>
-											Manage Users
-										</Link>
-									</div>
-								)}
-							</div>
+							<Accordion type="single" collapsible className="admin-panel-accordion">
+								<AccordionItem value="admin-panel" className="border-none">
+									<AccordionTrigger className="layout-nav-link admin-panel-trigger hover:no-underline py-2 px-0">
+										Admin Panel
+									</AccordionTrigger>
+									<AccordionContent className="pb-2 pt-0">
+										<div className="admin-panel-content">
+											<Link to="/admin/articles" className="admin-panel-item">
+												Manage Articles
+											</Link>
+											<Link to="/admin/comments" className="admin-panel-item">
+												Manage Comments
+											</Link>
+											<Link to="/admin/users" className="admin-panel-item">
+												Manage Users
+											</Link>
+										</div>
+									</AccordionContent>
+								</AccordionItem>
+							</Accordion>
 						</RequireRoles>
 					</nav>
 					{/* Article Controls Section */}
