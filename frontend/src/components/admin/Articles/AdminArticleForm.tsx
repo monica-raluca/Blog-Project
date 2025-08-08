@@ -5,7 +5,10 @@ import { useAuth } from '../../../api/AuthContext';
 import { Article } from '../../../api/types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '../../../../components/ui/button';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import * as yup from 'yup';
 
 import './AdminArticles.css';

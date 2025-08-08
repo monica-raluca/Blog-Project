@@ -10,6 +10,7 @@ import { Button } from '../../../components/ui/button';
 import * as yup from 'yup';
 
 import '../../format/Login.css';
+import { Label } from '@/components/ui/label';
 
 interface LoginFormData {
     username: string;
@@ -68,7 +69,7 @@ const Login: React.FC = () => {
                             type="text"
                             {...register("username")}
                         />
-                        <label>Username</label>
+                        <Label>Username</Label>
                         <p className="field-error">{errors.username?.message}</p>
                     </div>
                     <div className="input-group">
@@ -76,7 +77,7 @@ const Login: React.FC = () => {
                             type="password"
                             {...register("password")}
                         />
-                        <label>Password</label>
+                        <Label>Password</Label>
                         <p className="field-error">{errors.password?.message}</p>
                     </div>
                     <Button variant="dreamy" size="auth" type="submit">Login</Button>

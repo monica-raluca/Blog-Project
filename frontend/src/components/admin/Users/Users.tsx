@@ -8,6 +8,16 @@ import UserItem from './UserItem/UserItem';
 
 import '../Articles/AdminArticles.css';
 import './AdminUsers.css';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { 
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
 interface UsersProps {
     onEdit?: (user: UserDetail) => void;
@@ -184,7 +194,7 @@ const Users: React.FC<UsersProps> = ({
                 <h2>Users Management</h2>
                 <div className="admin-actions">
                     <div className="admin-filter-section">
-                        <label htmlFor="role-filter">Filter by Role:</label>
+                        <Label htmlFor="role-filter">Filter by Role:</Label>
                         <select
                             id="role-filter"
                             value={selectedRole}
@@ -283,30 +293,30 @@ const Users: React.FC<UsersProps> = ({
                                         </td>
                                         <td className="admin-actions-cell">
                                             <div className="admin-action-buttons">
-                                                <button
+                                                <Button
                                                     onClick={() => handleView(user)}
                                                     className="admin-btn admin-btn-sm admin-btn-secondary"
                                                     title="View User"
                                                 >
                                                     View
-                                                </button>
+                                                </Button>
                                                 {hasRole("ADMIN") && (
-                                                    <button
+                                                    <Button
                                                         onClick={() => handleEdit(user)}
                                                         className="admin-btn admin-btn-sm admin-btn-primary"
                                                         title="Edit User"
                                                     >
                                                         Edit User
-                                                    </button>
+                                                    </Button>
                                                 )}
                                                 {hasRole("ADMIN") && !isCurrentUser && (
-                                                    <button
+                                                    <Button
                                                         onClick={() => handleDelete(user)}
                                                         className="admin-btn admin-btn-sm admin-btn-danger"
                                                         title="Delete User"
                                                     >
                                                         Delete
-                                                    </button>
+                                                    </Button>
                                                 )}
                                             </div>
                                         </td>
@@ -320,29 +330,44 @@ const Users: React.FC<UsersProps> = ({
         </div>
 
         <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
-            <div className="admin-pagination">
-                <button 
-                    className="admin-btn admin-btn-secondary" 
-                    onClick={goToPrev} 
-                    disabled={currentPage === 0}
-                >
-                    Previous
-                </button>
-                <span className="admin-page-info">
-                    Page <input
-                        type="number"
-                        min="1"
-                        value={currentPage + 1}
-                        onChange={handlePageInput}
-                        className="admin-page-input"
-                    />
-                </span>
-                <button 
-                    className="admin-btn admin-btn-secondary" 
-                    onClick={goToNext}
-                >
-                    Next
-                </button>
+            <div>
+                <Pagination>
+                    <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    goToPrev();
+                                }}
+                                style={{ 
+                                    pointerEvents: currentPage === 0 ? 'none' : 'auto',
+                                    opacity: currentPage === 0 ? 0.5 : 1 
+                                }}
+                            />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <span className="admin-page-info">
+                                Page <input
+                                    type="number"
+                                    min="1"
+                                    value={currentPage + 1}
+                                    onChange={handlePageInput}
+                                    className="admin-page-input"
+                                />
+                            </span>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationNext 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    goToNext();
+                                }}
+                            />
+                        </PaginationItem>
+                    </PaginationContent>
+                </Pagination>
             </div>
         </div>
         </>

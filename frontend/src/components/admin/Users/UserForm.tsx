@@ -10,6 +10,7 @@ import * as yup from 'yup';
 
 import '../Articles/AdminArticles.css';
 import './AdminUsers.css';
+import { Label } from '@/components/ui/label';
 
 interface UserFormProps {
     userId?: string;
@@ -218,12 +219,12 @@ const UserForm: React.FC<UserFormProps> = ({
                 <div className="admin-error-container">
                     <h2>User Not Found</h2>
                     <p>The requested user could not be found.</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/admin/users')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Users
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -249,9 +250,9 @@ const UserForm: React.FC<UserFormProps> = ({
                     
                     <div className="admin-form-row">
                         <div className="admin-form-group">
-                            <label htmlFor="firstName" className="admin-form-label">
+                            <Label htmlFor="firstName" className="admin-form-label">
                                 First Name <span className="admin-required">*</span>
-                            </label>
+                            </Label>
                             <input
                                 type="text"
                                 {...register("firstName")}
@@ -263,9 +264,9 @@ const UserForm: React.FC<UserFormProps> = ({
                         </div>
                         
                         <div className="admin-form-group">
-                            <label htmlFor="lastName" className="admin-form-label">
+                            <Label htmlFor="lastName" className="admin-form-label">
                                 Last Name <span className="admin-required">*</span>
-                            </label>
+                            </Label>
                             <input
                                 type="text"
                                 {...register("lastName")}
@@ -279,9 +280,9 @@ const UserForm: React.FC<UserFormProps> = ({
 
                     <div className="admin-form-row">
                         <div className="admin-form-group">
-                            <label htmlFor="email" className="admin-form-label">
+                            <Label htmlFor="email" className="admin-form-label">
                                 Email <span className="admin-required">*</span>
-                            </label>
+                            </Label>
                             <input
                                 type="email"
                                 {...register("email")}
@@ -293,9 +294,9 @@ const UserForm: React.FC<UserFormProps> = ({
                         </div>
                         
                         <div className="admin-form-group">
-                            <label htmlFor="username" className="admin-form-label">
+                            <Label htmlFor="username" className="admin-form-label">
                                 Username <span className="admin-required">*</span>
-                            </label>
+                            </Label>
                             <input
                                 type="text"
                                 {...register("username")}
@@ -310,13 +311,13 @@ const UserForm: React.FC<UserFormProps> = ({
 
                 <div className="admin-form-row">
                     <div className="admin-form-group">
-                        <label htmlFor="role" className="admin-form-label">
+                        <Label htmlFor="role" className="admin-form-label">
                             Role <span className="admin-required">*</span>
-                        </label>
+                        </Label>
                         <div className="admin-role-selection">
                             {availableRoles.map((role) => (
                                 <div key={role.value} className="admin-role-option">
-                                    <label className="admin-role-option-label">
+                                    <Label className="admin-role-option-label">
                                         <input
                                             type="radio"
                                             value={role.value}
@@ -337,7 +338,7 @@ const UserForm: React.FC<UserFormProps> = ({
                                                 {role.description}
                                             </div>
                                         </div>
-                                    </label>
+                                    </Label>
                                 </div>
                             ))}
                         </div>

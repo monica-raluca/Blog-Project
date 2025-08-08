@@ -11,6 +11,8 @@ import * as yup from 'yup';
 
 import '../Articles/AdminArticles.css';
 import './AdminComments.css';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 
 interface CommentFormProps {
     isEdit?: boolean;
@@ -208,9 +210,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
                 {!isEdit && (
                     <div className="admin-form-row">
                         <div className="admin-form-group">
-                            <label htmlFor="article" className="admin-form-label">
+                            <Label htmlFor="article" className="admin-form-label">
                                 Select Article <span className="admin-required">*</span>
-                            </label>
+                            </Label>
                             <select
                                 id="article"
                                 {...register("articleId")}
@@ -249,9 +251,9 @@ const CommentForm: React.FC<CommentFormProps> = ({
 
                 <div className="admin-form-row">
                     <div className="admin-form-group">
-                        <label htmlFor="content" className="admin-form-label">
+                        <Label htmlFor="content" className="admin-form-label">
                             Comment Content <span className="admin-required">*</span>
-                        </label>
+                        </Label>
                         <textarea
                             id="content"
                             placeholder="Write your comment here..."
@@ -269,15 +271,15 @@ const CommentForm: React.FC<CommentFormProps> = ({
                 </div>
 
                 <div className="admin-form-actions">
-                    <button
+                    <Button
                         type="button"
                         onClick={handleCancel}
                         disabled={loading}
                         className="admin-btn admin-btn-secondary"
                     >
                         Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                         type="submit"
                         disabled={loading || !content.trim() || (!selectedArticleId && !isEdit)}
                         className="admin-btn admin-btn-primary"
@@ -290,7 +292,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         ) : (
                             isEdit ? 'Update Comment' : 'Create Comment'
                         )}
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

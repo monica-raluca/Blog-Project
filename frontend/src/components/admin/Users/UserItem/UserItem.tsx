@@ -7,6 +7,8 @@ import { deleteUser, fetchUserById } from '../../../../api/UsersApi';
 
 import '../../Articles/AdminArticles.css';
 import '../AdminUsers.css';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 
 interface UserItemProps {
     user?: UserDetail;
@@ -161,12 +163,12 @@ const UserItem: React.FC<UserItemProps> = ({
                 <div className="admin-error-container">
                     <h2>Error Loading User</h2>
                     <p>{error}</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/admin/users')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Users
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -179,12 +181,12 @@ const UserItem: React.FC<UserItemProps> = ({
                 <div className="admin-error-container">
                     <h2>User Not Found</h2>
                     <p>The requested user could not be found.</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/admin/users')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Users
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -202,20 +204,20 @@ const UserItem: React.FC<UserItemProps> = ({
                 {useRouteParams && (
                     <div className="admin-page-header">
                         <div className="admin-page-header-left">
-                            <button 
+                            <Button 
                                 onClick={() => navigate('/admin/users')}
                                 className="admin-btn admin-btn-secondary admin-back-btn"
                             >
                                 ← Back to Users
-                            </button>
+                            </Button>
                         </div>
                         <div className="admin-page-header-right">
-                            <button
+                            <Button
                                 onClick={() => setShowAdminActions(!showAdminActions)}
                                 className={`admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`}
                             >
                                 {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -249,22 +251,22 @@ const UserItem: React.FC<UserItemProps> = ({
                         </div>
                         {(useRouteParams ? showAdminActions : showActions) && hasRole("ADMIN") && (
                             <div className="admin-user-actions-detailed">
-                                <button
+                                <Button
                                     onClick={handleEdit}
                                     className="admin-btn admin-btn-primary"
                                     title="Edit User Role"
                                 >
                                     Edit Role
-                                </button>
+                                </Button>
                                 {!isCurrentUser && (
-                                    <button
+                                    <Button
                                         onClick={handleDelete}
                                         disabled={isDeleting}
                                         className="admin-btn admin-btn-danger"
                                         title="Delete User"
                                     >
                                         {isDeleting ? 'Deleting...' : 'Delete User'}
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         )}
@@ -273,28 +275,28 @@ const UserItem: React.FC<UserItemProps> = ({
                     <div className="admin-user-content-detailed">
                         <div className="admin-user-info-grid">
                             <div className="admin-info-item">
-                                <label>User ID:</label>
+                                <Label>User ID:</Label>
                                 <span className="admin-user-id">{user.id}</span>
                             </div>
                             <div className="admin-info-item">
-                                <label>Username:</label>
+                                <Label>Username:</Label>
                                 <span>{user.username}</span>
                             </div>
                             <div className="admin-info-item">
-                                <label>Email:</label>
+                                <Label>Email:</Label>
                                 <a href={`mailto:${user.email}`} className="admin-email-link">
                                     {user.email}
                                 </a>
                             </div>
                             <div className="admin-info-item">
-                                <label>Role:</label>
+                                <Label>Role:</Label>
                                 <span className={`admin-role-badge ${getRoleBadgeColor(userRole)}`}>
                                     {userRole}
                                 </span>
                             </div>
                             {user.authorities && user.authorities.length > 0 && (
                                 <div className="admin-info-item admin-authorities-item">
-                                    <label>Authorities:</label>
+                                    <Label>Authorities:</Label>
                                     <div className="admin-authorities-list">
                                         {user.authorities.map((authority, index) => (
                                             <span key={index} className="admin-authority-badge">
@@ -306,7 +308,7 @@ const UserItem: React.FC<UserItemProps> = ({
                             )}
                             {createdAt && (
                                 <div className="admin-info-item">
-                                    <label>Created:</label>
+                                    <Label>Created:</Label>
                                     <span>{formatDateTimeToMin(createdAt)}</span>
                                 </div>
                             )}
@@ -359,31 +361,31 @@ const UserItem: React.FC<UserItemProps> = ({
 
             {showActions && (
                 <div className="admin-user-card-actions">
-                    <button
+                    <Button
                         onClick={onView}
                         className="admin-btn admin-btn-sm admin-btn-secondary"
                         title="View User"
                     >
                         View
-                    </button>
+                    </Button>
                     {hasRole("ADMIN") && (
-                        <button
+                        <Button
                             onClick={handleEdit}
                             className="admin-btn admin-btn-sm admin-btn-primary"
                             title="Edit User Role"
                         >
                             Edit Role
-                        </button>
+                        </Button>
                     )}
                     {hasRole("ADMIN") && !isCurrentUser && (
-                        <button
+                        <Button
                             onClick={handleDelete}
                             disabled={isDeleting}
                             className="admin-btn admin-btn-sm admin-btn-danger"
                             title="Delete User"
                         >
                             {isDeleting ? 'Deleting...' : 'Delete'}
-                        </button>
+                        </Button>
                     )}
                 </div>
             )}

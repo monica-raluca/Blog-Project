@@ -1,8 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { ArticleControlsContext } from './Layout';
 import { SortCriteria } from '../api/types';
-import { Button } from '../../components/ui/button';
+import { Button } from '@/components/ui/button';
+import { 
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 import '../format/TopBar.css';
+import { Label } from '@/components/ui/label';
 
 interface SortField {
   label: string;
@@ -104,7 +113,7 @@ const TopBar: React.FC = () => {
             {SORT_FIELDS.map(sf => {
               const active = localSort.find(sc => sc.field === sf.value);
               return (
-                <label key={sf.value} className={`topbar-sort-pill${active ? ' active' : ''}`}>
+                <Label key={sf.value} className={`topbar-sort-pill${active ? ' active' : ''}`}>
                   <input
                     type="checkbox"
                     checked={!!active}
@@ -112,16 +121,16 @@ const TopBar: React.FC = () => {
                   />
                   {sf.label}
                   {active && (
-                    <button
+                    <Button
                       className="topbar-sort-dir"
                       type="button"
                       onClick={() => handleSortDirection(sf.value)}
                       title="Toggle direction"
                     >
                       {active.direction === 'ASC' ? '↑ Asc' : '↓ Desc'}
-                    </button>
+                    </Button>
                   )}
-                </label>
+                </Label>
               );
             })}
           </div>
@@ -147,17 +156,43 @@ const TopBar: React.FC = () => {
             <Button variant="cloud" size="cozy" onClick={clearFilters}>Clear</Button>
           </div>
           <div className="topbar-section topbar-pagination">
-            <Button variant="soft" size="cozy" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</Button>
-            <span className="topbar-page-label">
-              Page <input
-                type="number"
-                min="1"
-                value={currentPage}
-                onChange={handlePageInput}
-                className="topbar-page-input"
-              />
-            </span>
-            <Button variant="soft" size="cozy" onClick={goToNext}>&gt;</Button>
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToPrev();
+                    }}
+                    style={{ 
+                      pointerEvents: pageIndex === 0 ? 'none' : 'auto',
+                      opacity: pageIndex === 0 ? 0.5 : 1 
+                    }}
+                  />
+                </PaginationItem>
+                <PaginationItem>
+                  <span className="topbar-page-label">
+                    Page <input
+                      type="number"
+                      min="1"
+                      value={currentPage}
+                      onChange={handlePageInput}
+                      className="topbar-page-input"
+                    />
+                  </span>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext 
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToNext();
+                    }}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
             <select className="topbar-page-size" value={pageSize} onChange={handlePageSizeChange}>
               {PAGE_SIZES.map(size => (
                 <option key={size} value={size}>{size} / page</option>

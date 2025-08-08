@@ -7,6 +7,15 @@ import { ArticleControlsContext } from '../../../layouts/Layout';
 import { Article } from '../../../api/types';
 
 import './AdminArticles.css';
+import { Button } from '@/components/ui/button';
+import { 
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
 const AdminArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -120,12 +129,12 @@ const AdminArticles: React.FC = () => {
         <div className="admin-articles-container">
 			<div className="admin-header">
 				<h2>Articles Management</h2>
-				<button 
+				<Button 
 					className="admin-btn admin-btn-primary"
 					onClick={() => navigate('/admin/articles/create')}
 				>
 					Create New Article
-				</button>
+				</Button>
 			</div>
 
 			<div className="admin-table-container">
@@ -196,30 +205,30 @@ const AdminArticles: React.FC = () => {
 										</td>
 										<td className="admin-actions-cell">
 											<div className="admin-action-buttons">
-												<button
+												<Button
 													onClick={() => handleView(article.id!)}
 													className="admin-btn admin-btn-sm admin-btn-secondary"
 													title="View Article"
 												>
 													View
-												</button>
+												</Button>
 												{(hasRole("ADMIN") || article.author?.username === currentUser) && (
-													<button
+													<Button
 														onClick={() => handleEdit(article.id!)}
 														className="admin-btn admin-btn-sm admin-btn-primary"
 														title="Edit Article"
 													>
 														Edit
-													</button>
+													</Button>
 												)}
 												{(hasRole("ADMIN") || article.author?.username === currentUser) && (
-													<button
+													<Button
 														onClick={() => handleDelete(article.id!)}
 														className="admin-btn admin-btn-sm admin-btn-danger"
 														title="Delete Article"
 													>
 														Delete
-													</button>
+													</Button>
 												)}
 											</div>
 										</td>
@@ -233,29 +242,44 @@ const AdminArticles: React.FC = () => {
 		</div>
 
         <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
-          <div className="admin-pagination">
-            <button 
-				className="admin-btn admin-btn-secondary" 
-				onClick={goToPrev} 
-				disabled={pageIndex === 0}
-			>
-				Previous
-			</button>
-            <span className="admin-page-info">
-              Page <input
-                type="number"
-                min="1"
-                value={currentPage}
-                onChange={handlePageInput}
-                className="admin-page-input"
-              />
-            </span>
-            <button 
-				className="admin-btn admin-btn-secondary" 
-				onClick={goToNext}
-			>
-				Next
-			</button>
+          <div >
+            <Pagination>
+              <PaginationContent>
+                <PaginationItem>
+                  <PaginationPrevious 
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToPrev();
+                    }}
+                    style={{ 
+                      pointerEvents: pageIndex === 0 ? 'none' : 'auto',
+                      opacity: pageIndex === 0 ? 0.5 : 1 
+                    }}
+                  />
+                </PaginationItem>
+                <PaginationItem>
+                  <span className="admin-page-info">
+                    Page <input
+                      type="number"
+                      min="1"
+                      value={currentPage}
+                      onChange={handlePageInput}
+                      className="admin-page-input"
+                    />
+                  </span>
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationNext 
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      goToNext();
+                    }}
+                  />
+                </PaginationItem>
+              </PaginationContent>
+            </Pagination>
           </div>
         </div>
         </>

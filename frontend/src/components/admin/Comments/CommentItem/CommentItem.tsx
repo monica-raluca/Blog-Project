@@ -8,6 +8,8 @@ import { fetchArticleById } from '../../../../api/ArticlesApi';
 
 import '../../Articles/AdminArticles.css';
 import '../AdminComments.css';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
 
 interface CommentItemProps {
     comment?: Comment;
@@ -170,12 +172,12 @@ const CommentItem: React.FC<CommentItemProps> = ({
                 <div className="admin-error-container">
                     <h2>Error Loading Comment</h2>
                     <p>{error}</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/admin/comments')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Comments
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -188,12 +190,12 @@ const CommentItem: React.FC<CommentItemProps> = ({
                 <div className="admin-error-container">
                     <h2>Comment Not Found</h2>
                     <p>The requested comment could not be found.</p>
-                    <button 
+                    <Button 
                         onClick={() => navigate('/admin/comments')}
                         className="admin-btn admin-btn-primary"
                     >
                         Back to Comments
-                    </button>
+                    </Button>
                 </div>
             </div>
         );
@@ -220,20 +222,20 @@ const CommentItem: React.FC<CommentItemProps> = ({
                 {useRouteParams && (
                     <div className="admin-page-header">
                         <div className="admin-page-header-left">
-                            <button 
+                            <Button 
                                 onClick={() => navigate('/admin/comments')}
                                 className="admin-btn admin-btn-secondary admin-back-btn"
                             >
                                 ← Back to Comments
-                            </button>
+                            </Button>
                         </div>
                         <div className="admin-page-header-right">
-                            <button
+                            <Button
                                 onClick={() => setShowAdminActions(!showAdminActions)}
                                 className={`admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`}
                             >
                                 {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -249,23 +251,23 @@ const CommentItem: React.FC<CommentItemProps> = ({
                         {(useRouteParams ? showAdminActions : showActions) && (
                             <div className="admin-comment-actions-detailed">
                                 {canEdit && (
-                                    <button
+                                    <Button
                                         onClick={handleEdit}
                                         className="admin-btn admin-btn-primary"
                                         title="Edit Comment"
                                     >
                                         Edit Comment
-                                    </button>
+                                    </Button>
                                 )}
                                 {canDelete && (
-                                    <button
+                                    <Button
                                         onClick={handleDelete}
                                         disabled={isDeleting}
                                         className="admin-btn admin-btn-danger"
                                         title="Delete Comment"
                                     >
                                         {isDeleting ? 'Deleting...' : 'Delete'}
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         )}
@@ -274,31 +276,31 @@ const CommentItem: React.FC<CommentItemProps> = ({
                     <div className="admin-comment-content-detailed">
                         <div className="admin-comment-info-grid">
                             <div className="admin-info-item">
-                                <label>Author:</label>
+                                <Label>Author:</Label>
                                 <NavLink to={`/users/${comment?.author?.id}`} className="admin-author-link">
                                     {createdBy}
                                 </NavLink>
                             </div>
                             <div className="admin-info-item">
-                                <label>Created:</label>
+                                <Label>Created:</Label>
                                 <span>{formatDateTimeToMin(createdAt)}</span>
                             </div>
                             {showEdited && (
                                 <>
                                     <div className="admin-info-item">
-                                        <label>Last Editor:</label>
+                                        <Label>Last Editor:</Label>
                                         <NavLink to={`/users/${comment?.editor?.id}`} className="admin-author-link">
                                             {editedBy}
                                         </NavLink>
                                     </div>
                                     <div className="admin-info-item">
-                                        <label>Last Updated:</label>
+                                        <Label>Last Updated:</Label>
                                         <span>{formatDateTimeToMin(editedAt)}</span>
                                     </div>
                                 </>
                             )}
                             <div className="admin-info-item">
-                                <label>Article:</label>
+                                <Label>Article:</Label>
                                 <NavLink 
                                     to={`/articles/${comment?.article?.id}`} 
                                     className="admin-author-link"
@@ -309,7 +311,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
                         </div>
 
                         <div className="admin-comment-content-section">
-                            <label>Comment Content:</label>
+                            <Label>Comment Content:</Label>
                             <div className="admin-comment-content-display">
                                 {comment?.content}
                             </div>
@@ -361,31 +363,31 @@ const CommentItem: React.FC<CommentItemProps> = ({
 
             {showActions && (
                 <div className="admin-comment-card-actions">
-                    <button
+                    <Button
                         onClick={onView}
                         className="admin-btn admin-btn-sm admin-btn-secondary"
                         title="View Comment"
                     >
                         View
-                    </button>
+                    </Button>
                     {canEdit && (
-                        <button
+                        <Button
                             onClick={handleEdit}
                             className="admin-btn admin-btn-sm admin-btn-primary"
                             title="Edit Comment"
                         >
                             Edit
-                        </button>
+                        </Button>
                     )}
                     {canDelete && (
-                        <button
+                        <Button
                             onClick={handleDelete}
                             disabled={isDeleting}
                             className="admin-btn admin-btn-sm admin-btn-danger"
                             title="Delete Comment"
                         >
                             {isDeleting ? 'Deleting...' : 'Delete'}
-                        </button>
+                        </Button>
                     )}
                 </div>
             )}

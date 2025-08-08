@@ -6,6 +6,7 @@ import { hasRole } from '../api/AuthApi';
 import { useAuth } from '../api/AuthContext';
 import TopBar from './TopBar';
 import { SortCriteria, ArticleFilters } from '../api/types';
+import { Button } from '@/components/ui/button';
 
 interface ArticleControlsContextType {
 	filtersInput: ArticleFilters;
@@ -107,13 +108,13 @@ export function Layout(): React.ReactElement {
 						</RequireRoles>
 						<RequireRoles roles={["ADMIN"]}>
 							<div className="admin-panel-dropdown">
-								<button
+								<Button
 									className={`layout-nav-link admin-panel-toggle ${isAdminPanelOpen ? 'active' : ''}`}
 									onClick={() => setIsAdminPanelOpen(!isAdminPanelOpen)}
 								>
 									Admin Panel
 									<span className={`dropdown-arrow ${isAdminPanelOpen ? 'open' : ''}`}>▼</span>
-								</button>
+								</Button>
 								{isAdminPanelOpen && (
 									<div className="admin-panel-menu">
 										<Link to="/admin/articles" className="admin-panel-item"onClick={() => setIsAdminPanelOpen(false)}>
@@ -138,7 +139,7 @@ export function Layout(): React.ReactElement {
 								<span style={{fontSize: '0.98em', color: '#6a6a6a'}}>
 									Welcome, {currentUser}!
 								</span>
-								<button 
+								<Button 
 									onClick={logOut} 
 									className="layout-auth-link" 
 									style={{
@@ -148,7 +149,7 @@ export function Layout(): React.ReactElement {
 									}}
 								>
 									Logout
-								</button>
+								</Button>
 							</>
 						) : (
 							<>

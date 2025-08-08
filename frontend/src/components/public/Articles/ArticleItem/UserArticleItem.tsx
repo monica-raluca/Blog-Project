@@ -11,6 +11,7 @@ import { Article, Comment } from '../../../../api/types';
 
 import '../../../../format/Comments.css';
 import '../../../../format/ArticleItem.css';
+import { Button } from '@/components/ui/button';
 
 const UserArticleItem: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -210,14 +211,14 @@ const UserArticleItem: React.FC = () => {
 						<div className="comment-actions">
 							{editingCommentId === comment.id ? (
 							<>
-								<button onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</button>
-								<button onClick={() => setEditingCommentId(null)}>Cancel</button>
+								<Button onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</Button>
+								<Button onClick={() => setEditingCommentId(null)}>Cancel</Button>
 							</>
 							) : (
 							(hasRole("ADMIN") || comment.author?.username === currentUser) && (
 								<>
-								<button onClick={() => startEditing(comment)}>Edit</button>
-								<button onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</button>
+								<Button onClick={() => startEditing(comment)}>Edit</Button>
+								<Button onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</Button>
 								</>
 							)
 							)}
@@ -236,7 +237,7 @@ const UserArticleItem: React.FC = () => {
 						rows={3}
 						placeholder="Write your comment..."
 					></textarea>
-					<button type="submit">Post Comment</button>
+					<Button type="submit">Post Comment</Button>
 					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>
 			) : (
@@ -246,8 +247,8 @@ const UserArticleItem: React.FC = () => {
 			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
 			{(article.author?.username === currentUser || hasRole("ADMIN")) &&
 			<div className="article-actions">
-				<button onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</button>
-				<button onClick={() => article.id && handleDelete(article.id)}>Delete</button>
+				<Button onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</Button>
+				<Button onClick={() => article.id && handleDelete(article.id)}>Delete</Button>
 			</div>
 			}
 			

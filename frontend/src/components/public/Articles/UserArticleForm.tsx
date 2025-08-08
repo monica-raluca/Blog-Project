@@ -6,6 +6,7 @@ import { useAuth } from '../../../api/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Button } from '@/components/ui/button';
 
 interface ArticleFormProps {
 	isEdit?: boolean;
@@ -95,7 +96,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 					{...register("content")}
 				/>
 				<p className="field-error">{errors.content?.message}</p>
-				<button type="submit">{isEdit ? 'Update' : 'Create'}</button>
+				<Button type="submit">{isEdit ? 'Update' : 'Create'}</Button>
 			</form>
 		</div>
 	);

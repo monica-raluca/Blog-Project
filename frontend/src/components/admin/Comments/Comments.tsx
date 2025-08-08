@@ -9,6 +9,15 @@ import CommentItem from './CommentItem/CommentItem';
 
 import '../Articles/AdminArticles.css';
 import './AdminComments.css';
+import { Button } from '@/components/ui/button';
+import { 
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
 interface CommentsProps {
     onEdit?: (comment: Comment) => void;
@@ -159,12 +168,12 @@ const Comments: React.FC<CommentsProps> = ({
         <div className="admin-comments-container">
             <div className="admin-header">
                 <h2>Comments Management</h2>
-                <button 
+                <Button 
                     className="admin-btn admin-btn-primary"
                     onClick={() => navigate('/admin/comments/create')}
                 >
                     Create New Comment
-                </button>
+                </Button>
                 <div className="admin-actions">
                     <div className="admin-filter-section">
                         <label htmlFor="article-filter">Filter by Article:</label>
@@ -265,30 +274,30 @@ const Comments: React.FC<CommentsProps> = ({
                                         </td>
                                         <td className="admin-actions-cell">
                                             <div className="admin-action-buttons">
-                                                <button
+                                                <Button
                                                     onClick={() => handleView(comment)}
                                                     className="admin-btn admin-btn-sm admin-btn-secondary"
                                                     title="View Comment"
                                                 >
                                                     View
-                                                </button>
+                                                </Button>
                                                 {(hasRole("ADMIN") || comment.author?.username === currentUser) && (
-                                                    <button
+                                                    <Button
                                                         onClick={() => handleEdit(comment)}
                                                         className="admin-btn admin-btn-sm admin-btn-primary"
                                                         title="Edit Comment"
                                                     >
                                                         Edit
-                                                    </button>
+                                                    </Button>
                                                 )}
                                                 {(hasRole("ADMIN") || comment.author?.username === currentUser) && (
-                                                    <button
+                                                    <Button
                                                         onClick={() => handleDelete(comment)}
                                                         className="admin-btn admin-btn-sm admin-btn-danger"
                                                         title="Delete Comment"
                                                     >
                                                         Delete
-                                                    </button>
+                                                    </Button>
                                                 )}
                                             </div>
                                         </td>
@@ -302,29 +311,44 @@ const Comments: React.FC<CommentsProps> = ({
         </div>
 
         <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
-            <div className="admin-pagination">
-                <button 
-                    className="admin-btn admin-btn-secondary" 
-                    onClick={goToPrev} 
-                    disabled={currentPage === 0}
-                >
-                    Previous
-                </button>
-                <span className="admin-page-info">
-                    Page <input
-                        type="number"
-                        min="1"
-                        value={currentPage + 1}
-                        onChange={handlePageInput}
-                        className="admin-page-input"
-                    />
-                </span>
-                <button 
-                    className="admin-btn admin-btn-secondary" 
-                    onClick={goToNext}
-                >
-                    Next
-                </button>
+            <div>
+                <Pagination>
+                    <PaginationContent>
+                        <PaginationItem>
+                            <PaginationPrevious 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    goToPrev();
+                                }}
+                                style={{ 
+                                    pointerEvents: currentPage === 0 ? 'none' : 'auto',
+                                    opacity: currentPage === 0 ? 0.5 : 1 
+                                }}
+                            />
+                        </PaginationItem>
+                        <PaginationItem>
+                            <span className="admin-page-info">
+                                Page <input
+                                    type="number"
+                                    min="1"
+                                    value={currentPage + 1}
+                                    onChange={handlePageInput}
+                                    className="admin-page-input"
+                                />
+                            </span>
+                        </PaginationItem>
+                        <PaginationItem>
+                            <PaginationNext 
+                                href="#"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    goToNext();
+                                }}
+                            />
+                        </PaginationItem>
+                    </PaginationContent>
+                </Pagination>
             </div>
         </div>
         </>

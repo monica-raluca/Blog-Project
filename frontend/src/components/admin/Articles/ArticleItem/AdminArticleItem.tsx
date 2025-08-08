@@ -6,9 +6,11 @@ import { hasRole } from '../../../../api/AuthApi';
 import { deleteArticle, fetchArticleById } from '../../../../api/ArticlesApi';
 import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import CommentItem from '../../Comments/CommentItem/CommentItem';
+import { Button } from '@/components/ui/button';
 import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
 
 import '../AdminArticles.css';
+import { Label } from '@/components/ui/label';
 
 interface ArticleItemProps {
     article?: Article;
@@ -153,7 +155,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
         if (onEdit) {
             onEdit();
         } else if (article?.id) {
-            navigate(`/articles/${article.id}/edit`);
+            navigate(`/admin/articles/${article.id}/edit`);
         }
     };
 
@@ -213,20 +215,20 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                 {useRouteParams && (
                     <div className="admin-page-header">
                         <div className="admin-page-header-left">
-                            <button 
+                            <Button 
                                 onClick={() => navigate('/admin/articles')}
                                 className="admin-btn admin-btn-secondary admin-back-btn"
                             >
                                 ← Back to Articles
-                            </button>
+                            </Button>
                         </div>
                         <div className="admin-page-header-right">
-                            <button
+                            <Button
                                 onClick={() => setShowAdminActions(!showAdminActions)}
                                 className={`admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`}
                             >
                                 {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -242,23 +244,23 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                         {(useRouteParams ? showAdminActions : showActions) && (
                             <div className="admin-article-actions-detailed">
                                 {canEdit && (
-                                    <button
+                                    <Button
                                         onClick={handleEdit}
                                         className="admin-btn admin-btn-primary"
                                         title="Edit Article"
                                     >
                                         Edit Article
-                                    </button>
+                                    </Button>
                                 )}
                                 {canDelete && (
-                                    <button
+                                    <Button
                                         onClick={handleDelete}
                                         disabled={isDeleting}
                                         className="admin-btn admin-btn-danger"
                                         title="Delete Article"
                                     >
                                         {isDeleting ? 'Deleting...' : 'Delete'}
-                                    </button>
+                                    </Button>
                                 )}
                             </div>
                         )}
@@ -267,25 +269,25 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                     <div className="admin-article-content-detailed">
                         <div className="admin-article-info-grid">
                             <div className="admin-info-item">
-                                <label>Author:</label>
+                                <Label>Author:</Label>
                                 <NavLink to={`/users/${article?.author?.id}`} className="admin-author-link">
                                     {createdBy}
                                 </NavLink>
                             </div>
                             <div className="admin-info-item">
-                                <label>Created:</label>
+                                <Label>Created:</Label>
                                 <span>{formatDateTimeToMin(createdAt)}</span>
                             </div>
                             {showEdited && (
                                 <>
                                     <div className="admin-info-item">
-                                        <label>Last Editor:</label>
+                                        <Label>Last Editor:</Label>
                                         <NavLink to={`/users/${article?.editor?.id}`} className="admin-author-link">
                                             {editedBy}
                                         </NavLink>
                                     </div>
                                     <div className="admin-info-item">
-                                        <label>Last Updated:</label>
+                                        <Label>Last Updated:</Label>    
                                         <span>{formatDateTimeToMin(editedAt)}</span>
                                     </div>
                                 </>
@@ -294,13 +296,13 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
                         {article?.summary && (
                             <div className="admin-article-summary-section">
-                                <label>Summary:</label>
+                                <Label>Summary:</Label>
                                 <p className="admin-article-summary">{article.summary}</p>
                             </div>
                         )}
 
                         <div className="admin-article-content-section">
-                            <label>Content:</label>
+                            <Label>Content:</Label>
                             <div className="admin-article-content-display">
                                 {article?.content}
                             </div>
@@ -320,13 +322,13 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                             ) : commentsError ? (
                                 <div className="admin-error-banner">
                                     <strong>Error loading comments:</strong> {commentsError}
-                                    <button 
+                                    <Button 
                                         onClick={() => article?.id && loadComments(article.id)}
                                         className="admin-btn admin-btn-sm admin-btn-secondary"
                                         style={{ marginLeft: '10px' }}
                                     >
                                         Retry
-                                    </button>
+                                    </Button>
                                 </div>
                             ) : comments.length === 0 ? (
                                 <div className="admin-no-comments">
@@ -391,31 +393,31 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
             {showActions && (
                 <div className="admin-article-card-actions">
-                    <button
+                    <Button
                         onClick={onView}
                         className="admin-btn admin-btn-sm admin-btn-secondary"
                         title="View Article"
                     >
                         View
-                    </button>
+                    </Button>
                     {canEdit && (
-                        <button
+                        <Button
                             onClick={handleEdit}
                             className="admin-btn admin-btn-sm admin-btn-primary"
                             title="Edit Article"
                         >
                             Edit
-                        </button>
+                        </Button>
                     )}
                     {canDelete && (
-                        <button
+                        <Button
                             onClick={handleDelete}
                             disabled={isDeleting}
                             className="admin-btn admin-btn-sm admin-btn-danger"
                             title="Delete Article"
                         >
                             {isDeleting ? 'Deleting...' : 'Delete'}
-                        </button>
+                        </Button>
                     )}
                 </div>
             )}
