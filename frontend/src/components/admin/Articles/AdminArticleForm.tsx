@@ -171,9 +171,9 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     }
 
     return (
-        <div className="admin-article-form-container">
-            <div className="admin-form-header">
-                <h2>{isEdit ? 'Edit Article' : 'Create New Article'}</h2>
+        <div className="bg-white p-5 max-w-full overflow-x-hidden">
+            <div className="!bg-[#f8f9fa] !px-6 !py-5 !border-b !border-[#dee2e6] flex justify-between items-center">
+                <h2 className="!m-0 !text-[#333] !text-2xl !font-semibold">{isEdit ? 'Edit Article' : 'Create New Article'}</h2>
             </div>
 
             {error && (

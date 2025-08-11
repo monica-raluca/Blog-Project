@@ -135,11 +135,11 @@ const AdminArticles: React.FC = () => {
 
 	return (
         <>
-        <div className="admin-articles-container">
-			<div className="admin-header">
-				<h2>Articles Management</h2>
+		 <div className="!p-5 max-w-full overflow-x-auto">
+			<div className="flex justify-between items-center !mb-5 !pb-2.5 !border-b border-gray-300">
+				<h2 className="m-0 text-[#333] text-2xl font-semibold">Articles Management</h2>
 				<Button 
-					className="admin-btn admin-btn-primary"
+					className="bg-[#007bff] hover:bg-[#0056b3] text-white text-sm px-3 py-2 rounded transition-colors"
 					onClick={() => navigate('/admin/articles/create')}
 				>
 					Create New Article
@@ -263,10 +263,11 @@ const AdminArticles: React.FC = () => {
 			</div>
 		</div>
 
-        <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
+        {/* <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}> */}
+		<div className={`fixed bottom-0 left-0 right-0 bg-white border-t border-[#dee2e6] shadow-[0_-2px_4px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-[100] ${showBottomBar ? 'translate-y-0' : 'translate-y-full'}`}>
           <div >
             <Pagination>
-              <PaginationContent>
+              <PaginationContent className="flex justify-center items-center gap-3 p-3">
                 <PaginationItem>
                   <PaginationPrevious 
                     href="#"
@@ -281,13 +282,13 @@ const AdminArticles: React.FC = () => {
                   />
                 </PaginationItem>
                 <PaginationItem>
-                  <span className="admin-page-info">
+                  <span className="flex items-center gap-1 text-sm text-gray-700">
                     Page <input
                       type="number"
                       min="1"
                       value={currentPage}
                       onChange={handlePageInput}
-                      className="admin-page-input"
+                      className="w-[60px] px-1.5 py-1 border border-[#ced4da] rounded text-center"
                     />
                   </span>
                 </PaginationItem>

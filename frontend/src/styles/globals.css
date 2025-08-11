@@ -29,14 +29,14 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: rgba(255,255,255,0.92);
+  --sidebar-foreground: #162938;
+  --sidebar-primary: #270023;
+  --sidebar-primary-foreground: rgba(255,255,255,0.95);
+  --sidebar-accent: #ececec;
+  --sidebar-accent-foreground: #270023;
+  --sidebar-border: #ececec;
+  --sidebar-ring: #708090;
 }
 
 .dark {
@@ -113,11 +113,51 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #fbeffb 0%, #e3f0ff 100%);
+    position: relative;
+    overflow-x: hidden;
   }
-}
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(255, 182, 193, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse at 80% 20%, rgba(255, 192, 203, 0.13) 0%, transparent 70%),
+      radial-gradient(ellipse at 60% 80%, rgba(255, 182, 193, 0.10) 0%, transparent 70%);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 600px 400px, 500px 300px, 700px 500px;
+    background-position: left top, right top, right bottom;
+    opacity: 0.7;
+  }
+} */
+@layer base {
+    * {
+      @apply border-border outline-ring/50;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+   
+  body {
+    height: 100vh;
+    background-color: #642e2e;
+    margin: 0;
+    padding: 0;
+  }
