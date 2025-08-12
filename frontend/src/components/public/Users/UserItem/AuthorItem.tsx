@@ -4,7 +4,6 @@ import { fetchUserById } from '../../../../api/UsersApi';
 import { fetchArticlesByAuthor } from '../../../../api/ArticlesApi';
 import { UserDetail, Article } from '../../../../api/types';
 import { Button } from '../../../../../components/ui/button';
-// Styles converted to Tailwind CSS
 
 const AuthorItem: React.FC = () => {
 	const { id } = useParams<{ id: string }>();

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -113,16 +115,19 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* @layer base {
+@layer base {
   * {
     @apply border-border outline-ring/50;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
   }
   body {
     @apply text-foreground;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(120deg, #fbeffb 0%, #e3f0ff 100%);
+    background: url('../images/background.png') no-repeat center center fixed;
+    background-size: cover;
     position: relative;
     overflow-x: hidden;
   }
@@ -145,19 +150,4 @@
     background-position: left top, right top, right bottom;
     opacity: 0.7;
   }
-} */
-@layer base {
-    * {
-      @apply border-border outline-ring/50;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
-  }
-   
-  body {
-    height: 100vh;
-    background-color: #642e2e;
-    margin: 0;
-    padding: 0;
-  }
+}

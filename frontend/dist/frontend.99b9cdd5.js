@@ -24845,14 +24845,14 @@ function AdminPanelTrigger() {
         className: "w-full h-10 px-2 rounded-md font-medium text-[#162938] hover:bg-[#ececec] hover:text-[#270023] data-[state=open]:bg-[#ececec] data-[state=open]:text-[#270023] transition-all duration-200 flex items-center gap-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Settings), {
-                className: "h-4 w-4"
+                className: "h-4 w-4 flex-shrink-0"
             }, void 0, false, {
                 fileName: "src/layouts/Layout.tsx",
                 lineNumber: 78,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: "group-data-[collapsible=icon]:sr-only",
+                className: "group-data-[collapsible=icon]:sr-only ml-2",
                 children: "Admin Panel"
             }, void 0, false, {
                 fileName: "src/layouts/Layout.tsx",
@@ -24860,7 +24860,7 @@ function AdminPanelTrigger() {
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronRight), {
-                className: "ml-auto h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-90 group-data-[collapsible=icon]:hidden"
+                className: "h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-90 group-data-[collapsible=icon]:hidden flex-shrink-0"
             }, void 0, false, {
                 fileName: "src/layouts/Layout.tsx",
                 lineNumber: 80,
@@ -24931,7 +24931,7 @@ function SidebarUserSection() {
                             tooltip: "Login",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                 to: "/login",
-                                className: "w-full",
+                                className: "w-full flex items-center gap-2 group-data-[collapsible=icon]:justify-center",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.User), {
                                         className: "h-4 w-4"
@@ -24941,6 +24941,7 @@ function SidebarUserSection() {
                                         columnNumber: 10
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        className: "group-data-[collapsible=icon]:sr-only",
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.tsx",
@@ -24969,7 +24970,7 @@ function SidebarUserSection() {
                             tooltip: "Register",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                 to: "/register",
-                                className: "w-full",
+                                className: "w-full flex items-center gap-2 group-data-[collapsible=icon]:justify-center",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.PenTool), {
                                         className: "h-4 w-4"
@@ -24979,6 +24980,7 @@ function SidebarUserSection() {
                                         columnNumber: 10
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        className: "group-data-[collapsible=icon]:sr-only",
                                         children: "Register"
                                     }, void 0, false, {
                                         fileName: "src/layouts/Layout.tsx",
@@ -25023,10 +25025,10 @@ function SidebarUserSection() {
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuItem), {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "flex items-center gap-3 px-2 py-2",
+                            className: "flex items-center gap-3 !px-2 !py-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!px-2",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _avatar.Avatar), {
-                                    className: "h-8 w-8 border-2 border-[#ececec]",
+                                    className: "h-8 w-8 border-2 border-[#ececec] group-data-[collapsible=icon]:h-6 group-data-[collapsible=icon]:w-6",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _avatar.AvatarImage), {
                                             src: `https://avatar.vercel.sh/${currentUser}`
@@ -25036,7 +25038,7 @@ function SidebarUserSection() {
                                             columnNumber: 9
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _avatar.AvatarFallback), {
-                                            className: "bg-gradient-to-r from-[#fbeffb] to-[#e3f0ff] text-[#162938] text-sm font-semibold",
+                                            className: "bg-gradient-to-r from-[#fbeffb] to-[#e3f0ff] text-[#162938] text-sm font-semibold group-data-[collapsible=icon]:text-xs",
                                             children: userInitials
                                         }, void 0, false, {
                                             fileName: "src/layouts/Layout.tsx",
@@ -25089,7 +25091,7 @@ function SidebarUserSection() {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuButton), {
                             onClick: logOut,
                             tooltip: "Logout",
-                            className: "w-full text-[#162938] hover:text-[#270023] hover:bg-[#ececec]",
+                            className: "w-full text-[#162938] hover:text-[#270023] hover:bg-[#ececec] flex items-center gap-2 group-data-[collapsible=icon]:justify-center",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.LogOut), {
                                     className: "h-4 w-4"
@@ -25099,6 +25101,7 @@ function SidebarUserSection() {
                                     columnNumber: 8
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    className: "group-data-[collapsible=icon]:sr-only",
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "src/layouts/Layout.tsx",
@@ -25199,21 +25202,21 @@ function Layout() {
                 className: "flex min-h-screen w-full font-[Poppins] relative z-[1]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.Sidebar), {
-                        variant: "sidebar",
+                        variant: "floating",
                         collapsible: "icon",
                         className: "border-r-[1.5px] border-[#ececec] shadow-[2px_0_12px_rgba(22,41,56,0.04)] backdrop-blur-[2px]",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarHeader), {
-                                className: "border-b border-[#ececec]/50 px-6 py-4",
+                                className: "border-b border-[#ececec]/50 !px-6 !py-4 group-data-[collapsible=icon]:!px-2 group-data-[collapsible=icon]:!py-3",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "flex items-center gap-3",
+                                    className: "flex items-center gap-3 group-data-[collapsible=icon]:justify-center",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec]",
+                                            className: "flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec] group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8",
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                                 src: "/favicon.ico",
                                                 alt: "Blog Logo",
-                                                className: "h-6 w-6 object-cover"
+                                                className: "h-6 w-6 object-cover group-data-[collapsible=icon]:h-5 group-data-[collapsible=icon]:w-5"
                                             }, void 0, false, {
                                                 fileName: "src/layouts/Layout.tsx",
                                                 lineNumber: 239,
@@ -25225,7 +25228,7 @@ function Layout() {
                                             columnNumber: 9
                                         }, this),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "grid flex-1 text-left text-sm leading-tight",
+                                            className: "grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                     className: "truncate font-bold text-[#162938] text-lg tracking-tight",
@@ -25261,12 +25264,12 @@ function Layout() {
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarContent), {
-                                className: "px-3 py-4",
+                                className: "!px-3 !py-4",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarGroup), {
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarGroupLabel), {
-                                                className: "text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2",
+                                                className: "text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2 group-data-[collapsible=icon]:sr-only",
                                                 children: "Navigation"
                                             }, void 0, false, {
                                                 fileName: "src/layouts/Layout.tsx",
@@ -25281,10 +25284,11 @@ function Layout() {
                                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuButton), {
                                                                 asChild: true,
                                                                 tooltip: "Home",
-                                                                className: "group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023] group-data-[collapsible=icon]:justify-center",
+                                                                className: "group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]",
                                                                 isActive: location.pathname === '/public/articles',
                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                                                     to: "/public/articles",
+                                                                    className: "flex items-center gap-2 group-data-[collapsible=icon]:justify-center",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Home), {
                                                                             className: "h-4 w-4"
@@ -25294,7 +25298,7 @@ function Layout() {
                                                                             columnNumber: 14
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                            className: "group-data-[collapsible=icon]:sr-only",
+                                                                            className: "group-data-[collapsible=icon]:sr-only ml-2",
                                                                             children: "Home"
                                                                         }, void 0, false, {
                                                                             fileName: "src/layouts/Layout.tsx",
@@ -25326,10 +25330,11 @@ function Layout() {
                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuButton), {
                                                                     asChild: true,
                                                                     tooltip: "Create Article",
-                                                                    className: "group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023] group-data-[collapsible=icon]:justify-center",
+                                                                    className: "group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]",
                                                                     isActive: location.pathname === '/public/articles/create',
                                                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                                                         to: "/public/articles/create",
+                                                                        className: "flex items-center gap-2 group-data-[collapsible=icon]:justify-center",
                                                                         children: [
                                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.PenTool), {
                                                                                 className: "h-4 w-4"
@@ -25339,7 +25344,7 @@ function Layout() {
                                                                                 columnNumber: 15
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                                                className: "group-data-[collapsible=icon]:sr-only",
+                                                                                className: "group-data-[collapsible=icon]:sr-only ml-2",
                                                                                 children: "Create Article"
                                                                             }, void 0, false, {
                                                                                 fileName: "src/layouts/Layout.tsx",
@@ -25391,7 +25396,7 @@ function Layout() {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarGroup), {
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarGroupLabel), {
-                                                    className: "text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2",
+                                                    className: "text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2 group-data-[collapsible=icon]:sr-only",
                                                     children: "Administration"
                                                 }, void 0, false, {
                                                     fileName: "src/layouts/Layout.tsx",
@@ -25423,12 +25428,12 @@ function Layout() {
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _collapsible.CollapsibleContent), {
                                                                 className: "group-data-[collapsible=icon]:hidden",
                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSub), {
-                                                                    className: "mx-0 border-l-2 border-[#ececec] ml-6 pl-4 space-y-1 mt-2",
+                                                                    className: "!mx-0 border-l-2 border-[#ececec] !ml-6 !pl-4 space-y-1 !mt-2",
                                                                     children: [
                                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubItem), {
                                                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubButton), {
                                                                                 asChild: true,
-                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3",
+                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3",
                                                                                 isActive: location.pathname === '/admin/articles',
                                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                                                                     to: "/admin/articles",
@@ -25457,7 +25462,7 @@ function Layout() {
                                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubItem), {
                                                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubButton), {
                                                                                 asChild: true,
-                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3",
+                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3",
                                                                                 isActive: location.pathname === '/admin/comments',
                                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                                                                     to: "/admin/comments",
@@ -25486,7 +25491,7 @@ function Layout() {
                                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubItem), {
                                                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarMenuSubButton), {
                                                                                 asChild: true,
-                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3",
+                                                                                className: "h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3",
                                                                                 isActive: location.pathname === '/admin/users',
                                                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.Link), {
                                                                                     to: "/admin/users",
@@ -25552,7 +25557,7 @@ function Layout() {
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _sidebar.SidebarFooter), {
-                                className: "border-t border-[#ececec]/50 p-4",
+                                className: "border-t border-[#ececec]/50 !p-4",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(SidebarUserSection, {}, void 0, false, {
                                     fileName: "src/layouts/Layout.tsx",
                                     lineNumber: 355,
@@ -25704,7 +25709,7 @@ $RefreshReg$(_c2, "Layout");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/RequireRoles":"kluL2","../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","./TopBar":"fTFbB","@/components/ui/sidebar":"9RBEx","@/components/ui/avatar":"ic8UI","lucide-react":"2I7qR","../../components/ui/collapsible":"72vrB","@/components/ui/tooltip":"ifHet"}],"kluL2":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../api/RequireRoles":"kluL2","../api/AuthContext":"5P6PV","./TopBar":"fTFbB","../../components/ui/collapsible":"72vrB","@/components/ui/sidebar":"9RBEx","@/components/ui/avatar":"ic8UI","lucide-react":"2I7qR","@/components/ui/tooltip":"ifHet","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"kluL2":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$13a3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$13a3.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -28579,7 +28584,7 @@ $RefreshReg$(_c2, "TopBar");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Layout":"aGg7E","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/combobox":"5yRh4","@/components/ui/pagination":"ifYd3","@/components/ui/label":"ibnwz"}],"8xMbg":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","./Layout":"aGg7E","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"8xMbg":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$eb0d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$eb0d.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -33643,177 +33648,183 @@ exports.twJoin = twJoin;
 exports.twMerge = twMerge;
 exports.validators = validators;
 
-},{}],"5yRh4":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$5ef0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$5ef0.init();
+},{}],"ifYd3":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$c266 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$c266.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5ef0.prelude(module);
+$parcel$ReactRefreshHelpers$c266.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Combobox", ()=>Combobox);
+parcelHelpers.export(exports, "Pagination", ()=>Pagination);
+parcelHelpers.export(exports, "PaginationContent", ()=>PaginationContent);
+parcelHelpers.export(exports, "PaginationLink", ()=>PaginationLink);
+parcelHelpers.export(exports, "PaginationItem", ()=>PaginationItem);
+parcelHelpers.export(exports, "PaginationPrevious", ()=>PaginationPrevious);
+parcelHelpers.export(exports, "PaginationNext", ()=>PaginationNext);
+parcelHelpers.export(exports, "PaginationEllipsis", ()=>PaginationEllipsis);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _lucideReact = require("lucide-react");
 var _utils = require("../../lib/utils");
 var _button = require("./button");
-var _command = require("./command");
-var _popover = require("./popover");
-var _s = $RefreshSig$();
-function Combobox({ options, value, onValueChange, placeholder = "Select option...", searchPlaceholder = "Search...", emptyText = "No option found.", className, disabled = false, clearable = false }) {
-    _s();
-    const [open, setOpen] = _react.useState(false);
-    const selectedOption = options.find((option)=>option.value === value);
-    const handleSelect = (selectedValue)=>{
-        const newValue = selectedValue === value ? "" : selectedValue;
-        onValueChange?.(newValue);
-        setOpen(false);
-    };
-    const handleClear = (e)=>{
-        e.stopPropagation();
-        onValueChange?.("");
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.Popover), {
-        open: open,
-        onOpenChange: setOpen,
+function Pagination({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
+        role: "navigation",
+        "aria-label": "pagination",
+        "data-slot": "pagination",
+        className: (0, _utils.cn)("mx-auto flex w-full justify-center", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 13,
+        columnNumber: 5
+    }, this);
+}
+_c = Pagination;
+function PaginationContent({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+        "data-slot": "pagination-content",
+        className: (0, _utils.cn)("flex flex-row items-center gap-1", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 28,
+        columnNumber: 5
+    }, this);
+}
+_c1 = PaginationContent;
+function PaginationItem({ ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+        "data-slot": "pagination-item",
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 37,
+        columnNumber: 10
+    }, this);
+}
+_c2 = PaginationItem;
+function PaginationLink({ className, isActive, size = "icon", ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+        "aria-current": isActive ? "page" : undefined,
+        "data-slot": "pagination-link",
+        "data-active": isActive,
+        className: (0, _utils.cn)((0, _button.buttonVariants)({
+            variant: isActive ? "outline" : "ghost",
+            size
+        }), className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 52,
+        columnNumber: 5
+    }, this);
+}
+_c3 = PaginationLink;
+function PaginationPrevious({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(PaginationLink, {
+        "aria-label": "Go to previous page",
+        size: "default",
+        className: (0, _utils.cn)("gap-1 px-2.5 sm:pl-2.5", className),
+        ...props,
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverTrigger), {
-                asChild: true,
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
-                    variant: "outline",
-                    role: "combobox",
-                    "aria-expanded": open,
-                    className: (0, _utils.cn)("justify-between font-normal", !selectedOption && "text-muted-foreground", className),
-                    disabled: disabled,
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                            className: "truncate",
-                            children: selectedOption ? selectedOption.label : placeholder
-                        }, void 0, false, {
-                            fileName: "components/ui/combobox.tsx",
-                            lineNumber: 78,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "flex items-center gap-1",
-                            children: [
-                                clearable && selectedOption && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    type: "button",
-                                    className: "h-4 w-4 p-0 hover:bg-transparent hover:opacity-70 transition-opacity",
-                                    onClick: handleClear,
-                                    children: "\xd7"
-                                }, void 0, false, {
-                                    fileName: "components/ui/combobox.tsx",
-                                    lineNumber: 83,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronsUpDown), {
-                                    className: "h-4 w-4 shrink-0 opacity-50"
-                                }, void 0, false, {
-                                    fileName: "components/ui/combobox.tsx",
-                                    lineNumber: 91,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "components/ui/combobox.tsx",
-                            lineNumber: 81,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "components/ui/combobox.tsx",
-                    lineNumber: 67,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "components/ui/combobox.tsx",
-                lineNumber: 66,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronLeftIcon), {}, void 0, false, {
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 79,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverContent), {
-                className: "w-[var(--radix-popover-trigger-width)] p-0",
-                align: "start",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.Command), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandInput), {
-                            placeholder: searchPlaceholder
-                        }, void 0, false, {
-                            fileName: "components/ui/combobox.tsx",
-                            lineNumber: 97,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandList), {
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandEmpty), {
-                                    children: emptyText
-                                }, void 0, false, {
-                                    fileName: "components/ui/combobox.tsx",
-                                    lineNumber: 99,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandGroup), {
-                                    children: options.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandItem), {
-                                            value: option.value,
-                                            onSelect: handleSelect,
-                                            disabled: option.disabled,
-                                            children: [
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Check), {
-                                                    className: (0, _utils.cn)("mr-2 h-4 w-4", value === option.value ? "opacity-100" : "opacity-0")
-                                                }, void 0, false, {
-                                                    fileName: "components/ui/combobox.tsx",
-                                                    lineNumber: 108,
-                                                    columnNumber: 19
-                                                }, this),
-                                                option.label
-                                            ]
-                                        }, option.value, true, {
-                                            fileName: "components/ui/combobox.tsx",
-                                            lineNumber: 102,
-                                            columnNumber: 17
-                                        }, this))
-                                }, void 0, false, {
-                                    fileName: "components/ui/combobox.tsx",
-                                    lineNumber: 100,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "components/ui/combobox.tsx",
-                            lineNumber: 98,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "components/ui/combobox.tsx",
-                    lineNumber: 96,
-                    columnNumber: 9
-                }, this)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                className: "hidden sm:block",
+                children: "Previous"
             }, void 0, false, {
-                fileName: "components/ui/combobox.tsx",
-                lineNumber: 95,
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 80,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "components/ui/combobox.tsx",
-        lineNumber: 65,
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 73,
         columnNumber: 5
     }, this);
 }
-_s(Combobox, "xG1TONbKtDWtdOTrXaTAsNhPg/Q=");
-_c = Combobox;
-var _c;
-$RefreshReg$(_c, "Combobox");
+_c4 = PaginationPrevious;
+function PaginationNext({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(PaginationLink, {
+        "aria-label": "Go to next page",
+        size: "default",
+        className: (0, _utils.cn)("gap-1 px-2.5 sm:pr-2.5", className),
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                className: "hidden sm:block",
+                children: "Next"
+            }, void 0, false, {
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 96,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronRightIcon), {}, void 0, false, {
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 97,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 90,
+        columnNumber: 5
+    }, this);
+}
+_c5 = PaginationNext;
+function PaginationEllipsis({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+        "aria-hidden": true,
+        "data-slot": "pagination-ellipsis",
+        className: (0, _utils.cn)("flex size-9 items-center justify-center", className),
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.MoreHorizontalIcon), {
+                className: "size-4"
+            }, void 0, false, {
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 113,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                className: "sr-only",
+                children: "More pages"
+            }, void 0, false, {
+                fileName: "components/ui/pagination.tsx",
+                lineNumber: 114,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/pagination.tsx",
+        lineNumber: 107,
+        columnNumber: 5
+    }, this);
+}
+_c6 = PaginationEllipsis;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6;
+$RefreshReg$(_c, "Pagination");
+$RefreshReg$(_c1, "PaginationContent");
+$RefreshReg$(_c2, "PaginationItem");
+$RefreshReg$(_c3, "PaginationLink");
+$RefreshReg$(_c4, "PaginationPrevious");
+$RefreshReg$(_c5, "PaginationNext");
+$RefreshReg$(_c6, "PaginationEllipsis");
 
-  $parcel$ReactRefreshHelpers$5ef0.postlude(module);
+  $parcel$ReactRefreshHelpers$c266.postlude(module);
 } finally {
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","lucide-react":"2I7qR","../../lib/utils":"asoho","./button":"8xMbg","./command":"az9LN","./popover":"8lktE","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2I7qR":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","lucide-react":"2I7qR","../../lib/utils":"asoho","./button":"8xMbg","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"2I7qR":[function(require,module,exports,__globalThis) {
 /**
  * @license lucide-react v0.536.0 - ISC
  *
@@ -43166,7 +43177,290 @@ const __iconNode = [
 ];
 const X = (0, _createLucideIconJsDefault.default)("x", __iconNode);
 
-},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"az9LN":[function(require,module,exports,__globalThis) {
+},{"../createLucideIcon.js":"c2nE9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ibnwz":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$fd89 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$fd89.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fd89.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Label", ()=>Label);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactLabel = require("@radix-ui/react-label");
+var _utils = require("../../lib/utils");
+function Label({ className, ...props }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactLabel.Root, {
+        "data-slot": "label",
+        className: (0, _utils.cn)("flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50", className),
+        ...props
+    }, void 0, false, {
+        fileName: "components/ui/label.tsx",
+        lineNumber: 11,
+        columnNumber: 5
+    }, this);
+}
+_c = Label;
+var _c;
+$RefreshReg$(_c, "Label");
+
+  $parcel$ReactRefreshHelpers$fd89.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-label":"D3pBc","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../lib/utils":"asoho"}],"D3pBc":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Label", ()=>Label);
+parcelHelpers.export(exports, "Root", ()=>Root);
+// src/label.tsx
+var _react = require("react");
+var _reactPrimitive = require("@radix-ui/react-primitive");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+var NAME = "Label";
+var Label = _react.forwardRef((props, forwardedRef)=>{
+    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).label, {
+        ...props,
+        ref: forwardedRef,
+        onMouseDown: (event)=>{
+            const target = event.target;
+            if (target.closest("button, input, select, textarea")) return;
+            props.onMouseDown?.(event);
+            if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
+        }
+    });
+});
+Label.displayName = NAME;
+var Root = Label;
+
+},{"react":"jMk1U","@radix-ui/react-primitive":"i0I8C","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"i0I8C":[function(require,module,exports,__globalThis) {
+// src/primitive.tsx
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Primitive", ()=>Primitive);
+parcelHelpers.export(exports, "Root", ()=>Root);
+parcelHelpers.export(exports, "dispatchDiscreteCustomEvent", ()=>dispatchDiscreteCustomEvent);
+var _react = require("react");
+var _reactDom = require("react-dom");
+var _reactSlot = require("@radix-ui/react-slot");
+var _jsxRuntime = require("react/jsx-runtime");
+var NODES = [
+    "a",
+    "button",
+    "div",
+    "form",
+    "h2",
+    "h3",
+    "img",
+    "input",
+    "label",
+    "li",
+    "nav",
+    "ol",
+    "p",
+    "select",
+    "span",
+    "svg",
+    "ul"
+];
+var Primitive = NODES.reduce((primitive, node)=>{
+    const Slot = (0, _reactSlot.createSlot)(`Primitive.${node}`);
+    const Node = _react.forwardRef((props, forwardedRef)=>{
+        const { asChild, ...primitiveProps } = props;
+        const Comp = asChild ? Slot : node;
+        if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
+        return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Comp, {
+            ...primitiveProps,
+            ref: forwardedRef
+        });
+    });
+    Node.displayName = `Primitive.${node}`;
+    return {
+        ...primitive,
+        [node]: Node
+    };
+}, {});
+function dispatchDiscreteCustomEvent(target, event) {
+    if (target) _reactDom.flushSync(()=>target.dispatchEvent(event));
+}
+var Root = Primitive;
+
+},{"react":"jMk1U","react-dom":"i4X7T","@radix-ui/react-slot":"049tr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5yRh4":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$5ef0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$5ef0.init();
+var prevRefreshReg = globalThis.$RefreshReg$;
+var prevRefreshSig = globalThis.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5ef0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Combobox", ()=>Combobox);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _lucideReact = require("lucide-react");
+var _utils = require("../../lib/utils");
+var _button = require("./button");
+var _command = require("./command");
+var _popover = require("./popover");
+var _s = $RefreshSig$();
+function Combobox({ options, value, onValueChange, placeholder = "Select option...", searchPlaceholder = "Search...", emptyText = "No option found.", className, disabled = false, clearable = false }) {
+    _s();
+    const [open, setOpen] = _react.useState(false);
+    const selectedOption = options.find((option)=>option.value === value);
+    const handleSelect = (selectedValue)=>{
+        const newValue = selectedValue === value ? "" : selectedValue;
+        onValueChange?.(newValue);
+        setOpen(false);
+    };
+    const handleClear = (e)=>{
+        e.stopPropagation();
+        onValueChange?.("");
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.Popover), {
+        open: open,
+        onOpenChange: setOpen,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverTrigger), {
+                asChild: true,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
+                    variant: "outline",
+                    role: "combobox",
+                    "aria-expanded": open,
+                    className: (0, _utils.cn)("justify-between font-normal", !selectedOption && "text-muted-foreground", className),
+                    disabled: disabled,
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "truncate",
+                            children: selectedOption ? selectedOption.label : placeholder
+                        }, void 0, false, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 78,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "flex items-center gap-1",
+                            children: [
+                                clearable && selectedOption && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    type: "button",
+                                    className: "h-4 w-4 p-0 hover:bg-transparent hover:opacity-70 transition-opacity",
+                                    onClick: handleClear,
+                                    children: "\xd7"
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 83,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronsUpDown), {
+                                    className: "h-4 w-4 shrink-0 opacity-50"
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 91,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 81,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "components/ui/combobox.tsx",
+                    lineNumber: 67,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/ui/combobox.tsx",
+                lineNumber: 66,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _popover.PopoverContent), {
+                className: "w-[var(--radix-popover-trigger-width)] p-0",
+                align: "start",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.Command), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandInput), {
+                            placeholder: searchPlaceholder
+                        }, void 0, false, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 97,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandList), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandEmpty), {
+                                    children: emptyText
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 99,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandGroup), {
+                                    children: options.map((option)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _command.CommandItem), {
+                                            value: option.value,
+                                            onSelect: handleSelect,
+                                            disabled: option.disabled,
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.Check), {
+                                                    className: (0, _utils.cn)("mr-2 h-4 w-4", value === option.value ? "opacity-100" : "opacity-0")
+                                                }, void 0, false, {
+                                                    fileName: "components/ui/combobox.tsx",
+                                                    lineNumber: 108,
+                                                    columnNumber: 19
+                                                }, this),
+                                                option.label
+                                            ]
+                                        }, option.value, true, {
+                                            fileName: "components/ui/combobox.tsx",
+                                            lineNumber: 102,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "components/ui/combobox.tsx",
+                                    lineNumber: 100,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "components/ui/combobox.tsx",
+                            lineNumber: 98,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "components/ui/combobox.tsx",
+                    lineNumber: 96,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/ui/combobox.tsx",
+                lineNumber: 95,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/ui/combobox.tsx",
+        lineNumber: 65,
+        columnNumber: 5
+    }, this);
+}
+_s(Combobox, "xG1TONbKtDWtdOTrXaTAsNhPg/Q=");
+_c = Combobox;
+var _c;
+$RefreshReg$(_c, "Combobox");
+
+  $parcel$ReactRefreshHelpers$5ef0.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","lucide-react":"2I7qR","../../lib/utils":"asoho","./button":"8xMbg","./command":"az9LN","./popover":"8lktE","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"az9LN":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$a30c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$a30c.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -44791,59 +45085,7 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 var Root = DismissableLayer;
 var Branch = DismissableLayerBranch;
 
-},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-use-callback-ref":"92pad","@radix-ui/react-use-escape-keydown":"1mwS0","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"i0I8C":[function(require,module,exports,__globalThis) {
-// src/primitive.tsx
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Primitive", ()=>Primitive);
-parcelHelpers.export(exports, "Root", ()=>Root);
-parcelHelpers.export(exports, "dispatchDiscreteCustomEvent", ()=>dispatchDiscreteCustomEvent);
-var _react = require("react");
-var _reactDom = require("react-dom");
-var _reactSlot = require("@radix-ui/react-slot");
-var _jsxRuntime = require("react/jsx-runtime");
-var NODES = [
-    "a",
-    "button",
-    "div",
-    "form",
-    "h2",
-    "h3",
-    "img",
-    "input",
-    "label",
-    "li",
-    "nav",
-    "ol",
-    "p",
-    "select",
-    "span",
-    "svg",
-    "ul"
-];
-var Primitive = NODES.reduce((primitive, node)=>{
-    const Slot = (0, _reactSlot.createSlot)(`Primitive.${node}`);
-    const Node = _react.forwardRef((props, forwardedRef)=>{
-        const { asChild, ...primitiveProps } = props;
-        const Comp = asChild ? Slot : node;
-        if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
-        return /* @__PURE__ */ (0, _jsxRuntime.jsx)(Comp, {
-            ...primitiveProps,
-            ref: forwardedRef
-        });
-    });
-    Node.displayName = `Primitive.${node}`;
-    return {
-        ...primitive,
-        [node]: Node
-    };
-}, {});
-function dispatchDiscreteCustomEvent(target, event) {
-    if (target) _reactDom.flushSync(()=>target.dispatchEvent(event));
-}
-var Root = Primitive;
-
-},{"react":"jMk1U","react-dom":"i4X7T","@radix-ui/react-slot":"049tr","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"92pad":[function(require,module,exports,__globalThis) {
+},{"react":"jMk1U","@radix-ui/primitive":"jakGl","@radix-ui/react-primitive":"i0I8C","@radix-ui/react-compose-refs":"8NEPR","@radix-ui/react-use-callback-ref":"92pad","@radix-ui/react-use-escape-keydown":"1mwS0","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"92pad":[function(require,module,exports,__globalThis) {
 // packages/react/use-callback-ref/src/use-callback-ref.tsx
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -50070,244 +50312,137 @@ function useSize(element) {
     return size;
 }
 
-},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"ifYd3":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$c266 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$c266.init();
+},{"react":"jMk1U","@radix-ui/react-use-layout-effect":"enSS6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"72vrB":[function(require,module,exports,__globalThis) {
+var $parcel$ReactRefreshHelpers$05c0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+$parcel$ReactRefreshHelpers$05c0.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
 var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$c266.prelude(module);
+$parcel$ReactRefreshHelpers$05c0.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Pagination", ()=>Pagination);
-parcelHelpers.export(exports, "PaginationContent", ()=>PaginationContent);
-parcelHelpers.export(exports, "PaginationLink", ()=>PaginationLink);
-parcelHelpers.export(exports, "PaginationItem", ()=>PaginationItem);
-parcelHelpers.export(exports, "PaginationPrevious", ()=>PaginationPrevious);
-parcelHelpers.export(exports, "PaginationNext", ()=>PaginationNext);
-parcelHelpers.export(exports, "PaginationEllipsis", ()=>PaginationEllipsis);
+parcelHelpers.export(exports, "Collapsible", ()=>Collapsible);
+parcelHelpers.export(exports, "CollapsibleTrigger", ()=>CollapsibleTrigger);
+parcelHelpers.export(exports, "CollapsibleContent", ()=>CollapsibleContent);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
-var _lucideReact = require("lucide-react");
 var _utils = require("../../lib/utils");
-var _button = require("./button");
-function Pagination({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("nav", {
-        role: "navigation",
-        "aria-label": "pagination",
-        "data-slot": "pagination",
-        className: (0, _utils.cn)("mx-auto flex w-full justify-center", className),
-        ...props
+var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$();
+const CollapsibleContext = /*#__PURE__*/ _react.createContext(null);
+const useCollapsible = ()=>{
+    _s();
+    const context = _react.useContext(CollapsibleContext);
+    if (!context) throw new Error("useCollapsible must be used within a Collapsible");
+    return context;
+};
+_s(useCollapsible, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
+const Collapsible = /*#__PURE__*/ _s1(_react.forwardRef(_c = _s1(({ defaultOpen = false, open: openProp, onOpenChange, className, children, ...props }, ref)=>{
+    _s1();
+    const [openState, setOpenState] = _react.useState(defaultOpen);
+    const open = openProp !== undefined ? openProp : openState;
+    const handleOpenChange = _react.useCallback((newOpen)=>{
+        if (openProp === undefined) setOpenState(newOpen);
+        onOpenChange?.(newOpen);
+    }, [
+        openProp,
+        onOpenChange
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(CollapsibleContext.Provider, {
+        value: {
+            open,
+            onOpenChange: handleOpenChange
+        },
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            ref: ref,
+            className: className,
+            ...props,
+            children: children
+        }, void 0, false, {
+            fileName: "components/ui/collapsible.tsx",
+            lineNumber: 39,
+            columnNumber: 9
+        }, undefined)
     }, void 0, false, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 13,
-        columnNumber: 5
-    }, this);
-}
-_c = Pagination;
-function PaginationContent({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-        "data-slot": "pagination-content",
-        className: (0, _utils.cn)("flex flex-row items-center gap-1", className),
-        ...props
-    }, void 0, false, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 28,
-        columnNumber: 5
-    }, this);
-}
-_c1 = PaginationContent;
-function PaginationItem({ ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-        "data-slot": "pagination-item",
-        ...props
-    }, void 0, false, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 37,
-        columnNumber: 10
-    }, this);
-}
-_c2 = PaginationItem;
-function PaginationLink({ className, isActive, size = "icon", ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-        "aria-current": isActive ? "page" : undefined,
-        "data-slot": "pagination-link",
-        "data-active": isActive,
-        className: (0, _utils.cn)((0, _button.buttonVariants)({
-            variant: isActive ? "outline" : "ghost",
-            size
-        }), className),
-        ...props
-    }, void 0, false, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 52,
-        columnNumber: 5
-    }, this);
-}
-_c3 = PaginationLink;
-function PaginationPrevious({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(PaginationLink, {
-        "aria-label": "Go to previous page",
-        size: "default",
-        className: (0, _utils.cn)("gap-1 px-2.5 sm:pl-2.5", className),
+        fileName: "components/ui/collapsible.tsx",
+        lineNumber: 38,
+        columnNumber: 7
+    }, undefined);
+}, "i0vu/bFl7TjnZWMMLPmJf7IxNvw=")), "i0vu/bFl7TjnZWMMLPmJf7IxNvw=");
+_c1 = Collapsible;
+Collapsible.displayName = "Collapsible";
+const CollapsibleTrigger = /*#__PURE__*/ _s2(_react.forwardRef(_c2 = _s2(({ className, onClick, children, ...props }, ref)=>{
+    _s2();
+    const { open, onOpenChange } = useCollapsible();
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+        ref: ref,
+        type: "button",
+        "data-state": open ? "open" : "closed",
+        onClick: (e)=>{
+            onClick?.(e);
+            onOpenChange(!open);
+        },
+        className: className,
         ...props,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronLeftIcon), {}, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 79,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: "hidden sm:block",
-                children: "Previous"
-            }, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 80,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 73,
-        columnNumber: 5
-    }, this);
-}
-_c4 = PaginationPrevious;
-function PaginationNext({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(PaginationLink, {
-        "aria-label": "Go to next page",
-        size: "default",
-        className: (0, _utils.cn)("gap-1 px-2.5 sm:pr-2.5", className),
-        ...props,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: "hidden sm:block",
-                children: "Next"
-            }, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 96,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.ChevronRightIcon), {}, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 97,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 90,
-        columnNumber: 5
-    }, this);
-}
-_c5 = PaginationNext;
-function PaginationEllipsis({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-        "aria-hidden": true,
-        "data-slot": "pagination-ellipsis",
-        className: (0, _utils.cn)("flex size-9 items-center justify-center", className),
-        ...props,
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lucideReact.MoreHorizontalIcon), {
-                className: "size-4"
-            }, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 113,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                className: "sr-only",
-                children: "More pages"
-            }, void 0, false, {
-                fileName: "components/ui/pagination.tsx",
-                lineNumber: 114,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "components/ui/pagination.tsx",
-        lineNumber: 107,
-        columnNumber: 5
-    }, this);
-}
-_c6 = PaginationEllipsis;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6;
-$RefreshReg$(_c, "Pagination");
-$RefreshReg$(_c1, "PaginationContent");
-$RefreshReg$(_c2, "PaginationItem");
-$RefreshReg$(_c3, "PaginationLink");
-$RefreshReg$(_c4, "PaginationPrevious");
-$RefreshReg$(_c5, "PaginationNext");
-$RefreshReg$(_c6, "PaginationEllipsis");
-
-  $parcel$ReactRefreshHelpers$c266.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","lucide-react":"2I7qR","../../lib/utils":"asoho","./button":"8xMbg","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ibnwz":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$fd89 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$fd89.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fd89.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Label", ()=>Label);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactLabel = require("@radix-ui/react-label");
-var _utils = require("../../lib/utils");
-function Label({ className, ...props }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(_reactLabel.Root, {
-        "data-slot": "label",
-        className: (0, _utils.cn)("flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50", className),
-        ...props
+        children: children
     }, void 0, false, {
-        fileName: "components/ui/label.tsx",
-        lineNumber: 11,
-        columnNumber: 5
-    }, this);
-}
-_c = Label;
-var _c;
-$RefreshReg$(_c, "Label");
-
-  $parcel$ReactRefreshHelpers$fd89.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-label":"D3pBc","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../lib/utils":"asoho"}],"D3pBc":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Label", ()=>Label);
-parcelHelpers.export(exports, "Root", ()=>Root);
-// src/label.tsx
-var _react = require("react");
-var _reactPrimitive = require("@radix-ui/react-primitive");
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-var NAME = "Label";
-var Label = _react.forwardRef((props, forwardedRef)=>{
-    return /* @__PURE__ */ (0, _jsxRuntime.jsx)((0, _reactPrimitive.Primitive).label, {
-        ...props,
-        ref: forwardedRef,
-        onMouseDown: (event)=>{
-            const target = event.target;
-            if (target.closest("button, input, select, textarea")) return;
-            props.onMouseDown?.(event);
-            if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
-        }
-    });
+        fileName: "components/ui/collapsible.tsx",
+        lineNumber: 53,
+        columnNumber: 7
+    }, undefined);
+}, "2pWqRLx/I6hf7jCpLjUy0pT5DP0=", false, function() {
+    return [
+        useCollapsible
+    ];
+})), "2pWqRLx/I6hf7jCpLjUy0pT5DP0=", false, function() {
+    return [
+        useCollapsible
+    ];
 });
-Label.displayName = NAME;
-var Root = Label;
+_c3 = CollapsibleTrigger;
+CollapsibleTrigger.displayName = "CollapsibleTrigger";
+const CollapsibleContent = /*#__PURE__*/ _s3(_react.forwardRef(_c4 = _s3(({ className, children, ...props }, ref)=>{
+    _s3();
+    const { open } = useCollapsible();
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        ref: ref,
+        "data-state": open ? "open" : "closed",
+        className: (0, _utils.cn)("overflow-hidden transition-all duration-200 ease-in-out", open ? "animate-in slide-in-from-top-1" : "animate-out slide-out-to-top-1 h-0", className),
+        style: {
+            height: open ? "auto" : 0
+        },
+        ...props,
+        children: open && children
+    }, void 0, false, {
+        fileName: "components/ui/collapsible.tsx",
+        lineNumber: 76,
+        columnNumber: 7
+    }, undefined);
+}, "Nv1yxdnystz8WCjTGG0H3x6GCDc=", false, function() {
+    return [
+        useCollapsible
+    ];
+})), "Nv1yxdnystz8WCjTGG0H3x6GCDc=", false, function() {
+    return [
+        useCollapsible
+    ];
+});
+_c5 = CollapsibleContent;
+CollapsibleContent.displayName = "CollapsibleContent";
+var _c, _c1, _c2, _c3, _c4, _c5;
+$RefreshReg$(_c, "Collapsible$React.forwardRef");
+$RefreshReg$(_c1, "Collapsible");
+$RefreshReg$(_c2, "CollapsibleTrigger$React.forwardRef");
+$RefreshReg$(_c3, "CollapsibleTrigger");
+$RefreshReg$(_c4, "CollapsibleContent$React.forwardRef");
+$RefreshReg$(_c5, "CollapsibleContent");
 
-},{"react":"jMk1U","@radix-ui/react-primitive":"i0I8C","react/jsx-runtime":"05iiF","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"9RBEx":[function(require,module,exports,__globalThis) {
+  $parcel$ReactRefreshHelpers$05c0.postlude(module);
+} finally {
+  globalThis.$RefreshReg$ = prevRefreshReg;
+  globalThis.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"9RBEx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$d5ec = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$d5ec.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -51390,7 +51525,7 @@ $RefreshReg$(_c, "Skeleton");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../lib/utils":"asoho"}],"ifHet":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ifHet":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$4fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$4fee.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -52374,137 +52509,7 @@ module.exports = require("5ab7799a565bbe74");
     "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 })();
 
-},{"d49206e28a986e9f":"jMk1U"}],"72vrB":[function(require,module,exports,__globalThis) {
-var $parcel$ReactRefreshHelpers$05c0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-$parcel$ReactRefreshHelpers$05c0.init();
-var prevRefreshReg = globalThis.$RefreshReg$;
-var prevRefreshSig = globalThis.$RefreshSig$;
-$parcel$ReactRefreshHelpers$05c0.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Collapsible", ()=>Collapsible);
-parcelHelpers.export(exports, "CollapsibleTrigger", ()=>CollapsibleTrigger);
-parcelHelpers.export(exports, "CollapsibleContent", ()=>CollapsibleContent);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _utils = require("../../lib/utils");
-var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$();
-const CollapsibleContext = /*#__PURE__*/ _react.createContext(null);
-const useCollapsible = ()=>{
-    _s();
-    const context = _react.useContext(CollapsibleContext);
-    if (!context) throw new Error("useCollapsible must be used within a Collapsible");
-    return context;
-};
-_s(useCollapsible, "b9L3QQ+jgeyIrH0NfHrJ8nn7VMU=");
-const Collapsible = /*#__PURE__*/ _s1(_react.forwardRef(_c = _s1(({ defaultOpen = false, open: openProp, onOpenChange, className, children, ...props }, ref)=>{
-    _s1();
-    const [openState, setOpenState] = _react.useState(defaultOpen);
-    const open = openProp !== undefined ? openProp : openState;
-    const handleOpenChange = _react.useCallback((newOpen)=>{
-        if (openProp === undefined) setOpenState(newOpen);
-        onOpenChange?.(newOpen);
-    }, [
-        openProp,
-        onOpenChange
-    ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(CollapsibleContext.Provider, {
-        value: {
-            open,
-            onOpenChange: handleOpenChange
-        },
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            ref: ref,
-            className: className,
-            ...props,
-            children: children
-        }, void 0, false, {
-            fileName: "components/ui/collapsible.tsx",
-            lineNumber: 39,
-            columnNumber: 9
-        }, undefined)
-    }, void 0, false, {
-        fileName: "components/ui/collapsible.tsx",
-        lineNumber: 38,
-        columnNumber: 7
-    }, undefined);
-}, "i0vu/bFl7TjnZWMMLPmJf7IxNvw=")), "i0vu/bFl7TjnZWMMLPmJf7IxNvw=");
-_c1 = Collapsible;
-Collapsible.displayName = "Collapsible";
-const CollapsibleTrigger = /*#__PURE__*/ _s2(_react.forwardRef(_c2 = _s2(({ className, onClick, children, ...props }, ref)=>{
-    _s2();
-    const { open, onOpenChange } = useCollapsible();
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-        ref: ref,
-        type: "button",
-        "data-state": open ? "open" : "closed",
-        onClick: (e)=>{
-            onClick?.(e);
-            onOpenChange(!open);
-        },
-        className: className,
-        ...props,
-        children: children
-    }, void 0, false, {
-        fileName: "components/ui/collapsible.tsx",
-        lineNumber: 53,
-        columnNumber: 7
-    }, undefined);
-}, "2pWqRLx/I6hf7jCpLjUy0pT5DP0=", false, function() {
-    return [
-        useCollapsible
-    ];
-})), "2pWqRLx/I6hf7jCpLjUy0pT5DP0=", false, function() {
-    return [
-        useCollapsible
-    ];
-});
-_c3 = CollapsibleTrigger;
-CollapsibleTrigger.displayName = "CollapsibleTrigger";
-const CollapsibleContent = /*#__PURE__*/ _s3(_react.forwardRef(_c4 = _s3(({ className, children, ...props }, ref)=>{
-    _s3();
-    const { open } = useCollapsible();
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        ref: ref,
-        "data-state": open ? "open" : "closed",
-        className: (0, _utils.cn)("overflow-hidden transition-all duration-200 ease-in-out", open ? "animate-in slide-in-from-top-1" : "animate-out slide-out-to-top-1 h-0", className),
-        style: {
-            height: open ? "auto" : 0
-        },
-        ...props,
-        children: open && children
-    }, void 0, false, {
-        fileName: "components/ui/collapsible.tsx",
-        lineNumber: 76,
-        columnNumber: 7
-    }, undefined);
-}, "Nv1yxdnystz8WCjTGG0H3x6GCDc=", false, function() {
-    return [
-        useCollapsible
-    ];
-})), "Nv1yxdnystz8WCjTGG0H3x6GCDc=", false, function() {
-    return [
-        useCollapsible
-    ];
-});
-_c5 = CollapsibleContent;
-CollapsibleContent.displayName = "CollapsibleContent";
-var _c, _c1, _c2, _c3, _c4, _c5;
-$RefreshReg$(_c, "Collapsible$React.forwardRef");
-$RefreshReg$(_c1, "Collapsible");
-$RefreshReg$(_c2, "CollapsibleTrigger$React.forwardRef");
-$RefreshReg$(_c3, "CollapsibleTrigger");
-$RefreshReg$(_c4, "CollapsibleContent$React.forwardRef");
-$RefreshReg$(_c5, "CollapsibleContent");
-
-  $parcel$ReactRefreshHelpers$05c0.postlude(module);
-} finally {
-  globalThis.$RefreshReg$ = prevRefreshReg;
-  globalThis.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"jwE2H":[function(require,module,exports,__globalThis) {
+},{"d49206e28a986e9f":"jMk1U"}],"jwE2H":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AdminArticles", ()=>(0, _adminArticlesDefault.default));
@@ -52535,7 +52540,6 @@ var _articlesApi = require("../../../api/ArticlesApi");
 var _authContext = require("../../../api/AuthContext");
 var _authApi = require("../../../api/AuthApi");
 var _layout = require("../../../layouts/Layout");
-var _adminArticlesCss = require("./AdminArticles.css");
 var _button = require("@/components/ui/button");
 var _pagination = require("@/components/ui/pagination");
 var _table = require("@/components/ui/table");
@@ -52636,7 +52640,7 @@ const AdminArticles = ()=>{
                                 children: "Articles Management"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                lineNumber: 140,
+                                lineNumber: 139,
                                 columnNumber: 5
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52645,13 +52649,13 @@ const AdminArticles = ()=>{
                                 children: "Create New Article"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                lineNumber: 141,
+                                lineNumber: 140,
                                 columnNumber: 5
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                        lineNumber: 139,
+                        lineNumber: 138,
                         columnNumber: 4
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52667,7 +52671,7 @@ const AdminArticles = ()=>{
                                                 children: "ID"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 153,
+                                                lineNumber: 152,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -52675,7 +52679,7 @@ const AdminArticles = ()=>{
                                                 children: "Title"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 154,
+                                                lineNumber: 153,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -52683,7 +52687,7 @@ const AdminArticles = ()=>{
                                                 children: "Author"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 155,
+                                                lineNumber: 154,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -52691,7 +52695,7 @@ const AdminArticles = ()=>{
                                                 children: "Created Date"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 156,
+                                                lineNumber: 155,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -52699,7 +52703,7 @@ const AdminArticles = ()=>{
                                                 children: "Last Updated"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 157,
+                                                lineNumber: 156,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -52707,18 +52711,18 @@ const AdminArticles = ()=>{
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 158,
+                                                lineNumber: 157,
                                                 columnNumber: 8
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                        lineNumber: 152,
+                                        lineNumber: 151,
                                         columnNumber: 7
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                    lineNumber: 151,
+                                    lineNumber: 150,
                                     columnNumber: 6
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableBody), {
@@ -52729,12 +52733,12 @@ const AdminArticles = ()=>{
                                             children: "No articles found"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 163,
                                             columnNumber: 9
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                        lineNumber: 163,
+                                        lineNumber: 162,
                                         columnNumber: 8
                                     }, undefined) : articles.map((article, idx)=>{
                                         const createdAt = article.createdDate || article.createdAt || '';
@@ -52752,7 +52756,7 @@ const AdminArticles = ()=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 183,
+                                                    lineNumber: 182,
                                                     columnNumber: 11
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -52765,7 +52769,7 @@ const AdminArticles = ()=>{
                                                                 children: article.title
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 188,
+                                                                lineNumber: 187,
                                                                 columnNumber: 13
                                                             }, undefined),
                                                             article.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52773,18 +52777,18 @@ const AdminArticles = ()=>{
                                                                 children: article.summary.length > 100 ? article.summary.substring(0, 100) + '...' : article.summary
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 192,
+                                                                lineNumber: 191,
                                                                 columnNumber: 14
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                        lineNumber: 187,
+                                                        lineNumber: 186,
                                                         columnNumber: 12
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 185,
                                                     columnNumber: 11
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -52794,12 +52798,12 @@ const AdminArticles = ()=>{
                                                         children: article.author?.username || 'Unknown'
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 200,
                                                         columnNumber: 12
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 199,
                                                     columnNumber: 11
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -52807,7 +52811,7 @@ const AdminArticles = ()=>{
                                                     children: formatDateTimeToMin(createdAt)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 208,
+                                                    lineNumber: 207,
                                                     columnNumber: 11
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -52820,7 +52824,7 @@ const AdminArticles = ()=>{
                                                                 children: formatDateTimeToMin(updatedAt)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 214,
+                                                                lineNumber: 213,
                                                                 columnNumber: 14
                                                             }, undefined),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _badge.Badge), {
@@ -52832,25 +52836,25 @@ const AdminArticles = ()=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 217,
+                                                                lineNumber: 216,
                                                                 columnNumber: 14
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                        lineNumber: 213,
+                                                        lineNumber: 212,
                                                         columnNumber: 13
                                                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         className: "text-muted-foreground",
                                                         children: "-"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                        lineNumber: 222,
+                                                        lineNumber: 221,
                                                         columnNumber: 13
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 211,
+                                                    lineNumber: 210,
                                                     columnNumber: 11
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -52866,7 +52870,7 @@ const AdminArticles = ()=>{
                                                                 children: "View"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 227,
+                                                                lineNumber: 226,
                                                                 columnNumber: 13
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || article.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52877,7 +52881,7 @@ const AdminArticles = ()=>{
                                                                 children: "Edit"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 236,
+                                                                lineNumber: 235,
                                                                 columnNumber: 14
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || article.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -52888,47 +52892,47 @@ const AdminArticles = ()=>{
                                                                 children: "Delete"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                                lineNumber: 246,
+                                                                lineNumber: 245,
                                                                 columnNumber: 14
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                        lineNumber: 226,
+                                                        lineNumber: 225,
                                                         columnNumber: 12
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 224,
                                                     columnNumber: 11
                                                 }, undefined)
                                             ]
                                         }, article.id, true, {
                                             fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                            lineNumber: 178,
+                                            lineNumber: 177,
                                             columnNumber: 10
                                         }, undefined);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                    lineNumber: 161,
+                                    lineNumber: 160,
                                     columnNumber: 6
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                            lineNumber: 150,
+                            lineNumber: 149,
                             columnNumber: 5
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                        lineNumber: 149,
+                        lineNumber: 148,
                         columnNumber: 4
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                lineNumber: 138,
+                lineNumber: 137,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52951,12 +52955,12 @@ const AdminArticles = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                        lineNumber: 272,
+                                        lineNumber: 271,
                                         columnNumber: 19
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                    lineNumber: 271,
+                                    lineNumber: 270,
                                     columnNumber: 17
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -52972,18 +52976,18 @@ const AdminArticles = ()=>{
                                                 className: "w-[60px] px-1.5 py-1 border border-[#ced4da] rounded text-center"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                                lineNumber: 286,
+                                                lineNumber: 285,
                                                 columnNumber: 26
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                        lineNumber: 285,
+                                        lineNumber: 284,
                                         columnNumber: 19
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                    lineNumber: 284,
+                                    lineNumber: 283,
                                     columnNumber: 17
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -52995,33 +52999,33 @@ const AdminArticles = ()=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                        lineNumber: 296,
+                                        lineNumber: 295,
                                         columnNumber: 19
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                                    lineNumber: 295,
+                                    lineNumber: 294,
                                     columnNumber: 17
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                            lineNumber: 270,
+                            lineNumber: 269,
                             columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                        lineNumber: 269,
+                        lineNumber: 268,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                    lineNumber: 268,
+                    lineNumber: 267,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/AdminArticles.tsx",
-                lineNumber: 267,
+                lineNumber: 266,
                 columnNumber: 3
             }, undefined)
         ]
@@ -53043,7 +53047,7 @@ $RefreshReg$(_c, "AdminArticles");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../../../layouts/Layout":"aGg7E","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ","./AdminArticles.css":"lzaq6"}],"1Jd5p":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../../../layouts/Layout":"aGg7E","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ"}],"1Jd5p":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchAllArticles", ()=>fetchAllArticles);
@@ -53355,7 +53359,7 @@ $RefreshReg$(_c, "Badge");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-slot":"049tr","class-variance-authority":"3GTG2","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"lzaq6":[function() {},{}],"4x3qL":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","@radix-ui/react-slot":"049tr","class-variance-authority":"3GTG2","../../lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"4x3qL":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$e402 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$e402.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -53472,20 +53476,20 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                 className: "!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-[#007bff] !rounded-full animate-spin !mb-4"
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                lineNumber: 167,
+                lineNumber: 166,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading article..."
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                lineNumber: 168,
+                lineNumber: 167,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-        lineNumber: 166,
+        lineNumber: 165,
         columnNumber: 13
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53498,12 +53502,12 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                     children: isEdit ? 'Edit Article' : 'Create New Article'
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                    lineNumber: 176,
+                    lineNumber: 175,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                lineNumber: 175,
+                lineNumber: 174,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53513,7 +53517,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 181,
+                        lineNumber: 180,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -53521,7 +53525,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                lineNumber: 180,
+                lineNumber: 179,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -53543,13 +53547,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 189,
+                                            lineNumber: 188,
                                             columnNumber: 43
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 188,
+                                    lineNumber: 187,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -53561,7 +53565,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     className: "!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 191,
+                                    lineNumber: 190,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53572,7 +53576,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 199,
+                                    lineNumber: 198,
                                     columnNumber: 25
                                 }, undefined),
                                 errors.title?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -53580,18 +53584,18 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 203,
+                                    lineNumber: 202,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                            lineNumber: 187,
+                            lineNumber: 186,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 186,
+                        lineNumber: 185,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53609,13 +53613,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 211,
+                                            lineNumber: 210,
                                             columnNumber: 45
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 209,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -53627,7 +53631,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     className: "!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit !resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 212,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53638,7 +53642,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 221,
+                                    lineNumber: 220,
                                     columnNumber: 25
                                 }, undefined),
                                 errors.content?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -53646,18 +53650,18 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     children: errors.content.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 224,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                            lineNumber: 209,
+                            lineNumber: 208,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 208,
+                        lineNumber: 207,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53672,7 +53676,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 231,
+                                lineNumber: 230,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -53685,7 +53689,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                             className: "!inline-block !w-4 !h-4 !border-2 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mr-2"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 246,
                                             columnNumber: 33
                                         }, undefined),
                                         isEdit ? 'Updating...' : 'Creating...'
@@ -53693,25 +53697,25 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                 }, void 0, true) : isEdit ? 'Update Article' : 'Create Article'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 240,
+                                lineNumber: 239,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 230,
+                        lineNumber: 229,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                lineNumber: 185,
+                lineNumber: 184,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-        lineNumber: 174,
+        lineNumber: 173,
         columnNumber: 9
     }, undefined);
 };
@@ -58782,7 +58786,6 @@ var _commentItem = require("../../Comments/CommentItem/CommentItem");
 var _commentItemDefault = parcelHelpers.interopDefault(_commentItem);
 var _button = require("@/components/ui/button");
 var _commentsHandler = require("../../../../handlers/CommentsHandler");
-var _adminArticlesCss = require("../AdminArticles.css");
 var _label = require("@/components/ui/label");
 var _s = $RefreshSig$();
 const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, showActions = true, variant = 'card', useRouteParams = false })=>{
@@ -58895,25 +58898,25 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 168,
+                    lineNumber: 167,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "Loading article..."
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 169,
+                    lineNumber: 168,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-            lineNumber: 167,
+            lineNumber: 166,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-        lineNumber: 166,
+        lineNumber: 165,
         columnNumber: 13
     }, undefined);
     // Error state for route-based usage
@@ -58926,14 +58929,14 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     children: "Error Loading Article"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 180,
+                    lineNumber: 179,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 181,
+                    lineNumber: 180,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -58942,18 +58945,18 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 182,
+                    lineNumber: 181,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-            lineNumber: 179,
+            lineNumber: 178,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-        lineNumber: 178,
+        lineNumber: 177,
         columnNumber: 13
     }, undefined);
     // Not found state for route-based usage
@@ -58966,14 +58969,14 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     children: "Article Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 198,
+                    lineNumber: 197,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested article could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 199,
+                    lineNumber: 198,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -58982,18 +58985,18 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                    lineNumber: 200,
+                    lineNumber: 199,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-            lineNumber: 197,
+            lineNumber: 196,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-        lineNumber: 196,
+        lineNumber: 195,
         columnNumber: 13
     }, undefined);
     if (!article) return null;
@@ -59011,12 +59014,12 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                             children: "\u2190 Back to Articles"
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                            lineNumber: 219,
+                            lineNumber: 218,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 218,
+                        lineNumber: 217,
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59027,18 +59030,18 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                            lineNumber: 227,
+                            lineNumber: 226,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 226,
+                        lineNumber: 225,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 217,
+                lineNumber: 216,
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59055,7 +59058,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: article?.title
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 240,
+                                        lineNumber: 239,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59068,18 +59071,18 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                            lineNumber: 242,
+                                            lineNumber: 241,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 241,
+                                        lineNumber: 240,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 239,
+                                lineNumber: 238,
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59092,7 +59095,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: "Edit Article"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 248,
+                                        lineNumber: 247,
                                         columnNumber: 37
                                     }, undefined),
                                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -59103,19 +59106,19 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: isDeleting ? 'Deleting...' : 'Delete'
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 257,
+                                        lineNumber: 256,
                                         columnNumber: 37
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 246,
+                                lineNumber: 245,
                                 columnNumber: 29
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 238,
+                        lineNumber: 237,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59132,7 +59135,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 children: "Author:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 273,
+                                                lineNumber: 272,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -59140,13 +59143,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 children: createdBy
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 274,
+                                                lineNumber: 273,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 272,
+                                        lineNumber: 271,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59157,20 +59160,20 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 children: "Created:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 279,
+                                                lineNumber: 278,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: formatDateTimeToMin(createdAt)
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 280,
+                                                lineNumber: 279,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 278,
+                                        lineNumber: 277,
                                         columnNumber: 29
                                     }, undefined),
                                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -59183,7 +59186,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                         children: "Last Editor:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                        lineNumber: 285,
+                                                        lineNumber: 284,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -59191,13 +59194,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                         children: editedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                        lineNumber: 286,
+                                                        lineNumber: 285,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 284,
+                                                lineNumber: 283,
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59208,20 +59211,20 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                         children: "Last Updated:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                        lineNumber: 291,
+                                                        lineNumber: 290,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         children: formatDateTimeToMin(editedAt)
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 291,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 290,
+                                                lineNumber: 289,
                                                 columnNumber: 37
                                             }, undefined)
                                         ]
@@ -59229,7 +59232,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 271,
+                                lineNumber: 270,
                                 columnNumber: 25
                             }, undefined),
                             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59240,7 +59243,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: "Summary:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 300,
+                                        lineNumber: 299,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -59248,13 +59251,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: article.summary
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 301,
+                                        lineNumber: 300,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 299,
+                                lineNumber: 298,
                                 columnNumber: 29
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59265,7 +59268,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: "Content:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 306,
+                                        lineNumber: 305,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59273,13 +59276,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         children: article?.content
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 307,
+                                        lineNumber: 306,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 305,
+                                lineNumber: 304,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59296,12 +59299,12 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                            lineNumber: 315,
+                                            lineNumber: 314,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 314,
+                                        lineNumber: 313,
                                         columnNumber: 29
                                     }, undefined),
                                     commentsLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59311,20 +59314,20 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 className: "!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mb-4"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 320,
+                                                lineNumber: 319,
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                 children: "Loading comments..."
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 321,
+                                                lineNumber: 320,
                                                 columnNumber: 37
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 319,
+                                        lineNumber: 318,
                                         columnNumber: 33
                                     }, undefined) : commentsError ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]",
@@ -59333,7 +59336,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 children: "Error loading comments:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 325,
+                                                lineNumber: 324,
                                                 columnNumber: 37
                                             }, undefined),
                                             " ",
@@ -59347,13 +59350,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 children: "Retry"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 326,
+                                                lineNumber: 325,
                                                 columnNumber: 37
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 324,
+                                        lineNumber: 323,
                                         columnNumber: 33
                                     }, undefined) : comments.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "!text-[#6c757d] !text-sm !mb-4",
@@ -59361,12 +59364,12 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                             children: "No comments yet for this article."
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                            lineNumber: 336,
+                                            lineNumber: 335,
                                             columnNumber: 37
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 335,
+                                        lineNumber: 334,
                                         columnNumber: 33
                                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                         className: "!mt-[16px]",
@@ -59379,36 +59382,36 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 onDelete: ()=>handleCommentDelete(comment)
                                             }, comment.id, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                                lineNumber: 341,
+                                                lineNumber: 340,
                                                 columnNumber: 41
                                             }, undefined))
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                        lineNumber: 339,
+                                        lineNumber: 338,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 313,
+                                lineNumber: 312,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 270,
+                        lineNumber: 269,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 237,
+                lineNumber: 236,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-        lineNumber: 215,
+        lineNumber: 214,
         columnNumber: 13
     }, undefined);
     // Card variant (default)
@@ -59423,7 +59426,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         children: article?.title
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 364,
+                        lineNumber: 363,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -59434,13 +59437,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 365,
+                        lineNumber: 364,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 363,
+                lineNumber: 362,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59453,7 +59456,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 children: "By "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 370,
+                                lineNumber: 369,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -59462,7 +59465,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 children: createdBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 371,
+                                lineNumber: 370,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -59472,13 +59475,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 374,
+                                lineNumber: 373,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 369,
+                        lineNumber: 368,
                         columnNumber: 17
                     }, undefined),
                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59488,7 +59491,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 children: "Edited by "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 378,
+                                lineNumber: 377,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -59497,7 +59500,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 children: editedBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 379,
+                                lineNumber: 378,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -59507,19 +59510,19 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                                lineNumber: 382,
+                                lineNumber: 381,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 377,
+                        lineNumber: 376,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 368,
+                lineNumber: 367,
                 columnNumber: 13
             }, undefined),
             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59527,7 +59530,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 children: article.summary.length > 120 ? article.summary.substring(0, 120) + '...' : article.summary
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 388,
+                lineNumber: 387,
                 columnNumber: 17
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59540,7 +59543,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         children: "View"
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 397,
+                        lineNumber: 396,
                         columnNumber: 21
                     }, undefined),
                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -59550,7 +59553,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         children: "Edit"
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 405,
+                        lineNumber: 404,
                         columnNumber: 25
                     }, undefined),
                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -59561,19 +59564,19 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                        lineNumber: 414,
+                        lineNumber: 413,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-                lineNumber: 396,
+                lineNumber: 395,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
-        lineNumber: 362,
+        lineNumber: 361,
         columnNumber: 9
     }, undefined);
 };
@@ -59595,7 +59598,7 @@ $RefreshReg$(_c, "AdminArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../Comments/CommentItem/CommentItem":"9Palx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../../handlers/CommentsHandler":"7sDgS","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","../AdminArticles.css":"lzaq6"}],"7mCLt":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../Comments/CommentItem/CommentItem":"9Palx","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../../handlers/CommentsHandler":"7sDgS","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"7mCLt":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createComment", ()=>createComment);
@@ -59711,8 +59714,6 @@ var _authContext = require("../../../../api/AuthContext");
 var _authApi = require("../../../../api/AuthApi");
 var _commentApi = require("../../../../api/CommentApi");
 var _articlesApi = require("../../../../api/ArticlesApi");
-var _adminArticlesCss = require("../../Articles/AdminArticles.css");
-var _adminCommentsCss = require("../AdminComments.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
 var _s = $RefreshSig$();
@@ -59821,25 +59822,25 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                     className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 161,
+                    lineNumber: 159,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "Loading comment..."
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 162,
+                    lineNumber: 160,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-            lineNumber: 160,
+            lineNumber: 158,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 159,
+        lineNumber: 157,
         columnNumber: 13
     }, undefined);
     // Error state for route-based usage
@@ -59852,14 +59853,14 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                     children: "Error Loading Comment"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 173,
+                    lineNumber: 171,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 174,
+                    lineNumber: 172,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -59868,18 +59869,18 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                     children: "Back to Comments"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 175,
+                    lineNumber: 173,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-            lineNumber: 172,
+            lineNumber: 170,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 171,
+        lineNumber: 169,
         columnNumber: 13
     }, undefined);
     // Not found state for route-based usage
@@ -59892,14 +59893,14 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                     children: "Comment Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 191,
+                    lineNumber: 189,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested comment could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 192,
+                    lineNumber: 190,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -59908,18 +59909,18 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                     children: "Back to Comments"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                    lineNumber: 193,
+                    lineNumber: 191,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-            lineNumber: 190,
+            lineNumber: 188,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 189,
+        lineNumber: 187,
         columnNumber: 13
     }, undefined);
     if (!comment) return null;
@@ -59944,12 +59945,12 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                             children: "\u2190 Back to Comments"
                         }, void 0, false, {
                             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                            lineNumber: 225,
+                            lineNumber: 223,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 224,
+                        lineNumber: 222,
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59960,18 +59961,18 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                            lineNumber: 233,
+                            lineNumber: 231,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 232,
+                        lineNumber: 230,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 223,
+                lineNumber: 221,
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -59988,7 +59989,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         children: "Comment Details"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 246,
+                                        lineNumber: 244,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60001,18 +60002,18 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 246,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 247,
+                                        lineNumber: 245,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 245,
+                                lineNumber: 243,
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60025,7 +60026,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         children: "Edit Comment"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 252,
                                         columnNumber: 37
                                     }, undefined),
                                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60036,19 +60037,19 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         children: isDeleting ? 'Deleting...' : 'Delete'
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 263,
+                                        lineNumber: 261,
                                         columnNumber: 37
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 252,
+                                lineNumber: 250,
                                 columnNumber: 29
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 244,
+                        lineNumber: 242,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60065,7 +60066,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 children: "Author:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 279,
+                                                lineNumber: 277,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60073,13 +60074,13 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 children: createdBy
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 280,
+                                                lineNumber: 278,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 278,
+                                        lineNumber: 276,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60090,20 +60091,20 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 children: "Created:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 285,
+                                                lineNumber: 283,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                 children: formatDateTimeToMin(createdAt)
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 286,
+                                                lineNumber: 284,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 284,
+                                        lineNumber: 282,
                                         columnNumber: 29
                                     }, undefined),
                                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -60116,7 +60117,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                         children: "Last Editor:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                        lineNumber: 291,
+                                                        lineNumber: 289,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60124,13 +60125,13 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                         children: editedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                        lineNumber: 292,
+                                                        lineNumber: 290,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 290,
+                                                lineNumber: 288,
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60140,20 +60141,20 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                         children: "Last Updated:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                        lineNumber: 297,
+                                                        lineNumber: 295,
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         children: formatDateTimeToMin(editedAt)
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                        lineNumber: 298,
+                                                        lineNumber: 296,
                                                         columnNumber: 41
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 296,
+                                                lineNumber: 294,
                                                 columnNumber: 37
                                             }, undefined)
                                         ]
@@ -60166,7 +60167,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 children: "Article:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 303,
+                                                lineNumber: 301,
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60174,19 +60175,19 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 children: comment?.article?.title || 'Loading...'
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                                lineNumber: 304,
+                                                lineNumber: 302,
                                                 columnNumber: 33
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 302,
+                                        lineNumber: 300,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 277,
+                                lineNumber: 275,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60197,7 +60198,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         children: "Comment Content:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 313,
+                                        lineNumber: 311,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60205,31 +60206,31 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         children: comment?.content
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 314,
+                                        lineNumber: 312,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 312,
+                                lineNumber: 310,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 276,
+                        lineNumber: 274,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 243,
+                lineNumber: 241,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 221,
+        lineNumber: 219,
         columnNumber: 13
     }, undefined);
     // Card variant (default)
@@ -60244,7 +60245,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         children: "Comment"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 328,
+                        lineNumber: 326,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -60255,13 +60256,13 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 329,
+                        lineNumber: 327,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 327,
+                lineNumber: 325,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60274,7 +60275,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: "By "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 334,
+                                lineNumber: 332,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60283,7 +60284,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: createdBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 335,
+                                lineNumber: 333,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -60293,13 +60294,13 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 338,
+                                lineNumber: 336,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 333,
+                        lineNumber: 331,
                         columnNumber: 17
                     }, undefined),
                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60309,7 +60310,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: "Edited by "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 342,
+                                lineNumber: 340,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60318,7 +60319,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: editedBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 343,
+                                lineNumber: 341,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -60328,13 +60329,13 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 346,
+                                lineNumber: 344,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 341,
+                        lineNumber: 339,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60344,7 +60345,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: "On article: "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 350,
+                                lineNumber: 348,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -60353,19 +60354,19 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 children: comment?.article?.title || 'Loading...'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 351,
+                                lineNumber: 349,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 349,
+                        lineNumber: 347,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 332,
+                lineNumber: 330,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60373,7 +60374,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                 children: comment?.content && comment.content.length > 150 ? comment.content.substring(0, 150) + '...' : comment?.content
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 357,
+                lineNumber: 355,
                 columnNumber: 13
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60386,7 +60387,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         children: "View"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 365,
+                        lineNumber: 363,
                         columnNumber: 21
                     }, undefined),
                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60396,7 +60397,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         children: "Edit"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 373,
+                        lineNumber: 371,
                         columnNumber: 25
                     }, undefined),
                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60407,19 +60408,19 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 382,
+                        lineNumber: 380,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 364,
+                lineNumber: 362,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 326,
+        lineNumber: 324,
         columnNumber: 9
     }, undefined);
 };
@@ -60440,7 +60441,7 @@ $RefreshReg$(_c, "CommentItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","../../Articles/AdminArticles.css":"lzaq6","../AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"7sDgS":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/CommentApi":"7mCLt","../../../../api/ArticlesApi":"1Jd5p","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"7sDgS":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useCommentHandlers", ()=>useCommentHandlers);
@@ -60485,7 +60486,7 @@ _s(useCommentHandlers, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     ];
 });
 
-},{"react-router":"2jawN","../api/CommentApi":"7mCLt","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lzaq6":[function() {},{}],"j8zhy":[function(require,module,exports,__globalThis) {
+},{"react-router":"2jawN","../api/CommentApi":"7mCLt","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"j8zhy":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Comments", ()=>(0, _commentsDefault.default));
@@ -60516,8 +60517,6 @@ var _commentApi = require("../../../api/CommentApi");
 var _articlesApi = require("../../../api/ArticlesApi");
 var _authContext = require("../../../api/AuthContext");
 var _authApi = require("../../../api/AuthApi");
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminCommentsCss = require("./AdminComments.css");
 var _button = require("@/components/ui/button");
 var _pagination = require("@/components/ui/pagination");
 var _combobox = require("@/components/ui/combobox");
@@ -60628,7 +60627,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
         children: "Loading comments..."
     }, void 0, false, {
         fileName: "src/components/admin/Comments/Comments.tsx",
-        lineNumber: 173,
+        lineNumber: 171,
         columnNumber: 16
     }, undefined);
     // Create article options for combobox
@@ -60654,7 +60653,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 children: "Comments Management"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 189,
+                                lineNumber: 187,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60663,7 +60662,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 children: "Create New Comment"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 190,
+                                lineNumber: 188,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60677,7 +60676,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             children: "Filter by Article:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 198,
+                                            lineNumber: 196,
                                             columnNumber: 25
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
@@ -60693,24 +60692,24 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             clearable: true
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 197,
                                             columnNumber: 25
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 197,
+                                    lineNumber: 195,
                                     columnNumber: 21
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                lineNumber: 196,
+                                lineNumber: 194,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 188,
+                        lineNumber: 186,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60726,7 +60725,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "ID"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 219,
+                                                lineNumber: 217,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60734,7 +60733,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Content"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 220,
+                                                lineNumber: 218,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60742,7 +60741,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Article"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 221,
+                                                lineNumber: 219,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60750,7 +60749,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Author"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 220,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60758,7 +60757,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Created Date"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 223,
+                                                lineNumber: 221,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60766,7 +60765,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Last Updated"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 224,
+                                                lineNumber: 222,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -60774,18 +60773,18 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 223,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 216,
                                         columnNumber: 25
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 217,
+                                    lineNumber: 215,
                                     columnNumber: 21
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableBody), {
@@ -60796,12 +60795,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             children: selectedArticleId ? 'No comments found for this article' : 'No comments found'
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 231,
+                                            lineNumber: 229,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 228,
                                         columnNumber: 29
                                     }, undefined) : comments.map((comment, idx)=>{
                                         const createdAt = comment.dateCreated || comment.createdAt || '';
@@ -60819,7 +60818,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 253,
+                                                    lineNumber: 251,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60829,12 +60828,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.content.length > 100 ? comment.content.substring(0, 100) + '...' : comment.content
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 257,
+                                                        lineNumber: 255,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 256,
+                                                    lineNumber: 254,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60844,12 +60843,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.article?.title
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 264,
+                                                        lineNumber: 262,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 261,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60859,12 +60858,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                         children: comment.author?.username || 'Unknown'
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 272,
+                                                        lineNumber: 270,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 271,
+                                                    lineNumber: 269,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60872,7 +60871,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                     children: formatDateTimeToMin(createdAt)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 279,
+                                                    lineNumber: 277,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60885,7 +60884,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: formatDateTimeToMin(updatedAt)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 285,
+                                                                lineNumber: 283,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _badge.Badge), {
@@ -60897,25 +60896,25 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 288,
+                                                                lineNumber: 286,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 284,
+                                                        lineNumber: 282,
                                                         columnNumber: 49
                                                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                                         className: "text-muted-foreground",
                                                         children: "-"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 293,
+                                                        lineNumber: 291,
                                                         columnNumber: 49
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 282,
+                                                    lineNumber: 280,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -60931,7 +60930,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "View"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 298,
+                                                                lineNumber: 296,
                                                                 columnNumber: 49
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60942,7 +60941,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "Edit"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 307,
+                                                                lineNumber: 305,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             ((0, _authApi.hasRole)("ADMIN") || comment.author?.username === currentUser) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -60953,47 +60952,47 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                                 children: "Delete"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                                lineNumber: 317,
+                                                                lineNumber: 315,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                                        lineNumber: 297,
+                                                        lineNumber: 295,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                                    lineNumber: 296,
+                                                    lineNumber: 294,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, comment.id, true, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
-                                            lineNumber: 248,
+                                            lineNumber: 246,
                                             columnNumber: 37
                                         }, undefined);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 228,
+                                    lineNumber: 226,
                                     columnNumber: 21
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 216,
+                            lineNumber: 214,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 215,
+                        lineNumber: 213,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 187,
+                lineNumber: 185,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61015,12 +61014,12 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 342,
+                                        lineNumber: 340,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 341,
+                                    lineNumber: 339,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -61036,18 +61035,18 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 className: "!w-10 !text-center !text-sm !text-[#6c757d] !border !border-[#dee2e6] !rounded-lg !p-[4px]"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
-                                                lineNumber: 356,
+                                                lineNumber: 354,
                                                 columnNumber: 38
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 355,
+                                        lineNumber: 353,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 354,
+                                    lineNumber: 352,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -61059,33 +61058,33 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/Comments.tsx",
-                                        lineNumber: 366,
+                                        lineNumber: 364,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/Comments.tsx",
-                                    lineNumber: 365,
+                                    lineNumber: 363,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/Comments.tsx",
-                            lineNumber: 340,
+                            lineNumber: 338,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/Comments.tsx",
-                        lineNumber: 339,
+                        lineNumber: 337,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/Comments.tsx",
-                    lineNumber: 338,
+                    lineNumber: 336,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/Comments.tsx",
-                lineNumber: 337,
+                lineNumber: 335,
                 columnNumber: 9
             }, undefined)
         ]
@@ -61107,7 +61106,7 @@ $RefreshReg$(_c, "Comments");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"fX2rx":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ"}],"fX2rx":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b487 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$b487.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -61127,9 +61126,6 @@ var _authContext = require("../../../api/AuthContext");
 var _reactHookForm = require("react-hook-form");
 var _yup = require("@hookform/resolvers/yup");
 var _yup1 = require("yup");
-// import { useCommentHandlers } from '../../../actions/admin/Comments/CommentsHandler';
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminCommentsCss = require("./AdminComments.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
 var _combobox = require("@/components/ui/combobox");
@@ -61251,20 +61247,20 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                 className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 192,
+                lineNumber: 189,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading comment..."
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 193,
+                lineNumber: 190,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentForm.tsx",
-        lineNumber: 191,
+        lineNumber: 188,
         columnNumber: 13
     }, undefined);
     // Create article options for combobox
@@ -61287,12 +61283,12 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                     children: isEdit ? 'Edit Comment' : 'Create New Comment'
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                    lineNumber: 210,
+                    lineNumber: 207,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 209,
+                lineNumber: 206,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61302,7 +61298,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 215,
+                        lineNumber: 212,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -61310,7 +61306,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 214,
+                lineNumber: 211,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -61332,13 +61328,13 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 224,
+                                            lineNumber: 221,
                                             columnNumber: 48
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 223,
+                                    lineNumber: 220,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
@@ -61351,7 +61347,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     disabled: loading || !!preselectedArticleId
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 223,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -61359,18 +61355,18 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: errors.articleId?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 232,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 222,
+                            lineNumber: 219,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 221,
+                        lineNumber: 218,
                         columnNumber: 21
                     }, undefined),
                     selectedArticle && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61383,7 +61379,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: "Selected Article:"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 243,
+                                    lineNumber: 240,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61394,7 +61390,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: selectedArticle.title
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 245,
+                                            lineNumber: 242,
                                             columnNumber: 33
                                         }, undefined),
                                         selectedArticle.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -61402,24 +61398,24 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: selectedArticle.summary.length > 150 ? selectedArticle.summary.substring(0, 150) + '...' : selectedArticle.summary
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 247,
+                                            lineNumber: 244,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 241,
                                     columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 242,
+                            lineNumber: 239,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 241,
+                        lineNumber: 238,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61437,13 +61433,13 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 258,
                                             columnNumber: 45
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 257,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -61456,7 +61452,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     maxLength: 1000
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 263,
+                                    lineNumber: 260,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61467,7 +61463,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 272,
+                                    lineNumber: 269,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -61475,18 +61471,18 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     children: errors.content?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 272,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                            lineNumber: 259,
+                            lineNumber: 256,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 258,
+                        lineNumber: 255,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61500,7 +61496,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 280,
+                                lineNumber: 277,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -61513,7 +61509,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             className: "w-4 h-4 border-2 border-[#f3f3f3] border-t-white rounded-full animate-spin"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                            lineNumber: 295,
+                                            lineNumber: 292,
                                             columnNumber: 33
                                         }, undefined),
                                         isEdit ? 'Updating...' : 'Creating...'
@@ -61521,25 +61517,25 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                 }, void 0, true) : isEdit ? 'Update Comment' : 'Create Comment'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                                lineNumber: 288,
+                                lineNumber: 285,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentForm.tsx",
-                        lineNumber: 279,
+                        lineNumber: 276,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
-                lineNumber: 219,
+                lineNumber: 216,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentForm.tsx",
-        lineNumber: 208,
+        lineNumber: 205,
         columnNumber: 9
     }, undefined);
 };
@@ -61561,7 +61557,7 @@ $RefreshReg$(_c, "CommentForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","../Articles/AdminArticles.css":"lzaq6","./AdminComments.css":"478T9","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4"}],"lzaq6":[function() {},{}],"478T9":[function() {},{}],"1KkTo":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/CommentApi":"7mCLt","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4"}],"1KkTo":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Users", ()=>(0, _usersDefault.default));
@@ -61591,8 +61587,6 @@ var _reactRouter = require("react-router");
 var _usersApi = require("../../../api/UsersApi");
 var _authContext = require("../../../api/AuthContext");
 var _authApi = require("../../../api/AuthApi");
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminUsersCss = require("./AdminUsers.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
 var _pagination = require("@/components/ui/pagination");
@@ -61742,7 +61736,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
         children: "Loading users..."
     }, void 0, false, {
         fileName: "src/components/admin/Users/Users.tsx",
-        lineNumber: 206,
+        lineNumber: 204,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -61758,7 +61752,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                 children: "Users Management"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/Users.tsx",
-                                lineNumber: 213,
+                                lineNumber: 211,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61772,7 +61766,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Filter by Role:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 216,
+                                                lineNumber: 214,
                                                 columnNumber: 25
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
@@ -61788,13 +61782,13 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 clearable: true
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 215,
                                                 columnNumber: 25
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 215,
+                                        lineNumber: 213,
                                         columnNumber: 21
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61808,13 +61802,13 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: users.length
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 232,
+                                                        lineNumber: 230,
                                                         columnNumber: 42
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 229,
                                                 columnNumber: 25
                                             }, undefined),
                                             selectedRole && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -61830,31 +61824,31 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         }).length
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 236,
+                                                        lineNumber: 234,
                                                         columnNumber: 49
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 235,
+                                                lineNumber: 233,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 228,
                                         columnNumber: 21
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/Users.tsx",
-                                lineNumber: 214,
+                                lineNumber: 212,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 212,
+                        lineNumber: 210,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -61870,7 +61864,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "ID"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 251,
+                                                lineNumber: 249,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61878,7 +61872,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Username"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 252,
+                                                lineNumber: 250,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61886,7 +61880,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Full Name"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 253,
+                                                lineNumber: 251,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61894,7 +61888,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Email"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 254,
+                                                lineNumber: 252,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61902,7 +61896,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Role"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 253,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61910,7 +61904,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Created Date"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 256,
+                                                lineNumber: 254,
                                                 columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableHead), {
@@ -61918,18 +61912,18 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 children: "Actions"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 257,
+                                                lineNumber: 255,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 250,
+                                        lineNumber: 248,
                                         columnNumber: 25
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 249,
+                                    lineNumber: 247,
                                     columnNumber: 21
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableBody), {
@@ -61940,12 +61934,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                             children: selectedRole ? `No users found with role: ${selectedRole}` : 'No users found'
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/Users.tsx",
-                                            lineNumber: 263,
+                                            lineNumber: 261,
                                             columnNumber: 33
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 260,
                                         columnNumber: 29
                                     }, undefined) : filteredUsers.map((user, idx)=>{
                                         const createdAt = user.createdDate || user.createdAt || '';
@@ -61962,7 +61956,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 281,
+                                                    lineNumber: 279,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -61977,25 +61971,25 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "You"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 288,
+                                                                lineNumber: 286,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 285,
+                                                        lineNumber: 283,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 284,
+                                                    lineNumber: 282,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
                                                     children: `${user.firstName} ${user.lastName}`
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 294,
+                                                    lineNumber: 292,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -62005,12 +61999,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: user.email
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 298,
+                                                        lineNumber: 296,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 297,
+                                                    lineNumber: 295,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -62020,12 +62014,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                         children: userRole
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 306,
+                                                        lineNumber: 304,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 305,
+                                                    lineNumber: 303,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -62033,7 +62027,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                     children: createdAt ? formatDateTimeToMin(createdAt) : '-'
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 316,
+                                                    lineNumber: 314,
                                                     columnNumber: 41
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _table.TableCell), {
@@ -62049,7 +62043,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "View"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 321,
+                                                                lineNumber: 319,
                                                                 columnNumber: 49
                                                             }, undefined),
                                                             (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -62060,7 +62054,7 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "Edit"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 330,
+                                                                lineNumber: 328,
                                                                 columnNumber: 53
                                                             }, undefined),
                                                             (0, _authApi.hasRole)("ADMIN") && !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -62071,47 +62065,47 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                                 children: "Delete"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                                lineNumber: 340,
+                                                                lineNumber: 338,
                                                                 columnNumber: 53
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/admin/Users/Users.tsx",
-                                                        lineNumber: 320,
+                                                        lineNumber: 318,
                                                         columnNumber: 45
                                                     }, undefined)
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/Users.tsx",
-                                                    lineNumber: 319,
+                                                    lineNumber: 317,
                                                     columnNumber: 41
                                                 }, undefined)
                                             ]
                                         }, user.id, true, {
                                             fileName: "src/components/admin/Users/Users.tsx",
-                                            lineNumber: 277,
+                                            lineNumber: 275,
                                             columnNumber: 37
                                         }, undefined);
                                     })
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 258,
                                     columnNumber: 21
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/Users.tsx",
-                            lineNumber: 248,
+                            lineNumber: 246,
                             columnNumber: 17
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 247,
+                        lineNumber: 245,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/Users.tsx",
-                lineNumber: 211,
+                lineNumber: 209,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62133,12 +62127,12 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 365,
+                                        lineNumber: 363,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 364,
+                                    lineNumber: 362,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -62154,18 +62148,18 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                                 className: "admin-page-input"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/Users.tsx",
-                                                lineNumber: 379,
+                                                lineNumber: 377,
                                                 columnNumber: 38
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 378,
+                                        lineNumber: 376,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 377,
+                                    lineNumber: 375,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
@@ -62177,33 +62171,33 @@ const Users = ({ onEdit, onView, filterByRole })=>{
                                         }
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/Users.tsx",
-                                        lineNumber: 389,
+                                        lineNumber: 387,
                                         columnNumber: 29
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Users/Users.tsx",
-                                    lineNumber: 388,
+                                    lineNumber: 386,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/Users.tsx",
-                            lineNumber: 363,
+                            lineNumber: 361,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/Users.tsx",
-                        lineNumber: 362,
+                        lineNumber: 360,
                         columnNumber: 17
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/Users.tsx",
-                    lineNumber: 361,
+                    lineNumber: 359,
                     columnNumber: 13
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/Users.tsx",
-                lineNumber: 360,
+                lineNumber: 358,
                 columnNumber: 9
             }, undefined)
         ]
@@ -62225,7 +62219,7 @@ $RefreshReg$(_c, "Users");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA"}],"emu2c":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","../../../api/AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/pagination":"ifYd3","@/components/ui/combobox":"5yRh4","@/components/ui/table":"dzkui","@/components/ui/badge":"7yMfQ"}],"emu2c":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "fetchUserById", ()=>fetchUserById);
@@ -62335,7 +62329,7 @@ async function deleteUser(id, token) {
     }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lzaq6":[function() {},{}],"4aOlA":[function() {},{}],"4jne1":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"4jne1":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$add8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$add8.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -62355,8 +62349,6 @@ var _reactHookForm = require("react-hook-form");
 var _yup = require("@hookform/resolvers/yup");
 var _button = require("../../../../components/ui/button");
 var _yup1 = require("yup");
-var _adminArticlesCss = require("../Articles/AdminArticles.css");
-var _adminUsersCss = require("./AdminUsers.css");
 var _label = require("@/components/ui/label");
 var _combobox = require("@/components/ui/combobox");
 var _s = $RefreshSig$();
@@ -62520,20 +62512,20 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 className: "admin-loading-spinner"
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 213,
+                lineNumber: 211,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading user..."
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 214,
+                lineNumber: 212,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 212,
+        lineNumber: 210,
         columnNumber: 13
     }, undefined);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62545,14 +62537,14 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 223,
+                    lineNumber: 221,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 224,
+                    lineNumber: 222,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -62561,18 +62553,18 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 225,
+                    lineNumber: 223,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserForm.tsx",
-            lineNumber: 222,
+            lineNumber: 220,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 221,
+        lineNumber: 219,
         columnNumber: 13
     }, undefined);
     const isCurrentUser = user.username === currentUser;
@@ -62592,12 +62584,12 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                     children: "Edit User Details"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
-                    lineNumber: 248,
+                    lineNumber: 246,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 247,
+                lineNumber: 245,
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62607,7 +62599,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                         children: "Error:"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 253,
+                        lineNumber: 251,
                         columnNumber: 21
                     }, undefined),
                     " ",
@@ -62615,7 +62607,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 252,
+                lineNumber: 250,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -62640,13 +62632,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                                    lineNumber: 263,
+                                                    lineNumber: 261,
                                                     columnNumber: 44
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 262,
+                                            lineNumber: 260,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -62657,7 +62649,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             placeholder: "Enter first name"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 265,
+                                            lineNumber: 263,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62665,13 +62657,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: errors.firstName?.message
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 272,
+                                            lineNumber: 270,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 261,
+                                    lineNumber: 259,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62687,13 +62679,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                                    lineNumber: 277,
+                                                    lineNumber: 275,
                                                     columnNumber: 43
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 276,
+                                            lineNumber: 274,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -62704,7 +62696,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             placeholder: "Enter last name"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 279,
+                                            lineNumber: 277,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62712,13 +62704,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: errors.lastName?.message
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 284,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 273,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62734,13 +62726,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                                    lineNumber: 291,
+                                                    lineNumber: 289,
                                                     columnNumber: 39
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 290,
+                                            lineNumber: 288,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -62751,7 +62743,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             placeholder: "Enter email address"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 293,
+                                            lineNumber: 291,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62759,13 +62751,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: errors.email?.message
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 300,
+                                            lineNumber: 298,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 287,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62781,13 +62773,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                                    lineNumber: 305,
+                                                    lineNumber: 303,
                                                     columnNumber: 42
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 304,
+                                            lineNumber: 302,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -62798,7 +62790,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             placeholder: "Enter username"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 307,
+                                            lineNumber: 305,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62806,13 +62798,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: errors.username?.message
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 314,
+                                            lineNumber: 312,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 303,
+                                    lineNumber: 301,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62828,13 +62820,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                                     children: "*"
                                                 }, void 0, false, {
                                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                                    lineNumber: 319,
+                                                    lineNumber: 317,
                                                     columnNumber: 38
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 318,
+                                            lineNumber: 316,
                                             columnNumber: 29
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
@@ -62847,7 +62839,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             disabled: loading
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 321,
+                                            lineNumber: 319,
                                             columnNumber: 29
                                         }, undefined),
                                         isCurrentUser && selectedRole !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62855,7 +62847,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: "Note: You cannot remove your own admin access"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 331,
+                                            lineNumber: 329,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -62863,24 +62855,24 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             children: errors.role?.message
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 335,
+                                            lineNumber: 333,
                                             columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 317,
+                                    lineNumber: 315,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 260,
+                            lineNumber: 258,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 258,
+                        lineNumber: 256,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -62895,7 +62887,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 341,
+                                lineNumber: 339,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -62909,7 +62901,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                             className: "!w-4 !h-4 !border-2 !border-gray-500 !border-t-transparent !rounded-full !animate-spin"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 358,
+                                            lineNumber: 356,
                                             columnNumber: 33
                                         }, undefined),
                                         "Updating User..."
@@ -62917,25 +62909,25 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 }, void 0, true) : 'Update User'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 350,
+                                lineNumber: 348,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 340,
+                        lineNumber: 338,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserForm.tsx",
-                lineNumber: 257,
+                lineNumber: 255,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserForm.tsx",
-        lineNumber: 246,
+        lineNumber: 244,
         columnNumber: 9
     }, undefined);
 };
@@ -62958,7 +62950,7 @@ $RefreshReg$(_c, "UserForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","../../../../components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4","../Articles/AdminArticles.css":"lzaq6","./AdminUsers.css":"4aOlA"}],"lzaq6":[function() {},{}],"4aOlA":[function() {},{}],"k0Q5o":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/UsersApi":"emu2c","../../../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","../../../../components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","@/components/ui/combobox":"5yRh4"}],"k0Q5o":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$b8ed = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$b8ed.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -62975,8 +62967,6 @@ var _reactRouter = require("react-router");
 var _authContext = require("../../../../api/AuthContext");
 var _authApi = require("../../../../api/AuthApi");
 var _usersApi = require("../../../../api/UsersApi");
-var _adminArticlesCss = require("../../Articles/AdminArticles.css");
-var _adminUsersCss = require("../AdminUsers.css");
 var _button = require("@/components/ui/button");
 var _label = require("@/components/ui/label");
 var _s = $RefreshSig$();
@@ -63080,20 +63070,20 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                 className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 151,
+                lineNumber: 149,
                 columnNumber: 17
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Loading user..."
             }, void 0, false, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 152,
+                lineNumber: 150,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 150,
+        lineNumber: 148,
         columnNumber: 13
     }, undefined);
     // Error state for route-based usage
@@ -63106,14 +63096,14 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     children: "Error Loading User"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 162,
+                    lineNumber: 160,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 163,
+                    lineNumber: 161,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63122,18 +63112,18 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 164,
+                    lineNumber: 162,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-            lineNumber: 161,
+            lineNumber: 159,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 160,
+        lineNumber: 158,
         columnNumber: 13
     }, undefined);
     // Not found state for route-based usage
@@ -63146,14 +63136,14 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 180,
+                    lineNumber: 178,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 181,
+                    lineNumber: 179,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63162,18 +63152,18 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 182,
+                    lineNumber: 180,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-            lineNumber: 179,
+            lineNumber: 177,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 178,
+        lineNumber: 176,
         columnNumber: 13
     }, undefined);
     if (!user) return null;
@@ -63194,12 +63184,12 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                             children: "\u2190 Back to Users"
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 205,
+                            lineNumber: 203,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 204,
+                        lineNumber: 202,
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63210,18 +63200,18 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 213,
+                            lineNumber: 211,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 212,
+                        lineNumber: 210,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 203,
+                lineNumber: 201,
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63242,7 +63232,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                 alt: user.username
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 227,
                                                 columnNumber: 41
                                             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                                 className: "w-full h-full bg-[#007bff] text-white flex items-center justify-center",
@@ -63252,12 +63242,12 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 229,
                                                 columnNumber: 41
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 227,
+                                            lineNumber: 225,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63274,13 +63264,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                             children: "You"
                                                         }, void 0, false, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 239,
+                                                            lineNumber: 237,
                                                             columnNumber: 59
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 237,
+                                                    lineNumber: 235,
                                                     columnNumber: 37
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63294,7 +63284,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 242,
+                                                            lineNumber: 240,
                                                             columnNumber: 41
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63302,30 +63292,30 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                             children: userRole
                                                         }, void 0, false, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 243,
+                                                            lineNumber: 241,
                                                             columnNumber: 41
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 241,
+                                                    lineNumber: 239,
                                                     columnNumber: 37
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 236,
+                                            lineNumber: 234,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 226,
+                                    lineNumber: 224,
                                     columnNumber: 29
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 225,
+                                lineNumber: 223,
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63338,7 +63328,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                         children: "Edit Role"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 252,
+                                        lineNumber: 250,
                                         columnNumber: 33
                                     }, undefined),
                                     !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63349,19 +63339,19 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                         children: isDeleting ? 'Deleting...' : 'Delete User'
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 260,
+                                        lineNumber: 258,
                                         columnNumber: 37
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 251,
+                                lineNumber: 249,
                                 columnNumber: 29
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 224,
+                        lineNumber: 222,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63377,7 +63367,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "User ID:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 276,
+                                            lineNumber: 274,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63385,13 +63375,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: user.id
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 277,
+                                            lineNumber: 275,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 273,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63402,7 +63392,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "Username:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 280,
+                                            lineNumber: 278,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63410,13 +63400,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: user.username
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 281,
+                                            lineNumber: 279,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 279,
+                                    lineNumber: 277,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63427,7 +63417,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "Email:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 284,
+                                            lineNumber: 282,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -63436,13 +63426,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: user.email
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 285,
+                                            lineNumber: 283,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 283,
+                                    lineNumber: 281,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63453,7 +63443,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "Role:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 290,
+                                            lineNumber: 288,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63461,13 +63451,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: userRole
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 291,
+                                            lineNumber: 289,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 289,
+                                    lineNumber: 287,
                                     columnNumber: 29
                                 }, undefined),
                                 user.authorities && user.authorities.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63478,7 +63468,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "Authorities:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 297,
+                                            lineNumber: 295,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63488,18 +63478,18 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                                     children: authority
                                                 }, index, false, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 300,
+                                                    lineNumber: 298,
                                                     columnNumber: 45
                                                 }, undefined))
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 298,
+                                            lineNumber: 296,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 296,
+                                    lineNumber: 294,
                                     columnNumber: 33
                                 }, undefined),
                                 createdAt && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63510,7 +63500,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: "Created:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 307,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63518,36 +63508,36 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                             children: formatDateTimeToMin(createdAt)
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 310,
+                                            lineNumber: 308,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 308,
+                                    lineNumber: 306,
                                     columnNumber: 33
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 274,
+                            lineNumber: 272,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 273,
+                        lineNumber: 271,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 223,
+                lineNumber: 221,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 201,
+        lineNumber: 199,
         columnNumber: 13
     }, undefined);
     // Card variant (default)
@@ -63564,7 +63554,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                             alt: user.username
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 326,
+                            lineNumber: 324,
                             columnNumber: 25
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "w-full h-full bg-[#007bff] text-white flex items-center justify-center",
@@ -63574,12 +63564,12 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 328,
+                            lineNumber: 326,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 324,
+                        lineNumber: 322,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63596,13 +63586,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                         children: "You"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 336,
+                                        lineNumber: 334,
                                         columnNumber: 43
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 334,
+                                lineNumber: 332,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63616,7 +63606,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 339,
+                                        lineNumber: 337,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63624,25 +63614,25 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                         children: userRole
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 340,
+                                        lineNumber: 338,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 338,
+                                lineNumber: 336,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 333,
+                        lineNumber: 331,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 323,
+                lineNumber: 321,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63656,7 +63646,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                 children: "Email:"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 349,
+                                lineNumber: 347,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -63665,13 +63655,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                 children: user.email
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 350,
+                                lineNumber: 348,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 348,
+                        lineNumber: 346,
                         columnNumber: 17
                     }, undefined),
                     createdAt && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63682,7 +63672,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                                 children: "Created:"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 356,
+                                lineNumber: 354,
                                 columnNumber: 25
                             }, undefined),
                             "Created: ",
@@ -63690,13 +63680,13 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 355,
+                        lineNumber: 353,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 347,
+                lineNumber: 345,
                 columnNumber: 13
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63709,7 +63699,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                         children: "View"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 364,
+                        lineNumber: 362,
                         columnNumber: 21
                     }, undefined),
                     (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63719,7 +63709,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                         children: "Edit Role"
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 372,
+                        lineNumber: 370,
                         columnNumber: 25
                     }, undefined),
                     (0, _authApi.hasRole)("ADMIN") && !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63730,19 +63720,19 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 381,
+                        lineNumber: 379,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 363,
+                lineNumber: 361,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 322,
+        lineNumber: 320,
         columnNumber: 9
     }, undefined);
 };
@@ -63763,7 +63753,7 @@ $RefreshReg$(_c, "UserItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/UsersApi":"emu2c","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz","../../Articles/AdminArticles.css":"lzaq6","../AdminUsers.css":"4aOlA"}],"lzaq6":[function() {},{}],"4aOlA":[function() {},{}],"01umO":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","../../../../api/UsersApi":"emu2c","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg","@/components/ui/label":"ibnwz"}],"01umO":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$0c00 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$0c00.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -63781,7 +63771,6 @@ var _articlesApi = require("../../../api/ArticlesApi");
 var _layout = require("../../../layouts/Layout");
 var _button = require("../../../../components/ui/button");
 var _s = $RefreshSig$();
-// Styles converted to Tailwind CSS
 const UserArticles = ()=>{
     _s();
     const context = (0, _react.useContext)((0, _layout.ArticleControlsContext));
@@ -63851,7 +63840,7 @@ const UserArticles = ()=>{
                                 className: "!w-2 !min-w-[8px] !bg-gradient-to-b !from-purple-600 !via-pink-500 !to-rose-500 !rounded-l-2xl !my-7 !mr-7 !h-[80%] !shadow-lg !shadow-purple-200/30"
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                                lineNumber: 92,
+                                lineNumber: 90,
                                 columnNumber: 6
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63862,7 +63851,7 @@ const UserArticles = ()=>{
                                         children: article.title
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                        lineNumber: 94,
+                                        lineNumber: 92,
                                         columnNumber: 7
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63878,7 +63867,7 @@ const UserArticles = ()=>{
                                                         children: article.author?.username
                                                     }, void 0, false, {
                                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                                        lineNumber: 100,
+                                                        lineNumber: 98,
                                                         columnNumber: 9
                                                     }, undefined),
                                                     ' ',
@@ -63887,7 +63876,7 @@ const UserArticles = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                                                lineNumber: 98,
+                                                lineNumber: 96,
                                                 columnNumber: 8
                                             }, undefined),
                                             (article.author?.username !== article.editor?.username || formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63900,7 +63889,7 @@ const UserArticles = ()=>{
                                                         children: article.editor?.username
                                                     }, void 0, false, {
                                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                                        lineNumber: 112,
+                                                        lineNumber: 110,
                                                         columnNumber: 9
                                                     }, undefined),
                                                     ' ',
@@ -63909,13 +63898,13 @@ const UserArticles = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                                                lineNumber: 110,
+                                                lineNumber: 108,
                                                 columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                        lineNumber: 97,
+                                        lineNumber: 95,
                                         columnNumber: 7
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63923,7 +63912,7 @@ const UserArticles = ()=>{
                                         children: article.summary
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 119,
                                         columnNumber: 7
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
@@ -63932,24 +63921,24 @@ const UserArticles = ()=>{
                                         children: "Read More"
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 122,
                                         columnNumber: 7
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                                lineNumber: 93,
+                                lineNumber: 91,
                                 columnNumber: 6
                             }, undefined)
                         ]
                     }, article.id, true, {
                         fileName: "src/components/public/Articles/UserArticles.tsx",
-                        lineNumber: 87,
+                        lineNumber: 85,
                         columnNumber: 5
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                lineNumber: 85,
+                lineNumber: 83,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -63966,7 +63955,7 @@ const UserArticles = ()=>{
                             children: "\u2190"
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/UserArticles.tsx",
-                            lineNumber: 136,
+                            lineNumber: 134,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -63981,13 +63970,13 @@ const UserArticles = ()=>{
                                     className: "!w-16 !px-3 !py-2 !text-center !text-sm !border-2 !border-gray-200 !rounded-lg !bg-white/80 !backdrop-blur-sm !transition-all !duration-200 focus:!border-purple-400 focus:!ring-2 focus:!ring-purple-100 !outline-none"
                                 }, void 0, false, {
                                     fileName: "src/components/public/Articles/UserArticles.tsx",
-                                    lineNumber: 147,
+                                    lineNumber: 145,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/public/Articles/UserArticles.tsx",
-                            lineNumber: 145,
+                            lineNumber: 143,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -63998,18 +63987,18 @@ const UserArticles = ()=>{
                             children: "\u2192"
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/UserArticles.tsx",
-                            lineNumber: 156,
+                            lineNumber: 154,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Articles/UserArticles.tsx",
-                    lineNumber: 135,
+                    lineNumber: 133,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/public/Articles/UserArticles.tsx",
-                lineNumber: 134,
+                lineNumber: 132,
                 columnNumber: 9
             }, undefined)
         ]
@@ -64050,8 +64039,6 @@ var _requireRoles = require("../../../../api/RequireRoles");
 var _requireRolesDefault = parcelHelpers.interopDefault(_requireRoles);
 var _authContext = require("../../../../api/AuthContext");
 var _authApi = require("../../../../api/AuthApi");
-var _commentsCss = require("../../../../format/Comments.css");
-var _articleItemCss = require("../../../../format/ArticleItem.css");
 var _button = require("@/components/ui/button");
 var _s = $RefreshSig$();
 const UserArticleItem = ()=>{
@@ -64147,7 +64134,7 @@ const UserArticleItem = ()=>{
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-        lineNumber: 138,
+        lineNumber: 136,
         columnNumber: 23
     }, undefined);
     function formatDateTimeToMin(dateStr) {
@@ -64168,7 +64155,7 @@ const UserArticleItem = ()=>{
                     children: article.title
                 }, void 0, false, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 158,
+                    lineNumber: 156,
                     columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -64176,7 +64163,7 @@ const UserArticleItem = ()=>{
                     children: article.content
                 }, void 0, false, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 159,
+                    lineNumber: 157,
                     columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -64193,7 +64180,7 @@ const UserArticleItem = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                    lineNumber: 162,
+                                    lineNumber: 160,
                                     columnNumber: 6
                                 }, undefined),
                                 " at ",
@@ -64201,14 +64188,14 @@ const UserArticleItem = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                            lineNumber: 161,
+                            lineNumber: 159,
                             columnNumber: 5
                         }, undefined),
                         showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                    lineNumber: 166,
+                                    lineNumber: 164,
                                     columnNumber: 7
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -64223,7 +64210,7 @@ const UserArticleItem = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 165,
                                             columnNumber: 78
                                         }, undefined),
                                         " at ",
@@ -64232,7 +64219,7 @@ const UserArticleItem = ()=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                    lineNumber: 167,
+                                    lineNumber: 165,
                                     columnNumber: 7
                                 }, undefined)
                             ]
@@ -64240,14 +64227,14 @@ const UserArticleItem = ()=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 160,
+                    lineNumber: 158,
                     columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {
                     className: "!border-[#ececec] !border-[1.5px] !mt-[40px] !mb-[32px] !ml-[0px] !mr-[0px]"
                 }, void 0, false, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 172,
+                    lineNumber: 170,
                     columnNumber: 4
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -64258,7 +64245,7 @@ const UserArticleItem = ()=>{
                             children: "Comments"
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                            lineNumber: 175,
+                            lineNumber: 173,
                             columnNumber: 5
                         }, undefined),
                         comments.map((comment)=>{
@@ -64278,14 +64265,14 @@ const UserArticleItem = ()=>{
                                                         children: commentCreatedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                        lineNumber: 188,
+                                                        lineNumber: 186,
                                                         columnNumber: 11
                                                     }, undefined),
                                                     ":"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                lineNumber: 188,
+                                                lineNumber: 186,
                                                 columnNumber: 8
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -64296,7 +64283,7 @@ const UserArticleItem = ()=>{
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 187,
                                                 columnNumber: 8
                                             }, undefined),
                                             editingCommentId === comment.id ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -64306,7 +64293,7 @@ const UserArticleItem = ()=>{
                                                     onChange: (e)=>setEditedContent(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                    lineNumber: 194,
+                                                    lineNumber: 192,
                                                     columnNumber: 9
                                                 }, undefined)
                                             }, void 0, false) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -64315,7 +64302,7 @@ const UserArticleItem = ()=>{
                                                         children: comment.content
                                                     }, void 0, false, {
                                                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                        lineNumber: 202,
+                                                        lineNumber: 200,
                                                         columnNumber: 9
                                                     }, undefined),
                                                     showCommentEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -64326,7 +64313,7 @@ const UserArticleItem = ()=>{
                                                                 children: commentEditedBy
                                                             }, void 0, false, {
                                                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                                lineNumber: 205,
+                                                                lineNumber: 203,
                                                                 columnNumber: 20
                                                             }, undefined),
                                                             " at ",
@@ -64334,7 +64321,7 @@ const UserArticleItem = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 202,
                                                         columnNumber: 9
                                                     }, undefined)
                                                 ]
@@ -64342,7 +64329,7 @@ const UserArticleItem = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 185,
                                         columnNumber: 7
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -64356,7 +64343,7 @@ const UserArticleItem = ()=>{
                                                     children: "Save"
                                                 }, void 0, false, {
                                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                    lineNumber: 214,
+                                                    lineNumber: 212,
                                                     columnNumber: 9
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -64366,7 +64353,7 @@ const UserArticleItem = ()=>{
                                                     children: "Cancel"
                                                 }, void 0, false, {
                                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                    lineNumber: 215,
+                                                    lineNumber: 213,
                                                     columnNumber: 9
                                                 }, undefined)
                                             ]
@@ -64379,7 +64366,7 @@ const UserArticleItem = ()=>{
                                                     children: "Edit"
                                                 }, void 0, false, {
                                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                    lineNumber: 220,
+                                                    lineNumber: 218,
                                                     columnNumber: 9
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -64389,27 +64376,27 @@ const UserArticleItem = ()=>{
                                                     children: "Delete"
                                                 }, void 0, false, {
                                                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                                    lineNumber: 221,
+                                                    lineNumber: 219,
                                                     columnNumber: 9
                                                 }, undefined)
                                             ]
                                         }, void 0, true)
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                        lineNumber: 211,
+                                        lineNumber: 209,
                                         columnNumber: 7
                                     }, undefined)
                                 ]
                             }, comment.id, true, {
                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                lineNumber: 186,
+                                lineNumber: 184,
                                 columnNumber: 7
                             }, undefined);
                         })
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 174,
+                    lineNumber: 172,
                     columnNumber: 4
                 }, undefined),
                 currentUser ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -64417,6 +64404,7 @@ const UserArticleItem = ()=>{
                     className: "comment-form",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
+                            className: "!w-full !border-[#162938] !border-[1px] !rounded-[4px] !p-[8px] !mb-[8px] !mt-[8px] !text-[#162938] !text-[0.95em] !resize-none",
                             value: content,
                             onChange: (e)=>setContent(e.target.value),
                             required: true,
@@ -64424,7 +64412,7 @@ const UserArticleItem = ()=>{
                             placeholder: "Write your comment..."
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                            lineNumber: 233,
+                            lineNumber: 231,
                             columnNumber: 6
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -64434,7 +64422,7 @@ const UserArticleItem = ()=>{
                             children: "Post Comment"
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                            lineNumber: 240,
+                            lineNumber: 239,
                             columnNumber: 6
                         }, undefined),
                         error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -64444,13 +64432,13 @@ const UserArticleItem = ()=>{
                             children: error
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                            lineNumber: 241,
+                            lineNumber: 240,
                             columnNumber: 16
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 232,
+                    lineNumber: 230,
                     columnNumber: 5
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("em", {
@@ -64460,19 +64448,19 @@ const UserArticleItem = ()=>{
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                lineNumber: 244,
+                                lineNumber: 243,
                                 columnNumber: 12
                             }, undefined),
                             " to comment."
                         ]
                     }, void 0, true, {
                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                        lineNumber: 244,
+                        lineNumber: 243,
                         columnNumber: 8
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 244,
+                    lineNumber: 243,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _requireRolesDefault.default), {
@@ -64490,7 +64478,7 @@ const UserArticleItem = ()=>{
                                 children: "Edit"
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                lineNumber: 250,
+                                lineNumber: 249,
                                 columnNumber: 5
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -64500,24 +64488,24 @@ const UserArticleItem = ()=>{
                                 children: "Delete"
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                                lineNumber: 251,
+                                lineNumber: 250,
                                 columnNumber: 5
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                        lineNumber: 249,
+                        lineNumber: 248,
                         columnNumber: 4
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-                    lineNumber: 247,
+                    lineNumber: 246,
                     columnNumber: 4
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/public/Articles/ArticleItem/UserArticleItem.tsx",
-            lineNumber: 157,
+            lineNumber: 155,
             columnNumber: 10
         }, undefined)
     }, void 0, false);
@@ -64539,7 +64527,7 @@ $RefreshReg$(_c, "UserArticleItem");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../../../api/RequireRoles":"kluL2","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../../format/Comments.css":"f3Q9r","../../../../format/ArticleItem.css":"7faOT","@/components/ui/button":"8xMbg"}],"f3Q9r":[function() {},{}],"7faOT":[function() {},{}],"35pnV":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../../api/ArticlesApi":"1Jd5p","../../../../api/CommentApi":"7mCLt","../../../../api/RequireRoles":"kluL2","../../../../api/AuthContext":"5P6PV","../../../../api/AuthApi":"fHdgf","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","@/components/ui/button":"8xMbg"}],"35pnV":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c3e4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$c3e4.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -65075,7 +65063,6 @@ var _usersApi = require("../../../../api/UsersApi");
 var _articlesApi = require("../../../../api/ArticlesApi");
 var _button = require("../../../../../components/ui/button");
 var _s = $RefreshSig$();
-// Styles converted to Tailwind CSS
 const AuthorItem = ()=>{
     _s();
     const { id } = (0, _reactRouter.useParams)();
@@ -65124,7 +65111,7 @@ const AuthorItem = ()=>{
                     className: "!w-12 !h-12 !border-4 !border-purple-200 !border-t-purple-600 !rounded-full !animate-spin"
                 }, void 0, false, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 67,
+                    lineNumber: 66,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65132,18 +65119,18 @@ const AuthorItem = ()=>{
                     children: "Loading author..."
                 }, void 0, false, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 68,
+                    lineNumber: 67,
                     columnNumber: 5
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-            lineNumber: 66,
+            lineNumber: 65,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-        lineNumber: 65,
+        lineNumber: 64,
         columnNumber: 3
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65163,29 +65150,29 @@ const AuthorItem = ()=>{
                                 className: "!w-full !h-full !object-cover !rounded-full"
                             }, void 0, false, {
                                 fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                lineNumber: 82,
+                                lineNumber: 81,
                                 columnNumber: 9
                             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 className: "!text-2xl !md:!text-4xl !font-bold !bg-gradient-to-r !from-purple-600 !to-pink-600 !bg-clip-text !text-transparent",
                                 children: author.username ? author.username[0].toUpperCase() : '?'
                             }, void 0, false, {
                                 fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                lineNumber: 88,
+                                lineNumber: 87,
                                 columnNumber: 9
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 80,
+                            lineNumber: 79,
                             columnNumber: 7
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                        lineNumber: 79,
+                        lineNumber: 78,
                         columnNumber: 6
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 78,
+                    lineNumber: 77,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65196,7 +65183,7 @@ const AuthorItem = ()=>{
                             children: author.username
                         }, void 0, false, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 98,
+                            lineNumber: 97,
                             columnNumber: 6
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65204,7 +65191,7 @@ const AuthorItem = ()=>{
                             children: author.email
                         }, void 0, false, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 101,
+                            lineNumber: 100,
                             columnNumber: 6
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65219,13 +65206,13 @@ const AuthorItem = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 104,
+                            lineNumber: 103,
                             columnNumber: 6
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 97,
+                    lineNumber: 96,
                     columnNumber: 5
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -65236,7 +65223,7 @@ const AuthorItem = ()=>{
                     children: showArticles ? "Hide Articles" : "Show Articles"
                 }, void 0, false, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 114,
+                    lineNumber: 113,
                     columnNumber: 5
                 }, undefined),
                 showArticles && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65250,7 +65237,7 @@ const AuthorItem = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 126,
+                            lineNumber: 125,
                             columnNumber: 7
                         }, undefined),
                         articles.length > 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
@@ -65266,7 +65253,7 @@ const AuthorItem = ()=>{
                                                 children: article.title
                                             }, void 0, false, {
                                                 fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                                lineNumber: 137,
+                                                lineNumber: 136,
                                                 columnNumber: 12
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65274,23 +65261,23 @@ const AuthorItem = ()=>{
                                                 children: "Click to read more \u2192"
                                             }, void 0, false, {
                                                 fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                                lineNumber: 140,
+                                                lineNumber: 139,
                                                 columnNumber: 12
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                        lineNumber: 133,
+                                        lineNumber: 132,
                                         columnNumber: 11
                                     }, undefined)
                                 }, article.id, false, {
                                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 131,
                                     columnNumber: 10
                                 }, undefined))
                         }, void 0, false, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 130,
+                            lineNumber: 129,
                             columnNumber: 8
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "!text-center !py-8",
@@ -65300,7 +65287,7 @@ const AuthorItem = ()=>{
                                     children: "\uD83D\uDCDD"
                                 }, void 0, false, {
                                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 148,
                                     columnNumber: 9
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65308,30 +65295,30 @@ const AuthorItem = ()=>{
                                     children: "No articles found"
                                 }, void 0, false, {
                                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 149,
                                     columnNumber: 9
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                            lineNumber: 148,
+                            lineNumber: 147,
                             columnNumber: 8
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-                    lineNumber: 125,
+                    lineNumber: 124,
                     columnNumber: 6
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-            lineNumber: 75,
+            lineNumber: 74,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/public/Users/UserItem/AuthorItem.tsx",
-        lineNumber: 74,
+        lineNumber: 73,
         columnNumber: 3
     }, undefined);
 };
@@ -65366,8 +65353,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _button = require("../../../components/ui/button");
-var _errorCss = require("../../format/Error.css");
-var _loginCss = require("../../format/Login.css");
 var _s = $RefreshSig$();
 const NotFound = ()=>{
     _s();
@@ -65382,7 +65367,7 @@ const NotFound = ()=>{
                     children: "404"
                 }, void 0, false, {
                     fileName: "src/components/error/NotFound.tsx",
-                    lineNumber: 12,
+                    lineNumber: 10,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65390,7 +65375,7 @@ const NotFound = ()=>{
                     children: "Page Not Found"
                 }, void 0, false, {
                     fileName: "src/components/error/NotFound.tsx",
-                    lineNumber: 13,
+                    lineNumber: 11,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65398,7 +65383,7 @@ const NotFound = ()=>{
                     children: "The page you are looking for does not exist."
                 }, void 0, false, {
                     fileName: "src/components/error/NotFound.tsx",
-                    lineNumber: 14,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -65409,18 +65394,18 @@ const NotFound = ()=>{
                     children: "Go Home"
                 }, void 0, false, {
                     fileName: "src/components/error/NotFound.tsx",
-                    lineNumber: 15,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/error/NotFound.tsx",
-            lineNumber: 11,
+            lineNumber: 9,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/error/NotFound.tsx",
-        lineNumber: 10,
+        lineNumber: 8,
         columnNumber: 5
     }, undefined);
 };
@@ -65439,7 +65424,7 @@ $RefreshReg$(_c, "NotFound");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../format/Error.css":"2ILPm","../../format/Login.css":"dajed","../../../components/ui/button":"8xMbg"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"3ryQ0":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../components/ui/button":"8xMbg"}],"3ryQ0":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$e1ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$e1ad.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -65454,8 +65439,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _button = require("../../../components/ui/button");
-var _errorCss = require("../../format/Error.css");
-var _loginCss = require("../../format/Login.css");
 var _s = $RefreshSig$();
 const Forbidden = ()=>{
     _s();
@@ -65470,7 +65453,7 @@ const Forbidden = ()=>{
                     children: "403"
                 }, void 0, false, {
                     fileName: "src/components/error/Forbidden.tsx",
-                    lineNumber: 12,
+                    lineNumber: 10,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65478,7 +65461,7 @@ const Forbidden = ()=>{
                     children: "Forbidden"
                 }, void 0, false, {
                     fileName: "src/components/error/Forbidden.tsx",
-                    lineNumber: 13,
+                    lineNumber: 11,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65486,7 +65469,7 @@ const Forbidden = ()=>{
                     children: "You do not have permission to access this page."
                 }, void 0, false, {
                     fileName: "src/components/error/Forbidden.tsx",
-                    lineNumber: 14,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -65497,18 +65480,18 @@ const Forbidden = ()=>{
                     children: "Go Home"
                 }, void 0, false, {
                     fileName: "src/components/error/Forbidden.tsx",
-                    lineNumber: 15,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/error/Forbidden.tsx",
-            lineNumber: 11,
+            lineNumber: 9,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/error/Forbidden.tsx",
-        lineNumber: 10,
+        lineNumber: 8,
         columnNumber: 5
     }, undefined);
 };
@@ -65527,7 +65510,7 @@ $RefreshReg$(_c, "Forbidden");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../format/Error.css":"2ILPm","../../format/Login.css":"dajed","../../../components/ui/button":"8xMbg"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"h8mMj":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../components/ui/button":"8xMbg"}],"h8mMj":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$3a3a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$3a3a.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -65542,8 +65525,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _button = require("../../../components/ui/button");
-var _errorCss = require("../../format/Error.css");
-var _loginCss = require("../../format/Login.css");
 var _s = $RefreshSig$();
 const ErrorPage = ({ message })=>{
     _s();
@@ -65558,7 +65539,7 @@ const ErrorPage = ({ message })=>{
                     children: "Something went wrong"
                 }, void 0, false, {
                     fileName: "src/components/error/ErrorPage.tsx",
-                    lineNumber: 15,
+                    lineNumber: 14,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65566,7 +65547,7 @@ const ErrorPage = ({ message })=>{
                     children: message || 'An unexpected error occurred.'
                 }, void 0, false, {
                     fileName: "src/components/error/ErrorPage.tsx",
-                    lineNumber: 16,
+                    lineNumber: 15,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -65577,18 +65558,18 @@ const ErrorPage = ({ message })=>{
                     children: "Go Home"
                 }, void 0, false, {
                     fileName: "src/components/error/ErrorPage.tsx",
-                    lineNumber: 17,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/error/ErrorPage.tsx",
-            lineNumber: 14,
+            lineNumber: 13,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/error/ErrorPage.tsx",
-        lineNumber: 13,
+        lineNumber: 12,
         columnNumber: 5
     }, undefined);
 };
@@ -65607,7 +65588,7 @@ $RefreshReg$(_c, "ErrorPage");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../format/Error.css":"2ILPm","../../../components/ui/button":"8xMbg","../../format/Login.css":"dajed"}],"2ILPm":[function() {},{}],"dajed":[function() {},{}],"3tyBb":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../../components/ui/button":"8xMbg"}],"3tyBb":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$f9e3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$f9e3.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -65622,7 +65603,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouter = require("react-router");
 var _articlesApi = require("../../../api/ArticlesApi");
-// Styles converted to Tailwind CSS
 var _authContext = require("../../../api/AuthContext");
 var _reactHookForm = require("react-hook-form");
 var _yup = require("@hookform/resolvers/yup");
@@ -65692,7 +65672,7 @@ const UserArticleForm = ({ isEdit = false })=>{
                                 children: isEdit ? 'Edit Article' : 'Create Article'
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                lineNumber: 90,
+                                lineNumber: 89,
                                 columnNumber: 7
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65700,13 +65680,13 @@ const UserArticleForm = ({ isEdit = false })=>{
                                 children: isEdit ? 'Update your article content' : 'Share your thoughts with the world'
                             }, void 0, false, {
                                 fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                lineNumber: 93,
+                                lineNumber: 92,
                                 columnNumber: 7
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                        lineNumber: 89,
+                        lineNumber: 88,
                         columnNumber: 6
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65720,7 +65700,7 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         children: "Title"
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 99,
                                         columnNumber: 8
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -65729,7 +65709,7 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         className: "!w-full !px-4 !py-4 !text-base !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus:!border-purple-400 focus:!ring-4 focus:!ring-purple-100 focus:!bg-white focus:!shadow-lg focus:!scale-[1.02] !outline-none"
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 100,
                                         columnNumber: 8
                                     }, undefined),
                                     errors.title?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65737,13 +65717,13 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         children: errors.title?.message
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 106,
                                         columnNumber: 9
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                lineNumber: 99,
+                                lineNumber: 98,
                                 columnNumber: 7
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65754,7 +65734,7 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         children: "Content"
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 111,
                                         columnNumber: 8
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -65764,7 +65744,7 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         className: "!w-full !px-4 !py-4 !text-base !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus:!border-purple-400 focus:!ring-4 focus:!ring-purple-100 focus:!bg-white focus:!shadow-lg focus:!scale-[1.02] !outline-none !resize-y !min-h-[200px]"
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 112,
                                         columnNumber: 8
                                     }, undefined),
                                     errors.content?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -65772,19 +65752,19 @@ const UserArticleForm = ({ isEdit = false })=>{
                                         children: errors.content?.message
                                     }, void 0, false, {
                                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                        lineNumber: 120,
+                                        lineNumber: 119,
                                         columnNumber: 9
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                                lineNumber: 111,
+                                lineNumber: 110,
                                 columnNumber: 7
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                        lineNumber: 98,
+                        lineNumber: 97,
                         columnNumber: 6
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -65797,28 +65777,28 @@ const UserArticleForm = ({ isEdit = false })=>{
                             children: isEdit ? 'Update Article' : 'Create Article'
                         }, void 0, false, {
                             fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                            lineNumber: 126,
+                            lineNumber: 125,
                             columnNumber: 7
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                        lineNumber: 125,
+                        lineNumber: 124,
                         columnNumber: 6
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/public/Articles/UserArticleForm.tsx",
-                lineNumber: 88,
+                lineNumber: 87,
                 columnNumber: 5
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/public/Articles/UserArticleForm.tsx",
-            lineNumber: 87,
+            lineNumber: 86,
             columnNumber: 4
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/public/Articles/UserArticleForm.tsx",
-        lineNumber: 86,
+        lineNumber: 85,
         columnNumber: 3
     }, undefined);
 };

@@ -6,7 +6,6 @@ import { hasRole } from '../../../api/AuthApi';
 import { ArticleControlsContext } from '../../../layouts/Layout';
 import { Article } from '../../../api/types';
 
-import './AdminArticles.css';
 import { Button } from '@/components/ui/button';
 import { 
   Pagination,

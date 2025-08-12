@@ -9,7 +9,6 @@ import CommentItem from '../../Comments/CommentItem/CommentItem';
 import { Button } from '@/components/ui/button';
 import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
 
-import '../AdminArticles.css';
 import { Label } from '@/components/ui/label';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 

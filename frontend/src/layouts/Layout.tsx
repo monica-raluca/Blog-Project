@@ -75,9 +75,9 @@ function AdminPanelTrigger() {
 	
 	const trigger = (
 		<CollapsibleTrigger className="w-full h-10 px-2 rounded-md font-medium text-[#162938] hover:bg-[#ececec] hover:text-[#270023] data-[state=open]:bg-[#ececec] data-[state=open]:text-[#270023] transition-all duration-200 flex items-center gap-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:px-2">
-			<Settings className="h-4 w-4" />
-			<span className="group-data-[collapsible=icon]:sr-only">Admin Panel</span>
-			<ChevronRight className="ml-auto h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-90 group-data-[collapsible=icon]:hidden" />
+			<Settings className="h-4 w-4 flex-shrink-0" />
+			<span className="group-data-[collapsible=icon]:sr-only ml-2">Admin Panel</span>
+			<ChevronRight className="h-4 w-4 transition-transform duration-200 data-[state=open]:rotate-90 group-data-[collapsible=icon]:hidden flex-shrink-0" />
 		</CollapsibleTrigger>
 	);
 
@@ -119,17 +119,17 @@ function SidebarUserSection() {
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild tooltip="Login">
-								<Link to="/login" className="w-full">
+								<Link to="/login" className="w-full flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
 									<User className="h-4 w-4" />
-									<span>Login</span>
+									<span className="group-data-[collapsible=icon]:sr-only">Login</span>
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild tooltip="Register">
-								<Link to="/register" className="w-full">
+								<Link to="/register" className="w-full flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
 									<PenTool className="h-4 w-4" />
-									<span>Register</span>
+									<span className="group-data-[collapsible=icon]:sr-only">Register</span>
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
@@ -144,10 +144,10 @@ function SidebarUserSection() {
 			<SidebarGroupContent>
 				<SidebarMenu>
 					<SidebarMenuItem>
-						<div className="flex items-center gap-3 px-2 py-2">
-							<Avatar className="h-8 w-8 border-2 border-[#ececec]">
+						<div className="flex items-center gap-3 !px-2 !py-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!px-2">
+							<Avatar className="h-8 w-8 border-2 border-[#ececec] group-data-[collapsible=icon]:h-6 group-data-[collapsible=icon]:w-6">
 								<AvatarImage src={`https://avatar.vercel.sh/${currentUser}`} />
-								<AvatarFallback className="bg-gradient-to-r from-[#fbeffb] to-[#e3f0ff] text-[#162938] text-sm font-semibold">
+								<AvatarFallback className="bg-gradient-to-r from-[#fbeffb] to-[#e3f0ff] text-[#162938] text-sm font-semibold group-data-[collapsible=icon]:text-xs">
 									{userInitials}
 								</AvatarFallback>
 							</Avatar>
@@ -167,10 +167,10 @@ function SidebarUserSection() {
 						<SidebarMenuButton 
 							onClick={logOut}
 							tooltip="Logout"
-							className="w-full text-[#162938] hover:text-[#270023] hover:bg-[#ececec]"
+							className="w-full text-[#162938] hover:text-[#270023] hover:bg-[#ececec] flex items-center gap-2 group-data-[collapsible=icon]:justify-center"
 						>
 							<LogOut className="h-4 w-4" />
-							<span>Logout</span>
+							<span className="group-data-[collapsible=icon]:sr-only">Logout</span>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
@@ -228,21 +228,21 @@ export function Layout(): React.ReactElement {
 			<SidebarProvider defaultOpen={true}>
 				<div className="flex min-h-screen w-full font-[Poppins] relative z-[1]">
 					<Sidebar 
-						variant="sidebar"
+						variant="floating"
 						collapsible="icon"
 						className="border-r-[1.5px] border-[#ececec] shadow-[2px_0_12px_rgba(22,41,56,0.04)] backdrop-blur-[2px]"
 					>
 						{/* Header with Logo and Title */}
-						<SidebarHeader className="border-b border-[#ececec]/50 px-6 py-4">
-							<div className="flex items-center gap-3">
-								<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec]">
+						<SidebarHeader className="border-b border-[#ececec]/50 !px-6 !py-4 group-data-[collapsible=icon]:!px-2 group-data-[collapsible=icon]:!py-3">
+							<div className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center">
+								<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec] group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8">
 									<img 
 										src="/favicon.ico" 
 										alt="Blog Logo" 
-										className="h-6 w-6 object-cover"
+										className="h-6 w-6 object-cover group-data-[collapsible=icon]:h-5 group-data-[collapsible=icon]:w-5"
 									/>
 								</div>
-								<div className="grid flex-1 text-left text-sm leading-tight">
+								<div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
 									<span className="truncate font-bold text-[#162938] text-lg tracking-tight">
 										My Blog
 									</span>
@@ -254,9 +254,9 @@ export function Layout(): React.ReactElement {
 						</SidebarHeader>
 
 						{/* Main Navigation */}
-						<SidebarContent className="px-3 py-4">
+						<SidebarContent className="!px-3 !py-4">
 							<SidebarGroup>
-								<SidebarGroupLabel className="text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2">
+								<SidebarGroupLabel className="text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2 group-data-[collapsible=icon]:sr-only">
 									Navigation
 								</SidebarGroupLabel>
 								<SidebarGroupContent>
@@ -265,12 +265,12 @@ export function Layout(): React.ReactElement {
 											<SidebarMenuButton 
 												asChild 
 												tooltip="Home"
-												className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023] group-data-[collapsible=icon]:justify-center"
+												className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]"
 												isActive={location.pathname === '/public/articles'}
 											>
-												<Link to="/public/articles">
+												<Link to="/public/articles" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
 													<Home className="h-4 w-4" />
-													<span className="group-data-[collapsible=icon]:sr-only">Home</span>
+													<span className="group-data-[collapsible=icon]:sr-only ml-2">Home</span>
 												</Link>
 											</SidebarMenuButton>
 										</SidebarMenuItem>
@@ -280,12 +280,12 @@ export function Layout(): React.ReactElement {
 												<SidebarMenuButton 
 													asChild 
 													tooltip="Create Article"
-													className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023] group-data-[collapsible=icon]:justify-center"
+													className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]"
 													isActive={location.pathname === '/public/articles/create'}
 												>
-													<Link to="/public/articles/create">
+													<Link to="/public/articles/create" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
 														<PenTool className="h-4 w-4" />
-														<span className="group-data-[collapsible=icon]:sr-only">Create Article</span>
+														<span className="group-data-[collapsible=icon]:sr-only ml-2">Create Article</span>
 													</Link>
 												</SidebarMenuButton>
 											</SidebarMenuItem>
@@ -297,7 +297,7 @@ export function Layout(): React.ReactElement {
 							{/* Admin Section */}
 							<RequireRoles roles={["ADMIN"]}>
 								<SidebarGroup>
-									<SidebarGroupLabel className="text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2">
+									<SidebarGroupLabel className="text-xs font-semibold text-[#6a6a6a] uppercase tracking-wider mb-2 group-data-[collapsible=icon]:sr-only">
 										Administration
 									</SidebarGroupLabel>
 									<SidebarGroupContent>
@@ -308,11 +308,11 @@ export function Layout(): React.ReactElement {
 												</SidebarMenuItem>
 											</SidebarMenu>
 											<CollapsibleContent className="group-data-[collapsible=icon]:hidden">
-												<SidebarMenuSub className="mx-0 border-l-2 border-[#ececec] ml-6 pl-4 space-y-1 mt-2">
+												<SidebarMenuSub className="!mx-0 border-l-2 border-[#ececec] !ml-6 !pl-4 space-y-1 !mt-2">
 													<SidebarMenuSubItem>
 														<SidebarMenuSubButton 
 															asChild 
-															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3"
+															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3"
 															isActive={location.pathname === '/admin/articles'}
 														>
 															<Link to="/admin/articles">
@@ -323,7 +323,7 @@ export function Layout(): React.ReactElement {
 													<SidebarMenuSubItem>
 														<SidebarMenuSubButton 
 															asChild 
-															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3"
+															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3"
 															isActive={location.pathname === '/admin/comments'}
 														>
 															<Link to="/admin/comments">
@@ -334,7 +334,7 @@ export function Layout(): React.ReactElement {
 													<SidebarMenuSubItem>
 														<SidebarMenuSubButton 
 															asChild 
-															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start pl-3"
+															className="h-9 text-sm font-normal text-[#162938] hover:bg-[#f0f0f0] hover:text-[#270023] rounded-md transition-all duration-200 data-[active=true]:bg-[#f0f0f0] data-[active=true]:text-[#270023] justify-start !pl-3"
 															isActive={location.pathname === '/admin/users'}
 														>
 															<Link to="/admin/users">
@@ -351,7 +351,7 @@ export function Layout(): React.ReactElement {
 						</SidebarContent>
 
 						{/* User Section Footer */}
-						<SidebarFooter className="border-t border-[#ececec]/50 p-4">
+						<SidebarFooter className="border-t border-[#ececec]/50 !p-4">
 							<SidebarUserSection />
 						</SidebarFooter>
 						

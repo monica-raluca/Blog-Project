@@ -8,8 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '../../../../components/ui/button';
 import * as yup from 'yup';
 
-import '../Articles/AdminArticles.css';
-import './AdminUsers.css';
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
 

@@ -6,8 +6,6 @@ import { hasRole } from '../../../api/AuthApi';
 import { UserDetail } from '../../../api/types';
 import UserItem from './UserItem/UserItem';
 
-import '../Articles/AdminArticles.css';
-import './AdminUsers.css';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { 

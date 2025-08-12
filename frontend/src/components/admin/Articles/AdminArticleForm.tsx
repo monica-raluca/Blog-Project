@@ -11,7 +11,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import * as yup from 'yup';
 
-// CSS replaced with Tailwind classes
 
 interface ArticleFormProps {
     isEdit?: boolean;

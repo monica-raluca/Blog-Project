@@ -7,8 +7,6 @@ import { Article } from '../../../api/types';
 import { Button } from '../../../../components/ui/button';
 import TopBar from '../../../layouts/TopBar';
 
-// Styles converted to Tailwind CSS
-
 const UserArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
 	

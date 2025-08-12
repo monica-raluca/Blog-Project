@@ -5,8 +5,6 @@ import { useAuth } from '../../../../api/AuthContext';
 import { hasRole } from '../../../../api/AuthApi';
 import { deleteUser, fetchUserById } from '../../../../api/UsersApi';
 
-import '../../Articles/AdminArticles.css';
-import '../AdminUsers.css';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 

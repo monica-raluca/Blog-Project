@@ -9,8 +9,6 @@ import { useAuth } from '../../../../api/AuthContext';
 import { hasRole, hasUser } from '../../../../api/AuthApi';
 import { Article, Comment } from '../../../../api/types';
 
-import '../../../../format/Comments.css';
-import '../../../../format/ArticleItem.css';
 import { Button } from '@/components/ui/button';
 
 const UserArticleItem: React.FC = () => {
@@ -231,6 +229,7 @@ const UserArticleItem: React.FC = () => {
 			{currentUser ? (
 				<form onSubmit={handleCommentSubmit} className="comment-form">
 					<textarea
+						className="!w-full !border-[#162938] !border-[1px] !rounded-[4px] !p-[8px] !mb-[8px] !mt-[8px] !text-[#162938] !text-[0.95em] !resize-none"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
 						required

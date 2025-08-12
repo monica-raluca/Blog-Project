@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../../../api/ArticlesApi';
-// Styles converted to Tailwind CSS
 import { useAuth } from '../../../api/AuthContext';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';

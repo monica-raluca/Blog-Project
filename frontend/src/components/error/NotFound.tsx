@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { Button } from '../../../components/ui/button';
-import '../../format/Error.css';
-import '../../format/Login.css';
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();

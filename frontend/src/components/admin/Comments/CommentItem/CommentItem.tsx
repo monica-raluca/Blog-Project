@@ -6,8 +6,6 @@ import { hasRole } from '../../../../api/AuthApi';
 import { deleteComment, fetchAllComments, fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import { fetchArticleById } from '../../../../api/ArticlesApi';
 
-import '../../Articles/AdminArticles.css';
-import '../AdminComments.css';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 

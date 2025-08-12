@@ -7,10 +7,7 @@ import { Comment, Article } from '../../../api/types';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-// import { useCommentHandlers } from '../../../actions/admin/Comments/CommentsHandler';
 
-import '../Articles/AdminArticles.css';
-import './AdminComments.css';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';

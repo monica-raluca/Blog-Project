@@ -7,8 +7,6 @@ import { hasRole } from '../../../api/AuthApi';
 import { Comment, Article } from '../../../api/types';
 import CommentItem from './CommentItem/CommentItem';
 
-import '../Articles/AdminArticles.css';
-import './AdminComments.css';
 import { Button } from '@/components/ui/button';
 import { 
   Pagination,
