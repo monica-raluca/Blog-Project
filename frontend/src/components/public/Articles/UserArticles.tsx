@@ -7,7 +7,7 @@ import { Article } from '../../../api/types';
 import { Button } from '../../../../components/ui/button';
 import TopBar from '../../../layouts/TopBar';
 
-import '../../../format/Articles.css';
+// Styles converted to Tailwind CSS
 
 const UserArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -82,22 +82,25 @@ const UserArticles: React.FC = () => {
 
 	return (
         <>
-        <div className='articles-container'>
+        <div className="!w-full !max-w-none !mx-auto !pt-14 !pb-10 !px-4">
 			{articles.map((article, idx) => (
 				<div
-					className='article-item'
+					className="!flex !items-start !bg-white !rounded-2xl !shadow-lg !shadow-gray-100/50 !mx-auto !mb-11 !p-0 !relative !max-w-[1100px] !w-full !transition-all !duration-300 hover:!shadow-xl hover:!shadow-purple-100/30 hover:!scale-[1.01] !border !border-gray-100/50"
 					key={article.id}
 					ref={idx === articles.length - 1 ? lastArticleRef : null}
 				>
-					<div className='article-ribbon'></div>
-					<div className='article-content'>
-						<div className='article-title'>
+					<div className="!w-2 !min-w-[8px] !bg-gradient-to-b !from-purple-600 !via-pink-500 !to-rose-500 !rounded-l-2xl !my-7 !mr-7 !h-[80%] !shadow-lg !shadow-purple-200/30"></div>
+					<div className="!flex-1 !py-8 !pr-7 !flex !flex-col !min-w-0">
+						<div className="!text-2xl !md:!text-4xl !font-bold !text-gray-800 !mb-3 !tracking-wide !leading-tight">
 							{article.title}
 						</div>
-						<div className='article-meta'>
+						<div className="!text-sm !md:!text-base !text-gray-600 !mb-5 !flex !flex-col !gap-1 !italic">
 							<span>
 								Created by{' '}
-								<NavLink to={`/public/users/${article.author?.id}`}>
+								<NavLink 
+									to={`/public/users/${article.author?.id}`}
+									className="!text-purple-600 !font-semibold hover:!text-purple-700 !transition-colors !duration-200 !no-underline hover:!underline"
+								>
 									{article.author?.username}
 								</NavLink>{' '}
 								at {formatDateTimeToMin(article.createdDate || article.createdAt || '')}
@@ -106,36 +109,59 @@ const UserArticles: React.FC = () => {
                             formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) &&
                             <span>
 								Edited by{' '}
-								<NavLink to={`/public/users/${article.editor?.id}`}>
+								<NavLink 
+									to={`/public/users/${article.editor?.id}`}
+									className="!text-purple-600 !font-semibold hover:!text-purple-700 !transition-colors !duration-200 !no-underline hover:!underline"
+								>
 									{article.editor?.username}
 								</NavLink>{' '}
 								at {formatDateTimeToMin(article.updatedDate || article.updatedAt || '')}
 							</span>}
 						</div>
-						<div className='article-body'>
+						<div className="!text-base !md:!text-lg !text-gray-700 !mb-5 !leading-relaxed !break-words !max-w-[900px]">
 							{article.summary}
 						</div>
-						<NavLink className='read-more-btn' to={`/public/articles/${article.id}`}>
+						<NavLink 
+							className="!self-start !px-7 !py-3 !bg-gradient-to-r !from-purple-600 !to-pink-600 !text-white !rounded-full !text-base !font-medium !no-underline !shadow-lg !shadow-purple-200/40 hover:!shadow-xl hover:!shadow-purple-300/50 hover:!scale-105 hover:!from-purple-700 hover:!to-pink-700 !transition-all !duration-300 !ease-out !mt-2"
+							to={`/public/articles/${article.id}`}
+						>
 							Read More
 						</NavLink>
 					</div>
 				</div>
 			))}
 		</div>
-        <div className={`bottom-pagination-bar-wrapper${showBottomBar ? ' visible' : ''}`}>
-          <div className="bottom-pagination-bar">
-            <Button variant="dreamy" size="cozy" onClick={goToPrev} disabled={pageIndex === 0}>&lt;</Button>
-            <span className="topbar-page-label">
-              Page <input
+        <div className={`!fixed !bottom-0 !left-0 !right-0 !bg-white/90 !backdrop-blur-md !border-t !border-gray-200/50 !shadow-lg !shadow-gray-100/50 !transition-all !duration-500 !ease-out !transform ${showBottomBar ? '!translate-y-0 !opacity-100' : '!translate-y-full !opacity-0'} !z-50`}>
+          <div className="!flex !items-center !justify-center !gap-4 !py-4 !px-6">
+            <Button 
+              variant="soft" 
+              size="sm" 
+              onClick={goToPrev} 
+              disabled={pageIndex === 0}
+              className="!rounded-full !px-4 !py-2 !text-sm !font-medium !shadow-md"
+            >
+              ←
+            </Button>
+            <span className="!flex !items-center !gap-2 !text-sm !font-medium !text-gray-700">
+              Page 
+              <input
                 type="number"
                 min="1"
                 value={currentPage}
                 onChange={handlePageInput}
-                className="topbar-page-input"
+                className="!w-16 !px-3 !py-2 !text-center !text-sm !border-2 !border-gray-200 !rounded-lg !bg-white/80 !backdrop-blur-sm !transition-all !duration-200 focus:!border-purple-400 focus:!ring-2 focus:!ring-purple-100 !outline-none"
               />
               {/* / {totalPages} */}
             </span>
-            <Button variant="dreamy" size="cozy" onClick={goToNext} /*disabled={currentPage === totalPages}*/>&gt;</Button>
+            <Button 
+              variant="soft" 
+              size="sm" 
+              onClick={goToNext} 
+              /*disabled={currentPage === totalPages}*/
+              className="!rounded-full !px-4 !py-2 !text-sm !font-medium !shadow-md"
+            >
+              →
+            </Button>
           </div>
         </div>
         </>

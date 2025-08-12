@@ -208,11 +208,11 @@ const Users: React.FC<UsersProps> = ({
 
     return (
         <>
-        <div className="admin-users-container">
-            <div className="admin-header">
-                <h2>Users Management</h2>
-                <div className="admin-actions">
-                    <div className="admin-filter-section">
+        <div className="!p-[20px] max-w-full overflow-x-auto">
+            <div className="flex justify-between items-center !mb-[20px] !pb-[10px] !border-b !border-[#dee2e6]">
+                <h2 className="text-2xl font-bold">Users Management</h2>
+                <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2">
                         <Label htmlFor="role-filter">Filter by Role:</Label>
                         <Combobox
                             options={roleOptions}
@@ -223,16 +223,16 @@ const Users: React.FC<UsersProps> = ({
                             }}
                             placeholder="Select role..."
                             searchPlaceholder="Search roles..."
-                            className="admin-filter-select min-w-[150px]"
+                            className="!px-[8px] !py-[4px] border border-[#ced4da] rounded-md"
                             clearable
                         />
                     </div>
-                    <div className="admin-stats">
-                        <span className="admin-stat-item">
+                    <div className="flex items-center gap-2">
+                        <span className="!text-sm !text-gray-500">
                             Total Users: <strong>{users.length}</strong>
                         </span>
                         {selectedRole && (
-                            <span className="admin-stat-item">
+                            <span className="!text-sm !text-gray-500">
                                 {selectedRole}: <strong>{users.filter(u => {
                                     const hasAuthority = u.authorities?.includes(selectedRole);
                                     const hasRole = u.role === selectedRole || u.role === `ROLE_${selectedRole}`;
@@ -244,7 +244,7 @@ const Users: React.FC<UsersProps> = ({
                 </div>
             </div>
 
-            <div className="rounded-md border bg-card overflow-hidden">
+            <div className="rounded-md border bg-card overflow-hidden shadow-md">
                 <Table>
                     <TableHeader>
                         <TableRow className="hover:bg-transparent border-b bg-muted/50">
@@ -276,7 +276,6 @@ const Users: React.FC<UsersProps> = ({
                                 return (
                                     <TableRow 
                                         key={user.id}
-                                        ref={idx === filteredUsers.length - 1 ? lastUserRef : null}
                                         className={`group hover:bg-muted/50 transition-colors ${isCurrentUser ? 'bg-primary/5 border-primary/20' : ''}`}
                                     >
                                         <TableCell className="font-mono text-xs text-muted-foreground">
@@ -358,7 +357,7 @@ const Users: React.FC<UsersProps> = ({
             </div>
         </div>
 
-        <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
+        <div className={`fixed bottom-0 left-0 right-0 bg-white border-t border-[#dee2e6] shadow-md transform transition-transform duration-300 ${showBottomBar ? 'translate-y-0' : 'translate-y-full'}`}>
             <div>
                 <Pagination>
                     <PaginationContent>

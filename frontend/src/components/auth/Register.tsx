@@ -64,52 +64,52 @@ const Register: React.FC = () => {
     };
 
     return (
-        <div className="login-wrapper">
-            <div className="login-box">
-                <h2>Register</h2>
+        <div className="flex justify-center items-center min-h-screen">
+            <div className="w-[400px] backdrop-blur-[20px] shadow-[0_0_30px_rgba(0,0,0,0.5)] text-[#162938] !p-10 rounded-[20px] bg-[rgba(255,255,255,0.1)]">
+                <h2 className="text-center text-[2em] mb-5">Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="input-group">                   
+                    <div className="relative !mx-0 !my-[30px]">                   
+                        <Label className="!text-sm !text-[#495057] !font-semibold">First name</Label>
                         <Input type="text"
                             {...register("firstName")}
                         />
-                        <Label>First name</Label>
-                        <p className="field-error">{errors.firstName?.message}</p>
+                        <p className="!text-red-500 !text-sm !mt-1">{errors.firstName?.message}</p>
                     </div>
-                    <div className="input-group">
+                    <div className="relative !mx-0 !my-[30px]">
+                        <Label className="!text-sm !text-[#495057] !font-semibold">Last name</Label>
                         <Input type="text"
                             {...register("lastName")}
                         />
-                        <Label>Last name</Label>
-                        <p className="field-error">{errors.lastName?.message}</p>
+                        <p className="!text-red-500 !text-sm !mt-1">{errors.lastName?.message}</p>
                     </div>
-                    <div className="input-group">                    
+                    <div className="relative !mx-0 !my-[30px]">                    
+                        <Label className="!text-sm !text-[#495057] !font-semibold">Username</Label>
                         <Input
                             type="text"
                             {...register("username")}
                         />
-                        <Label>Username</Label>
-                        <p className="field-error">{errors.username?.message}</p>
+                        <p className="!text-red-500 !text-sm !mt-1">{errors.username?.message}</p>
                     </div>
-                    <div className="input-group">
+                    <div className="relative !mx-0 !my-[30px]">
+                        <Label className="!text-sm !text-[#495057] !font-semibold">Password</Label>
                         <Input
                             type="password"
                             {...register("password")}
                         />
-                        <Label>Password</Label>
-                        <p className="field-error">{errors.password?.message}</p>
+                        <p className="!text-red-500 !text-sm !mt-1">{errors.password?.message}</p>
                     </div>
-                    <div className="input-group">                     
+                    <div className="relative !mx-0 !my-[30px]">                     
+                        <Label className="!text-sm !text-[#495057] !font-semibold">Email</Label>
                         <Input
                             type="email"
                             {...register("email")}
                         />
-                        <Label>Email</Label>
-                        <p className="field-error">{errors.email?.message}</p>
+                        <p className="!text-red-500 !text-sm !mt-1">{errors.email?.message}</p>
                     </div>
                     <Button variant="sunset" size="auth" type="submit">Register</Button>
                     <div><em>Already have an account? <Link to="/login">Login</Link></em></div>
                 </form>
-                {error && <p className="error-message">{error}</p>}
+                {error && <p className="!text-red-500 !text-sm !mt-1">{error}</p>}
             </div>
         </div>
     );

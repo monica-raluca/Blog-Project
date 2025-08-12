@@ -7,12 +7,12 @@ import '../../format/Login.css';
 const Forbidden: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <div className="error-wrapper">
-      <div className="error-card">
-        <div className="error-code">403</div>
-        <div className="error-title">Forbidden</div>
-        <div className="error-message">You do not have permission to access this page.</div>
-        <Button variant="cloud" size="elegant" onClick={() => navigate('/')}>Go Home</Button>
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="w-[400px] backdrop-blur-[20px] shadow-[0_0_30px_rgba(0,0,0,0.5)] text-[#162938] !p-10 rounded-[20px] bg-[rgba(255,255,255,0.1)]">
+        <div className="text-center text-[2em] mb-5 text-[#d32f2f] font-bold">403</div>
+        <div className="text-center text-[1em] mb-5 text-[#d32f2f]">Forbidden</div>
+        <div className="text-center text-[1em] mb-5">You do not have permission to access this page.</div>
+        <Button className="w-full flex justify-center items-center mx-auto !mt-5" variant="cloud" size="elegant" onClick={() => navigate('/')}>Go Home</Button>
       </div>
     </div>
   );

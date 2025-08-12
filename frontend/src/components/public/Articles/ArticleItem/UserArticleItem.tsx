@@ -154,25 +154,25 @@ const UserArticleItem: React.FC = () => {
 
 	return (
         <>
-         <div className="article-page">
-			<h2>{article.title}</h2>
-			<p>{article.content}</p>
-			<p>
-				<em>
-					<NavLink to={`/users/${article.author?.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
+         <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-8 !py-8 rounded-[18px] bg-[rgba(255,255,255,0.82)]">
+			<h2 className='!font-bold !text-[2.7em] !text-[#181818] !mb-[18px] !leading-[1.13] !tracking-[-0.01em] !pl-[48px]'>{article.title}</h2>
+			<p className='!text-[1.18em] !text-[#232323] !mb-[18px] !leading-[1.8] !pl-[48px] !pr-[48px]'>{article.content}</p>
+			<p className='!pl-[48px] !pr-[48px]'>
+				<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'>
+					<NavLink to={`/public/users/${article.author?.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
 				</em>
 				{showEdited && (
 					<>
 						<br />
-						<em> <NavLink to={`/users/${article.editor?.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
+						<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'> <NavLink to={`/public/users/${article.editor?.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
 					</>
 				)}
 			</p>
 		
-			<hr />
+			<hr className='!border-[#ececec] !border-[1.5px] !mt-[40px] !mb-[32px] !ml-[0px] !mr-[0px]' />
 			
 			<div className="comments">
-				<h3>Comments</h3>
+				<h3 className='!font-semibold !text-[1.4em] !text-[#162938] !mb-[36px] !mt-[18px] !ml-[0px]'>Comments</h3>
 				{comments.map(comment => {
 					const commentCreatedBy = comment.author?.username || 'Unknown';
 					const commentCreatedAt = comment.dateCreated || comment.createdAt || '';
@@ -183,16 +183,16 @@ const UserArticleItem: React.FC = () => {
 						formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt)
 					);
 					return (
-						<div key={comment.id} className="comment">
+						<div key={comment.id} className="!flex !align-start !gap-[12px] !mb-[18px] !pt-[10px] !pb-[10px]">
 						<div>
 							<p><strong>{commentCreatedBy}</strong>:</p>
-							<div style={{ fontSize: '0.95em', color: '#6a6a6a', marginBottom: 4 }}>
+							<div className='!text-[0.95em] !text-[#6a6a6a] !mb-[4px]'>
 							at {formatDateTimeToMin(commentCreatedAt)}
 							</div>
 							{editingCommentId === comment.id ? (
 							<>
 								<textarea
-								className="edit-comment-textarea"
+								className="!w-full !border-[#162938] !border-[1px] !rounded-[4px] !p-[8px] !mb-[8px] !mt-[8px] !text-[#162938] !text-[0.95em] !resize-none"
 								value={editedContent}
 								onChange={(e) => setEditedContent(e.target.value)}
 								/>
@@ -201,7 +201,7 @@ const UserArticleItem: React.FC = () => {
 							<>
 								<p>{comment.content}</p>
 								{showCommentEdited && (
-								<div style={{ fontSize: '0.93em', color: '#8a8a8a', marginTop: 2 }}>
+								<div className='!text-[0.93em] !text-[#8a8a8a] !mt-[2px]'>
 									Edited by <strong>{commentEditedBy}</strong> at {formatDateTimeToMin(commentEditedAt)}
 								</div>
 								)}
@@ -211,14 +211,14 @@ const UserArticleItem: React.FC = () => {
 						<div className="comment-actions">
 							{editingCommentId === comment.id ? (
 							<>
-								<Button onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</Button>
-								<Button onClick={() => setEditingCommentId(null)}>Cancel</Button>
+								<Button variant="success" size="sm" onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</Button>
+								<Button variant="cloud" size="sm" onClick={() => setEditingCommentId(null)}>Cancel</Button>
 							</>
 							) : (
 							(hasRole("ADMIN") || comment.author?.username === currentUser) && (
 								<>
-								<Button onClick={() => startEditing(comment)}>Edit</Button>
-								<Button onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</Button>
+								<Button variant="soft" size="sm" onClick={() => startEditing(comment)}>Edit</Button>
+								<Button variant="danger" size="sm" onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</Button>
 								</>
 							)
 							)}
@@ -237,7 +237,7 @@ const UserArticleItem: React.FC = () => {
 						rows={3}
 						placeholder="Write your comment..."
 					></textarea>
-					<Button type="submit">Post Comment</Button>
+					<Button variant="dreamy" size="sm" type="submit">Post Comment</Button>
 					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>
 			) : (
@@ -246,9 +246,9 @@ const UserArticleItem: React.FC = () => {
 
 			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
 			{(article.author?.username === currentUser || hasRole("ADMIN")) &&
-			<div className="article-actions">
-				<Button onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</Button>
-				<Button onClick={() => article.id && handleDelete(article.id)}>Delete</Button>
+			<div className="!flex !gap-[12px] !mt-[18px] !mb-[0px]">
+				<Button variant="pastel" size="sm" onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</Button>
+				<Button variant="danger" size="sm" onClick={() => article.id && handleDelete(article.id)}>Delete</Button>
 			</div>
 			}
 			
