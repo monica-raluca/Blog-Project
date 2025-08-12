@@ -184,18 +184,18 @@ const Comments: React.FC<CommentsProps> = ({
 
     return (
         <>
-        <div className="admin-comments-container">
-            <div className="admin-header">
+        <div className="!p-[20px] max-w-full overflow-x-auto">
+            <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
                 <h2>Comments Management</h2>
                 <Button 
-                    className="admin-btn admin-btn-primary"
+                    className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                     onClick={() => navigate('/admin/comments/create')}
                 >
                     Create New Comment
                 </Button>
-                <div className="admin-actions">
-                    <div className="admin-filter-section">
-                        <label htmlFor="article-filter">Filter by Article:</label>
+                <div className="!flex !gap-3">
+                    <div className="!mb-[16px]">
+                        <label htmlFor="article-filter" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">Filter by Article:</label>
                         <Combobox
                             options={articleOptions}
                             value={selectedArticleId}
@@ -205,7 +205,7 @@ const Comments: React.FC<CommentsProps> = ({
                             }}
                             placeholder="Select article..."
                             searchPlaceholder="Search articles..."
-                            className="admin-filter-select min-w-[200px]"
+                            className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm"
                             clearable
                         />
                     </div>
@@ -334,7 +334,7 @@ const Comments: React.FC<CommentsProps> = ({
             </div>
         </div>
 
-        <div className={`admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`}>
+        <div className={`fixed bottom-0 left-0 right-0 bg-white border-t border-[#dee2e6] shadow-[0_-2px_4px_rgba(0,0,0,0.1)] transform ${showBottomBar ? 'translate-y-0' : 'translate-y-full'} transition-transform duration-300 z-10`}>
             <div>
                 <Pagination>
                     <PaginationContent>
@@ -352,13 +352,13 @@ const Comments: React.FC<CommentsProps> = ({
                             />
                         </PaginationItem>
                         <PaginationItem>
-                            <span className="admin-page-info">
+                            <span className="!text-sm !text-[#6c757d]">
                                 Page <input
                                     type="number"
                                     min="1"
                                     value={currentPage + 1}
                                     onChange={handlePageInput}
-                                    className="admin-page-input"
+                                    className="!w-10 !text-center !text-sm !text-[#6c757d] !border !border-[#dee2e6] !rounded-lg !p-[4px]"
                                 />
                             </span>
                         </PaginationItem>

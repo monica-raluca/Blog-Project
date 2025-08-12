@@ -51368,7 +51368,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Skeleton", ()=>Skeleton);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _utils = require("@/lib/utils");
+var _utils = require("../../lib/utils");
 function Skeleton({ className, ...props }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         "data-slot": "skeleton",
@@ -51389,7 +51389,7 @@ $RefreshReg$(_c, "Skeleton");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","@/lib/utils":"asoho","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi"}],"ifHet":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","../../lib/utils":"asoho"}],"ifHet":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$4fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$4fee.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -53374,7 +53374,6 @@ var _reactHookForm = require("react-hook-form");
 var _yup = require("@hookform/resolvers/yup");
 var _button = require("@/components/ui/button");
 var _yup1 = require("yup");
-var _adminArticlesCss = require("./AdminArticles.css");
 var _s = $RefreshSig$();
 const articleFormSchema = _yup1.object({
     title: _yup1.string().required('Title is required'),
@@ -53466,10 +53465,10 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
         else navigate('/admin/articles');
     };
     if (loading && isEdit && !initialData) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-form-loading",
+        className: "!flex !flex-col !items-center !justify-center !py-15 !px-5 !text-[#6c757d]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-loading-spinner"
+                className: "!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-[#007bff] !rounded-full animate-spin !mb-4"
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
                 lineNumber: 167,
@@ -53489,10 +53488,10 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
         columnNumber: 13
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "bg-white p-5 max-w-full overflow-x-hidden",
+        className: "!bg-white !rounded-lg !shadow-[0_2px_8px_rgba(0,0,0,0.1)] !overflow-hidden",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "!bg-[#f8f9fa] !px-6 !py-5 !border-b !border-[#dee2e6] flex justify-between items-center",
+                className: "!bg-[#f8f9fa] !px-6 !py-5 !border-b !border-[#dee2e6] !flex !justify-between !items-center",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     className: "!m-0 !text-[#333] !text-2xl !font-semibold",
                     children: isEdit ? 'Edit Article' : 'Create New Article'
@@ -53507,7 +53506,7 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-error-banner",
+                className: "!bg-[#f8d7da] !text-[#721c24] !border !border-[#f5c6cb] !px-6 !py-3 !m-0 !rounded-none",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                         children: "Error:"
@@ -53526,20 +53525,20 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                 onSubmit: handleSubmit(handleFormSubmit),
-                className: "admin-article-form",
+                className: "!p-6",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-6",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
+                            className: "!relative",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     htmlFor: "title",
-                                    className: "admin-form-label",
+                                    className: "!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm",
                                     children: [
                                         "Article Title ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
+                                            className: "!text-[#dc3545] !ml-1",
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
@@ -53558,14 +53557,14 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     placeholder: "Enter a compelling title for your article",
                                     ...register("title"),
                                     disabled: loading,
-                                    className: "admin-form-input"
+                                    className: "!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
                                     lineNumber: 191,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-char-count",
+                                    className: "!text-xs !text-[#6c757d] !text-right !mt-1",
                                     children: [
                                         title.length,
                                         " characters"
@@ -53575,13 +53574,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     lineNumber: 199,
                                     columnNumber: 25
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-field-error",
-                                    children: errors.title?.message
+                                errors.title?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    className: "!text-[#dc3545] !text-xs !mt-1 !block",
+                                    children: errors.title.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 202,
-                                    columnNumber: 25
+                                    lineNumber: 203,
+                                    columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
@@ -53595,27 +53594,27 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-6",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
+                            className: "!relative",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                     htmlFor: "content",
-                                    className: "admin-form-label",
+                                    className: "!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm",
                                     children: [
                                         "Article Content ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
+                                            className: "!text-[#dc3545] !ml-1",
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 209,
+                                            lineNumber: 211,
                                             columnNumber: 45
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 208,
+                                    lineNumber: 210,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -53624,69 +53623,68 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                     ...register("content"),
                                     disabled: loading,
                                     rows: 15,
-                                    className: "admin-form-textarea"
+                                    className: "!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit !resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 211,
+                                    lineNumber: 213,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-char-count",
+                                    className: "!text-xs !text-[#6c757d] !text-right !mt-1",
                                     children: [
                                         content.length,
                                         " characters"
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 219,
+                                    lineNumber: 221,
                                     columnNumber: 25
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-field-error",
-                                    children: errors.content?.message
+                                errors.content?.message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                    className: "!text-[#dc3545] !text-xs !mt-1 !block",
+                                    children: errors.content.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                    lineNumber: 222,
-                                    columnNumber: 25
+                                    lineNumber: 225,
+                                    columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                            lineNumber: 207,
+                            lineNumber: 209,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 206,
+                        lineNumber: 208,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-actions",
+                        className: "!flex !gap-3 !justify-end !mt-8 !pt-5 !border-t !border-[#dee2e6]",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                 type: "button",
                                 onClick: handleCancel,
                                 disabled: loading,
-                                variant: "cloud",
-                                size: "cloud",
+                                variant: "outline",
+                                className: "!px-4 !py-2",
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 227,
+                                lineNumber: 231,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                 type: "submit",
                                 disabled: loading || !title.trim() || !content.trim(),
-                                variant: "cloud",
-                                size: "cloud",
+                                className: "!px-4 !py-2",
                                 children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-loading-spinner-small"
+                                            className: "!inline-block !w-4 !h-4 !border-2 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mr-2"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                            lineNumber: 244,
+                                            lineNumber: 247,
                                             columnNumber: 33
                                         }, undefined),
                                         isEdit ? 'Updating...' : 'Creating...'
@@ -53694,13 +53692,13 @@ const AdminArticleForm = ({ isEdit = false, id, onSubmit, onCancel, initialData 
                                 }, void 0, true) : isEdit ? 'Update Article' : 'Create Article'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                                lineNumber: 236,
+                                lineNumber: 240,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Articles/AdminArticleForm.tsx",
-                        lineNumber: 226,
+                        lineNumber: 230,
                         columnNumber: 17
                     }, undefined)
                 ]
@@ -53734,7 +53732,7 @@ $RefreshReg$(_c, "AdminArticleForm");
   globalThis.$RefreshReg$ = prevRefreshReg;
   globalThis.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg","./AdminArticles.css":"lzaq6"}],"kyAT7":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"dVPUn","react":"jMk1U","react-router":"2jawN","../../../api/ArticlesApi":"1Jd5p","../../../api/AuthContext":"5P6PV","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7h6Pi","react-hook-form":"kyAT7","yup":"jUpak","@hookform/resolvers/yup":"5nS6E","@/components/ui/button":"8xMbg"}],"kyAT7":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Controller", ()=>Controller);
@@ -58761,7 +58759,7 @@ function a(r) {
     return r.replace(/\]|\[/g, "");
 }
 
-},{"react-hook-form":"kyAT7","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"lzaq6":[function() {},{}],"8M846":[function(require,module,exports,__globalThis) {
+},{"react-hook-form":"kyAT7","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"8M846":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$fd0c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 $parcel$ReactRefreshHelpers$fd0c.init();
 var prevRefreshReg = globalThis.$RefreshReg$;
@@ -58888,12 +58886,12 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
     };
     // Loading state for route-based usage
     if (useRouteParams && loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-loading",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-loading-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "admin-loading-spinner"
+                    className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
                     lineNumber: 168,
@@ -58919,9 +58917,9 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
     }, undefined);
     // Error state for route-based usage
     if (useRouteParams && error) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Error Loading Article"
@@ -58939,7 +58937,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/articles'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -58959,9 +58957,9 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
     }, undefined);
     // Not found state for route-based usage
     if (useRouteParams && !article) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Article Not Found"
@@ -58979,7 +58977,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/articles'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Articles"
                 }, void 0, false, {
                     fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -58999,16 +58997,16 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
     }, undefined);
     if (!article) return null;
     if (variant === 'detailed') return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-article-detail-page",
+        className: "!p-[20px] !max-w-[1200px] !mx-auto",
         children: [
             useRouteParams && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-page-header",
+                className: "!mb-[20px] flex justify-between items-center gap-[16px]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-left",
+                        className: "flex items-center gap-[12px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>navigate('/admin/articles'),
-                            className: "admin-btn admin-btn-secondary admin-back-btn",
+                            className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]",
                             children: "\u2190 Back to Articles"
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59021,10 +59019,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-right",
+                        className: "flex items-center gap-[12px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>setShowAdminActions(!showAdminActions),
-                            className: `admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`,
+                            className: `rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} px-3 py-2 transition-colors hover:bg-[#5a6268]`,
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59043,16 +59041,16 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-article-detailed",
+                className: "!bg-white !rounded-lg !shadow-[0_2px_8px_rgba(0,0,0,0.1)] !overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-article-header-detailed",
+                        className: "!bg-[#f8f9fa] !px-6 !py-6 !border-b !border-[#dee2e6] !flex !justify-between !items-start",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-title-section",
+                                className: "!flex-1",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                        className: "admin-article-title-large",
+                                        className: "!m-0 !mb-2 !text-[#333] !text-[28px] !font-bold !leading-[1.3]",
                                         children: article?.title
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59060,9 +59058,9 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-article-meta-detailed",
+                                        className: "!flex !gap-3",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-article-id-badge",
+                                            className: "!bg-[#007bff] !text-white !px-2 !py-1 !rounded !text-xs !font-semibold !font-mono",
                                             children: [
                                                 "ID: ",
                                                 article?.id
@@ -59084,11 +59082,11 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-actions-detailed",
+                                className: "!flex !gap-3 !ml-6",
                                 children: [
                                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleEdit,
-                                        className: "admin-btn admin-btn-primary",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                                         title: "Edit Article",
                                         children: "Edit Article"
                                     }, void 0, false, {
@@ -59099,7 +59097,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleDelete,
                                         disabled: isDeleting,
-                                        className: "admin-btn admin-btn-danger",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white px-3 py-2 transition-colors hover:bg-[#c82333]",
                                         title: "Delete Article",
                                         children: isDeleting ? 'Deleting...' : 'Delete'
                                     }, void 0, false, {
@@ -59120,15 +59118,16 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-article-content-detailed",
+                        className: "!p-[24px]",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-info-grid",
+                                className: "grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[16px] !mb-[24px] !p-[16px] !bg-[#f8f9fa] !rounded-lg",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-info-item",
+                                        className: "flex flex-col gap-[4px]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "font-semibold text-[#495057] uppercase text-xs",
                                                 children: "Author:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59136,8 +59135,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                to: `/users/${article?.author?.id}`,
-                                                className: "admin-author-link",
+                                                to: `/admin/users/${article?.author?.id}`,
                                                 children: createdBy
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59151,9 +59149,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-info-item",
+                                        className: "flex flex-col gap-[4px]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "font-semibold text-[#495057] uppercase text-xs",
                                                 children: "Created:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59176,9 +59175,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-info-item",
+                                                className: "flex flex-col gap-[4px]",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                        className: "font-semibold text-[#495057] uppercase text-xs",
                                                         children: "Last Editor:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59186,8 +59186,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${article?.editor?.id}`,
-                                                        className: "admin-author-link",
+                                                        to: `/admin/users/${article?.editor?.id}`,
                                                         children: editedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59201,9 +59200,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-info-item",
+                                                className: "flex flex-col gap-[4px]",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                        className: "font-semibold text-[#495057] uppercase text-xs",
                                                         children: "Last Updated:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59232,9 +59232,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 columnNumber: 25
                             }, undefined),
                             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-summary-section",
+                                className: "!mb-[24px]",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                        className: "font-semibold text-[#495057] uppercase !mb-2",
                                         children: "Summary:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59242,7 +59243,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                        className: "admin-article-summary",
+                                        className: "!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]",
                                         children: article.summary
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59256,9 +59257,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 columnNumber: 29
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-content-section",
+                                className: "!mb-[24px]",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                        className: "font-semibold text-[#495057] uppercase !mb-2",
                                         children: "Content:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59266,7 +59268,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-article-content-display",
+                                        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]",
                                         children: article?.content
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59280,11 +59282,12 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-article-comments-section",
+                                className: "!mt-[24px] !p-[24px] !bg-[#f8f9fa] !rounded-lg",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-comments-header",
+                                        className: "!mb-[20px] !pb-[12px] !border-b !border-[#dee2e6]",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                            className: "!m-0 !text-[#333] !text-[20px] !font-semibold !leading-[1.3]",
                                             children: [
                                                 "Comments (",
                                                 comments.length,
@@ -59301,10 +59304,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         columnNumber: 29
                                     }, undefined),
                                     commentsLoading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-comments-loading",
+                                        className: "!flex !items-center !justify-center !p-[40px] !text-[#6c757d]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-loading-spinner"
+                                                className: "!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mb-4"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
                                                 lineNumber: 320,
@@ -59323,7 +59326,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         lineNumber: 319,
                                         columnNumber: 33
                                     }, undefined) : commentsError ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-error-banner",
+                                        className: "!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                                 children: "Error loading comments:"
@@ -59336,7 +59339,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                             commentsError,
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                                 onClick: ()=>article?.id && loadComments(article.id),
-                                                className: "admin-btn admin-btn-sm admin-btn-secondary",
+                                                className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]",
                                                 style: {
                                                     marginLeft: '10px'
                                                 },
@@ -59352,7 +59355,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         lineNumber: 324,
                                         columnNumber: 33
                                     }, undefined) : comments.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-no-comments",
+                                        className: "!text-[#6c757d] !text-sm !mb-4",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                             children: "No comments yet for this article."
                                         }, void 0, false, {
@@ -59365,7 +59368,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                                         lineNumber: 335,
                                         columnNumber: 33
                                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-comments-list",
+                                        className: "!mt-[16px]",
                                         children: comments.map((comment)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _commentItemDefault.default), {
                                                 comment: comment,
                                                 variant: "card",
@@ -59409,13 +59412,13 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
     }, undefined);
     // Card variant (default)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-article-card",
+        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-5 !mb-4 !shadow-[0_2px_4px_rgba(0,0,0,0.1)] !transition-shadow !duration-200 hover:!shadow-[0_4px_8px_rgba(0,0,0,0.15)]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-article-card-header",
+                className: "!flex !justify-between !items-start !mb-3",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        className: "admin-article-card-title",
+                        className: "!m-0 !text-[#333] !text-lg !font-semibold !flex-1",
                         children: article?.title
                     }, void 0, false, {
                         fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59423,7 +59426,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "admin-article-id-small",
+                        className: "!font-mono !text-xs !text-[#6c757d] !bg-[#f8f9fa] !px-1.5 !py-0.5 !rounded !ml-3",
                         children: [
                             "#",
                             article?.id?.substring(0, 8)
@@ -59440,10 +59443,10 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-article-card-meta",
+                className: "!mb-1",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-article-author-info",
+                        className: "!mb-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: "By "
@@ -59454,7 +59457,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                 to: `/users/${article?.author?.id}`,
-                                className: "admin-author-link",
+                                className: "!text-[#007bff] !no-underline hover:!underline",
                                 children: createdBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59478,7 +59481,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                         columnNumber: 17
                     }, undefined),
                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-article-edit-info",
+                        className: "!mb-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: "Edited by "
@@ -59489,7 +59492,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                 to: `/users/${article?.editor?.id}`,
-                                className: "admin-author-link",
+                                className: "!text-[#007bff] !no-underline hover:!underline",
                                 children: editedBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59519,7 +59522,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 columnNumber: 13
             }, undefined),
             article?.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-article-card-summary",
+                className: "!text-sm !text-[#6c757d]",
                 children: article.summary.length > 120 ? article.summary.substring(0, 120) + '...' : article.summary
             }, void 0, false, {
                 fileName: "src/components/admin/Articles/ArticleItem/AdminArticleItem.tsx",
@@ -59527,11 +59530,11 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                 columnNumber: 17
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-article-card-actions",
+                className: "!flex !gap-3 !mt-3",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: onView,
-                        className: "admin-btn admin-btn-sm admin-btn-secondary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]",
                         title: "View Article",
                         children: "View"
                     }, void 0, false, {
@@ -59541,7 +59544,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     }, undefined),
                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleEdit,
-                        className: "admin-btn admin-btn-sm admin-btn-primary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                         title: "Edit Article",
                         children: "Edit"
                     }, void 0, false, {
@@ -59552,7 +59555,7 @@ const AdminArticleItem = ({ article: propArticle, onEdit, onDelete, onView, show
                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleDelete,
                         disabled: isDeleting,
-                        className: "admin-btn admin-btn-sm admin-btn-danger",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white px-3 py-2 transition-colors hover:bg-[#c82333]",
                         title: "Delete Article",
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
@@ -59809,12 +59812,12 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
     };
     // Loading state for route-based usage
     if (useRouteParams && loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-loading",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-loading-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "admin-loading-spinner"
+                    className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
                     lineNumber: 161,
@@ -59840,9 +59843,9 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
     }, undefined);
     // Error state for route-based usage
     if (useRouteParams && error) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Error Loading Comment"
@@ -59860,7 +59863,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/admin/comments'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Comments"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -59880,9 +59883,9 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
     }, undefined);
     // Not found state for route-based usage
     if (useRouteParams && !comment) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center align-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Comment Not Found"
@@ -59900,7 +59903,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/admin/comments'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Comments"
                 }, void 0, false, {
                     fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -59927,16 +59930,16 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
     const canEdit = (0, _authApi.hasRole)("ADMIN") || comment?.author?.username === currentUser;
     const canDelete = (0, _authApi.hasRole)("ADMIN") || comment?.author?.username === currentUser;
     if (variant === 'detailed') return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-comment-detail-page",
+        className: "!p-[20px] !max-w-[1200px] !mx-auto",
         children: [
             useRouteParams && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-page-header",
+                className: "!mb-[20px] flex justify-between items-center gap-[16px]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-left",
+                        className: "flex items-center gap-[12px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>navigate('/admin/comments'),
-                            className: "admin-btn admin-btn-secondary admin-back-btn",
+                            className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]",
                             children: "\u2190 Back to Comments"
                         }, void 0, false, {
                             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -59949,10 +59952,10 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-right",
+                        className: "flex items-center gap-[12px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>setShowAdminActions(!showAdminActions),
-                            className: `admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`,
+                            className: `rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} px-3 py-2 transition-colors hover:bg-[#5a6268]`,
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -59971,16 +59974,16 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comment-detailed",
+                className: "!bg-white !rounded-lg !shadow-[0_2px_8px_rgba(0,0,0,0.1)] !overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-comment-header-detailed",
+                        className: "!bg-[#f8f9fa] !px-6 !py-6 !border-b !border-[#dee2e6] !flex !justify-between !items-start",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-comment-title-section",
+                                className: "!flex-1",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                        className: "admin-comment-title-large",
+                                        className: "!m-0 !mb-2 !text-[#333] !text-[28px] !font-bold !leading-[1.3]",
                                         children: "Comment Details"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -59988,9 +59991,9 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-comment-meta-detailed",
+                                        className: "!flex !gap-3",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-comment-id-badge",
+                                            className: "!bg-[#007bff] !text-white !px-2 !py-1 !rounded !text-xs !font-semibold !font-mono",
                                             children: [
                                                 "ID: ",
                                                 comment?.id
@@ -60012,11 +60015,11 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-comment-actions-detailed",
+                                className: "!flex !gap-3 !ml-6",
                                 children: [
                                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleEdit,
-                                        className: "admin-btn admin-btn-primary",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                                         title: "Edit Comment",
                                         children: "Edit Comment"
                                     }, void 0, false, {
@@ -60027,7 +60030,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleDelete,
                                         disabled: isDeleting,
-                                        className: "admin-btn admin-btn-danger",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white px-3 py-2 transition-colors hover:bg-[#c82333]",
                                         title: "Delete Comment",
                                         children: isDeleting ? 'Deleting...' : 'Delete'
                                     }, void 0, false, {
@@ -60048,15 +60051,16 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-comment-content-detailed",
+                        className: "!p-[24px]",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-comment-info-grid",
+                                className: "grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[16px] !mb-[24px] !p-[16px] !bg-[#f8f9fa] !rounded-lg",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-info-item",
+                                        className: "flex flex-col gap-[4px]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "font-semibold text-[#495057] uppercase text-xs",
                                                 children: "Author:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60064,8 +60068,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                to: `/users/${comment?.author?.id}`,
-                                                className: "admin-author-link",
+                                                to: `/admin/users/${comment?.author?.id}`,
                                                 children: createdBy
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60079,9 +60082,10 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-info-item",
+                                        className: "flex flex-col gap-[4px]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "font-semibold text-[#495057] uppercase text-xs",
                                                 children: "Created:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60104,9 +60108,10 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-info-item",
+                                                className: "flex flex-col gap-[4px]",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                        className: "font-semibold text-[#495057] uppercase text-xs",
                                                         children: "Last Editor:"
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60114,8 +60119,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                         columnNumber: 41
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                        to: `/users/${comment?.editor?.id}`,
-                                                        className: "admin-author-link",
+                                                        to: `/admin/users/${comment?.editor?.id}`,
                                                         children: editedBy
                                                     }, void 0, false, {
                                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60129,7 +60133,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 columnNumber: 37
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-info-item",
+                                                className: "flex flex-col gap-[4px]",
                                                 children: [
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
                                                         children: "Last Updated:"
@@ -60154,9 +60158,10 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                         ]
                                     }, void 0, true),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-info-item",
+                                        className: "flex flex-col gap-[4px]",
                                         children: [
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                                className: "font-semibold text-[#495057] uppercase text-xs",
                                                 children: "Article:"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60164,8 +60169,7 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                                 columnNumber: 33
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
-                                                to: `/articles/${comment?.article?.id}`,
-                                                className: "admin-author-link",
+                                                to: `/admin/articles/${comment?.article?.id}`,
                                                 children: comment?.article?.title || 'Loading...'
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
@@ -60185,27 +60189,28 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-comment-content-section",
+                                className: "!mb-[24px]",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                        className: "font-semibold text-[#495057] uppercase !mb-2",
                                         children: "Comment Content:"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 314,
+                                        lineNumber: 313,
                                         columnNumber: 29
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-comment-content-display",
+                                        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]",
                                         children: comment?.content
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                        lineNumber: 315,
+                                        lineNumber: 314,
                                         columnNumber: 29
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 313,
+                                lineNumber: 312,
                                 columnNumber: 25
                             }, undefined)
                         ]
@@ -60228,56 +60233,56 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
     }, undefined);
     // Card variant (default)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-comment-card",
+        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-5 !mb-4 !shadow-[0_2px_4px_rgba(0,0,0,0.1)] !transition-shadow !duration-200 hover:!shadow-[0_4px_8px_rgba(0,0,0,0.15)]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comment-card-header",
+                className: "!flex !justify-between !items-start !mb-3",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                        className: "admin-comment-card-title",
+                        className: "!m-0 !text-[#333] !text-lg !font-semibold !flex-1",
                         children: "Comment"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 329,
+                        lineNumber: 328,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "admin-comment-id-small",
+                        className: "!font-mono !text-xs !text-[#6c757d] !bg-[#f8f9fa] !px-1.5 !py-0.5 !rounded !ml-3",
                         children: [
                             "#",
                             comment?.id?.substring(0, 8)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 330,
+                        lineNumber: 329,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 328,
+                lineNumber: 327,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comment-card-meta",
+                className: "!mb-1",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-comment-author-info",
+                        className: "!mb-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: "By "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 335,
+                                lineNumber: 334,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                 to: `/users/${comment?.author?.id}`,
-                                className: "admin-author-link",
+                                className: "!text-[#007bff] !no-underline hover:!underline",
                                 children: createdBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 336,
+                                lineNumber: 335,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -60287,32 +60292,32 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 339,
+                                lineNumber: 338,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 334,
+                        lineNumber: 333,
                         columnNumber: 17
                     }, undefined),
                     showEdited && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-comment-edit-info",
+                        className: "!mb-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: "Edited by "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 343,
+                                lineNumber: 342,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                 to: `/users/${comment?.editor?.id}`,
-                                className: "admin-author-link",
+                                className: "!text-[#007bff] !no-underline hover:!underline",
                                 children: editedBy
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 344,
+                                lineNumber: 343,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -60322,52 +60327,52 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 347,
+                                lineNumber: 346,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 342,
+                        lineNumber: 341,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-comment-article-info",
+                        className: "!mb-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                 children: "On article: "
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 351,
+                                lineNumber: 350,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouter.NavLink), {
                                 to: `/articles/${comment?.article?.id}`,
-                                className: "admin-author-link",
+                                className: "!text-[#007bff] !no-underline hover:!underline",
                                 children: comment?.article?.title || 'Loading...'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                                lineNumber: 352,
+                                lineNumber: 351,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 350,
+                        lineNumber: 349,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 333,
+                lineNumber: 332,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comment-card-content",
+                className: "!text-sm !text-[#6c757d]",
                 children: comment?.content && comment.content.length > 150 ? comment.content.substring(0, 150) + '...' : comment?.content
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 358,
+                lineNumber: 357,
                 columnNumber: 13
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -60375,45 +60380,45 @@ const CommentItem = ({ comment: propComment, onEdit, onDelete, onView, showActio
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: onView,
-                        className: "admin-btn admin-btn-sm admin-btn-secondary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white !px-[6px] !py-[12px] transition-colors hover:bg-[#5a6268]",
                         title: "View Comment",
                         children: "View"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 366,
+                        lineNumber: 365,
                         columnNumber: 21
                     }, undefined),
                     canEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleEdit,
-                        className: "admin-btn admin-btn-sm admin-btn-primary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-[6px] !py-[12px] transition-colors hover:bg-[#0056b3]",
                         title: "Edit Comment",
                         children: "Edit"
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 374,
+                        lineNumber: 373,
                         columnNumber: 25
                     }, undefined),
                     canDelete && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleDelete,
                         disabled: isDeleting,
-                        className: "admin-btn admin-btn-sm admin-btn-danger",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white !px-[6px] !py-[12px] transition-colors hover:bg-[#c82333]",
                         title: "Delete Comment",
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
                         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                        lineNumber: 383,
+                        lineNumber: 382,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-                lineNumber: 365,
+                lineNumber: 364,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Comments/CommentItem/CommentItem.tsx",
-        lineNumber: 327,
+        lineNumber: 326,
         columnNumber: 9
     }, undefined);
 };
@@ -60639,10 +60644,10 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-comments-container",
+                className: "!p-[20px] max-w-full overflow-x-auto",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-header",
+                        className: "!mb-[20px] flex justify-between items-center gap-[16px]",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                                 children: "Comments Management"
@@ -60652,7 +60657,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
-                                className: "admin-btn admin-btn-primary",
+                                className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                                 onClick: ()=>navigate('/admin/comments/create'),
                                 children: "Create New Comment"
                             }, void 0, false, {
@@ -60661,12 +60666,13 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-actions",
+                                className: "!flex !gap-3",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-filter-section",
+                                    className: "!mb-[16px]",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                             htmlFor: "article-filter",
+                                            className: "!font-semibold !text-[#495057] !uppercase !text-xs !mb-2",
                                             children: "Filter by Article:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
@@ -60682,7 +60688,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                             },
                                             placeholder: "Select article...",
                                             searchPlaceholder: "Search articles...",
-                                            className: "admin-filter-select min-w-[200px]",
+                                            className: "!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm",
                                             clearable: true
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/Comments.tsx",
@@ -60990,7 +60996,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: `admin-pagination-wrapper${showBottomBar ? ' visible' : ''}`,
+                className: `fixed bottom-0 left-0 right-0 bg-white border-t border-[#dee2e6] shadow-[0_-2px_4px_rgba(0,0,0,0.1)] transform ${showBottomBar ? 'translate-y-0' : 'translate-y-full'} transition-transform duration-300 z-10`,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.Pagination), {
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationContent), {
@@ -61018,7 +61024,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _pagination.PaginationItem), {
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "admin-page-info",
+                                        className: "!text-sm !text-[#6c757d]",
                                         children: [
                                             "Page ",
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -61026,7 +61032,7 @@ const Comments = ({ onEdit, onView, filterByArticleId })=>{
                                                 min: "1",
                                                 value: currentPage + 1,
                                                 onChange: handlePageInput,
-                                                className: "admin-page-input"
+                                                className: "!w-10 !text-center !text-sm !text-[#6c757d] !border !border-[#dee2e6] !rounded-lg !p-[4px]"
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Comments/Comments.tsx",
                                                 lineNumber: 356,
@@ -61238,10 +61244,10 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
     };
     const selectedArticle = articles.find((a)=>a.id === selectedArticleId);
     if (loading && isEdit && !initialComment) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-form-loading",
+        className: "flex justify-center items-center min-h-[400px] !p-[40px]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-loading-spinner"
+                className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
             }, void 0, false, {
                 fileName: "src/components/admin/Comments/CommentForm.tsx",
                 lineNumber: 192,
@@ -61272,10 +61278,10 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
             }))
     ];
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-comment-form-container",
+        className: "!p-[20px] !max-w-[1200px] !mx-auto",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-form-header",
+                className: "!mb-[20px] flex justify-between items-center gap-[16px]",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: isEdit ? 'Edit Comment' : 'Create New Comment'
                 }, void 0, false, {
@@ -61289,7 +61295,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-error-banner",
+                className: "!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                         children: "Error:"
@@ -61308,16 +61314,16 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                 onSubmit: handleSubmit(handleFormSubmit),
-                className: "admin-comment-form",
+                className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]",
                 children: [
                     !isEdit && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-[24px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
+                            className: "!mb-[16px]",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
                                     htmlFor: "article",
-                                    className: "admin-form-label",
+                                    className: "!font-semibold !text-[#495057] !uppercase !text-xs !mb-2",
                                     children: [
                                         "Select Article ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -61340,7 +61346,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     onValueChange: (value)=>setValue("articleId", value),
                                     placeholder: "Select an article...",
                                     searchPlaceholder: "Search articles...",
-                                    className: "admin-form-select min-w-[300px]",
+                                    className: "!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm",
                                     disabled: loading || !!preselectedArticleId
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61348,7 +61354,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-field-error",
+                                    className: "!text-xs !text-[#dc3545] !mt-1",
                                     children: errors.articleId?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61367,11 +61373,12 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                         columnNumber: 21
                     }, undefined),
                     selectedArticle && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-[24px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-selected-article",
+                            className: "!mb-[16px]",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
+                                    className: "!font-semibold !text-[#495057] !uppercase !text-xs !mb-2",
                                     children: "Selected Article:"
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61379,9 +61386,10 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-article-preview",
+                                    className: "!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px]",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                            className: "!text-[#333] !text-lg !font-semibold !mb-2",
                                             children: selectedArticle.title
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61389,7 +61397,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                             columnNumber: 33
                                         }, undefined),
                                         selectedArticle.summary && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                            className: "admin-article-summary",
+                                            className: "!text-sm !text-[#6c757d]",
                                             children: selectedArticle.summary.length > 150 ? selectedArticle.summary.substring(0, 150) + '...' : selectedArticle.summary
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61414,17 +61422,17 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-[24px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
+                            className: "!mb-[16px]",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
                                     htmlFor: "content",
-                                    className: "admin-form-label",
+                                    className: "!font-semibold !text-[#495057] !uppercase !text-xs !mb-2",
                                     children: [
                                         "Comment Content ",
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
+                                            className: "!text-[#dc3545] !ml-1",
                                             children: "*"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61443,7 +61451,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     ...register("content"),
                                     disabled: loading,
                                     rows: 8,
-                                    className: "admin-form-textarea",
+                                    className: "!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm",
                                     maxLength: 1000
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61451,7 +61459,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-char-count",
+                                    className: "!text-xs !text-[#6c757d] !mt-1",
                                     children: [
                                         content.length,
                                         "/1000 characters"
@@ -61462,7 +61470,7 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-field-error",
+                                    className: "!text-xs !text-[#dc3545] !mt-1",
                                     children: errors.content?.message
                                 }, void 0, false, {
                                     fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61481,13 +61489,13 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-actions",
+                        className: "!flex !gap-3",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                 type: "button",
                                 onClick: handleCancel,
                                 disabled: loading,
-                                className: "admin-btn admin-btn-secondary",
+                                className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]",
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Comments/CommentForm.tsx",
@@ -61497,11 +61505,11 @@ const CommentForm = ({ isEdit = false, commentId, initialComment, onSubmit, onCa
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                 type: "submit",
                                 disabled: loading || !content.trim() || !selectedArticleId && !isEdit,
-                                className: "admin-btn admin-btn-primary",
+                                className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]",
                                 children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-loading-spinner-small"
+                                            className: "w-4 h-4 border-2 border-[#f3f3f3] border-t-white rounded-full animate-spin"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Comments/CommentForm.tsx",
                                             lineNumber: 295,
@@ -62574,12 +62582,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
             disabled: loading || isCurrentUser && role.value !== 'ROLE_ADMIN'
         }));
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-user-form-container",
+        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-form-header",
+                className: "flex items-center gap-3",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                    children: "Edit User"
+                    className: "text-2xl font-bold",
+                    children: "Edit User Details"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserForm.tsx",
                     lineNumber: 248,
@@ -62591,7 +62600,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                 columnNumber: 13
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-error-banner",
+                className: "!bg-red-500 !text-white !p-4 !rounded-lg !mb-4",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                         children: "Error:"
@@ -62610,296 +62619,271 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
                 onSubmit: handleSubmit(handleFormSubmit),
-                className: "admin-user-form",
+                className: "!p-[24px] !pb-[40px]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-section",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                children: "Edit User Details"
-                            }, void 0, false, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 259,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-form-row",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-form-group",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                htmlFor: "firstName",
-                                                className: "admin-form-label",
-                                                children: [
-                                                    "First Name ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "admin-required",
-                                                        children: "*"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 264,
-                                                        columnNumber: 44
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 263,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                type: "text",
-                                                ...register("firstName"),
-                                                disabled: loading,
-                                                className: "admin-form-input",
-                                                placeholder: "Enter first name"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 266,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "admin-field-error",
-                                                children: errors.firstName?.message
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 273,
-                                                columnNumber: 29
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 262,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-form-group",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                htmlFor: "lastName",
-                                                className: "admin-form-label",
-                                                children: [
-                                                    "Last Name ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "admin-required",
-                                                        children: "*"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 278,
-                                                        columnNumber: 43
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 277,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                type: "text",
-                                                ...register("lastName"),
-                                                disabled: loading,
-                                                className: "admin-form-input",
-                                                placeholder: "Enter last name"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 280,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "admin-field-error",
-                                                children: errors.lastName?.message
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 287,
-                                                columnNumber: 29
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 276,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 261,
-                                columnNumber: 21
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-form-row",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-form-group",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                htmlFor: "email",
-                                                className: "admin-form-label",
-                                                children: [
-                                                    "Email ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "admin-required",
-                                                        children: "*"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 294,
-                                                        columnNumber: 39
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 293,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                type: "email",
-                                                ...register("email"),
-                                                disabled: loading,
-                                                className: "admin-form-input",
-                                                placeholder: "Enter email address"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 296,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "admin-field-error",
-                                                children: errors.email?.message
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 303,
-                                                columnNumber: 29
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 292,
-                                        columnNumber: 25
-                                    }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                        className: "admin-form-group",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                                htmlFor: "username",
-                                                className: "admin-form-label",
-                                                children: [
-                                                    "Username ",
-                                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                        className: "admin-required",
-                                                        children: "*"
-                                                    }, void 0, false, {
-                                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                                        lineNumber: 308,
-                                                        columnNumber: 42
-                                                    }, undefined)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 307,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                                type: "text",
-                                                ...register("username"),
-                                                disabled: loading,
-                                                className: "admin-form-input",
-                                                placeholder: "Enter username"
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 310,
-                                                columnNumber: 29
-                                            }, undefined),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                className: "admin-field-error",
-                                                children: errors.username?.message
-                                            }, void 0, false, {
-                                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                                lineNumber: 317,
-                                                columnNumber: 29
-                                            }, undefined)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/components/admin/Users/UserForm.tsx",
-                                        lineNumber: 306,
-                                        columnNumber: 25
-                                    }, undefined)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 291,
-                                columnNumber: 21
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 258,
-                        columnNumber: 17
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-row",
+                        className: "!mb-[32px] !pb-[24px] !border-b !border-[#dee2e6]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-form-group",
+                            className: "grid grid-cols-1 md:grid-cols-1 gap-4",
                             children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
-                                    htmlFor: "role",
-                                    className: "admin-form-label",
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "relative",
                                     children: [
-                                        "Role ",
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-required",
-                                            children: "*"
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            htmlFor: "firstName",
+                                            className: "flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold",
+                                            children: [
+                                                "First Name ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "admin-required",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                                    lineNumber: 263,
+                                                    columnNumber: 44
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 262,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "text",
+                                            ...register("firstName"),
+                                            disabled: loading,
+                                            className: "w-full !p-2 border border-[#ced4da] rounded-md",
+                                            placeholder: "Enter first name"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 325,
-                                            columnNumber: 34
+                                            lineNumber: 265,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-red-500 !text-sm !mt-1",
+                                            children: errors.firstName?.message
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 272,
+                                            columnNumber: 29
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 324,
+                                    lineNumber: 261,
                                     columnNumber: 25
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
-                                    options: roleOptions,
-                                    value: selectedRole,
-                                    onValueChange: (value)=>setValue("role", value),
-                                    placeholder: "Select a role...",
-                                    searchPlaceholder: "Search roles...",
-                                    className: "admin-form-select min-w-[400px]",
-                                    disabled: loading
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "relative",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            htmlFor: "lastName",
+                                            className: "flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold",
+                                            children: [
+                                                "Last Name ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "admin-required",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                                    lineNumber: 277,
+                                                    columnNumber: 43
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 276,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "text",
+                                            ...register("lastName"),
+                                            disabled: loading,
+                                            className: "w-full !p-2 border border-[#ced4da] rounded-md",
+                                            placeholder: "Enter last name"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 279,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-red-500 !text-sm !mt-1",
+                                            children: errors.lastName?.message
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 286,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 327,
+                                    lineNumber: 275,
                                     columnNumber: 25
                                 }, undefined),
-                                isCurrentUser && selectedRole !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-disabled-notice",
-                                    children: "Note: You cannot remove your own admin access"
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "relative",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            htmlFor: "email",
+                                            className: "flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold",
+                                            children: [
+                                                "Email ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "admin-required",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                                    lineNumber: 291,
+                                                    columnNumber: 39
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 290,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "email",
+                                            ...register("email"),
+                                            disabled: loading,
+                                            className: "w-full !p-2 border border-[#ced4da] rounded-md",
+                                            placeholder: "Enter email address"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 293,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-red-500 !text-sm !mt-1",
+                                            children: errors.email?.message
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 300,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 337,
-                                    columnNumber: 29
+                                    lineNumber: 289,
+                                    columnNumber: 25
                                 }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                    className: "admin-field-error",
-                                    children: errors.role?.message
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "relative",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            htmlFor: "username",
+                                            className: "flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold",
+                                            children: [
+                                                "Username ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "admin-required",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                                    lineNumber: 305,
+                                                    columnNumber: 42
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 304,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                            type: "text",
+                                            ...register("username"),
+                                            disabled: loading,
+                                            className: "w-full !p-2 border border-[#ced4da] rounded-md",
+                                            placeholder: "Enter username"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 307,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-red-500 !text-sm !mt-1",
+                                            children: errors.username?.message
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 314,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserForm.tsx",
-                                    lineNumber: 341,
+                                    lineNumber: 303,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "relative",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            htmlFor: "role",
+                                            className: "flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold",
+                                            children: [
+                                                "Role ",
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "admin-required",
+                                                    children: "*"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                                    lineNumber: 319,
+                                                    columnNumber: 38
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 318,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _combobox.Combobox), {
+                                            options: roleOptions,
+                                            value: selectedRole,
+                                            onValueChange: (value)=>setValue("role", value),
+                                            placeholder: "Select a role...",
+                                            searchPlaceholder: "Search roles...",
+                                            className: "w-full !p-2 border border-[#ced4da] rounded-md",
+                                            disabled: loading
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 321,
+                                            columnNumber: 29
+                                        }, undefined),
+                                        isCurrentUser && selectedRole !== 'ROLE_ADMIN' && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-sm !text-gray-500 !mt-1",
+                                            children: "Note: You cannot remove your own admin access"
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 331,
+                                            columnNumber: 33
+                                        }, undefined),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            className: "!text-red-500 !text-sm !mt-1",
+                                            children: errors.role?.message
+                                        }, void 0, false, {
+                                            fileName: "src/components/admin/Users/UserForm.tsx",
+                                            lineNumber: 335,
+                                            columnNumber: 29
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/admin/Users/UserForm.tsx",
+                                    lineNumber: 317,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserForm.tsx",
-                            lineNumber: 323,
+                            lineNumber: 260,
                             columnNumber: 21
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 322,
+                        lineNumber: 258,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-form-actions",
+                        className: "flex justify-end gap-2",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                 type: "button",
@@ -62910,7 +62894,7 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 346,
+                                lineNumber: 341,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
@@ -62921,10 +62905,10 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 children: loading ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-loading-spinner-small"
+                                            className: "!w-4 !h-4 !border-2 !border-gray-500 !border-t-transparent !rounded-full !animate-spin"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserForm.tsx",
-                                            lineNumber: 363,
+                                            lineNumber: 358,
                                             columnNumber: 33
                                         }, undefined),
                                         "Updating User..."
@@ -62932,13 +62916,13 @@ const UserForm = ({ userId, initialUser, onSubmit, onCancel })=>{
                                 }, void 0, true) : 'Update User'
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserForm.tsx",
-                                lineNumber: 355,
+                                lineNumber: 350,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserForm.tsx",
-                        lineNumber: 345,
+                        lineNumber: 340,
                         columnNumber: 17
                     }, undefined)
                 ]
@@ -63089,113 +63073,106 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
     };
     // Loading state for route-based usage
     if (useRouteParams && loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-loading",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-loading-container",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "admin-loading-spinner"
-                }, void 0, false, {
-                    fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 152,
-                    columnNumber: 21
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "Loading user..."
-                }, void 0, false, {
-                    fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 153,
-                    columnNumber: 21
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-            lineNumber: 151,
-            columnNumber: 17
-        }, undefined)
-    }, void 0, false, {
+        className: "flex justify-center items-center min-h-[400px] !p-[40px]",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"
+            }, void 0, false, {
+                fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
+                lineNumber: 151,
+                columnNumber: 17
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                children: "Loading user..."
+            }, void 0, false, {
+                fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
+                lineNumber: 152,
+                columnNumber: 17
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
         lineNumber: 150,
         columnNumber: 13
     }, undefined);
     // Error state for route-based usage
     if (useRouteParams && error) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center items-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Error Loading User"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 164,
+                    lineNumber: 162,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: error
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 165,
+                    lineNumber: 163,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/admin/users'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 166,
+                    lineNumber: 164,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-            lineNumber: 163,
+            lineNumber: 161,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 162,
+        lineNumber: 160,
         columnNumber: 13
     }, undefined);
     // Not found state for route-based usage
     if (useRouteParams && !user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-page-error",
+        className: "flex justify-center items-center min-h-[400px] !p-[40px]",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "admin-error-container",
+            className: "!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "User Not Found"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 182,
+                    lineNumber: 180,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "The requested user could not be found."
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 183,
+                    lineNumber: 181,
                     columnNumber: 21
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                     onClick: ()=>navigate('/admin/users'),
-                    className: "admin-btn admin-btn-primary",
+                    className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]",
                     children: "Back to Users"
                 }, void 0, false, {
                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                    lineNumber: 184,
+                    lineNumber: 182,
                     columnNumber: 21
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-            lineNumber: 181,
+            lineNumber: 179,
             columnNumber: 17
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 180,
+        lineNumber: 178,
         columnNumber: 13
     }, undefined);
     if (!user) return null;
@@ -63203,504 +63180,530 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
     const userRole = getRoleDisplay(user);
     const isCurrentUser = user.username === currentUser;
     if (variant === 'detailed') return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-user-detail-page",
+        className: "!p-[20px] !max-w-[1200px] !mx-auto",
         children: [
             useRouteParams && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-page-header",
+                className: "!mb-[20px] flex justify-between items-center gap-[16px]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-left",
+                        className: "!flex !gap-3",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>navigate('/admin/users'),
-                            className: "admin-btn admin-btn-secondary admin-back-btn",
+                            className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white !px-3 !py-2 transition-colors hover:bg-[#5a6268]",
                             children: "\u2190 Back to Users"
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 207,
+                            lineNumber: 205,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 206,
+                        lineNumber: 204,
                         columnNumber: 25
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-page-header-right",
+                        className: "!flex !gap-3",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                             onClick: ()=>setShowAdminActions(!showAdminActions),
-                            className: `admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`,
+                            className: `rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} !px-3 !py-2 transition-colors hover:bg-[#0056b3]`,
                             children: showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 215,
+                            lineNumber: 213,
                             columnNumber: 29
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 214,
+                        lineNumber: 212,
                         columnNumber: 25
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 205,
+                lineNumber: 203,
                 columnNumber: 21
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-user-detailed",
+                className: "bg-white border rounded-lg overflow-hidden",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-header-detailed",
+                        className: "bg-[#f8f9fa] !p-[24px] border-b-[1px] border-[#dee2e6] flex justify-between items-center align-start",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-user-title-section",
+                                className: "flex-1",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-user-title-with-avatar",
+                                    className: "flex items-center gap-3",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "admin-user-avatar",
+                                            className: "w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center overflow-hidden",
                                             children: user.profilePicture ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                                 src: user.profilePicture,
                                                 alt: user.username
                                             }, void 0, false, {
                                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 229,
                                                 columnNumber: 41
                                             }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                className: "admin-user-avatar-placeholder",
+                                                className: "w-full h-full bg-[#007bff] text-white flex items-center justify-center",
                                                 children: [
                                                     user.firstName.charAt(0),
                                                     user.lastName.charAt(0)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                lineNumber: 233,
+                                                lineNumber: 231,
                                                 columnNumber: 41
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 229,
+                                            lineNumber: 227,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "admin-user-title-content",
+                                            className: "flex-1",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                                                    className: "admin-user-title-large",
+                                                    className: "text-2xl font-bold",
                                                     children: [
                                                         user.firstName,
                                                         " ",
                                                         user.lastName,
                                                         isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                            className: "admin-current-user-badge",
+                                                            className: "ml-2 text-sm bg-[#007bff] text-white px-2 py-1 rounded-full",
                                                             children: "You"
                                                         }, void 0, false, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 241,
+                                                            lineNumber: 239,
                                                             columnNumber: 59
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 239,
+                                                    lineNumber: 237,
                                                     columnNumber: 37
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                                    className: "admin-user-meta-detailed",
+                                                    className: "flex items-center gap-2 mt-1",
                                                     children: [
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                            className: "admin-user-username-badge",
+                                                            className: "bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold",
                                                             children: [
                                                                 "@",
                                                                 user.username
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 242,
                                                             columnNumber: 41
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                            className: `admin-role-badge ${getRoleBadgeColor(userRole)}`,
+                                                            className: `!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`,
                                                             children: userRole
                                                         }, void 0, false, {
                                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                            lineNumber: 245,
+                                                            lineNumber: 243,
                                                             columnNumber: 41
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 243,
+                                                    lineNumber: 241,
                                                     columnNumber: 37
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 238,
+                                            lineNumber: 236,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 228,
+                                    lineNumber: 226,
                                     columnNumber: 29
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 227,
+                                lineNumber: 225,
                                 columnNumber: 25
                             }, undefined),
                             (useRouteParams ? showAdminActions : showActions) && (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-user-actions-detailed",
+                                className: "flex items-center gap-2",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleEdit,
-                                        className: "admin-btn admin-btn-primary",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]",
                                         title: "Edit User Role",
                                         children: "Edit Role"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 254,
+                                        lineNumber: 252,
                                         columnNumber: 33
                                     }, undefined),
                                     !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                                         onClick: handleDelete,
                                         disabled: isDeleting,
-                                        className: "admin-btn admin-btn-danger",
+                                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white !px-3 !py-2 transition-colors hover:bg-[#c82333]",
                                         title: "Delete User",
                                         children: isDeleting ? 'Deleting...' : 'Delete User'
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 260,
                                         columnNumber: 37
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 253,
+                                lineNumber: 251,
                                 columnNumber: 29
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 226,
+                        lineNumber: 224,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-content-detailed",
+                        className: "!p-[24px]",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-user-info-grid",
+                            className: "grid grid-cols-1 md:grid-cols-1 gap-4",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "User ID:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 278,
+                                            lineNumber: 276,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "admin-user-id",
+                                            className: "text-sm",
                                             children: user.id
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 279,
+                                            lineNumber: 277,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 277,
+                                    lineNumber: 275,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "Username:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 282,
+                                            lineNumber: 280,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-sm",
                                             children: user.username
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 283,
+                                            lineNumber: 281,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 281,
+                                    lineNumber: 279,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "Email:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 284,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
                                             href: `mailto:${user.email}`,
-                                            className: "admin-email-link",
+                                            className: "text-sm text-[#007bff] hover:underline",
                                             children: user.email
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 287,
+                                            lineNumber: 285,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 285,
+                                    lineNumber: 283,
                                     columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "Role:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 292,
+                                            lineNumber: 290,
                                             columnNumber: 33
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: `admin-role-badge ${getRoleBadgeColor(userRole)}`,
+                                            className: `!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`,
                                             children: userRole
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 293,
+                                            lineNumber: 291,
                                             columnNumber: 33
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 291,
+                                    lineNumber: 289,
                                     columnNumber: 29
                                 }, undefined),
                                 user.authorities && user.authorities.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item admin-authorities-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "Authorities:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 299,
+                                            lineNumber: 297,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "admin-authorities-list",
+                                            className: "flex items-center gap-1",
                                             children: user.authorities.map((authority, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                                    className: "admin-authority-badge",
+                                                    className: "bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold",
                                                     children: authority
                                                 }, index, false, {
                                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                                    lineNumber: 302,
+                                                    lineNumber: 300,
                                                     columnNumber: 45
                                                 }, undefined))
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 300,
+                                            lineNumber: 298,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 298,
+                                    lineNumber: 296,
                                     columnNumber: 33
                                 }, undefined),
                                 createdAt && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "admin-info-item",
+                                    className: "flex items-center gap-2",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                            className: "w-24",
                                             children: "Created:"
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 311,
+                                            lineNumber: 309,
                                             columnNumber: 37
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "text-sm",
                                             children: formatDateTimeToMin(createdAt)
                                         }, void 0, false, {
                                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                            lineNumber: 312,
+                                            lineNumber: 310,
                                             columnNumber: 37
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                    lineNumber: 310,
+                                    lineNumber: 308,
                                     columnNumber: 33
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 276,
+                            lineNumber: 274,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 275,
+                        lineNumber: 273,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 225,
+                lineNumber: 223,
                 columnNumber: 17
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 203,
+        lineNumber: 201,
         columnNumber: 13
     }, undefined);
     // Card variant (default)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "admin-user-card",
+        className: "!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-user-card-header",
+                className: "flex items-center gap-3",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-card-avatar",
+                        className: "w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center overflow-hidden",
                         children: user.profilePicture ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             src: user.profilePicture,
                             alt: user.username
                         }, void 0, false, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 328,
+                            lineNumber: 326,
                             columnNumber: 25
                         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "admin-user-avatar-placeholder",
+                            className: "w-full h-full bg-[#007bff] text-white flex items-center justify-center",
                             children: [
                                 user.firstName.charAt(0),
                                 user.lastName.charAt(0)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 330,
+                            lineNumber: 328,
                             columnNumber: 25
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 326,
+                        lineNumber: 324,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-card-info",
+                        className: "flex-1",
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                                className: "admin-user-card-title",
+                                className: "text-lg font-bold",
                                 children: [
                                     user.firstName,
                                     " ",
                                     user.lastName,
                                     isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "admin-current-user-badge",
+                                        className: "ml-2 text-sm bg-[#007bff] text-white px-2 py-1 rounded-full",
                                         children: "You"
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 338,
+                                        lineNumber: 336,
                                         columnNumber: 43
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 336,
+                                lineNumber: 334,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "admin-user-card-meta",
+                                className: "flex items-center gap-2 mt-1",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "admin-user-username",
+                                        className: "bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold",
                                         children: [
                                             "@",
                                             user.username
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 339,
                                         columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: `admin-role-badge ${getRoleBadgeColor(userRole)}`,
+                                        className: `!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`,
                                         children: userRole
                                     }, void 0, false, {
                                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                        lineNumber: 342,
+                                        lineNumber: 340,
                                         columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                                lineNumber: 340,
+                                lineNumber: 338,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 335,
+                        lineNumber: 333,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 325,
+                lineNumber: 323,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-user-card-content",
+                className: "!p-[24px]",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-card-email",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: `mailto:${user.email}`,
-                            className: "admin-email-link",
-                            children: user.email
-                        }, void 0, false, {
-                            fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                            lineNumber: 351,
-                            columnNumber: 21
-                        }, undefined)
-                    }, void 0, false, {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                className: "w-24",
+                                children: "Email:"
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
+                                lineNumber: 349,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                href: `mailto:${user.email}`,
+                                className: "text-sm text-[#007bff] hover:underline",
+                                children: user.email
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
+                                lineNumber: 350,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 350,
+                        lineNumber: 348,
                         columnNumber: 17
                     }, undefined),
                     createdAt && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "admin-user-card-created",
+                        className: "flex items-center gap-2",
                         children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _label.Label), {
+                                className: "w-24",
+                                children: "Created:"
+                            }, void 0, false, {
+                                fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
+                                lineNumber: 356,
+                                columnNumber: 25
+                            }, undefined),
                             "Created: ",
                             formatDateTimeToMin(createdAt)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                        lineNumber: 356,
+                        lineNumber: 355,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-                lineNumber: 349,
+                lineNumber: 347,
                 columnNumber: 13
             }, undefined),
             showActions && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "admin-user-card-actions",
+                className: "flex items-center gap-2 mt-4",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: onView,
-                        className: "admin-btn admin-btn-sm admin-btn-secondary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white !px-3 !py-2 transition-colors hover:bg-[#5a6268]",
                         title: "View User",
                         children: "View"
                     }, void 0, false, {
@@ -63710,7 +63713,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     }, undefined),
                     (0, _authApi.hasRole)("ADMIN") && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleEdit,
-                        className: "admin-btn admin-btn-sm admin-btn-primary",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]",
                         title: "Edit User Role",
                         children: "Edit Role"
                     }, void 0, false, {
@@ -63721,7 +63724,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
                     (0, _authApi.hasRole)("ADMIN") && !isCurrentUser && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _button.Button), {
                         onClick: handleDelete,
                         disabled: isDeleting,
-                        className: "admin-btn admin-btn-sm admin-btn-danger",
+                        className: "rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white !px-3 !py-2 transition-colors hover:bg-[#c82333]",
                         title: "Delete User",
                         children: isDeleting ? 'Deleting...' : 'Delete'
                     }, void 0, false, {
@@ -63738,7 +63741,7 @@ const UserItem = ({ user: propUser, onEdit, onDelete, onView, showActions = true
         ]
     }, void 0, true, {
         fileName: "src/components/admin/Users/UserItem/UserItem.tsx",
-        lineNumber: 324,
+        lineNumber: 322,
         columnNumber: 9
     }, undefined);
 };

@@ -147,11 +147,9 @@ const UserItem: React.FC<UserItemProps> = ({
     // Loading state for route-based usage
     if (useRouteParams && loading) {
         return (
-            <div className="admin-page-loading">
-                <div className="admin-loading-container">
-                    <div className="admin-loading-spinner"></div>
-                    <p>Loading user...</p>
-                </div>
+            <div className="flex justify-center items-center min-h-[400px] !p-[40px]">
+                <div className="w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"></div>
+                <p>Loading user...</p>
             </div>
         );
     }
@@ -159,13 +157,13 @@ const UserItem: React.FC<UserItemProps> = ({
     // Error state for route-based usage
     if (useRouteParams && error) {
         return (
-            <div className="admin-page-error">
-                <div className="admin-error-container">
+            <div className="flex justify-center items-center min-h-[400px] !p-[40px]">
+                <div className="!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600">
                     <h2>Error Loading User</h2>
                     <p>{error}</p>
                     <Button 
                         onClick={() => navigate('/admin/users')}
-                        className="admin-btn admin-btn-primary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]"
                     >
                         Back to Users
                     </Button>
@@ -177,13 +175,13 @@ const UserItem: React.FC<UserItemProps> = ({
     // Not found state for route-based usage
     if (useRouteParams && !user) {
         return (
-            <div className="admin-page-error">
-                <div className="admin-error-container">
+            <div className="flex justify-center items-center min-h-[400px] !p-[40px]">
+                <div className="!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600">
                     <h2>User Not Found</h2>
                     <p>The requested user could not be found.</p>
                     <Button 
                         onClick={() => navigate('/admin/users')}
-                        className="admin-btn admin-btn-primary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]"
                     >
                         Back to Users
                     </Button>
@@ -200,21 +198,21 @@ const UserItem: React.FC<UserItemProps> = ({
 
     if (variant === 'detailed') {
         return (
-            <div className="admin-user-detail-page">
+            <div className="!p-[20px] !max-w-[1200px] !mx-auto">
                 {useRouteParams && (
-                    <div className="admin-page-header">
-                        <div className="admin-page-header-left">
+                    <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
+                        <div className="!flex !gap-3">
                             <Button 
                                 onClick={() => navigate('/admin/users')}
-                                className="admin-btn admin-btn-secondary admin-back-btn"
+                                className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white !px-3 !py-2 transition-colors hover:bg-[#5a6268]"
                             >
                                 ← Back to Users
                             </Button>
                         </div>
-                        <div className="admin-page-header-right">
+                        <div className="!flex !gap-3">
                             <Button
                                 onClick={() => setShowAdminActions(!showAdminActions)}
-                                className={`admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`}
+                                className={`rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} !px-3 !py-2 transition-colors hover:bg-[#0056b3]`}
                             >
                                 {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
                             </Button>
@@ -222,27 +220,27 @@ const UserItem: React.FC<UserItemProps> = ({
                     </div>
                 )}
                 
-                <div className="admin-user-detailed">
-                    <div className="admin-user-header-detailed">
-                        <div className="admin-user-title-section">
-                            <div className="admin-user-title-with-avatar">
-                                <div className="admin-user-avatar">
+                <div className="bg-white border rounded-lg overflow-hidden">
+                    <div className="bg-[#f8f9fa] !p-[24px] border-b-[1px] border-[#dee2e6] flex justify-between items-center align-start">
+                        <div className="flex-1">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center overflow-hidden">
                                     {user.profilePicture ? (
                                         <img src={user.profilePicture} alt={user.username} />
                                     ) : (
-                                        <div className="admin-user-avatar-placeholder">
+                                        <div className="w-full h-full bg-[#007bff] text-white flex items-center justify-center">
                                             {user.firstName.charAt(0)}{user.lastName.charAt(0)}
                                         </div>
                                     )}
                                 </div>
-                                <div className="admin-user-title-content">
-                                    <h1 className="admin-user-title-large">
+                                <div className="flex-1">
+                                    <h1 className="text-2xl font-bold">
                                         {user.firstName} {user.lastName}
-                                        {isCurrentUser && <span className="admin-current-user-badge">You</span>}
+                                        {isCurrentUser && <span className="ml-2 text-sm bg-[#007bff] text-white px-2 py-1 rounded-full">You</span>}
                                     </h1>
-                                    <div className="admin-user-meta-detailed">
-                                        <span className="admin-user-username-badge">@{user.username}</span>
-                                        <span className={`admin-role-badge ${getRoleBadgeColor(userRole)}`}>
+                                    <div className="flex items-center gap-2 mt-1">
+                                        <span className="bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold">@{user.username}</span>
+                                        <span className={`!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`}>
                                             {userRole}
                                         </span>
                                     </div>
@@ -250,10 +248,10 @@ const UserItem: React.FC<UserItemProps> = ({
                             </div>
                         </div>
                         {(useRouteParams ? showAdminActions : showActions) && hasRole("ADMIN") && (
-                            <div className="admin-user-actions-detailed">
+                            <div className="flex items-center gap-2">
                                 <Button
                                     onClick={handleEdit}
-                                    className="admin-btn admin-btn-primary"
+                                    className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]"
                                     title="Edit User Role"
                                 >
                                     Edit Role
@@ -262,7 +260,7 @@ const UserItem: React.FC<UserItemProps> = ({
                                     <Button
                                         onClick={handleDelete}
                                         disabled={isDeleting}
-                                        className="admin-btn admin-btn-danger"
+                                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white !px-3 !py-2 transition-colors hover:bg-[#c82333]"
                                         title="Delete User"
                                     >
                                         {isDeleting ? 'Deleting...' : 'Delete User'}
@@ -272,34 +270,34 @@ const UserItem: React.FC<UserItemProps> = ({
                         )}
                     </div>
 
-                    <div className="admin-user-content-detailed">
-                        <div className="admin-user-info-grid">
-                            <div className="admin-info-item">
-                                <Label>User ID:</Label>
-                                <span className="admin-user-id">{user.id}</span>
+                    <div className="!p-[24px]">
+                        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                            <div className="flex items-center gap-2">
+                                <Label className="w-24">User ID:</Label>
+                                <span className="text-sm">{user.id}</span>
                             </div>
-                            <div className="admin-info-item">
-                                <Label>Username:</Label>
-                                <span>{user.username}</span>
+                            <div className="flex items-center gap-2">
+                                <Label className="w-24">Username:</Label>
+                                <span className="text-sm">{user.username}</span>
                             </div>
-                            <div className="admin-info-item">
-                                <Label>Email:</Label>
-                                <a href={`mailto:${user.email}`} className="admin-email-link">
+                            <div className="flex items-center gap-2">
+                                <Label className="w-24">Email:</Label>
+                                <a href={`mailto:${user.email}`} className="text-sm text-[#007bff] hover:underline">
                                     {user.email}
                                 </a>
                             </div>
-                            <div className="admin-info-item">
-                                <Label>Role:</Label>
-                                <span className={`admin-role-badge ${getRoleBadgeColor(userRole)}`}>
+                            <div className="flex items-center gap-2">
+                                <Label className="w-24">Role:</Label>
+                                <span className={`!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`}>
                                     {userRole}
                                 </span>
                             </div>
                             {user.authorities && user.authorities.length > 0 && (
-                                <div className="admin-info-item admin-authorities-item">
-                                    <Label>Authorities:</Label>
-                                    <div className="admin-authorities-list">
+                                <div className="flex items-center gap-2">
+                                    <Label className="w-24">Authorities:</Label>
+                                    <div className="flex items-center gap-1">
                                         {user.authorities.map((authority, index) => (
-                                            <span key={index} className="admin-authority-badge">
+                                            <span key={index} className="bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold">
                                                 {authority}
                                             </span>
                                         ))}
@@ -307,9 +305,9 @@ const UserItem: React.FC<UserItemProps> = ({
                                 </div>
                             )}
                             {createdAt && (
-                                <div className="admin-info-item">
-                                    <Label>Created:</Label>
-                                    <span>{formatDateTimeToMin(createdAt)}</span>
+                                <div className="flex items-center gap-2">
+                                    <Label className="w-24">Created:</Label>
+                                    <span className="text-sm">{formatDateTimeToMin(createdAt)}</span>
                                 </div>
                             )}
                         </div>
@@ -321,49 +319,51 @@ const UserItem: React.FC<UserItemProps> = ({
 
     // Card variant (default)
     return (
-        <div className="admin-user-card">
-            <div className="admin-user-card-header">
-                <div className="admin-user-card-avatar">
+        <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]">
+            <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center overflow-hidden">
                     {user.profilePicture ? (
                         <img src={user.profilePicture} alt={user.username} />
                     ) : (
-                        <div className="admin-user-avatar-placeholder">
+                        <div className="w-full h-full bg-[#007bff] text-white flex items-center justify-center">
                             {user.firstName.charAt(0)}{user.lastName.charAt(0)}
                         </div>
                     )}
                 </div>
-                <div className="admin-user-card-info">
-                    <h3 className="admin-user-card-title">
+                <div className="flex-1">
+                    <h3 className="text-lg font-bold">
                         {user.firstName} {user.lastName}
-                        {isCurrentUser && <span className="admin-current-user-badge">You</span>}
+                        {isCurrentUser && <span className="ml-2 text-sm bg-[#007bff] text-white px-2 py-1 rounded-full">You</span>}
                     </h3>
-                    <div className="admin-user-card-meta">
-                        <span className="admin-user-username">@{user.username}</span>
-                        <span className={`admin-role-badge ${getRoleBadgeColor(userRole)}`}>
+                    <div className="flex items-center gap-2 mt-1">
+                        <span className="bg-[#6c757d] text-white !px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold">@{user.username}</span>
+                        <span className={`!px-[8px] !py-[4px] rounded-full font-mono text-xs font-semibold ${getRoleBadgeColor(userRole)}`}>
                             {userRole}
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div className="admin-user-card-content">
-                <div className="admin-user-card-email">
-                    <a href={`mailto:${user.email}`} className="admin-email-link">
+            <div className="!p-[24px]">
+                <div className="flex items-center gap-2">
+                    <Label className="w-24">Email:</Label>
+                    <a href={`mailto:${user.email}`} className="text-sm text-[#007bff] hover:underline">
                         {user.email}
                     </a>
                 </div>
                 {createdAt && (
-                    <div className="admin-user-card-created">
+                    <div className="flex items-center gap-2">
+                        <Label className="w-24">Created:</Label>
                         Created: {formatDateTimeToMin(createdAt)}
                     </div>
                 )}
             </div>
 
             {showActions && (
-                <div className="admin-user-card-actions">
+                <div className="flex items-center gap-2 mt-4">
                     <Button
                         onClick={onView}
-                        className="admin-btn admin-btn-sm admin-btn-secondary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white !px-3 !py-2 transition-colors hover:bg-[#5a6268]"
                         title="View User"
                     >
                         View
@@ -371,7 +371,7 @@ const UserItem: React.FC<UserItemProps> = ({
                     {hasRole("ADMIN") && (
                         <Button
                             onClick={handleEdit}
-                            className="admin-btn admin-btn-sm admin-btn-primary"
+                            className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white !px-3 !py-2 transition-colors hover:bg-[#0056b3]"
                             title="Edit User Role"
                         >
                             Edit Role
@@ -381,7 +381,7 @@ const UserItem: React.FC<UserItemProps> = ({
                         <Button
                             onClick={handleDelete}
                             disabled={isDeleting}
-                            className="admin-btn admin-btn-sm admin-btn-danger"
+                            className="rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white !px-3 !py-2 transition-colors hover:bg-[#c82333]"
                             title="Delete User"
                         >
                             {isDeleting ? 'Deleting...' : 'Delete'}

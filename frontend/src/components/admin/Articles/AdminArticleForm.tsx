@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import * as yup from 'yup';
 
-import './AdminArticles.css';
+// CSS replaced with Tailwind classes
 
 interface ArticleFormProps {
     isEdit?: boolean;
@@ -163,30 +163,30 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
 
     if (loading && isEdit && !initialData) {
         return (
-            <div className="admin-form-loading">
-                <div className="admin-loading-spinner"></div>
+            <div className="!flex !flex-col !items-center !justify-center !py-15 !px-5 !text-[#6c757d]">
+                <div className="!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-[#007bff] !rounded-full animate-spin !mb-4"></div>
                 <p>Loading article...</p>
             </div>
         );
     }
 
     return (
-        <div className="bg-white p-5 max-w-full overflow-x-hidden">
-            <div className="!bg-[#f8f9fa] !px-6 !py-5 !border-b !border-[#dee2e6] flex justify-between items-center">
+        <div className="!bg-white !rounded-lg !shadow-[0_2px_8px_rgba(0,0,0,0.1)] !overflow-hidden">
+            <div className="!bg-[#f8f9fa] !px-6 !py-5 !border-b !border-[#dee2e6] !flex !justify-between !items-center">
                 <h2 className="!m-0 !text-[#333] !text-2xl !font-semibold">{isEdit ? 'Edit Article' : 'Create New Article'}</h2>
             </div>
 
             {error && (
-                <div className="admin-error-banner">
+                <div className="!bg-[#f8d7da] !text-[#721c24] !border !border-[#f5c6cb] !px-6 !py-3 !m-0 !rounded-none">
                     <strong>Error:</strong> {error}
                 </div>
             )}
 
-            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-article-form">
-                <div className="admin-form-row">
-                    <div className="admin-form-group">
-                        <label htmlFor="title" className="admin-form-label">
-                            Article Title <span className="admin-required">*</span>
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="!p-6">
+                <div className="!mb-6">
+                    <div className="!relative">
+                        <label htmlFor="title" className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
+                            Article Title <span className="!text-[#dc3545] !ml-1">*</span>
                         </label>
                         <input
                             id="title"
@@ -194,19 +194,21 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             placeholder="Enter a compelling title for your article"
                             {...register("title")}
                             disabled={loading}
-                            className="admin-form-input"
+                            className="!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                         />
-                        <div className="admin-char-count">
+                        <div className="!text-xs !text-[#6c757d] !text-right !mt-1">
                             {title.length} characters
                         </div>
-                        <p className="admin-field-error">{errors.title?.message}</p>
+                        {errors.title?.message && (
+                            <p className="!text-[#dc3545] !text-xs !mt-1 !block">{errors.title.message}</p>
+                        )}
                     </div>
                 </div>
 
-                <div className="admin-form-row">
-                    <div className="admin-form-group">
-                        <label htmlFor="content" className="admin-form-label">
-                            Article Content <span className="admin-required">*</span>
+                <div className="!mb-6">
+                    <div className="!relative">
+                        <label htmlFor="content" className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
+                            Article Content <span className="!text-[#dc3545] !ml-1">*</span>
                         </label>
                         <textarea
                             id="content"
@@ -214,34 +216,35 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             {...register("content")}
                             disabled={loading}
                             rows={15}
-                            className="admin-form-textarea"
+                            className="!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit !resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
                         />
-                        <div className="admin-char-count">
+                        <div className="!text-xs !text-[#6c757d] !text-right !mt-1">
                             {content.length} characters
                         </div>
-                        <p className="admin-field-error">{errors.content?.message}</p>
+                        {errors.content?.message && (
+                            <p className="!text-[#dc3545] !text-xs !mt-1 !block">{errors.content.message}</p>
+                        )}
                     </div>
                 </div>
 
-                <div className="admin-form-actions">
+                <div className="!flex !gap-3 !justify-end !mt-8 !pt-5 !border-t !border-[#dee2e6]">
                     <Button
                         type="button"
                         onClick={handleCancel}
                         disabled={loading}
-                        variant="cloud"
-                        size="cloud"
+                        variant="outline"
+                        className="!px-4 !py-2"
                     >
                         Cancel
                     </Button>
                     <Button
                         type="submit"
                         disabled={loading || !title.trim() || !content.trim()}
-                        variant="cloud"
-                        size="cloud"
+                        className="!px-4 !py-2"
                     >
                         {loading ? (
                             <>
-                                <span className="admin-loading-spinner-small"></span>
+                                <span className="!inline-block !w-4 !h-4 !border-2 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mr-2"></span>
                                 {isEdit ? 'Updating...' : 'Creating...'}
                             </>
                         ) : (

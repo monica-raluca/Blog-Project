@@ -188,8 +188,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
 
     if (loading && isEdit && !initialComment) {
         return (
-            <div className="admin-form-loading">
-                <div className="admin-loading-spinner"></div>
+            <div className="flex justify-center items-center min-h-[400px] !p-[40px]">
+                <div className="w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"></div>
                 <p>Loading comment...</p>
             </div>
         );
@@ -205,22 +205,22 @@ const CommentForm: React.FC<CommentFormProps> = ({
     ];
 
     return (
-        <div className="admin-comment-form-container">
-            <div className="admin-form-header">
+        <div className="!p-[20px] !max-w-[1200px] !mx-auto">
+            <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
                 <h2>{isEdit ? 'Edit Comment' : 'Create New Comment'}</h2>
             </div>
 
             {error && (
-                <div className="admin-error-banner">
+                <div className="!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px] !mb-[24px] !text-red-600">
                     <strong>Error:</strong> {error}
                 </div>
             )}
 
-            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-comment-form">
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]">
                 {!isEdit && (
-                    <div className="admin-form-row">
-                        <div className="admin-form-group">
-                            <Label htmlFor="article" className="admin-form-label">
+                    <div className="!mb-[24px]">
+                        <div className="!mb-[16px]">
+                            <Label htmlFor="article" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">
                                 Select Article <span className="admin-required">*</span>
                             </Label>
                             <Combobox
@@ -229,22 +229,22 @@ const CommentForm: React.FC<CommentFormProps> = ({
                                 onValueChange={(value) => setValue("articleId", value)}
                                 placeholder="Select an article..."
                                 searchPlaceholder="Search articles..."
-                                className="admin-form-select min-w-[300px]"
+                                className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm"
                                 disabled={loading || !!preselectedArticleId}
                             />
-                            <p className="admin-field-error">{errors.articleId?.message}</p>
+                            <p className="!text-xs !text-[#dc3545] !mt-1">{errors.articleId?.message}</p>
                         </div>
                     </div>
                 )}
 
                 {selectedArticle && (
-                    <div className="admin-form-row">
-                        <div className="admin-selected-article">
-                            <h4>Selected Article:</h4>
-                            <div className="admin-article-preview">
-                                <h5>{selectedArticle.title}</h5>
+                    <div className="!mb-[24px]">
+                        <div className="!mb-[16px]">
+                            <h4 className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">Selected Article:</h4>
+                            <div className="!bg-[#f8f9fa] !border !border-[#dee2e6] !rounded-lg !p-[16px]">
+                                <h5 className="!text-[#333] !text-lg !font-semibold !mb-2">{selectedArticle.title}</h5>
                                 {selectedArticle.summary && (
-                                    <p className="admin-article-summary">
+                                    <p className="!text-sm !text-[#6c757d]">
                                         {selectedArticle.summary.length > 150 
                                             ? selectedArticle.summary.substring(0, 150) + '...'
                                             : selectedArticle.summary}
@@ -255,10 +255,10 @@ const CommentForm: React.FC<CommentFormProps> = ({
                     </div>
                 )}
 
-                <div className="admin-form-row">
-                    <div className="admin-form-group">
-                        <Label htmlFor="content" className="admin-form-label">
-                            Comment Content <span className="admin-required">*</span>
+                <div className="!mb-[24px]">
+                    <div className="!mb-[16px]">
+                        <Label htmlFor="content" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">
+                            Comment Content <span className="!text-[#dc3545] !ml-1">*</span>
                         </Label>
                         <textarea
                             id="content"
@@ -266,33 +266,33 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             {...register("content")}
                             disabled={loading}
                             rows={8}
-                            className="admin-form-textarea" 
+                            className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm" 
                             maxLength={1000}
                         />
-                        <div className="admin-char-count">
+                        <div className="!text-xs !text-[#6c757d] !mt-1">
                             {content.length}/1000 characters
                         </div>
-                        <p className="admin-field-error">{errors.content?.message}</p>
+                        <p className="!text-xs !text-[#dc3545] !mt-1">{errors.content?.message}</p>
                     </div>
                 </div>
 
-                <div className="admin-form-actions">
+                <div className="!flex !gap-3">
                     <Button
                         type="button"
                         onClick={handleCancel}
                         disabled={loading}
-                        className="admin-btn admin-btn-secondary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]"
                     >
                         Cancel
                     </Button>
                     <Button
                         type="submit"
                         disabled={loading || !content.trim() || (!selectedArticleId && !isEdit)}
-                        className="admin-btn admin-btn-primary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                     >
                         {loading ? (
                             <>
-                                <span className="admin-loading-spinner-small"></span>
+                                <span className="w-4 h-4 border-2 border-[#f3f3f3] border-t-white rounded-full animate-spin"></span>
                                 {isEdit ? 'Updating...' : 'Creating...'}
                             </>
                         ) : (

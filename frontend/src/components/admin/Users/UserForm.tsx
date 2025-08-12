@@ -243,106 +243,101 @@ const UserForm: React.FC<UserFormProps> = ({
     }));
 
     return (
-        <div className="admin-user-form-container">
-            <div className="admin-form-header">
-                <h2>Edit User</h2>
+        <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[24px]">
+            <div className="flex items-center gap-3">
+                <h2 className="text-2xl font-bold">Edit User Details</h2>
             </div>
 
             {error && (
-                <div className="admin-error-banner">
+                <div className="!bg-red-500 !text-white !p-4 !rounded-lg !mb-4">
                     <strong>Error:</strong> {error}
                 </div>
             )}
 
-            <form onSubmit={handleSubmit(handleFormSubmit)} className="admin-user-form">
-                <div className="admin-form-section">
-                    <h3>Edit User Details</h3>
+            <form onSubmit={handleSubmit(handleFormSubmit)} className="!p-[24px] !pb-[40px]">
+                <div className="!mb-[32px] !pb-[24px] !border-b !border-[#dee2e6]">
                     
-                    <div className="admin-form-row">
-                        <div className="admin-form-group">
-                            <Label htmlFor="firstName" className="admin-form-label">
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                        <div className="relative">
+                            <Label htmlFor="firstName" className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
                                 First Name <span className="admin-required">*</span>
                             </Label>
                             <input
                                 type="text"
                                 {...register("firstName")}
                                 disabled={loading}
-                                className="admin-form-input"
+                                className="w-full !p-2 border border-[#ced4da] rounded-md"
                                 placeholder="Enter first name"
                             />
-                            <p className="admin-field-error">{errors.firstName?.message}</p>
+                            <p className="!text-red-500 !text-sm !mt-1">{errors.firstName?.message}</p>
                         </div>
                         
-                        <div className="admin-form-group">
-                            <Label htmlFor="lastName" className="admin-form-label">
+                        <div className="relative">
+                            <Label htmlFor="lastName" className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
                                 Last Name <span className="admin-required">*</span>
                             </Label>
                             <input
                                 type="text"
                                 {...register("lastName")}
                                 disabled={loading}
-                                className="admin-form-input"
+                                className="w-full !p-2 border border-[#ced4da] rounded-md"
                                 placeholder="Enter last name"
                             />
-                            <p className="admin-field-error">{errors.lastName?.message}</p>
+                            <p className="!text-red-500 !text-sm !mt-1">{errors.lastName?.message}</p>
                         </div>
-                    </div>
-
-                    <div className="admin-form-row">
-                        <div className="admin-form-group">
-                            <Label htmlFor="email" className="admin-form-label">
+                    
+                        <div className="relative">
+                            <Label htmlFor="email" className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
                                 Email <span className="admin-required">*</span>
                             </Label>
                             <input
                                 type="email"
                                 {...register("email")}
                                 disabled={loading}
-                                className="admin-form-input"
+                                className="w-full !p-2 border border-[#ced4da] rounded-md"
                                 placeholder="Enter email address"
                             />
-                            <p className="admin-field-error">{errors.email?.message}</p>
+                            <p className="!text-red-500 !text-sm !mt-1">{errors.email?.message}</p>
                         </div>
                         
-                        <div className="admin-form-group">
-                            <Label htmlFor="username" className="admin-form-label">
+                        <div className="relative">
+                            <Label htmlFor="username" className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
                                 Username <span className="admin-required">*</span>
                             </Label>
                             <input
                                 type="text"
                                 {...register("username")}
                                  disabled={loading}
-                                className="admin-form-input"
+                                className="w-full !p-2 border border-[#ced4da] rounded-md"
                                 placeholder="Enter username"
                             />
-                            <p className="admin-field-error">{errors.username?.message}</p>
+                            <p className="!text-red-500 !text-sm !mt-1">{errors.username?.message}</p>
+                        </div>
+
+                        <div className="relative">
+                            <Label htmlFor="role" className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
+                                Role <span className="admin-required">*</span>
+                            </Label>
+                            <Combobox
+                                options={roleOptions}
+                                value={selectedRole}
+                                onValueChange={(value) => setValue("role", value)}
+                                placeholder="Select a role..."
+                                searchPlaceholder="Search roles..."
+                                className="w-full !p-2 border border-[#ced4da] rounded-md"
+                                disabled={loading}
+                            />
+                            {isCurrentUser && selectedRole !== 'ROLE_ADMIN' && (
+                                <p className="!text-sm !text-gray-500 !mt-1">
+                                    Note: You cannot remove your own admin access
+                                </p>
+                            )}
+                            <p className="!text-red-500 !text-sm !mt-1">{errors.role?.message}</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="admin-form-row">
-                    <div className="admin-form-group">
-                        <Label htmlFor="role" className="admin-form-label">
-                            Role <span className="admin-required">*</span>
-                        </Label>
-                        <Combobox
-                            options={roleOptions}
-                            value={selectedRole}
-                            onValueChange={(value) => setValue("role", value)}
-                            placeholder="Select a role..."
-                            searchPlaceholder="Search roles..."
-                            className="admin-form-select min-w-[400px]"
-                            disabled={loading}
-                        />
-                        {isCurrentUser && selectedRole !== 'ROLE_ADMIN' && (
-                            <p className="admin-disabled-notice">
-                                Note: You cannot remove your own admin access
-                            </p>
-                        )}
-                        <p className="admin-field-error">{errors.role?.message}</p>
-                    </div>
-                </div>
-
-                <div className="admin-form-actions">
+                <div className="flex justify-end gap-2">
                     <Button
                         type="button"
                         onClick={handleCancel}
@@ -360,7 +355,7 @@ const UserForm: React.FC<UserFormProps> = ({
                     >
                         {loading ? (
                             <>
-                                <span className="admin-loading-spinner-small"></span>
+                                <span className="!w-4 !h-4 !border-2 !border-gray-500 !border-t-transparent !rounded-full !animate-spin"></span>
                                 Updating User...
                             </>
                         ) : (

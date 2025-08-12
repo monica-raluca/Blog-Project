@@ -163,9 +163,9 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
     // Loading state for route-based usage
     if (useRouteParams && loading) {
         return (
-            <div className="admin-page-loading">
-                <div className="admin-loading-container">
-                    <div className="admin-loading-spinner"></div>
+            <div className="flex justify-center align-center min-h-[400px] !p-[40px]">
+                <div className="text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]">
+                    <div className="w-10 h-10 border-4 border-[#f3f3f3] border-t-white rounded-full animate-spin mb-4"></div>
                     <p>Loading article...</p>
                 </div>
             </div>
@@ -175,13 +175,13 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
     // Error state for route-based usage
     if (useRouteParams && error) {
         return (
-            <div className="admin-page-error">
-                <div className="admin-error-container">
+            <div className="flex justify-center align-center min-h-[400px] !p-[40px]">
+                <div className="text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]">
                     <h2>Error Loading Article</h2>
                     <p>{error}</p>
                     <Button 
                         onClick={() => navigate('/articles')}
-                        className="admin-btn admin-btn-primary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                     >
                         Back to Articles
                     </Button>
@@ -193,13 +193,13 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
     // Not found state for route-based usage
     if (useRouteParams && !article) {
         return (
-            <div className="admin-page-error">
-                <div className="admin-error-container">
+            <div className="flex justify-center align-center min-h-[400px] !p-[40px]">
+                <div className="text-center bg-white rounded-lg !p-[40px] shadow-[0_2px_8px_rgba(0,0,0,0.1)] border border-[#dee2e6]">
                     <h2>Article Not Found</h2>
                     <p>The requested article could not be found.</p>
                     <Button 
                         onClick={() => navigate('/articles')}
-                        className="admin-btn admin-btn-primary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                     >
                         Back to Articles
                     </Button>
@@ -212,21 +212,21 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
     if (variant === 'detailed') {
         return (
-            <div className="admin-article-detail-page">
+            <div className="!p-[20px] !max-w-[1200px] !mx-auto">
                 {useRouteParams && (
-                    <div className="admin-page-header">
-                        <div className="admin-page-header-left">
+                    <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
+                        <div className="flex items-center gap-[12px]">
                             <Button 
                                 onClick={() => navigate('/admin/articles')}
-                                className="admin-btn admin-btn-secondary admin-back-btn"
+                                className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]"
                             >
                                 ← Back to Articles
                             </Button>
                         </div>
-                        <div className="admin-page-header-right">
+                        <div className="flex items-center gap-[12px]">
                             <Button
                                 onClick={() => setShowAdminActions(!showAdminActions)}
-                                className={`admin-btn ${showAdminActions ? 'admin-btn-primary' : 'admin-btn-secondary'}`}
+                                className={`rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} px-3 py-2 transition-colors hover:bg-[#5a6268]`}
                             >
                                 {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
                             </Button>
@@ -234,20 +234,20 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                     </div>
                 )}
                 
-                <div className="admin-article-detailed">
-                    <div className="admin-article-header-detailed">
-                        <div className="admin-article-title-section">
-                            <h1 className="admin-article-title-large">{article?.title}</h1>
-                            <div className="admin-article-meta-detailed">
-                                <span className="admin-article-id-badge">ID: {article?.id}</span>
+                <div className="!bg-white !rounded-lg !shadow-[0_2px_8px_rgba(0,0,0,0.1)] !overflow-hidden">
+                    <div className="!bg-[#f8f9fa] !px-6 !py-6 !border-b !border-[#dee2e6] !flex !justify-between !items-start">
+                        <div className="!flex-1">
+                            <h1 className="!m-0 !mb-2 !text-[#333] !text-[28px] !font-bold !leading-[1.3]">{article?.title}</h1>
+                            <div className="!flex !gap-3">
+                                <span className="!bg-[#007bff] !text-white !px-2 !py-1 !rounded !text-xs !font-semibold !font-mono">ID: {article?.id}</span>
                             </div>
                         </div>
                         {(useRouteParams ? showAdminActions : showActions) && (
-                            <div className="admin-article-actions-detailed">
+                            <div className="!flex !gap-3 !ml-6">
                                 {canEdit && (
                                     <Button
                                         onClick={handleEdit}
-                                        className="admin-btn admin-btn-primary"
+                                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                                         title="Edit Article"
                                     >
                                         Edit Article
@@ -257,7 +257,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                                     <Button
                                         onClick={handleDelete}
                                         disabled={isDeleting}
-                                        className="admin-btn admin-btn-danger"
+                                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white px-3 py-2 transition-colors hover:bg-[#c82333]"
                                         title="Delete Article"
                                     >
                                         {isDeleting ? 'Deleting...' : 'Delete'}
@@ -267,28 +267,28 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                         )}
                     </div>
 
-                    <div className="admin-article-content-detailed">
-                        <div className="admin-article-info-grid">
-                            <div className="admin-info-item">
-                                <Label>Author:</Label>
-                                <NavLink to={`/users/${article?.author?.id}`} className="admin-author-link">
+                    <div className="!p-[24px]">
+                        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[16px] !mb-[24px] !p-[16px] !bg-[#f8f9fa] !rounded-lg">
+                            <div className="flex flex-col gap-[4px]">
+                                <Label className="font-semibold text-[#495057] uppercase text-xs">Author:</Label>
+                                <NavLink to={`/admin/users/${article?.author?.id}`}>
                                     {createdBy}
                                 </NavLink>
                             </div>
-                            <div className="admin-info-item">
-                                <Label>Created:</Label>
+                            <div className="flex flex-col gap-[4px]">
+                                <Label className="font-semibold text-[#495057] uppercase text-xs">Created:</Label>
                                 <span>{formatDateTimeToMin(createdAt)}</span>
                             </div>
                             {showEdited && (
                                 <>
-                                    <div className="admin-info-item">
-                                        <Label>Last Editor:</Label>
-                                        <NavLink to={`/users/${article?.editor?.id}`} className="admin-author-link">
+                                    <div className="flex flex-col gap-[4px]">
+                                        <Label className="font-semibold text-[#495057] uppercase text-xs">Last Editor:</Label>
+                                        <NavLink to={`/admin/users/${article?.editor?.id}`}>
                                             {editedBy}
                                         </NavLink>
                                     </div>
-                                    <div className="admin-info-item">
-                                        <Label>Last Updated:</Label>    
+                                    <div className="flex flex-col gap-[4px]">
+                                        <Label className="font-semibold text-[#495057] uppercase text-xs">Last Updated:</Label>    
                                         <span>{formatDateTimeToMin(editedAt)}</span>
                                     </div>
                                 </>
@@ -296,47 +296,47 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                         </div>
 
                         {article?.summary && (
-                            <div className="admin-article-summary-section">
-                                <Label>Summary:</Label>
-                                <p className="admin-article-summary">{article.summary}</p>
+                            <div className="!mb-[24px]">
+                                <Label className="font-semibold text-[#495057] uppercase !mb-2">Summary:</Label>
+                                <p className="!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]">{article.summary}</p>
                             </div>
                         )}
 
-                        <div className="admin-article-content-section">
-                            <Label>Content:</Label>
-                            <div className="admin-article-content-display">
+                        <div className="!mb-[24px]">
+                            <Label className="font-semibold text-[#495057] uppercase !mb-2">Content:</Label>
+                            <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]">
                                 {article?.content}
                             </div>
                         </div>
 
                         {/* Comments Section */}
-                        <div className="admin-article-comments-section">
-                            <div className="admin-comments-header">
-                                <h3>Comments ({comments.length})</h3>
+                        <div className="!mt-[24px] !p-[24px] !bg-[#f8f9fa] !rounded-lg">
+                            <div className="!mb-[20px] !pb-[12px] !border-b !border-[#dee2e6]">
+                                <h3 className="!m-0 !text-[#333] !text-[20px] !font-semibold !leading-[1.3]">Comments ({comments.length})</h3>
                             </div>
                             
                             {commentsLoading ? (
-                                <div className="admin-comments-loading">
-                                    <div className="admin-loading-spinner"></div>
+                                <div className="!flex !items-center !justify-center !p-[40px] !text-[#6c757d]">
+                                    <div className="!w-10 !h-10 !border-4 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mb-4"></div>
                                     <p>Loading comments...</p>
                                 </div>
                             ) : commentsError ? (
-                                <div className="admin-error-banner">
+                                <div className="!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]">
                                     <strong>Error loading comments:</strong> {commentsError}
                                     <Button 
                                         onClick={() => article?.id && loadComments(article.id)}
-                                        className="admin-btn admin-btn-sm admin-btn-secondary"
+                                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]"
                                         style={{ marginLeft: '10px' }}
                                     >
                                         Retry
                                     </Button>
                                 </div>
                             ) : comments.length === 0 ? (
-                                <div className="admin-no-comments">
+                                <div className="!text-[#6c757d] !text-sm !mb-4">
                                     <p>No comments yet for this article.</p>
                                 </div>
                             ) : (
-                                <div className="admin-comments-list">
+                                <div className="!mt-[16px]">
                                     {comments.map((comment) => (
                                         <CommentItem
                                             key={comment.id}
@@ -359,24 +359,24 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
     // Card variant (default)
     return (
-        <div className="admin-article-card">
-            <div className="admin-article-card-header">
-                <h3 className="admin-article-card-title">{article?.title}</h3>
-                <span className="admin-article-id-small">#{article?.id?.substring(0, 8)}</span>
+        <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-5 !mb-4 !shadow-[0_2px_4px_rgba(0,0,0,0.1)] !transition-shadow !duration-200 hover:!shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
+            <div className="!flex !justify-between !items-start !mb-3">
+                <h3 className="!m-0 !text-[#333] !text-lg !font-semibold !flex-1">{article?.title}</h3>
+                <span className="!font-mono !text-xs !text-[#6c757d] !bg-[#f8f9fa] !px-1.5 !py-0.5 !rounded !ml-3">#{article?.id?.substring(0, 8)}</span>
             </div>
 
-            <div className="admin-article-card-meta">
-                <div className="admin-article-author-info">
+            <div className="!mb-1">
+                <div className="!mb-1">
                     <span>By </span>
-                    <NavLink to={`/users/${article?.author?.id}`} className="admin-author-link">
+                    <NavLink to={`/users/${article?.author?.id}`} className="!text-[#007bff] !no-underline hover:!underline">
                         {createdBy}
                     </NavLink>
                     <span> on {formatDateTimeToMin(createdAt)}</span>
                 </div>
                 {showEdited && (
-                    <div className="admin-article-edit-info">
+                    <div className="!mb-1">
                         <span>Edited by </span>
-                        <NavLink to={`/users/${article?.editor?.id}`} className="admin-author-link">
+                        <NavLink to={`/users/${article?.editor?.id}`} className="!text-[#007bff] !no-underline hover:!underline">
                             {editedBy}
                         </NavLink>
                         <span> on {formatDateTimeToMin(editedAt)}</span>
@@ -385,7 +385,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
             </div>
 
             {article?.summary && (
-                <div className="admin-article-card-summary">
+                <div className="!text-sm !text-[#6c757d]">
                     {article.summary.length > 120 
                         ? article.summary.substring(0, 120) + '...' 
                         : article.summary}
@@ -393,10 +393,10 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
             )}
 
             {showActions && (
-                <div className="admin-article-card-actions">
+                <div className="!flex !gap-3 !mt-3">
                     <Button
                         onClick={onView}
-                        className="admin-btn admin-btn-sm admin-btn-secondary"
+                        className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]"
                         title="View Article"
                     >
                         View
@@ -404,7 +404,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                     {canEdit && (
                         <Button
                             onClick={handleEdit}
-                            className="admin-btn admin-btn-sm admin-btn-primary"
+                            className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                             title="Edit Article"
                         >
                             Edit
@@ -414,7 +414,7 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                         <Button
                             onClick={handleDelete}
                             disabled={isDeleting}
-                            className="admin-btn admin-btn-sm admin-btn-danger"
+                            className="rounded cursor-pointer text-xs no-underline inline-block bg-[#dc3545] text-white px-3 py-2 transition-colors hover:bg-[#c82333]"
                             title="Delete Article"
                         >
                             {isDeleting ? 'Deleting...' : 'Delete'}
