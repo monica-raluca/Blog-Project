@@ -9,7 +9,11 @@ import { useAuth } from '../../../../api/AuthContext';
 import { hasRole, hasUser } from '../../../../api/AuthApi';
 import { Article, Comment } from '../../../../api/types';
 
+import LexicalEditor, { LexicalEditorRef } from '../../../ui/LexicalEditor';
+
 import { Button } from '@/components/ui/button';
+
+
 
 const UserArticleItem: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
@@ -18,6 +22,9 @@ const UserArticleItem: React.FC = () => {
     const [content, setContent] = useState<string>('');
 	const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 	const [editedContent, setEditedContent] = useState<string>('');
+	
+	const commentEditorRef = React.useRef<LexicalEditorRef>(null);
+	const editCommentEditorRef = React.useRef<LexicalEditorRef>(null);
 
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -74,10 +81,13 @@ const UserArticleItem: React.FC = () => {
 		
 		if (!id || !token) return;
 
-        createComment(id, token, content)
+		const finalContent = commentEditorRef.current?.getMarkdown() || content;
+
+        createComment(id, token, finalContent)
         .then(newComment => {
             setComments([...comments, newComment]);
             setContent('');
+			commentEditorRef.current?.clear();
         })
         .catch(err => {
 			const errorMessage = (err as Error).message || 'An error occurred';
@@ -93,6 +103,10 @@ const UserArticleItem: React.FC = () => {
 		if (comment.id) {
 			setEditingCommentId(comment.id);
 			setEditedContent(comment.content);
+			// Set the content in the edit editor after a small delay to ensure it's rendered
+			setTimeout(() => {
+				editCommentEditorRef.current?.setMarkdown(comment.content);
+			}, 100);
 		}
 	};
 
@@ -100,12 +114,14 @@ const UserArticleItem: React.FC = () => {
 		if (!token) return;
 		
 		try {
-			console.log(articleId, commentId, editedContent, token);
-			await editComment(articleId, commentId, editedContent, token);
+			const finalEditedContent = editCommentEditorRef.current?.getMarkdown() || editedContent;
+			console.log(articleId, commentId, finalEditedContent, token);
+			await editComment(articleId, commentId, finalEditedContent, token);
 			setComments(comments.map(c =>
-				c.id === commentId ? { ...c, content: editedContent } : c
+				c.id === commentId ? { ...c, content: finalEditedContent } : c
 			));
 			setEditingCommentId(null);
+			setEditedContent('');
 		} catch (err) {
 			const errorMessage = (err as Error).message || 'An error occurred';
 			if (errorMessage.toLowerCase().includes('forbidden')) {
@@ -154,7 +170,14 @@ const UserArticleItem: React.FC = () => {
         <>
          <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-8 !py-8 rounded-[18px] bg-[rgba(255,255,255,0.82)]">
 			<h2 className='!font-bold !text-[2.7em] !text-[#181818] !mb-[18px] !leading-[1.13] !tracking-[-0.01em] !pl-[48px]'>{article.title}</h2>
-			<p className='!text-[1.18em] !text-[#232323] !mb-[18px] !leading-[1.8] !pl-[48px] !pr-[48px]'>{article.content}</p>
+			<div className='!text-[1.18em] !text-[#232323] !mb-[18px] !leading-[1.8] !pl-[48px] !pr-[48px]'>
+				<LexicalEditor
+					initialValue={article.content}
+					readOnly={true}
+					showToolbar={false}
+					className="!border-none !bg-transparent prose prose-slate max-w-none"
+				/>
+			</div>
 			<p className='!pl-[48px] !pr-[48px]'>
 				<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'>
 					<NavLink to={`/public/users/${article.author?.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
@@ -189,15 +212,26 @@ const UserArticleItem: React.FC = () => {
 							</div>
 							{editingCommentId === comment.id ? (
 							<>
-								<textarea
-								className="!w-full !border-[#162938] !border-[1px] !rounded-[4px] !p-[8px] !mb-[8px] !mt-[8px] !text-[#162938] !text-[0.95em] !resize-none"
-								value={editedContent}
-								onChange={(e) => setEditedContent(e.target.value)}
+								<LexicalEditor
+									ref={editCommentEditorRef}
+									initialValue={editedContent}
+									onChange={(newMarkdown) => setEditedContent(newMarkdown)}
+									placeholder="Edit your comment... Use Markdown formatting!"
+									minHeight="150px"
+									showToolbar={true}
+									className="!border-[#162938] !border-[1px] !rounded-[4px] !mb-[8px] !mt-[8px]"
 								/>
 							</>
 							) : (
 							<>
-								<p>{comment.content}</p>
+								<div>
+									<LexicalEditor
+										initialValue={comment.content}
+										readOnly={true}
+										showToolbar={false}
+										className="!border-none !bg-transparent prose prose-slate max-w-none !text-sm"
+									/>
+								</div>
 								{showCommentEdited && (
 								<div className='!text-[0.93em] !text-[#8a8a8a] !mt-[2px]'>
 									Edited by <strong>{commentEditedBy}</strong> at {formatDateTimeToMin(commentEditedAt)}
@@ -228,14 +262,15 @@ const UserArticleItem: React.FC = () => {
 
 			{currentUser ? (
 				<form onSubmit={handleCommentSubmit} className="comment-form">
-					<textarea
-						className="!w-full !border-[#162938] !border-[1px] !rounded-[4px] !p-[8px] !mb-[8px] !mt-[8px] !text-[#162938] !text-[0.95em] !resize-none"
-						value={content}
-						onChange={(e) => setContent(e.target.value)}
-						required
-						rows={3}
-						placeholder="Write your comment..."
-					></textarea>
+					<LexicalEditor
+						ref={commentEditorRef}
+						initialValue={content}
+						onChange={(newMarkdown) => setContent(newMarkdown)}
+						placeholder="Write your comment... Use Markdown formatting!"
+						minHeight="150px"
+						showToolbar={true}
+						className="!border-[#162938] !border-[1px] !rounded-[4px] !mb-[8px] !mt-[8px]"
+					/>
 					<Button variant="dreamy" size="sm" type="submit">Post Comment</Button>
 					{error && <p style={{ color: 'red' }}>{error}</p>}
 				</form>

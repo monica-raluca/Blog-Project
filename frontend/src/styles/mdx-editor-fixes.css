@@ -1,0 +1,93 @@
+/* Custom fixes for MDXEditor lists and spacing */
+
+/* Ensure lists have proper spacing and margins */
+.mdxeditor .mdxeditor-rich-text-editor ul,
+.mdxeditor .mdxeditor-rich-text-editor ol {
+  margin: 0.5em 0 !important;
+  padding-left: 1.5em !important;
+}
+
+.mdxeditor .mdxeditor-rich-text-editor li {
+  margin: 0.25em 0 !important;
+  line-height: 1.4 !important;
+}
+
+/* Ensure bullet points and numbers are visible */
+.mdxeditor .mdxeditor-rich-text-editor ul li {
+  list-style-type: disc !important;
+  display: list-item !important;
+}
+
+.mdxeditor .mdxeditor-rich-text-editor ol li {
+  list-style-type: decimal !important;
+  display: list-item !important;
+}
+
+/* Fix nested lists */
+.mdxeditor .mdxeditor-rich-text-editor ul ul li {
+  list-style-type: circle !important;
+}
+
+.mdxeditor .mdxeditor-rich-text-editor ul ul ul li {
+  list-style-type: square !important;
+}
+
+/* Ensure proper container height for editor */
+.mdxeditor .mdxeditor-rich-text-editor {
+  min-height: inherit !important;
+  padding: 8px !important;
+}
+
+/* Fix toolbar positioning and size */
+.mdxeditor .mdxeditor-toolbar {
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 4px 8px !important;
+  background: #f8fafc !important;
+  flex-wrap: wrap !important;
+}
+
+/* Ensure list toggle buttons work properly */
+.mdxeditor .mdxeditor-toolbar button[title*="list"],
+.mdxeditor .mdxeditor-toolbar button[title*="List"] {
+  min-width: 32px !important;
+  height: 32px !important;
+}
+
+/* Better spacing for content */
+.mdxeditor .mdxeditor-rich-text-editor p {
+  margin: 0.5em 0 !important;
+}
+
+.mdxeditor .mdxeditor-rich-text-editor h1,
+.mdxeditor .mdxeditor-rich-text-editor h2,
+.mdxeditor .mdxeditor-rich-text-editor h3,
+.mdxeditor .mdxeditor-rich-text-editor h4,
+.mdxeditor .mdxeditor-rich-text-editor h5,
+.mdxeditor .mdxeditor-rich-text-editor h6 {
+  margin: 0.75em 0 0.5em 0 !important;
+}
+
+/* Fix blockquotes */
+.mdxeditor .mdxeditor-rich-text-editor blockquote {
+  border-left: 4px solid #e2e8f0 !important;
+  padding-left: 1em !important;
+  margin: 0.5em 0 !important;
+  font-style: italic !important;
+  color: #64748b !important;
+}
+
+/* Fix code blocks and inline code */
+.mdxeditor .mdxeditor-rich-text-editor code {
+  background: #f1f5f9 !important;
+  padding: 0.125em 0.25em !important;
+  border-radius: 0.25em !important;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace !important;
+}
+
+.mdxeditor .mdxeditor-rich-text-editor pre {
+  background: #f1f5f9 !important;
+  padding: 1em !important;
+  border-radius: 0.5em !important;
+  overflow-x: auto !important;
+  margin: 0.5em 0 !important;
+}

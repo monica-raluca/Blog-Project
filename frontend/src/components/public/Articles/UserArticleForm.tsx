@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@/components/ui/button';
+import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 
 interface ArticleFormProps {
 	isEdit?: boolean;
@@ -24,22 +25,30 @@ const articleFormSchema = yup.object({
 type FormData = yup.InferType<typeof articleFormSchema>;
 
 
+
+
 const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
+	const markdownEditorRef = useRef<LexicalEditorRef>(null);
 
 	const { token, currentUser } = useAuth();
-	console.log(token);
-	console.log(currentUser);
 
 	const { 
 		register, 
 		handleSubmit, 
+		watch,
 		setValue, 
 		formState: { errors } 
 	} = useForm<FormData>({
-		resolver: yupResolver(articleFormSchema)
+		resolver: yupResolver(articleFormSchema),
+		defaultValues: {
+			title: '',
+			content: ''
+		}
 	});
+
+	const content = watch('content');
 
 	useEffect(() => {
 		if (isEdit && id) {
@@ -60,7 +69,8 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	}, [id, isEdit, token, navigate, setValue]);
 
 	const handleFormSubmit = async (data: ArticleFormData): Promise<void> => {
-		const article = { title: data.title, content: data.content };
+		const markdownContent = markdownEditorRef.current?.getMarkdown() || data.content;
+		const article = { title: data.title, content: markdownContent };
 
 		try {
 			if (isEdit && id && token) {
@@ -80,6 +90,8 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
             }
 		}
 	};
+
+
 
 	return (
 		<div className="!min-h-screen !flex !items-center !justify-center !p-4">
@@ -109,11 +121,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 						
 						<div className="!relative">
 							<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Content</label>
-							<textarea 
-								placeholder="Write your story here..." 
-								{...register("content")}
-								rows={8}
-								className="!w-full !px-4 !py-4 !text-base !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus:!border-purple-400 focus:!ring-4 focus:!ring-purple-100 focus:!bg-white focus:!shadow-lg focus:!scale-[1.02] !outline-none !resize-y !min-h-[200px]"
+							<LexicalEditor
+								ref={markdownEditorRef}
+								initialValue={content}
+								onChange={(newContent) => setValue("content", newContent)}
+								placeholder="Write your story here... Use Markdown formatting for rich content!"
+								minHeight="300px"
+								showToolbar={true}
+								className="!border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus-within:!border-purple-400 focus-within:!ring-4 focus-within:!ring-purple-100 focus-within:!bg-white focus-within:!shadow-lg focus-within:!scale-[1.02]"
 							/>
 							{errors.content?.message && (
 								<p className="!text-rose-500 !text-sm !mt-2 !font-medium !animate-pulse">{errors.content?.message}</p>

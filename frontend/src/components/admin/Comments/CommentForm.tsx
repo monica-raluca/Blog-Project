@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import SimpleLexicalEditor, { SimpleLexicalEditorRef } from '../../ui/SimpleLexicalEditor';
 
 interface CommentFormProps {
     isEdit?: boolean;
@@ -48,6 +49,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
+    const editorRef = React.useRef<SimpleLexicalEditorRef>(null);
     
     const navigate = useNavigate();
     const { token, currentUser } = useAuth();
@@ -257,14 +259,14 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         <Label htmlFor="content" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">
                             Comment Content <span className="!text-[#dc3545] !ml-1">*</span>
                         </Label>
-                        <textarea
-                            id="content"
+                        <SimpleLexicalEditor
+                            ref={editorRef}
+                            initialValue={content}
+                            onChange={(newContent) => setValue("content", newContent)}
                             placeholder="Write your comment here..."
-                            {...register("content")}
-                            disabled={loading}
-                            rows={8}
-                            className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm" 
-                            maxLength={1000}
+                            readOnly={loading}
+                            minHeight="200px"
+                            className="!border-[#dee2e6]"
                         />
                         <div className="!text-xs !text-[#6c757d] !mt-1">
                             {content.length}/1000 characters

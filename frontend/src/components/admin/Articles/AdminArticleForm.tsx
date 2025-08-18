@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { createArticle, updateArticle, fetchArticleById } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 import * as yup from 'yup';
 
 
@@ -32,6 +33,8 @@ const articleFormSchema = yup.object({
 
 type FormData = yup.InferType<typeof articleFormSchema>;
 
+
+
 const AdminArticleForm: React.FC<ArticleFormProps> = ({
     isEdit = false,
     id,
@@ -41,6 +44,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
 }) => {
     const { id: routeId } = useParams<{ id: string }>();
     const finalId = id || routeId;
+    const markdownEditorRef = useRef<LexicalEditorRef>(null);
     
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -71,6 +75,8 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             loadArticle();
         }
     }, [finalId, isEdit, initialData]);
+
+
 
     useEffect(() => {
         // Track if form has been modified
@@ -113,8 +119,10 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         setLoading(true);
         setError(null);
 
+        // const finalMarkdownContent = markdownEditorRef.current?.getMarkdown() || data.content;
         const articleData: Article = { 
             title: data.title.trim(), 
+            // content: finalMarkdownContent.trim()
             content: data.content.trim()
         };
 
@@ -122,6 +130,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             let result: Article;
             
             if (isEdit && finalId) {
+                console.log(articleData);
                 result = await updateArticle(finalId, articleData, token);
             } else {
                 result = await createArticle(articleData, token);
@@ -159,6 +168,8 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             navigate('/admin/articles');
         }
     };
+
+
 
     if (loading && isEdit && !initialData) {
         return (
@@ -203,19 +214,21 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         )}
                     </div>
                 </div>
-
+                
                 <div className="!mb-6">
                     <div className="!relative">
-                        <label htmlFor="content" className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
+                        <label className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
                             Article Content <span className="!text-[#dc3545] !ml-1">*</span>
                         </label>
-                        <textarea
-                            id="content"
-                            placeholder="Write your article content here..."
-                            {...register("content")}
-                            disabled={loading}
-                            rows={15}
-                            className="!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit !resize-y focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
+                        <LexicalEditor
+                            ref={markdownEditorRef}
+                            initialValue={content}
+                            onChange={(newContent) => setValue("content", newContent)}
+                            placeholder="Write your article content here... Use Markdown formatting for rich content!"
+                            readOnly={loading}
+                            minHeight="400px"
+                            showToolbar={true}
+                            className="!border-[#ced4da] focus-within:!border-[#007bff] focus-within:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)]"
                         />
                         <div className="!text-xs !text-[#6c757d] !text-right !mt-1">
                             {content.length} characters

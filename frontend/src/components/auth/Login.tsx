@@ -60,6 +60,7 @@ const Login: React.FC = () => {
     
 
     return (
+        <>
         <div className="flex justify-center items-center min-h-screen">
             <div className="w-[400px] backdrop-blur-[20px] shadow-[0_0_30px_rgba(0,0,0,0.5)] text-[#162938] !p-10 rounded-[20px] bg-[rgba(255,255,255,0.1)]">
                 <h2 className="text-center text-[2em] mb-5">Login</h2>
@@ -86,6 +87,8 @@ const Login: React.FC = () => {
                 {error && <p className="!text-red-500 !text-sm !mt-1">{error}</p>}
             </div>
         </div>
+        </>
+        
     );
 };
 
