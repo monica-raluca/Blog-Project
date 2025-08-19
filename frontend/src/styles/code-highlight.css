@@ -1,0 +1,144 @@
+/* Code highlighting syntax styles - Dark theme optimized */
+.code-highlight-comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.code-highlight-deleted {
+  background: rgba(255, 206, 203, 0.2);
+  color: #ff6b6b;
+}
+
+.code-highlight-inserted {
+  background: rgba(172, 238, 187, 0.2);
+  color: #51cf66;
+}
+
+.code-highlight-unchanged {
+  color: #9ca3af;
+}
+
+.code-highlight-punctuation {
+  color: #d4d4d8;
+}
+
+.code-highlight-property {
+  color: #9cdcfe;
+}
+
+.code-highlight-selector {
+  color: #d7ba7d;
+}
+
+.code-highlight-operator {
+  color: #d4d4d8;
+}
+
+.code-highlight-attr {
+  color: #92c5f8;
+}
+
+.code-highlight-variable {
+  color: #9cdcfe;
+}
+
+.code-highlight-function {
+  color: #dcdcaa;
+}
+
+.code-highlight-keyword {
+  color: #569cd6;
+  font-weight: 600;
+}
+
+.code-highlight-string {
+  color: #ce9178;
+}
+
+.code-highlight-number {
+  color: #b5cea8;
+}
+
+.code-highlight-boolean {
+  color: #569cd6;
+}
+
+.code-highlight-regex {
+  color: #d16969;
+}
+
+.code-highlight-tag {
+  color: #569cd6;
+}
+
+.code-highlight-class-name {
+  color: #4ec9b0;
+}
+
+.code-highlight-builtin {
+  color: #4ec9b0;
+}
+
+.code-highlight-constant {
+  color: #4fc1ff;
+}
+
+.code-highlight-symbol {
+  color: #4fc1ff;
+}
+
+.code-highlight-url {
+  color: #ce9178;
+  text-decoration: underline;
+}
+
+.code-highlight-namespace {
+  color: #4ec9b0;
+}
+
+.code-highlight-important {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.code-highlight-atrule {
+  color: #c586c0;
+}
+
+.code-highlight-char {
+  color: #ce9178;
+}
+
+.code-highlight-entity {
+  color: #d7ba7d;
+}
+
+.code-highlight-prolog {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.code-highlight-doctype {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.code-highlight-cdata {
+  color: #6a9955;
+  font-style: italic;
+}
+
+/* Additional styles for better code block presentation */
+.code-block-language-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

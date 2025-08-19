@@ -1,0 +1,111 @@
+/* YouTube Embed Styles */
+
+/* Responsive YouTube iframe container */
+.youtube-embed-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.youtube-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* YouTube embed block styling */
+.youtube-embed-block {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.youtube-embed-block:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Focus state for YouTube embeds */
+.youtube-embed-block.focused {
+  ring: 2px;
+  ring-color: rgb(59 130 246 / 0.5);
+  ring-offset: 2px;
+  border-color: rgb(59 130 246);
+}
+
+/* Loading state */
+.youtube-embed-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 315px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.youtube-embed-loading::before {
+  content: "Loading YouTube video...";
+}
+
+/* Error state */
+.youtube-embed-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+.youtube-embed-error::before {
+  content: "⚠️ Failed to load YouTube video. Please check the URL and try again.";
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .youtube-embed-block {
+    margin: 12px 0;
+    border-radius: 6px;
+  }
+  
+  .youtube-embed-container {
+    border-radius: 6px;
+  }
+  
+  .youtube-embed-container iframe {
+    border-radius: 6px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .youtube-embed-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .youtube-embed-container::after {
+    content: "YouTube Video: https://www.youtube.com/watch?v=" attr(data-video-id);
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+  }
+}

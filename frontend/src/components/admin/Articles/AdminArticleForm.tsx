@@ -119,11 +119,10 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         setLoading(true);
         setError(null);
 
-        // const finalMarkdownContent = markdownEditorRef.current?.getMarkdown() || data.content;
+        const finalMarkdownContent = markdownEditorRef.current?.getMarkdown() || data.content;
         const articleData: Article = { 
             title: data.title.trim(), 
-            // content: finalMarkdownContent.trim()
-            content: data.content.trim()
+            content: finalMarkdownContent.trim()
         };
 
         try {

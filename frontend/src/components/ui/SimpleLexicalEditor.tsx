@@ -6,6 +6,7 @@ import {
   $convertToMarkdownString,
   TRANSFORMERS 
 } from '@lexical/markdown';
+import { YOUTUBE_TRANSFORMER } from './YouTubeTransformer';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
@@ -16,6 +17,8 @@ import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode } from '@lexical/link';
+import { YouTubeNode } from './YouTubeNode';
+import YouTubePlugin from './YouTubePlugin';
 
 interface SimpleLexicalEditorProps {
   initialValue?: string;
@@ -34,6 +37,9 @@ export interface SimpleLexicalEditorRef {
   focus: () => void;
 }
 
+// Combined transformers including YouTube
+const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER];
+
 // Content change handler plugin
 function OnChangePlugin({ onChange }: { onChange?: (value: string) => void }) {
   const [editor] = useLexicalComposerContext();
@@ -42,7 +48,7 @@ function OnChangePlugin({ onChange }: { onChange?: (value: string) => void }) {
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
         if (onChange) {
-          const markdown = $convertToMarkdownString(TRANSFORMERS);
+          const markdown = $convertToMarkdownString(ALL_TRANSFORMERS);
           onChange(markdown);
         }
       });
@@ -77,7 +83,7 @@ function InitialValuePlugin({ initialValue }: { initialValue: string }) {
         editor.update(() => {
           const root = $getRoot();
           root.clear();
-          $convertFromMarkdownString(initialValue, TRANSFORMERS);
+          $convertFromMarkdownString(initialValue, ALL_TRANSFORMERS);
         });
       }
     }
@@ -95,7 +101,7 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Simp
       getMarkdown: () => {
         let markdown = '';
         editor.getEditorState().read(() => {
-          markdown = $convertToMarkdownString(TRANSFORMERS);
+          markdown = $convertToMarkdownString(ALL_TRANSFORMERS);
         });
         return markdown;
       },
@@ -110,7 +116,7 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Simp
         editor.update(() => {
           const root = $getRoot();
           root.clear();
-          $convertFromMarkdownString(markdown, TRANSFORMERS);
+          $convertFromMarkdownString(markdown, ALL_TRANSFORMERS);
         });
       },
       clear: () => {
@@ -163,6 +169,10 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
       },
       link: 'text-blue-600 underline hover:text-blue-800',
       quote: 'border-l-4 border-gray-300 pl-4 italic text-gray-600',
+      embedBlock: {
+        base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
+        focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
+      },
     },
     nodes: [
       HeadingNode,
@@ -170,6 +180,7 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
       ListItemNode,
       QuoteNode,
       LinkNode,
+      YouTubeNode,
     ],
     onError: (error: Error) => {
       console.error('Lexical error:', error);
@@ -201,6 +212,7 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
           <InitialValuePlugin initialValue={initialValue} />
           <EditorRefPlugin editorRef={editorRef} />
           <HistoryPlugin />
+          <YouTubePlugin />
         </div>
       </div>
     </LexicalComposer>

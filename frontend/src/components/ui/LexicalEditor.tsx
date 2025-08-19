@@ -6,6 +6,7 @@ import {
   $convertToMarkdownString,
   TRANSFORMERS 
 } from '@lexical/markdown';
+import { YOUTUBE_TRANSFORMER } from './YouTubeTransformer';
 import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
@@ -22,6 +23,8 @@ import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode, AutoLinkNode } from '@lexical/link';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import CodeHighlightPlugin from './CodeHighlightPlugin';
+
 
 // Toolbar components
 import {
@@ -44,6 +47,12 @@ import {
   $createListItemNode,
 } from '@lexical/list';
 import {
+  $createCodeNode,
+} from '@lexical/code';
+import CodeBlockPlugin from './CodeBlockPlugin';
+import YouTubePlugin, { INSERT_YOUTUBE_COMMAND } from './YouTubePlugin';
+import { YouTubeNode } from './YouTubeNode';
+import {
   Bold,
   Italic,
   Underline,
@@ -56,6 +65,8 @@ import {
   Undo,
   Redo,
   Link as LinkIcon,
+  Code,
+  Youtube,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -191,6 +202,45 @@ function ToolbarPlugin() {
     });
   };
 
+  const formatCodeBlock = () => {
+    // Simple dialog to select language
+    const languages = [
+      'javascript', 'typescript', 'python', 'java', 'csharp', 'cpp', 'c',
+      'php', 'ruby', 'go', 'rust', 'swift', 'kotlin', 'html', 'css',
+      'scss', 'sql', 'json', 'yaml', 'xml', 'bash', 'plain'
+    ];
+    
+    const language = window.prompt(
+      `Enter programming language (${languages.slice(0, 8).join(', ')}, etc.):`,
+      'javascript'
+    );
+    
+    if (language !== null) {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          const anchorNode = selection.anchor.getNode();
+          const element = anchorNode.getKey() === 'root' 
+            ? anchorNode 
+            : anchorNode.getTopLevelElementOrThrow();
+          
+          const codeNode = $createCodeNode(language.toLowerCase() || 'javascript');
+          element.replace(codeNode);
+        }
+      });
+    }
+  };
+
+  const insertYouTube = () => {
+    const url = window.prompt(
+      'Enter YouTube URL or Video ID:\n\nSupported formats:\n• https://www.youtube.com/watch?v=VIDEO_ID\n• https://youtu.be/VIDEO_ID\n• https://www.youtube.com/shorts/VIDEO_ID\n• Just the video ID (11 characters)'
+    );
+    
+    if (url) {
+      editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, url);
+    }
+  };
+
   return (
     <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-300 bg-gray-50">
       <Button
@@ -310,6 +360,28 @@ function ToolbarPlugin() {
         type="button"
         variant="ghost"
         size="sm"
+        onClick={formatCodeBlock}
+        className="p-1 h-8 w-8"
+        title="Code Block"
+      >
+        <Code size={16} />
+      </Button>
+      
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={insertYouTube}
+        className="p-1 h-8 w-8"
+        title="YouTube Video"
+      >
+        <Youtube size={16} />
+      </Button>
+      
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
         onClick={() => {
           const url = window.prompt('Enter URL:');
           if (url) {
@@ -343,7 +415,7 @@ function OnChangePlugin({
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
         if (onChange) {
-          const markdown = $convertToMarkdownString(TRANSFORMERS);
+          const markdown = $convertToMarkdownString(ALL_TRANSFORMERS);
           onChange(markdown);
         }
         
@@ -369,13 +441,13 @@ function InitialValuePlugin({ initialValue }: { initialValue: string }) {
       editor.update(() => {
         const root = $getRoot();
         root.clear();
-        $convertFromMarkdownString(initialValue, TRANSFORMERS);
+        $convertFromMarkdownString(initialValue, ALL_TRANSFORMERS);
       });
       setHasInitialized(true);
     } else if (initialValue && hasInitialized) {
       // Update content when initialValue changes (e.g., after loading article data)
       const currentContent = editor.getEditorState().read(() => {
-        return $convertToMarkdownString(TRANSFORMERS);
+        return $convertToMarkdownString(ALL_TRANSFORMERS);
       });
       
       // Only update if the content is actually different
@@ -383,7 +455,7 @@ function InitialValuePlugin({ initialValue }: { initialValue: string }) {
         editor.update(() => {
           const root = $getRoot();
           root.clear();
-          $convertFromMarkdownString(initialValue, TRANSFORMERS);
+          $convertFromMarkdownString(initialValue, ALL_TRANSFORMERS);
         });
       }
     }
@@ -417,7 +489,7 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Lexi
           const root = $getRoot();
           root.clear();
           if (markdown) {
-            $convertFromMarkdownString(markdown, TRANSFORMERS);
+            $convertFromMarkdownString(markdown, ALL_TRANSFORMERS);
           }
         });
       },
@@ -443,6 +515,9 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Lexi
 
   return null;
 }
+
+// Combined transformers including YouTube
+const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER];
 
 // Main editor component
 const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
@@ -481,9 +556,48 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
         underline: 'underline',
         strikethrough: 'line-through',
         underlineStrikethrough: 'underline line-through',
+        code: 'bg-gray-100 px-1 py-0.5 rounded text-sm font-mono',
       },
       link: 'text-blue-600 underline hover:text-blue-800',
       quote: 'border-l-4 border-gray-300 pl-4 italic text-gray-600',
+      code: 'bg-gray-900 text-gray-100 font-mono text-sm p-4 rounded-lg block my-2 overflow-x-auto relative border border-gray-700',
+      codeHighlight: {
+        atrule: 'code-highlight-atrule',
+        attr: 'code-highlight-attr',
+        boolean: 'code-highlight-boolean',
+        builtin: 'code-highlight-builtin',
+        cdata: 'code-highlight-cdata',
+        char: 'code-highlight-char',
+        class: 'code-highlight-function',
+        'class-name': 'code-highlight-class-name',
+        comment: 'code-highlight-comment',
+        constant: 'code-highlight-constant',
+        deleted: 'code-highlight-deleted',
+        doctype: 'code-highlight-doctype',
+        entity: 'code-highlight-entity',
+        function: 'code-highlight-function',
+        important: 'code-highlight-important',
+        inserted: 'code-highlight-inserted',
+        keyword: 'code-highlight-keyword',
+        namespace: 'code-highlight-namespace',
+        number: 'code-highlight-number',
+        operator: 'code-highlight-operator',
+        prolog: 'code-highlight-prolog',
+        property: 'code-highlight-property',
+        punctuation: 'code-highlight-punctuation',
+        regex: 'code-highlight-regex',
+        selector: 'code-highlight-selector',
+        string: 'code-highlight-string',
+        symbol: 'code-highlight-symbol',
+        tag: 'code-highlight-tag',
+        unchanged: 'code-highlight-unchanged',
+        url: 'code-highlight-url',
+        variable: 'code-highlight-variable',
+      },
+      embedBlock: {
+        base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
+        focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
+      },
     },
     nodes: [
       HeadingNode,
@@ -494,6 +608,7 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
       CodeHighlightNode,
       LinkNode,
       AutoLinkNode,
+      YouTubeNode,
     ],
     onError: (error: Error) => {
       console.error('Lexical error:', error);
@@ -529,8 +644,11 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           {autoFocus && <AutoFocusPlugin />}
           <LinkPlugin />
           <ListPlugin />
-          <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <TabIndentationPlugin />
+          <CodeHighlightPlugin />
+          <CodeBlockPlugin />
+          <YouTubePlugin />
         </div>
       </div>
     </LexicalComposer>
