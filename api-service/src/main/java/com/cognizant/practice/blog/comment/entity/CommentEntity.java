@@ -23,7 +23,9 @@ public class CommentEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(columnDefinition = "text")
     private String content;
+    
     private LocalDateTime dateCreated;
     private LocalDateTime dateEdited;
     @ManyToOne

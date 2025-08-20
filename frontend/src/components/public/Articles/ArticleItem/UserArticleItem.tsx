@@ -10,6 +10,13 @@ import { hasRole, hasUser } from '../../../../api/AuthApi';
 import { Article, Comment } from '../../../../api/types';
 
 import LexicalEditor, { LexicalEditorRef } from '../../../ui/LexicalEditor';
+import { createEditor } from 'lexical';
+import { $generateHtmlFromNodes } from '@lexical/html';
+import { HeadingNode, QuoteNode } from '@lexical/rich-text';
+import { ListItemNode, ListNode } from '@lexical/list';
+import { LinkNode, AutoLinkNode } from '@lexical/link';
+import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import { YouTubeNode } from '../../../ui/YouTubeNode';
 
 import { Button } from '@/components/ui/button';
 
@@ -145,14 +152,126 @@ const UserArticleItem: React.FC = () => {
 		return (!hasHtmlTags && hasMarkdownSyntax) || hasYouTubeUrls;
 	};
 
+	// Helper function to check if content is JSON
+	const isJsonContent = (content: string): boolean => {
+		try {
+			JSON.parse(content);
+			return true;
+		} catch {
+			return false;
+		}
+	};
+
+	// Helper function to generate HTML from JSON using parseEditorState and generateHtmlFromNodes
+	const generateHtmlFromJson = (jsonContent: string): string => {
+		try {
+			// Create a temporary editor with the same configuration as the main editor
+			const tempEditor = createEditor({
+				namespace: 'TempEditor',
+				theme: {
+					paragraph: 'mb-2',
+					heading: {
+						h1: 'text-2xl font-bold mb-4',
+						h2: 'text-xl font-semibold mb-3',
+						h3: 'text-lg font-medium mb-2',
+					},
+					list: {
+						nested: {
+							listitem: 'list-item',
+						},
+						ol: 'list-decimal ml-4',
+						ul: 'list-disc ml-4',
+						listitem: 'mb-1',
+					},
+					text: {
+						bold: 'font-bold',
+						italic: 'italic',
+						underline: 'underline',
+						strikethrough: 'line-through',
+						underlineStrikethrough: 'underline line-through',
+						code: 'bg-gray-100 px-1 py-0.5 rounded text-sm font-mono',
+					},
+					link: 'text-blue-600 underline hover:text-blue-800',
+					quote: 'border-l-4 border-gray-300 pl-4 italic text-gray-600',
+					code: 'bg-gray-900 text-gray-100 font-mono text-sm p-4 rounded-lg block my-2 overflow-x-auto relative border border-gray-700',
+					codeHighlight: {
+						atrule: 'code-highlight-atrule',
+						attr: 'code-highlight-attr',
+						boolean: 'code-highlight-boolean',
+						builtin: 'code-highlight-builtin',
+						cdata: 'code-highlight-cdata',
+						char: 'code-highlight-char',
+						class: 'code-highlight-function',
+						'class-name': 'code-highlight-class-name',
+						comment: 'code-highlight-comment',
+						constant: 'code-highlight-constant',
+						deleted: 'code-highlight-deleted',
+						doctype: 'code-highlight-doctype',
+						entity: 'code-highlight-entity',
+						function: 'code-highlight-function',
+						important: 'code-highlight-important',
+						inserted: 'code-highlight-inserted',
+						keyword: 'code-highlight-keyword',
+						namespace: 'code-highlight-namespace',
+						number: 'code-highlight-number',
+						operator: 'code-highlight-operator',
+						prolog: 'code-highlight-prolog',
+						property: 'code-highlight-property',
+						punctuation: 'code-highlight-punctuation',
+						regex: 'code-highlight-regex',
+						selector: 'code-highlight-selector',
+						string: 'code-highlight-string',
+						symbol: 'code-highlight-symbol',
+						tag: 'code-highlight-tag',
+						unchanged: 'code-highlight-unchanged',
+						url: 'code-highlight-url',
+						variable: 'code-highlight-variable',
+					},
+					embedBlock: {
+						base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
+						focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
+					},
+				},
+				nodes: [
+					HeadingNode,
+					ListNode,
+					ListItemNode,
+					QuoteNode,
+					CodeNode,
+					CodeHighlightNode,
+					LinkNode,
+					AutoLinkNode,
+					YouTubeNode,
+				],
+				onError: (error: Error) => {
+					console.error('Temporary editor error:', error);
+				},
+			});
+			
+			// Parse the JSON to editor state
+			const editorState = tempEditor.parseEditorState(JSON.parse(jsonContent));
+			
+			// Generate HTML from the editor state
+			return editorState.read(() => $generateHtmlFromNodes(tempEditor, null));
+		} catch (error) {
+			console.error('Failed to generate HTML from JSON:', error);
+			return '<div>Error rendering content</div>';
+		}
+	};
+
 	// Function to safely render comment content
 	const renderCommentContent = (content: string): string => {
 		if (!content) return '<div></div>';
 		
 		let processedContent = '';
 		
-		// If content looks like markdown, convert it to HTML
-		if (isMarkdownContent(content)) {
+		// Check if content is JSON (new format)
+		if (isJsonContent(content)) {
+			console.log('UserArticleItem: Converting comment JSON to HTML:', content);
+			processedContent = generateHtmlFromJson(content);
+			console.log('UserArticleItem: Converted comment HTML:', processedContent);
+		} else if (isMarkdownContent(content)) {
+			// For backward compatibility with existing markdown content
 			console.log('UserArticleItem: Converting comment markdown to HTML:', content);
 			processedContent = convertMarkdownToHtml(content);
 			console.log('UserArticleItem: Converted comment HTML:', processedContent);
@@ -176,8 +295,13 @@ const UserArticleItem: React.FC = () => {
 		
 		let processedContent = '';
 		
-		// If content looks like markdown, convert it to HTML
-		if (isMarkdownContent(content)) {
+		// Check if content is JSON (new format)
+		if (isJsonContent(content)) {
+			console.log('UserArticleItem: Converting article JSON to HTML:', content);
+			processedContent = generateHtmlFromJson(content);
+			console.log('UserArticleItem: Converted article HTML:', processedContent);
+		} else if (isMarkdownContent(content)) {
+			// For backward compatibility with existing markdown content
 			console.log('UserArticleItem: Converting article markdown to HTML:', content);
 			processedContent = convertMarkdownToHtml(content);
 			console.log('UserArticleItem: Converted article HTML:', processedContent);
@@ -245,100 +369,38 @@ const UserArticleItem: React.FC = () => {
 		
 		if (!id || !token) return;
 
-		// Get HTML content from editor when submitting to preserve formatting
-		// Try multiple times in case ref isn't ready immediately
-		let htmlContent = '';
+		// Get editor state as JSON using JSON.stringify(editorState.toJSON())
+		let jsonContent = '';
 		
 		try {
-			htmlContent = commentEditorRef.current?.getHtml() || '';
-			
-			if (!htmlContent && commentEditorRef.current) {
-				// Wait a small moment and try again
-				await new Promise(resolve => setTimeout(resolve, 50));
-				htmlContent = commentEditorRef.current?.getHtml() || '';
-			}
-		} catch (htmlError) {
-			console.warn('UserArticleItem: Failed to get HTML content:', htmlError);
-			htmlContent = '';
+			jsonContent = commentEditorRef.current?.getEditorStateJson() || '';
+			console.log('UserArticleItem: Got editor state JSON:', jsonContent);
+		} catch (jsonError) {
+			console.warn('UserArticleItem: Failed to get JSON content:', jsonError);
+			jsonContent = '';
 		}
 		
-		// Get markdown content as fallback
-		let markdownContent = '';
-		
-		try {
-			markdownContent = commentEditorRef.current?.getMarkdown() || '';
-		} catch (markdownError) {
-			console.warn('UserArticleItem: Failed to get markdown content:', markdownError);
-			markdownContent = content || ''; // Use the state content as final fallback
-		}
-		
-		// Sanitize HTML content to prevent issues with special characters
-		const sanitizeHtml = (html: string) => {
-			// Remove null characters and other control characters that might cause issues
-			return html.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
-					  .replace(/\u0000/g, '')
-					  .trim();
-		};
-		
-		let finalContent = htmlContent || content || '';
-		
-		// If HTML content exists, sanitize it
-		if (htmlContent && htmlContent.trim()) {
-			finalContent = sanitizeHtml(htmlContent);
-		}
-		
-		console.log('UserArticleItem: Editor ref:', commentEditorRef.current);
-		console.log('UserArticleItem: Editor ref getHtml method:', commentEditorRef.current?.getHtml);
-		console.log('UserArticleItem: Editor HTML content:', htmlContent);
-		console.log('UserArticleItem: HTML generation successful:', htmlContent.length > 0);
-		console.log('UserArticleItem: Editor markdown content:', markdownContent);
-		console.log('UserArticleItem: Content state (markdown):', content);
-		console.log('UserArticleItem: Final content being posted:', finalContent);
-		console.log('UserArticleItem: Final content length:', finalContent.length);
-		console.log('UserArticleItem: Final content type:', typeof finalContent);
-		console.log('UserArticleItem: Will use fallback:', !htmlContent && markdownContent && markdownContent !== finalContent);
-		
-		// Check if content is empty
-		if (!finalContent || finalContent.trim() === '') {
+		// Check if content is empty (empty editor state)
+		if (!jsonContent || jsonContent.trim() === '' || jsonContent === '{}') {
 			alert('Please enter some content for your comment');
 			return;
 		}
 
-        // Helper function to attempt comment creation with fallback
-        const attemptWithFallback = async (contentToTry: string, contentType: string) => {
-            try {
-                const newComment = await createComment(id, token, contentToTry);
-                setComments([...comments, newComment]);
-                setContent('');
-                commentEditorRef.current?.clear();
-                return true;
-            } catch (err) {
-                const errorMessage = (err as Error).message || 'An error occurred';
-                console.error(`UserArticleItem: Comment creation failed with ${contentType}:`, err);
-                console.error(`UserArticleItem: Error message:`, errorMessage);
-                console.error(`UserArticleItem: Content that was sent:`, contentToTry);
-                
-                if (errorMessage.toLowerCase().includes('forbidden')) {
-                    navigate('/forbidden');
-                    return true; // Don't try fallback for auth errors
-                }
-                
-                return false; // Try fallback
-            }
-        };
-
-        // Try HTML first, then markdown as fallback
-        const htmlSuccess = await attemptWithFallback(finalContent, 'HTML');
-        
-        if (!htmlSuccess && markdownContent && markdownContent.trim() && markdownContent !== finalContent) {
-            console.log('UserArticleItem: Attempting with markdown fallback...');
-            const markdownSuccess = await attemptWithFallback(markdownContent, 'Markdown');
+        try {
+            const newComment = await createComment(id, token, jsonContent);
+            setComments([...comments, newComment]);
+            setContent('');
+            commentEditorRef.current?.clear();
+            console.log('UserArticleItem: Comment created successfully with JSON content');
+        } catch (err) {
+            const errorMessage = (err as Error).message || 'An error occurred';
+            console.error('UserArticleItem: Comment creation failed:', err);
             
-            if (!markdownSuccess) {
-                alert('Comment creation failed. Please try simplifying your content or removing special formatting.');
+            if (errorMessage.toLowerCase().includes('forbidden')) {
+                navigate('/forbidden');
+            } else {
+                alert('Comment creation failed. Please try again.');
             }
-        } else if (!htmlSuccess) {
-            alert('Comment creation failed. Please try simplifying your content or removing special formatting.');
         }
 	};
 
@@ -346,9 +408,31 @@ const UserArticleItem: React.FC = () => {
 		if (comment.id) {
 			setEditingCommentId(comment.id);
 			setEditedContent(comment.content);
-			// Set the content in the edit editor after a small delay to ensure it's rendered
+			// Set the JSON content in the edit editor after a small delay to ensure it's rendered
 			setTimeout(() => {
-				editCommentEditorRef.current?.setHtml(comment.content);
+				try {
+					// Check if content is JSON (new format) or legacy format
+					const isJsonContent = (content: string): boolean => {
+						try {
+							JSON.parse(content);
+							return true;
+						} catch {
+							return false;
+						}
+					};
+
+					if (isJsonContent(comment.content)) {
+						// New JSON format - use parseEditorState approach
+						editCommentEditorRef.current?.setEditorStateFromJson(comment.content);
+					} else {
+						// Legacy format - convert to HTML first
+						editCommentEditorRef.current?.setHtml(comment.content);
+					}
+				} catch (error) {
+					console.warn('Failed to set edit content:', error);
+					// Fallback to HTML setter
+					editCommentEditorRef.current?.setHtml(comment.content);
+				}
 			}, 100);
 		}
 	};
@@ -357,8 +441,8 @@ const UserArticleItem: React.FC = () => {
 		if (!token) return;
 		
 		try {
-			const finalEditedContent = editCommentEditorRef.current?.getMarkdown() || editedContent;
-			console.log(articleId, commentId, finalEditedContent, token);
+			const finalEditedContent = editCommentEditorRef.current?.getEditorStateJson() || editedContent;
+			console.log('UserArticleItem: Editing comment with JSON:', articleId, commentId, finalEditedContent);
 			await editComment(articleId, commentId, finalEditedContent, token);
 			setComments(comments.map(c =>
 				c.id === commentId ? { ...c, content: finalEditedContent } : c
@@ -367,10 +451,11 @@ const UserArticleItem: React.FC = () => {
 			setEditedContent('');
 		} catch (err) {
 			const errorMessage = (err as Error).message || 'An error occurred';
+			console.error('UserArticleItem: Comment edit failed:', err);
 			if (errorMessage.toLowerCase().includes('forbidden')) {
 				navigate('/forbidden');
 			} else {
-				navigate('/error');
+				alert('Comment edit failed. Please try again.');
 			}
 		}
 	};

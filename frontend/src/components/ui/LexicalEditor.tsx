@@ -93,6 +93,8 @@ interface LexicalEditorProps {
 export interface LexicalEditorRef {
   getMarkdown: () => string;
   getHtml: () => string;
+  getEditorStateJson: () => string;
+  setEditorStateFromJson: (json: string) => void;
   setMarkdown: (markdown: string) => void;
   setHtml: (html: string) => void;
   clear: () => void;
@@ -531,6 +533,17 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Lexi
         });
         return html;
       },
+      getEditorStateJson: () => {
+        return JSON.stringify(editor.getEditorState().toJSON());
+      },
+      setEditorStateFromJson: (json: string) => {
+        try {
+          const editorState = editor.parseEditorState(JSON.parse(json));
+          editor.setEditorState(editorState);
+        } catch (error) {
+          console.error('Failed to parse editor state from JSON:', error);
+        }
+      },
       setMarkdown: (markdown: string) => {
         editor.update(() => {
           const root = $getRoot();
@@ -665,6 +678,8 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
   useImperativeHandle(ref, () => ({
     getMarkdown: () => editorRef.current?.getMarkdown() || '',
     getHtml: () => editorRef.current?.getHtml() || '',
+    getEditorStateJson: () => editorRef.current?.getEditorStateJson() || '',
+    setEditorStateFromJson: (json: string) => editorRef.current?.setEditorStateFromJson(json),
     setMarkdown: (markdown: string) => editorRef.current?.setMarkdown(markdown),
     setHtml: (html: string) => editorRef.current?.setHtml(html),
     clear: () => editorRef.current?.clear(),
