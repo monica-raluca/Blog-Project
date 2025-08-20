@@ -1,134 +1,217 @@
-/* Code highlighting syntax styles - Dark theme optimized */
-.code-highlight-comment {
-  color: #6a9955;
-  font-style: italic;
+/* Code highlighting syntax styles - Dark theme optimized with high specificity */
+pre code .code-highlight-comment,
+.prose pre code .code-highlight-comment,
+code .code-highlight-comment {
+  color: #6a9955 !important;
+  font-style: italic !important;
 }
 
-.code-highlight-deleted {
-  background: rgba(255, 206, 203, 0.2);
-  color: #ff6b6b;
+pre code .code-highlight-deleted,
+.prose pre code .code-highlight-deleted,
+code .code-highlight-deleted {
+  background: rgba(255, 206, 203, 0.2) !important;
+  color: #ff6b6b !important;
 }
 
-.code-highlight-inserted {
-  background: rgba(172, 238, 187, 0.2);
-  color: #51cf66;
+pre code .code-highlight-inserted,
+.prose pre code .code-highlight-inserted,
+code .code-highlight-inserted {
+  background: rgba(172, 238, 187, 0.2) !important;
+  color: #51cf66 !important;
 }
 
-.code-highlight-unchanged {
-  color: #9ca3af;
+pre code .code-highlight-unchanged,
+.prose pre code .code-highlight-unchanged,
+code .code-highlight-unchanged {
+  color: #9ca3af !important;
 }
 
-.code-highlight-punctuation {
-  color: #d4d4d8;
+pre code .code-highlight-punctuation,
+.prose pre code .code-highlight-punctuation,
+code .code-highlight-punctuation {
+  color: #d4d4d8 !important;
 }
 
-.code-highlight-property {
-  color: #9cdcfe;
+pre code .code-highlight-property,
+.prose pre code .code-highlight-property,
+code .code-highlight-property {
+  color: #9cdcfe !important;
 }
 
-.code-highlight-selector {
-  color: #d7ba7d;
+pre code .code-highlight-selector,
+.prose pre code .code-highlight-selector,
+code .code-highlight-selector {
+  color: #d7ba7d !important;
 }
 
-.code-highlight-operator {
-  color: #d4d4d8;
+pre code .code-highlight-operator,
+.prose pre code .code-highlight-operator,
+code .code-highlight-operator {
+  color: #d4d4d8 !important;
 }
 
-.code-highlight-attr {
-  color: #92c5f8;
+pre code .code-highlight-attr,
+.prose pre code .code-highlight-attr,
+code .code-highlight-attr {
+  color: #92c5f8 !important;
 }
 
-.code-highlight-variable {
-  color: #9cdcfe;
+pre code .code-highlight-variable,
+.prose pre code .code-highlight-variable,
+code .code-highlight-variable {
+  color: #9cdcfe !important;
 }
 
-.code-highlight-function {
-  color: #dcdcaa;
+pre code .code-highlight-function,
+.prose pre code .code-highlight-function,
+code .code-highlight-function {
+  color: #dcdcaa !important;
 }
 
-.code-highlight-keyword {
-  color: #569cd6;
-  font-weight: 600;
+pre code .code-highlight-keyword,
+.prose pre code .code-highlight-keyword,
+code .code-highlight-keyword {
+  color: #569cd6 !important;
+  font-weight: 600 !important;
 }
 
-.code-highlight-string {
-  color: #ce9178;
+pre code .code-highlight-string,
+.prose pre code .code-highlight-string,
+code .code-highlight-string {
+  color: #ce9178 !important;
 }
 
-.code-highlight-number {
-  color: #b5cea8;
+pre code .code-highlight-number,
+.prose pre code .code-highlight-number,
+code .code-highlight-number {
+  color: #b5cea8 !important;
 }
 
-.code-highlight-boolean {
-  color: #569cd6;
+pre code .code-highlight-boolean,
+.prose pre code .code-highlight-boolean,
+code .code-highlight-boolean {
+  color: #569cd6 !important;
 }
 
-.code-highlight-regex {
-  color: #d16969;
+pre code .code-highlight-regex,
+.prose pre code .code-highlight-regex,
+code .code-highlight-regex {
+  color: #d16969 !important;
 }
 
-.code-highlight-tag {
-  color: #569cd6;
+pre code .code-highlight-tag,
+.prose pre code .code-highlight-tag,
+code .code-highlight-tag {
+  color: #569cd6 !important;
 }
 
-.code-highlight-class-name {
-  color: #4ec9b0;
+pre code .code-highlight-class-name,
+.prose pre code .code-highlight-class-name,
+code .code-highlight-class-name {
+  color: #4ec9b0 !important;
 }
 
-.code-highlight-builtin {
-  color: #4ec9b0;
+pre code .code-highlight-builtin,
+.prose pre code .code-highlight-builtin,
+code .code-highlight-builtin {
+  color: #4ec9b0 !important;
 }
 
-.code-highlight-constant {
-  color: #4fc1ff;
+pre code .code-highlight-constant,
+.prose pre code .code-highlight-constant,
+code .code-highlight-constant {
+  color: #4fc1ff !important;
 }
 
-.code-highlight-symbol {
-  color: #4fc1ff;
+pre code .code-highlight-symbol,
+.prose pre code .code-highlight-symbol,
+code .code-highlight-symbol {
+  color: #4fc1ff !important;
 }
 
-.code-highlight-url {
-  color: #ce9178;
-  text-decoration: underline;
+pre code .code-highlight-url,
+.prose pre code .code-highlight-url,
+code .code-highlight-url {
+  color: #ce9178 !important;
+  text-decoration: underline !important;
 }
 
-.code-highlight-namespace {
-  color: #4ec9b0;
+pre code .code-highlight-namespace,
+.prose pre code .code-highlight-namespace,
+code .code-highlight-namespace {
+  color: #4ec9b0 !important;
 }
 
-.code-highlight-important {
-  color: #ff6b6b;
-  font-weight: bold;
+pre code .code-highlight-important,
+.prose pre code .code-highlight-important,
+code .code-highlight-important {
+  color: #ff6b6b !important;
+  font-weight: bold !important;
 }
 
-.code-highlight-atrule {
-  color: #c586c0;
+pre code .code-highlight-atrule,
+.prose pre code .code-highlight-atrule,
+code .code-highlight-atrule {
+  color: #c586c0 !important;
 }
 
-.code-highlight-char {
-  color: #ce9178;
+pre code .code-highlight-char,
+.prose pre code .code-highlight-char,
+code .code-highlight-char {
+  color: #ce9178 !important;
 }
 
-.code-highlight-entity {
-  color: #d7ba7d;
+pre code .code-highlight-entity,
+.prose pre code .code-highlight-entity,
+code .code-highlight-entity {
+  color: #d7ba7d !important;
 }
 
-.code-highlight-prolog {
-  color: #6a9955;
-  font-style: italic;
+pre code .code-highlight-prolog,
+.prose pre code .code-highlight-prolog,
+code .code-highlight-prolog {
+  color: #6a9955 !important;
+  font-style: italic !important;
 }
 
-.code-highlight-doctype {
-  color: #6a9955;
-  font-style: italic;
+pre code .code-highlight-doctype,
+.prose pre code .code-highlight-doctype,
+code .code-highlight-doctype {
+  color: #6a9955 !important;
+  font-style: italic !important;
 }
 
-.code-highlight-cdata {
-  color: #6a9955;
-  font-style: italic;
+pre code .code-highlight-cdata,
+.prose pre code .code-highlight-cdata,
+code .code-highlight-cdata {
+  color: #6a9955 !important;
+  font-style: italic !important;
 }
 
 /* Additional styles for better code block presentation */
+.code-block-wrapper {
+  margin: 1rem 0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  background: #1a1a1a !important;
+  border: 1px solid #374151 !important;
+}
+
+.code-block-wrapper pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+.comment-content {
+  line-height: 1.6 !important;
+}
+
+.comment-content pre {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+
 .code-block-language-indicator {
   position: absolute;
   top: 8px;

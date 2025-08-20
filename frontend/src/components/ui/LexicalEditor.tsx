@@ -24,6 +24,9 @@ import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode, AutoLinkNode } from '@lexical/link';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
+import TextColorPlugin, { FORMAT_TEXT_COLOR_COMMAND } from './TextColorPlugin';
+import BackgroundColorPlugin, { FORMAT_BACKGROUND_COLOR_COMMAND } from './BackgroundColorPlugin';
+import ColorSelector from './ColorSelector';
 
 
 // Toolbar components
@@ -52,6 +55,10 @@ import {
 import CodeBlockPlugin from './CodeBlockPlugin';
 import YouTubePlugin, { INSERT_YOUTUBE_COMMAND } from './YouTubePlugin';
 import { YouTubeNode } from './YouTubeNode';
+import FontFamilyPlugin, { FORMAT_FONT_FAMILY_COMMAND } from './FontFamilyPlugin';
+import FontSelector from './FontSelector';
+import FontSizePlugin, { FORMAT_FONT_SIZE_COMMAND } from './FontSizePlugin';
+import FontSizeSelector from './FontSizeSelector';
 import {
   Bold,
   Italic,
@@ -101,6 +108,8 @@ function ToolbarPlugin() {
   const [isItalic, setIsItalic] = React.useState(false);
   const [isUnderline, setIsUnderline] = React.useState(false);
   const [isStrikethrough, setIsStrikethrough] = React.useState(false);
+  const [currentFontFamily, setCurrentFontFamily] = React.useState('system');
+  const [currentFontSize, setCurrentFontSize] = React.useState('base');
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -241,8 +250,46 @@ function ToolbarPlugin() {
     }
   };
 
+  const handleFontFamilyChange = (fontFamily: string) => {
+    editor.dispatchCommand(FORMAT_FONT_FAMILY_COMMAND, fontFamily);
+  };
+
+  const handleFontSizeChange = (fontSize: string) => {
+    editor.dispatchCommand(FORMAT_FONT_SIZE_COMMAND, fontSize);
+  };
+
+  const handleTextColorChange = (color: string) => {
+    editor.dispatchCommand(FORMAT_TEXT_COLOR_COMMAND, color);
+  };
+
+  const handleBackgroundColorChange = (color: string) => {
+    editor.dispatchCommand(FORMAT_BACKGROUND_COLOR_COMMAND, color);
+  };
+
   return (
     <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-300 bg-gray-50">
+      <FontSelector
+        selectedFont={currentFontFamily}
+        onFontChange={handleFontFamilyChange}
+      />
+      
+      <FontSizeSelector
+        selectedSize={currentFontSize}
+        onSizeChange={handleFontSizeChange}
+      />
+      
+      <ColorSelector
+        placeholder="Text color"
+        onValueChange={handleTextColorChange}
+      />
+      
+      <ColorSelector
+        placeholder="Background"
+        onValueChange={handleBackgroundColorChange}
+      />
+      
+      <div className="w-px h-6 bg-gray-300 mx-1" />
+      
       <Button
         type="button"
         variant="ghost"
@@ -615,7 +662,14 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
     },
   }), []);
 
-  useImperativeHandle(ref, () => editorRef.current!, []);
+  useImperativeHandle(ref, () => ({
+    getMarkdown: () => editorRef.current?.getMarkdown() || '',
+    getHtml: () => editorRef.current?.getHtml() || '',
+    setMarkdown: (markdown: string) => editorRef.current?.setMarkdown(markdown),
+    setHtml: (html: string) => editorRef.current?.setHtml(html),
+    clear: () => editorRef.current?.clear(),
+    focus: () => editorRef.current?.focus(),
+  }), []);
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
@@ -649,6 +703,10 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           <CodeHighlightPlugin />
           <CodeBlockPlugin />
           <YouTubePlugin />
+          <FontFamilyPlugin />
+          <FontSizePlugin />
+          <TextColorPlugin />
+          <BackgroundColorPlugin />
         </div>
       </div>
     </LexicalComposer>

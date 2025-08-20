@@ -31,6 +31,127 @@ const UserArticleItem: React.FC = () => {
 
 	const { token, currentUser } = useAuth();
 
+	// Helper function to escape HTML entities
+	const escapeHtml = (text: string): string => {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	};
+
+	// Simple syntax highlighting for common languages with inline styles
+	const addBasicSyntaxHighlighting = (code: string, language: string): string => {
+		if (!language || language === 'plain') return escapeHtml(code);
+		
+		let highlighted = escapeHtml(code);
+		
+		// C/C++/Java keywords
+		if (['c', 'cpp', 'c++', 'java', 'javascript', 'js', 'typescript', 'ts'].includes(language.toLowerCase())) {
+			highlighted = highlighted.replace(/\b(int|char|float|double|void|if|else|for|while|return|class|public|private|protected|static|const|let|var|function)\b/g, 
+				'<span class="code-highlight-keyword" style="color: #569cd6; font-weight: 600;">$1</span>');
+			highlighted = highlighted.replace(/\b(\d+)\b/g, '<span class="code-highlight-number" style="color: #b5cea8;">$1</span>');
+			highlighted = highlighted.replace(/"([^"]*)"/g, '<span class="code-highlight-string" style="color: #ce9178;">"$1"</span>');
+			highlighted = highlighted.replace(/'([^']*)'/g, '<span class="code-highlight-string" style="color: #ce9178;">\'$1\'</span>');
+			highlighted = highlighted.replace(/\/\/(.*?)$/gm, '<span class="code-highlight-comment" style="color: #6a9955; font-style: italic;">//$1</span>');
+		}
+		
+		// Python keywords
+		if (['python', 'py'].includes(language.toLowerCase())) {
+			highlighted = highlighted.replace(/\b(def|if|else|elif|for|while|return|import|from|class|try|except|finally|with|as|in|not|and|or|is|None|True|False)\b/g, 
+				'<span class="code-highlight-keyword" style="color: #569cd6; font-weight: 600;">$1</span>');
+			highlighted = highlighted.replace(/\b(\d+)\b/g, '<span class="code-highlight-number" style="color: #b5cea8;">$1</span>');
+			highlighted = highlighted.replace(/"([^"]*)"/g, '<span class="code-highlight-string" style="color: #ce9178;">"$1"</span>');
+			highlighted = highlighted.replace(/'([^']*)'/g, '<span class="code-highlight-string" style="color: #ce9178;">\'$1\'</span>');
+			highlighted = highlighted.replace(/#(.*?)$/gm, '<span class="code-highlight-comment" style="color: #6a9955; font-style: italic;">#$1</span>');
+		}
+		
+		return highlighted;
+	};
+
+	// Function to convert markdown to HTML with focus on code blocks
+	const convertMarkdownToHtml = (markdown: string): string => {
+		try {
+			let html = markdown;
+			
+			// Convert code blocks with language specification
+			html = html.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, language, code) => {
+				const lang = language || 'plain';
+				const trimmedCode = code.trim();
+				const highlightedCode = addBasicSyntaxHighlighting(trimmedCode, lang);
+				return `<pre style="background-color: #1a1a1a; color: #e5e5e5; font-family: 'Courier New', monospace; font-size: 0.875rem; padding: 1rem; border-radius: 0.5rem; display: block; margin: 0.5rem 0; overflow-x: auto; position: relative; border: 1px solid #374151; white-space: pre-wrap; word-break: break-word;"><code class="language-${lang}" data-language="${lang}">${highlightedCode}</code></pre>`;
+			});
+			
+			// Convert inline code
+			html = html.replace(/`([^`]+)`/g, '<code style="background-color: #f3f4f6; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; font-family: \'Courier New\', monospace; color: #374151;">$1</code>');
+			
+			// Convert bold text
+			html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+			html = html.replace(/__(.*?)__/g, '<strong>$1</strong>');
+			
+			// Convert italic text
+			html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+			html = html.replace(/_(.*?)_/g, '<em>$1</em>');
+			
+			// Convert headings
+			html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+			html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+			html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+			
+			// Convert line breaks (but avoid double line breaks within code blocks)
+			html = html.replace(/\n(?![^\n]*<\/code>)/g, '<br>');
+			
+			// Clean up extra line breaks around code blocks
+			html = html.replace(/<br>\s*<pre/g, '<pre');
+			html = html.replace(/<\/pre>\s*<br>/g, '</pre>');
+			
+			// Wrap in paragraph if not already wrapped and doesn't contain block elements
+			if (!html.includes('<pre') && !html.includes('<h') && (!html.includes('<') || (!html.startsWith('<') && !html.includes('<p')))) {
+				html = `<p>${html}</p>`;
+			}
+			
+			// Code blocks now have inline styles, no need for additional wrappers
+			
+			return html;
+		} catch (error) {
+			console.error('Error converting markdown to HTML:', error);
+			// Fallback: return markdown wrapped in a paragraph
+			return `<p>${markdown.replace(/\n/g, '<br>')}</p>`;
+		}
+	};
+
+	// Function to detect if content is likely markdown vs HTML
+	const isMarkdownContent = (content: string): boolean => {
+		// Simple heuristic: if it doesn't contain HTML tags, treat as markdown
+		const hasHtmlTags = /<[^>]+>/.test(content);
+		const hasMarkdownSyntax = /```|`[^`]+`|\*\*|__|\*|_|#{1,6}\s|^\s*[-*+]\s|^\s*\d+\.\s/m.test(content);
+		
+		return !hasHtmlTags && hasMarkdownSyntax;
+	};
+
+	// Function to safely render comment content
+	const renderCommentContent = (content: string): string => {
+		if (!content) return '<div></div>';
+		
+		let processedContent = '';
+		
+		// If content looks like markdown, convert it to HTML
+		if (isMarkdownContent(content)) {
+			console.log('UserArticleItem: Converting markdown to HTML:', content);
+			processedContent = convertMarkdownToHtml(content);
+			console.log('UserArticleItem: Converted HTML:', processedContent);
+		} else {
+			// Otherwise, assume it's already HTML
+			console.log('UserArticleItem: Content assumed to be HTML:', content);
+			processedContent = content;
+		}
+		
+		// Ensure content is wrapped in a proper container div for parsing
+		if (!processedContent.startsWith('<div')) {
+			processedContent = `<div class="comment-content">${processedContent}</div>`;
+		}
+		
+		return processedContent;
+	};
+
 	useEffect(() => {
 		if (!id) return;
 		
@@ -81,22 +202,101 @@ const UserArticleItem: React.FC = () => {
 		
 		if (!id || !token) return;
 
-		const finalContent = commentEditorRef.current?.getMarkdown() || content;
+		// Get HTML content from editor when submitting to preserve formatting
+		// Try multiple times in case ref isn't ready immediately
+		let htmlContent = '';
+		
+		try {
+			htmlContent = commentEditorRef.current?.getHtml() || '';
+			
+			if (!htmlContent && commentEditorRef.current) {
+				// Wait a small moment and try again
+				await new Promise(resolve => setTimeout(resolve, 50));
+				htmlContent = commentEditorRef.current?.getHtml() || '';
+			}
+		} catch (htmlError) {
+			console.warn('UserArticleItem: Failed to get HTML content:', htmlError);
+			htmlContent = '';
+		}
+		
+		// Get markdown content as fallback
+		let markdownContent = '';
+		
+		try {
+			markdownContent = commentEditorRef.current?.getMarkdown() || '';
+		} catch (markdownError) {
+			console.warn('UserArticleItem: Failed to get markdown content:', markdownError);
+			markdownContent = content || ''; // Use the state content as final fallback
+		}
+		
+		// Sanitize HTML content to prevent issues with special characters
+		const sanitizeHtml = (html: string) => {
+			// Remove null characters and other control characters that might cause issues
+			return html.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
+					  .replace(/\u0000/g, '')
+					  .trim();
+		};
+		
+		let finalContent = htmlContent || content || '';
+		
+		// If HTML content exists, sanitize it
+		if (htmlContent && htmlContent.trim()) {
+			finalContent = sanitizeHtml(htmlContent);
+		}
+		
+		console.log('UserArticleItem: Editor ref:', commentEditorRef.current);
+		console.log('UserArticleItem: Editor ref getHtml method:', commentEditorRef.current?.getHtml);
+		console.log('UserArticleItem: Editor HTML content:', htmlContent);
+		console.log('UserArticleItem: HTML generation successful:', htmlContent.length > 0);
+		console.log('UserArticleItem: Editor markdown content:', markdownContent);
+		console.log('UserArticleItem: Content state (markdown):', content);
+		console.log('UserArticleItem: Final content being posted:', finalContent);
+		console.log('UserArticleItem: Final content length:', finalContent.length);
+		console.log('UserArticleItem: Final content type:', typeof finalContent);
+		console.log('UserArticleItem: Will use fallback:', !htmlContent && markdownContent && markdownContent !== finalContent);
+		
+		// Check if content is empty
+		if (!finalContent || finalContent.trim() === '') {
+			alert('Please enter some content for your comment');
+			return;
+		}
 
-        createComment(id, token, finalContent)
-        .then(newComment => {
-            setComments([...comments, newComment]);
-            setContent('');
-			commentEditorRef.current?.clear();
-        })
-        .catch(err => {
-			const errorMessage = (err as Error).message || 'An error occurred';
-            if (errorMessage.toLowerCase().includes('forbidden')) {
-                navigate('/forbidden');
-            } else {
-                navigate('/error');
+        // Helper function to attempt comment creation with fallback
+        const attemptWithFallback = async (contentToTry: string, contentType: string) => {
+            try {
+                const newComment = await createComment(id, token, contentToTry);
+                setComments([...comments, newComment]);
+                setContent('');
+                commentEditorRef.current?.clear();
+                return true;
+            } catch (err) {
+                const errorMessage = (err as Error).message || 'An error occurred';
+                console.error(`UserArticleItem: Comment creation failed with ${contentType}:`, err);
+                console.error(`UserArticleItem: Error message:`, errorMessage);
+                console.error(`UserArticleItem: Content that was sent:`, contentToTry);
+                
+                if (errorMessage.toLowerCase().includes('forbidden')) {
+                    navigate('/forbidden');
+                    return true; // Don't try fallback for auth errors
+                }
+                
+                return false; // Try fallback
             }
-        });
+        };
+
+        // Try HTML first, then markdown as fallback
+        const htmlSuccess = await attemptWithFallback(finalContent, 'HTML');
+        
+        if (!htmlSuccess && markdownContent && markdownContent.trim() && markdownContent !== finalContent) {
+            console.log('UserArticleItem: Attempting with markdown fallback...');
+            const markdownSuccess = await attemptWithFallback(markdownContent, 'Markdown');
+            
+            if (!markdownSuccess) {
+                alert('Comment creation failed. Please try simplifying your content or removing special formatting.');
+            }
+        } else if (!htmlSuccess) {
+            alert('Comment creation failed. Please try simplifying your content or removing special formatting.');
+        }
 	};
 
 	const startEditing = (comment: Comment): void => {
@@ -105,7 +305,7 @@ const UserArticleItem: React.FC = () => {
 			setEditedContent(comment.content);
 			// Set the content in the edit editor after a small delay to ensure it's rendered
 			setTimeout(() => {
-				editCommentEditorRef.current?.setMarkdown(comment.content);
+				editCommentEditorRef.current?.setHtml(comment.content);
 			}, 100);
 		}
 	};
@@ -225,11 +425,9 @@ const UserArticleItem: React.FC = () => {
 							) : (
 							<>
 								<div>
-									<LexicalEditor
-										initialValue={comment.content}
-										readOnly={true}
-										showToolbar={false}
+									<div 
 										className="!border-none !bg-transparent prose prose-slate max-w-none !text-sm"
+										dangerouslySetInnerHTML={{ __html: renderCommentContent(comment.content) }}
 									/>
 								</div>
 								{showCommentEdited && (

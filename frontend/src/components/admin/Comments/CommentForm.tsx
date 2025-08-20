@@ -145,8 +145,10 @@ const CommentForm: React.FC<CommentFormProps> = ({
             let result: Comment;
             
             if (isEdit && finalId) {
+                console.log('CommentForm: Editing comment with content:', data.content.trim());
                 result = await editComment(data.articleId, finalId, data.content.trim(), token);
             } else {
+                console.log('CommentForm: Creating new comment with content:', data.content.trim());
                 result = await createComment(data.articleId, token, data.content.trim());
             }
 

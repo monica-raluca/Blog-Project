@@ -310,7 +310,9 @@ const CommentItem: React.FC<CommentItemProps> = ({
                         <div className="!mb-[24px]">
                             <Label className="font-semibold text-[#495057] uppercase !mb-2">Comment Content:</Label>
                             <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]">
-                                {comment?.content}
+                                <div 
+                                    dangerouslySetInnerHTML={{ __html: comment?.content || '' }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -353,9 +355,13 @@ const CommentItem: React.FC<CommentItemProps> = ({
             </div>
 
             <div className="!text-sm !text-[#6c757d]">
-                {comment?.content && comment.content.length > 150 
-                    ? comment.content.substring(0, 150) + '...'
-                    : comment?.content}
+                <div 
+                    dangerouslySetInnerHTML={{ 
+                        __html: comment?.content && comment.content.length > 150 
+                            ? comment.content.substring(0, 150) + '...'
+                            : comment?.content || ''
+                    }}
+                />
             </div>
 
             {showActions && (

@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { $getRoot } from 'lexical';
-import { $generateHtmlFromNodes } from '@lexical/html';
+import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html';
 import { 
   $convertFromMarkdownString, 
   $convertToMarkdownString,
@@ -11,14 +11,20 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode } from '@lexical/link';
+import { CodeNode, CodeHighlightNode } from '@lexical/code';
 import { YouTubeNode } from './YouTubeNode';
 import YouTubePlugin from './YouTubePlugin';
+import FontFamilyPlugin from './FontFamilyPlugin';
+import FontSizePlugin from './FontSizePlugin';
+import TextColorPlugin from './TextColorPlugin';
+import BackgroundColorPlugin from './BackgroundColorPlugin';
 
 interface SimpleLexicalEditorProps {
   initialValue?: string;
@@ -48,8 +54,9 @@ function OnChangePlugin({ onChange }: { onChange?: (value: string) => void }) {
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
         if (onChange) {
-          const markdown = $convertToMarkdownString(ALL_TRANSFORMERS);
-          onChange(markdown);
+          // Export as HTML to preserve all formatting including underline
+          const html = $generateHtmlFromNodes(editor, null);
+          onChange(html);
         }
       });
     });
@@ -63,27 +70,46 @@ function InitialValuePlugin({ initialValue }: { initialValue: string }) {
   const [editor] = useLexicalComposerContext();
   const [hasInitialized, setHasInitialized] = React.useState(false);
 
+  // Helper function to detect if content is HTML or markdown
+  const isHtmlContent = (content: string): boolean => {
+    return content.includes('<') && content.includes('>');
+  };
+
+  const loadContent = (content: string) => {
+    const root = $getRoot();
+    root.clear();
+    
+    if (isHtmlContent(content)) {
+      // Content is HTML - parse it
+      console.log('SimpleLexicalEditor: Converting HTML to nodes');
+      const parser = new DOMParser();
+      const dom = parser.parseFromString(content, 'text/html');
+      const nodes = $generateNodesFromDOM(editor, dom);
+      root.append(...nodes);
+    } else {
+      // Content is markdown - convert it
+      console.log('SimpleLexicalEditor: Converting string to markdown');
+      $convertFromMarkdownString(content, ALL_TRANSFORMERS);
+    }
+  };
+
   React.useEffect(() => {
     if (initialValue && !hasInitialized) {
       // Set initial content only once when component first mounts with content
       editor.update(() => {
-        const root = $getRoot();
-        root.clear();
-        $convertFromMarkdownString(initialValue, TRANSFORMERS);
+        loadContent(initialValue);
       });
       setHasInitialized(true);
     } else if (initialValue && hasInitialized) {
       // Update content when initialValue changes (e.g., after loading article data)
       const currentContent = editor.getEditorState().read(() => {
-        return $convertToMarkdownString(TRANSFORMERS);
+        return $generateHtmlFromNodes(editor, null);
       });
       
       // Only update if the content is actually different
       if (currentContent !== initialValue) {
         editor.update(() => {
-          const root = $getRoot();
-          root.clear();
-          $convertFromMarkdownString(initialValue, ALL_TRANSFORMERS);
+          loadContent(initialValue);
         });
       }
     }
@@ -109,14 +135,50 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Simp
         let html = '';
         editor.getEditorState().read(() => {
           html = $generateHtmlFromNodes(editor, null);
+          // Clean up the HTML to be simpler for backend storage
+          html = html
+            // Remove all class attributes (keep structure, remove styling)
+            .replace(/\s+class="[^"]*"/g, '')
+            // Remove data attributes
+            .replace(/\s+data-[^=]*="[^"]*"/g, '')
+            // Remove spellcheck attribute  
+            .replace(/\s+spellcheck="[^"]*"/g, '')
+            // Keep only basic inline styles (color, font-family, font-size, background-color)
+            .replace(/style="([^"]*)"/g, (match, styles: string) => {
+              const basicStyles = styles
+                .split(';')
+                .filter((style: string) => {
+                  const prop = style.trim().split(':')[0]?.trim();
+                  return ['color', 'font-family', 'font-size', 'background-color', 'font-weight', 'font-style', 'text-decoration'].includes(prop);
+                })
+                .join(';');
+              return basicStyles ? `style="${basicStyles}"` : '';
+            })
+            // Simplify code blocks  
+            .replace(/<pre[^>]*>/g, '<pre>')
+            // Clean up whitespace
+            .replace(/\s+/g, ' ')
+            .replace(/>\s+</g, '><')
+            .trim();
         });
         return html;
       },
-      setMarkdown: (markdown: string) => {
+      setMarkdown: (content: string) => {
         editor.update(() => {
           const root = $getRoot();
           root.clear();
-          $convertFromMarkdownString(markdown, ALL_TRANSFORMERS);
+          
+          // Detect if content is HTML or markdown and handle appropriately
+          if (content.includes('<') && content.includes('>')) {
+            // Content is HTML - parse it
+            const parser = new DOMParser();
+            const dom = parser.parseFromString(content, 'text/html');
+            const nodes = $generateNodesFromDOM(editor, dom);
+            root.append(...nodes);
+          } else {
+            // Content is markdown - convert it
+            $convertFromMarkdownString(content, ALL_TRANSFORMERS);
+          }
         });
       },
       clear: () => {
@@ -169,6 +231,39 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
       },
       link: 'text-blue-600 underline hover:text-blue-800',
       quote: 'border-l-4 border-gray-300 pl-4 italic text-gray-600',
+      code: 'bg-gray-100 rounded px-2 py-1 font-mono text-sm',
+      codeHighlight: {
+        atrule: 'text-purple-600',
+        attr: 'text-blue-600',
+        boolean: 'text-red-600',
+        builtin: 'text-purple-600',
+        cdata: 'text-gray-600',
+        char: 'text-green-600',
+        class: 'text-blue-600',
+        'class-name': 'text-blue-600',
+        comment: 'text-gray-500',
+        constant: 'text-red-600',
+        deleted: 'text-red-600',
+        doctype: 'text-gray-600',
+        entity: 'text-orange-600',
+        function: 'text-blue-600',
+        important: 'text-red-600',
+        inserted: 'text-green-600',
+        keyword: 'text-purple-600',
+        namespace: 'text-orange-600',
+        number: 'text-red-600',
+        operator: 'text-gray-700',
+        prolog: 'text-gray-600',
+        property: 'text-blue-600',
+        punctuation: 'text-gray-600',
+        regex: 'text-green-600',
+        selector: 'text-green-600',
+        string: 'text-green-600',
+        symbol: 'text-red-600',
+        tag: 'text-red-600',
+        url: 'text-blue-600',
+        variable: 'text-orange-600',
+      },
       embedBlock: {
         base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
         focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
@@ -180,6 +275,8 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
       ListItemNode,
       QuoteNode,
       LinkNode,
+      CodeNode,
+      CodeHighlightNode,
       YouTubeNode,
     ],
     onError: (error: Error) => {
@@ -212,7 +309,12 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
           <InitialValuePlugin initialValue={initialValue} />
           <EditorRefPlugin editorRef={editorRef} />
           <HistoryPlugin />
+          <MarkdownShortcutPlugin transformers={ALL_TRANSFORMERS} />
           <YouTubePlugin />
+          <FontFamilyPlugin />
+          <FontSizePlugin />
+          <TextColorPlugin />
+          <BackgroundColorPlugin />
         </div>
       </div>
     </LexicalComposer>

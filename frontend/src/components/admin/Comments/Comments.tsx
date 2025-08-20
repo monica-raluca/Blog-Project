@@ -253,9 +253,13 @@ const Comments: React.FC<CommentsProps> = ({
                                         </TableCell>
                                         <TableCell className="max-w-xs">
                                             <div className="truncate pr-2">
-                                                {comment.content.length > 100 
-                                                    ? comment.content.substring(0, 100) + '...'
-                                                    : comment.content}
+                                                <div 
+                                                    dangerouslySetInnerHTML={{ 
+                                                        __html: comment.content.length > 100 
+                                                            ? comment.content.substring(0, 100) + '...'
+                                                            : comment.content
+                                                    }}
+                                                />
                                             </div>
                                         </TableCell>
                                         <TableCell>
