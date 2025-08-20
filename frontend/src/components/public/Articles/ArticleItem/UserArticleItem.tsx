@@ -72,6 +72,21 @@ const UserArticleItem: React.FC = () => {
 		try {
 			let html = markdown;
 			
+			// Handle YouTube embeds (from Lexical YouTube transformer)
+			html = html.replace(/<iframe[^>]*data-lexical-youtube="([^"]*)"[^>]*><\/iframe>/g, (match, videoId) => {
+				return `<div class="youtube-embed-container" style="position: relative; width: 100%; max-width: 800px; margin: 2rem auto;"><div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;" src="https://www.youtube-nocookie.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>`;
+			});
+
+			// Handle YouTube URLs directly (various formats)
+			html = html.replace(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/g, (match, videoId) => {
+				return `<div class="youtube-embed-container" style="position: relative; width: 100%; max-width: 800px; margin: 2rem auto;"><div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;" src="https://www.youtube-nocookie.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>`;
+			});
+
+			// Handle YouTube markdown links: [YouTube Video](https://www.youtube.com/watch?v=VIDEO_ID)
+			html = html.replace(/\[YouTube Video\]\(https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})\)/g, (match, videoId) => {
+				return `<div class="youtube-embed-container" style="position: relative; width: 100%; max-width: 800px; margin: 2rem auto;"><div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;" src="https://www.youtube-nocookie.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>`;
+			});
+
 			// Convert code blocks with language specification
 			html = html.replace(/```(\w+)?\n?([\s\S]*?)```/g, (match, language, code) => {
 				const lang = language || 'plain';
@@ -99,12 +114,14 @@ const UserArticleItem: React.FC = () => {
 			// Convert line breaks (but avoid double line breaks within code blocks)
 			html = html.replace(/\n(?![^\n]*<\/code>)/g, '<br>');
 			
-			// Clean up extra line breaks around code blocks
+			// Clean up extra line breaks around code blocks and YouTube embeds
 			html = html.replace(/<br>\s*<pre/g, '<pre');
 			html = html.replace(/<\/pre>\s*<br>/g, '</pre>');
+			html = html.replace(/<br>\s*<div class="youtube-embed-container"/g, '<div class="youtube-embed-container"');
+			html = html.replace(/<\/div>\s*<br>/g, '</div>');
 			
 			// Wrap in paragraph if not already wrapped and doesn't contain block elements
-			if (!html.includes('<pre') && !html.includes('<h') && (!html.includes('<') || (!html.startsWith('<') && !html.includes('<p')))) {
+			if (!html.includes('<pre') && !html.includes('<h') && !html.includes('<div class="youtube-embed-container"') && (!html.includes('<') || (!html.startsWith('<') && !html.includes('<p')))) {
 				html = `<p>${html}</p>`;
 			}
 			
@@ -123,8 +140,9 @@ const UserArticleItem: React.FC = () => {
 		// Simple heuristic: if it doesn't contain HTML tags, treat as markdown
 		const hasHtmlTags = /<[^>]+>/.test(content);
 		const hasMarkdownSyntax = /```|`[^`]+`|\*\*|__|\*|_|#{1,6}\s|^\s*[-*+]\s|^\s*\d+\.\s/m.test(content);
+		const hasYouTubeUrls = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)/i.test(content);
 		
-		return !hasHtmlTags && hasMarkdownSyntax;
+		return (!hasHtmlTags && hasMarkdownSyntax) || hasYouTubeUrls;
 	};
 
 	// Function to safely render comment content
@@ -135,18 +153,43 @@ const UserArticleItem: React.FC = () => {
 		
 		// If content looks like markdown, convert it to HTML
 		if (isMarkdownContent(content)) {
-			console.log('UserArticleItem: Converting markdown to HTML:', content);
+			console.log('UserArticleItem: Converting comment markdown to HTML:', content);
 			processedContent = convertMarkdownToHtml(content);
-			console.log('UserArticleItem: Converted HTML:', processedContent);
+			console.log('UserArticleItem: Converted comment HTML:', processedContent);
 		} else {
 			// Otherwise, assume it's already HTML
-			console.log('UserArticleItem: Content assumed to be HTML:', content);
+			console.log('UserArticleItem: Comment content assumed to be HTML:', content);
 			processedContent = content;
 		}
 		
 		// Ensure content is wrapped in a proper container div for parsing
 		if (!processedContent.startsWith('<div')) {
 			processedContent = `<div class="comment-content">${processedContent}</div>`;
+		}
+		
+		return processedContent;
+	};
+
+	// Function to safely render article content
+	const renderArticleContent = (content: string): string => {
+		if (!content) return '<div></div>';
+		
+		let processedContent = '';
+		
+		// If content looks like markdown, convert it to HTML
+		if (isMarkdownContent(content)) {
+			console.log('UserArticleItem: Converting article markdown to HTML:', content);
+			processedContent = convertMarkdownToHtml(content);
+			console.log('UserArticleItem: Converted article HTML:', processedContent);
+		} else {
+			// Otherwise, assume it's already HTML
+			console.log('UserArticleItem: Article content assumed to be HTML:', content);
+			processedContent = content;
+		}
+		
+		// Ensure content is wrapped in a proper container div for parsing
+		if (!processedContent.startsWith('<div')) {
+			processedContent = `<div class="article-content">${processedContent}</div>`;
 		}
 		
 		return processedContent;
@@ -371,11 +414,9 @@ const UserArticleItem: React.FC = () => {
          <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-8 !py-8 rounded-[18px] bg-[rgba(255,255,255,0.82)]">
 			<h2 className='!font-bold !text-[2.7em] !text-[#181818] !mb-[18px] !leading-[1.13] !tracking-[-0.01em] !pl-[48px]'>{article.title}</h2>
 			<div className='!text-[1.18em] !text-[#232323] !mb-[18px] !leading-[1.8] !pl-[48px] !pr-[48px]'>
-				<LexicalEditor
-					initialValue={article.content}
-					readOnly={true}
-					showToolbar={false}
+				<div 
 					className="!border-none !bg-transparent prose prose-slate max-w-none"
+					dangerouslySetInnerHTML={{ __html: renderArticleContent(article.content) }}
 				/>
 			</div>
 			<p className='!pl-[48px] !pr-[48px]'>
