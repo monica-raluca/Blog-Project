@@ -6,6 +6,7 @@ import { ArticleControlsContext } from '../../../layouts/Layout';
 import { Article } from '../../../api/types';
 import { Button } from '../../../../components/ui/button';
 import TopBar from '../../../layouts/TopBar';
+import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
 
 const UserArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -117,7 +118,10 @@ const UserArticles: React.FC = () => {
 							</span>}
 						</div>
 						<div className="!text-base !md:!text-lg !text-gray-700 !mb-5 !leading-relaxed !break-words !max-w-[900px]">
-							{article.summary}
+							<LexicalContentRenderer 
+								content={article.summary || article.content?.substring(0, 300) + '...' || ''}
+								className="!border-none !bg-transparent !text-sm"
+							/>
 						</div>
 						<NavLink 
 							className="!self-start !px-7 !py-3 !bg-gradient-to-r !from-purple-600 !to-pink-600 !text-white !rounded-full !text-base !font-medium !no-underline !shadow-lg !shadow-purple-200/40 hover:!shadow-xl hover:!shadow-purple-300/50 hover:!scale-105 hover:!from-purple-700 hover:!to-pink-700 !transition-all !duration-300 !ease-out !mt-2"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { X, Eye } from 'lucide-react';
+import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
 
 interface ArticlePreviewProps {
   title: string;
@@ -57,14 +58,9 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = ({
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
               {content ? (
-                <div 
+                <LexicalContentRenderer 
+                  content={content}
                   className="text-gray-800 leading-relaxed space-y-4"
-                  style={{
-                    fontSize: '16px',
-                    lineHeight: '1.7',
-                    fontFamily: 'system-ui, -apple-system, sans-serif'
-                  }}
-                  dangerouslySetInnerHTML={{ __html: content }}
                 />
               ) : (
                 <div className="text-center py-12">

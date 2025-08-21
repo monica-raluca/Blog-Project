@@ -8,6 +8,7 @@ import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import CommentItem from '../../Comments/CommentItem/CommentItem';
 import { Button } from '@/components/ui/button';
 import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
+import LexicalContentRenderer from '../../../ui/LexicalContentRenderer';
 
 import { Label } from '@/components/ui/label';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
@@ -297,14 +298,22 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                         {article?.summary && (
                             <div className="!mb-[24px]">
                                 <Label className="font-semibold text-[#495057] uppercase !mb-2">Summary:</Label>
-                                <p className="!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]">{article.summary}</p>
+                                <div className="!bg-[#fff3cd] !border !border-[#ffeaa7] !rounded-lg !p-[16px] !text-[#856404]">
+                                    <LexicalContentRenderer 
+                                        content={article.summary}
+                                        className="!border-none !bg-transparent"
+                                    />
+                                </div>
                             </div>
                         )}
 
                         <div className="!mb-[24px]">
                             <Label className="font-semibold text-[#495057] uppercase !mb-2">Content:</Label>
                             <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]">
-                                {article?.content}
+                                <LexicalContentRenderer 
+                                    content={article?.content || ''}
+                                    className="!border-none !bg-transparent"
+                                />
                             </div>
                         </div>
 
@@ -385,9 +394,12 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
             {article?.summary && (
                 <div className="!text-sm !text-[#6c757d]">
-                    {article.summary.length > 120 
-                        ? article.summary.substring(0, 120) + '...' 
-                        : article.summary}
+                    <LexicalContentRenderer 
+                        content={article.summary.length > 120 
+                            ? article.summary.substring(0, 120) + '...' 
+                            : article.summary}
+                        className="!border-none !bg-transparent !text-xs"
+                    />
                 </div>
             )}
 

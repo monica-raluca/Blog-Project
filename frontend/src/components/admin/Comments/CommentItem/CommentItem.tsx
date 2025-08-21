@@ -8,6 +8,7 @@ import { fetchArticleById } from '../../../../api/ArticlesApi';
 
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import LexicalContentRenderer from '../../../ui/LexicalContentRenderer';
 
 interface CommentItemProps {
     comment?: Comment;
@@ -310,8 +311,8 @@ const CommentItem: React.FC<CommentItemProps> = ({
                         <div className="!mb-[24px]">
                             <Label className="font-semibold text-[#495057] uppercase !mb-2">Comment Content:</Label>
                             <div className="!bg-white !border !border-[#dee2e6] !rounded-lg !p-[16px]">
-                                <div 
-                                    dangerouslySetInnerHTML={{ __html: comment?.content || '' }}
+                                <LexicalContentRenderer 
+                                    content={comment?.content || ''}
                                 />
                             </div>
                         </div>
@@ -355,12 +356,11 @@ const CommentItem: React.FC<CommentItemProps> = ({
             </div>
 
             <div className="!text-sm !text-[#6c757d]">
-                <div 
-                    dangerouslySetInnerHTML={{ 
-                        __html: comment?.content && comment.content.length > 150 
-                            ? comment.content.substring(0, 150) + '...'
-                            : comment?.content || ''
-                    }}
+                <LexicalContentRenderer 
+                    content={comment?.content && comment.content.length > 150 
+                        ? comment.content.substring(0, 150) + '...'
+                        : comment?.content || ''}
+                    className="!border-none !bg-transparent !text-xs"
                 />
             </div>
 

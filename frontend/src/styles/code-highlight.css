@@ -212,6 +212,70 @@ code .code-highlight-cdata {
   word-break: break-word !important;
 }
 
+/* Additional Prism token types */
+pre code .code-highlight-annotation,
+.prose pre code .code-highlight-annotation,
+code .code-highlight-annotation {
+  color: #4ec9b0 !important;
+}
+
+pre code .code-highlight-decorator,
+.prose pre code .code-highlight-decorator,
+code .code-highlight-decorator {
+  color: #c586c0 !important;
+}
+
+pre code .code-highlight-interpolation,
+.prose pre code .code-highlight-interpolation,
+code .code-highlight-interpolation {
+  color: #ce9178 !important;
+}
+
+pre code .code-highlight-module,
+.prose pre code .code-highlight-module,
+code .code-highlight-module {
+  color: #4ec9b0 !important;
+}
+
+pre code .code-highlight-macro,
+.prose pre code .code-highlight-macro,
+code .code-highlight-macro {
+  color: #c586c0 !important;
+}
+
+pre code .code-highlight-generic,
+.prose pre code .code-highlight-generic,
+code .code-highlight-generic {
+  color: #4ec9b0 !important;
+}
+
+pre code .code-highlight-template-string,
+.prose pre code .code-highlight-template-string,
+code .code-highlight-template-string {
+  color: #ce9178 !important;
+}
+
+pre code .code-highlight-parameter,
+.prose pre code .code-highlight-parameter,
+code .code-highlight-parameter {
+  color: #9cdcfe !important;
+}
+
+pre code .code-highlight-plain,
+.prose pre code .code-highlight-plain,
+code .code-highlight-plain {
+  color: #d4d4d8 !important;
+}
+
+/* Prefix styles for diff highlighting */
+pre code .code-highlight-prefix,
+.prose pre code .code-highlight-prefix,
+code .code-highlight-prefix {
+  color: #9ca3af !important;
+  user-select: none;
+  pointer-events: none;
+}
+
 .code-block-language-indicator {
   position: absolute;
   top: 8px;

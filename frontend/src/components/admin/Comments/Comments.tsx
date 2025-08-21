@@ -6,6 +6,7 @@ import { useAuth } from '../../../api/AuthContext';
 import { hasRole } from '../../../api/AuthApi';
 import { Comment, Article } from '../../../api/types';
 import CommentItem from './CommentItem/CommentItem';
+import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
 
 import { Button } from '@/components/ui/button';
 import { 
@@ -253,12 +254,11 @@ const Comments: React.FC<CommentsProps> = ({
                                         </TableCell>
                                         <TableCell className="max-w-xs">
                                             <div className="truncate pr-2">
-                                                <div 
-                                                    dangerouslySetInnerHTML={{ 
-                                                        __html: comment.content.length > 100 
-                                                            ? comment.content.substring(0, 100) + '...'
-                                                            : comment.content
-                                                    }}
+                                                <LexicalContentRenderer 
+                                                    content={comment.content.length > 100 
+                                                        ? comment.content.substring(0, 100) + '...'
+                                                        : comment.content}
+                                                    className="!border-none !bg-transparent !text-xs"
                                                 />
                                             </div>
                                         </TableCell>

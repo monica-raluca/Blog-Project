@@ -97,6 +97,33 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             fetchArticleById(finalId).then(article => {
                 setValue('title', article.title);
                 setValue('content', article.content);
+                
+                // Set the JSON content in the editor after a small delay to ensure it's rendered
+                setTimeout(() => {
+                    try {
+                        // Check if content is JSON (new format) or legacy format
+                        const isJsonContent = (content: string): boolean => {
+                            try {
+                                JSON.parse(content);
+                                return true;
+                            } catch {
+                                return false;
+                            }
+                        };
+
+                        if (isJsonContent(article.content)) {
+                            // New JSON format - use setEditorStateFromJson
+                            markdownEditorRef.current?.setEditorStateFromJson(article.content);
+                        } else {
+                            // Legacy format - set as HTML/markdown
+                            markdownEditorRef.current?.setHtml(article.content);
+                        }
+                    } catch (error) {
+                        console.warn('Failed to set edit content:', error);
+                        // Fallback to HTML setter
+                        markdownEditorRef.current?.setHtml(article.content);
+                    }
+                }, 100);
             });
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
@@ -122,10 +149,10 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         setLoading(true);
         setError(null);
 
-        const finalMarkdownContent = markdownEditorRef.current?.getMarkdown() || data.content;
+        const finalJsonContent = markdownEditorRef.current?.getEditorStateJson() || data.content;
         const articleData: Article = { 
             title: data.title.trim(), 
-            content: finalMarkdownContent.trim()
+            content: finalJsonContent.trim()
         };
 
         try {

@@ -10,6 +10,7 @@ import { hasRole, hasUser } from '../../../../api/AuthApi';
 import { Article, Comment } from '../../../../api/types';
 
 import LexicalEditor, { LexicalEditorRef } from '../../../ui/LexicalEditor';
+import LexicalContentRenderer from '../../../ui/LexicalContentRenderer';
 import { createEditor } from 'lexical';
 import { $generateHtmlFromNodes } from '@lexical/html';
 import { HeadingNode, QuoteNode } from '@lexical/rich-text';
@@ -259,65 +260,7 @@ const UserArticleItem: React.FC = () => {
 		}
 	};
 
-	// Function to safely render comment content
-	const renderCommentContent = (content: string): string => {
-		if (!content) return '<div></div>';
-		
-		let processedContent = '';
-		
-		// Check if content is JSON (new format)
-		if (isJsonContent(content)) {
-			console.log('UserArticleItem: Converting comment JSON to HTML:', content);
-			processedContent = generateHtmlFromJson(content);
-			console.log('UserArticleItem: Converted comment HTML:', processedContent);
-		} else if (isMarkdownContent(content)) {
-			// For backward compatibility with existing markdown content
-			console.log('UserArticleItem: Converting comment markdown to HTML:', content);
-			processedContent = convertMarkdownToHtml(content);
-			console.log('UserArticleItem: Converted comment HTML:', processedContent);
-		} else {
-			// Otherwise, assume it's already HTML
-			console.log('UserArticleItem: Comment content assumed to be HTML:', content);
-			processedContent = content;
-		}
-		
-		// Ensure content is wrapped in a proper container div for parsing
-		if (!processedContent.startsWith('<div')) {
-			processedContent = `<div class="comment-content">${processedContent}</div>`;
-		}
-		
-		return processedContent;
-	};
 
-	// Function to safely render article content
-	const renderArticleContent = (content: string): string => {
-		if (!content) return '<div></div>';
-		
-		let processedContent = '';
-		
-		// Check if content is JSON (new format)
-		if (isJsonContent(content)) {
-			console.log('UserArticleItem: Converting article JSON to HTML:', content);
-			processedContent = generateHtmlFromJson(content);
-			console.log('UserArticleItem: Converted article HTML:', processedContent);
-		} else if (isMarkdownContent(content)) {
-			// For backward compatibility with existing markdown content
-			console.log('UserArticleItem: Converting article markdown to HTML:', content);
-			processedContent = convertMarkdownToHtml(content);
-			console.log('UserArticleItem: Converted article HTML:', processedContent);
-		} else {
-			// Otherwise, assume it's already HTML
-			console.log('UserArticleItem: Article content assumed to be HTML:', content);
-			processedContent = content;
-		}
-		
-		// Ensure content is wrapped in a proper container div for parsing
-		if (!processedContent.startsWith('<div')) {
-			processedContent = `<div class="article-content">${processedContent}</div>`;
-		}
-		
-		return processedContent;
-	};
 
 	useEffect(() => {
 		if (!id) return;
@@ -388,7 +331,10 @@ const UserArticleItem: React.FC = () => {
 
         try {
             const newComment = await createComment(id, token, jsonContent);
-            setComments([...comments, newComment]);
+            // Use setTimeout to avoid flushSync issues when re-rendering content
+            setTimeout(() => {
+                setComments([...comments, newComment]);
+            }, 0);
             setContent('');
             commentEditorRef.current?.clear();
             console.log('UserArticleItem: Comment created successfully with JSON content');
@@ -444,9 +390,12 @@ const UserArticleItem: React.FC = () => {
 			const finalEditedContent = editCommentEditorRef.current?.getEditorStateJson() || editedContent;
 			console.log('UserArticleItem: Editing comment with JSON:', articleId, commentId, finalEditedContent);
 			await editComment(articleId, commentId, finalEditedContent, token);
-			setComments(comments.map(c =>
-				c.id === commentId ? { ...c, content: finalEditedContent } : c
-			));
+			// Use setTimeout to avoid flushSync issues when re-rendering content
+			setTimeout(() => {
+				setComments(comments.map(c =>
+					c.id === commentId ? { ...c, content: finalEditedContent } : c
+				));
+			}, 0);
 			setEditingCommentId(null);
 			setEditedContent('');
 		} catch (err) {
@@ -466,7 +415,10 @@ const UserArticleItem: React.FC = () => {
 		try {
 			console.log(articleId, commentId, token);
 			await deleteComment(articleId, commentId, token);
-			setComments(comments.filter(c => c.id !== commentId));
+			// Use setTimeout to avoid flushSync issues when re-rendering content
+			setTimeout(() => {
+				setComments(comments.filter(c => c.id !== commentId));
+			}, 0);
 		} catch (err) {
 			const errorMessage = (err as Error).message || 'An error occurred';
 			if (errorMessage.toLowerCase().includes('forbidden')) {
@@ -498,11 +450,13 @@ const UserArticleItem: React.FC = () => {
         <>
          <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-8 !py-8 rounded-[18px] bg-[rgba(255,255,255,0.82)]">
 			<h2 className='!font-bold !text-[2.7em] !text-[#181818] !mb-[18px] !leading-[1.13] !tracking-[-0.01em] !pl-[48px]'>{article.title}</h2>
-			<div className='!text-[1.18em] !text-[#232323] !mb-[18px] !leading-[1.8] !pl-[48px] !pr-[48px]'>
-				<div 
-					className="!border-none !bg-transparent prose prose-slate max-w-none"
-					dangerouslySetInnerHTML={{ __html: renderArticleContent(article.content) }}
-				/>
+			<div className='!mb-[18px] !pl-[48px] !pr-[48px]'>
+				<div>
+					<LexicalContentRenderer 
+						content={article.content}
+						className="!border-none !bg-transparent"
+					/>
+				</div>
 			</div>
 			<p className='!pl-[48px] !pr-[48px]'>
 				<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'>
@@ -551,9 +505,9 @@ const UserArticleItem: React.FC = () => {
 							) : (
 							<>
 								<div>
-									<div 
-										className="!border-none !bg-transparent prose prose-slate max-w-none !text-sm"
-										dangerouslySetInnerHTML={{ __html: renderCommentContent(comment.content) }}
+									<LexicalContentRenderer 
+										content={comment.content}
+										className="!border-none !bg-transparent !text-sm"
 									/>
 								</div>
 								{showCommentEdited && (
