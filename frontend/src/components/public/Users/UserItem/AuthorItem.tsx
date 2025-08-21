@@ -69,6 +69,11 @@ const AuthorItem: React.FC = () => {
 		</div>
 	);
 
+	console.log("author");
+	console.log(author);
+	console.log(author.profilePicture);
+	console.log(`/profile-pictures/${author.profilePicture}`);
+
 	return (
 		<div className="!min-h-screen !flex !items-center !justify-center !p-4">
 			<div className="!w-full !max-w-lg !bg-white/90 !backdrop-blur-xl !rounded-3xl !shadow-2xl !shadow-purple-100/50 !border !border-white/60 !p-8 !md:!p-12 !flex !flex-col !items-center !space-y-6">
@@ -79,7 +84,7 @@ const AuthorItem: React.FC = () => {
 						<div className="!w-full !h-full !rounded-full !bg-white !flex !items-center !justify-center !overflow-hidden">
 							{author.profilePicture ? (
 								<img 
-									src={author.profilePicture} 
+									src={`http://localhost:8080/profile-pictures/${author.profilePicture}`} 
 									alt="Profile" 
 									className="!w-full !h-full !object-cover !rounded-full"
 								/>

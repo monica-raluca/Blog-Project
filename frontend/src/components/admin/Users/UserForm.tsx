@@ -10,6 +10,7 @@ import * as yup from 'yup';
 
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import ProfileUpload from '../../ui/ProfileUpload';
 
 interface UserFormProps {
     userId?: string;
@@ -331,6 +332,26 @@ const UserForm: React.FC<UserFormProps> = ({
                                 </p>
                             )}
                             <p className="!text-red-500 !text-sm !mt-1">{errors.role?.message}</p>
+                        </div>
+
+                        <div className="relative">
+                            <Label className="flex justify-between items-center !mb-[8px] !text-sm text-[#495057] font-semibold">
+                                Profile Picture
+                            </Label>
+                            <div className="flex justify-center">
+                                {user && token && (
+                                    <ProfileUpload
+                                        userId={user.id}
+                                        currentImageUrl={user.profilePicture}
+                                        // currentImageUrl="/profile-pictures/user-83192b2b-3046-408e-bb82-2836ef1a6db8.png"
+                                        // currentImageUrl={`http://localhost:8080/profile-pictures/${user.profilePicture}`}
+                                        token={token}
+                                        onUploadSuccess={(updatedUser) => {
+                                            setUser(updatedUser);
+                                        }}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

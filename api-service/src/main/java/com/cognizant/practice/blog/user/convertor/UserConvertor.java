@@ -13,6 +13,7 @@ public class UserConvertor {
                 .createdDate(userEntity.getCreatedDate())
                 .username(userEntity.getUsername())
                 .role(userEntity.getRole())
+                .profilePicture(userEntity.getProfilePicture())
                 .build();
     }
 
@@ -25,6 +26,7 @@ public class UserConvertor {
                 .createdDate(user.getCreatedDate())
                 .username(user.getUsername())
                 .role(user.getRole())
+                .profilePicture(user.getProfilePicture())
                 .build();
     }
 }

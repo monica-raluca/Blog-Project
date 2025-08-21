@@ -20,6 +20,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String profilePicture;
+    
     private Role role;
 
     private LocalDateTime createdDate;

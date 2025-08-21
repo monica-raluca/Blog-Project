@@ -11,10 +11,18 @@ import com.cognizant.practice.blog.user.entity.UserEntity;
 import com.cognizant.practice.blog.user.repository.UserRepository;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import java.io.File;
+import java.nio.file.Path;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
@@ -89,7 +97,7 @@ public class UsersService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
-        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), LocalDateTime.now(), Role.ROLE_USER, null, null);
+        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), null,LocalDateTime.now(), Role.ROLE_USER, null, null);
 
 //         return jwtService.generateToken(userRepository.save(newUser));
         Map<String, Object> extraClaims = new HashMap<>();
@@ -154,7 +162,36 @@ public class UsersService {
         user.get().setUsername(userRequest.username());
         user.get().setEmail(userRequest.email());
         user.get().setRole(userRequest.role());
+        user.get().setProfilePicture(userRequest.profilePicture());
 
+        return UserConvertor.toDto(userRepository.save(user.get()));
+    }
+
+    public User uploadProfilePicture(MultipartFile file, UUID id) {
+        Optional<UserEntity> user = userRepository.findById(id);
+        if(user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+        File directory = new File("api-service/uploads/profile-pictures");
+        if(!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+
+        String fileName = "user-" + user.get().getId() + extension;
+        // Path path = Paths.get(directory.getAbsolutePath(), fileName);
+        // String filePath = System.getProperty("user.dir") + "api-service/uploads/profile-pictures/" + fileName;
+        String filePath = "api-service/uploads/profile-pictures/" + fileName;
+        Path path = Paths.get(filePath);
+        try {
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload profile picture");
+        }
+
+        user.get().setProfilePicture(fileName);
+        // return filePath;
         return UserConvertor.toDto(userRepository.save(user.get()));
     }
 }

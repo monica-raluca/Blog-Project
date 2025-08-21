@@ -224,9 +224,13 @@ const UserItem: React.FC<UserItemProps> = ({
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-full bg-[#f8f9fa] flex items-center justify-center overflow-hidden">
                                     {user.profilePicture ? (
-                                        <img src={user.profilePicture} alt={user.username} />
+                                        <img 
+                                            src={`http://localhost:8080/profile-pictures/${user.profilePicture}`} 
+                                            alt={user.username}
+                                            className="w-full h-full object-cover rounded-full"
+                                        />
                                     ) : (
-                                        <div className="w-full h-full bg-[#007bff] text-white flex items-center justify-center">
+                                        <div className="w-full h-full bg-[#007bff] text-white flex items-center justify-center rounded-full">
                                             {user.firstName.charAt(0)}{user.lastName.charAt(0)}
                                         </div>
                                     )}

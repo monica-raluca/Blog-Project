@@ -5,6 +5,7 @@ import com.cognizant.practice.blog.user.dto.*;
 import com.cognizant.practice.blog.user.service.UsersService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
@@ -62,5 +63,10 @@ public class UsersController {
     @PutMapping(value="/users/{id}/edit")
     public User updateUser(@PathVariable UUID id, @RequestBody UserEditRequest userRequest) {
         return usersService.updateUser(id, userRequest);
+    }
+
+    @PostMapping(value="/users/{id}/upload-profile-picture")
+    public User uploadProfilePicture(@RequestParam("file") MultipartFile file, @PathVariable UUID id) {
+        return usersService.uploadProfilePicture(file, id);
     }
 }

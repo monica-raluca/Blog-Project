@@ -411,7 +411,7 @@ const Users: React.FC<UsersProps> = ({
                                                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
                                                     {user.profilePicture ? (
                                                         <img 
-                                                            src={user.profilePicture} 
+                                                            src={`http://localhost:8080/profile-pictures/${user.profilePicture}`} 
                                                             alt={`${user.username}'s profile`} 
                                                             className="w-full h-full object-cover rounded-full"
                                                         />
