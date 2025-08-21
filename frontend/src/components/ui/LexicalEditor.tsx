@@ -23,6 +23,8 @@ import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode, AutoLinkNode } from '@lexical/link';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import { TableNode, TableCellNode, TableRowNode, INSERT_TABLE_COMMAND } from '@lexical/table';
+import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
 import TextColorPlugin, { FORMAT_TEXT_COLOR_COMMAND } from './TextColorPlugin';
 import BackgroundColorPlugin, { FORMAT_BACKGROUND_COLOR_COMMAND } from './BackgroundColorPlugin';
@@ -74,6 +76,7 @@ import {
   Link as LinkIcon,
   Code,
   Youtube,
+  Table,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -249,6 +252,25 @@ function ToolbarPlugin() {
     
     if (url) {
       editor.dispatchCommand(INSERT_YOUTUBE_COMMAND, url);
+    }
+  };
+
+  const insertTable = () => {
+    const rows = window.prompt('Number of rows:', '3');
+    const columns = window.prompt('Number of columns:', '3');
+    
+    if (rows && columns) {
+      const rowCount = parseInt(rows, 10);
+      const columnCount = parseInt(columns, 10);
+      
+      if (rowCount > 0 && columnCount > 0 && rowCount <= 20 && columnCount <= 10) {
+        editor.dispatchCommand(INSERT_TABLE_COMMAND, {
+          columns: columnCount.toString(),
+          rows: rowCount.toString(),
+        });
+      } else {
+        alert('Please enter valid numbers (rows: 1-20, columns: 1-10)');
+      }
     }
   };
 
@@ -445,6 +467,17 @@ function ToolbarPlugin() {
         className="p-1 h-8 w-8"
       >
         <LinkIcon size={16} />
+      </Button>
+      
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={insertTable}
+        className="p-1 h-8 w-8"
+        title="Insert Table"
+      >
+        <Table size={16} />
       </Button>
     </div>
   );
@@ -658,6 +691,12 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
         base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
         focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
       },
+      table: 'border-collapse border border-gray-300 my-4 w-full',
+      tableCell: 'border border-gray-300 px-3 py-2 text-left bg-white',
+      tableCellHeader: 'border border-gray-300 px-3 py-2 text-left bg-white font-semibold',
+      tableRow: 'border-b border-gray-300',
+      tableRowStriped: 'border-b border-gray-300 bg-white',
+      tableSelection: 'bg-blue-100',
     },
     nodes: [
       HeadingNode,
@@ -669,6 +708,9 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
       LinkNode,
       AutoLinkNode,
       YouTubeNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
     ],
     onError: (error: Error) => {
       console.error('Lexical error:', error);
@@ -722,6 +764,7 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           <FontSizePlugin />
           <TextColorPlugin />
           <BackgroundColorPlugin />
+          <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
         </div>
       </div>
     </LexicalComposer>

@@ -10,6 +10,8 @@ import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { LinkNode, AutoLinkNode } from '@lexical/link';
 import { CodeHighlightNode, CodeNode } from '@lexical/code';
+import { TableNode, TableCellNode, TableRowNode } from '@lexical/table';
+import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { YouTubeNode } from './YouTubeNode';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
 
@@ -253,6 +255,12 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
         base: 'relative w-full max-w-full my-4 rounded-lg overflow-hidden shadow-lg border border-gray-200',
         focus: 'ring-2 ring-blue-500 ring-opacity-50 border-blue-400',
       },
+      table: 'border-collapse border border-gray-300 my-4 w-full',
+      tableCell: 'border border-gray-300 px-3 py-2 text-left bg-white',
+      tableCellHeader: 'border border-gray-300 px-3 py-2 text-left bg-white font-semibold',
+      tableRow: 'border-b border-gray-300',
+      tableRowStriped: 'border-b border-gray-300 bg-white',
+      tableSelection: 'bg-blue-100',
     },
     nodes: [
       HeadingNode,
@@ -264,6 +272,9 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
       LinkNode,
       AutoLinkNode,
       YouTubeNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
     ],
     editable: false, // Make it read-only
     onError: (error: Error) => {
@@ -285,6 +296,7 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
           ErrorBoundary={LexicalErrorBoundary}
         />
         <CodeHighlightPlugin />
+        <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
         <ContentInitializerPlugin jsonContent={content} />
       </LexicalComposer>
     </div>
