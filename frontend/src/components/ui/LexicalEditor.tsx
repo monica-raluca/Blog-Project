@@ -26,9 +26,10 @@ import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { TableNode, TableCellNode, TableRowNode, INSERT_TABLE_COMMAND } from '@lexical/table';
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
-import TextColorPlugin, { FORMAT_TEXT_COLOR_COMMAND } from './TextColorPlugin';
-import BackgroundColorPlugin, { FORMAT_BACKGROUND_COLOR_COMMAND } from './BackgroundColorPlugin';
-import ColorSelector from './ColorSelector';
+import TextColorPlugin, { FORMAT_TEXT_COLOR_COMMAND, CLEAR_TEXT_COLOR_COMMAND } from './TextColorPlugin';
+import BackgroundColorPlugin, { FORMAT_BACKGROUND_COLOR_COMMAND, CLEAR_BACKGROUND_COLOR_COMMAND } from './BackgroundColorPlugin';
+import { $patchStyleText } from '@lexical/selection';
+
 
 
 // Toolbar components
@@ -41,6 +42,8 @@ import {
   REDO_COMMAND,
   UNDO_COMMAND,
   TextFormatType,
+  FORMAT_ELEMENT_COMMAND,
+  $createParagraphNode,
 } from 'lexical';
 import {
   $isHeadingNode,
@@ -77,6 +80,7 @@ import {
   Code,
   Youtube,
   Table,
+  Eraser,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -161,6 +165,44 @@ function ToolbarPlugin() {
 
   const formatText = (format: TextFormatType) => {
     editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+  };
+
+  const clearFormatting = () => {
+    editor.update(() => {
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        // Clear text formatting (bold, italic, underline, strikethrough)
+        // Remove each format type individually
+        const formatTypes: TextFormatType[] = ['bold', 'italic', 'underline', 'strikethrough'];
+        formatTypes.forEach(format => {
+          if (selection.hasFormat(format)) {
+            selection.formatText(format);
+          }
+        });
+        
+        // Clear colors using style patching
+        $patchStyleText(selection, {
+          'color': '',
+          'background-color': '',
+          'font-family': '',
+          'font-size': '',
+        });
+        
+        // Convert to normal paragraph if it's a heading or list
+        const anchorNode = selection.anchor.getNode();
+        const element = anchorNode.getKey() === 'root' 
+          ? anchorNode 
+          : anchorNode.getTopLevelElementOrThrow();
+        
+        if ($isHeadingNode(element)) {
+          element.replace($createParagraphNode().append(...element.getChildren()));
+        }
+      }
+    });
+    
+    // Also dispatch the clear color commands to ensure complete cleanup
+    editor.dispatchCommand(CLEAR_TEXT_COLOR_COMMAND, undefined);
+    editor.dispatchCommand(CLEAR_BACKGROUND_COLOR_COMMAND, undefined);
   };
 
   const formatHeading = (headingSize: HeadingTagType) => {
@@ -282,13 +324,7 @@ function ToolbarPlugin() {
     editor.dispatchCommand(FORMAT_FONT_SIZE_COMMAND, fontSize);
   };
 
-  const handleTextColorChange = (color: string) => {
-    editor.dispatchCommand(FORMAT_TEXT_COLOR_COMMAND, color);
-  };
 
-  const handleBackgroundColorChange = (color: string) => {
-    editor.dispatchCommand(FORMAT_BACKGROUND_COLOR_COMMAND, color);
-  };
 
   return (
     <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-300 bg-gray-50">
@@ -302,15 +338,9 @@ function ToolbarPlugin() {
         onSizeChange={handleFontSizeChange}
       />
       
-      <ColorSelector
-        placeholder="Text color"
-        onValueChange={handleTextColorChange}
-      />
+      <TextColorPlugin showToolbar={true} />
       
-      <ColorSelector
-        placeholder="Background"
-        onValueChange={handleBackgroundColorChange}
-      />
+      <BackgroundColorPlugin showToolbar={true} />
       
       <div className="w-px h-6 bg-gray-300 mx-1" />
       
@@ -372,6 +402,17 @@ function ToolbarPlugin() {
         className="p-1 h-8 w-8"
       >
         <Strikethrough size={16} />
+      </Button>
+      
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={clearFormatting}
+        className="p-1 h-8 w-8"
+        title="Clear Formatting"
+      >
+        <Eraser size={16} />
       </Button>
       
       <div className="w-px h-6 bg-gray-300 mx-1" />
@@ -762,8 +803,8 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           <YouTubePlugin />
           <FontFamilyPlugin />
           <FontSizePlugin />
-          <TextColorPlugin />
-          <BackgroundColorPlugin />
+          <TextColorPlugin showToolbar={false} />
+          <BackgroundColorPlugin showToolbar={false} />
           <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
         </div>
       </div>

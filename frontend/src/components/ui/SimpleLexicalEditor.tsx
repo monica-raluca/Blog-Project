@@ -313,8 +313,8 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
           <YouTubePlugin />
           <FontFamilyPlugin />
           <FontSizePlugin />
-          <TextColorPlugin />
-          <BackgroundColorPlugin />
+          <TextColorPlugin showToolbar={false} />
+          <BackgroundColorPlugin showToolbar={false} />
         </div>
       </div>
     </LexicalComposer>

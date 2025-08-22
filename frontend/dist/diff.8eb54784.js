@@ -1,2 +1,0 @@
-(0,globalThis.parcelRequire10c2.register)("3NHNH",function(e,r){Object.defineProperty(e.exports,"diff",{get:()=>i,set:void 0,enumerable:!0,configurable:!0});var t={"+":"inserted","-":"deleted","@":"meta"};let i={name:"diff",token:function(e){var r=e.string.search(/[\t ]+?$/);if(!e.sol()||0===r)return e.skipToEnd(),("error "+(t[e.string.charAt(0)]||"")).replace(/ $/,"");var i=t[e.peek()]||e.skipToEnd();return -1===r?e.skipToEnd():e.pos=r,i}}});
-//# sourceMappingURL=diff.8eb54784.js.map
