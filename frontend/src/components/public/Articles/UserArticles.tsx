@@ -7,6 +7,9 @@ import { Article } from '../../../api/types';
 import { Button } from '../../../../components/ui/button';
 import TopBar from '../../../layouts/TopBar';
 import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
+import MagicalAvatar from '../../ui/MagicalAvatar';
+import ArticleCover from '../../ui/ArticleCover';
+import '../../../styles/magical-cards.css';
 
 const UserArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -81,57 +84,114 @@ const UserArticles: React.FC = () => {
 
 	return (
         <>
-        <div className="!w-full !max-w-none !mx-auto !pt-14 !pb-10 !px-4">
-			{articles.map((article, idx) => (
-				<div
-					className="!flex !items-start !bg-white !rounded-2xl !shadow-lg !shadow-gray-100/50 !mx-auto !mb-11 !p-0 !relative !max-w-[1100px] !w-full !transition-all !duration-300 hover:!shadow-xl hover:!shadow-purple-100/30 hover:!scale-[1.01] !border !border-gray-100/50"
-					key={article.id}
-					ref={idx === articles.length - 1 ? lastArticleRef : null}
-				>
-					<div className="!w-2 !min-w-[8px] !bg-gradient-to-b !from-purple-600 !via-pink-500 !to-rose-500 !rounded-l-2xl !my-7 !mr-7 !h-[80%] !shadow-lg !shadow-purple-200/30"></div>
-					<div className="!flex-1 !py-8 !pr-7 !flex !flex-col !min-w-0">
-						<div className="!text-2xl !md:!text-4xl !font-bold !text-gray-800 !mb-3 !tracking-wide !leading-tight">
-							{article.title}
-						</div>
-						<div className="!text-sm !md:!text-base !text-gray-600 !mb-5 !flex !flex-col !gap-1 !italic">
-							<span>
-								Created by{' '}
-								<NavLink 
-									to={`/public/users/${article.author?.id}`}
-									className="!text-purple-600 !font-semibold hover:!text-purple-700 !transition-colors !duration-200 !no-underline hover:!underline"
-								>
-									{article.author?.username}
-								</NavLink>{' '}
-								at {formatDateTimeToMin(article.createdDate || article.createdAt || '')}
-							</span>
-                            {(article.author?.username !== article.editor?.username ||
-                            formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) &&
-                            <span>
-								Edited by{' '}
-								<NavLink 
-									to={`/public/users/${article.editor?.id}`}
-									className="!text-purple-600 !font-semibold hover:!text-purple-700 !transition-colors !duration-200 !no-underline hover:!underline"
-								>
-									{article.editor?.username}
-								</NavLink>{' '}
-								at {formatDateTimeToMin(article.updatedDate || article.updatedAt || '')}
-							</span>}
-						</div>
-						<div className="!text-base !md:!text-lg !text-gray-700 !mb-5 !leading-relaxed !break-words !max-w-[900px]">
-							<LexicalContentRenderer 
-								content={article.summary || article.content?.substring(0, 300) + '...' || ''}
-								className="!border-none !bg-transparent !text-sm"
-							/>
-						</div>
-						<NavLink 
-							className="!self-start !px-7 !py-3 !bg-gradient-to-r !from-purple-600 !to-pink-600 !text-white !rounded-full !text-base !font-medium !no-underline !shadow-lg !shadow-purple-200/40 hover:!shadow-xl hover:!shadow-purple-300/50 hover:!scale-105 hover:!from-purple-700 hover:!to-pink-700 !transition-all !duration-300 !ease-out !mt-2"
-							to={`/public/articles/${article.id}`}
-						>
-							Read More
-						</NavLink>
-					</div>
+        <div className="!min-h-screen !relative magical-bg">
+			{/* Magical background elements */}
+			<div className="!absolute !inset-0 !overflow-hidden !pointer-events-none">
+				<div className="!absolute !top-20 !left-10 !w-2 !h-2 !bg-purple-400/30 !rounded-full sparkle-animation"></div>
+				<div className="!absolute !top-40 !right-20 !w-1 !h-1 !bg-blue-400/30 !rounded-full sparkle-animation" style={{animationDelay: '1s'}}></div>
+				<div className="!absolute !bottom-40 !left-1/4 !w-1.5 !h-1.5 !bg-pink-400/30 !rounded-full sparkle-animation" style={{animationDelay: '2s'}}></div>
+				<div className="!absolute !top-1/3 !right-1/3 !w-1 !h-1 !bg-indigo-400/30 !rounded-full sparkle-animation" style={{animationDelay: '0.5s'}}></div>
+			</div>
+
+			<div className="!w-full !max-w-7xl !mx-auto !pt-14 !pb-10 !px-6 !relative">
+				{/* Page title with magical styling */}
+				<div className="!text-center !mb-12">
+					<h1 className="!text-4xl !font-bold !text-gray-800 !mb-4">Chronicles Collection</h1>
+					<p className="!text-gray-600 !text-lg">Discover tales from our community of storytellers</p>
+					<div className="!w-24 !h-1 !bg-gradient-to-r !from-purple-500 !to-blue-500 !mx-auto !mt-4 !rounded-full"></div>
 				</div>
-			))}
+
+				{/* Grid layout for cards */}
+				<div className="!grid !grid-cols-1 !md:!grid-cols-2 !xl:!grid-cols-3 !gap-8">
+					{articles.map((article, idx) => (
+						<div
+							key={article.id}
+							ref={idx === articles.length - 1 ? lastArticleRef : null}
+							className="!group !bg-white !rounded-xl !shadow-sm hover:!shadow-xl card-hover-effect !border !border-gray-100 !overflow-hidden hover:!border-indigo-200 !cursor-pointer reveal-animation"
+							onClick={() => window.location.href = `/public/articles/${article.id}`}
+						>
+						{/* Cover Image */}
+						<div className="!relative !h-48 !w-full !overflow-hidden">
+							<ArticleCover 
+								article={article}
+								size="lg"
+								className="!w-full !h-full !rounded-none"
+							/>
+							{/* Elegant overlay gradient */}
+							<div className="!absolute !inset-0 !bg-gradient-to-t !from-black/30 !via-transparent !to-transparent !group-hover:!from-black/40 !transition-all !duration-500"></div>
+							
+							{/* Floating badge */}
+							<div className="!absolute !top-4 !right-4 !bg-white/90 !backdrop-blur-sm !px-3 !py-1 !rounded-full !text-xs !font-medium !text-gray-700 !shadow-sm">
+								Article
+							</div>
+						</div>
+
+						{/* Card Content */}
+						<div className="!p-6">
+							{/* Title */}
+							<h3 className="!text-xl !font-semibold !text-gray-900 !mb-3 !leading-tight !line-clamp-2 !group-hover:!text-indigo-900 !transition-colors !duration-300">
+								{article.title}
+							</h3>
+
+							{/* Author */}
+							<div className="!flex !items-center !gap-3 !mb-4">
+								<MagicalAvatar 
+									user={article.author}
+									size="sm"
+								/>
+								<div className="!min-w-0 !flex-1">
+									<div className="!flex !items-center !gap-2 !text-sm">
+										<NavLink 
+											to={`/public/users/${article.author?.id}`}
+											className="!text-gray-900 !font-medium hover:!text-indigo-600 !transition-colors !no-underline !truncate"
+											onClick={(e) => e.stopPropagation()}
+										>
+											{article.author?.username}
+										</NavLink>
+									</div>
+									<div className="!text-xs !text-gray-500">
+										{formatDateTimeToMin(article.createdDate || article.createdAt || '')}
+									</div>
+								</div>
+							</div>
+
+							{/* Content Preview */}
+							<div className="!text-gray-600 !text-sm !leading-relaxed !mb-4 !line-clamp-3">
+								<LexicalContentRenderer 
+									content={article.summary || article.content?.substring(0, 150) + '...' || ''}
+									className="!border-none !bg-transparent !text-inherit"
+								/>
+							</div>
+
+							{/* Read More Button */}
+							<div className="!flex !items-center !justify-between !pt-2">
+								<NavLink 
+									className="!inline-flex !items-center !text-indigo-600 hover:!text-indigo-700 !text-sm !font-medium !no-underline !group-hover:!translate-x-1 !transition-all !duration-300"
+									to={`/public/articles/${article.id}`}
+									onClick={(e) => e.stopPropagation()}
+								>
+									Read more
+									<svg className="!w-4 !h-4 !ml-1 !group-hover:!translate-x-1 !transition-transform !duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+									</svg>
+								</NavLink>
+								
+								{/* Editor indicator if edited */}
+								{(article.author?.username !== article.editor?.username ||
+								formatDateTimeToMin(article.createdDate || article.createdAt || '') !== formatDateTimeToMin(article.updatedDate || article.updatedAt || '')) && (
+									<div className="!text-xs !text-gray-400 !italic">
+										Edited
+									</div>
+								)}
+							</div>
+						</div>
+
+						{/* Subtle bottom accent */}
+						<div className="!h-1 !bg-gradient-to-r !from-indigo-500 !via-purple-500 !to-pink-500 !opacity-0 !group-hover:!opacity-100 !transition-opacity !duration-500"></div>
+					</div>
+					))}
+				</div>
+			</div>
 		</div>
         <div className={`!fixed !bottom-0 !left-0 !right-0 !bg-white/90 !backdrop-blur-md !border-t !border-gray-200/50 !shadow-lg !shadow-gray-100/50 !transition-all !duration-500 !ease-out !transform ${showBottomBar ? '!translate-y-0 !opacity-100' : '!translate-y-full !opacity-0'} !z-50`}>
           <div className="!flex !items-center !justify-center !gap-4 !py-4 !px-6">

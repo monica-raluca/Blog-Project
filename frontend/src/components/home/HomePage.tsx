@@ -14,7 +14,10 @@ import {
   Scroll
 } from 'lucide-react';
 import LexicalContentRenderer from '../ui/LexicalContentRenderer';
+import MagicalAvatar from '../ui/MagicalAvatar';
+import ArticleCover from '../ui/ArticleCover';
 import './HomePage.css';
+import '../../styles/magical-cards.css';
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
@@ -123,31 +126,64 @@ const HomePage: React.FC = () => {
                             <Scroll className="!w-6 !h-6 !text-blue-400" />
                         </div>
                         
-                        <div className="!grid !grid-cols-1 !md:!grid-cols-2 !gap-6">
+                        <div className="!grid !grid-cols-1 !md:!grid-cols-2 !gap-8">
                             {recentArticles.map((article) => (
                                 <div 
                                     key={article.id}
-                                    className="!bg-white/5 !backdrop-blur-xl !border !border-purple-500/20 !rounded-xl !p-6 hover:!border-purple-400/40 !transition-all !duration-300 hover:!scale-105 !cursor-pointer !group"
+                                    className="!group !bg-white/10 !backdrop-blur-xl !border !border-white/20 !rounded-2xl !overflow-hidden hover:!border-white/30 hover:!bg-white/15 !transition-all !duration-500 hover:!scale-[1.02] !cursor-pointer hover:!shadow-2xl hover:!shadow-purple-500/20"
                                     onClick={() => navigate(`/public/articles/${article.id}`)}
                                 >
-                                    <h3 className="!text-xl !font-semibold !text-white !mb-3 !line-clamp-2 !group-hover:!text-purple-200 !transition-colors">
-                                        {article.title}
-                                    </h3>
-                                    <p className="!text-purple-200/70 !text-sm !mb-4">
-                                        By {article.author?.firstName} {article.author?.lastName}
-                                    </p>
-                                    <div className="!text-purple-100/80 !text-sm !line-clamp-3 !mb-4">
-                                        <LexicalContentRenderer 
-                                            content={article.content}
-                                            className="!bg-transparent !border-none !text-inherit"
+                                    {/* Article cover image */}
+                                    <div className="!relative !h-40 !w-full">
+                                        <ArticleCover 
+                                            article={article}
+                                            size="lg"
+                                            className="!w-full !h-full !rounded-none"
                                         />
+                                        <div className="!absolute !inset-0 !bg-gradient-to-t !from-black/50 !via-black/20 !to-transparent !group-hover:!from-black/40 !transition-all !duration-500"></div>
+                                        
+                                        {/* Magical floating orb */}
+                                        <div className="!absolute !top-4 !right-4 !w-3 !h-3 !bg-purple-400/80 !rounded-full !animate-pulse !shadow-lg !shadow-purple-400/50"></div>
                                     </div>
-                                    <div className="!flex !items-center !justify-between">
-                                        <span className="!text-purple-300/60 !text-xs">
-                                            {article.createdAt ? formatDate(article.createdAt) : 'Unknown date'}
-                                        </span>
-                                        <ChevronRight className="!w-4 !h-4 !text-purple-400 !group-hover:!translate-x-1 !transition-transform" />
+                                    
+                                    <div className="!p-6">
+                                        <h3 className="!text-xl !font-semibold !text-white !mb-3 !leading-tight !line-clamp-2 !group-hover:!text-purple-200 !transition-colors !duration-300">
+                                            {article.title}
+                                        </h3>
+                                        
+                                        {/* Author info with avatar */}
+                                        <div className="!flex !items-center !gap-3 !mb-4">
+                                            <MagicalAvatar 
+                                                user={article.author}
+                                                size="sm"
+                                            />
+                                            <div className="!min-w-0 !flex-1">
+                                                <p className="!text-white/90 !text-sm !font-medium !truncate">
+                                                    {article.author?.firstName} {article.author?.lastName}
+                                                </p>
+                                                <p className="!text-white/60 !text-xs">
+                                                    {article.createdAt ? formatDate(article.createdAt) : 'Unknown date'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="!text-purple-100/70 !text-sm !leading-relaxed !line-clamp-3 !mb-4">
+                                            <LexicalContentRenderer 
+                                                content={article.content?.substring(0, 120) + '...' || ''}
+                                                className="!bg-transparent !border-none !text-inherit"
+                                            />
+                                        </div>
+                                        
+                                        <div className="!flex !items-center !justify-between !pt-2 !border-t !border-white/10">
+                                            <span className="!text-purple-300/80 !text-sm !font-medium">
+                                                Read Chronicle
+                                            </span>
+                                            <ChevronRight className="!w-5 !h-5 !text-purple-300 !group-hover:!translate-x-1 !group-hover:!text-white !transition-all !duration-300" />
+                                        </div>
                                     </div>
+
+                                    {/* Magical bottom accent */}
+                                    <div className="!h-1 !bg-gradient-to-r !from-purple-500 !via-pink-500 !to-blue-500 !opacity-0 !group-hover:!opacity-100 !transition-opacity !duration-500"></div>
                                 </div>
                             ))}
                         </div>

@@ -20,6 +20,8 @@ import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { YouTubeNode } from '../../../ui/YouTubeNode';
 
 import { Button } from '@/components/ui/button';
+import MagicalAvatar from '../../../ui/MagicalAvatar';
+import ArticleCover from '../../../ui/ArticleCover';
 
 
 
@@ -448,122 +450,245 @@ const UserArticleItem: React.FC = () => {
 
 	return (
         <>
-         <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-8 !py-8 rounded-[18px] bg-[rgba(255,255,255,0.82)]">
-			<h2 className='!font-bold !text-[2.7em] !text-[#181818] !mb-[18px] !leading-[1.13] !tracking-[-0.01em] !pl-[48px]'>{article.title}</h2>
-			<div className='!mb-[18px] !pl-[48px] !pr-[48px]'>
-				<div>
+         <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-0 !py-0 rounded-[18px] bg-[rgba(255,255,255,0.82)] !overflow-hidden">
+			
+			{/* Article Cover Image */}
+			<div className="!relative !h-48 !w-full !mb-8">
+				<ArticleCover 
+					article={article}
+					size="lg"
+					className="!w-full !h-full !rounded-none"
+				/>
+				<div className="!absolute !inset-0 !bg-gradient-to-t !from-black/60 !via-transparent !to-transparent"></div>
+				<div className="!absolute !bottom-6 !left-8 !right-8">
+					<h2 className='!font-bold !text-4xl !md:!text-5xl !text-white !mb-4 !leading-tight !tracking-tight !drop-shadow-2xl'>
+						{article.title}
+					</h2>
+				</div>
+			</div>
+
+			{/* Author/Editor Info Section */}
+			<div className="!px-8 !mb-8">
+				<div className="!flex !flex-col !gap-4 !p-6 !bg-gray-50 !rounded-lg !border !border-gray-200">
+					{/* Author */}
+					<div className="!flex !items-center !gap-4">
+						<MagicalAvatar 
+							user={article.author}
+							size="md"
+						/>
+						<div>
+							<div className="!flex !items-center !gap-2 !text-gray-800">
+								<span className="!font-medium">Author:</span>
+								<NavLink 
+									to={`/public/users/${article.author?.id}`}
+									className="!text-indigo-600 !font-medium hover:!text-indigo-700 !transition-colors !no-underline hover:!underline"
+								>
+									{createdBy}
+								</NavLink>
+							</div>
+							<div className="!text-gray-600 !text-sm">
+								Published on {formatDateTimeToMin(createdAt)}
+							</div>
+						</div>
+					</div>
+					
+					{/* Editor (if different) */}
+					{showEdited && (
+						<div className="!flex !items-center !gap-4">
+							<MagicalAvatar 
+								user={article.editor}
+								size="md"
+							/>
+							<div>
+								<div className="!flex !items-center !gap-2 !text-gray-800">
+									<span className="!font-medium">Edited by:</span>
+									<NavLink 
+										to={`/public/users/${article.editor?.id}`}
+										className="!text-indigo-600 !font-medium hover:!text-indigo-700 !transition-colors !no-underline hover:!underline"
+									>
+										{editedBy}
+									</NavLink>
+								</div>
+								<div className="!text-gray-600 !text-sm">
+									Last updated on {formatDateTimeToMin(editedAt)}
+								</div>
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+
+			{/* Article Content */}
+			<div className='!mb-8 !px-8'>
+				<div className="!prose !prose-lg !max-w-none">
 					<LexicalContentRenderer 
 						content={article.content}
 						className="!border-none !bg-transparent"
 					/>
 				</div>
 			</div>
-			<p className='!pl-[48px] !pr-[48px]'>
-				<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'>
-					<NavLink to={`/public/users/${article.author?.id}`}>Author: {createdBy}</NavLink> at {formatDateTimeToMin(createdAt)}
-				</em>
-				{showEdited && (
-					<>
-						<br />
-						<em className='!text-[#6a6a6a] !font-italic !text-[0.95em] !mb-[4px]'> <NavLink to={`/public/users/${article.editor?.id}`}>Editor: {editedBy}</NavLink> at {formatDateTimeToMin(editedAt)} </em>
-					</>
-				)}
-			</p>
 		
-			<hr className='!border-[#ececec] !border-[1.5px] !mt-[40px] !mb-[32px] !ml-[0px] !mr-[0px]' />
-			
-			<div className="comments">
-				<h3 className='!font-semibold !text-[1.4em] !text-[#162938] !mb-[36px] !mt-[18px] !ml-[0px]'>Comments</h3>
-				{comments.map(comment => {
-					const commentCreatedBy = comment.author?.username || 'Unknown';
-					const commentCreatedAt = comment.dateCreated || comment.createdAt || '';
-					const commentEditedBy = comment.editor?.username || commentCreatedBy;
-					const commentEditedAt = comment.dateEdited || commentCreatedAt;
-					const showCommentEdited = (
-						commentCreatedBy !== commentEditedBy ||
-						formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt)
-					);
-					return (
-						<div key={comment.id} className="!flex !align-start !gap-[12px] !mb-[18px] !pt-[10px] !pb-[10px]">
-						<div>
-							<p><strong>{commentCreatedBy}</strong>:</p>
-							<div className='!text-[0.95em] !text-[#6a6a6a] !mb-[4px]'>
-							at {formatDateTimeToMin(commentCreatedAt)}
+			{/* Comments Section */}
+			<div className="!px-8">
+				<div className="!border-t !border-gray-200 !pt-8">
+					<div className="!flex !items-center !gap-3 !mb-8">
+						<h3 className='!font-semibold !text-xl !text-gray-800 !mb-0'>Comments</h3>
+					</div>
+					
+					<div className="!space-y-6">
+						{comments.map(comment => {
+							const commentCreatedBy = comment.author?.username || 'Unknown';
+							const commentCreatedAt = comment.dateCreated || comment.createdAt || '';
+							const commentEditedBy = comment.editor?.username || commentCreatedBy;
+							const commentEditedAt = comment.dateEdited || commentCreatedAt;
+							const showCommentEdited = (
+								commentCreatedBy !== commentEditedBy ||
+								formatDateTimeToMin(commentCreatedAt) !== formatDateTimeToMin(commentEditedAt)
+							);
+							return (
+								<div key={comment.id} className="!bg-gray-50 !rounded-lg !p-4 !border !border-gray-200">
+									<div className="!flex !items-start !gap-3">
+										{/* Commenter Avatar */}
+										<MagicalAvatar 
+											user={comment.author}
+											size="sm"
+										/>
+										
+										<div className="!flex-1">
+											{/* Commenter Name and Time */}
+											<div className="!flex !items-center !gap-2 !mb-2">
+												<span className="!font-medium !text-gray-800">{commentCreatedBy}</span>
+												<span className="!text-gray-400 !text-sm">•</span>
+												<span className="!text-gray-600 !text-sm">
+													{formatDateTimeToMin(commentCreatedAt)}
+												</span>
+											</div>
+											
+											{/* Comment Content */}
+											{editingCommentId === comment.id ? (
+												<div className="!mb-4">
+													<LexicalEditor
+														ref={editCommentEditorRef}
+														initialValue={editedContent}
+														onChange={(newMarkdown) => setEditedContent(newMarkdown)}
+														placeholder="Edit your comment... Use Markdown formatting!"
+														minHeight="150px"
+														showToolbar={true}
+														className="!border-purple-300 !border !rounded-lg !mb-3"
+													/>
+												</div>
+											) : (
+												<div className="!mb-2">
+													<LexicalContentRenderer 
+														content={comment.content}
+														className="!border-none !bg-transparent !text-gray-700"
+													/>
+													{showCommentEdited && (
+														<div className='!text-xs !text-gray-500 !mt-2'>
+															<span>Edited by <strong>{commentEditedBy}</strong> on {formatDateTimeToMin(commentEditedAt)}</span>
+														</div>
+													)}
+												</div>
+											)}
+										</div>
+										
+										{/* Comment Actions */}
+										<div className="!flex !gap-2">
+											{editingCommentId === comment.id ? (
+												<>
+													<Button variant="default" size="sm" onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)} className="!bg-indigo-600 hover:!bg-indigo-700 !text-white">Save</Button>
+													<Button variant="outline" size="sm" onClick={() => setEditingCommentId(null)}>Cancel</Button>
+												</>
+											) : (
+												(hasRole("ADMIN") || comment.author?.username === currentUser) && (
+													<>
+														<Button variant="ghost" size="sm" onClick={() => startEditing(comment)} className="!text-gray-600 hover:!bg-gray-100">Edit</Button>
+														<Button variant="ghost" size="sm" onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)} className="!text-red-600 hover:!bg-red-50">Delete</Button>
+													</>
+												)
+											)}
+										</div>
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				</div>
+			</div>
+
+			{/* Comment Form */}
+			<div className="!px-8 !mt-8">
+				{currentUser ? (
+					<div className="!bg-gray-50 !rounded-lg !p-6 !border !border-gray-200">
+						<div className="!flex !items-center !gap-3 !mb-4">
+							<MagicalAvatar 
+								user={currentUser}
+								size="sm"
+							/>
+							<h4 className="!font-medium !text-gray-800 !text-lg !mb-0">Add a comment</h4>
+						</div>
+						<form onSubmit={handleCommentSubmit} className="!space-y-4">
+							<LexicalEditor
+								ref={commentEditorRef}
+								initialValue={content}
+								onChange={(newMarkdown) => setContent(newMarkdown)}
+								placeholder="Share your thoughts..."
+								minHeight="150px"
+								showToolbar={true}
+								className="!border-gray-300 !border !rounded-md"
+							/>
+							<div className="!flex !items-center !justify-between">
+								<Button 
+									variant="default" 
+									size="sm" 
+									type="submit" 
+									className="!bg-indigo-600 hover:!bg-indigo-700 !text-white"
+								>
+									Post Comment
+								</Button>
+								{error && <p className="!text-red-600 !text-sm">{error}</p>}
 							</div>
-							{editingCommentId === comment.id ? (
-							<>
-								<LexicalEditor
-									ref={editCommentEditorRef}
-									initialValue={editedContent}
-									onChange={(newMarkdown) => setEditedContent(newMarkdown)}
-									placeholder="Edit your comment... Use Markdown formatting!"
-									minHeight="150px"
-									showToolbar={true}
-									className="!border-[#162938] !border-[1px] !rounded-[4px] !mb-[8px] !mt-[8px]"
-								/>
-							</>
-							) : (
-							<>
-								<div>
-									<LexicalContentRenderer 
-										content={comment.content}
-										className="!border-none !bg-transparent !text-sm"
-									/>
-								</div>
-								{showCommentEdited && (
-								<div className='!text-[0.93em] !text-[#8a8a8a] !mt-[2px]'>
-									Edited by <strong>{commentEditedBy}</strong> at {formatDateTimeToMin(commentEditedAt)}
-								</div>
-								)}
-							</>
-							)}
-						</div>
-						<div className="comment-actions">
-							{editingCommentId === comment.id ? (
-							<>
-								<Button variant="success" size="sm" onClick={() => article.id && comment.id && handleEditSubmit(article.id, comment.id)}>Save</Button>
-								<Button variant="cloud" size="sm" onClick={() => setEditingCommentId(null)}>Cancel</Button>
-							</>
-							) : (
-							(hasRole("ADMIN") || comment.author?.username === currentUser) && (
-								<>
-								<Button variant="soft" size="sm" onClick={() => startEditing(comment)}>Edit</Button>
-								<Button variant="danger" size="sm" onClick={() => article.id && comment.id && handleCommentDelete(article.id, comment.id)}>Delete</Button>
-								</>
-							)
-							)}
-						</div>
-						</div>
-					);
-					})}
+						</form>
+					</div>
+				) : (
+					<div className="!bg-gray-50 !rounded-lg !p-6 !text-center !border !border-gray-200">
+						<p className="!text-gray-600 !mb-4">Please log in to join the discussion.</p>
+						<Link 
+							to="/login"
+							className="!bg-indigo-600 hover:!bg-indigo-700 !text-white !px-6 !py-2 !rounded-md !no-underline !font-medium !transition-colors"
+						>
+							Sign In
+						</Link>
+					</div>
+				)}
 			</div>
 
-			{currentUser ? (
-				<form onSubmit={handleCommentSubmit} className="comment-form">
-					<LexicalEditor
-						ref={commentEditorRef}
-						initialValue={content}
-						onChange={(newMarkdown) => setContent(newMarkdown)}
-						placeholder="Write your comment... Use Markdown formatting!"
-						minHeight="150px"
-						showToolbar={true}
-						className="!border-[#162938] !border-[1px] !rounded-[4px] !mb-[8px] !mt-[8px]"
-					/>
-					<Button variant="dreamy" size="sm" type="submit">Post Comment</Button>
-					{error && <p style={{ color: 'red' }}>{error}</p>}
-				</form>
-			) : (
-				<p><em><Link to="/login">Login</Link> to comment.</em></p>
-			)}
-
+			{/* Article Actions */}
 			<RequireRoles roles={["AUTHOR", "ADMIN"]}>
-			{(article.author?.username === currentUser || hasRole("ADMIN")) &&
-			<div className="!flex !gap-[12px] !mt-[18px] !mb-[0px]">
-				<Button variant="pastel" size="sm" onClick={() => navigate(`/public/articles/${article.id}/edit`)}>Edit</Button>
-				<Button variant="danger" size="sm" onClick={() => article.id && handleDelete(article.id)}>Delete</Button>
-			</div>
-			}
-			
+				{(article.author?.username === currentUser || hasRole("ADMIN")) && (
+					<div className="!px-8 !mt-8 !pb-8">
+						<div className="!border-t !border-gray-200 !pt-6">
+							<div className="!flex !gap-3">
+								<Button 
+									variant="outline" 
+									size="sm" 
+									onClick={() => navigate(`/public/articles/${article.id}/edit`)}
+									className="!border-indigo-300 !text-indigo-600 hover:!bg-indigo-50"
+								>
+									Edit Article
+								</Button>
+								<Button 
+									variant="outline" 
+									size="sm" 
+									onClick={() => article.id && handleDelete(article.id)}
+									className="!border-red-300 !text-red-600 hover:!bg-red-50"
+								>
+									Delete Article
+								</Button>
+							</div>
+						</div>
+					</div>
+				)}
 			</RequireRoles>
             
 		</div>
