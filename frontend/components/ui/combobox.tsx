@@ -80,13 +80,12 @@ export function Combobox({
           </span>
           <div className="flex items-center gap-1">
             {clearable && selectedOption && (
-              <button
-                type="button"
-                className="h-4 w-4 p-0 hover:bg-transparent hover:opacity-70 transition-opacity"
+              <span
+                className="h-4 w-4 p-0 hover:bg-transparent hover:opacity-70 transition-opacity cursor-pointer flex items-center justify-center"
                 onClick={handleClear}
               >
                 ×
-              </button>
+              </span>
             )}
             <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
           </div>
@@ -102,6 +101,7 @@ export function Combobox({
                 <CommandItem
                   key={option.value}
                   value={option.value}
+                  keywords={[option.label]}
                   onSelect={handleSelect}
                   disabled={option.disabled}
                 >

@@ -11,7 +11,7 @@ import * as yup from 'yup';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
-import SimpleLexicalEditor, { SimpleLexicalEditorRef } from '../../ui/SimpleLexicalEditor';
+import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 
 interface CommentFormProps {
     isEdit?: boolean;
@@ -49,7 +49,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
-    const editorRef = React.useRef<SimpleLexicalEditorRef>(null);
+    const editorRef = React.useRef<LexicalEditorRef>(null);
     
     const navigate = useNavigate();
     const { token, currentUser } = useAuth();
@@ -117,6 +117,43 @@ const CommentForm: React.FC<CommentFormProps> = ({
             const comment = await fetchCommentById(finalId);
             setValue('content', comment.content);
             setValue('articleId', comment.article?.id || '');
+            
+            // Set the JSON content in the editor after a small delay to ensure it's rendered
+            setTimeout(() => {
+                try {
+                    // Check if content is JSON (new format) or legacy format
+                    const isJsonContent = (content: string): boolean => {
+                        try {
+                            const parsed = JSON.parse(content);
+                            return parsed && typeof parsed === 'object';
+                        } catch {
+                            return false;
+                        }
+                    };
+
+                    console.log('Loading comment content type:', isJsonContent(comment.content) ? 'JSON' : 'Legacy');
+                    
+                    if (isJsonContent(comment.content)) {
+                        // New JSON format - decode and set as Lexical editor state
+                        console.log('Loading JSON editor state for comment');
+                        editorRef.current?.setEditorStateFromJson(comment.content);
+                    } else {
+                        // Legacy format - set as HTML/markdown
+                        console.log('Loading legacy content as HTML for comment');
+                        editorRef.current?.setHtml(comment.content);
+                    }
+                } catch (error) {
+                    console.warn('Failed to set edit content, using fallback:', error);
+                    // Ultimate fallback: try to set as HTML
+                    try {
+                        editorRef.current?.setHtml(comment.content);
+                    } catch (fallbackError) {
+                        console.error('All content loading methods failed:', fallbackError);
+                        // Last resort: set as markdown
+                        editorRef.current?.setMarkdown(comment.content || '');
+                    }
+                }
+            }, 100);
         } catch (err) {
             const errorMessage = (err as Error).message || 'An error occurred';
             setError(errorMessage);
@@ -141,15 +178,32 @@ const CommentForm: React.FC<CommentFormProps> = ({
         setLoading(true);
         setError(null);
 
+        // Get the JSON content from the editor
+        let finalJsonContent = '';
+        try {
+            finalJsonContent = editorRef.current?.getEditorStateJson() || data.content;
+            // Ensure the JSON is properly formatted for the backend
+            if (finalJsonContent && finalJsonContent.trim()) {
+                // Validate that it's proper JSON and re-stringify if needed
+                const parsed = JSON.parse(finalJsonContent);
+                finalJsonContent = JSON.stringify(parsed);
+            } else {
+                finalJsonContent = data.content;
+            }
+        } catch (jsonError) {
+            console.warn('Error processing JSON content, using fallback:', jsonError);
+            finalJsonContent = data.content;
+        }
+
         try {
             let result: Comment;
             
             if (isEdit && finalId) {
-                console.log('CommentForm: Editing comment with content:', data.content.trim());
-                result = await editComment(data.articleId, finalId, data.content.trim(), token);
+                console.log('CommentForm: Editing comment with JSON content');
+                result = await editComment(data.articleId, finalId, finalJsonContent, token);
             } else {
-                console.log('CommentForm: Creating new comment with content:', data.content.trim());
-                result = await createComment(data.articleId, token, data.content.trim());
+                console.log('CommentForm: Creating new comment with JSON content');
+                result = await createComment(data.articleId, token, finalJsonContent);
             }
 
             setIsDirty(false);
@@ -261,17 +315,18 @@ const CommentForm: React.FC<CommentFormProps> = ({
                         <Label htmlFor="content" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">
                             Comment Content <span className="!text-[#dc3545] !ml-1">*</span>
                         </Label>
-                        <SimpleLexicalEditor
+                        <LexicalEditor
                             ref={editorRef}
                             initialValue={content}
                             onChange={(newContent) => setValue("content", newContent)}
                             placeholder="Write your comment here..."
                             readOnly={loading}
                             minHeight="200px"
-                            className="!border-[#dee2e6]"
+                            showToolbar={true}
+                            className="!border-[#ced4da] focus-within:!border-[#007bff] focus-within:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)]"
                         />
-                        <div className="!text-xs !text-[#6c757d] !mt-1">
-                            {content.length}/1000 characters
+                        <div className="!text-xs !text-[#6c757d] !text-right !mt-1">
+                            {content.length} characters
                         </div>
                         <p className="!text-xs !text-[#dc3545] !mt-1">{errors.content?.message}</p>
                     </div>
