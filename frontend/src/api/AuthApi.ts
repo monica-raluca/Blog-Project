@@ -62,4 +62,11 @@ export function hasUser(username: string): boolean {
 	if (!user || !user.username || !user.authorities) return false;
 	console.log("TEST permission" + user + username);
 	return user.username === username;
+}
+
+export function createAuthHeaders(token: string): HeadersInit {
+	return {
+		'Content-Type': 'application/json',
+		'Authorization': `Bearer ${token}`
+	};
 } 

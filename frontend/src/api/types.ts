@@ -46,8 +46,8 @@ export interface Article {
 	title: string;
 	content: string;
 	summary?: string;
-	author?: User;
-	editor?: User;
+	author?: UserDetail;
+	editor?: UserDetail;
 	createdAt?: string;
 	updatedAt?: string;
 	createdDate?: string;
@@ -83,8 +83,8 @@ export interface ArticlesResponse {
 export interface Comment {
 	id?: string;
 	content: string;
-	author?: User;
-	editor?: User;
+	author?: UserDetail;
+	editor?: UserDetail;
 	createdAt?: string;
 	dateCreated?: string;
 	dateEdited?: string;

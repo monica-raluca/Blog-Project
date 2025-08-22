@@ -21,7 +21,7 @@ export async function fetchUserById(id: string): Promise<UserDetail> {
 }
 
 export async function fetchCurrentUser(username: string): Promise<UserDetail> {
-    const res = await fetch(`/api/users/${username}`);
+    const res = await fetch(`/api/users/by-username/${username}`);
     if (!res.ok) {
         let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}

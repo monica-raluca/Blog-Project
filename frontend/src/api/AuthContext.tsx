@@ -3,8 +3,10 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 interface AuthContextType {
 	token: string | null;
 	currentUser: string | null;
+	profilePicture: string | null;
 	login: (userToken: string, username: string) => void;
 	logout: () => void;
+	updateProfilePicture: (profilePicture: string | null) => void;
 }
 
 interface AuthProviderProps {
@@ -21,6 +23,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState<string | null>(() => 
 		localStorage.getItem('currentUser')
 	);
+	const [profilePicture, setProfilePicture] = useState<string | null>(() => 
+		localStorage.getItem('profilePicture')
+	);
 
 	const login = (userToken: string, username: string): void => {
 		localStorage.setItem('token', userToken);
@@ -32,8 +37,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const logout = (): void => {
 		localStorage.removeItem('token');
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('profilePicture');
 		setToken(null);
 		setCurrentUser(null);
+		setProfilePicture(null);
+	};
+
+	const updateProfilePicture = (newProfilePicture: string | null): void => {
+		if (newProfilePicture) {
+			localStorage.setItem('profilePicture', newProfilePicture);
+		} else {
+			localStorage.removeItem('profilePicture');
+		}
+		setProfilePicture(newProfilePicture);
 	};
 
 	// const hasRole = (role: string): boolean => {
@@ -43,8 +59,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const value: AuthContextType = {
         token,
         currentUser,
+        profilePicture,
         login,
-        logout
+        logout,
+        updateProfilePicture
     };
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -84,6 +84,15 @@ public class UsersService {
         return UserConvertor.toDto(user.get());
     }
 
+    public User getUserByUsername(String username) {
+        Optional<UserEntity> user = userRepository.findByUsername(username);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        return UserConvertor.toDto(user.get());
+    }
+
     public String createUser(UserRequest userRequest) {
         if (!isValidRequest(userRequest)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Fields can not be empty");
@@ -172,17 +181,14 @@ public class UsersService {
         if(user.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
         }
-        File directory = new File("api-service/uploads/profile-pictures");
+        File directory = new File("uploads/profile-pictures");
         if(!directory.exists()) {
             directory.mkdirs();
         }
 
         String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-
         String fileName = "user-" + user.get().getId() + extension;
-        // Path path = Paths.get(directory.getAbsolutePath(), fileName);
-        // String filePath = System.getProperty("user.dir") + "api-service/uploads/profile-pictures/" + fileName;
-        String filePath = "api-service/uploads/profile-pictures/" + fileName;
+        String filePath = System.getProperty("user.dir") + "/uploads/profile-pictures/" + fileName;
         Path path = Paths.get(filePath);
         try {
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);

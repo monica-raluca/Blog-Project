@@ -36,6 +36,11 @@ public class UsersController {
         return usersService.getUserById(id);
     }
 
+    @GetMapping(value="/users/by-username/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return usersService.getUserByUsername(username);
+    }
+
     @PostMapping(value="/users/register")
     public JwtToken createUser(@RequestBody UserRequest userRequest) {
         String token = usersService.createUser(userRequest);

@@ -43,7 +43,9 @@ import {
   ChevronRight,
   LogOut,
   User,
-  PanelLeftClose
+  PanelLeftClose,
+  Newspaper,
+  Sparkles
 } from 'lucide-react';
 import {
   Tooltip,
@@ -99,7 +101,7 @@ function AdminPanelTrigger() {
 
 // User section component for the sidebar
 function SidebarUserSection() {
-	const { currentUser, token, logout } = useAuth();
+	const { currentUser, token, logout, profilePicture } = useAuth();
 	const { state } = useSidebar();
 	const navigate = useNavigate();
 
@@ -144,9 +146,16 @@ function SidebarUserSection() {
 			<SidebarGroupContent>
 				<SidebarMenu>
 					<SidebarMenuItem>
-						<div className="flex items-center gap-3 !px-2 !py-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!px-2">
+						<SidebarMenuButton 
+							onClick={() => navigate('/profile')}
+							tooltip="Edit Profile"
+							className="flex items-center gap-3 !px-2 !py-2 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:!px-2 w-full hover:bg-[#ececec] rounded-md transition-colors cursor-pointer"
+						>
 							<Avatar className="h-8 w-8 border-2 border-[#ececec] group-data-[collapsible=icon]:h-6 group-data-[collapsible=icon]:w-6">
-								<AvatarImage src={`https://avatar.vercel.sh/${currentUser}`} />
+								<AvatarImage 
+									src={profilePicture ? `http://localhost:8080/profile-pictures/${profilePicture}` : `https://avatar.vercel.sh/${currentUser}`} 
+									alt={`${currentUser}'s profile`}
+								/>
 								<AvatarFallback className="bg-gradient-to-r from-[#fbeffb] to-[#e3f0ff] text-[#162938] text-sm font-semibold group-data-[collapsible=icon]:text-xs">
 									{userInitials}
 								</AvatarFallback>
@@ -157,11 +166,11 @@ function SidebarUserSection() {
 										{currentUser}
 									</span>
 									<span className="text-xs text-[#6a6a6a]">
-										Welcome back!
+										Click to edit profile
 									</span>
 								</div>
 							)}
-						</div>
+						</SidebarMenuButton>
 					</SidebarMenuItem>
 					<SidebarMenuItem>
 						<SidebarMenuButton 
@@ -266,11 +275,25 @@ export function Layout(): React.ReactElement {
 												asChild 
 												tooltip="Home"
 												className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]"
+												isActive={location.pathname === '/' || location.pathname === '/home'}
+											>
+												<Link to="/home" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
+													<Sparkles className="h-4 w-4" />
+													<span className="group-data-[collapsible=icon]:sr-only ml-2">Home</span>
+												</Link>
+											</SidebarMenuButton>
+										</SidebarMenuItem>
+										
+										<SidebarMenuItem>
+											<SidebarMenuButton 
+												asChild 
+												tooltip="All Articles"
+												className="group/button h-10 font-medium hover:bg-[#ececec] hover:text-[#270023] text-[#162938] data-[active=true]:bg-[#ececec] data-[active=true]:text-[#270023]"
 												isActive={location.pathname === '/public/articles'}
 											>
 												<Link to="/public/articles" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
-													<Home className="h-4 w-4" />
-													<span className="group-data-[collapsible=icon]:sr-only ml-2">Home</span>
+													<Newspaper className="h-4 w-4" />
+													<span className="group-data-[collapsible=icon]:sr-only ml-2">All Articles</span>
 												</Link>
 											</SidebarMenuButton>
 										</SidebarMenuItem>

@@ -21,6 +21,8 @@ import UserArticles from './components/public/Articles/UserArticles';
 import UserArticleItem from './components/public/Articles/ArticleItem/UserArticleItem';
 import UserArticleForm from './components/public/Articles/UserArticleForm';
 import AdminArticleForm from './components/admin/Articles/AdminArticleForm';
+import UserProfile from './components/profile/UserProfile';
+import HomePage from './components/home/HomePage';
 
 export function BlogApp(): React.ReactElement {
 	return (
@@ -28,11 +30,17 @@ export function BlogApp(): React.ReactElement {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Layout />}>
-						<Route index element={<Navigate to="/public/articles" replace />} />
+						<Route index element={<Navigate to="/home" replace />} />
+
+						{/* Home route */}
+						<Route path="home" element={<HomePage />} />
 
 						{/* Auth routes */}
 						<Route path="login" element={<Login />} />
 						<Route path="register" element={<Register />} />
+						
+						{/* Profile routes */}
+						<Route path="profile" element={<UserProfile />} />
 						
 						{/* Public routes */}
 						<Route path="public/articles" element={<UserArticles />} />
