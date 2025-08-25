@@ -1,0 +1,110 @@
+/* Text wrapping styles for better content flow */
+.content-wrapper {
+  line-height: 1.6;
+  text-align: justify;
+  overflow: visible; /* Allow floated elements to be visible */
+}
+
+.content-wrapper p {
+  margin-bottom: 1em;
+  text-align: inherit;
+}
+
+/* Image container styling */
+.image-container {
+  transition: all 0.3s ease;
+}
+
+.image-container.alignment-left {
+  float: left;
+  margin: 5px 20px 10px 0;
+  clear: none;
+}
+
+.image-container.alignment-right {
+  float: right;
+  margin: 5px 0 10px 20px;
+  clear: none;
+}
+
+.image-container.alignment-center {
+  display: block;
+  margin: 20px auto;
+  clear: both;
+  float: none;
+}
+
+/* Better text wrapping around images */
+.content-wrapper {
+  /* Enable text to wrap around multiple floated elements */
+  overflow: visible;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ensure proper text flow around images */
+.content-wrapper::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Better spacing for paragraphs */
+.content-wrapper p:first-of-type {
+  margin-top: 0;
+}
+
+/* Allow text to flow around both left and right aligned images */
+.content-wrapper p {
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Responsive image handling */
+@media (max-width: 768px) {
+  .image-container.alignment-left,
+  .image-container.alignment-right {
+    float: none !important;
+    display: block !important;
+    margin: 20px auto !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Improved readability */
+.content-wrapper {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Handle multiple images side by side */
+.image-container.alignment-left + .image-container.alignment-left {
+  clear: left;
+}
+
+.image-container.alignment-right + .image-container.alignment-right {
+  clear: right;
+}
+
+/* Prevent images from overlapping */
+.image-container.alignment-left {
+  max-width: 45%;
+}
+
+.image-container.alignment-right {
+  max-width: 45%;
+}
+
+/* Better handling of text around images */
+.content-wrapper {
+  position: relative;
+}
+
+/* Ensure text flows nicely around images */
+.content-wrapper > * {
+  position: relative;
+  z-index: 1;
+}

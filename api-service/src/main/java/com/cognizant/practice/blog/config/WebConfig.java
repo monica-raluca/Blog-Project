@@ -14,8 +14,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addResourceLocations("file:uploads/profile-pictures/");
         
         // Serve media files
-        registry.addResourceHandler("/media/**")
-                .addResourceLocations("file:uploads/media/");
+        registry.addResourceHandler("/article-media/**")
+                .addResourceLocations("file:uploads/article-media/");
         
         // Serve article cover images
         registry.addResourceHandler("/article-images/**")

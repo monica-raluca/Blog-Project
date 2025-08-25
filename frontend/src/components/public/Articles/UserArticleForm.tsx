@@ -53,6 +53,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 
 	const content = watch('content');
 	const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
+	const [currentArticleId, setCurrentArticleId] = useState<string | undefined>(isEdit ? id : undefined);
 	
 	// Cover image state for new articles
 	const [selectedCoverFile, setSelectedCoverFile] = useState<File | null>(null);
@@ -202,6 +203,31 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		}
 	};
 
+	const handleAutoSave = async (): Promise<string | undefined> => {
+		const formData = { 
+			title: watch('title') || 'Untitled Article', 
+			content: markdownEditorRef.current?.getEditorStateJson() || '' 
+		};
+		
+		if (!token) {
+			throw new Error('No authentication token');
+		}
+		
+		try {
+			const result = await createArticle(formData, token);
+			if (result && result.id) {
+				setCurrentArticleId(result.id);
+				setCurrentArticle(result);
+				return result.id;
+			}
+		} catch (error) {
+			console.error('Auto-save failed:', error);
+			throw error;
+		}
+		
+		return undefined;
+	};
+
 	const handleFormSubmit = async (data: ArticleFormData): Promise<void> => {
 		const jsonContent = markdownEditorRef.current?.getEditorStateJson() || data.content;
 		const article = { title: data.title, content: jsonContent };
@@ -212,6 +238,11 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 				result = await updateArticle(id, article, token);
 			} else if (token) {
 				result = await createArticle(article, token);
+				
+				// Set the article ID for image uploads
+				if (result && result.id) {
+					setCurrentArticleId(result.id);
+				}
 				
 				// Upload cover image if one was selected (for new articles)
 				if (result && result.id && selectedCoverFile) {
@@ -238,7 +269,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 
 	return (
 		<div className="!min-h-screen !flex !items-center !justify-center !p-4">
-			<div className="!w-full !max-w-[600px] !bg-white/90 !backdrop-blur-xl !rounded-3xl !shadow-2xl !shadow-purple-100/50 !border !border-white/60 !p-8 !md:p-12">
+			<div className="!w-full !max-w-4xl !bg-white/90 !backdrop-blur-xl !rounded-3xl !shadow-2xl !shadow-purple-100/50 !border !border-white/60 !p-8 !md:p-12">
 				<form onSubmit={handleSubmit(handleFormSubmit)} className="!space-y-6">
 					<div className="!text-center !mb-8">
 						<h2 className="!text-3xl !md:text-4xl !font-bold !bg-gradient-to-r !from-purple-600 !via-pink-600 !to-rose-600 !bg-clip-text !text-transparent !mb-2">
@@ -263,7 +294,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 						</div>
 
 						{/* Article Cover Upload - For New Articles */}
-						{!isEdit && (
+						{!isEdit && !currentArticle && (
 							<div className="!relative">
 								<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Article Cover Image (Optional)</label>
 								<div className="!p-4 !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm">
@@ -423,6 +454,8 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 								placeholder="Write your story here... Use Markdown formatting for rich content!"
 								minHeight="300px"
 								showToolbar={true}
+								articleId={currentArticleId}
+								onArticleCreate={!isEdit ? handleAutoSave : undefined}
 								className="!border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus-within:!border-purple-400 focus-within:!ring-4 focus-within:!ring-purple-100 focus-within:!bg-white focus-within:!shadow-lg focus-within:!scale-[1.02]"
 							/>
 							{errors.content?.message && (

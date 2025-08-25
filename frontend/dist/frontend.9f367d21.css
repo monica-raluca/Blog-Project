@@ -1,3 +1,96 @@
+.content-wrapper {
+  text-align: justify;
+  line-height: 1.6;
+  overflow: visible;
+}
+
+.content-wrapper p {
+  text-align: inherit;
+  margin-bottom: 1em;
+}
+
+.image-container {
+  transition: all .3s;
+}
+
+.image-container.alignment-left {
+  float: left;
+  clear: none;
+  margin: 5px 20px 10px 0;
+}
+
+.image-container.alignment-right {
+  float: right;
+  clear: none;
+  margin: 5px 0 10px 20px;
+}
+
+.image-container.alignment-center {
+  clear: both;
+  float: none;
+  margin: 20px auto;
+  display: block;
+}
+
+.content-wrapper {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: visible;
+}
+
+.content-wrapper:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.content-wrapper p:first-of-type {
+  margin-top: 0;
+}
+
+.content-wrapper p {
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@media (width <= 768px) {
+  .image-container.alignment-left, .image-container.alignment-right {
+    float: none !important;
+    max-width: 100% !important;
+    margin: 20px auto !important;
+    display: block !important;
+  }
+}
+
+.content-wrapper {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.image-container.alignment-left + .image-container.alignment-left {
+  clear: left;
+}
+
+.image-container.alignment-right + .image-container.alignment-right {
+  clear: right;
+}
+
+.image-container.alignment-left, .image-container.alignment-right {
+  max-width: 45%;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+.content-wrapper > * {
+  z-index: 1;
+  position: relative;
+}
+
 .color-picker-slider {
   appearance: none;
   cursor: pointer;

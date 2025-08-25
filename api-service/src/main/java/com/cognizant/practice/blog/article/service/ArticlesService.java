@@ -170,7 +170,7 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, null, author, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, new ArrayList<String>(), null, author, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
@@ -199,11 +199,13 @@ public class ArticlesService {
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
 
-    public Article uploadImage(MultipartFile file, UUID id) {
+    public Article uploadImage(MultipartFile file, UUID id, Principal principal) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
         if(article.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
         }
+
+        UserEntity editor = getPrincipalUser(principal);
 
         File directory = new File("uploads/article-images");
         if(!directory.exists()) {
@@ -221,6 +223,35 @@ public class ArticlesService {
         }
 
         article.get().setImageUrl(fileName);
+        article.get().setUpdatedDate(LocalDateTime.now());
+        article.get().setEditor(editor);
+
+        return ArticleConvertor.toDto(articleRepository.save(article.get()));
+    }
+
+    public Article uploadMedia(MultipartFile file, UUID id, Principal principal) {
+        Optional<ArticleEntity> article = articleRepository.findById(id);
+        if(article.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+        }
+
+        File directory = new File("uploads/article-media");
+        if(!directory.exists()) {
+            directory.mkdirs();
+        }
+        
+        String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String fileName = "article-" + article.get().getId() + "-" + article.get().getMediaUrls().size() + extension;
+        // String fileName = "media-" + UUID.randomUUID() + extension;
+        String filePath = System.getProperty("user.dir") + "/uploads/article-media/" + fileName;
+        Path path = Paths.get(filePath);
+        try {
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload article media");
+        }
+
+        article.get().getMediaUrls().add(fileName);
 
         return ArticleConvertor.toDto(articleRepository.save(article.get()));
     }

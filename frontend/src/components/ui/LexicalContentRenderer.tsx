@@ -13,7 +13,9 @@ import { CodeHighlightNode, CodeNode } from '@lexical/code';
 import { TableNode, TableCellNode, TableRowNode } from '@lexical/table';
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { YouTubeNode } from './YouTubeNode';
+import { ImageNode } from './ImageNode';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
+import './ContentWrapperStyles.css';
 
 interface LexicalContentRendererProps {
   content: string;
@@ -272,6 +274,7 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
       LinkNode,
       AutoLinkNode,
       YouTubeNode,
+      ImageNode,
       TableNode,
       TableCellNode,
       TableRowNode,
@@ -283,7 +286,7 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
   };
 
   return (
-    <div className={`prose prose-slate max-w-none ${className}`}>
+    <div className={`prose prose-slate max-w-none content-wrapper ${className}`}>
       <LexicalComposer initialConfig={initialConfig}>
         <RichTextPlugin
           contentEditable={

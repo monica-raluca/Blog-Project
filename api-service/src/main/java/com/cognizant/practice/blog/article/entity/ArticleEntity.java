@@ -36,7 +36,8 @@ public class ArticleEntity {
     private LocalDateTime updatedDate;
 
     private String imageUrl;
-
+    private List<String> mediaUrls;
+    
     @OneToMany(mappedBy = "articleEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentEntity> comments;
 

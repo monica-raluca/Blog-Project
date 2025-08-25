@@ -22,6 +22,7 @@ import { YouTubeNode } from '../../../ui/YouTubeNode';
 import { Button } from '@/components/ui/button';
 import MagicalAvatar from '../../../ui/MagicalAvatar';
 import ArticleCover from '../../../ui/ArticleCover';
+import { X, Download } from 'lucide-react';
 
 
 
@@ -32,6 +33,7 @@ const UserArticleItem: React.FC = () => {
     const [content, setContent] = useState<string>('');
 	const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 	const [editedContent, setEditedContent] = useState<string>('');
+	const [showImagePreview, setShowImagePreview] = useState<boolean>(false);
 	
 	const commentEditorRef = React.useRef<LexicalEditorRef>(null);
 	const editCommentEditorRef = React.useRef<LexicalEditorRef>(null);
@@ -40,6 +42,23 @@ const UserArticleItem: React.FC = () => {
     const navigate = useNavigate();
 
 	const { token, currentUser } = useAuth();
+
+	// Close preview on Escape key
+	useEffect(() => {
+		const handleEscape = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				setShowImagePreview(false);
+			}
+		};
+
+		if (showImagePreview) {
+			document.addEventListener('keydown', handleEscape);
+		}
+
+		return () => {
+			document.removeEventListener('keydown', handleEscape);
+		};
+	}, [showImagePreview]);
 
 	// Helper function to escape HTML entities
 	const escapeHtml = (text: string): string => {
@@ -453,7 +472,14 @@ const UserArticleItem: React.FC = () => {
          <div className="!w-full !max-w-[1000px] backdrop-blur box-border shadow-[0_4px_32px_rgba(22,41,56,0.07)] !mx-auto !my-0 pt-16 !pb-12 !px-0 !py-0 rounded-[18px] bg-[rgba(255,255,255,0.82)] !overflow-hidden">
 			
 			{/* Article Cover Image */}
-			<div className="!relative !h-48 !w-full !mb-8">
+			<div 
+				className={`!relative !h-48 !w-full !mb-8 ${article.imageUrl ? 'cursor-pointer' : ''}`}
+				onClick={() => {
+					if (article.imageUrl) {
+						setShowImagePreview(true);
+					}
+				}}
+			>
 				<ArticleCover 
 					article={article}
 					size="lg"
@@ -574,6 +600,7 @@ const UserArticleItem: React.FC = () => {
 														placeholder="Edit your comment... Use Markdown formatting!"
 														minHeight="150px"
 														showToolbar={true}
+														articleId={id}
 														className="!border-purple-300 !border !rounded-lg !mb-3"
 													/>
 												</div>
@@ -635,6 +662,7 @@ const UserArticleItem: React.FC = () => {
 								placeholder="Share your thoughts..."
 								minHeight="150px"
 								showToolbar={true}
+								articleId={id}
 								className="!border-gray-300 !border !rounded-md"
 							/>
 							<div className="!flex !items-center !justify-between">
@@ -692,6 +720,69 @@ const UserArticleItem: React.FC = () => {
 			</RequireRoles>
             
 		</div>
+
+		{/* Compact Image Preview Modal */}
+		{showImagePreview && article?.imageUrl && (
+			<div 
+				className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+				onClick={() => setShowImagePreview(false)}
+			>
+				<div 
+					className="bg-white rounded-lg shadow-2xl p-4 max-w-lg w-full mx-4"
+					onClick={(e) => e.stopPropagation()}
+				>
+					{/* Header */}
+					<div className="flex justify-between items-center mb-3">
+						<h3 className="text-lg font-semibold text-gray-800 truncate">
+							{article.title}
+						</h3>
+						<button
+							onClick={() => setShowImagePreview(false)}
+							className="text-gray-500 hover:text-gray-700 p-1"
+						>
+							<X className="w-5 h-5" />
+						</button>
+					</div>
+
+					{/* Image */}
+					<div className="mb-4">
+						<img
+							src={`http://localhost:8080/article-images/${article.imageUrl}`}
+							alt={article.title}
+							className="w-full max-h-80 object-contain rounded border"
+						/>
+					</div>
+
+					{/* Options */}
+					<div className="flex gap-2">
+						<Button
+							variant="outline"
+							size="sm"
+							onClick={() => {
+								const link = document.createElement('a');
+								link.href = `http://localhost:8080/article-images/${article.imageUrl}`;
+								link.download = `${article.title.replace(/[^a-zA-Z0-9]/g, '_')}.jpg`;
+								document.body.appendChild(link);
+								link.click();
+								document.body.removeChild(link);
+							}}
+							className="flex-1"
+						>
+							<Download className="w-4 h-4 mr-2" />
+							Download
+						</Button>
+						<Button
+							variant="default"
+							size="sm"
+							onClick={() => setShowImagePreview(false)}
+							className="flex-1"
+						>
+							Close
+						</Button>
+					</div>
+				</div>
+			</div>
+		)}
         </>
 	);
 };

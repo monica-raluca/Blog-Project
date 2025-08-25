@@ -323,6 +323,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
                             readOnly={loading}
                             minHeight="200px"
                             showToolbar={true}
+                            articleId={selectedArticleId}
                             className="!border-[#ced4da] focus-within:!border-[#007bff] focus-within:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)]"
                         />
                         <div className="!text-xs !text-[#6c757d] !text-right !mt-1">

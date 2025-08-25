@@ -28,7 +28,12 @@ import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
 import TextColorPlugin, { FORMAT_TEXT_COLOR_COMMAND, CLEAR_TEXT_COLOR_COMMAND } from './TextColorPlugin';
 import BackgroundColorPlugin, { FORMAT_BACKGROUND_COLOR_COMMAND, CLEAR_BACKGROUND_COLOR_COMMAND } from './BackgroundColorPlugin';
+import ImageUploadPlugin from './ImageUploadPlugin';
+import ImagePlugin from './ImagePlugin';
+import { ImageNode } from './ImageNode';
+import { IMAGE_TRANSFORMER } from './ImageTransformer';
 import { $patchStyleText } from '@lexical/selection';
+import './ContentWrapperStyles.css';
 
 
 
@@ -81,6 +86,7 @@ import {
   Youtube,
   Table,
   Eraser,
+  Image,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -95,6 +101,8 @@ interface LexicalEditorProps {
   className?: string;
   showToolbar?: boolean;
   minHeight?: string;
+  articleId?: string; // For image uploads
+  onArticleCreate?: () => Promise<string | undefined>; // Callback to create article
 }
 
 export interface LexicalEditorRef {
@@ -109,7 +117,7 @@ export interface LexicalEditorRef {
 }
 
 // Toolbar plugin
-function ToolbarPlugin() {
+function ToolbarPlugin({ articleId, onArticleCreate }: { articleId?: string; onArticleCreate?: () => Promise<string | undefined> }) {
   const [editor] = useLexicalComposerContext();
   const [canUndo, setCanUndo] = React.useState(false);
   const [canRedo, setCanRedo] = React.useState(false);
@@ -520,6 +528,8 @@ function ToolbarPlugin() {
       >
         <Table size={16} />
       </Button>
+      
+      <ImageUploadPlugin articleId={articleId} onArticleCreate={onArticleCreate} showToolbar={true} />
     </div>
   );
 }
@@ -650,8 +660,8 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Lexi
   return null;
 }
 
-// Combined transformers including YouTube
-const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER];
+// Combined transformers including YouTube and Image
+const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER, IMAGE_TRANSFORMER];
 
 // Main editor component
 const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
@@ -664,6 +674,8 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
   className = '',
   showToolbar = true,
   minHeight = '200px',
+  articleId,
+  onArticleCreate,
 }, ref) => {
   const editorRef = React.useRef<LexicalEditorRef | null>(null);
 
@@ -749,6 +761,7 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
       LinkNode,
       AutoLinkNode,
       YouTubeNode,
+      ImageNode,
       TableNode,
       TableCellNode,
       TableRowNode,
@@ -771,8 +784,8 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <div className={`border border-gray-300 rounded-lg overflow-hidden ${className}`}>
-        {showToolbar && <ToolbarPlugin />}
+      <div className={`border border-gray-300 rounded-lg overflow-hidden content-wrapper ${className}`}>
+        {showToolbar && <ToolbarPlugin articleId={articleId} onArticleCreate={onArticleCreate} />}
         <div className="relative">
           <RichTextPlugin
             contentEditable={
@@ -805,6 +818,8 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           <FontSizePlugin />
           <TextColorPlugin showToolbar={false} />
           <BackgroundColorPlugin showToolbar={false} />
+          <ImagePlugin />
+          <ImageUploadPlugin articleId={articleId} onArticleCreate={onArticleCreate} showToolbar={false} />
           <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
         </div>
       </div>

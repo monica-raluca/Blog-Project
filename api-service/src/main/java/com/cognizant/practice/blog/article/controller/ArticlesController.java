@@ -93,8 +93,12 @@ public class ArticlesController {
     }
 
     @PostMapping(value="/articles/{id}/upload-image")
-    public Article uploadImage(@RequestParam("file") MultipartFile file, @PathVariable UUID id) {
-        return articlesService.uploadImage(file, id);
+    public Article uploadImage(@RequestParam("file") MultipartFile file, @PathVariable UUID id, Principal principal) {
+        return articlesService.uploadImage(file, id, principal);
     }
 
+    @PostMapping(value="/articles/{id}/upload-media")
+    public Article uploadMedia(@RequestParam("file") MultipartFile file, @PathVariable UUID id, Principal principal) {
+        return articlesService.uploadMedia(file, id, principal);
+    }
 }

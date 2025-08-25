@@ -64,6 +64,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     const [showCropModal, setShowCropModal] = useState<boolean>(false);
     const [originalImageUrl, setOriginalImageUrl] = useState<string | null>(null);
     const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
+    const [currentArticleId, setCurrentArticleId] = useState<string | undefined>(isEdit ? finalId : undefined);
     
     const navigate = useNavigate();
     const { token } = useAuth();
@@ -246,6 +247,31 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         }
     };
 
+    const handleAutoSave = async (): Promise<string | undefined> => {
+        const formData = { 
+            title: watch('title') || 'Untitled Article', 
+            content: markdownEditorRef.current?.getEditorStateJson() || '' 
+        };
+        
+        if (!token) {
+            throw new Error('No authentication token');
+        }
+        
+        try {
+            const result = await createArticle(formData, token);
+            if (result && result.id) {
+                setCurrentArticleId(result.id);
+                setCurrentArticle(result);
+                return result.id;
+            }
+        } catch (error) {
+            console.error('Auto-save failed:', error);
+            throw error;
+        }
+        
+        return undefined;
+    };
+
     const handleFormSubmit = async (data: ArticleFormData): Promise<void> => {
         if (!token) {
             setError('Authentication token not found. Please log in again.');
@@ -269,6 +295,11 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                 result = await updateArticle(finalId, articleData, token);
             } else {
                 result = await createArticle(articleData, token);
+                
+                // Set the article ID for image uploads
+                if (result && result.id) {
+                    setCurrentArticleId(result.id);
+                }
                 
                 // Upload cover image if one was selected (for new articles)
                 if (result && result.id && selectedCoverFile) {
@@ -363,7 +394,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                 </div>
 
                 {/* Article Cover Upload - For New Articles */}
-                {!isEdit && (
+                {!isEdit && !currentArticle && (
                     <div className="!mb-6">
                         <div className="!relative">
                             <label className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
@@ -533,6 +564,8 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             readOnly={loading}
                             minHeight="400px"
                             showToolbar={true}
+                            articleId={currentArticleId}
+                            onArticleCreate={!isEdit ? handleAutoSave : undefined}
                             className="!border-[#ced4da] focus-within:!border-[#007bff] focus-within:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)]"
                         />
                         <div className="!text-xs !text-[#6c757d] !text-right !mt-1">
