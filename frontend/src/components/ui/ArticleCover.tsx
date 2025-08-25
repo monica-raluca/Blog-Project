@@ -112,6 +112,40 @@ const ArticleCover: React.FC<ArticleCoverProps> = ({
   const coverData = generateCoverData(article.title);
   const IconComponent = coverData.icon;
 
+  // Check if article has an uploaded image
+  const hasUploadedImage = article.imageUrl && article.imageUrl.trim();
+
+  if (hasUploadedImage) {
+    // Display uploaded image
+    return (
+      <div 
+        className={`${config.container} rounded-lg border border-gray-300/20 shadow-md hover:shadow-lg transition-all duration-500 relative overflow-hidden group ${className}`}
+      >
+        <img
+          src={`http://localhost:8080/article-images/${article.imageUrl}`}
+          alt={article.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        
+        {/* Subtle overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Title overlay on hover */}
+        <div className="absolute bottom-0 left-0 right-0 p-2 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/60 to-transparent">
+          <div className="line-clamp-2 leading-tight">
+            {article.title.length > 30 ? article.title.substring(0, 28) + '...' : article.title}
+          </div>
+        </div>
+        
+        {/* Magical shimmer effect on hover */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // Fallback to generated placeholder
   return (
     <div 
       className={`${config.container} rounded-lg bg-gradient-to-br ${coverData.bg} border border-gray-300/20 shadow-md hover:shadow-lg transition-all duration-500 flex flex-col items-center justify-center relative overflow-hidden group ${className}`}

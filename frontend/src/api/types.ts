@@ -46,6 +46,7 @@ export interface Article {
 	title: string;
 	content: string;
 	summary?: string;
+	imageUrl?: string;
 	author?: UserDetail;
 	editor?: UserDetail;
 	createdAt?: string;

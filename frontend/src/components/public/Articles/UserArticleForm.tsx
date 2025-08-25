@@ -7,6 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button } from '@/components/ui/button';
 import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
+import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
+import { Article } from '../../../api/types';
 
 interface ArticleFormProps {
 	isEdit?: boolean;
@@ -49,12 +51,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	});
 
 	const content = watch('content');
+	const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
 
 	useEffect(() => {
 		if (isEdit && id) {
 			fetchArticleById(id).then(article => {
 				setValue('title', article.title);
 				setValue('content', article.content);
+				setCurrentArticle(article); // Set current article for image upload
 				
 				// Set the JSON content in the editor after a small delay to ensure it's rendered
 				setTimeout(() => {
@@ -100,10 +104,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		const article = { title: data.title, content: jsonContent };
 
 		try {
+			let result;
 			if (isEdit && id && token) {
-				await updateArticle(id, article, token);
+				result = await updateArticle(id, article, token);
 			} else if (token) {
-				await createArticle(article, token);
+				result = await createArticle(article, token);
+			}
+			if (result) {
+				setCurrentArticle(result); // Set current article for future image uploads
 			}
 			navigate('/public/articles');
 		} catch (err) {
@@ -145,6 +153,23 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 								<p className="!text-rose-500 !text-sm !mt-2 !font-medium !animate-pulse">{errors.title?.message}</p>
 							)}
 						</div>
+
+						{/* Article Cover Upload */}
+						{currentArticle && token && currentArticle.id && (
+							<div className="!relative">
+								<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Article Cover Image</label>
+								<div className="!p-4 !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm">
+									<ArticleCoverUpload
+										articleId={currentArticle.id}
+										currentImageUrl={currentArticle?.imageUrl}
+										token={token}
+										onUploadSuccess={(updatedArticle) => {
+											setCurrentArticle(updatedArticle);
+										}}
+									/>
+								</div>
+							</div>
+						)}
 						
 						<div className="!relative">
 							<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Content</label>

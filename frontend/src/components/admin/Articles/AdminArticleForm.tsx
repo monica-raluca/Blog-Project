@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 import ArticlePreview from './ArticlePreview';
+import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
 import { Eye } from 'lucide-react';
 import * as yup from 'yup';
 
@@ -52,6 +53,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
     const [showPreview, setShowPreview] = useState<boolean>(false);
+    const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
     
     const navigate = useNavigate();
     const { token } = useAuth();
@@ -97,6 +99,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             fetchArticleById(finalId).then(article => {
                 setValue('title', article.title);
                 setValue('content', article.content);
+                setCurrentArticle(article); // Set current article for image upload
                 
                 // Set the JSON content in the editor after a small delay to ensure it's rendered
                 setTimeout(() => {
@@ -166,6 +169,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             }
 
             setIsDirty(false);
+            setCurrentArticle(result); // Set current article for future image uploads
             
             if (onSubmit) {
                 onSubmit(result);
@@ -249,6 +253,25 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         )}
                     </div>
                 </div>
+
+                {/* Article Cover Upload */}
+                {currentArticle && token && currentArticle.id && (
+                    <div className="!mb-6">
+                        <div className="!relative">
+                            <label className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
+                                Article Cover Image
+                            </label>
+                            <ArticleCoverUpload
+                                articleId={currentArticle.id}
+                                currentImageUrl={currentArticle?.imageUrl}
+                                token={token}
+                                onUploadSuccess={(updatedArticle) => {
+                                    setCurrentArticle(updatedArticle);
+                                }}
+                            />
+                        </div>
+                    </div>
+                )}
                 
                 <div className="!mb-6">
                     <div className="!relative">

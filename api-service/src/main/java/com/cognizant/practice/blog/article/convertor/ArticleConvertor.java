@@ -13,6 +13,7 @@ public class ArticleConvertor {
                 .summary(articleEntity.getSummary())
                 .createdDate(articleEntity.getCreatedDate())
                 .updatedDate(articleEntity.getUpdatedDate())
+                .imageUrl(articleEntity.getImageUrl())
                 .author(UserConvertor.toDto(articleEntity.getAuthor()))
                 .editor(UserConvertor.toDto(articleEntity.getEditor()))
                 .build();
@@ -26,6 +27,7 @@ public class ArticleConvertor {
                 .summary(article.getSummary())
                 .createdDate(article.getCreatedDate())
                 .updatedDate(article.getUpdatedDate())
+                .imageUrl(article.getImageUrl())
                 .author(UserConvertor.toEntity(article.getAuthor()))
                 .editor(UserConvertor.toEntity(article.getEditor()))
                 .build();

@@ -6,6 +6,7 @@ import com.cognizant.practice.blog.article.service.ArticlesService;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -91,7 +92,9 @@ public class ArticlesController {
         return articlesService.updateArticle(id, articleRequest, principal);
     }
 
-    // PATCH partial update
-
+    @PostMapping(value="/articles/{id}/upload-image")
+    public Article uploadImage(@RequestParam("file") MultipartFile file, @PathVariable UUID id) {
+        return articlesService.uploadImage(file, id);
+    }
 
 }

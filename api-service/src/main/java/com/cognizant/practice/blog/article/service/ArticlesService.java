@@ -21,7 +21,14 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -163,7 +170,7 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, author, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, null, author, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
@@ -190,6 +197,32 @@ public class ArticlesService {
         newArticle.setEditor(editor);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
+    }
+
+    public Article uploadImage(MultipartFile file, UUID id) {
+        Optional<ArticleEntity> article = articleRepository.findById(id);
+        if(article.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
+        }
+
+        File directory = new File("uploads/article-images");
+        if(!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String fileName = "article-" + article.get().getId() + extension;
+        String filePath = System.getProperty("user.dir") + "/uploads/article-images/" + fileName;
+        Path path = Paths.get(filePath);
+        try {
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload article image");
+        }
+
+        article.get().setImageUrl(fileName);
+
+        return ArticleConvertor.toDto(articleRepository.save(article.get()));
     }
 
 }

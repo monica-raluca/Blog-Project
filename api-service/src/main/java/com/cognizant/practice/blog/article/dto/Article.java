@@ -19,7 +19,7 @@ public class Article {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
-    // private String imageUrl;
+    private String imageUrl;
 
     private User author;
     private User editor;
