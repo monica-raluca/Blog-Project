@@ -9,6 +9,7 @@ import TopBar from '../../../layouts/TopBar';
 import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
 import MagicalAvatar from '../../ui/MagicalAvatar';
 import ArticleCover from '../../ui/ArticleCover';
+import { extractSmartSummary } from '../../../utils/contentUtils';
 import '../../../styles/magical-cards.css';
 
 const UserArticles: React.FC = () => {
@@ -158,7 +159,7 @@ const UserArticles: React.FC = () => {
 							{/* Content Preview */}
 							<div className="!text-gray-600 !text-sm !leading-relaxed !mb-4 !line-clamp-3">
 								<LexicalContentRenderer 
-									content={article.summary || article.content?.substring(0, 150) + '...' || ''}
+									content={extractSmartSummary(article.content || '')}
 									className="!border-none !bg-transparent !text-inherit"
 								/>
 							</div>

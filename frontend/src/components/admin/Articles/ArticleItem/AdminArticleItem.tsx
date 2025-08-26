@@ -9,6 +9,7 @@ import CommentItem from '../../Comments/CommentItem/CommentItem';
 import { Button } from '@/components/ui/button';
 import { useCommentHandlers } from '../../../../handlers/CommentsHandler';
 import LexicalContentRenderer from '../../../ui/LexicalContentRenderer';
+import { extractSmartSummary } from '../../../../utils/contentUtils';
 
 import { Label } from '@/components/ui/label';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
@@ -392,12 +393,10 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
                 )}
             </div>
 
-            {article?.summary && (
+            {article?.content && (
                 <div className="!text-sm !text-[#6c757d]">
                     <LexicalContentRenderer 
-                        content={article.summary.length > 120 
-                            ? article.summary.substring(0, 120) + '...' 
-                            : article.summary}
+                        content={extractSmartSummary(article.content || '')}
                         className="!border-none !bg-transparent !text-xs"
                     />
                 </div>

@@ -6,6 +6,7 @@ import { hasRole } from '../../../api/AuthApi';
 import { ArticleControlsContext } from '../../../layouts/Layout';
 import { Article } from '../../../api/types';
 import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
+import { extractSmartSummary } from '../../../utils/contentUtils';
 
 import { Button } from '@/components/ui/button';
 import { 
@@ -188,10 +189,10 @@ const AdminArticles: React.FC = () => {
 												<div className="font-medium truncate">
 													{article.title}
 												</div>
-												{(article.summary || article.content) && (
+												{article.content && (
 													<div className="text-sm text-muted-foreground line-clamp-2">
 														<LexicalContentRenderer 
-															content={article.summary || article.content?.substring(0, 200) + '...' || ''}
+															content={extractSmartSummary(article.content || '')}
 															className="!border-none !bg-transparent !text-xs"
 														/>
 													</div>
