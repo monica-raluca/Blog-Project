@@ -63,6 +63,11 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const [showCropModal, setShowCropModal] = useState<boolean>(false);
 	const [originalImageUrl, setOriginalImageUrl] = useState<string | null>(null);
 	const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
+	
+	// Edit mode cover state
+	const [editSelectedCoverFile, setEditSelectedCoverFile] = useState<File | null>(null);
+	const [editCoverPreviewUrl, setEditCoverPreviewUrl] = useState<string | null>(null);
+	const [editCroppedBlob, setEditCroppedBlob] = useState<Blob | null>(null);
 
 	useEffect(() => {
 		if (isEdit && id) {
@@ -136,20 +141,32 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	};
 
 	const handleCropComplete = (blob: Blob) => {
-		setCroppedBlob(blob);
+		if (isEdit) {
+			setEditCroppedBlob(blob);
+			// Create preview URL from cropped blob
+			const croppedUrl = URL.createObjectURL(blob);
+			setEditCoverPreviewUrl(croppedUrl);
+		} else {
+			setCroppedBlob(blob);
+			// Create preview URL from cropped blob
+			const croppedUrl = URL.createObjectURL(blob);
+			setCoverPreviewUrl(croppedUrl);
+		}
 		setShowCropModal(false);
-		
-		// Create preview URL from cropped blob
-		const croppedUrl = URL.createObjectURL(blob);
-		setCoverPreviewUrl(croppedUrl);
 	};
 
 	const handleCropCancel = () => {
 		setShowCropModal(false);
 		setOriginalImageUrl(null);
-		setSelectedCoverFile(null);
-		setCroppedBlob(null);
-		setCoverPreviewUrl(null);
+		if (isEdit) {
+			setEditSelectedCoverFile(null);
+			setEditCroppedBlob(null);
+			setEditCoverPreviewUrl(null);
+		} else {
+			setSelectedCoverFile(null);
+			setCroppedBlob(null);
+			setCoverPreviewUrl(null);
+		}
 	};
 
 	const handleCoverImageRemove = () => {
@@ -157,6 +174,34 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		setCoverPreviewUrl(null);
 		setCroppedBlob(null);
 		setOriginalImageUrl(null);
+	};
+
+	const handleEditCoverImageSelect = (file: File) => {
+		if (file.type === 'image/gif') {
+			// For GIFs, skip cropping and go directly to preview
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				setEditCoverPreviewUrl(e.target?.result as string);
+			};
+			reader.readAsDataURL(file);
+			setEditSelectedCoverFile(file);
+			setEditCroppedBlob(null);
+		} else {
+			// For other images, show crop modal
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				setOriginalImageUrl(e.target?.result as string);
+				setShowCropModal(true);
+			};
+			reader.readAsDataURL(file);
+			setEditSelectedCoverFile(file);
+		}
+	};
+
+	const handleEditCoverImageRemove = () => {
+		setEditSelectedCoverFile(null);
+		setEditCoverPreviewUrl(null);
+		setEditCroppedBlob(null);
 	};
 
 	// Upload cover image after article creation
@@ -203,6 +248,50 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		}
 	};
 
+	// Upload new cover image in edit mode
+	const uploadEditCoverImage = async (articleId: string): Promise<void> => {
+		if ((!editCroppedBlob && !editSelectedCoverFile) || !token) return;
+
+		try {
+			const formData = new FormData();
+			
+			// Use cropped blob for non-GIF images, original file for GIFs and when no crop was done
+			if (editCroppedBlob && editSelectedCoverFile?.type !== 'image/gif') {
+				const croppedFile = new File([editCroppedBlob], editSelectedCoverFile?.name || 'cropped-cover.jpg', {
+					type: 'image/jpeg'
+				});
+				formData.append('file', croppedFile);
+			} else if (editSelectedCoverFile) {
+				formData.append('file', editSelectedCoverFile);
+			}
+
+			const response = await fetch(`/api/articles/${articleId}/upload-image`, {
+				method: 'POST',
+				headers: {
+					'Authorization': `Bearer ${token}`
+				},
+				body: formData
+			});
+
+			if (!response.ok) {
+				const errorText = await response.text();
+				throw new Error(`Edit cover upload failed: ${errorText}`);
+			}
+
+			const updatedArticle = await response.json();
+			setCurrentArticle(updatedArticle);
+			
+			// Clear the edit mode states after successful upload
+			setEditSelectedCoverFile(null);
+			setEditCoverPreviewUrl(null);
+			setEditCroppedBlob(null);
+			setOriginalImageUrl(null);
+		} catch (err) {
+			console.error('Edit cover image upload failed:', err);
+			// Note: We don't throw here to avoid breaking the article update flow
+		}
+	};
+
 	const handleAutoSave = async (): Promise<string | undefined> => {
 		const formData = { 
 			title: watch('title') || 'Untitled Article', 
@@ -236,6 +325,11 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			let result;
 			if (isEdit && id && token) {
 				result = await updateArticle(id, article, token);
+				
+				// Upload new cover image if one was selected (for edit mode)
+				if (result && result.id && editSelectedCoverFile) {
+					await uploadEditCoverImage(result.id);
+				}
 			} else if (token) {
 				result = await createArticle(article, token);
 				
@@ -432,15 +526,145 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 						{currentArticle && token && currentArticle.id && (
 							<div className="!relative">
 								<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Article Cover Image</label>
-								<div className="!p-4 !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm">
-									<ArticleCoverUpload
-										articleId={currentArticle.id}
-										currentImageUrl={currentArticle?.imageUrl}
-										token={token}
-										onUploadSuccess={(updatedArticle) => {
-											setCurrentArticle(updatedArticle);
-										}}
-									/>
+								<div className="!grid !grid-cols-1 md:!grid-cols-2 !gap-6 !p-4 !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm">
+									{/* Left side - Current Cover */}
+									<div>
+										<h3 className="!text-sm !font-medium !text-gray-700 !mb-3">Current Cover</h3>
+										<div className="!relative !w-full !h-48 !bg-gray-100 !border-2 !border-dashed !border-gray-300 !rounded-lg !overflow-hidden">
+											{currentArticle.imageUrl ? (
+												<img
+													src={`http://localhost:8080/article-images/${currentArticle.imageUrl}`}
+													alt="Current article cover"
+													className="!w-full !h-full !object-cover"
+												/>
+											) : (
+												<div className="!w-full !h-full !flex !items-center !justify-center !text-gray-500">
+													<div className="!text-center">
+														<p className="!text-sm">No cover image</p>
+													</div>
+												</div>
+											)}
+										</div>
+									</div>
+
+									{/* Right side - Upload New Cover */}
+									<div>
+										<h3 className="!text-sm !font-medium !text-gray-700 !mb-3">Upload New Cover</h3>
+										<div className="!relative !w-full !h-48 !bg-gray-100 !border-2 !border-dashed !border-gray-300 !rounded-lg !overflow-hidden !mb-4">
+											{editCoverPreviewUrl ? (
+												<img
+													src={editCoverPreviewUrl}
+													alt="New article cover preview"
+													className="!w-full !h-full !object-cover"
+												/>
+											) : (
+												<div className="!w-full !h-full !flex !items-center !justify-center !text-gray-500">
+													<div className="!text-center">
+														<p className="!text-sm">No new cover selected</p>
+													</div>
+												</div>
+											)}
+										</div>
+
+										{/* Upload Controls */}
+										<div className="!space-y-3">
+											{!editSelectedCoverFile ? (
+												<div className="!flex !flex-col !items-center !gap-2">
+													<input
+														type="file"
+														accept="image/*"
+														onChange={(e) => {
+															const file = e.target.files?.[0];
+															if (file) {
+																// Validate file type
+																if (!file.type.startsWith('image/')) {
+																	alert('Please select an image file');
+																	return;
+																}
+																// Validate file size (5MB max)
+																if (file.size > 5 * 1024 * 1024) {
+																	alert('File size must be less than 5MB');
+																	return;
+																}
+																handleEditCoverImageSelect(file);
+															}
+														}}
+														className="!hidden"
+														id="cover-upload-edit"
+													/>
+													<label
+														htmlFor="cover-upload-edit"
+														className="!cursor-pointer !px-4 !py-2 !border-2 !border-gray-200 !rounded-lg !text-sm !font-medium !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out hover:!border-purple-400 hover:!bg-white hover:!shadow-lg"
+													>
+														Choose New Cover
+													</label>
+													<p className="!text-xs !text-gray-500">
+														JPG, PNG, GIF up to 5MB
+													</p>
+												</div>
+											) : (
+												<div className="!flex !gap-3 !justify-center">
+													<button
+														type="button"
+														onClick={handleEditCoverImageRemove}
+														className="!px-3 !py-1.5 !border-2 !border-gray-200 !rounded-lg !text-xs !font-medium !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out hover:!border-rose-400 hover:!bg-white hover:!shadow-lg"
+													>
+														Remove
+													</button>
+													<label
+														htmlFor="cover-upload-replace-edit"
+														className="!cursor-pointer !px-3 !py-1.5 !border-2 !border-gray-200 !rounded-lg !text-xs !font-medium !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out hover:!border-purple-400 hover:!bg-white hover:!shadow-lg"
+													>
+														Change
+													</label>
+													<input
+														type="file"
+														accept="image/*"
+														onChange={(e) => {
+															const file = e.target.files?.[0];
+															if (file) {
+																// Validate file type
+																if (!file.type.startsWith('image/')) {
+																	alert('Please select an image file');
+																	return;
+																}
+																// Validate file size (5MB max)
+																if (file.size > 5 * 1024 * 1024) {
+																	alert('File size must be less than 5MB');
+																	return;
+																}
+																handleEditCoverImageSelect(file);
+															}
+														}}
+														className="!hidden"
+														id="cover-upload-replace-edit"
+													/>
+												</div>
+											)}
+										</div>
+
+										{editSelectedCoverFile && (
+											<div className="!mt-3 !space-y-2">
+												{/* Show info for GIF files */}
+												{editSelectedCoverFile.type === 'image/gif' && (
+													<div className="!p-2 !bg-blue-50 !border !border-blue-200 !rounded-lg !text-center">
+														<p className="!text-xs !text-blue-700">
+															🎬 GIF selected - animation preserved
+														</p>
+													</div>
+												)}
+												
+												{/* Show info for cropped images */}
+												{editCroppedBlob && editSelectedCoverFile.type !== 'image/gif' && (
+													<div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
+														<p className="!text-xs !text-green-700">
+															✂️ Image cropped successfully
+														</p>
+													</div>
+												)}
+											</div>
+										)}
+									</div>
 								</div>
 							</div>
 						)}
@@ -477,15 +701,15 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 				</form>
 			</div>
 
-			{/* Crop Modal */}
-			{showCropModal && originalImageUrl && (
-				<ImageCrop
-					imageSrc={originalImageUrl}
-					onCropComplete={handleCropComplete}
-					onCancel={handleCropCancel}
-					aspectRatio={16/9} // 16:9 aspect ratio for article covers
-				/>
-			)}
+					{/* Crop Modal */}
+		{showCropModal && originalImageUrl && (
+			<ImageCrop
+				imageSrc={originalImageUrl}
+				onCropComplete={handleCropComplete}
+				onCancel={handleCropCancel}
+				aspectRatio={16/9} // 16:9 aspect ratio
+			/>
+		)}
 		</div>
 	);
 };

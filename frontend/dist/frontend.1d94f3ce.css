@@ -216,7 +216,6 @@
     --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-4xl: 56rem;
-    --container-6xl: 72rem;
     --container-7xl: 80rem;
     --text-xs: .75rem;
     --text-xs--line-height: calc(1 / .75);
@@ -1517,6 +1516,10 @@
     height: calc(var(--spacing) * 24) !important;
   }
 
+  .\!h-36 {
+    height: calc(var(--spacing) * 36) !important;
+  }
+
   .\!h-40 {
     height: calc(var(--spacing) * 40) !important;
   }
@@ -1941,12 +1944,24 @@
     max-width: var(--container-7xl) !important;
   }
 
+  .\!max-w-64 {
+    max-width: calc(var(--spacing) * 64) !important;
+  }
+
   .\!max-w-\[95vw\] {
     max-width: 95vw !important;
   }
 
   .\!max-w-\[220px\] {
     max-width: 220px !important;
+  }
+
+  .\!max-w-\[341px\] {
+    max-width: 341px !important;
+  }
+
+  .\!max-w-\[500px\] {
+    max-width: 500px !important;
   }
 
   .\!max-w-\[700px\] {
@@ -2390,6 +2405,10 @@
 
   .\!gap-4 {
     gap: calc(var(--spacing) * 4) !important;
+  }
+
+  .\!gap-6 {
+    gap: calc(var(--spacing) * 6) !important;
   }
 
   .\!gap-8 {
@@ -4560,6 +4579,10 @@
 
   .\!py-1 {
     padding-block: calc(var(--spacing) * 1) !important;
+  }
+
+  .\!py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5) !important;
   }
 
   .\!py-2 {
@@ -8257,6 +8280,12 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+
+  .md\:\!grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
   }
 

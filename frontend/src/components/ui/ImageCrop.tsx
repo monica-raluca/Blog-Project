@@ -26,7 +26,7 @@ const ImageCrop: React.FC<ImageCropProps> = ({
     imageSrc,
     onCropComplete,
     onCancel,
-    aspectRatio = 16 / 9 // Default to 16:9 aspect ratio for article covers
+    aspectRatio = 5.2 // Default to match article cover display area (1000px / 192px)
 }) => {
     const imageRef = useRef<HTMLImageElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
