@@ -583,7 +583,12 @@ const UserArticleItem: React.FC = () => {
 										<div className="!flex-1">
 											{/* Commenter Name and Time */}
 											<div className="!flex !items-center !gap-2 !mb-2">
-												<span className="!font-medium !text-gray-800">{commentCreatedBy}</span>
+												<NavLink 
+													to={`/public/users/${comment.author?.id}`}
+													className="!font-medium !text-gray-800 hover:!text-indigo-600 !transition-colors !no-underline hover:!underline"
+												>
+													{commentCreatedBy}
+												</NavLink>
 												<span className="!text-gray-400 !text-sm">•</span>
 												<span className="!text-gray-600 !text-sm">
 													{formatDateTimeToMin(commentCreatedAt)}
@@ -612,7 +617,12 @@ const UserArticleItem: React.FC = () => {
 													/>
 													{showCommentEdited && (
 														<div className='!text-xs !text-gray-500 !mt-2'>
-															<span>Edited by <strong>{commentEditedBy}</strong> on {formatDateTimeToMin(commentEditedAt)}</span>
+															<span>Edited by <NavLink 
+																to={`/public/users/${comment.editor?.id}`}
+																className="!font-medium hover:!text-indigo-600 !transition-colors !no-underline hover:!underline"
+															>
+																{commentEditedBy}
+															</NavLink> on {formatDateTimeToMin(commentEditedAt)}</span>
 														</div>
 													)}
 												</div>

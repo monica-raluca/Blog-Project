@@ -116,8 +116,11 @@ const ArticleCover: React.FC<ArticleCoverProps> = ({
   const hasUploadedImage = article.imageUrl && article.imageUrl.trim();
 
   if (hasUploadedImage) {
+    // Check if it's a GIF (skip cropping for GIFs to preserve animation)
+    const isGif = article.imageUrl.toLowerCase().endsWith('.gif');
+    
     // Check if crop metadata is available
-    const hasCropData = article.cropX !== undefined && article.cropY !== undefined && 
+    const hasCropData = !isGif && article.cropX !== undefined && article.cropY !== undefined && 
                        article.cropWidth !== undefined && article.cropHeight !== undefined;
     
     const [croppedImageSrc, setCroppedImageSrc] = useState<string | null>(null);

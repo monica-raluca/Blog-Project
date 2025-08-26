@@ -25,9 +25,41 @@ const AuthorItem: React.FC = () => {
 		if (!id) return;
 		
         fetchUserById(id)
-			.then(setAuthor)
+			.then(user => {
+				setAuthor(user);
+				// Immediately fetch articles to get the count
+				return fetchArticlesByAuthor(user);
+			})
+			.then(data => {
+				console.log('=== AUTHOR ARTICLES DEBUG ===');
+				console.log('Raw data from fetchArticlesByAuthor:', data);
+				console.log('Is array?', Array.isArray(data));
+				console.log('Data type:', typeof data);
+				
+				// Handle both direct array and object with articles property
+				let articlesData = [];
+				if (Array.isArray(data)) {
+					articlesData = data;
+				} else {
+					articlesData = data.articles || [];
+				}
+				
+				console.log('Final articles data:', articlesData);
+				console.log('Number of articles:', articlesData.length);
+				articlesData.forEach((article, index) => {
+					console.log(`Article ${index + 1}:`, {
+						id: article.id,
+						title: article.title,
+						createdDate: article.createdDate,
+						createdAt: article.createdAt,
+						author: article.author?.username
+					});
+				});
+				
+				setArticles(articlesData);
+			})
 			.catch(err => {
-				console.error("Failed to load author", err);
+				console.error("Failed to load author or articles", err);
 				const errorMessage = (err as Error).message || 'An error occurred';
 				console.log(errorMessage);
 				if (errorMessage.toLowerCase().includes('not found')) {
@@ -84,53 +116,8 @@ const AuthorItem: React.FC = () => {
 		});
 	};
 
-	const loadArticles = (): void => {
-		if (showArticles) {
-			setShowArticles(false);
-			return;
-		}
-
-		if (!author) return;
-
-        fetchArticlesByAuthor(author)
-			.then(data => {
-				console.log('=== AUTHOR ARTICLES DEBUG ===');
-				console.log('Raw data from fetchArticlesByAuthor:', data);
-				console.log('Is array?', Array.isArray(data));
-				console.log('Data type:', typeof data);
-				
-				// Handle both direct array and object with articles property
-				let articlesData = [];
-				if (Array.isArray(data)) {
-					articlesData = data;
-				} else {
-					articlesData = data.articles || [];
-				}
-				
-				console.log('Final articles data:', articlesData);
-				console.log('Number of articles:', articlesData.length);
-				articlesData.forEach((article, index) => {
-					console.log(`Article ${index + 1}:`, {
-						id: article.id,
-						title: article.title,
-						createdDate: article.createdDate,
-						createdAt: article.createdAt,
-						author: article.author?.username
-					});
-				});
-				
-				setArticles(articlesData);
-				setShowArticles(true);
-			})
-			.catch(err => {
-				console.error("Failed to load articles", err);
-				const errorMessage = (err as Error).message || 'An error occurred';
-				if (errorMessage.toLowerCase().includes('forbidden')) {
-					navigate('/forbidden');
-				} else {
-					navigate('/error');
-				}
-			});
+	const toggleArticlesDisplay = (): void => {
+		setShowArticles(prev => !prev);
 	};
 
 	if (!author) return (
@@ -193,7 +180,7 @@ const AuthorItem: React.FC = () => {
 						{/* Action Button */}
 						<div className="!flex-shrink-0">
 							<Button
-								onClick={loadArticles}
+								onClick={toggleArticlesDisplay}
 								size="lg"
 								className="!bg-gradient-to-r !from-purple-500 !to-pink-500 hover:!from-purple-600 hover:!to-pink-600 !text-white !px-8 !py-4 !rounded-full !font-semibold !shadow-lg !shadow-purple-200/50 !transition-all !duration-300 hover:!scale-105 hover:!shadow-xl hover:!shadow-purple-300/50"
 							>
