@@ -93,8 +93,16 @@ public class ArticlesController {
     }
 
     @PostMapping(value="/articles/{id}/upload-image")
-    public Article uploadImage(@RequestParam("file") MultipartFile file, @PathVariable UUID id, Principal principal) {
-        return articlesService.uploadImage(file, id, principal);
+    public Article uploadImage(
+            @RequestParam("file") MultipartFile file, 
+            @PathVariable UUID id, 
+            @RequestParam(value = "cropX", required = false) Double cropX,
+            @RequestParam(value = "cropY", required = false) Double cropY,
+            @RequestParam(value = "cropWidth", required = false) Double cropWidth,
+            @RequestParam(value = "cropHeight", required = false) Double cropHeight,
+            @RequestParam(value = "cropScale", required = false) Double cropScale,
+            Principal principal) {
+        return articlesService.uploadImage(file, id, cropX, cropY, cropWidth, cropHeight, cropScale, principal);
     }
 
     @PostMapping(value="/articles/{id}/upload-media")

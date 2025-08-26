@@ -53,6 +53,12 @@ export interface Article {
 	updatedAt?: string;
 	createdDate?: string;
 	updatedDate?: string;
+	// Crop metadata for cover image display
+	cropX?: number;
+	cropY?: number;
+	cropWidth?: number;
+	cropHeight?: number;
+	cropScale?: number;
 }
 
 export interface ArticleFilters {

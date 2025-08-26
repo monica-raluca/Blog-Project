@@ -170,7 +170,7 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, new ArrayList<String>(), null, author, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, new ArrayList<String>(), null, null, null, null, null, null, author, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
@@ -199,7 +199,7 @@ public class ArticlesService {
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
 
-    public Article uploadImage(MultipartFile file, UUID id, Principal principal) {
+    public Article uploadImage(MultipartFile file, UUID id, Double cropX, Double cropY, Double cropWidth, Double cropHeight, Double cropScale, Principal principal) {
         Optional<ArticleEntity> article = articleRepository.findById(id);
         if(article.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Article not found");
@@ -222,7 +222,13 @@ public class ArticlesService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to upload article image");
         }
 
+        // Save the full image and crop metadata
         article.get().setImageUrl(fileName);
+        article.get().setCropX(cropX);
+        article.get().setCropY(cropY);
+        article.get().setCropWidth(cropWidth);
+        article.get().setCropHeight(cropHeight);
+        article.get().setCropScale(cropScale);
         article.get().setUpdatedDate(LocalDateTime.now());
         article.get().setEditor(editor);
 

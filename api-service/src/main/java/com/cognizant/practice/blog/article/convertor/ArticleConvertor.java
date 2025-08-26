@@ -15,6 +15,11 @@ public class ArticleConvertor {
                 .updatedDate(articleEntity.getUpdatedDate())
                 .imageUrl(articleEntity.getImageUrl())
                 .mediaUrls(articleEntity.getMediaUrls())
+                .cropX(articleEntity.getCropX())
+                .cropY(articleEntity.getCropY())
+                .cropWidth(articleEntity.getCropWidth())
+                .cropHeight(articleEntity.getCropHeight())
+                .cropScale(articleEntity.getCropScale())
                 .author(UserConvertor.toDto(articleEntity.getAuthor()))
                 .editor(UserConvertor.toDto(articleEntity.getEditor()))
                 .build();
@@ -30,6 +35,11 @@ public class ArticleConvertor {
                 .updatedDate(article.getUpdatedDate())
                 .imageUrl(article.getImageUrl())
                 .mediaUrls(article.getMediaUrls())
+                .cropX(article.getCropX())
+                .cropY(article.getCropY())
+                .cropWidth(article.getCropWidth())
+                .cropHeight(article.getCropHeight())
+                .cropScale(article.getCropScale())
                 .author(UserConvertor.toEntity(article.getAuthor()))
                 .editor(UserConvertor.toEntity(article.getEditor()))
                 .build();

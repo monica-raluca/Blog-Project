@@ -216,6 +216,7 @@
     --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-4xl: 56rem;
+    --container-6xl: 72rem;
     --container-7xl: 80rem;
     --text-xs: .75rem;
     --text-xs--line-height: calc(1 / .75);
@@ -1940,6 +1941,10 @@
     max-width: var(--container-4xl) !important;
   }
 
+  .\!max-w-6xl {
+    max-width: var(--container-6xl) !important;
+  }
+
   .\!max-w-7xl {
     max-width: var(--container-7xl) !important;
   }
@@ -2258,12 +2263,44 @@
     animation: var(--animate-spin);
   }
 
+  .\!cursor-e-resize {
+    cursor: e-resize !important;
+  }
+
   .\!cursor-move {
     cursor: move !important;
   }
 
+  .\!cursor-n-resize {
+    cursor: n-resize !important;
+  }
+
+  .\!cursor-ne-resize {
+    cursor: ne-resize !important;
+  }
+
+  .\!cursor-nw-resize {
+    cursor: nw-resize !important;
+  }
+
   .\!cursor-pointer {
     cursor: pointer !important;
+  }
+
+  .\!cursor-s-resize {
+    cursor: s-resize !important;
+  }
+
+  .\!cursor-se-resize {
+    cursor: se-resize !important;
+  }
+
+  .\!cursor-sw-resize {
+    cursor: sw-resize !important;
+  }
+
+  .\!cursor-w-resize {
+    cursor: w-resize !important;
   }
 
   .cursor-default {
@@ -3281,6 +3318,14 @@
     background-color: #fff3cd !important;
   }
 
+  .\!bg-black\/50 {
+    background-color: #00000080 !important;
+
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 50%, transparent) !important;
+    }
+  }
+
   .\!bg-black\/60 {
     background-color: #0009 !important;
 
@@ -3331,6 +3376,10 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-blue-400) 30%, transparent) !important;
     }
+  }
+
+  .\!bg-blue-500 {
+    background-color: var(--color-blue-500) !important;
   }
 
   .\!bg-blue-500\/10 {

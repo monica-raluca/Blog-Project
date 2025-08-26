@@ -8,7 +8,8 @@ import * as yup from 'yup';
 import { Button } from '@/components/ui/button';
 import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
-import ImageCrop from '../../ui/ImageCrop';
+import ArticleCover from '../../ui/ArticleCover';
+import ImageCrop, { CropData } from '../../ui/ImageCrop';
 import { Article } from '../../../api/types';
 
 interface ArticleFormProps {
@@ -62,12 +63,12 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	// Crop-related state
 	const [showCropModal, setShowCropModal] = useState<boolean>(false);
 	const [originalImageUrl, setOriginalImageUrl] = useState<string | null>(null);
-	const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
+	const [cropData, setCropData] = useState<CropData | null>(null);
 	
 	// Edit mode cover state
 	const [editSelectedCoverFile, setEditSelectedCoverFile] = useState<File | null>(null);
 	const [editCoverPreviewUrl, setEditCoverPreviewUrl] = useState<string | null>(null);
-	const [editCroppedBlob, setEditCroppedBlob] = useState<Blob | null>(null);
+	const [editCropData, setEditCropData] = useState<CropData | null>(null);
 
 	useEffect(() => {
 		if (isEdit && id) {
@@ -129,30 +130,91 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			};
 			reader.readAsDataURL(file);
 		} else {
-			// For other image types, show crop modal
+			// For other image types, set initial preview and show crop modal
 			const reader = new FileReader();
 			reader.onload = (e) => {
 				const imageUrl = e.target?.result as string;
-				setOriginalImageUrl(imageUrl);
+				setCoverPreviewUrl(imageUrl); // Set initial preview
+				setOriginalImageUrl(imageUrl); // Set for crop modal
 				setShowCropModal(true);
 			};
 			reader.readAsDataURL(file);
 		}
 	};
 
-	const handleCropComplete = (blob: Blob) => {
+	const handleCropComplete = (cropData: CropData) => {
 		if (isEdit) {
-			setEditCroppedBlob(blob);
-			// Create preview URL from cropped blob
-			const croppedUrl = URL.createObjectURL(blob);
-			setEditCoverPreviewUrl(croppedUrl);
+			setEditCropData(cropData);
+			// Create a cropped preview for edit mode
+			if (editSelectedCoverFile && editSelectedCoverFile.type !== 'image/gif') {
+				createCroppedPreview(cropData, editSelectedCoverFile, setEditCoverPreviewUrl);
+			}
 		} else {
-			setCroppedBlob(blob);
-			// Create preview URL from cropped blob
-			const croppedUrl = URL.createObjectURL(blob);
-			setCoverPreviewUrl(croppedUrl);
+			setCropData(cropData);
+			// Create a cropped preview for create mode
+			if (selectedCoverFile && selectedCoverFile.type !== 'image/gif') {
+				createCroppedPreview(cropData, selectedCoverFile, setCoverPreviewUrl);
+			}
 		}
 		setShowCropModal(false);
+	};
+
+	// Helper function to create cropped preview
+	const createCroppedPreview = (cropData: CropData, file: File, setPreviewUrl: (url: string) => void) => {
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			const img = new Image();
+			img.onload = () => {
+				const canvas = document.createElement('canvas');
+				const ctx = canvas.getContext('2d');
+				if (!ctx) return;
+
+				console.log('Creating preview with crop data:', cropData);
+
+				const imgWidth = img.naturalWidth;
+				const imgHeight = img.naturalHeight;
+
+				console.log('Image natural dimensions:', { imgWidth, imgHeight });
+
+				// Use the exact same calculation as the crop rectangle
+				// The crop data represents the visible area after scaling
+				const cropPixelWidth = cropData.cropWidth * imgWidth;
+				const cropPixelHeight = cropData.cropHeight * imgHeight;
+
+				const centerX = cropData.cropX * imgWidth;
+				const centerY = cropData.cropY * imgHeight;
+
+				const finalWidth = cropPixelWidth / cropData.cropScale;
+				const finalHeight = cropPixelHeight / cropData.cropScale;
+
+				const startX = centerX - finalWidth / 2;
+				const startY = centerY - finalHeight / 2;
+
+				console.log('Preview calculations:', {
+					cropPixelWidth, cropPixelHeight,
+					centerX, centerY,
+					finalWidth, finalHeight,
+					startX, startY
+				});
+
+				// Set canvas to the exact crop dimensions (no forced aspect ratio)
+				canvas.width = finalWidth;
+				canvas.height = finalHeight;
+
+				// Draw the exact cropped region
+				ctx.drawImage(
+					img,
+					startX, startY, finalWidth, finalHeight,
+					0, 0, finalWidth, finalHeight
+				);
+
+				const croppedUrl = canvas.toDataURL('image/jpeg', 0.9);
+				console.log('Preview created successfully');
+				setPreviewUrl(croppedUrl);
+			};
+			img.src = e.target?.result as string;
+		};
+		reader.readAsDataURL(file);
 	};
 
 	const handleCropCancel = () => {
@@ -160,11 +222,11 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		setOriginalImageUrl(null);
 		if (isEdit) {
 			setEditSelectedCoverFile(null);
-			setEditCroppedBlob(null);
+			setEditCropData(null);
 			setEditCoverPreviewUrl(null);
 		} else {
 			setSelectedCoverFile(null);
-			setCroppedBlob(null);
+			setCropData(null);
 			setCoverPreviewUrl(null);
 		}
 	};
@@ -172,7 +234,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const handleCoverImageRemove = () => {
 		setSelectedCoverFile(null);
 		setCoverPreviewUrl(null);
-		setCroppedBlob(null);
+		setCropData(null);
 		setOriginalImageUrl(null);
 	};
 
@@ -185,12 +247,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			};
 			reader.readAsDataURL(file);
 			setEditSelectedCoverFile(file);
-			setEditCroppedBlob(null);
+			setEditCropData(null);
 		} else {
-			// For other images, show crop modal
+			// For other images, set initial preview and show crop modal
 			const reader = new FileReader();
 			reader.onload = (e) => {
-				setOriginalImageUrl(e.target?.result as string);
+				const imageDataUrl = e.target?.result as string;
+				setEditCoverPreviewUrl(imageDataUrl); // Set initial preview
+				setOriginalImageUrl(imageDataUrl); // Set for crop modal
 				setShowCropModal(true);
 			};
 			reader.readAsDataURL(file);
@@ -201,24 +265,26 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const handleEditCoverImageRemove = () => {
 		setEditSelectedCoverFile(null);
 		setEditCoverPreviewUrl(null);
-		setEditCroppedBlob(null);
+		setEditCropData(null);
 	};
 
 	// Upload cover image after article creation
 	const uploadCoverImage = async (articleId: string): Promise<void> => {
-		if ((!croppedBlob && !selectedCoverFile) || !token) return;
+		if (!selectedCoverFile || !token) return;
 
 		try {
 			const formData = new FormData();
 			
-			// Use cropped blob for non-GIF images, original file for GIFs and when no crop was done
-			if (croppedBlob && selectedCoverFile?.type !== 'image/gif') {
-				const croppedFile = new File([croppedBlob], selectedCoverFile?.name || 'cropped-cover.jpg', {
-					type: 'image/jpeg'
-				});
-				formData.append('file', croppedFile);
-			} else if (selectedCoverFile) {
-				formData.append('file', selectedCoverFile);
+			// Always upload the full image
+			formData.append('file', selectedCoverFile);
+			
+			// Add crop metadata if available (for non-GIF images)
+			if (cropData && selectedCoverFile.type !== 'image/gif') {
+				formData.append('cropX', cropData.cropX.toString());
+				formData.append('cropY', cropData.cropY.toString());
+				formData.append('cropWidth', cropData.cropWidth.toString());
+				formData.append('cropHeight', cropData.cropHeight.toString());
+				formData.append('cropScale', cropData.cropScale.toString());
 			}
 
 			const response = await fetch(`/api/articles/${articleId}/upload-image`, {
@@ -240,7 +306,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			// Clear the selected file after successful upload
 			setSelectedCoverFile(null);
 			setCoverPreviewUrl(null);
-			setCroppedBlob(null);
+			setCropData(null);
 			setOriginalImageUrl(null);
 		} catch (err) {
 			console.error('Cover image upload failed:', err);
@@ -250,19 +316,21 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 
 	// Upload new cover image in edit mode
 	const uploadEditCoverImage = async (articleId: string): Promise<void> => {
-		if ((!editCroppedBlob && !editSelectedCoverFile) || !token) return;
+		if (!editSelectedCoverFile || !token) return;
 
 		try {
 			const formData = new FormData();
 			
-			// Use cropped blob for non-GIF images, original file for GIFs and when no crop was done
-			if (editCroppedBlob && editSelectedCoverFile?.type !== 'image/gif') {
-				const croppedFile = new File([editCroppedBlob], editSelectedCoverFile?.name || 'cropped-cover.jpg', {
-					type: 'image/jpeg'
-				});
-				formData.append('file', croppedFile);
-			} else if (editSelectedCoverFile) {
-				formData.append('file', editSelectedCoverFile);
+			// Always upload the full image
+			formData.append('file', editSelectedCoverFile);
+			
+			// Add crop metadata if available (for non-GIF images)
+			if (editCropData && editSelectedCoverFile.type !== 'image/gif') {
+				formData.append('cropX', editCropData.cropX.toString());
+				formData.append('cropY', editCropData.cropY.toString());
+				formData.append('cropWidth', editCropData.cropWidth.toString());
+				formData.append('cropHeight', editCropData.cropHeight.toString());
+				formData.append('cropScale', editCropData.cropScale.toString());
 			}
 
 			const response = await fetch(`/api/articles/${articleId}/upload-image`, {
@@ -284,7 +352,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			// Clear the edit mode states after successful upload
 			setEditSelectedCoverFile(null);
 			setEditCoverPreviewUrl(null);
-			setEditCroppedBlob(null);
+			setEditCropData(null);
 			setOriginalImageUrl(null);
 		} catch (err) {
 			console.error('Edit cover image upload failed:', err);
@@ -502,14 +570,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 												</div>
 											)}
 											
-											{/* Show info for cropped images */}
-											{croppedBlob && selectedCoverFile.type !== 'image/gif' && (
-												<div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
-													<p className="!text-sm !text-green-700">
-														✂️ Image cropped successfully - ready to upload
-													</p>
-												</div>
-											)}
+																		{/* Show info for cropped images */}
+							{cropData && selectedCoverFile.type !== 'image/gif' && (
+								<div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
+									<p className="!text-sm !text-green-700">
+										✂️ Image cropped successfully - ready to upload
+									</p>
+								</div>
+							)}
 											
 											<div className="!p-3 !bg-purple-50 !border !border-purple-200 !rounded-lg">
 												<p className="!text-sm !text-purple-800">
@@ -532,10 +600,9 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 										<h3 className="!text-sm !font-medium !text-gray-700 !mb-3">Current Cover</h3>
 										<div className="!relative !w-full !h-48 !bg-gray-100 !border-2 !border-dashed !border-gray-300 !rounded-lg !overflow-hidden">
 											{currentArticle.imageUrl ? (
-												<img
-													src={`http://localhost:8080/article-images/${currentArticle.imageUrl}`}
-													alt="Current article cover"
-													className="!w-full !h-full !object-cover"
+												<ArticleCover 
+													article={currentArticle}
+													className="!w-full !h-full !object-cover !rounded-lg"
 												/>
 											) : (
 												<div className="!w-full !h-full !flex !items-center !justify-center !text-gray-500">
@@ -654,14 +721,14 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 													</div>
 												)}
 												
-												{/* Show info for cropped images */}
-												{editCroppedBlob && editSelectedCoverFile.type !== 'image/gif' && (
-													<div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
-														<p className="!text-xs !text-green-700">
-															✂️ Image cropped successfully
-														</p>
-													</div>
-												)}
+																			{/* Show info for cropped images */}
+							{editCropData && editSelectedCoverFile.type !== 'image/gif' && (
+								<div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
+									<p className="!text-xs !text-green-700">
+										✂️ Image cropped successfully
+									</p>
+								</div>
+							)}
 											</div>
 										)}
 									</div>
@@ -707,7 +774,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 				imageSrc={originalImageUrl}
 				onCropComplete={handleCropComplete}
 				onCancel={handleCropCancel}
-				aspectRatio={16/9} // 16:9 aspect ratio
+				aspectRatio={1.6} // 8:5 aspect ratio to match article covers
 			/>
 		)}
 		</div>

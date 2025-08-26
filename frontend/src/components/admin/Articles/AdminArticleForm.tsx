@@ -12,7 +12,8 @@ import { Textarea } from '@/components/ui/textarea';
 import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 import ArticlePreview from './ArticlePreview';
 import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
-import ImageCrop from '../../ui/ImageCrop';
+import ArticleCover from '../../ui/ArticleCover';
+import ImageCrop, { CropData } from '../../ui/ImageCrop';
 import { Eye } from 'lucide-react';
 import * as yup from 'yup';
 
@@ -60,10 +61,15 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     const [selectedCoverFile, setSelectedCoverFile] = useState<File | null>(null);
     const [coverPreviewUrl, setCoverPreviewUrl] = useState<string | null>(null);
     
+    // Cover image state for editing existing articles
+    const [editSelectedCoverFile, setEditSelectedCoverFile] = useState<File | null>(null);
+    const [editCoverPreviewUrl, setEditCoverPreviewUrl] = useState<string | null>(null);
+    
     // Crop-related state
     const [showCropModal, setShowCropModal] = useState<boolean>(false);
     const [originalImageUrl, setOriginalImageUrl] = useState<string | null>(null);
-    const [croppedBlob, setCroppedBlob] = useState<Blob | null>(null);
+    const [cropData, setCropData] = useState<CropData | null>(null);
+    const [editCropData, setEditCropData] = useState<CropData | null>(null);
     const [currentArticleId, setCurrentArticleId] = useState<string | undefined>(isEdit ? finalId : undefined);
     
     const navigate = useNavigate();
@@ -154,6 +160,51 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         }
     };
 
+    // Helper function to create cropped preview
+    const createCroppedPreview = (cropData: CropData, file: File, setPreviewUrl: (url: string) => void) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                const imgWidth = img.naturalWidth;
+                const imgHeight = img.naturalHeight;
+
+                // Use the exact same calculation as the crop rectangle
+                const cropPixelWidth = cropData.cropWidth * imgWidth;
+                const cropPixelHeight = cropData.cropHeight * imgHeight;
+
+                const centerX = cropData.cropX * imgWidth;
+                const centerY = cropData.cropY * imgHeight;
+
+                const finalWidth = cropPixelWidth / cropData.cropScale;
+                const finalHeight = cropPixelHeight / cropData.cropScale;
+
+                const startX = centerX - finalWidth / 2;
+                const startY = centerY - finalHeight / 2;
+
+                // Set canvas to the exact crop dimensions (no forced aspect ratio)
+                canvas.width = finalWidth;
+                canvas.height = finalHeight;
+
+                // Draw the exact cropped region
+                ctx.drawImage(
+                    img,
+                    startX, startY, finalWidth, finalHeight,
+                    0, 0, finalWidth, finalHeight
+                );
+
+                const croppedUrl = canvas.toDataURL('image/jpeg', 0.9);
+                setPreviewUrl(croppedUrl);
+            };
+            img.src = e.target?.result as string;
+        };
+        reader.readAsDataURL(file);
+    };
+
     // Handle cover image selection for new articles
     const handleCoverImageSelect = (file: File) => {
         setSelectedCoverFile(file);
@@ -168,10 +219,11 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             };
             reader.readAsDataURL(file);
         } else {
-            // For other image types, show crop modal
+            // For other image types, set preview to original first, then show crop modal
             const reader = new FileReader();
             reader.onload = (e) => {
                 const imageUrl = e.target?.result as string;
+                setCoverPreviewUrl(imageUrl); // Show original first
                 setOriginalImageUrl(imageUrl);
                 setShowCropModal(true);
             };
@@ -179,45 +231,93 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         }
     };
 
-    const handleCropComplete = (blob: Blob) => {
-        setCroppedBlob(blob);
-        setShowCropModal(false);
+    // Handle cover image selection for editing existing articles
+    const handleEditCoverImageSelect = (file: File) => {
+        setEditSelectedCoverFile(file);
         
-        // Create preview URL from cropped blob
-        const croppedUrl = URL.createObjectURL(blob);
-        setCoverPreviewUrl(croppedUrl);
+        // Check if it's a GIF - skip cropping for GIFs to preserve animation
+        if (file.type === 'image/gif') {
+            // For GIFs, create direct preview and skip cropping
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const imageUrl = e.target?.result as string;
+                setEditCoverPreviewUrl(imageUrl);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            // For other image types, set preview to original first, then show crop modal
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const imageUrl = e.target?.result as string;
+                setEditCoverPreviewUrl(imageUrl); // Show original first
+                setOriginalImageUrl(imageUrl);
+                setShowCropModal(true);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleCropComplete = (cropData: CropData) => {
+        if (currentArticle) {
+            // Edit mode
+            setEditCropData(cropData);
+            if (editSelectedCoverFile) {
+                createCroppedPreview(cropData, editSelectedCoverFile, setEditCoverPreviewUrl);
+            }
+        } else {
+            // Create mode
+            setCropData(cropData);
+            if (selectedCoverFile) {
+                createCroppedPreview(cropData, selectedCoverFile, setCoverPreviewUrl);
+            }
+        }
+        setShowCropModal(false);
     };
 
     const handleCropCancel = () => {
         setShowCropModal(false);
         setOriginalImageUrl(null);
-        setSelectedCoverFile(null);
-        setCroppedBlob(null);
-        setCoverPreviewUrl(null);
+        if (currentArticle) {
+            // Edit mode - clear edit states
+            setEditSelectedCoverFile(null);
+            setEditCoverPreviewUrl(null);
+            setEditCropData(null);
+        } else {
+            // Create mode - clear create states
+            setSelectedCoverFile(null);
+            setCoverPreviewUrl(null);
+            setCropData(null);
+        }
     };
 
     const handleCoverImageRemove = () => {
         setSelectedCoverFile(null);
         setCoverPreviewUrl(null);
-        setCroppedBlob(null);
+        setCropData(null);
         setOriginalImageUrl(null);
+    };
+
+    const handleEditCoverImageRemove = () => {
+        setEditSelectedCoverFile(null);
+        setEditCoverPreviewUrl(null);
+        setEditCropData(null);
     };
 
     // Upload cover image after article creation
     const uploadCoverImage = async (articleId: string): Promise<void> => {
-        if ((!croppedBlob && !selectedCoverFile) || !token) return;
+        if (!selectedCoverFile || !token) return;
 
         try {
             const formData = new FormData();
+            formData.append('file', selectedCoverFile);
             
-            // Use cropped blob for non-GIF images, original file for GIFs and when no crop was done
-            if (croppedBlob && selectedCoverFile?.type !== 'image/gif') {
-                const croppedFile = new File([croppedBlob], selectedCoverFile?.name || 'cropped-cover.jpg', {
-                    type: 'image/jpeg'
-                });
-                formData.append('file', croppedFile);
-            } else if (selectedCoverFile) {
-                formData.append('file', selectedCoverFile);
+            // Add crop data if available and not a GIF
+            if (cropData && selectedCoverFile.type !== 'image/gif') {
+                formData.append('cropX', cropData.cropX.toString());
+                formData.append('cropY', cropData.cropY.toString());
+                formData.append('cropWidth', cropData.cropWidth.toString());
+                formData.append('cropHeight', cropData.cropHeight.toString());
+                formData.append('cropScale', cropData.cropScale.toString());
             }
 
             const response = await fetch(`/api/articles/${articleId}/upload-image`, {
@@ -239,11 +339,54 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             // Clear the selected file after successful upload
             setSelectedCoverFile(null);
             setCoverPreviewUrl(null);
-            setCroppedBlob(null);
+            setCropData(null);
             setOriginalImageUrl(null);
         } catch (err) {
             console.error('Cover image upload failed:', err);
             // Note: We don't throw here to avoid breaking the article creation flow
+        }
+    };
+
+    // Upload cover image for editing existing articles
+    const uploadEditCoverImage = async (articleId: string): Promise<void> => {
+        if (!editSelectedCoverFile || !token) return;
+
+        try {
+            const formData = new FormData();
+            formData.append('file', editSelectedCoverFile);
+            
+            // Add crop data if available and not a GIF
+            if (editCropData && editSelectedCoverFile.type !== 'image/gif') {
+                formData.append('cropX', editCropData.cropX.toString());
+                formData.append('cropY', editCropData.cropY.toString());
+                formData.append('cropWidth', editCropData.cropWidth.toString());
+                formData.append('cropHeight', editCropData.cropHeight.toString());
+                formData.append('cropScale', editCropData.cropScale.toString());
+            }
+
+            const response = await fetch(`/api/articles/${articleId}/upload-image`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData,
+            });
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Cover upload failed: ${errorText}`);
+            }
+
+            const updatedArticle = await response.json();
+            setCurrentArticle(updatedArticle);
+            
+            // Clear the edit states after successful upload
+            setEditSelectedCoverFile(null);
+            setEditCoverPreviewUrl(null);
+            setEditCropData(null);
+        } catch (err) {
+            console.error('Error uploading edit cover image:', err);
+            setError('Failed to upload cover image');
         }
     };
 
@@ -293,6 +436,11 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             if (isEdit && finalId) {
                 console.log(articleData);
                 result = await updateArticle(finalId, articleData, token);
+                
+                // Upload new cover image if one was selected (for editing articles)
+                if (result && result.id && editSelectedCoverFile) {
+                    await uploadEditCoverImage(result.id);
+                }
             } else {
                 result = await createArticle(articleData, token);
                 
@@ -512,7 +660,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                                         )}
                                         
                                         {/* Show info for cropped images */}
-                                        {croppedBlob && selectedCoverFile.type !== 'image/gif' && (
+                                        {cropData && selectedCoverFile.type !== 'image/gif' && (
                                             <div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
                                                 <p className="!text-sm !text-green-700">
                                                     ✂️ Image cropped successfully - ready to upload
@@ -539,14 +687,151 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                             <label className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
                                 Article Cover Image
                             </label>
-                            <ArticleCoverUpload
-                                articleId={currentArticle.id}
-                                currentImageUrl={currentArticle?.imageUrl}
-                                token={token}
-                                onUploadSuccess={(updatedArticle) => {
-                                    setCurrentArticle(updatedArticle);
-                                }}
-                            />
+                            <div className="!grid !grid-cols-1 md:!grid-cols-2 !gap-6 !border !border-[#ced4da] !rounded-md !p-4">
+                                {/* Left side - Current Cover */}
+                                <div>
+                                    <h3 className="!text-sm !font-medium !text-[#495057] !mb-3">Current Cover</h3>
+                                    <div className="!relative !w-full !h-48 !bg-gray-100 !border-2 !border-dashed !border-gray-300 !rounded-lg !overflow-hidden">
+                                        {currentArticle.imageUrl ? (
+                                            <ArticleCover 
+                                                article={currentArticle}
+                                                className="!w-full !h-full !object-cover !rounded-lg"
+                                            />
+                                        ) : (
+                                            <div className="!w-full !h-full !flex !items-center !justify-center !text-gray-500">
+                                                <div className="!text-center">
+                                                    <p className="!text-sm">No cover image</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Right side - Upload New Cover */}
+                                <div>
+                                    <h3 className="!text-sm !font-medium !text-[#495057] !mb-3">Upload New Cover</h3>
+                                    <div className="!relative !w-full !h-48 !bg-gray-100 !border-2 !border-dashed !border-gray-300 !rounded-lg !overflow-hidden !mb-4">
+                                        {editCoverPreviewUrl ? (
+                                            <img
+                                                src={editCoverPreviewUrl}
+                                                alt="New article cover preview"
+                                                className="!w-full !h-full !object-cover"
+                                            />
+                                        ) : (
+                                            <div className="!w-full !h-full !flex !items-center !justify-center !text-gray-500">
+                                                <div className="!text-center">
+                                                    <p className="!text-sm">No new cover selected</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Upload Controls */}
+                                    <div className="!space-y-3">
+                                        {!editSelectedCoverFile ? (
+                                            <div className="!flex !flex-col !items-center !gap-2">
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={(e) => {
+                                                        const file = e.target.files?.[0];
+                                                        if (file) {
+                                                            // Validate file type
+                                                            if (!file.type.startsWith('image/')) {
+                                                                alert('Please select an image file');
+                                                                return;
+                                                            }
+                                                            // Validate file size (5MB max)
+                                                            if (file.size > 5 * 1024 * 1024) {
+                                                                alert('File size must be less than 5MB');
+                                                                return;
+                                                            }
+                                                            handleEditCoverImageSelect(file);
+                                                        }
+                                                    }}
+                                                    className="!hidden"
+                                                    id="edit-cover-upload"
+                                                />
+                                                <label
+                                                    htmlFor="edit-cover-upload"
+                                                    className="!cursor-pointer !px-4 !py-2 !border !border-[#ced4da] !rounded-md !text-sm !bg-white hover:!bg-gray-50 !transition-colors"
+                                                >
+                                                    Choose New Cover Image
+                                                </label>
+                                                <p className="!text-xs !text-gray-500">
+                                                    JPG, PNG, GIF up to 5MB
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            <div className="!flex !gap-2 !justify-center">
+                                                <button
+                                                    type="button"
+                                                    onClick={handleEditCoverImageRemove}
+                                                    className="!px-4 !py-2 !border !border-[#ced4da] !rounded-md !text-sm !bg-white hover:!bg-gray-50 !transition-colors"
+                                                >
+                                                    Remove Image
+                                                </button>
+                                                <label
+                                                    htmlFor="edit-cover-upload-replace"
+                                                    className="!cursor-pointer !px-4 !py-2 !border !border-[#ced4da] !rounded-md !text-sm !bg-white hover:!bg-gray-50 !transition-colors"
+                                                >
+                                                    Choose Different Image
+                                                </label>
+                                                <input
+                                                    type="file"
+                                                    accept="image/*"
+                                                    onChange={(e) => {
+                                                        const file = e.target.files?.[0];
+                                                        if (file) {
+                                                            // Validate file type
+                                                            if (!file.type.startsWith('image/')) {
+                                                                alert('Please select an image file');
+                                                                return;
+                                                            }
+                                                            // Validate file size (5MB max)
+                                                            if (file.size > 5 * 1024 * 1024) {
+                                                                alert('File size must be less than 5MB');
+                                                                return;
+                                                            }
+                                                            handleEditCoverImageSelect(file);
+                                                        }
+                                                    }}
+                                                    className="!hidden"
+                                                    id="edit-cover-upload-replace"
+                                                />
+                                            </div>
+                                        )}
+
+                                        {editSelectedCoverFile && (
+                                            <div className="!mt-3 !space-y-2">
+                                                {/* Show info for GIF files */}
+                                                {editSelectedCoverFile.type === 'image/gif' && (
+                                                    <div className="!p-2 !bg-blue-50 !border !border-blue-200 !rounded-lg !text-center">
+                                                        <p className="!text-sm !text-blue-700">
+                                                            🎬 GIF selected - animation will be preserved (no cropping available)
+                                                        </p>
+                                                    </div>
+                                                )}
+                                                
+                                                {/* Show info for cropped images */}
+                                                {editCropData && editSelectedCoverFile.type !== 'image/gif' && (
+                                                    <div className="!p-2 !bg-green-50 !border !border-green-200 !rounded-lg !text-center">
+                                                        <p className="!text-sm !text-green-700">
+                                                            ✂️ Image cropped successfully - ready to upload
+                                                        </p>
+                                                    </div>
+                                                )}
+                                                
+                                                <div className="!p-3 !bg-blue-50 !border !border-blue-200 !rounded-md">
+                                                    <p className="!text-sm !text-blue-800">
+                                                        📷 New cover image will be uploaded when you save the article
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -631,7 +916,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                     imageSrc={originalImageUrl}
                     onCropComplete={handleCropComplete}
                     onCancel={handleCropCancel}
-                    aspectRatio={16/9} // 16:9 aspect ratio for article covers
+                    aspectRatio={1.6} // 8:5 aspect ratio to match article covers
                 />
             )}
         </div>

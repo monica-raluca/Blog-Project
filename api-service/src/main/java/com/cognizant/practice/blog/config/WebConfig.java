@@ -1,6 +1,7 @@
 package com.cognizant.practice.blog.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,5 +21,27 @@ public class WebConfig implements WebMvcConfigurer {
         // Serve article cover images
         registry.addResourceHandler("/article-images/**")
                 .addResourceLocations("file:uploads/article-images/");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // Allow frontend to access images for canvas operations
+        registry.addMapping("/article-images/**")
+                .allowedOrigins("http://localhost:1234", "http://localhost:3000")
+                .allowedMethods("GET")
+                .allowedHeaders("*")
+                .allowCredentials(false);
+        
+        registry.addMapping("/profile-pictures/**")
+                .allowedOrigins("http://localhost:1234", "http://localhost:3000")
+                .allowedMethods("GET")
+                .allowedHeaders("*")
+                .allowCredentials(false);
+                
+        registry.addMapping("/article-media/**")
+                .allowedOrigins("http://localhost:1234", "http://localhost:3000")
+                .allowedMethods("GET")
+                .allowedHeaders("*")
+                .allowCredentials(false);
     }
 }

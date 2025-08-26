@@ -38,6 +38,13 @@ public class ArticleEntity {
     private String imageUrl;
     private List<String> mediaUrls;
     
+    // Crop metadata for cover image display
+    private Double cropX;        // X position of crop area (0-1)
+    private Double cropY;        // Y position of crop area (0-1) 
+    private Double cropWidth;    // Width of crop area (0-1)
+    private Double cropHeight;   // Height of crop area (0-1)
+    private Double cropScale;    // Scale factor for the image
+    
     @OneToMany(mappedBy = "articleEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentEntity> comments;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Article } from '../../api/types';
 import { 
   Scroll,
@@ -116,15 +116,135 @@ const ArticleCover: React.FC<ArticleCoverProps> = ({
   const hasUploadedImage = article.imageUrl && article.imageUrl.trim();
 
   if (hasUploadedImage) {
+    // Check if crop metadata is available
+    const hasCropData = article.cropX !== undefined && article.cropY !== undefined && 
+                       article.cropWidth !== undefined && article.cropHeight !== undefined;
+    
+    const [croppedImageSrc, setCroppedImageSrc] = useState<string | null>(null);
+
+    useEffect(() => {
+      if (hasCropData) {
+        console.log('Creating cropped image with crop data:', {
+          cropX: article.cropX,
+          cropY: article.cropY,
+          cropWidth: article.cropWidth,
+          cropHeight: article.cropHeight,
+          cropScale: article.cropScale
+        });
+
+        // Create cropped image using canvas
+        const createCroppedImage = () => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => {
+            console.log('Image loaded, natural dimensions:', img.naturalWidth, img.naturalHeight);
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+              console.error('Failed to get canvas context');
+              return;
+            }
+
+            const cropX = article.cropX!;
+            const cropY = article.cropY!;
+            const cropWidth = article.cropWidth!;
+            const cropHeight = article.cropHeight!;
+            const cropScale = article.cropScale || 1;
+
+            // Calculate actual crop region in pixels
+            const imgWidth = img.naturalWidth;
+            const imgHeight = img.naturalHeight;
+
+            const cropPixelWidth = cropWidth * imgWidth;
+            const cropPixelHeight = cropHeight * imgHeight;
+
+            const centerX = cropX * imgWidth;
+            const centerY = cropY * imgHeight;
+
+            const finalWidth = cropPixelWidth / cropScale;
+            const finalHeight = cropPixelHeight / cropScale;
+
+            const startX = centerX - finalWidth / 2;
+            const startY = centerY - finalHeight / 2;
+
+            console.log('Crop calculations:', {
+              cropPixelWidth, cropPixelHeight,
+              centerX, centerY,
+              finalWidth, finalHeight,
+              startX, startY,
+              canvasSize: { width: finalWidth, height: finalHeight }
+            });
+
+            // Ensure canvas maintains the 1.6:1 aspect ratio like the covers
+            const targetAspectRatio = 1.6;
+            let canvasWidth = finalWidth;
+            let canvasHeight = finalHeight;
+            
+            const currentAspectRatio = finalWidth / finalHeight;
+            if (currentAspectRatio > targetAspectRatio) {
+              // Too wide, adjust height
+              canvasHeight = canvasWidth / targetAspectRatio;
+            } else {
+              // Too tall, adjust width
+              canvasWidth = canvasHeight * targetAspectRatio;
+            }
+
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
+
+            console.log('Final canvas dimensions:', { 
+              originalAspect: currentAspectRatio, 
+              targetAspect: targetAspectRatio,
+              canvasWidth, 
+              canvasHeight 
+            });
+
+            // Draw cropped portion, scaling to fit the canvas
+            const scaleX = canvasWidth / finalWidth;
+            const scaleY = canvasHeight / finalHeight;
+            const scale = Math.min(scaleX, scaleY);
+
+            const drawWidth = finalWidth * scale;
+            const drawHeight = finalHeight * scale;
+            const drawX = (canvasWidth - drawWidth) / 2;
+            const drawY = (canvasHeight - drawHeight) / 2;
+
+            ctx.drawImage(
+              img,
+              startX, startY, finalWidth, finalHeight,
+              drawX, drawY, drawWidth, drawHeight
+            );
+
+            const croppedDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+            console.log('Cropped image created, data URL length:', croppedDataUrl.length);
+            setCroppedImageSrc(croppedDataUrl);
+          };
+          
+          img.onerror = (error) => {
+            console.error('Failed to load image:', error);
+          };
+          
+          img.src = `http://localhost:8080/article-images/${article.imageUrl}`;
+          console.log('Loading image from:', img.src);
+        };
+
+        createCroppedImage();
+      } else {
+        console.log('No crop data available');
+      }
+    }, [article.imageUrl, article.cropX, article.cropY, article.cropWidth, article.cropHeight, article.cropScale, hasCropData]);
+
     // Display uploaded image
     return (
       <div 
         className={`${config.container} rounded-lg border border-gray-300/20 shadow-md hover:shadow-lg transition-all duration-500 relative overflow-hidden group ${className}`}
       >
         <img
-          src={`http://localhost:8080/article-images/${article.imageUrl}`}
+          src={hasCropData && croppedImageSrc ? croppedImageSrc : `http://localhost:8080/article-images/${article.imageUrl}`}
           alt={article.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onLoad={() => console.log('Article cover image loaded, using:', hasCropData && croppedImageSrc ? 'cropped image' : 'original image')}
         />
         
         {/* Subtle overlay for better text readability */}
