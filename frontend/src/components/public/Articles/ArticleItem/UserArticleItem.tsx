@@ -22,7 +22,11 @@ import { YouTubeNode } from '../../../ui/YouTubeNode';
 import { Button } from '@/components/ui/button';
 import MagicalAvatar from '../../../ui/MagicalAvatar';
 import ArticleCover from '../../../ui/ArticleCover';
-import { X, Download } from 'lucide-react';
+import PollComponent from '../../../ui/PollComponent';
+import PollCreator from '../../../ui/PollCreator';
+import { PollStorage } from '../../../../utils/pollStorage';
+import { Poll } from '../../../../types/pollTypes';
+import { X, Download, BarChart3, Plus } from 'lucide-react';
 
 
 
@@ -34,6 +38,10 @@ const UserArticleItem: React.FC = () => {
 	const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
 	const [editedContent, setEditedContent] = useState<string>('');
 	const [showImagePreview, setShowImagePreview] = useState<boolean>(false);
+	const [polls, setPolls] = useState<Poll[]>([]);
+	const [showPollCreator, setShowPollCreator] = useState<boolean>(false);
+	const [commentPolls, setCommentPolls] = useState<Record<string, Poll[]>>({});
+	const [showCommentPollCreator, setShowCommentPollCreator] = useState<Record<string, boolean>>({});
 	
 	const commentEditorRef = React.useRef<LexicalEditorRef>(null);
 	const editCommentEditorRef = React.useRef<LexicalEditorRef>(null);
@@ -309,7 +317,58 @@ const UserArticleItem: React.FC = () => {
                     navigate('/error');
                 }
             });
+		loadPolls();
 	}, [id, token, navigate]);
+
+	// Load comment polls when comments change
+	useEffect(() => {
+		loadCommentPolls();
+	}, [comments]);
+
+	// Load polls for this article
+	const loadPolls = () => {
+		if (!id) return;
+		const articlePolls = PollStorage.getPollsForContent('article', id);
+		setPolls(articlePolls);
+		loadCommentPolls();
+	};
+
+	// Load polls for all comments
+	const loadCommentPolls = () => {
+		const newCommentPolls: Record<string, Poll[]> = {};
+		comments.forEach(comment => {
+			if (comment.id) {
+				const polls = PollStorage.getPollsForContent('comment', comment.id);
+				newCommentPolls[comment.id] = polls;
+			}
+		});
+		setCommentPolls(newCommentPolls);
+	};
+
+	// Handle poll updates
+	const handlePollUpdate = () => {
+		loadPolls();
+	};
+
+	// Handle poll creation
+	const handlePollCreated = () => {
+		setShowPollCreator(false);
+		loadPolls();
+	};
+
+	// Handle comment poll creation
+	const handleCommentPollCreated = (commentId: string) => {
+		setShowCommentPollCreator(prev => ({ ...prev, [commentId]: false }));
+		loadPolls();
+	};
+
+	// Toggle comment poll creator
+	const toggleCommentPollCreator = (commentId: string) => {
+		setShowCommentPollCreator(prev => ({ 
+			...prev, 
+			[commentId]: !prev[commentId] 
+		}));
+	};
 
     const handleDelete = async (articleId: string): Promise<void> => {
         if (!window.confirm('Are you sure?') || !token) return;
@@ -553,6 +612,59 @@ const UserArticleItem: React.FC = () => {
 					/>
 				</div>
 			</div>
+
+			{/* Polls Section */}
+			<div className="!px-8 !mb-8">
+				<div className="!border-t !border-gray-200 !pt-8">
+					<div className="!flex !items-center !justify-between !mb-6">
+						<div className="!flex !items-center !gap-3">
+							<BarChart3 className="w-6 h-6 text-blue-600" />
+							<h3 className='!font-semibold !text-xl !text-gray-800 !mb-0'>Polls</h3>
+						</div>
+						{currentUser && (
+							<Button
+								onClick={() => setShowPollCreator(!showPollCreator)}
+								variant="outline"
+								size="sm"
+								className="flex items-center gap-2 text-blue-600 border-blue-300 hover:bg-blue-50"
+							>
+								<Plus className="w-4 h-4" />
+								Create Poll
+							</Button>
+						)}
+					</div>
+					
+					{/* Poll Creator */}
+					{showPollCreator && article.id && (
+						<div className="mb-6">
+							<PollCreator
+								contentType="article"
+								contentId={article.id}
+								onPollCreated={handlePollCreated}
+								onCancel={() => setShowPollCreator(false)}
+							/>
+						</div>
+					)}
+					
+					{/* Existing Polls */}
+					<div className="space-y-4">
+						{polls.length === 0 && !showPollCreator ? (
+							<div className="text-center py-8 text-gray-500">
+								<BarChart3 className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+								<p>No polls yet. {currentUser ? 'Create the first one!' : 'Log in to create polls.'}</p>
+							</div>
+						) : (
+							polls.map(poll => (
+								<PollComponent
+									key={poll.id}
+									poll={poll}
+									onPollUpdate={handlePollUpdate}
+								/>
+							))
+						)}
+					</div>
+				</div>
+			</div>
 		
 			{/* Comments Section */}
 			<div className="!px-8">
@@ -627,6 +739,45 @@ const UserArticleItem: React.FC = () => {
 													)}
 												</div>
 											)}
+
+											{/* Comment Polls */}
+											{comment.id && (
+												<div className="!mt-4 !space-y-3">
+													{/* Existing comment polls */}
+													{commentPolls[comment.id]?.map(poll => (
+														<PollComponent
+															key={poll.id}
+															poll={poll}
+															onPollUpdate={handlePollUpdate}
+															className="!bg-white !border-gray-300"
+														/>
+													))}
+													
+													{/* Poll Creator for this comment */}
+													{comment.id && showCommentPollCreator[comment.id] && (
+														<PollCreator
+															contentType="comment"
+															contentId={comment.id}
+															onPollCreated={() => comment.id && handleCommentPollCreated(comment.id)}
+															onCancel={() => comment.id && toggleCommentPollCreator(comment.id)}
+															className="!bg-white !border-gray-300"
+														/>
+													)}
+													
+													{/* Add poll button */}
+													{comment.id && currentUser && !showCommentPollCreator[comment.id] && (
+														<Button
+															onClick={() => comment.id && toggleCommentPollCreator(comment.id)}
+															variant="ghost"
+															size="sm"
+															className="!text-blue-600 hover:!bg-blue-50 !text-xs"
+														>
+															<BarChart3 className="w-3 h-3 mr-1" />
+															Add Poll
+														</Button>
+													)}
+												</div>
+											)}
 										</div>
 										
 										{/* Comment Actions */}
@@ -659,7 +810,14 @@ const UserArticleItem: React.FC = () => {
 					<div className="!bg-gray-50 !rounded-lg !p-6 !border !border-gray-200">
 						<div className="!flex !items-center !gap-3 !mb-4">
 							<MagicalAvatar 
-								user={currentUser}
+								user={currentUser ? { 
+									id: '',
+									username: currentUser,
+									firstName: '',
+									lastName: '',
+									email: '',
+									authorities: []
+								} : undefined}
 								size="sm"
 							/>
 							<h4 className="!font-medium !text-gray-800 !text-lg !mb-0">Add a comment</h4>
