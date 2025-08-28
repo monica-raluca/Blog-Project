@@ -45,7 +45,8 @@ import {
   User,
   PanelLeftClose,
   Newspaper,
-  Sparkles
+  Sparkles,
+  X
 } from 'lucide-react';
 import {
   Tooltip,
@@ -203,6 +204,7 @@ export function Layout(): React.ReactElement {
 	const [pageSize, setPageSize] = useState<number>(10);
 	const [pageIndex, setPageIndex] = useState<number>(0);
 	const [sizeInput, setSizeInput] = useState<number>(10);
+	const [showBlogModal, setShowBlogModal] = useState<boolean>(false);
 	
 
 	console.log(token, currentUser);
@@ -244,19 +246,22 @@ export function Layout(): React.ReactElement {
 						{/* Header with Logo and Title */}
 						<SidebarHeader className="border-b border-[#ececec]/50 !px-6 !py-4 group-data-[collapsible=icon]:!px-2 group-data-[collapsible=icon]:!py-3">
 							<div className="flex items-center gap-3 group-data-[collapsible=icon]:justify-center">
-								<div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec] group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8">
+								<div 
+									className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#fbeffb] to-[#e3f0ff] border-2 border-[#ececec] group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8 cursor-pointer hover:scale-105 transition-transform duration-200 hover:shadow-lg"
+									onClick={() => setShowBlogModal(true)}
+								>
 									<img 
-										src="/favicon.ico" 
+										src="http://localhost:8080/profile-pictures/BlogIcon.jpg" 
 										alt="Blog Logo" 
-										className="h-6 w-6 object-cover group-data-[collapsible=icon]:h-5 group-data-[collapsible=icon]:w-5"
+										className="h-6 w-6 object-cover rounded-full group-data-[collapsible=icon]:h-5 group-data-[collapsible=icon]:w-5"
 									/>
 								</div>
 								<div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
 									<span className="truncate font-bold text-[#162938] text-lg tracking-tight">
-										My Blog
+										Flamebound
 									</span>
 									<span className="truncate text-xs text-[#6a6a6a]">
-										Personal Blog
+										Light of the Moon
 									</span>
 								</div>
 							</div>
@@ -396,7 +401,7 @@ export function Layout(): React.ReactElement {
 						<div className="sticky top-0 z-[20] bg-transparent md:hidden">
 							<div className="flex items-center gap-4 p-4 bg-white/80 backdrop-blur-sm border-b border-[#ececec]">
 								<SidebarTrigger className="text-[#162938] hover:text-[#270023]" />
-								<span className="text-lg font-semibold text-[#162938]">My Blog</span>
+								<span className="text-lg font-semibold text-[#162938]">Flamebound</span>
 							</div>
 						</div>
 						
@@ -413,6 +418,63 @@ export function Layout(): React.ReactElement {
 					</SidebarInset>
 				</div>
 			</SidebarProvider>
+
+			{/* Blog Modal */}
+			{showBlogModal && (
+				<div 
+					className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
+					onClick={() => setShowBlogModal(false)}
+				>
+					<div 
+						className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl shadow-purple-500/20"
+						onClick={(e) => e.stopPropagation()}
+					>
+						{/* Close Button */}
+						<button
+							onClick={() => setShowBlogModal(false)}
+							className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200 text-white"
+						>
+							<X className="w-4 h-4" />
+						</button>
+
+						{/* Modal Content */}
+						<div className="text-center">
+							{/* Large Blog Image */}
+							<div className="mb-6 flex justify-center">
+								<div className="relative">
+									<img 
+										src="http://localhost:8080/profile-pictures/BlogIcon.jpg" 
+										alt="Blog Logo" 
+										className="w-24 h-24 object-cover rounded-full border-4 border-white/30 shadow-xl"
+									/>
+									<div className="absolute inset-0 rounded-full bg-gradient-to-t from-purple-500/20 to-transparent"></div>
+								</div>
+							</div>
+
+							{/* Zoomed Blog Information */}
+							<div className="space-y-4">
+								<h1 className="text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent tracking-tight">
+									Flamebound
+								</h1>
+								<p className="text-lg text-purple-200/80 leading-relaxed">
+									Light of the Moon
+								</p>
+								<div className="pt-4 border-t border-white/20">
+									<p className="text-sm text-purple-300/70 leading-relaxed">
+										A mystical realm where adventures unfold and legends are born from whispered tales. 
+										Journey through chronicles of wonder, magic, and endless possibilities.
+									</p>
+								</div>
+							</div>
+
+							{/* Decorative Elements */}
+							<div className="absolute -top-2 -left-2 w-6 h-6 bg-purple-400/30 rounded-full blur-sm"></div>
+							<div className="absolute -bottom-3 -right-3 w-8 h-8 bg-blue-400/20 rounded-full blur-sm"></div>
+							<div className="absolute top-1/2 -left-4 w-4 h-4 bg-pink-400/25 rounded-full blur-sm"></div>
+						</div>
+					</div>
+				</div>
+			)}
 		</ArticleControlsContext.Provider>
 	);
 } 
