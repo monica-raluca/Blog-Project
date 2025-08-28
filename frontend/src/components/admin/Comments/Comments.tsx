@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink, useNavigate, useSearchParams } from 'react-router';
 import { fetchAllComments, fetchCommentsByArticleId, deleteComment } from '../../../api/CommentApi';
 import { fetchAllArticles } from '../../../api/ArticlesApi';
+import { fetchUsers } from '../../../api/UsersApi';
 import { useAuth } from '../../../api/AuthContext';
 import { hasRole } from '../../../api/AuthApi';
-import { Comment, Article } from '../../../api/types';
+import { Comment, Article, UserDetail } from '../../../api/types';
 import CommentItem from './CommentItem/CommentItem';
 import LexicalContentRenderer from '../../ui/LexicalContentRenderer';
 
@@ -39,10 +40,13 @@ const Comments: React.FC<CommentsProps> = ({
     onView,
     filterByArticleId
 }) => {
+    const [searchParams] = useSearchParams();
     const [comments, setComments] = useState<Comment[]>([]);
     const [articles, setArticles] = useState<Article[]>([]);
+    const [users, setUsers] = useState<UserDetail[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [selectedArticleId, setSelectedArticleId] = useState<string>(filterByArticleId || '');
+    const [authorFilter, setAuthorFilter] = useState<string>('');
     const [showBottomBar, setShowBottomBar] = useState<boolean>(false);
     const [currentPage, setCurrentPage] = useState<number>(0);
     const pageSize = 20;
@@ -51,13 +55,22 @@ const Comments: React.FC<CommentsProps> = ({
     const navigate = useNavigate();
     const lastCommentRef = React.useRef<HTMLTableRowElement>(null);
 
+    // Handle URL parameters for filtering
+    useEffect(() => {
+        const authorParam = searchParams.get('author');
+        if (authorParam) {
+            setAuthorFilter(authorParam);
+        }
+    }, [searchParams]);
+
     useEffect(() => {
         loadArticles();
+        loadUsers();
     }, []);
 
     useEffect(() => {
         loadComments();
-    }, [selectedArticleId, currentPage]);
+    }, [selectedArticleId, authorFilter, currentPage]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -90,6 +103,16 @@ const Comments: React.FC<CommentsProps> = ({
         }
     };
 
+    const loadUsers = async (): Promise<void> => {
+        try {
+            if (!token) return;
+            const allUsers = await fetchUsers(token);
+            setUsers(allUsers);
+        } catch (err) {
+            console.error('Failed to load users:', err);
+        }
+    };
+
     const loadComments = async (): Promise<void> => {
         try {
             setLoading(true);
@@ -99,6 +122,13 @@ const Comments: React.FC<CommentsProps> = ({
                 commentsData = await fetchCommentsByArticleId(selectedArticleId);
             } else {
                 commentsData = await fetchAllComments();
+            }
+            
+            // Filter by author if specified
+            if (authorFilter) {
+                commentsData = commentsData.filter(comment => 
+                    comment.author?.username?.toLowerCase().includes(authorFilter.toLowerCase())
+                );
             }
             
             const startIndex = currentPage * pageSize;
@@ -181,11 +211,41 @@ const Comments: React.FC<CommentsProps> = ({
         }))
     ];
 
+    // Create author options for combobox
+    const authorOptions: ComboboxOption[] = [
+        { value: '', label: 'All Authors' },
+        ...users.map(user => ({
+            value: user.username,
+            label: `${user.firstName} ${user.lastName} (@${user.username})`
+        }))
+    ];
+
     return (
         <>
         <div className="!p-[20px] max-w-full overflow-x-auto">
-            <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
-                <h2>Comments Management</h2>
+            <div 
+				className="!mb-[20px] flex justify-between items-center gap-[16px] sticky top-0 z-40 !py-6 !px-4 !rounded-lg"
+				style={{
+					background: 'rgba(255, 255, 255, 0.95)',
+					backdropFilter: 'blur(12px)',
+					border: '1px solid rgba(255, 255, 255, 0.2)',
+					boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05)',
+					marginTop: '-8px',
+					marginLeft: '-8px',
+					marginRight: '-8px'
+				}}
+			>
+                <h2 
+					className="!text-2xl !font-bold"
+					style={{
+						background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text'
+					}}
+				>
+					Comments Management
+				</h2>
                 <Button 
                     className="rounded cursor-pointer text-xs no-underline inline-block bg-[#007bff] text-white px-3 py-2 transition-colors hover:bg-[#0056b3]"
                     onClick={() => navigate('/admin/comments/create')}
@@ -204,6 +264,21 @@ const Comments: React.FC<CommentsProps> = ({
                             }}
                             placeholder="Select article..."
                             searchPlaceholder="Search articles..."
+                            className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm"
+                            clearable
+                        />
+                    </div>
+                    <div className="!mb-[16px]">
+                        <label htmlFor="author-filter" className="!font-semibold !text-[#495057] !uppercase !text-xs !mb-2">Filter by Author:</label>
+                        <Combobox
+                            options={authorOptions}
+                            value={authorFilter}
+                            onValueChange={(value) => {
+                                setAuthorFilter(value);
+                                setCurrentPage(0);
+                            }}
+                            placeholder="Select author..."
+                            searchPlaceholder="Search authors..."
                             className="!w-full !border !border-[#dee2e6] !rounded-lg !p-[8px] !text-sm"
                             clearable
                         />

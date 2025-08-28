@@ -35,15 +35,78 @@ const HomePage: React.FC = () => {
             setLoading(true);
             const response = await fetchAllArticles({
                 filters: {},
-                sortCriteria: [],
-                size: 8,
+                sortCriteria: [{ field: 'createdDate', direction: 'ASC' }], // Oldest first for story order
+                size: 50, // Get more articles to sort properly
                 from: 0
             });
             
             const articles = Array.isArray(response) ? response : response.articles || [];
             
-            // Get recent articles (first 8)
-            setRecentArticles(articles.slice(0, 8));
+            // Complex story ordering: Lila's first -> All Oracle of Mirth -> One from each other -> Intercalate remaining
+            const lilaArticles = articles.filter(article => 
+                article.author?.firstName?.toLowerCase() === 'lila' || 
+                article.author?.username?.toLowerCase() === 'lila'
+            ).sort((a, b) => new Date(a.createdDate || a.createdAt || '').getTime() - new Date(b.createdDate || b.createdAt || '').getTime());
+            
+            const oracleArticles = articles.filter(article => 
+                article.author?.firstName?.toLowerCase().includes('oracle') || 
+                article.author?.lastName?.toLowerCase().includes('mirth') ||
+                article.author?.username?.toLowerCase().includes('oracle') ||
+                article.author?.username?.toLowerCase().includes('mirth')
+            ).sort((a, b) => new Date(a.createdDate || a.createdAt || '').getTime() - new Date(b.createdDate || b.createdAt || '').getTime());
+            
+            const otherArticles = articles.filter(article => 
+                !(article.author?.firstName?.toLowerCase() === 'lila' || article.author?.username?.toLowerCase() === 'lila') &&
+                !(article.author?.firstName?.toLowerCase().includes('oracle') || 
+                  article.author?.lastName?.toLowerCase().includes('mirth') ||
+                  article.author?.username?.toLowerCase().includes('oracle') ||
+                  article.author?.username?.toLowerCase().includes('mirth'))
+            ).sort((a, b) => new Date(a.createdDate || a.createdAt || '').getTime() - new Date(b.createdDate || b.createdAt || '').getTime());
+            
+            // Group other articles by author
+            const authorGroups = new Map();
+            otherArticles.forEach(article => {
+                const authorKey = article.author?.username || article.author?.firstName || 'unknown';
+                if (!authorGroups.has(authorKey)) {
+                    authorGroups.set(authorKey, []);
+                }
+                authorGroups.get(authorKey).push(article);
+            });
+            
+            // Build the story sequence
+            const storySequence = [];
+            
+            // 1. Lila's first post
+            if (lilaArticles.length > 0) {
+                storySequence.push(lilaArticles[0]);
+            }
+            
+            // 2. All Oracle of Mirth posts
+            storySequence.push(...oracleArticles);
+            
+            // 3. One post from each other author
+            const oneFromEachAuthor = [];
+            const remainingFromAuthors = [];
+            
+            authorGroups.forEach((authorArticles) => {
+                if (authorArticles.length > 0) {
+                    oneFromEachAuthor.push(authorArticles[0]);
+                    remainingFromAuthors.push(...authorArticles.slice(1));
+                }
+            });
+            
+            storySequence.push(...oneFromEachAuthor);
+            
+            // 4. Intercalate remaining posts (Lila's remaining + others' remaining)
+            const remainingLila = lilaArticles.slice(1);
+            const allRemaining = [...remainingLila, ...remainingFromAuthors].sort((a, b) => 
+                new Date(a.createdDate || a.createdAt || '').getTime() - new Date(b.createdDate || b.createdAt || '').getTime()
+            );
+            
+            storySequence.push(...allRemaining);
+            
+            // Take first 8 for homepage display
+            setRecentArticles(storySequence.slice(0, 8));
         } catch (error) {
             console.error('Error fetching articles:', error);
         } finally {
@@ -88,7 +151,7 @@ const HomePage: React.FC = () => {
                         <div className="!flex !items-center !justify-center !gap-3 !mb-6">
                             <Sparkles className="!w-8 !h-8 !text-purple-400" />
                             <h1 className="!text-5xl !md:!text-7xl !font-bold !bg-gradient-to-r !from-white !via-purple-200 !to-blue-200 !bg-clip-text !text-transparent !tracking-tight">
-                                Vox Mysticus
+                                Flamebound
                             </h1>
                             <Sparkles className="!w-8 !h-8 !text-blue-400" />
                         </div>
@@ -126,7 +189,7 @@ const HomePage: React.FC = () => {
                     <div className="!mb-16">
                         <div className="!flex !items-center !gap-3 !justify-center !mb-12">
                             <Scroll className="!w-6 !h-6 !text-purple-400" />
-                            <h2 className="!text-4xl !font-bold !text-white">Latest Chronicles</h2>
+                            <h2 className="!text-4xl !font-bold !text-white">The Story Begins</h2>
                             <Scroll className="!w-6 !h-6 !text-blue-400" />
                         </div>
                         
@@ -163,18 +226,48 @@ const HomePage: React.FC = () => {
                                         
                                         {/* Author info with avatar */}
                                         <div className="!flex !items-center !gap-3 !mb-4">
-                                            <MagicalAvatar 
-                                                user={article.author}
-                                                size="sm"
-                                            />
+                                            <div 
+                                                className="!cursor-pointer"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    navigate(`/public/users/${article.author?.id}`);
+                                                }}
+                                            >
+                                                <MagicalAvatar 
+                                                    user={article.author}
+                                                    size="sm"
+                                                />
+                                            </div>
                                             <div className="!min-w-0 !flex-1">
-                                                <p className="!text-white/90 !text-sm !font-medium !truncate">
+                                                <p 
+                                                    className="!text-white/90 !text-sm !font-medium !truncate !cursor-pointer hover:!text-purple-200 !transition-colors"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        navigate(`/public/users/${article.author?.id}`);
+                                                    }}
+                                                >
                                                     {article.author?.firstName} {article.author?.lastName}
                                                 </p>
                                                 <p className="!text-white/60 !text-xs">
-                                                    {article.createdAt ? formatDate(article.createdAt) : 'Unknown date'}
+                                                    {formatDate(article.createdDate || article.createdAt || new Date().toISOString())}
                                                 </p>
                                             </div>
+                                            {/* Editor badge if article was edited */}
+                                            {article.editor && article.editor.username !== article.author?.username && (
+                                                <div 
+                                                    className="!flex !items-center !gap-1 !bg-white/10 !backdrop-blur-sm !px-2 !py-1 !rounded-full !text-xs !text-white/80 !cursor-pointer hover:!bg-white/20 !transition-colors"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        navigate(`/public/users/${article.editor?.id}`);
+                                                    }}
+                                                >
+                                                    <MagicalAvatar 
+                                                        user={article.editor}
+                                                        size="sm"
+                                                    />
+                                                    <span>Edited</span>
+                                                </div>
+                                            )}
                                         </div>
                                         
                                         <div className="!text-purple-100/70 !text-sm !leading-relaxed !line-clamp-3 !mb-4">

@@ -10,12 +10,12 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
-import ArticlePreview from './ArticlePreview';
+
 import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
 import ArticleCover from '../../ui/ArticleCover';
 import ImageCrop, { CropData } from '../../ui/ImageCrop';
 import CategoryInput from '../../ui/CategoryInput';
-import { Eye } from 'lucide-react';
+
 import * as yup from 'yup';
 import { DEFAULT_CATEGORY, getSavedCategories, saveCategory } from '../../../utils/categoryUtils';
 
@@ -58,7 +58,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const [isDirty, setIsDirty] = useState<boolean>(false);
-    const [showPreview, setShowPreview] = useState<boolean>(false);
+
     const [currentArticle, setCurrentArticle] = useState<Article | null>(null);
     
     // Cover image state for new articles
@@ -895,53 +895,34 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                     </div>
                 </div>
 
-                <div className="!flex !gap-3 !justify-between !mt-8 !pt-5 !border-t !border-[#dee2e6]">
+                <div className="!flex !gap-3 !justify-end !mt-8 !pt-5 !border-t !border-[#dee2e6]">
                     <Button
                         type="button"
-                        onClick={handlePreview}
-                        disabled={loading || !title.trim()}
+                        onClick={handleCancel}
+                        disabled={loading}
                         variant="outline"
-                        className="!px-4 !py-2 !flex !items-center !gap-2"
+                        className="!px-4 !py-2"
                     >
-                        <Eye size={16} />
-                        Preview
+                        Cancel
                     </Button>
-                    
-                    <div className="!flex !gap-3">
-                        <Button
-                            type="button"
-                            onClick={handleCancel}
-                            disabled={loading}
-                            variant="outline"
-                            className="!px-4 !py-2"
-                        >
-                            Cancel
-                        </Button>
-                        <Button
-                            type="submit"
-                            disabled={loading || !title.trim() || !content.trim()}
-                            className="!px-4 !py-2"
-                        >
-                            {loading ? (
-                                <>
-                                    <span className="!inline-block !w-4 !h-4 !border-2 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mr-2"></span>
-                                    {isEdit ? 'Updating...' : 'Creating...'}
-                                </>
-                            ) : (
-                                isEdit ? 'Update Article' : 'Create Article'
-                            )}
-                        </Button>
-                    </div>
+                    <Button
+                        type="submit"
+                        disabled={loading || !title.trim() || !content.trim()}
+                        className="!px-4 !py-2"
+                    >
+                        {loading ? (
+                            <>
+                                <span className="!inline-block !w-4 !h-4 !border-2 !border-[#f3f3f3] !border-t-white !rounded-full animate-spin !mr-2"></span>
+                                {isEdit ? 'Updating...' : 'Creating...'}
+                            </>
+                        ) : (
+                            isEdit ? 'Update Article' : 'Create Article'
+                        )}
+                    </Button>
                 </div>
             </form>
             
-            {/* Article Preview Modal */}
-            <ArticlePreview
-                title={title}
-                content={content}
-                isOpen={showPreview}
-                onClose={() => setShowPreview(false)}
-            />
+
 
             {/* Crop Modal */}
             {showCropModal && originalImageUrl && (

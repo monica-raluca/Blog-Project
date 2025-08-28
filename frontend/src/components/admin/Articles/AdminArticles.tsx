@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router';
+import { NavLink, useNavigate, useSearchParams } from 'react-router';
 import { fetchAllArticles, deleteArticle } from '../../../api/ArticlesApi';
 import { useAuth } from '../../../api/AuthContext';
 import { hasRole } from '../../../api/AuthApi';
@@ -48,6 +48,7 @@ const PAGE_SIZE_OPTIONS: ComboboxOption[] = PAGE_SIZES.map(size => ({
 
 const AdminArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
+	const [searchParams] = useSearchParams();
 	
 	if (!context) {
 		throw new Error('Articles must be used within ArticleControlsContext');
@@ -64,6 +65,15 @@ const AdminArticles: React.FC = () => {
 	const lastArticleRef = useRef<HTMLTableRowElement>(null);
 	const { token, currentUser } = useAuth();
 	const [availableCategories] = useState<string[]>(getSavedCategories());
+
+	// Handle URL parameters for filtering
+	useEffect(() => {
+		const authorParam = searchParams.get('author');
+		if (authorParam) {
+			setFiltersInput(prev => ({ ...prev, author: authorParam }));
+			setFilters(prev => ({ ...prev, author: authorParam }));
+		}
+	}, [searchParams, setFiltersInput, setFilters]);
 
 	// Convert categories to combobox options
 	const categoryOptions: ComboboxOption[] = [
@@ -207,8 +217,29 @@ const AdminArticles: React.FC = () => {
         <>
 		 <div className="!p-5 max-w-full overflow-x-auto">
 			{/* Header */}
-			<div className="flex justify-between items-center !mb-6">
-				<h2 className="m-0 text-[#333] text-2xl font-semibold">Articles Management</h2>
+			<div 
+				className="flex justify-between items-center !mb-6 sticky top-0 z-40 !py-6 !px-4 !rounded-lg"
+				style={{
+					background: 'rgba(255, 255, 255, 0.95)',
+					backdropFilter: 'blur(12px)',
+					border: '1px solid rgba(255, 255, 255, 0.2)',
+					boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05)',
+					marginTop: '-8px',
+					marginLeft: '-8px',
+					marginRight: '-8px'
+				}}
+			>
+				<h2 
+					className="!m-0 !text-2xl !font-bold"
+					style={{
+						background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+						WebkitBackgroundClip: 'text',
+						WebkitTextFillColor: 'transparent',
+						backgroundClip: 'text'
+					}}
+				>
+					Articles Management
+				</h2>
 				<Button 
 					className="bg-[#007bff] hover:bg-[#0056b3] text-white text-sm px-3 py-2 rounded transition-colors"
 					onClick={() => navigate('/admin/articles/create')}

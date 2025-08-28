@@ -37,7 +37,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
     const [article, setArticle] = useState<Article | null>(null);
     const [loading, setLoading] = useState<boolean>(useRouteParams && !propComment);
     const [error, setError] = useState<string | null>(null);
-    const [showAdminActions, setShowAdminActions] = useState<boolean>(true);
+
 
     // Load comment from route params if needed
     useEffect(() => {
@@ -219,21 +219,21 @@ const CommentItem: React.FC<CommentItemProps> = ({
         return (
             <div className="!p-[20px] !max-w-[1200px] !mx-auto">
                 {useRouteParams && (
-                    <div className="!mb-[20px] flex justify-between items-center gap-[16px]">
+                                        <div 
+							className="!mb-[20px] flex justify-between items-center gap-[16px] sticky top-0 z-40 !py-4"
+							style={{
+								background: 'linear-gradient(to right, rgb(249 250 251), rgb(255 255 255))',
+								backdropFilter: 'blur(4px)',
+								borderBottom: '1px solid rgba(229, 231, 235, 0.5)',
+								boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)'
+							}}
+						>
                         <div className="flex items-center gap-[12px]">
                             <Button 
                                 onClick={() => navigate('/admin/comments')}
                                 className="rounded cursor-pointer text-xs no-underline inline-block bg-[#6c757d] text-white px-3 py-2 transition-colors hover:bg-[#5a6268]"
                             >
                                 ← Back to Comments
-                            </Button>
-                        </div>
-                        <div className="flex items-center gap-[12px]">
-                            <Button
-                                onClick={() => setShowAdminActions(!showAdminActions)}
-                                className={`rounded cursor-pointer text-xs no-underline inline-block ${showAdminActions ? 'bg-[#007bff] text-white' : 'bg-[#6c757d] text-white'} px-3 py-2 transition-colors hover:bg-[#5a6268]`}
-                            >
-                                {showAdminActions ? 'Hide Admin Actions' : 'Show Admin Actions'}
                             </Button>
                         </div>
                     </div>
@@ -247,7 +247,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
                                 <span className="!bg-[#007bff] !text-white !px-2 !py-1 !rounded !text-xs !font-semibold !font-mono">ID: {comment?.id}</span>
                             </div>
                         </div>
-                        {(useRouteParams ? showAdminActions : showActions) && (
+                        {showActions && (
                             <div className="!flex !gap-3 !ml-6">
                                 {canEdit && (
                                     <Button

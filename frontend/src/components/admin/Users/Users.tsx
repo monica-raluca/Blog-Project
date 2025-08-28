@@ -209,8 +209,29 @@ const Users: React.FC<UsersProps> = ({
     return (
         <>
             <div className="!p-[20px] max-w-full overflow-x-auto">
-                <div className="flex justify-between items-center !mb-[20px] !pb-[10px] !border-b !border-[#dee2e6]">
-                    <h2 className="text-2xl font-bold">Users Management</h2>
+                <div 
+					className="flex justify-between items-center !mb-[20px] !pb-[10px] sticky top-0 z-40 !py-6 !px-4 !rounded-lg"
+					style={{
+						background: 'rgba(255, 255, 255, 0.95)',
+						backdropFilter: 'blur(12px)',
+						border: '1px solid rgba(255, 255, 255, 0.2)',
+						boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05)',
+						marginTop: '-8px',
+						marginLeft: '-8px',
+						marginRight: '-8px'
+					}}
+				>
+                    <h2 
+						className="!text-2xl !font-bold"
+						style={{
+							background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+							WebkitBackgroundClip: 'text',
+							WebkitTextFillColor: 'transparent',
+							backgroundClip: 'text'
+						}}
+					>
+						Users Management
+					</h2>
                     <div className="flex items-center gap-4">
                         {/* View Toggle */}
                         <div className="flex items-center gap-1 border rounded-md">
