@@ -11,7 +11,8 @@ import {
   BookOpen,
   Feather,
   Sparkles,
-  Scroll
+  Scroll,
+  Tag
 } from 'lucide-react';
 import LexicalContentRenderer from '../ui/LexicalContentRenderer';
 import MagicalAvatar from '../ui/MagicalAvatar';
@@ -145,8 +146,14 @@ const HomePage: React.FC = () => {
                                         />
                                         <div className="!absolute !inset-0 !bg-gradient-to-t !from-black/50 !via-black/20 !to-transparent !group-hover:!from-black/40 !transition-all !duration-500"></div>
                                         
+                                        {/* Category badge */}
+                                        <div className="!absolute !top-4 !right-4 !bg-white/90 !backdrop-blur-sm !px-3 !py-1 !rounded-full !text-xs !font-medium !text-gray-700 !shadow-sm !flex !items-center !gap-1">
+                                            <Tag className="!w-3 !h-3" />
+                                            {article.category || 'General'}
+                                        </div>
+                                        
                                         {/* Magical floating orb */}
-                                        <div className="!absolute !top-4 !right-4 !w-3 !h-3 !bg-purple-400/80 !rounded-full !animate-pulse !shadow-lg !shadow-purple-400/50"></div>
+                                        <div className="!absolute !top-4 !left-4 !w-3 !h-3 !bg-purple-400/80 !rounded-full !animate-pulse !shadow-lg !shadow-purple-400/50"></div>
                                     </div>
                                     
                                     <div className="!p-6">

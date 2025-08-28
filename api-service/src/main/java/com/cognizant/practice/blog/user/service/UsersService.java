@@ -27,6 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.Map;
@@ -106,7 +107,7 @@ public class UsersService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
-        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), null,LocalDateTime.now(), Role.ROLE_USER, null, null);
+        UserEntity newUser = new UserEntity(null, userRequest.lastName(), userRequest.firstName(), userRequest.username(), userRequest.email(), passwordEncoder.encode(userRequest.password()), null,LocalDateTime.now(), Role.ROLE_USER, new ArrayList<String>(), null, null);
 
 //         return jwtService.generateToken(userRepository.save(newUser));
         Map<String, Object> extraClaims = new HashMap<>();

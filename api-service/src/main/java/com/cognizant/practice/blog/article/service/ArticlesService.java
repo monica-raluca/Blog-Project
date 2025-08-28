@@ -111,7 +111,7 @@ public class ArticlesService {
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
     }
 
-    public List<Article> getArticlesParams(int size, int from, String title, String author, LocalDateTime createdDate, String sort) {
+    public List<Article> getArticlesParams(int size, int from, String title, String author, String category, LocalDateTime createdDate, String sort) {
         Page<ArticleEntity> entities;
         Sort sortCriteria = parseSortParam(sort);
         Pageable page = PageRequest.of(from, size, sortCriteria);
@@ -120,28 +120,12 @@ public class ArticlesService {
                 .and(ArticleSpecification.hasTitle(title))
                 .and(ArticleSpecification.hasAuthor(author))
                 .and(ArticleSpecification.createdAfter(createdDate))
+                .and(ArticleSpecification.hasCategory(category))
                 .build();
 
         entities = articleRepository.findAll(specification, page);
 
         return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-
-//        if (title != null && author != null) {
-//            entities = articleRepository.findAllByTitleAndAuthor(title, getUserFromUsername(author), page);
-//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-//        }
-//        if (title != null) {
-//            entities = articleRepository.findAllByTitle(title, page);
-//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-//        }
-//        if (author != null) {
-//            entities = articleRepository.findAllByAuthor(getUserFromUsername(author), page);
-//            return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
-//        }
-//
-//        entities = articleRepository.findAll(page);
-//
-//        return entities.stream().map(ArticleConvertor::toDto).collect(Collectors.toList());
     }
 
     public Article getArticleById(UUID id) {
@@ -170,7 +154,7 @@ public class ArticlesService {
 
         UserEntity author = getPrincipalUser(principal);
 
-        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, new ArrayList<String>(), null, null, null, null, null, null, author, author);
+        ArticleEntity newArticle = new ArticleEntity(null, articleRequest.title(), articleRequest.content(), summarize(articleRequest.content()), LocalDateTime.now(), LocalDateTime.now(), null, new ArrayList<String>(), articleRequest.category(), null, null, null, null, null, null, author, author);
 
         return ArticleConvertor.toDto(articleRepository.save(newArticle));
     }
@@ -192,6 +176,7 @@ public class ArticlesService {
 
         newArticle.setContent(articleRequest.content());
         newArticle.setTitle(articleRequest.title());
+        newArticle.setCategory(articleRequest.category());
         newArticle.setSummary(summarize(articleRequest.content()));
         newArticle.setUpdatedDate(LocalDateTime.now());
         newArticle.setEditor(editor);

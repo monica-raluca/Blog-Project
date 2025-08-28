@@ -401,7 +401,7 @@ export function Layout(): React.ReactElement {
 						</div>
 						
 						{/* TopBar for specific pages */}
-						{(location.pathname === '/admin/articles' || location.pathname === '/public/articles') && (
+						{location.pathname === '/public/articles' && (
 							<div className="sticky top-0 z-[20] bg-transparent shadow-[0_2px_12px_rgba(22,41,56,0.07)] hidden md:block">
 								<TopBar />
 							</div>

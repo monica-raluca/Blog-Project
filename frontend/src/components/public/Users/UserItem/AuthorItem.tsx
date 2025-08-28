@@ -8,8 +8,10 @@ import { Badge } from '../../../../../components/ui/badge';
 import LexicalContentRenderer from '../../../ui/LexicalContentRenderer';
 import MagicalAvatar from '../../../ui/MagicalAvatar';
 import ArticleCover from '../../../ui/ArticleCover';
+import { Combobox, type ComboboxOption } from '../../../../../components/ui/combobox';
 import { extractSmartSummary } from '../../../../utils/contentUtils';
-import { ChevronDown, ChevronUp, SortAsc, SortDesc, Calendar, BookOpen } from 'lucide-react';
+import { getSavedCategories } from '../../../../utils/categoryUtils';
+import { ChevronDown, ChevronUp, SortAsc, SortDesc, Calendar, BookOpen, Tag } from 'lucide-react';
 import '../../../../styles/magical-cards.css';
 
 const AuthorItem: React.FC = () => {
@@ -19,7 +21,18 @@ const AuthorItem: React.FC = () => {
 	const [sortedArticles, setSortedArticles] = useState<Article[]>([]);
 	const [showArticles, setShowArticles] = useState<boolean>(false);
 	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc'); // desc = newest first
+	const [categoryFilter, setCategoryFilter] = useState<string>('');
 	const navigate = useNavigate();
+
+
+
+	const [availableCategories] = useState<string[]>(getSavedCategories());
+
+	// Convert categories to combobox options
+	const categoryOptions: ComboboxOption[] = [
+		{ value: '', label: 'All categories' },
+		...availableCategories.map(cat => ({ value: cat, label: cat }))
+	];
 
 	useEffect(() => {
 		if (!id) return;
@@ -28,7 +41,7 @@ const AuthorItem: React.FC = () => {
 			.then(user => {
 				setAuthor(user);
 				// Immediately fetch articles to get the count
-				return fetchArticlesByAuthor(user);
+				return fetchArticlesByAuthor(user, 1000, 0); // Fetch up to 1000 articles to show all
 			})
 			.then(data => {
 				console.log('=== AUTHOR ARTICLES DEBUG ===');
@@ -81,18 +94,29 @@ const AuthorItem: React.FC = () => {
 		});
 	};
 
-	// Update sorted articles when articles or sort order changes
+	// Update sorted articles when articles, sort order, or category filter changes
 	useEffect(() => {
 		if (articles.length > 0) {
-			console.log('=== SORTING DEBUG ===');
-			console.log('Articles before sorting:', articles.length);
+			console.log('=== SORTING/FILTERING DEBUG ===');
+			console.log('Articles before filtering/sorting:', articles.length);
 			console.log('Sort order:', sortOrder);
+			console.log('Category filter:', categoryFilter);
 			
-			const sorted = sortArticlesByDate(articles, sortOrder);
-			console.log('Articles after sorting:', sorted.length);
-			console.log('Sorted articles:', sorted.map(a => ({
+			// First filter by category
+			let filteredArticles = articles;
+			if (categoryFilter.trim()) {
+				filteredArticles = articles.filter(article => 
+					(article.category || 'General').toLowerCase().includes(categoryFilter.toLowerCase())
+				);
+			}
+			
+			// Then sort
+			const sorted = sortArticlesByDate(filteredArticles, sortOrder);
+			console.log('Articles after filtering/sorting:', sorted.length);
+			console.log('Filtered/sorted articles:', sorted.map(a => ({
 				id: a.id,
 				title: a.title,
+				category: a.category || 'General',
 				date: a.createdDate || a.createdAt
 			})));
 			
@@ -101,7 +125,7 @@ const AuthorItem: React.FC = () => {
 			console.log('No articles to sort, setting empty array');
 			setSortedArticles([]);
 		}
-	}, [articles, sortOrder]);
+	}, [articles, sortOrder, categoryFilter]);
 
 	const toggleSortOrder = (): void => {
 		setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc');
@@ -205,36 +229,66 @@ const AuthorItem: React.FC = () => {
 					<div className="!space-y-6 !animate-in !slide-in-from-bottom-4 !duration-500">
 						{/* Articles Header with Sorting */}
 						<div className="!bg-white/90 !backdrop-blur-xl !rounded-2xl !shadow-lg !border !border-white/60 !p-6">
-							<div className="!flex !flex-col md:!flex-row !items-center !justify-between !gap-4">
-								<div className="!flex !items-center !gap-3">
-									<BookOpen className="!w-6 !h-6 !text-purple-600" />
-									<h2 className="!text-2xl !font-bold !text-gray-800">
-										Articles by {author.username}
-									</h2>
-									<Badge variant="secondary" className="!bg-purple-100 !text-purple-700">
-										{articles.length} {articles.length === 1 ? 'article' : 'articles'}
-									</Badge>
+							<div className="!flex !flex-col !gap-4">
+								<div className="!flex !flex-col md:!flex-row !items-center !justify-between !gap-4">
+									<div className="!flex !items-center !gap-3">
+										<BookOpen className="!w-6 !h-6 !text-purple-600" />
+										<h2 className="!text-2xl !font-bold !text-gray-800">
+											Articles by {author.username}
+										</h2>
+										<Badge variant="secondary" className="!bg-purple-100 !text-purple-700">
+											{sortedArticles.length} of {articles.length} {articles.length === 1 ? 'article' : 'articles'}
+										</Badge>
+									</div>
+									
+									{articles.length > 0 && (
+										<Button
+											onClick={toggleSortOrder}
+											variant="outline"
+											className="!flex !items-center !gap-2 !border-purple-200 !text-purple-600 hover:!bg-purple-50"
+										>
+											<Calendar className="!w-4 !h-4" />
+											{sortOrder === 'desc' ? (
+												<>
+													<SortDesc className="!w-4 !h-4" />
+													Newest First
+												</>
+											) : (
+												<>
+													<SortAsc className="!w-4 !h-4" />
+													Oldest First
+												</>
+											)}
+										</Button>
+									)}
 								</div>
 								
 								{articles.length > 0 && (
-									<Button
-										onClick={toggleSortOrder}
-										variant="outline"
-										className="!flex !items-center !gap-2 !border-purple-200 !text-purple-600 hover:!bg-purple-50"
-									>
-										<Calendar className="!w-4 !h-4" />
-										{sortOrder === 'desc' ? (
-											<>
-												<SortDesc className="!w-4 !h-4" />
-												Newest First
-											</>
-										) : (
-											<>
-												<SortAsc className="!w-4 !h-4" />
-												Oldest First
-											</>
+									<div className="!flex !flex-col sm:!flex-row !items-center !gap-3">
+										<span className="!text-sm !font-medium !text-gray-600">Filter by category:</span>
+										<div className="!flex-1 !max-w-xs">
+											<Combobox
+												options={categoryOptions}
+												value={categoryFilter}
+												onValueChange={setCategoryFilter}
+												placeholder="All categories"
+												searchPlaceholder="Search categories..."
+												emptyText="No categories found"
+												clearable={true}
+												className="!w-full !text-sm !border-purple-200 hover:!border-purple-300 focus:!border-purple-400"
+											/>
+										</div>
+										{categoryFilter && (
+											<Button
+												onClick={() => setCategoryFilter('')}
+												variant="outline"
+												size="sm"
+												className="!text-xs !border-purple-200 !text-purple-600 hover:!bg-purple-50"
+											>
+												Clear filter
+											</Button>
 										)}
-									</Button>
+									</div>
 								)}
 							</div>
 						</div>
@@ -266,6 +320,13 @@ const AuthorItem: React.FC = () => {
 													<BookOpen className="!w-12 !h-12 !text-white/70" />
 												</div>
 											)}
+											
+											{/* Category badge */}
+											<div className="!absolute !top-4 !right-4 !bg-white/90 !backdrop-blur-sm !px-3 !py-1 !rounded-full !text-xs !font-medium !text-gray-700 !shadow-sm !flex !items-center !gap-1">
+												<Tag className="!w-3 !h-3" />
+												{article.category || 'General'}
+											</div>
+											
 											{/* Overlay */}
 											<div className="!absolute !inset-0 !bg-gradient-to-t !from-black/20 !to-transparent !opacity-0 group-hover:!opacity-100 !transition-opacity !duration-300"></div>
 										</div>

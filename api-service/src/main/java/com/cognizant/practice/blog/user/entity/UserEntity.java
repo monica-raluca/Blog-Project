@@ -39,6 +39,8 @@ public class UserEntity implements UserDetails {
 
     private Role role;
 
+    private List<String> categories;
+
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ArticleEntity> articles;
 

@@ -25,6 +25,9 @@ import FontFamilyPlugin from './FontFamilyPlugin';
 import FontSizePlugin from './FontSizePlugin';
 import TextColorPlugin from './TextColorPlugin';
 import BackgroundColorPlugin from './BackgroundColorPlugin';
+import { SeparatorNode } from './SeparatorNode';
+import { SEPARATOR_TRANSFORMER } from './SeparatorTransformer';
+import SeparatorPlugin from './SeparatorPlugin';
 
 interface SimpleLexicalEditorProps {
   initialValue?: string;
@@ -43,8 +46,8 @@ export interface SimpleLexicalEditorRef {
   focus: () => void;
 }
 
-// Combined transformers including YouTube
-const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER];
+// Combined transformers including YouTube and Separator
+const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER, SEPARATOR_TRANSFORMER];
 
 // Content change handler plugin
 function OnChangePlugin({ onChange }: { onChange?: (value: string) => void }) {
@@ -278,6 +281,7 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
       CodeNode,
       CodeHighlightNode,
       YouTubeNode,
+      SeparatorNode,
     ],
     onError: (error: Error) => {
       console.error('Lexical error:', error);
@@ -315,6 +319,7 @@ const SimpleLexicalEditor = forwardRef<SimpleLexicalEditorRef, SimpleLexicalEdit
           <FontSizePlugin />
           <TextColorPlugin showToolbar={false} />
           <BackgroundColorPlugin showToolbar={false} />
+          <SeparatorPlugin />
         </div>
       </div>
     </LexicalComposer>

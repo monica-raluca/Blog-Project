@@ -14,6 +14,7 @@ import { TableNode, TableCellNode, TableRowNode } from '@lexical/table';
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { YouTubeNode } from './YouTubeNode';
 import { ImageNode } from './ImageNode';
+import { SeparatorNode } from './SeparatorNode';
 import CodeHighlightPlugin from './CodeHighlightPlugin';
 import './ContentWrapperStyles.css';
 
@@ -275,6 +276,7 @@ export default function LexicalContentRenderer({ content, className = '' }: Lexi
       AutoLinkNode,
       YouTubeNode,
       ImageNode,
+      SeparatorNode,
       TableNode,
       TableCellNode,
       TableRowNode,

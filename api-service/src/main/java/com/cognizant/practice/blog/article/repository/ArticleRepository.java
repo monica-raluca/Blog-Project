@@ -17,4 +17,5 @@ public interface ArticleRepository extends JpaRepository<ArticleEntity, UUID>, J
     Page<ArticleEntity> findAllByTitle(String title, Pageable pageable);
     Page<ArticleEntity> findAllByAuthor(UserEntity user, Pageable pageable);
     Page<ArticleEntity> findAllByTitleAndAuthor(String title, UserEntity user, Pageable pageable);
+    Page<ArticleEntity> findAllByCategory(String category, Pageable pageable);
 }

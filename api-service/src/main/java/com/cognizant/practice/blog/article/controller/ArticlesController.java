@@ -31,10 +31,10 @@ public class ArticlesController {
     @GetMapping(value="/articles")
     public List<Article> printArticles(@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "0") int from,
                                        @RequestParam(required = false) String title, @RequestParam(required = false) String author,
-                                       @RequestParam(required = false) LocalDateTime createdDate,
+                                       @RequestParam(required = false) String category, @RequestParam(required = false) LocalDateTime createdDate,
                                        @RequestParam(defaultValue = "createdDate desc") String sort) {
 
-        return articlesService.getArticlesParams(size, from, title, author, createdDate, sort);
+        return articlesService.getArticlesParams(size, from, title, author, category, createdDate, sort);
     }
     // GET /articles/<id> -> just the id'th article = Article => single json
         // id not found => error 404 http

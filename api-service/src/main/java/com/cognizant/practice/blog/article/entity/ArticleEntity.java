@@ -37,6 +37,8 @@ public class ArticleEntity {
 
     private String imageUrl;
     private List<String> mediaUrls;
+
+    private String category;
     
     // Crop metadata for cover image display
     private Double cropX;        // X position of crop area (0-1)

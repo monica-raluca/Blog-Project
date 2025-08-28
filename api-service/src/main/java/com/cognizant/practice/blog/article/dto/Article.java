@@ -23,6 +23,7 @@ public class Article {
     private String imageUrl;
     private List<String> mediaUrls;
     
+    private String category;
     // Crop metadata for cover image display
     private Double cropX;        // X position of crop area (0-1)
     private Double cropY;        // Y position of crop area (0-1) 

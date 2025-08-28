@@ -10,6 +10,7 @@ import LexicalEditor, { LexicalEditorRef } from '../../ui/LexicalEditor';
 import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
 import ArticleCover from '../../ui/ArticleCover';
 import ImageCrop, { CropData } from '../../ui/ImageCrop';
+import CategoryInput from '../../ui/CategoryInput';
 import { Article } from '../../../api/types';
 
 interface ArticleFormProps {
@@ -19,11 +20,15 @@ interface ArticleFormProps {
 interface ArticleFormData {
 	title: string;
 	content: string;
+	category: string;
 }
+
+import { DEFAULT_CATEGORY, getSavedCategories, saveCategory } from '../../../utils/categoryUtils';
 
 const articleFormSchema = yup.object({
     title: yup.string().required('Title is required'),
-    content: yup.string().required('Content is required')
+    content: yup.string().required('Content is required'),
+    category: yup.string().trim().default(DEFAULT_CATEGORY).transform((value) => value || DEFAULT_CATEGORY)
 }).required();
 
 type FormData = yup.InferType<typeof articleFormSchema>;
@@ -35,6 +40,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
 	const markdownEditorRef = useRef<LexicalEditorRef>(null);
+	const [availableCategories, setAvailableCategories] = useState<string[]>(getSavedCategories());
 
 	const { token, currentUser } = useAuth();
 
@@ -48,7 +54,8 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 		resolver: yupResolver(articleFormSchema),
 		defaultValues: {
 			title: '',
-			content: ''
+			content: '',
+			category: ''
 		}
 	});
 
@@ -75,6 +82,7 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 			fetchArticleById(id).then(article => {
 				setValue('title', article.title);
 				setValue('content', article.content);
+				setValue('category', article.category || DEFAULT_CATEGORY);
 				setCurrentArticle(article); // Set current article for image upload
 				
 				// Set the JSON content in the editor after a small delay to ensure it's rendered
@@ -387,7 +395,13 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 
 	const handleFormSubmit = async (data: ArticleFormData): Promise<void> => {
 		const jsonContent = markdownEditorRef.current?.getEditorStateJson() || data.content;
-		const article = { title: data.title, content: jsonContent };
+		const finalCategory = data.category.trim() || DEFAULT_CATEGORY;
+		
+		// Save the category if it's new
+		saveCategory(finalCategory);
+		setAvailableCategories(getSavedCategories());
+		
+		const article = { title: data.title, content: jsonContent, category: finalCategory };
 
 		try {
 			let result;
@@ -453,6 +467,18 @@ const UserArticleForm: React.FC<ArticleFormProps> = ({ isEdit = false }) => {
 							{errors.title?.message && (
 								<p className="!text-rose-500 !text-sm !mt-2 !font-medium !animate-pulse">{errors.title?.message}</p>
 							)}
+						</div>
+
+						<div className="!relative">
+							<label className="!block !text-sm !font-semibold !text-gray-700 !mb-2">Category</label>
+							<CategoryInput
+								value={watch('category') || ''}
+								onChange={(value) => setValue('category', value)}
+								suggestions={availableCategories}
+								placeholder="Start typing or leave empty for General..."
+								className="!w-full !px-4 !py-4 !text-base !border-2 !border-gray-200 !rounded-xl !bg-white/80 !backdrop-blur-sm !transition-all !duration-300 !ease-out focus:!border-purple-400 focus:!ring-4 focus:!ring-purple-100 focus:!bg-white focus:!shadow-lg focus:!scale-[1.02] !outline-none"
+								error={errors.category?.message}
+							/>
 						</div>
 
 						{/* Article Cover Upload - For New Articles */}

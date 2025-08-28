@@ -34,6 +34,9 @@ import { ImageNode } from './ImageNode';
 import { IMAGE_TRANSFORMER } from './ImageTransformer';
 import { $patchStyleText } from '@lexical/selection';
 import './ContentWrapperStyles.css';
+import { SeparatorNode } from './SeparatorNode';
+import { SEPARATOR_TRANSFORMER } from './SeparatorTransformer';
+import SeparatorPlugin, { INSERT_SEPARATOR_COMMAND } from './SeparatorPlugin';
 
 
 
@@ -87,6 +90,7 @@ import {
   Table,
   Eraser,
   Image,
+  Minus,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -529,6 +533,21 @@ function ToolbarPlugin({ articleId, onArticleCreate }: { articleId?: string; onA
         <Table size={16} />
       </Button>
       
+      <div className="w-px h-6 bg-gray-300 mx-1" />
+      
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={() => {
+          editor.dispatchCommand(INSERT_SEPARATOR_COMMAND, undefined);
+        }}
+        className="p-1 h-8 w-8"
+        title="Insert Separator Line"
+      >
+        <Minus size={16} />
+      </Button>
+      
       <ImageUploadPlugin articleId={articleId} onArticleCreate={onArticleCreate} showToolbar={true} />
     </div>
   );
@@ -660,8 +679,8 @@ function EditorRefPlugin({ editorRef }: { editorRef: React.MutableRefObject<Lexi
   return null;
 }
 
-// Combined transformers including YouTube and Image
-const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER, IMAGE_TRANSFORMER];
+// Combined transformers including YouTube, Image, and Separator
+const ALL_TRANSFORMERS = [...TRANSFORMERS, YOUTUBE_TRANSFORMER, IMAGE_TRANSFORMER, SEPARATOR_TRANSFORMER];
 
 // Main editor component
 const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
@@ -762,6 +781,7 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
       AutoLinkNode,
       YouTubeNode,
       ImageNode,
+      SeparatorNode,
       TableNode,
       TableCellNode,
       TableRowNode,
@@ -819,8 +839,9 @@ const LexicalEditor = forwardRef<LexicalEditorRef, LexicalEditorProps>(({
           <TextColorPlugin showToolbar={false} />
           <BackgroundColorPlugin showToolbar={false} />
           <ImagePlugin />
-          <ImageUploadPlugin articleId={articleId} onArticleCreate={onArticleCreate} showToolbar={false} />
-          <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
+                <ImageUploadPlugin articleId={articleId} onArticleCreate={onArticleCreate} showToolbar={false} />
+      <SeparatorPlugin />
+      <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} />
         </div>
       </div>
     </LexicalComposer>

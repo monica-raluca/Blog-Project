@@ -13,6 +13,7 @@ export interface UserEditRequest {
 	email: string;
 	username: string;
 	role: string;
+	profilePicture?: string;
 }
 
 export interface LoginUserData {
@@ -47,6 +48,7 @@ export interface Article {
 	content: string;
 	summary?: string;
 	imageUrl?: string;
+	category?: string;
 	author?: UserDetail;
 	editor?: UserDetail;
 	createdAt?: string;

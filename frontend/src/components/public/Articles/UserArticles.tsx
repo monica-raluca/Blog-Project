@@ -121,9 +121,9 @@ const UserArticles: React.FC = () => {
 							{/* Elegant overlay gradient */}
 							<div className="!absolute !inset-0 !bg-gradient-to-t !from-black/30 !via-transparent !to-transparent !group-hover:!from-black/40 !transition-all !duration-500"></div>
 							
-							{/* Floating badge */}
+							{/* Category badge */}
 							<div className="!absolute !top-4 !right-4 !bg-white/90 !backdrop-blur-sm !px-3 !py-1 !rounded-full !text-xs !font-medium !text-gray-700 !shadow-sm">
-								Article
+								{article.category || 'General'}
 							</div>
 						</div>
 
@@ -133,6 +133,8 @@ const UserArticles: React.FC = () => {
 							<h3 className="!text-xl !font-semibold !text-gray-900 !mb-3 !leading-tight !line-clamp-2 !group-hover:!text-indigo-900 !transition-colors !duration-300">
 								{article.title}
 							</h3>
+
+
 
 							{/* Author */}
 							<div className="!flex !items-center !gap-3 !mb-4">

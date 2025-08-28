@@ -44,8 +44,13 @@ export async function fetchArticlesByTitle(title: string): Promise<ArticlesRespo
     return res.json();
 }
 
-export async function fetchArticlesByAuthor(author: User): Promise<ArticlesResponse> {
-    const res = await fetch(`/api/articles?author=${author.username}`);
+export async function fetchArticlesByAuthor(author: User, size: number = 100, from: number = 0): Promise<ArticlesResponse> {
+    const params = new URLSearchParams();
+    params.set('author', author.username);
+    params.set('size', size.toString());
+    params.set('from', from.toString());
+    
+    const res = await fetch(`/api/articles?${params.toString()}`);
     if (!res.ok) {
         let errorData: ApiError = {};
         try { errorData = await res.json(); } catch {}

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,10 +22,13 @@ public class User {
     private String email;
     private String password;
     private String profilePicture;
-    
+
+    private List<String> categories;
     private Role role;
 
     private LocalDateTime createdDate;
+
+
 
 
 }

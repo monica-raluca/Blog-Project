@@ -26,6 +26,25 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import { Tag, Search, SortAsc, SortDesc, Filter } from 'lucide-react';
+import { Label } from '@/components/ui/label';
+import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import { getSavedCategories, cleanupCategory } from '../../../utils/categoryUtils';
+// CategoryInput import removed - using Combobox instead
+
+// Sort field options
+const SORT_FIELDS = [
+	{ label: 'Date', value: 'createdDate' },
+	{ label: 'Title', value: 'title' },
+	{ label: 'Author', value: 'author' },
+];
+
+// Page size options
+const PAGE_SIZES = [5, 10, 20, 50];
+const PAGE_SIZE_OPTIONS: ComboboxOption[] = PAGE_SIZES.map(size => ({
+	value: size.toString(),
+	label: `${size} per page`,
+}));
 
 const AdminArticles: React.FC = () => {
 	const context = useContext(ArticleControlsContext);
@@ -44,6 +63,13 @@ const AdminArticles: React.FC = () => {
 	const [showBottomBar, setShowBottomBar] = useState<boolean>(false);
 	const lastArticleRef = useRef<HTMLTableRowElement>(null);
 	const { token, currentUser } = useAuth();
+	const [availableCategories] = useState<string[]>(getSavedCategories());
+
+	// Convert categories to combobox options
+	const categoryOptions: ComboboxOption[] = [
+		{ value: '', label: 'All categories' },
+		...availableCategories.map(cat => ({ value: cat, label: cat }))
+	];
 
     useEffect(() => {
         fetchAllArticles({
@@ -87,22 +113,18 @@ const AdminArticles: React.FC = () => {
 		return d.getFullYear() + '-' + (d.getMonth()+1).toString().padStart(2,'0') + '-' + d.getDate().toString().padStart(2,'0') + ' ' + d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
 	}
 
-    // Pagination controls for bottom bar
-    const currentPage = pageIndex + 1;
-    const totalPages = 50; // TODO: Replace with real total pages if available
-    const goToPrev = (): void => setPageIndex(Math.max(0, pageIndex - 1));
-    const goToNext = (): void => setPageIndex(pageIndex + 1); // Should check max page if available
-    
-	const handlePageInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-      let val = parseInt(e.target.value, 10);
-      if (!isNaN(val) && val > 0) setPageIndex(val - 1);
-    };
+
 
 	const handleDelete = async (articleId: string): Promise<void> => {
 		if (!window.confirm('Are you sure you want to delete this article?') || !token) return;
 
 		try {
+			// Find the article to get its category before deletion
+			const articleToDelete = articles.find(article => article.id === articleId);
+			const categoryToClean = articleToDelete?.category;
+			
 			await deleteArticle(articleId, token);
+			
 			// Reload articles after deletion
 			const response = await fetchAllArticles({
 				filters,
@@ -111,10 +133,12 @@ const AdminArticles: React.FC = () => {
 				from: pageIndex
 			});
 			
-			if (Array.isArray(response)) {
-				setArticles(response);
-			} else {
-				setArticles(response.articles || []);
+			const updatedArticles = Array.isArray(response) ? response : response.articles || [];
+			setArticles(updatedArticles);
+			
+			// Clean up category if no other articles use it
+			if (categoryToClean) {
+				cleanupCategory(categoryToClean, updatedArticles);
 			}
 		} catch (err) {
 			const errorMessage = (err as Error).message || 'An error occurred';
@@ -124,6 +148,51 @@ const AdminArticles: React.FC = () => {
 				navigate('/error');
 			}
 		}
+	};
+
+	// Control handlers
+	const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+		setFiltersInput({ ...filtersInput, [e.target.name]: e.target.value });
+	};
+
+	const applyFilters = (): void => setFilters(filtersInput);
+
+	const clearFilters = (): void => {
+		setFiltersInput({ title: '', author: '', category: '' });
+		setFilters({ title: '', author: '', category: '' });
+	};
+
+	const handleSortToggle = (field: string): void => {
+		const exists = sortCriteria.find(sc => sc.field === field);
+		let updated;
+		if (exists) {
+			// Toggle direction or remove
+			if (exists.direction === 'ASC') {
+				updated = sortCriteria.map(sc =>
+					sc.field === field ? { ...sc, direction: 'DESC' as const } : sc
+				);
+			} else {
+				updated = sortCriteria.filter(sc => sc.field !== field);
+			}
+		} else {
+			updated = [...sortCriteria, { field, direction: 'ASC' as const }];
+		}
+		setSortCriteria(updated);
+	};
+
+	const handlePageSizeChange = (value: string): void => {
+		setPageSize(Number(value));
+		setPageIndex(0);
+	};
+
+	// Pagination handlers
+	const currentPage = pageIndex + 1;
+	const goToPrev = (): void => setPageIndex(Math.max(0, pageIndex - 1));
+	const goToNext = (): void => setPageIndex(pageIndex + 1);
+	
+	const handlePageInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+		let val = parseInt(e.target.value, 10);
+		if (!isNaN(val) && val > 0) setPageIndex(val - 1);
 	};
 
 	const handleEdit = (articleId: string): void => {
@@ -137,7 +206,8 @@ const AdminArticles: React.FC = () => {
 	return (
         <>
 		 <div className="!p-5 max-w-full overflow-x-auto">
-			<div className="flex justify-between items-center !mb-5 !pb-2.5 !border-b border-gray-300">
+			{/* Header */}
+			<div className="flex justify-between items-center !mb-6">
 				<h2 className="m-0 text-[#333] text-2xl font-semibold">Articles Management</h2>
 				<Button 
 					className="bg-[#007bff] hover:bg-[#0056b3] text-white text-sm px-3 py-2 rounded transition-colors"
@@ -147,6 +217,96 @@ const AdminArticles: React.FC = () => {
 				</Button>
 			</div>
 
+			{/* Controls Section */}
+			<div className="bg-white rounded-lg border border-gray-200 p-4 mb-6 space-y-4">
+				{/* Sort Controls */}
+				<div className="flex flex-wrap items-center gap-3">
+					<div className="flex items-center gap-2">
+						<SortAsc className="w-4 h-4 text-gray-500" />
+						<Label className="text-sm font-medium text-gray-700">Sort by:</Label>
+					</div>
+					{SORT_FIELDS.map(field => {
+						const active = sortCriteria.find(sc => sc.field === field.value);
+						return (
+							<Button
+								key={field.value}
+								onClick={() => handleSortToggle(field.value)}
+								variant={active ? "default" : "outline"}
+								size="sm"
+								className={`text-xs ${active ? 'bg-[#007bff] text-white' : 'text-gray-600 border-gray-300'}`}
+							>
+								{field.label}
+								{active && (
+									<span className="ml-1">
+										{active.direction === 'ASC' ? '↑' : '↓'}
+									</span>
+								)}
+							</Button>
+						);
+					})}
+				</div>
+
+				{/* Filter Controls */}
+				<div className="flex flex-wrap items-center gap-3">
+					<div className="flex items-center gap-2">
+						<Filter className="w-4 h-4 text-gray-500" />
+						<Label className="text-sm font-medium text-gray-700">Filter:</Label>
+					</div>
+					<input
+						type="text"
+						name="title"
+						placeholder="Title..."
+						value={filtersInput.title || ''}
+						onChange={handleFilterChange}
+						className="px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-transparent"
+					/>
+					<input
+						type="text"
+						name="author"
+						placeholder="Author..."
+						value={filtersInput.author || ''}
+						onChange={handleFilterChange}
+						className="px-3 py-1.5 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#007bff] focus:border-transparent"
+					/>
+					<Combobox
+						options={categoryOptions}
+						value={filtersInput.category || ''}
+						onValueChange={(value) => setFiltersInput({ ...filtersInput, category: value })}
+						placeholder="Category..."
+						searchPlaceholder="Search categories..."
+						clearable={true}
+						className="!px-3 !py-1.5 !text-sm !border !border-gray-300 !rounded-md focus:!outline-none focus:!ring-2 focus:!ring-[#007bff] focus:!border-transparent !w-40"
+					/>
+					<Button
+						onClick={applyFilters}
+						size="sm"
+						className="bg-[#007bff] hover:bg-[#0056b3] text-white text-xs px-4"
+					>
+						Apply
+					</Button>
+					<Button
+						onClick={clearFilters}
+						variant="outline"
+						size="sm"
+						className="text-gray-600 border-gray-300 text-xs px-4"
+					>
+						Clear
+					</Button>
+				</div>
+
+				{/* Page Size Control */}
+				<div className="flex items-center gap-3">
+					<Label className="text-sm font-medium text-gray-700">Show:</Label>
+					<Combobox
+						options={PAGE_SIZE_OPTIONS}
+						value={pageSize.toString()}
+						onValueChange={handlePageSizeChange}
+						placeholder="Page size"
+						className="w-32"
+					/>
+				</div>
+			</div>
+
 			<div className="rounded-md border bg-card overflow-hidden">
 				<Table>
 					<TableHeader>
@@ -154,6 +314,7 @@ const AdminArticles: React.FC = () => {
 							<TableHead className="w-[100px] font-semibold text-foreground">ID</TableHead>
 							<TableHead className="font-semibold text-foreground">Title</TableHead>
 							<TableHead className="w-[150px] font-semibold text-foreground">Author</TableHead>
+							<TableHead className="w-[120px] font-semibold text-foreground">Category</TableHead>
 							<TableHead className="w-[140px] font-semibold text-foreground">Created Date</TableHead>
 							<TableHead className="w-[140px] font-semibold text-foreground">Last Updated</TableHead>
 							<TableHead className="w-[120px] font-semibold text-foreground text-center">Actions</TableHead>
@@ -162,7 +323,7 @@ const AdminArticles: React.FC = () => {
 					<TableBody>
 						{articles.length === 0 ? (
 							<TableRow>
-								<TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+								<TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
 									No articles found
 								</TableCell>
 							</TableRow>
@@ -206,6 +367,12 @@ const AdminArticles: React.FC = () => {
 											>
 												{article.author?.username || 'Unknown'}
 											</NavLink>
+										</TableCell>
+										<TableCell className="text-sm">
+											<Badge variant="outline" className="text-xs flex items-center gap-1 w-fit">
+												<Tag className="w-3 h-3" />
+												{article.category || 'General'}
+											</Badge>
 										</TableCell>
 										<TableCell className="text-sm text-muted-foreground">
 											{formatDateTimeToMin(createdAt)}

@@ -14,6 +14,7 @@ public class UserConvertor {
                 .username(userEntity.getUsername())
                 .role(userEntity.getRole())
                 .profilePicture(userEntity.getProfilePicture())
+                .categories(userEntity.getCategories())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class UserConvertor {
                 .username(user.getUsername())
                 .role(user.getRole())
                 .profilePicture(user.getProfilePicture())
+                .categories(user.getCategories())
                 .build();
     }
 }

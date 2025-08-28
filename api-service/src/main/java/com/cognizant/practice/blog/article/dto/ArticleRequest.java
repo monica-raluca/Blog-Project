@@ -1,4 +1,4 @@
 package com.cognizant.practice.blog.article.dto;
 
-public record ArticleRequest(String title, String content) {
+public record ArticleRequest(String title, String content, String category) {
 }

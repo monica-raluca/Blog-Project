@@ -3,7 +3,8 @@ import { NavLink, useParams, useNavigate } from 'react-router';
 import { Article, Comment } from '../../../../api/types';
 import { useAuth } from '../../../../api/AuthContext';
 import { hasRole } from '../../../../api/AuthApi';
-import { deleteArticle, fetchArticleById } from '../../../../api/ArticlesApi';
+import { deleteArticle, fetchArticleById, fetchAllArticles } from '../../../../api/ArticlesApi';
+import { cleanupCategory } from '../../../../utils/categoryUtils';
 import { fetchCommentsByArticleId } from '../../../../api/CommentApi';
 import CommentItem from '../../Comments/CommentItem/CommentItem';
 import { Button } from '@/components/ui/button';
@@ -138,7 +139,20 @@ const AdminArticleItem: React.FC<ArticleItemProps> = ({
 
         try {
             setIsDeleting(true);
+            const categoryToClean = article.category;
             await deleteArticle(article.id, token);
+            
+            // Clean up category if no other articles use it
+            if (categoryToClean) {
+                try {
+                    const allArticlesResponse = await fetchAllArticles({ filters: {}, sortCriteria: [], size: 1000, from: 0 });
+                    const allArticles = Array.isArray(allArticlesResponse) ? allArticlesResponse : allArticlesResponse.articles || [];
+                    cleanupCategory(categoryToClean, allArticles);
+                } catch (error) {
+                    console.warn('Failed to cleanup category:', error);
+                }
+            }
+            
             if (onDelete) {
                 onDelete();
             } else if (useRouteParams) {

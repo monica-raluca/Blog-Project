@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router';
-import { fetchArticleById, deleteArticle } from '../../../../api/ArticlesApi';
+import { fetchArticleById, deleteArticle, fetchAllArticles } from '../../../../api/ArticlesApi';
+import { cleanupCategory } from '../../../../utils/categoryUtils';
 import { createComment, fetchCommentsByArticleId, editComment, deleteComment } from '../../../../api/CommentApi';
 import { Link } from 'react-router';
 import RequireRoles from '../../../../api/RequireRoles';
@@ -26,7 +27,8 @@ import PollComponent from '../../../ui/PollComponent';
 import PollCreator from '../../../ui/PollCreator';
 import { PollStorage } from '../../../../utils/pollStorage';
 import { Poll } from '../../../../types/pollTypes';
-import { X, Download, BarChart3, Plus } from 'lucide-react';
+import { X, Download, BarChart3, Plus, Tag } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 
 
@@ -374,7 +376,20 @@ const UserArticleItem: React.FC = () => {
         if (!window.confirm('Are you sure?') || !token) return;
 
         try {
+            const categoryToClean = article?.category;
             await deleteArticle(articleId, token);
+            
+            // Clean up category if no other articles use it
+            if (categoryToClean) {
+                try {
+                    const allArticlesResponse = await fetchAllArticles({ filters: {}, sortCriteria: [], size: 1000, from: 0 });
+                    const allArticles = Array.isArray(allArticlesResponse) ? allArticlesResponse : allArticlesResponse.articles || [];
+                    cleanupCategory(categoryToClean, allArticles);
+                } catch (error) {
+                    console.warn('Failed to cleanup category:', error);
+                }
+            }
+            
             navigate('/public/articles');
             
         } catch (err) {
@@ -546,6 +561,12 @@ const UserArticleItem: React.FC = () => {
 				/>
 				<div className="!absolute !inset-0 !bg-gradient-to-t !from-black/60 !via-transparent !to-transparent"></div>
 				<div className="!absolute !bottom-6 !left-8 !right-8">
+					<div className="!mb-3">
+						<Badge variant="secondary" className="!bg-white/20 !text-white !backdrop-blur-sm !border-white/30">
+							<Tag className="w-3 h-3 mr-1" />
+							{article.category || 'General'}
+						</Badge>
+					</div>
 					<h2 className='!font-bold !text-4xl !md:!text-5xl !text-white !mb-4 !leading-tight !tracking-tight !drop-shadow-2xl'>
 						{article.title}
 					</h2>

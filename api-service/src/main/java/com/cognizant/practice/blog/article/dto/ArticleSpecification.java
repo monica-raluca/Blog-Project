@@ -23,4 +23,9 @@ public class ArticleSpecification {
         return (root, query, cb) ->
                 date == null ? null : cb.greaterThanOrEqualTo(root.get("createdDate"), date);
     }
+
+    public static Specification<ArticleEntity> hasCategory(String category) {
+        return (root, query, cb) ->
+                category == null ? null : cb.equal(root.get("category"), category);
+    }   
 }

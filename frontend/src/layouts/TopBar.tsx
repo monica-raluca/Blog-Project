@@ -13,6 +13,8 @@ import {
 // Styles converted to soft Tailwind CSS
 import { Label } from '@/components/ui/label';
 import { Combobox, type ComboboxOption } from '@/components/ui/combobox';
+import { getSavedCategories } from '../utils/categoryUtils';
+// CategoryInput import removed - using Combobox instead
 
 interface SortField {
   label: string;
@@ -32,6 +34,8 @@ const PAGE_SIZE_OPTIONS: ComboboxOption[] = PAGE_SIZES.map(size => ({
   label: `${size} per page`,
 }));
 
+
+
 const TopBar: React.FC = () => {
   const context = useContext(ArticleControlsContext);
   
@@ -46,6 +50,13 @@ const TopBar: React.FC = () => {
 
   const [localSort, setLocalSort] = useState<SortCriteria[]>(sortCriteria);
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [availableCategories] = useState<string[]>(getSavedCategories());
+
+  // Convert categories to combobox options
+  const categoryOptions: ComboboxOption[] = [
+    { value: '', label: 'All categories' },
+    ...availableCategories.map(cat => ({ value: cat, label: cat }))
+  ];
 
   // Handle sort field toggle
   const handleSortToggle = (field: string): void => {
@@ -77,8 +88,8 @@ const TopBar: React.FC = () => {
   const applyFilters = (): void => setFilters(filtersInput);
   
   const clearFilters = (): void => {
-    setFiltersInput({ title: '', author: '' });
-    setFilters({ title: '', author: '' });
+    setFiltersInput({ title: '', author: '', category: '' });
+    setFilters({ title: '', author: '', category: '' });
   };
 
   // Pagination
@@ -166,6 +177,15 @@ const TopBar: React.FC = () => {
               value={filtersInput.author || ''}
               onChange={handleFilterChange}
               className="!text-[0.98em] !rounded-[14px] !px-[10px] !py-[4px] !bg-white/70 !border-[1.5px] !border-[#eab5d1] !shadow-[0_1px_4px_rgba(234,181,209,0.10)] !transition-all !duration-200 focus:!border-[#270023] focus:!outline-none focus:!bg-white"
+            />
+            <Combobox
+              options={categoryOptions}
+              value={filtersInput.category || ''}
+              onValueChange={(value) => setFiltersInput({ ...filtersInput, category: value })}
+              placeholder="Category"
+              searchPlaceholder="Search categories..."
+              clearable={true}
+              className="!text-[0.98em] !rounded-[14px] !px-[10px] !py-[4px] !bg-white/70 !border-[1.5px] !border-[#eab5d1] !shadow-[0_1px_4px_rgba(234,181,209,0.10)] !transition-all !duration-200 focus:!border-[#270023] focus:!outline-none focus:!bg-white !w-auto !min-w-[120px]"
             />
             <Button variant="topbar" size="cozy" onClick={applyFilters}>Apply</Button>
             <Button variant="cloud" size="cozy" onClick={clearFilters}>Clear</Button>

@@ -160,7 +160,14 @@ const UserForm: React.FC<UserFormProps> = ({
         setLoading(true);
         setError(null);
 
-        const userUpdate: UserEditRequest = { role: data.role, firstName: data.firstName, lastName: data.lastName, email: data.email, username: data.username };
+        const userUpdate: UserEditRequest = { 
+            role: data.role, 
+            firstName: data.firstName, 
+            lastName: data.lastName, 
+            email: data.email, 
+            username: data.username,
+            profilePicture: user.profilePicture // Preserve existing profile picture
+        };
 
         try {
             console.log('Updating user role:', {

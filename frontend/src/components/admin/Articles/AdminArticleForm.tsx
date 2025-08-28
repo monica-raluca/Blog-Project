@@ -14,8 +14,10 @@ import ArticlePreview from './ArticlePreview';
 import ArticleCoverUpload from '../../ui/ArticleCoverUpload';
 import ArticleCover from '../../ui/ArticleCover';
 import ImageCrop, { CropData } from '../../ui/ImageCrop';
+import CategoryInput from '../../ui/CategoryInput';
 import { Eye } from 'lucide-react';
 import * as yup from 'yup';
+import { DEFAULT_CATEGORY, getSavedCategories, saveCategory } from '../../../utils/categoryUtils';
 
 
 interface ArticleFormProps {
@@ -29,11 +31,13 @@ interface ArticleFormProps {
 interface ArticleFormData {
     title: string;
     content: string;
+    category: string;
 }
 
 const articleFormSchema = yup.object({
     title: yup.string().required('Title is required'),
-    content: yup.string().required('Content is required')
+    content: yup.string().required('Content is required'),
+    category: yup.string().trim().default(DEFAULT_CATEGORY).transform((value) => value || DEFAULT_CATEGORY)
 }).required();
 
 type FormData = yup.InferType<typeof articleFormSchema>;
@@ -71,6 +75,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     const [cropData, setCropData] = useState<CropData | null>(null);
     const [editCropData, setEditCropData] = useState<CropData | null>(null);
     const [currentArticleId, setCurrentArticleId] = useState<string | undefined>(isEdit ? finalId : undefined);
+    const [availableCategories, setAvailableCategories] = useState<string[]>(getSavedCategories());
     
     const navigate = useNavigate();
     const { token } = useAuth();
@@ -85,12 +90,14 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         resolver: yupResolver(articleFormSchema),
         defaultValues: {
             title: initialData?.title || '',
-            content: initialData?.content || ''
+            content: initialData?.content || '',
+            category: initialData?.category || ''
         }
     });
 
     const title = watch('title');
     const content = watch('content');
+    const category = watch('category');
 
     useEffect(() => {
         if (isEdit && finalId && !initialData) {
@@ -103,9 +110,10 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
     useEffect(() => {
         // Track if form has been modified
         const hasChanges = title !== (initialData?.title || '') ||
-                          content !== (initialData?.content || '');
+                          content !== (initialData?.content || '') ||
+                          category !== (initialData?.category || '');
         setIsDirty(hasChanges);
-    }, [title, content, initialData]);
+    }, [title, content, category, initialData]);
 
     const loadArticle = async (): Promise<void> => {
         if (!finalId) return;
@@ -116,6 +124,7 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
             fetchArticleById(finalId).then(article => {
                 setValue('title', article.title);
                 setValue('content', article.content);
+                setValue('category', article.category || DEFAULT_CATEGORY);
                 setCurrentArticle(article); // Set current article for image upload
                 
                 // Set the JSON content in the editor after a small delay to ensure it's rendered
@@ -425,9 +434,16 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
         setError(null);
 
         const finalJsonContent = markdownEditorRef.current?.getEditorStateJson() || data.content;
+        const finalCategory = data.category.trim() || DEFAULT_CATEGORY;
+        
+        // Save the category if it's new
+        saveCategory(finalCategory);
+        setAvailableCategories(getSavedCategories());
+        
         const articleData: Article = { 
             title: data.title.trim(), 
-            content: finalJsonContent.trim()
+            content: finalJsonContent.trim(),
+            category: finalCategory
         };
 
         try {
@@ -538,6 +554,23 @@ const AdminArticleForm: React.FC<ArticleFormProps> = ({
                         {errors.title?.message && (
                             <p className="!text-[#dc3545] !text-xs !mt-1 !block">{errors.title.message}</p>
                         )}
+                    </div>
+                </div>
+
+                <div className="!mb-6">
+                    <div className="!relative">
+                        <label htmlFor="category" className="!flex !justify-between !items-center !mb-2 !font-semibold !text-[#495057] !text-sm">
+                            Category <span className="!text-[#dc3545] !ml-1">*</span>
+                        </label>
+                        <CategoryInput
+                            value={category || ''}
+                            onChange={(value) => setValue('category', value)}
+                            suggestions={availableCategories}
+                            placeholder="Start typing or leave empty for General..."
+                            disabled={loading}
+                            className="!w-full !px-3 !py-3 !border !border-[#ced4da] !rounded-md !text-sm !transition-all !duration-200 !font-inherit focus:!border-[#007bff] focus:!shadow-[0_0_0_2px_rgba(0,123,255,0.25)] focus:!outline-none"
+                            error={errors.category?.message}
+                        />
                     </div>
                 </div>
 
