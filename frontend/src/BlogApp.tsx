@@ -23,6 +23,7 @@ import UserArticleForm from './components/public/Articles/UserArticleForm';
 import AdminArticleForm from './components/admin/Articles/AdminArticleForm';
 import UserProfile from './components/profile/UserProfile';
 import HomePage from './components/home/HomePage';
+import AdminRoute from './api/AdminRoute';
 
 export function BlogApp(): React.ReactElement {
 	return (
@@ -51,19 +52,19 @@ export function BlogApp(): React.ReactElement {
 						<Route path="public/users/:id" element={<AuthorItem />} />
 
 						{/* Admin routes */}
-						<Route path="admin/articles" element={<AdminArticles />} />
-						<Route path="admin/articles/:id" element={<AdminArticleItem variant="detailed" useRouteParams={true} />} />
-						<Route path="admin/articles/create" element={<AdminArticleForm />} />
-						<Route path="admin/articles/:id/edit" element={<AdminArticleForm isEdit={true} />} />
+						<Route path="admin/articles" element={<AdminRoute><AdminArticles /></AdminRoute>} />
+						<Route path="admin/articles/:id" element={<AdminRoute><AdminArticleItem variant="detailed" useRouteParams={true} /></AdminRoute>} />
+						<Route path="admin/articles/create" element={<AdminRoute><AdminArticleForm /></AdminRoute>} />
+						<Route path="admin/articles/:id/edit" element={<AdminRoute><AdminArticleForm isEdit={true} /></AdminRoute>} />
 
-						<Route path="admin/comments" element={<Comments />} />
-						<Route path="admin/comments/create" element={<CommentForm />} />
-						<Route path="admin/comments/:id" element={<CommentItem variant="detailed" useRouteParams={true} />} />
-						<Route path="admin/comments/:id/edit" element={<CommentForm isEdit={true} />} />
+						<Route path="admin/comments" element={<AdminRoute><Comments /></AdminRoute>} />
+						<Route path="admin/comments/create" element={<AdminRoute><CommentForm /></AdminRoute>} />
+						<Route path="admin/comments/:id" element={<AdminRoute><CommentItem variant="detailed" useRouteParams={true} /></AdminRoute>} />
+						<Route path="admin/comments/:id/edit" element={<AdminRoute><CommentForm isEdit={true} /></AdminRoute>} />
 
-						<Route path="admin/users" element={<Users />} />
-						<Route path="admin/users/:id" element={<UserItem variant="detailed" useRouteParams={true} />} />
-						<Route path="admin/users/:id/edit" element={<UserForm />} />
+						<Route path="admin/users" element={<AdminRoute><Users /></AdminRoute>} />
+						<Route path="admin/users/:id" element={<AdminRoute><UserItem variant="detailed" useRouteParams={true} /></AdminRoute>} />
+						<Route path="admin/users/:id/edit" element={<AdminRoute><UserForm /></AdminRoute>} />
 
 						{/* Error routes */}
 						<Route path="forbidden" element={<Forbidden />} />
